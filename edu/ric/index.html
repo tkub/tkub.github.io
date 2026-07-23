@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Records in Contexts 入門 --- アーカイブズ記述の新しい国際標準を理解する</title>
+<style>
+  :root {
+    --navy: rgb(38,70,110);
+    --blue: rgb(62,110,160);
+    --teal: rgb(42,130,120);
+    --orange: rgb(200,120,40);
+    --gray: rgb(110,115,120);
+    --bg: rgb(245,247,250);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+    color: #222;
+    line-height: 1.9;
+    background: #fff;
+  }
+  header {
+    background: var(--navy);
+    color: #fff;
+    padding: 56px 24px 40px;
+    border-bottom: 4px solid var(--orange);
+  }
+  .inner { max-width: 860px; margin: 0 auto; }
+  header .series { color: rgba(255,255,255,.75); font-size: .95rem; }
+  header h1 { margin: .3em 0 .2em; font-size: 2rem; }
+  header .subtitle { color: rgba(255,255,255,.85); font-size: 1.1rem; }
+  header .meta { margin-top: 1.2em; font-size: .95rem; color: rgba(255,255,255,.85); }
+  main { padding: 40px 24px 24px; }
+  h2 {
+    color: var(--navy);
+    font-size: 1.25rem;
+    border-bottom: 1px solid #ccd3dc;
+    padding-bottom: .3em;
+    margin-top: 2.2em;
+  }
+  a { color: var(--blue); }
+  .buttons { margin: 1.6em 0; }
+  .btn {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    text-decoration: none;
+    padding: .65em 1.4em;
+    border-radius: 4px;
+    margin-right: .8em;
+    margin-bottom: .6em;
+  }
+  .btn:hover { background: var(--blue); }
+  .btn.secondary { background: var(--bg); color: var(--navy); border: 1px solid var(--navy); }
+  ul.toc { padding-left: 1.4em; }
+  ul.toc li { margin: .25em 0; }
+  .note {
+    background: var(--bg);
+    border: 1px solid #ccd3dc;
+    border-radius: 6px;
+    padding: 1em 1.4em;
+    font-size: .95rem;
+  }
+  dl.history dt { font-weight: bold; color: var(--navy); }
+  dl.history dd { margin: 0 0 .8em 1.2em; }
+  pre {
+    background: var(--bg);
+    border: 1px solid #ccd3dc;
+    border-radius: 6px;
+    padding: 1em;
+    overflow-x: auto;
+    font-size: .85rem;
+    line-height: 1.5;
+  }
+  footer {
+    margin-top: 3em;
+    padding: 1.6em 24px 2.4em;
+    border-top: 1px solid #ccd3dc;
+    color: var(--gray);
+    font-size: .9rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="series">アーカイブズ学を学ぶ人のためのテキスト</div>
+    <h1>Records in Contexts 入門</h1>
+    <div class="subtitle">アーカイブズ記述の新しい国際標準を理解する</div>
+    <div class="meta">
+      久保山哲二(学習院大学大学院人文科学研究科アーカイブズ学専攻/計算機センター)<br>
+      第1.2版(2026年7月21日)・全105ページ・CC BY 4.0
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="inner">
+
+    <div class="buttons">
+      <a class="btn" href="ric-nyumon.pdf">PDF をダウンロード(第1.2版)</a>
+      <a class="btn secondary" href="https://github.com/ICA-EGAD/RiC-O" rel="external">一次資料(ICA EGAD)</a>
+    </div>
+
+    <h2>概要</h2>
+    <p>国際文書館評議会(ICA)が策定したアーカイブズ記述の国際標準
+    Records in Contexts(RiC)の日本語テキストです。
+    RiC-FAD 1.0・RiC-CM 1.0・RiC-O 1.1・RiC-AG 0.1.0
+    の一次資料(本文、OWL ソース、公式ドキュメント、公式クロスウォーク、サンプルデータ)に基づいて執筆しました。
+    従来の ISAD(G)/ISAAR(CPF) からの移行の意味、RDF・OWL・記述論理・SPARQL の入門、
+    推論の具体例、実践の手順、必要となる技術素養までを一冊で扱います。</p>
+
+    <h2>構成</h2>
+    <ul class="toc">
+      <li>第1章 RiCとは何か --- 標準の全体像と一次資料</li>
+      <li>第2章 ISAD(G)の世界からRiCへ(参照と識別子の経緯、隣接標準を含む)</li>
+      <li>第3章 RiCは何が新しいのか(自由度とトレードオフ)</li>
+      <li>第4章 RiC-CMを読む --- 実体・属性・関係、記述の記述</li>
+      <li>第5章 RiC-O --- RDF/OWL入門、記述論理、直列化形式</li>
+      <li>第6章 推論 --- 具体的な6つの場面と処理系の中身</li>
+      <li>第7章 実践の手順 --- 変換工程、通し例、日本語データ、道具箱</li>
+      <li>第8章 どこまで技術を学ぶ必要があるか</li>
+      <li>付録 実体一覧・関係カテゴリ・用語集・索引(各章末に確認問題)</li>
+    </ul>
+
+    <h2>ライセンスと引用</h2>
+    <p>本書はクリエイティブ・コモンズ表示 4.0 国際ライセンス
+    (<a href="https://creativecommons.org/licenses/by/4.0/deed.ja" rel="license">CC BY 4.0</a>)で提供します。
+    出典を表示すれば、複製・再配布・改変・翻訳・授業や出版での利用を自由に行えます。
+    一次資料である ICA EGAD の RiC 各文書も同じ CC BY 4.0 で公開されています。</p>
+    <pre>久保山哲二『Records in Contexts 入門 --- アーカイブズ記述の新しい国際標準を理解する』
+第1.2版、2026年、CC BY 4.0。</pre>
+
+    <div class="note">
+      本書の執筆には大規模言語モデル Claude Fable 5(Anthropic)を用いました。
+      久保山哲二が全体の構成と内容を指示し、ICA EGAD の一次資料に基づいて作成したものです。
+      本書の内容に関する文責は久保山哲二にあります。
+      本文組版は LuaLaTeX(luatexja、原ノ味フォント)によります。
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="inner">
+    連絡先:kuboyama@tk.cc.gakushuin.ac.jp
+  </div>
+</footer>
+
+</body>
+</html>
