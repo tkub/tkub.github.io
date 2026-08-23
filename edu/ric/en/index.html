@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Records in Contexts: An Introduction --- Understanding the New International Standard for Archival Description</title>
+<meta name="description" content="A free textbook on Records in Contexts (RiC), the new international standard for archival description from ICA EGAD. Covers RiC-CM 1.0, the RiC-O ontology (RDF/OWL/SPARQL), inference, and the practical steps of conversion. 124 pages, PDF, CC BY 4.0.">
+<link rel="canonical" href="https://tkub.github.io/edu/ric/en/">
+<link rel="alternate" hreflang="ja" href="https://tkub.github.io/edu/ric/">
+<link rel="alternate" hreflang="en" href="https://tkub.github.io/edu/ric/en/">
+
+<meta property="og:type" content="book">
+<meta property="og:site_name" content="Tetsuji Kuboyama">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://tkub.github.io/edu/ric/en/">
+<meta property="og:title" content="Records in Contexts: An Introduction">
+<meta property="og:description" content="A free textbook on Records in Contexts (RiC-CM 1.0 / RiC-O 1.1), the new international standard for archival description. From ISAD(G) to RiC, an introduction to RDF, OWL, description logic and SPARQL, worked examples of inference, and the practical steps. 124 pages, CC BY 4.0.">
+<meta name="twitter:card" content="summary">
+
+<meta name="citation_title" content="Records in Contexts: An Introduction --- Understanding the New International Standard for Archival Description">
+<meta name="citation_author" content="Kuboyama, Tetsuji">
+<meta name="citation_author_institution" content="Gakushuin University">
+<meta name="citation_publication_date" content="2026/08/23">
+<meta name="citation_language" content="en">
+<meta name="citation_abstract_html_url" content="https://tkub.github.io/edu/ric/en/">
+<meta name="citation_pdf_url" content="https://tkub.github.io/edu/ric/en/ric-introduction.pdf">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "@id": "https://tkub.github.io/edu/ric/en/#book",
+  "name": "Records in Contexts: An Introduction --- Understanding the New International Standard for Archival Description",
+  "url": "https://tkub.github.io/edu/ric/en/",
+  "bookFormat": "https://schema.org/EBook",
+  "bookEdition": "English edition 1.0",
+  "datePublished": "2026-08-23",
+  "numberOfPages": 124,
+  "inLanguage": "en",
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "description": "A textbook on Records in Contexts (RiC), the archival description standard of the International Council on Archives. Based on the primary sources RiC-FAD 1.0, RiC-CM 1.0, RiC-O 1.1 and RiC-AG 0.1, it covers what the move from ISAD(G) and ISAAR(CPF) means, an introduction to RDF, OWL, description logic and SPARQL, worked examples of inference, and the practical steps of conversion.",
+  "translationOfWork": {
+    "@type": "Book",
+    "name": "Records in Contexts 入門 --- アーカイブズ記述の新しい国際標準を理解する",
+    "url": "https://tkub.github.io/edu/ric/",
+    "inLanguage": "ja"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Tetsuji Kuboyama",
+    "alternateName": "久保山哲二",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "Gakushuin University" }
+  },
+  "about": [
+    "Records in Contexts", "Records in Context", "RiC", "RiC-CM", "RiC-O", "RiC-FAD", "RiC-AG",
+    "archival description", "archival science", "descriptive standards",
+    "ISAD(G)", "ISAAR(CPF)", "ISDF", "ISDIAH", "EAD", "EAC-CPF", "DACS",
+    "International Council on Archives", "ICA", "EGAD",
+    "RDF", "OWL", "SPARQL", "Turtle", "SHACL", "description logic", "ontology", "conceptual model",
+    "linked open data", "provenance", "fonds", "finding aid", "authority record"
+  ],
+  "keywords": "Records in Contexts, RiC, RiC-CM, RiC-O, RiC-FAD, RiC-AG, archival description, descriptive standards, archival science, ISAD(G), ISAAR(CPF), ISDF, ISDIAH, EAD, EAC-CPF, International Council on Archives, ICA, EGAD, RDF, OWL, SPARQL, Turtle, SHACL, ontology, conceptual model, description logic, linked open data, provenance, fonds, finding aid, authority record, textbook, introduction",
+  "encoding": {
+    "@type": "MediaObject",
+    "contentUrl": "https://tkub.github.io/edu/ric/en/ric-introduction.pdf",
+    "encodingFormat": "application/pdf"
+  }
+}
+</script>
+<style>
+  :root {
+    --navy: rgb(38,70,110);
+    --blue: rgb(62,110,160);
+    --teal: rgb(42,130,120);
+    --orange: rgb(200,120,40);
+    --gray: rgb(110,115,120);
+    --bg: rgb(245,247,250);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Charter", "Bitstream Charter", Georgia, "Times New Roman", serif;
+    color: #222;
+    line-height: 1.75;
+    background: #fff;
+  }
+  header {
+    background: var(--navy);
+    color: #fff;
+    padding: 56px 24px 40px;
+    border-bottom: 4px solid var(--orange);
+  }
+  .inner { max-width: 860px; margin: 0 auto; }
+  header .series { color: rgba(255,255,255,.75); font-size: .95rem; }
+  header h1 { margin: .3em 0 .2em; font-size: 2rem; }
+  header .subtitle { color: rgba(255,255,255,.85); font-size: 1.1rem; }
+  header .meta { margin-top: 1.2em; font-size: .95rem; color: rgba(255,255,255,.85); }
+  main { padding: 40px 24px 24px; }
+  h2 {
+    color: var(--navy);
+    font-size: 1.25rem;
+    border-bottom: 1px solid #ccd3dc;
+    padding-bottom: .3em;
+    margin-top: 2.2em;
+  }
+  a { color: var(--blue); }
+  .buttons { margin: 1.6em 0; }
+  .btn {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    text-decoration: none;
+    padding: .65em 1.4em;
+    border-radius: 4px;
+    margin-right: .8em;
+    margin-bottom: .6em;
+  }
+  .btn:hover { background: var(--blue); }
+  .btn.secondary { background: var(--bg); color: var(--navy); border: 1px solid var(--navy); }
+  ul.toc { padding-left: 1.4em; }
+  ul.toc li { margin: .25em 0; }
+  .note {
+    background: var(--bg);
+    border: 1px solid #ccd3dc;
+    border-radius: 6px;
+    padding: 1em 1.4em;
+    font-size: .95rem;
+  }
+  .lang {
+    margin-top: 1.4em;
+    font-size: .95rem;
+  }
+  .lang a { color: #fff; text-decoration: underline; }
+  dl.history dt { font-weight: bold; color: var(--navy); }
+  dl.history dd { margin: 0 0 .8em 1.2em; }
+  code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: .9em; }
+  pre {
+    background: var(--bg);
+    border: 1px solid #ccd3dc;
+    border-radius: 6px;
+    padding: 1em;
+    overflow-x: auto;
+    font-size: .85rem;
+    line-height: 1.5;
+  }
+  footer {
+    margin-top: 3em;
+    padding: 1.6em 24px 2.4em;
+    border-top: 1px solid #ccd3dc;
+    color: var(--gray);
+    font-size: .9rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="series">A textbook for students of archival science</div>
+    <h1>Records in Contexts: An Introduction</h1>
+    <div class="subtitle">Understanding the new international standard for archival description</div>
+    <div class="meta">
+      Tetsuji Kuboyama (Graduate School of Humanities and Computer Centre, Gakushuin University)<br>
+      English edition 1.0 (23 August 2026) &middot; 124 pages &middot; CC BY 4.0
+    </div>
+    <div class="lang">日本語版は <a href="../">こちら</a> &middot; The Japanese edition is <a href="../">here</a></div>
+  </div>
+</header>
+
+<main>
+  <div class="inner">
+
+    <div class="buttons">
+      <a class="btn" href="ric-introduction.pdf">Download the PDF</a>
+      <a class="btn secondary" href="ric-introduction-examples.zip">Sample data (zip)</a>
+      <a class="btn secondary" href="https://github.com/ICA-EGAD/RiC-O" rel="external">Primary sources (ICA EGAD)</a>
+    </div>
+
+    <h2>About the book</h2>
+    <p>Records in Contexts (RiC) is the new standard for archival description from the Expert Group on
+    Archival Description (EGAD) of the International Council on Archives. It replaces the four earlier
+    standards ISAD(G), ISAAR(CPF), ISDF and ISDIAH with a conceptual model, RiC-CM, and an ontology
+    that formalises it in OWL, RiC-O.</p>
+
+    <p>The primary sources are documents written for implementers, not for people meeting the standard
+    for the first time. This book is written for that first encounter. It is based throughout on
+    RiC-FAD 1.0, RiC-CM 1.0, RiC-O 1.1 and RiC-AG 0.1 --- the text, the OWL source, the official
+    documentation, the official crosswalks and the sample data --- and it covers what the move from
+    multilevel to multidimensional description actually means, how to read entities, attributes and
+    relations, an introduction to RDF, Turtle, OWL, description logic and SPARQL, worked examples of
+    inference, the steps of converting from EAD, and how much computer science the work requires.
+    It is intended for students of archival science, for cataloguers, and for anyone building a
+    digital archive or a linked open data service.</p>
+
+    <h2>A note on the examples</h2>
+    <p>The book was first written in Japanese, for readers in Japan. Where the original used Japanese
+    records, institutions and legislation to make a point, the examples in this edition have been
+    replaced rather than translated, so that they can be followed without knowledge of Japanese
+    archival practice. What has not been changed is the vantage point: the author works in a country
+    whose archival tradition was not represented in the group that drafted RiC, and the book says so
+    plainly. Readers inside the traditions that were represented may find that observation useful.</p>
+
+    <h2>Contents</h2>
+    <ul class="toc">
+      <li>1. What RiC Is --- the shape of the standard and the structure of the primary sources</li>
+      <li>2. From the World of ISAD(G) to RiC --- references and identifiers, XML, normalisation, neighbouring standards</li>
+      <li>3. What RiC Changed --- the new freedom and what it costs, provenance and custodial history</li>
+      <li>4. Reading RiC-CM --- entities, attributes, relations; reading ER diagrams and relation charts</li>
+      <li>5. RiC-O --- an introduction to RDF and OWL, description logic, serialisations</li>
+      <li>6. Inference --- six concrete situations and what the reasoner does</li>
+      <li>7. Putting It into Practice --- the conversion process, a worked example, retention and disposal, the toolbox</li>
+      <li>8. How Much Technology Do You Need?</li>
+      <li>Appendices --- the entities of RiC-CM, frequently used RiC-O vocabulary, hints for the exercises,
+      a glossary of words that shift meaning between fields, primary sources, and an index
+      (with exercises at the end of each chapter)</li>
+    </ul>
+
+    <h2>Sample data</h2>
+    <p>The examples in the book are also published as files you can load and run
+    (<a href="ric-introduction-examples.zip">ric-introduction-examples.zip</a>, about 240&nbsp;KB).
+    It contains four Turtle datasets, the fourteen SPARQL queries that appear in the book, the SHACL
+    shapes with data that violates them, and a script that checks the whole set. All data is fictional.</p>
+    <p>The RDF and CSV listings of RiC-O 1.1 are included, so inference and validation run as soon as
+    the archive is expanded. After <code>pip install rdflib pyshacl owlrl</code>, running
+    <code>python3 check.py</code> verifies the syntax of every Turtle file, that each vocabulary name
+    exists in RiC-O, that domains and ranges are respected, the number of rows each query returns, and
+    the contents of the SHACL report. The accompanying <code>README.md</code> explains how to run the
+    data under Apache Jena Fuseki and GraphDB.</p>
+    <p>It carries the same CC BY 4.0 licence as the book, so it may be adapted for teaching.</p>
+
+    <h2>Editions</h2>
+    <dl class="history">
+      <dt>English edition 1.0 (23 August 2026) &middot; 124 pages</dt>
+      <dd>First release. Translated and adapted from the Japanese edition 1.4.3.</dd>
+    </dl>
+
+    <h2>Licence and citation</h2>
+    <p>This book is released under the
+    <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution
+    4.0 International licence (CC BY 4.0)</a>. You may copy, redistribute, adapt, translate, and use it
+    in teaching or publication, provided that you give attribution. The RiC documents published by
+    ICA EGAD, which are the primary sources for this book, are released under the same licence.</p>
+    <pre>Tetsuji Kuboyama, Records in Contexts: An Introduction --- Understanding the
+New International Standard for Archival Description. English edition 1.0,
+2026, CC BY 4.0.</pre>
+
+    <div class="note">
+      Large language models (Claude Fable 5 and Claude Opus 5, Anthropic) were used to assist with the
+      translation and with drawing the diagrams. Tetsuji Kuboyama directed the structure and content
+      throughout, working from the primary sources of ICA EGAD, and is responsible for the content of
+      the book. Typeset with pdf<span style="font-variant:small-caps">LaTeX</span>.
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="inner">
+    Contact: tkuboyama@tk.cc.gakushuin.ac.jp
+  </div>
+</footer>
+
+</body>
+</html>
