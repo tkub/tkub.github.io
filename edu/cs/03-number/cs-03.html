@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor.js 4.0.11">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <meta name="author" content="久保山哲二">
 <title>コンピューター内部の数の表現</title>
 <style>
@@ -562,7 +562,124 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge, pre.rouge .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
+  color: #cf222e;
+}
+pre.rouge .gr {
+  color: #f6f8fa;
+}
+pre.rouge .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+pre.rouge .nb {
+  color: #953800;
+}
+pre.rouge .nc {
+  color: #953800;
+}
+pre.rouge .no {
+  color: #953800;
+}
+pre.rouge .nn {
+  color: #953800;
+}
+pre.rouge .sr {
+  color: #116329;
+}
+pre.rouge .na {
+  color: #116329;
+}
+pre.rouge .nt {
+  color: #116329;
+}
+pre.rouge .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+pre.rouge .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .kc {
+  color: #0550ae;
+}
+pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
+  color: #0550ae;
+}
+pre.rouge .sb {
+  color: #0550ae;
+}
+pre.rouge .bp {
+  color: #0550ae;
+}
+pre.rouge .ne {
+  color: #0550ae;
+}
+pre.rouge .nl {
+  color: #0550ae;
+}
+pre.rouge .py {
+  color: #0550ae;
+}
+pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
+  color: #0550ae;
+}
+pre.rouge .o, pre.rouge .ow {
+  color: #0550ae;
+}
+pre.rouge .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
+  color: #0a3069;
+}
+pre.rouge .nd {
+  color: #8250df;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #8250df;
+}
+pre.rouge .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
+  color: #6e7781;
+}
+pre.rouge .gl {
+  color: #6e7781;
+}
+pre.rouge .gt {
+  color: #6e7781;
+}
+pre.rouge .ni {
+  color: #24292f;
+}
+pre.rouge .si {
+  color: #24292f;
+}
+pre.rouge .ge {
+  color: #24292f;
+  font-style: italic;
+}
+pre.rouge .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+</style>
 <script>
   window.MathJax = {
     loader: { load: ['output/chtml'] },
@@ -673,14 +790,14 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <h3 id="_python"><a class="link" href="#_python">2.1. Python</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; 0b11101010
-234
-&gt;&gt;&gt; 0xea
-234
-&gt;&gt;&gt; bin(234)
-'0b11101010'
-&gt;&gt;&gt; hex(234)
-'0xea'</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="mb">0b11101010</span>
+<span class="mi">234</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mh">0xea</span>
+<span class="mi">234</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">bin</span><span class="p">(</span><span class="mi">234</span><span class="p">)</span>
+<span class="sh">'</span><span class="s">0b11101010</span><span class="sh">'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">hex</span><span class="p">(</span><span class="mi">234</span><span class="p">)</span>
+<span class="sh">'</span><span class="s">0xea</span><span class="sh">'</span></code></pre>
 </div>
 </div>
 </div>
@@ -688,14 +805,14 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <h3 id="_ruby"><a class="link" href="#_ruby">2.2. Ruby</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-ruby hljs" data-lang="ruby">irb&gt; 0b11101010
-234
-irb&gt; 0xea
-234
-irb&gt; 234.to_s(2)
-"11101010"
-irb&gt; 234.to_s(16)
-"ea"</code></pre>
+<pre class="rouge highlight"><code data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="mb">0b11101010</span>
+<span class="mi">234</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="mh">0xea</span>
+<span class="mi">234</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="mi">234</span><span class="p">.</span><span class="nf">to_s</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="s2">"11101010"</span>
+<span class="n">irb</span><span class="o">&gt;</span> <span class="mi">234</span><span class="p">.</span><span class="nf">to_s</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="s2">"ea"</span></code></pre>
 </div>
 </div>
 </div>
@@ -703,14 +820,14 @@ irb&gt; 234.to_s(16)
 <h3 id="_julia"><a class="link" href="#_julia">2.3. Julia</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; Int(0b11101010)
-234
-julia&gt; Int(0xea)
-234
-julia&gt; string(234, base=2)
-"11101010"
-julia&gt; string(234, base=16)
-"ea"</code></pre>
+<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="kt">Int</span><span class="x">(</span><span class="mb">0b11101010</span><span class="x">)</span>
+<span class="mi">234</span>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="kt">Int</span><span class="x">(</span><span class="mh">0xea</span><span class="x">)</span>
+<span class="mi">234</span>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">string</span><span class="x">(</span><span class="mi">234</span><span class="x">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="x">)</span>
+<span class="s">"11101010"</span>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">string</span><span class="x">(</span><span class="mi">234</span><span class="x">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">16</span><span class="x">)</span>
+<span class="s">"ea"</span></code></pre>
 </div>
 </div>
 </div>
@@ -718,14 +835,14 @@ julia&gt; string(234, base=16)
 <h3 id="_javascript"><a class="link" href="#_javascript">2.4. JavaScript</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">&gt; 0b11101010
-234
-&gt; 0xea
-234
-&gt; (234).toString(2)
-'11101010'
-&gt; (234).toString(16)
-'ea'</code></pre>
+<pre class="rouge highlight"><code data-lang="javascript"><span class="o">&gt;</span> <span class="mb">0b11101010</span>
+<span class="mi">234</span>
+<span class="o">&gt;</span> <span class="mh">0xea</span>
+<span class="mi">234</span>
+<span class="o">&gt;</span> <span class="p">(</span><span class="mi">234</span><span class="p">).</span><span class="nf">toString</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="dl">'</span><span class="s1">11101010</span><span class="dl">'</span>
+<span class="o">&gt;</span> <span class="p">(</span><span class="mi">234</span><span class="p">).</span><span class="nf">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="dl">'</span><span class="s1">ea</span><span class="dl">'</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1014,8 +1131,8 @@ julia&gt; string(234, base=16)
 <table class="tableblock frame-ends grid-rows stretch">
 <caption class="title">表 2. メスシリンダーと2の補数表現の対応</caption>
 <colgroup>
-<col width="41.6666%">
-<col width="58.3334%">
+<col style="width: 41.6666%;">
+<col style="width: 58.3334%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1061,9 +1178,9 @@ julia&gt; string(234, base=16)
 <table id="tab-2c" class="tableblock frame-ends grid-rows stretch center">
 <caption class="title">表 3. 4ビットを用いた2の補数表現</caption>
 <colgroup>
-<col width="27.2727%">
-<col width="36.3636%">
-<col width="36.3637%">
+<col style="width: 27.2727%;">
+<col style="width: 36.3636%;">
+<col style="width: 36.3637%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1310,10 +1427,10 @@ julia&gt; string(234, base=16)
 <table class="tableblock frame-all grid-all stretch">
 <caption class="title">表 4. 桁上げの有無だけでは、桁あふれを判定できない</caption>
 <colgroup>
-<col width="20%">
-<col width="30%">
-<col width="20%">
-<col width="30%">
+<col style="width: 20%;">
+<col style="width: 30%;">
+<col style="width: 20%;">
+<col style="width: 30%;">
 </colgroup>
 <thead>
 <tr>
@@ -1397,16 +1514,16 @@ julia&gt; string(234, base=16)
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; import numpy as np
-&gt;&gt;&gt; _ = np.seterr(over="warn")
-&gt;&gt;&gt; print(int(np.int8(127) + np.int8(1)))
--128
+<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">seterr</span><span class="p">(</span><span class="n">over</span><span class="o">=</span><span class="sh">"</span><span class="s">warn</span><span class="sh">"</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">int8</span><span class="p">(</span><span class="mi">127</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="nf">int8</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+<span class="o">-</span><span class="mi">128</span>
 
-&gt;&gt;&gt; print(int(np.int8(-128) + np.int8(-1)))
-127
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">int8</span><span class="p">(</span><span class="o">-</span><span class="mi">128</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="nf">int8</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<span class="mi">127</span>
 
-&gt;&gt;&gt; print(int(np.int8(100) + np.int8(100)))
--56</code></pre>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">int8</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="nf">int8</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
+<span class="o">-</span><span class="mi">56</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1431,20 +1548,20 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; Int8(127) + Int8(1)
--128
+<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="kt">Int8</span><span class="x">(</span><span class="mi">127</span><span class="x">)</span> <span class="o">+</span> <span class="kt">Int8</span><span class="x">(</span><span class="mi">1</span><span class="x">)</span>
+<span class="o">-</span><span class="mi">128</span>
 
-julia&gt; Int8(-128) + Int8(-1)
-127
+<span class="n">julia</span><span class="o">&gt;</span> <span class="kt">Int8</span><span class="x">(</span><span class="o">-</span><span class="mi">128</span><span class="x">)</span> <span class="o">+</span> <span class="kt">Int8</span><span class="x">(</span><span class="o">-</span><span class="mi">1</span><span class="x">)</span>
+<span class="mi">127</span>
 
-julia&gt; bitstring(Int8(-128))
-"10000000"
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">bitstring</span><span class="x">(</span><span class="kt">Int8</span><span class="x">(</span><span class="o">-</span><span class="mi">128</span><span class="x">))</span>
+<span class="s">"10000000"</span>
 
-julia&gt; bitstring(Int8(-1))
-"11111111"
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">bitstring</span><span class="x">(</span><span class="kt">Int8</span><span class="x">(</span><span class="o">-</span><span class="mi">1</span><span class="x">))</span>
+<span class="s">"11111111"</span>
 
-julia&gt; bitstring(Int8(127))
-"01111111"</code></pre>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">bitstring</span><span class="x">(</span><span class="kt">Int8</span><span class="x">(</span><span class="mi">127</span><span class="x">))</span>
+<span class="s">"01111111"</span></code></pre>
 </div>
 </div>
 </div>
@@ -1544,11 +1661,11 @@ julia&gt; bitstring(Int8(127))
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; 1.0 - 0.9 - 0.1
--2.7755575615628914e-17
+<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.9</span> <span class="o">-</span> <span class="mf">0.1</span>
+<span class="o">-</span><span class="mf">2.7755575615628914e-17</span>
 
-&gt;&gt;&gt; 1.0 - 0.9 == 0.1
-False</code></pre>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.9</span> <span class="o">==</span> <span class="mf">0.1</span>
+<span class="bp">False</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1556,14 +1673,14 @@ False</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; 0.1 + 0.2
-0.30000000000000004
+<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span>
+<span class="mf">0.30000000000000004</span>
 
-&gt;&gt;&gt; 0.3 - 0.2
-0.09999999999999998
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">0.3</span> <span class="o">-</span> <span class="mf">0.2</span>
+<span class="mf">0.09999999999999998</span>
 
-&gt;&gt;&gt; 0.3 - 0.2 == 0.1
-False</code></pre>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">0.3</span> <span class="o">-</span> <span class="mf">0.2</span> <span class="o">==</span> <span class="mf">0.1</span>
+<span class="bp">False</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1970,14 +2087,14 @@ False</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; bitstring(Float16(0.59375))
-"0011100011000000"
-julia&gt; bitstring(Float16(0))
-"0000000000000000"
-julia&gt; bitstring(Float16(0)/Float16(0)) # NaN
-"0111111000000000"
-julia&gt; bitstring(Float16(1)/Float16(0)) # +∞
-"0111110000000000"</code></pre>
+<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="n">bitstring</span><span class="x">(</span><span class="kt">Float16</span><span class="x">(</span><span class="mf">0.59375</span><span class="x">))</span>
+<span class="s">"0011100011000000"</span>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">bitstring</span><span class="x">(</span><span class="kt">Float16</span><span class="x">(</span><span class="mi">0</span><span class="x">))</span>
+<span class="s">"0000000000000000"</span>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">bitstring</span><span class="x">(</span><span class="kt">Float16</span><span class="x">(</span><span class="mi">0</span><span class="x">)</span><span class="o">/</span><span class="kt">Float16</span><span class="x">(</span><span class="mi">0</span><span class="x">))</span> <span class="c"># NaN</span>
+<span class="s">"0111111000000000"</span>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">bitstring</span><span class="x">(</span><span class="kt">Float16</span><span class="x">(</span><span class="mi">1</span><span class="x">)</span><span class="o">/</span><span class="kt">Float16</span><span class="x">(</span><span class="mi">0</span><span class="x">))</span> <span class="c"># +∞</span>
+<span class="s">"0111110000000000"</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2106,18 +2223,18 @@ Juliaで実行してみると、たしかに値が一致することがわかり
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; using Printf
-julia&gt; @printf("%0.16f",Float16(0.1))
-0.0999755859375000</code></pre>
+<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="k">using</span> <span class="n">Printf</span>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="nd">@printf</span><span class="x">(</span><span class="s">"%0.16f"</span><span class="x">,</span><span class="kt">Float16</span><span class="x">(</span><span class="mf">0.1</span><span class="x">))</span>
+<span class="mf">0.0999755859375000</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; 0.1 + 0.2
-0.30000000000000004  # 0.3ではない
+<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span>
+<span class="mf">0.30000000000000004</span>  <span class="c"># 0.3ではない</span>
 
-julia&gt; 0.1 + 0.2 == 0.3
-false  # 等しくないと判定される</code></pre>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">==</span> <span class="mf">0.3</span>
+<span class="nb">false</span>  <span class="c"># 等しくないと判定される</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2135,9 +2252,9 @@ false  # 等しくないと判定される</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; from decimal import Decimal
-&gt;&gt;&gt; Decimal('0.3') - Decimal('0.2')
-Decimal('0.1')</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">from</span> <span class="n">decimal</span> <span class="k">import</span> <span class="n">Decimal</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Decimal</span><span class="p">(</span><span class="sh">'</span><span class="s">0.3</span><span class="sh">'</span><span class="p">)</span> <span class="o">-</span> <span class="n">Decimal</span><span class="p">(</span><span class="sh">'</span><span class="s">0.2</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">Decimal</span><span class="p">(</span><span class="sh">'</span><span class="s">0.1</span><span class="sh">'</span><span class="p">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2184,13 +2301,13 @@ Decimal('0.1')</code></pre>
 <div class="listingblock">
 <div class="title">丸め誤差の蓄積例</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; s = 0
-0
+<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="mi">0</span>
 
-julia&gt; for i=1:10000; s += 0.0001; end
+<span class="n">julia</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">10000</span><span class="x">;</span> <span class="n">s</span> <span class="o">+=</span> <span class="mf">0.0001</span><span class="x">;</span> <span class="k">end</span>
 
-julia&gt; s
-0.9999999999999062  # 理論値は1.0</code></pre>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">s</span>
+<span class="mf">0.9999999999999062</span>  <span class="c"># 理論値は1.0</span></code></pre>
 </div>
 </div>
 </div>
@@ -2202,13 +2319,13 @@ julia&gt; s
 <div class="listingblock">
 <div class="title">吸収の例（Python）</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; a = 1e16
-&gt;&gt;&gt; b = 1.0
-&gt;&gt;&gt; result = a + b
-&gt;&gt;&gt; print(result == a)
-True  # 小さな値が「吸収」されている
-&gt;&gt;&gt; print(result - a)  # 理論値は1.0
-0.0  # 小さな値の情報が完全に失われている</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">1e16</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">a</span><span class="p">)</span>
+<span class="bp">True</span>  <span class="c1"># 小さな値が「吸収」されている
+</span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">result</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span>  <span class="c1"># 理論値は1.0
+</span><span class="mf">0.0</span>  <span class="c1"># 小さな値の情報が完全に失われている</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2234,14 +2351,14 @@ True  # 小さな値が「吸収」されている
 <h4 id="_実例_近い値の引き算"><a class="link" href="#_実例_近い値の引き算">実例: 近い値の引き算</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; a = 1.0000000000001
-1.0000000000001
+<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">1.0000000000001</span>
+<span class="mf">1.0000000000001</span>
 
-julia&gt; b = 1.0
-1.0
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="mf">1.0</span>
 
-julia&gt; a - b
-9.992007221626409e-14 # 理論値は1.0e-13</code></pre>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+<span class="mf">9.992007221626409e-14</span> <span class="c"># 理論値は1.0e-13</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2298,17 +2415,17 @@ julia&gt; a - b
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import math
-a = 1
-b = -10000000.0000001
-c = 1
-# 判別式
-d = b*b - 4*a*c
-# 解の公式
-x1 = (-b + math.sqrt(d)) / (2*a)
-x2 = (-b - math.sqrt(d)) / (2*a)
-print(f"x1 = {x1}")  # 出力: x1 = 10000000.0
-print(f"x2 = {x2}")  # 出力: x2 = 9.96515154838562e-08</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mf">10000000.0000001</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1"># 判別式
+</span><span class="n">d</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="n">b</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+<span class="c1"># 解の公式
+</span><span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">x1 = </span><span class="si">{</span><span class="n">x1</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>  <span class="c1"># 出力: x1 = 10000000.0
+</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">x2 = </span><span class="si">{</span><span class="n">x2</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>  <span class="c1"># 出力: x2 = 9.96515154838562e-08</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2338,29 +2455,29 @@ print(f"x2 = {x2}")  # 出力: x2 = 9.96515154838562e-08</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import math
+<pre class="rouge highlight"><code data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
 
-def solve_quadratic(a, b, c):
-  """二次方程式を桁落ちを避けて解く"""
-  if a == 0:
-    raise ValueError("a は0以外とする")
-  d = b*b - 4*a*c
-  if d &lt; 0:
-    raise ValueError("この例では実数解だけを扱う")
-  if b == 0 and c == 0:
-    return 0.0, 0.0
-  if b &gt;= 0:
-    x1 = (-b - math.sqrt(d)) / (2*a)
-  else:
-    x1 = (-b + math.sqrt(d)) / (2*a)
-  # 桁落ちが少ない方の解を先に計算し、積の公式で他方を求める
-  x2 = c / (a * x1)
-  return x1, x2
+<span class="k">def</span> <span class="nf">solve_quadratic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+  <span class="sh">"""</span><span class="s">二次方程式を桁落ちを避けて解く</span><span class="sh">"""</span>
+  <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sh">"</span><span class="s">a は0以外とする</span><span class="sh">"</span><span class="p">)</span>
+  <span class="n">d</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="n">b</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+  <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sh">"</span><span class="s">この例では実数解だけを扱う</span><span class="sh">"</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">return</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span>
+  <span class="k">if</span> <span class="n">b</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+  <span class="c1"># 桁落ちが少ない方の解を先に計算し、積の公式で他方を求める
+</span>  <span class="n">x2</span> <span class="o">=</span> <span class="n">c</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x1</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span>
 
-a, b, c = 1, -10000000.0000001, 1
-x1, x2 = solve_quadratic(a, b, c)
-print(f"改良版解法: x1 = {x1}, x2 = {x2}")
-# 出力例: 改良版解法: x1 = 10000000.0, x2 = 1e-07</code></pre>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">10000000.0000001</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">solve_quadratic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">改良版解法: x1 = </span><span class="si">{</span><span class="n">x1</span><span class="si">}</span><span class="s">, x2 = </span><span class="si">{</span><span class="n">x2</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="c1"># 出力例: 改良版解法: x1 = 10000000.0, x2 = 1e-07</span></code></pre>
 </div>
 </div>
 </div>
@@ -2371,10 +2488,10 @@ print(f"改良版解法: x1 = {x1}, x2 = {x2}")
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col width="25%">
-<col width="25%">
-<col width="25%">
-<col width="25%">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
 <thead>
 <tr>
@@ -2805,23 +2922,16 @@ print(f"改良版解法: x1 = {x1}, x2 = {x2}")
 Version 1.0<br>
 </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
-<script>
-if (!hljs.initHighlighting.called) {
-  hljs.initHighlighting.called = true
-  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
-}
-</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",
   tex2jax: {
-    inlineMath: [["\\(","\\)"]],
-    displayMath: [["\\[","\\]"]],
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
     ignoreClass: "nostem|nolatexmath"
   },
   asciimath2jax: {
-    delimiters: [["\\$","\\$"]],
+    delimiters: [["\\$", "\\$"]],
     ignoreClass: "nostem|noasciimath"
   },
   TeX: { equationNumbers: { autoNumber: "none" } }

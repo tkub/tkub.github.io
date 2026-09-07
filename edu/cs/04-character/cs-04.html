@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor.js 4.0.11">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <meta name="author" content="久保山哲二">
 <title>コンピューター内部の文字の表現</title>
 <style>
@@ -562,7 +562,124 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge, pre.rouge .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
+  color: #cf222e;
+}
+pre.rouge .gr {
+  color: #f6f8fa;
+}
+pre.rouge .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+pre.rouge .nb {
+  color: #953800;
+}
+pre.rouge .nc {
+  color: #953800;
+}
+pre.rouge .no {
+  color: #953800;
+}
+pre.rouge .nn {
+  color: #953800;
+}
+pre.rouge .sr {
+  color: #116329;
+}
+pre.rouge .na {
+  color: #116329;
+}
+pre.rouge .nt {
+  color: #116329;
+}
+pre.rouge .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+pre.rouge .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .kc {
+  color: #0550ae;
+}
+pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
+  color: #0550ae;
+}
+pre.rouge .sb {
+  color: #0550ae;
+}
+pre.rouge .bp {
+  color: #0550ae;
+}
+pre.rouge .ne {
+  color: #0550ae;
+}
+pre.rouge .nl {
+  color: #0550ae;
+}
+pre.rouge .py {
+  color: #0550ae;
+}
+pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
+  color: #0550ae;
+}
+pre.rouge .o, pre.rouge .ow {
+  color: #0550ae;
+}
+pre.rouge .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
+  color: #0a3069;
+}
+pre.rouge .nd {
+  color: #8250df;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #8250df;
+}
+pre.rouge .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
+  color: #6e7781;
+}
+pre.rouge .gl {
+  color: #6e7781;
+}
+pre.rouge .gt {
+  color: #6e7781;
+}
+pre.rouge .ni {
+  color: #24292f;
+}
+pre.rouge .si {
+  color: #24292f;
+}
+pre.rouge .ge {
+  color: #24292f;
+  font-style: italic;
+}
+pre.rouge .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+</style>
 <script>
   window.MathJax = {
     loader: { load: ['output/chtml'] },
@@ -1809,9 +1926,9 @@ AABBCCDDEFFGGHIIJJKK</p></td>
 <table class="tableblock frame-all grid-rows stretch">
 <caption class="title">表 8. 3方式のバイト構造の比較</caption>
 <colgroup>
-<col width="20%">
-<col width="40%">
-<col width="40%">
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
@@ -2004,9 +2121,9 @@ JIS X 0208: <code>1xxxxxxx</code> <code>1xxxxxxx</code><br>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col width="25%">
-<col width="25%">
-<col width="50%">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
 </colgroup>
 <thead>
 <tr>
@@ -2302,10 +2419,10 @@ PNG画像、JPEG画像、音声ファイルのAIFFなどのファイルフォー
 <div class="listingblock">
 <div class="title">Juliaでのエンディアンの確認（リトルエンディアンの実行例）</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; collect(reinterpret(UInt8, UInt16[0x1234]))
-2-element Vector{UInt8}:
- 0x34
- 0x12</code></pre>
+<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="n">collect</span><span class="x">(</span><span class="n">reinterpret</span><span class="x">(</span><span class="kt">UInt8</span><span class="x">,</span> <span class="kt">UInt16</span><span class="x">[</span><span class="mh">0x1234</span><span class="x">]))</span>
+<span class="mi">2</span><span class="o">-</span><span class="n">element</span> <span class="kt">Vector</span><span class="x">{</span><span class="kt">UInt8</span><span class="x">}</span><span class="o">:</span>
+ <span class="mh">0x34</span>
+ <span class="mh">0x12</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2919,7 +3036,7 @@ Unicode上のVS（Variation Selector）を基底文字に付加することで�
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">$ convmv -r -f utf8 -t utf8 --nfc --notest /対象ディレクトリ</code></pre>
+<pre class="rouge highlight"><code data-lang="sh"><span class="nv">$ </span>convmv <span class="nt">-r</span> <span class="nt">-f</span> utf8 <span class="nt">-t</span> utf8 <span class="nt">--nfc</span> <span class="nt">--notest</span> /対象ディレクトリ</code></pre>
 </div>
 </div>
 </td>
@@ -2948,20 +3065,20 @@ Unicode上のVS（Variation Selector）を基底文字に付加することで�
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; hex(ord('じ'))
-'0x3058' # 「じ」のコードポイントは \u3058 であることがわかる
-&gt;&gt;&gt; j1='\u3058'
-&gt;&gt;&gt; j1
-'じ'
-&gt;&gt;&gt; j2='\u3057'+'\u3099'
-&gt;&gt;&gt; j2
-'じ'
-&gt;&gt;&gt; j1 == j2
-False # 見た目は同じでも実体は違う
-&gt;&gt;&gt; len(j1)
-1
-&gt;&gt;&gt; len(j2)
-2 # 1文字なのに長さは2となる</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="nb">hex</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="sh">'</span><span class="s">じ</span><span class="sh">'</span><span class="p">))</span>
+<span class="sh">'</span><span class="s">0x3058</span><span class="sh">'</span> <span class="c1"># 「じ」のコードポイントは \u3058 であることがわかる
+</span><span class="o">&gt;&gt;&gt;</span> <span class="n">j1</span><span class="o">=</span><span class="sh">'</span><span class="se">\u3058</span><span class="sh">'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">j1</span>
+<span class="sh">'</span><span class="s">じ</span><span class="sh">'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">j2</span><span class="o">=</span><span class="sh">'</span><span class="se">\u3057</span><span class="sh">'</span><span class="o">+</span><span class="sh">'</span><span class="se">\u3099</span><span class="sh">'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">j2</span>
+<span class="sh">'</span><span class="s">じ</span><span class="sh">'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">j1</span> <span class="o">==</span> <span class="n">j2</span>
+<span class="bp">False</span> <span class="c1"># 見た目は同じでも実体は違う
+</span><span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">j1</span><span class="p">)</span>
+<span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">j2</span><span class="p">)</span>
+<span class="mi">2</span> <span class="c1"># 1文字なのに長さは2となる</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2997,8 +3114,8 @@ False # 見た目は同じでも実体は違う
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ nkf --ic=utf8-mac --oc=utf-8n &lt;ファイル名&gt;
-$ iconv -f UTF-8-MAC -t UTF-8 &lt;ファイル名&gt;</code></pre>
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span>nkf <span class="nt">--ic</span><span class="o">=</span>utf8-mac <span class="nt">--oc</span><span class="o">=</span>utf-8n &lt;ファイル名&gt;
+<span class="nv">$ </span>iconv <span class="nt">-f</span> UTF-8-MAC <span class="nt">-t</span> UTF-8 &lt;ファイル名&gt;</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-rows fit-content">
@@ -3271,9 +3388,9 @@ $ iconv -f UTF-8-MAC -t UTF-8 &lt;ファイル名&gt;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; import unicodedata
-&gt;&gt;&gt; unicodedata.normalize('NFKC', '㋿、㈱、㌔、Ⅶ、㊾')
-'令和、(株)、キロ、VII、49'</code></pre>
+<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">import</span> <span class="n">unicodedata</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">unicodedata</span><span class="p">.</span><span class="nf">normalize</span><span class="p">(</span><span class="sh">'</span><span class="s">NFKC</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">㋿、㈱、㌔、Ⅶ、㊾</span><span class="sh">'</span><span class="p">)</span>
+<span class="sh">'</span><span class="s">令和、(株)、キロ、VII、49</span><span class="sh">'</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3281,14 +3398,14 @@ $ iconv -f UTF-8-MAC -t UTF-8 &lt;ファイル名&gt;</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; kiss="\U1F469\u200d\u2764\uFE0F\u200D\U1F48B\u200D\U1F468" # コードポイントで絵文字を入力
-"👩\u200d❤️\u200d💋\u200d👨" # ばらばら！
-julia&gt; print(kiss)
-👩‍❤️‍💋‍👨 # 1つの絵文字になった
-julia&gt; length(kiss) # 文字数
-8
-julia&gt; ncodeunits(kiss) # バイト数
-27</code></pre>
+<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="n">kiss</span><span class="o">=</span><span class="s">"\U1F469</span><span class="se">\u200d\u2764\uFE0F\u200D</span><span class="s">\U1F48B</span><span class="se">\u200D</span><span class="s">\U1F468"</span> <span class="c"># コードポイントで絵文字を入力</span>
+<span class="s">"👩</span><span class="se">\u200d</span><span class="s">❤️</span><span class="se">\u200d</span><span class="s">💋</span><span class="se">\u200d</span><span class="s">👨"</span> <span class="c"># ばらばら！</span>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">print</span><span class="x">(</span><span class="n">kiss</span><span class="x">)</span>
+<span class="err">👩</span><span class="n">‍❤️‍</span><span class="err">💋</span><span class="n">‍</span><span class="err">👨</span> <span class="c"># 1つの絵文字になった</span>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">length</span><span class="x">(</span><span class="n">kiss</span><span class="x">)</span> <span class="c"># 文字数</span>
+<span class="mi">8</span>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">ncodeunits</span><span class="x">(</span><span class="n">kiss</span><span class="x">)</span> <span class="c"># バイト数</span>
+<span class="mi">27</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3296,10 +3413,10 @@ julia&gt; ncodeunits(kiss) # バイト数
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">&gt; kiss="\u{1F469}\u200d\u2764\uFE0F\u200D\u{1F48B}\u200D\u{1F468}" // コードポイントで絵文字を入力
-'👩‍❤️‍💋‍👨'
-&gt; kiss.length * 2 // UTF-16で符号化したバイト数（BOMなし）
-22</code></pre>
+<pre class="rouge highlight"><code data-lang="javascript"><span class="o">&gt;</span> <span class="nx">kiss</span><span class="o">=</span><span class="dl">"</span><span class="se">\</span><span class="s2">u{1F469}</span><span class="se">\</span><span class="s2">u200d</span><span class="se">\</span><span class="s2">u2764</span><span class="se">\</span><span class="s2">uFE0F</span><span class="se">\</span><span class="s2">u200D</span><span class="se">\</span><span class="s2">u{1F48B}</span><span class="se">\</span><span class="s2">u200D</span><span class="se">\</span><span class="s2">u{1F468}</span><span class="dl">"</span> <span class="c1">// コードポイントで絵文字を入力</span>
+<span class="dl">'</span><span class="s1">👩‍❤️‍💋‍👨</span><span class="dl">'</span>
+<span class="o">&gt;</span> <span class="nx">kiss</span><span class="p">.</span><span class="nx">length</span> <span class="o">*</span> <span class="mi">2</span> <span class="c1">// UTF-16で符号化したバイト数（BOMなし）</span>
+<span class="mi">22</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3344,10 +3461,10 @@ julia&gt; ncodeunits(kiss) # バイト数
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-powershell hljs" data-lang="powershell">PS&gt; "ABCabc"  | Format-Hex
-           00 01 02 03 04 05 06 07
-00000000   41 42 43 61 62 63        ABCabc
-            A  B  C  a  b  c</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">PS</span><span class="err">&gt;</span><span class="w"> </span><span class="s2">"ABCabc"</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="n">Format-Hex</span><span class="w">
+           </span><span class="nx">00</span><span class="w"> </span><span class="nx">01</span><span class="w"> </span><span class="nx">02</span><span class="w"> </span><span class="nx">03</span><span class="w"> </span><span class="nx">04</span><span class="w"> </span><span class="nx">05</span><span class="w"> </span><span class="nx">06</span><span class="w"> </span><span class="nx">07</span><span class="w">
+</span><span class="mi">00000000</span><span class="w">   </span><span class="mi">41</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="mi">43</span><span class="w"> </span><span class="mi">61</span><span class="w"> </span><span class="mi">62</span><span class="w"> </span><span class="mi">63</span><span class="w">        </span><span class="n">ABCabc</span><span class="w">
+            </span><span class="nx">A</span><span class="w">  </span><span class="nx">B</span><span class="w">  </span><span class="nx">C</span><span class="w">  </span><span class="nx">a</span><span class="w">  </span><span class="nx">b</span><span class="w">  </span><span class="nx">c</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3355,10 +3472,10 @@ julia&gt; ncodeunits(kiss) # バイト数
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-powershell hljs" data-lang="powershell">PS&gt; Format-Hex  text.txt
-00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
-41 42 43 61 62 63 0D 0A
-A  B  C  a  b  c CR LF</code></pre>
+<pre class="rouge highlight"><code data-lang="powershell"><span class="n">PS</span><span class="err">&gt;</span><span class="w"> </span><span class="nx">Format-Hex</span><span class="w">  </span><span class="nx">text.txt</span><span class="w">
+</span><span class="mi">00</span><span class="w"> </span><span class="mi">01</span><span class="w"> </span><span class="mi">02</span><span class="w"> </span><span class="mi">03</span><span class="w"> </span><span class="mi">04</span><span class="w"> </span><span class="mi">05</span><span class="w"> </span><span class="mi">06</span><span class="w"> </span><span class="mi">07</span><span class="w"> </span><span class="mi">08</span><span class="w"> </span><span class="mi">09</span><span class="w"> </span><span class="mi">0</span><span class="n">A</span><span class="w"> </span><span class="nx">0B</span><span class="w"> </span><span class="nx">0C</span><span class="w"> </span><span class="nx">0D</span><span class="w"> </span><span class="nx">0E</span><span class="w"> </span><span class="nx">0F</span><span class="w">
+</span><span class="mi">41</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="mi">43</span><span class="w"> </span><span class="mi">61</span><span class="w"> </span><span class="mi">62</span><span class="w"> </span><span class="mi">63</span><span class="w"> </span><span class="mi">0</span><span class="n">D</span><span class="w"> </span><span class="nx">0A</span><span class="w">
+</span><span class="n">A</span><span class="w">  </span><span class="nx">B</span><span class="w">  </span><span class="nx">C</span><span class="w">  </span><span class="nx">a</span><span class="w">  </span><span class="nx">b</span><span class="w">  </span><span class="nx">c</span><span class="w"> </span><span class="nx">CR</span><span class="w"> </span><span class="nx">LF</span></code></pre>
 </div>
 </div>
 </div>
@@ -3372,7 +3489,7 @@ A  B  C  a  b  c CR LF</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ echo "あいうえお" |nkf -u | xxd -g 3
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"あいうえお"</span> |nkf <span class="nt">-u</span> | xxd <span class="nt">-g</span> 3
 00000000: e38182 e38184 e38186 e38188 e3818a 0a
 UTF8      あ     い      う     え     お     LF</code></pre>
 </div>
@@ -3382,7 +3499,7 @@ UTF8      あ     い      う     え     お     LF</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ echo "あいうえお"|nkf -w16B | xxd -g 2
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"あいうえお"</span>|nkf <span class="nt">-w16B</span> | xxd <span class="nt">-g</span> 2
 00000000: feff 3042 3044 3046 3048 304a 000a
 UTF16BE   BOM  あ   い   う   え   お   LF</code></pre>
 </div>
@@ -3392,7 +3509,7 @@ UTF16BE   BOM  あ   い   う   え   お   LF</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ echo "あいうえお"|nkf -w16L | xxd -g 2
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"あいうえお"</span>|nkf <span class="nt">-w16L</span> | xxd <span class="nt">-g</span> 2
 00000000: fffe 4230 4430 4630 4830 4a30 0a00
 UTF16LE   BOM  あ   い   う   え    お   LF</code></pre>
 </div>
@@ -3402,7 +3519,7 @@ UTF16LE   BOM  あ   い   う   え    お   LF</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ echo "あいうえお"|nkf -sLw | xxd -g 2
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"あいうえお"</span>|nkf <span class="nt">-sLw</span> | xxd <span class="nt">-g</span> 2
 00000000: 82a0 82a2 82a4 82a6 82a8 0d0a
 SJIS      あ   い   う   え   お   CRLF</code></pre>
 </div>
@@ -3412,9 +3529,9 @@ SJIS      あ   い   う   え   お   CRLF</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ echo "あいうえお" | nkf -u | od -tx1c
+<pre class="rouge highlight"><code data-lang="bash"><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"あいうえお"</span> | nkf <span class="nt">-u</span> | <span class="nb">od</span> <span class="nt">-tx1c</span>
 0000000    e3  81  82  e3  81  84  e3  81  86  e3  81  88  e3  81  8a  0a
-          あ  **  **  い  **  **  う  **  **  え  **  **  お  **  **  \n
+          あ  <span class="k">**</span>  <span class="k">**</span>  い  <span class="k">**</span>  <span class="k">**</span>  う  <span class="k">**</span>  <span class="k">**</span>  え  <span class="k">**</span>  <span class="k">**</span>  お  <span class="k">**</span>  <span class="k">**</span>  <span class="se">\n</span>
 0000020</code></pre>
 </div>
 </div>
@@ -3865,23 +3982,16 @@ SJIS      あ   い   う   え   お   CRLF</code></pre>
 Version 1.0<br>
 </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
-<script>
-if (!hljs.initHighlighting.called) {
-  hljs.initHighlighting.called = true
-  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
-}
-</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",
   tex2jax: {
-    inlineMath: [["\\(","\\)"]],
-    displayMath: [["\\[","\\]"]],
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
     ignoreClass: "nostem|nolatexmath"
   },
   asciimath2jax: {
-    delimiters: [["\\$","\\$"]],
+    delimiters: [["\\$", "\\$"]],
     ignoreClass: "nostem|noasciimath"
   },
   TeX: { equationNumbers: { autoNumber: "none" } }

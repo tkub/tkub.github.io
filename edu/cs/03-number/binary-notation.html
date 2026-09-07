@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <meta name="author" content="久保山哲二">
 <title>数の表現：2進法と基数変換</title>
 <style>
@@ -561,7 +562,6 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 <script>
   window.MathJax = {
     loader: { load: ['output/chtml'] },
@@ -621,7 +621,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 \[[1984]_{10} = \mathbf{1} \times 10^3 + \mathbf{9} \times 10^2 + \mathbf{8} \times 10^1 + \mathbf{4} \times 10^0\]
 </div>
 </div>
-<table class="tableblock frame-all grid-all" width="50%">
+<table class="tableblock frame-all grid-all" style="width: 50%;">
 <caption class="title">表 1. 10進表現 [1984]₁₀ の桁と重み</caption>
 <colgroup>
 <col>
@@ -665,7 +665,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 \[[1010]_2 = \mathbf{1} \times 2^3 + \mathbf{0} \times 2^2 + \mathbf{1} \times 2^1 + \mathbf{0} \times 2^0 = 8 + 2 = 10\]
 </div>
 </div>
-<table class="tableblock frame-all grid-all" width="40%">
+<table class="tableblock frame-all grid-all" style="width: 40%;">
 <caption class="title">表 2. 2進表現 [1010]₂ の桁と重み</caption>
 <colgroup>
 <col>
@@ -704,7 +704,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p>一般に1つの桁に n 種類の記号を用いる数の表現を <strong>n進法</strong>といい、n を<strong>基数(base、radix)</strong>といいます。</p>
 </div>
-<table class="tableblock frame-ends grid-rows" width="70%">
+<table class="tableblock frame-ends grid-rows" style="width: 70%;">
 <caption class="title">表 3. 基数の異なる数の対応表</caption>
 <colgroup>
 <col>
@@ -898,7 +898,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p>各桁の値と桁の重み（2のべき乗）の積の和として求めます。</p>
 </div>
-<table class="tableblock frame-all grid-all" width="65%">
+<table class="tableblock frame-all grid-all" style="width: 65%;">
 <caption class="title">表 4. 例：[110101]₂ → 10進表現</caption>
 <colgroup>
 <col>
@@ -954,11 +954,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 \[[110101]_2 = ((((1 \times 2 + 1) \times 2 + 0) \times 2 + 1) \times 2 + 0) \times 2 + 1 = 53\]
 </div>
 </div>
-<table class="tableblock frame-none grid-none" width="70%">
+<table class="tableblock frame-none grid-none" style="width: 70%;">
 <caption class="title">表 7. 例：[110101]₂ → [53]₁₀（Horner法）</caption>
 <colgroup>
-<col width="50%">
-<col width="50%">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1024,7 +1024,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p>小数点以下の各桁の重みは \(2^{-1},\, 2^{-2},\, 2^{-3},\, \ldots\) となります。</p>
 </div>
-<table class="tableblock frame-all grid-all" width="55%">
+<table class="tableblock frame-all grid-all" style="width: 55%;">
 <caption class="title">表 8. 例：[0.1011]₂ → 10進表現</caption>
 <colgroup>
 <col>
@@ -1067,11 +1067,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p>下位桁から<strong>「基数の2で割って次の桁（上位側）を足す」</strong>操作を繰り返します。整数部のHorner法と方向が逆になります。</p>
 </div>
-<table class="tableblock frame-none grid-none" width="70%">
+<table class="tableblock frame-none grid-none" style="width: 70%;">
 <caption class="title">表 11. 例：[0.1011]₂ → [0.6875]₁₀（Horner法）</caption>
 <colgroup>
-<col width="50%">
-<col width="50%">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1169,7 +1169,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>53 以下で最大の2の冪は \(2^5 = 32\)。大きい順に順次差し引きます：
 \(53 - 32 = 21 \;\to\; 21 - 16 = 5 \;\to\; 5 - 4 = 1 \;\to\; 1 - 1 = 0\)</p>
 </div>
-<table class="tableblock frame-ends grid-rows" width="55%">
+<table class="tableblock frame-ends grid-rows" style="width: 55%;">
 <caption class="title">表 12. 53 の2の冪への分解</caption>
 <colgroup>
 <col>
@@ -1221,11 +1221,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p>この方法は、整数の各桁を1つずつ求めていく手順として理解できます。</p>
 </div>
-<table class="tableblock frame-none grid-none" width="75%">
+<table class="tableblock frame-none grid-none" style="width: 75%;">
 <caption class="title">表 15. 例：[53]₁₀ → [110101]₂（繰り返し除算法）</caption>
 <colgroup>
-<col width="50%">
-<col width="50%">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1318,7 +1318,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p><strong>小数部に2を掛け、整数部（0 または 1）を記録し、小数部が0になるまで繰り返します。整数部を上から順に並べます。</strong></p>
 </div>
-<table class="tableblock frame-all grid-rows" width="60%">
+<table class="tableblock frame-all grid-rows" style="width: 60%;">
 <caption class="title">表 16. 繰り返し乗算による変換 [0.671875]₁₀ → [0.101011]₂</caption>
 <colgroup>
 <col>
@@ -1400,23 +1400,16 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div id="footer-text">
 </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
-<script>
-if (!hljs.initHighlighting.called) {
-  hljs.initHighlighting.called = true
-  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
-}
-</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",
   tex2jax: {
-    inlineMath: [["\\(","\\)"]],
-    displayMath: [["\\[","\\]"]],
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
     ignoreClass: "nostem|nolatexmath"
   },
   asciimath2jax: {
-    delimiters: [["\\$","\\$"]],
+    delimiters: [["\\$", "\\$"]],
     ignoreClass: "nostem|noasciimath"
   },
   TeX: { equationNumbers: { autoNumber: "none" } }

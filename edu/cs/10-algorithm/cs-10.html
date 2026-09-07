@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor.js 4.0.11">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <meta name="author" content="久保山哲二">
 <title>アルゴリズムと計算量</title>
 <style>
@@ -562,7 +562,124 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge, pre.rouge .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
+  color: #cf222e;
+}
+pre.rouge .gr {
+  color: #f6f8fa;
+}
+pre.rouge .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+pre.rouge .nb {
+  color: #953800;
+}
+pre.rouge .nc {
+  color: #953800;
+}
+pre.rouge .no {
+  color: #953800;
+}
+pre.rouge .nn {
+  color: #953800;
+}
+pre.rouge .sr {
+  color: #116329;
+}
+pre.rouge .na {
+  color: #116329;
+}
+pre.rouge .nt {
+  color: #116329;
+}
+pre.rouge .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+pre.rouge .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .kc {
+  color: #0550ae;
+}
+pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
+  color: #0550ae;
+}
+pre.rouge .sb {
+  color: #0550ae;
+}
+pre.rouge .bp {
+  color: #0550ae;
+}
+pre.rouge .ne {
+  color: #0550ae;
+}
+pre.rouge .nl {
+  color: #0550ae;
+}
+pre.rouge .py {
+  color: #0550ae;
+}
+pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
+  color: #0550ae;
+}
+pre.rouge .o, pre.rouge .ow {
+  color: #0550ae;
+}
+pre.rouge .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
+  color: #0a3069;
+}
+pre.rouge .nd {
+  color: #8250df;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #8250df;
+}
+pre.rouge .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
+  color: #6e7781;
+}
+pre.rouge .gl {
+  color: #6e7781;
+}
+pre.rouge .gt {
+  color: #6e7781;
+}
+pre.rouge .ni {
+  color: #24292f;
+}
+pre.rouge .si {
+  color: #24292f;
+}
+pre.rouge .ge {
+  color: #24292f;
+  font-style: italic;
+}
+pre.rouge .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+</style>
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
@@ -922,18 +1039,18 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">a=[9,1,4,3,7,6,2,3]
-n=length(a)
+<pre class="rouge highlight"><code data-lang="julia"><span class="n">a</span><span class="o">=</span><span class="x">[</span><span class="mi">9</span><span class="x">,</span><span class="mi">1</span><span class="x">,</span><span class="mi">4</span><span class="x">,</span><span class="mi">3</span><span class="x">,</span><span class="mi">7</span><span class="x">,</span><span class="mi">6</span><span class="x">,</span><span class="mi">2</span><span class="x">,</span><span class="mi">3</span><span class="x">]</span>
+<span class="n">n</span><span class="o">=</span><span class="n">length</span><span class="x">(</span><span class="n">a</span><span class="x">)</span>
 
-for i=2:n
-    t = a[i]
-    j = i - 1
-    while j&gt;=1 &amp;&amp; a[j] &gt; t
-        a[j+1] = a[j]
-        j -= 1
-    end
-    a[j+1] = t
-end</code></pre>
+<span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">:</span><span class="n">n</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">a</span><span class="x">[</span><span class="n">i</span><span class="x">]</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">j</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="x">[</span><span class="n">j</span><span class="x">]</span> <span class="o">&gt;</span> <span class="n">t</span>
+        <span class="n">a</span><span class="x">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="x">]</span> <span class="o">=</span> <span class="n">a</span><span class="x">[</span><span class="n">j</span><span class="x">]</span>
+        <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">end</span>
+    <span class="n">a</span><span class="x">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="x">]</span> <span class="o">=</span> <span class="n">t</span>
+<span class="k">end</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1072,22 +1189,22 @@ end</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">a=[9,1,4,3,7,6,2,3]
+<pre class="rouge highlight"><code data-lang="julia"><span class="n">a</span><span class="o">=</span><span class="x">[</span><span class="mi">9</span><span class="x">,</span><span class="mi">1</span><span class="x">,</span><span class="mi">4</span><span class="x">,</span><span class="mi">3</span><span class="x">,</span><span class="mi">7</span><span class="x">,</span><span class="mi">6</span><span class="x">,</span><span class="mi">2</span><span class="x">,</span><span class="mi">3</span><span class="x">]</span>
 
-count = zeros(Int, 9) # 9個箱を用意
+<span class="n">count</span> <span class="o">=</span> <span class="n">zeros</span><span class="x">(</span><span class="kt">Int</span><span class="x">,</span> <span class="mi">9</span><span class="x">)</span> <span class="c"># 9個箱を用意</span>
 
-for i in a  # 並びから値を順に取り出してカウント
-    count[i] += 1
-end
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">a</span>  <span class="c"># 並びから値を順に取り出してカウント</span>
+    <span class="n">count</span><span class="x">[</span><span class="n">i</span><span class="x">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">end</span>
 
-result = Int[]
-for i=1:9
-    if count[i] &gt; 0
-        for j=1:count[i]
-          push!(result, i) # カウントの回数値を並べる
-        end
-    end
-end</code></pre>
+<span class="n">result</span> <span class="o">=</span> <span class="kt">Int</span><span class="x">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">9</span>
+    <span class="k">if</span> <span class="n">count</span><span class="x">[</span><span class="n">i</span><span class="x">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="n">count</span><span class="x">[</span><span class="n">i</span><span class="x">]</span>
+          <span class="n">push!</span><span class="x">(</span><span class="n">result</span><span class="x">,</span> <span class="n">i</span><span class="x">)</span> <span class="c"># カウントの回数値を並べる</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+<span class="k">end</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1895,28 +2012,28 @@ end</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">function qsort(a)
-    n = length(a)  # 山札の数を数える
-    if n==0
-        []
-     else # 山札があるとき
-        p = rand(1:n)  # 一枚適当に取り出す
-        v = a[p]
-        left = []
-        right = []
-        for i=union(1:p-1,p+1:n) # 抜き取った札を除いて大小関係で左右に分ける
-            if a[i] &lt;= v
-                push!(left, a[i])
-            else
-                push!(right, a[i])
-            end
-        end
-        vcat(qsort(left),  [v],  qsort(right)) # 左右の整列結果を結合
-    end
-end
+<pre class="rouge highlight"><code data-lang="julia"><span class="k">function</span><span class="nf"> qsort</span><span class="x">(</span><span class="n">a</span><span class="x">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">length</span><span class="x">(</span><span class="n">a</span><span class="x">)</span>  <span class="c"># 山札の数を数える</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span>
+        <span class="x">[]</span>
+     <span class="k">else</span> <span class="c"># 山札があるとき</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">rand</span><span class="x">(</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="x">)</span>  <span class="c"># 一枚適当に取り出す</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">a</span><span class="x">[</span><span class="n">p</span><span class="x">]</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="x">[]</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="x">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="n">union</span><span class="x">(</span><span class="mi">1</span><span class="o">:</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="x">,</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="x">)</span> <span class="c"># 抜き取った札を除いて大小関係で左右に分ける</span>
+            <span class="k">if</span> <span class="n">a</span><span class="x">[</span><span class="n">i</span><span class="x">]</span> <span class="o">&lt;=</span> <span class="n">v</span>
+                <span class="n">push!</span><span class="x">(</span><span class="n">left</span><span class="x">,</span> <span class="n">a</span><span class="x">[</span><span class="n">i</span><span class="x">])</span>
+            <span class="k">else</span>
+                <span class="n">push!</span><span class="x">(</span><span class="n">right</span><span class="x">,</span> <span class="n">a</span><span class="x">[</span><span class="n">i</span><span class="x">])</span>
+            <span class="k">end</span>
+        <span class="k">end</span>
+        <span class="n">vcat</span><span class="x">(</span><span class="n">qsort</span><span class="x">(</span><span class="n">left</span><span class="x">),</span>  <span class="x">[</span><span class="n">v</span><span class="x">],</span>  <span class="n">qsort</span><span class="x">(</span><span class="n">right</span><span class="x">))</span> <span class="c"># 左右の整列結果を結合</span>
+    <span class="k">end</span>
+<span class="k">end</span>
 
-@show qsort([9, 1, 4, 3, 7, 6, 2, 3]) # 実行
-qsort([9, 1, 4, 3, 7, 6, 2, 3]) = Any[1, 2, 3, 3, 4, 6, 7, 9] # 実行結果</code></pre>
+<span class="nd">@show</span> <span class="n">qsort</span><span class="x">([</span><span class="mi">9</span><span class="x">,</span> <span class="mi">1</span><span class="x">,</span> <span class="mi">4</span><span class="x">,</span> <span class="mi">3</span><span class="x">,</span> <span class="mi">7</span><span class="x">,</span> <span class="mi">6</span><span class="x">,</span> <span class="mi">2</span><span class="x">,</span> <span class="mi">3</span><span class="x">])</span> <span class="c"># 実行</span>
+<span class="n">qsort</span><span class="x">([</span><span class="mi">9</span><span class="x">,</span> <span class="mi">1</span><span class="x">,</span> <span class="mi">4</span><span class="x">,</span> <span class="mi">3</span><span class="x">,</span> <span class="mi">7</span><span class="x">,</span> <span class="mi">6</span><span class="x">,</span> <span class="mi">2</span><span class="x">,</span> <span class="mi">3</span><span class="x">])</span> <span class="o">=</span> <span class="kt">Any</span><span class="x">[</span><span class="mi">1</span><span class="x">,</span> <span class="mi">2</span><span class="x">,</span> <span class="mi">3</span><span class="x">,</span> <span class="mi">3</span><span class="x">,</span> <span class="mi">4</span><span class="x">,</span> <span class="mi">6</span><span class="x">,</span> <span class="mi">7</span><span class="x">,</span> <span class="mi">9</span><span class="x">]</span> <span class="c"># 実行結果</span></code></pre>
 </div>
 </div>
 </div>
@@ -1938,10 +2055,10 @@ qsort([9, 1, 4, 3, 7, 6, 2, 3]) = Any[1, 2, 3, 3, 4, 6, 7, 9] # 実行結果</co
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; let n=100000000, x=rand(1:n,n);  @time sort(x, alg=QuickSort); end;
-  6.655825 seconds (2 allocations: 762.939 MiB)
-julia&gt; let n=100000000, x=rand(1:n,n);  @time sort(x, alg=MergeSort); end;
-  9.778350 seconds (4 allocations: 1.118 GiB)</code></pre>
+<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="n">let</span> <span class="n">n</span><span class="o">=</span><span class="mi">100000000</span><span class="x">,</span> <span class="n">x</span><span class="o">=</span><span class="n">rand</span><span class="x">(</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="x">,</span><span class="n">n</span><span class="x">);</span>  <span class="nd">@time</span> <span class="n">sort</span><span class="x">(</span><span class="n">x</span><span class="x">,</span> <span class="n">alg</span><span class="o">=</span><span class="n">QuickSort</span><span class="x">);</span> <span class="k">end</span><span class="x">;</span>
+  <span class="mf">6.655825</span> <span class="n">seconds</span> <span class="x">(</span><span class="mi">2</span> <span class="n">allocations</span><span class="o">:</span> <span class="mf">762.939</span> <span class="n">MiB</span><span class="x">)</span>
+<span class="n">julia</span><span class="o">&gt;</span> <span class="n">let</span> <span class="n">n</span><span class="o">=</span><span class="mi">100000000</span><span class="x">,</span> <span class="n">x</span><span class="o">=</span><span class="n">rand</span><span class="x">(</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="x">,</span><span class="n">n</span><span class="x">);</span>  <span class="nd">@time</span> <span class="n">sort</span><span class="x">(</span><span class="n">x</span><span class="x">,</span> <span class="n">alg</span><span class="o">=</span><span class="n">MergeSort</span><span class="x">);</span> <span class="k">end</span><span class="x">;</span>
+  <span class="mf">9.778350</span> <span class="n">seconds</span> <span class="x">(</span><span class="mi">4</span> <span class="n">allocations</span><span class="o">:</span> <span class="mf">1.118</span> <span class="n">GiB</span><span class="x">)</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2389,23 +2506,16 @@ n! \geq n^{\frac{n}{2}}
 Version 1.1<br>
 </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
-<script>
-if (!hljs.initHighlighting.called) {
-  hljs.initHighlighting.called = true
-  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
-}
-</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",
   tex2jax: {
-    inlineMath: [["\\(","\\)"]],
-    displayMath: [["\\[","\\]"]],
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
     ignoreClass: "nostem|nolatexmath"
   },
   asciimath2jax: {
-    delimiters: [["\\$","\\$"]],
+    delimiters: [["\\$", "\\$"]],
     ignoreClass: "nostem|noasciimath"
   },
   TeX: { equationNumbers: { autoNumber: "none" } }

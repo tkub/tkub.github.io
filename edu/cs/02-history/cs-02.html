@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor.js 4.0.11">
+<meta name="generator" content="Asciidoctor 2.0.26">
 <meta name="author" content="久保山哲二">
 <title>コンピューター発展史とデータの単位</title>
 <style>
@@ -562,7 +562,6 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 <script>
   window.MathJax = {
     loader: { load: ['output/chtml'] },
@@ -1232,8 +1231,8 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <table class="tableblock frame-ends grid-row stretch">
 <caption class="title">表 2. 接頭辞の種類</caption>
 <colgroup>
-<col width="50%">
-<col width="50%">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <thead>
 <tr>
@@ -1245,9 +1244,9 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-ends grid-row stretch">
 <colgroup>
-<col width="42.8571%">
-<col width="28.5714%">
-<col width="28.5715%">
+<col style="width: 42.8571%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
 </colgroup>
 <thead>
 <tr>
@@ -1311,8 +1310,8 @@ ICによるコンピューター開発の発展により、日本では1979年�
 </table></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><table class="tableblock frame-ends grid-row stretch">
 <colgroup>
-<col width="60%">
-<col width="40%">
+<col style="width: 60%;">
+<col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
@@ -2202,8 +2201,8 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <table class="tableblock frame-ends grid-rows stretch center">
 <caption class="title">表 10. 記憶装置自体のデータ転送速度</caption>
 <colgroup>
-<col width="25%">
-<col width="75%">
+<col style="width: 25%;">
+<col style="width: 75%;">
 </colgroup>
 <thead>
 <tr>
@@ -2383,10 +2382,10 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <div class="content">
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col width="14.2857%">
-<col width="42.8571%">
-<col width="28.5714%">
-<col width="14.2858%">
+<col style="width: 14.2857%;">
+<col style="width: 42.8571%;">
+<col style="width: 28.5714%;">
+<col style="width: 14.2858%;">
 </colgroup>
 <thead>
 <tr>
@@ -3410,23 +3409,16 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 Version 1.2<br>
 </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
-<script>
-if (!hljs.initHighlighting.called) {
-  hljs.initHighlighting.called = true
-  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
-}
-</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",
   tex2jax: {
-    inlineMath: [["\\(","\\)"]],
-    displayMath: [["\\[","\\]"]],
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
     ignoreClass: "nostem|nolatexmath"
   },
   asciimath2jax: {
-    delimiters: [["\\$","\\$"]],
+    delimiters: [["\\$", "\\$"]],
     ignoreClass: "nostem|noasciimath"
   },
   TeX: { equationNumbers: { autoNumber: "none" } }
