@@ -228,14 +228,19 @@
     </div>
 
     <h2>marimo教材</h2>
-    <p>本書の付録Aで説明している4本のノートブックと、それが読む特徴量ファイルを配布しています
-    (<a href="antipattern-ds-notebooks.zip">antipattern-ds-notebooks.zip</a>、約55KB)。
-    次元削減の地図と近傍の比較、k-means の反復、分類のしきい値、漏洩の対照実験を、
-    スライダーや選択欄で条件を変えながら試せます。</p>
+    <p>本書の流れを1本で追う通し教材と、個別の実験用のノートブック4本、
+    それらが読む特徴量ファイルを配布しています
+    (<a href="antipattern-ds-notebooks.zip">antipattern-ds-notebooks.zip</a>、約1MB)。
+    通し教材は、青空文庫の本文を実際に数えるところから始めて、特徴の設計、距離と標準化、
+    デンドログラムと k-means、PCA とバイプロット、交差検証、ジャンル判別まで、
+    ライトノベルを含む134作品で本書の章順に進みます。
+    個別のノートブックでは、次元削減の地図と近傍の比較、k-means の反復、分類のしきい値、
+    漏洩の対照実験を、スライダーや選択欄で条件を変えながら試せます。</p>
     <p><a href="https://docs.astral.sh/uv/getting-started/installation/">uv</a> を入れたうえで、
-    展開したフォルダで次を実行するとブラウザに教材が表示されます。</p>
-<pre>uvx marimo run --sandbox 04_clustering.py</pre>
-    <p>ライトノベルの本文は著作権が存続しているため、本文からは復元できない特徴量のみを扱っています。</p>
+    展開したフォルダで次を実行するとブラウザに教材が表示されます(コードは折りたたんであり、開いて読めます)。</p>
+<pre>uvx marimo run --sandbox --include-code 00_from_text_to_authors.py</pre>
+    <p>ライトノベルの本文は著作権が存続しているため、本文からは復元できない特徴量のみを扱っています。
+    近代文学の本文は、通し教材で数える4作品だけを青空文庫の奥付つきで同梱しています。</p>
 
     <h2>改訂履歴</h2>
     <dl class="history">
