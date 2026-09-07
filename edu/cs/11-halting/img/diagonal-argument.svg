@@ -1,0 +1,88 @@
+<svg xml:lang="ja" lang="ja" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+  <rect x="0" y="0" width="760" height="500" fill="#ffffff"/>
+
+  <!-- header row -->
+  <text x="85" y="88" font-size="14" text-anchor="middle" fill="#333">プログラム＼入力</text>
+  <g font-size="16" text-anchor="middle" fill="#333">
+    <text x="175" y="89">P<tspan font-size="11" dy="4">1</tspan></text>
+    <text x="265" y="89">P<tspan font-size="11" dy="4">2</tspan></text>
+    <text x="355" y="89">P<tspan font-size="11" dy="4">3</tspan></text>
+    <text x="445" y="89">P<tspan font-size="11" dy="4">4</tspan></text>
+    <text x="510" y="89">…</text>
+  </g>
+
+  <!-- grid lines -->
+  <g stroke="#333" stroke-width="1">
+    <line x1="40" y1="100" x2="540" y2="100"/>
+    <line x1="40" y1="150" x2="540" y2="150"/>
+    <line x1="40" y1="200" x2="540" y2="200"/>
+    <line x1="40" y1="250" x2="540" y2="250"/>
+    <line x1="40" y1="300" x2="540" y2="300"/>
+    <line x1="130" y1="64" x2="130" y2="330"/>
+  </g>
+  <line x1="40" y1="64" x2="540" y2="64" stroke="#333" stroke-width="1.5"/>
+
+  <!-- row labels -->
+  <g font-size="16" text-anchor="middle" fill="#333">
+    <text x="85" y="131">P<tspan font-size="11" dy="4">1</tspan></text>
+    <text x="85" y="181">P<tspan font-size="11" dy="4">2</tspan></text>
+    <text x="85" y="231">P<tspan font-size="11" dy="4">3</tspan></text>
+    <text x="85" y="281">P<tspan font-size="11" dy="4">4</tspan></text>
+    <text x="85" y="322">⋮</text>
+  </g>
+
+  <!-- cell values -->
+  <g font-size="16" text-anchor="middle" fill="#333">
+    <text x="175" y="131">停</text><text x="265" y="131">停</text><text x="355" y="131">不停</text><text x="445" y="131">停</text><text x="510" y="131">…</text>
+    <text x="175" y="181">不停</text><text x="265" y="181">不停</text><text x="355" y="181">停</text><text x="445" y="181">停</text><text x="510" y="181">…</text>
+    <text x="175" y="231">停</text><text x="265" y="231">停</text><text x="355" y="231">停</text><text x="445" y="231">不停</text><text x="510" y="231">…</text>
+    <text x="175" y="281">不停</text><text x="265" y="281">停</text><text x="355" y="281">不停</text><text x="445" y="281">不停</text><text x="510" y="281">…</text>
+    <text x="355" y="322">⋱</text>
+  </g>
+
+  <!-- diagonal highlight -->
+  <g fill="none" stroke="#d7301f" stroke-width="2.5">
+    <rect x="133" y="103" width="84" height="44" rx="4"/>
+    <rect x="223" y="153" width="84" height="44" rx="4"/>
+    <rect x="313" y="203" width="84" height="44" rx="4"/>
+    <rect x="403" y="253" width="84" height="44" rx="4"/>
+  </g>
+  <text x="560" y="128" font-size="14" fill="#d7301f">対角線のセル</text>
+  <text x="560" y="148" font-size="14" fill="#d7301f">Halt(P<tspan font-size="10" dy="4">k</tspan><tspan dy="-4">, P</tspan><tspan font-size="10" dy="4">k</tspan><tspan dy="-4">)</tspan></text>
+  <line x1="492" y1="250" x2="553" y2="145" stroke="#d7301f" stroke-width="1.2" stroke-dasharray="4 3"/>
+
+  <!-- flip lines from diagonal cells to bottom row -->
+  <g stroke="#999" stroke-width="1.2" stroke-dasharray="4 3">
+    <line x1="175" y1="149" x2="175" y2="373"/>
+    <line x1="265" y1="199" x2="265" y2="373"/>
+    <line x1="355" y1="249" x2="355" y2="373"/>
+    <line x1="445" y1="299" x2="445" y2="373"/>
+  </g>
+  <g font-size="15" text-anchor="middle" fill="#2166ac" font-weight="bold">
+    <text x="192" y="360">反転</text>
+    <text x="282" y="360">反転</text>
+    <text x="372" y="360">反転</text>
+    <text x="462" y="360">反転</text>
+  </g>
+
+  <!-- bottom flipped row -->
+  <rect x="40" y="375" width="500" height="50" fill="#e8f0f8" stroke="#2166ac" stroke-width="2" rx="4"/>
+  <line x1="130" y1="375" x2="130" y2="425" stroke="#2166ac" stroke-width="1"/>
+  <text x="85" y="406" font-size="16" text-anchor="middle" fill="#2166ac" font-weight="bold">P<tspan font-size="11" dy="4">H</tspan><tspan dy="-4">′</tspan></text>
+  <g font-size="16" text-anchor="middle" fill="#2166ac" font-weight="bold">
+    <text x="175" y="406">不停</text>
+    <text x="265" y="406">停</text>
+    <text x="355" y="406">不停</text>
+    <text x="445" y="406">停</text>
+    <text x="510" y="406">…</text>
+  </g>
+
+  <!-- annotations -->
+  <text x="560" y="395" font-size="14" fill="#2166ac">対角線の値をすべて</text>
+  <text x="560" y="413" font-size="14" fill="#2166ac">反転させた行</text>
+  <text x="40" y="455" font-size="14.5" fill="#333">P<tspan font-size="10" dy="4">H</tspan><tspan dy="-4">′ が表のどこかの行 P</tspan><tspan font-size="10" dy="4">k</tspan><tspan dy="-4"> に一致するはずだが、k 列目のセルは対角線の値を反転してあるため、</tspan></text>
+  <text x="40" y="478" font-size="14.5" fill="#333">どの行 P<tspan font-size="10" dy="4">k</tspan><tspan dy="-4"> と比べても </tspan><tspan fill="#d7301f" font-weight="bold">k 列目で必ず食い違う</tspan><tspan>。よって P</tspan><tspan font-size="10" dy="4">H</tspan><tspan dy="-4">′ は表のどの行にもなれない（矛盾）。</tspan></text>
+
+  <!-- title -->
+  <text x="40" y="40" font-size="16" fill="#333" font-weight="bold">停止性の表 Halt(P<tspan font-size="11" dy="4">i</tspan><tspan dy="-4">, P</tspan><tspan font-size="11" dy="4">j</tspan><tspan dy="-4">) と対角線論法</tspan></text>
+</svg>

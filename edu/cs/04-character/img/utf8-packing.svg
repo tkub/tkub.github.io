@@ -1,0 +1,143 @@
+<svg xml:lang="ja" lang="ja" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+  <defs>
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2166ac"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#d7301f"/>
+    </marker>
+    <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#555555"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="340" fill="#ffffff"/>
+
+  <text x="160" y="28" font-size="16" fill="#333">「あ」のコードポイント U+3042 のビット列(16ビット)</text>
+
+  <!-- グループラベル -->
+  <text x="208" y="52" font-size="12" fill="#2166ac" text-anchor="middle">上位4ビット</text>
+  <text x="344" y="52" font-size="12" fill="#d7301f" text-anchor="middle">中位6ビット</text>
+  <text x="504" y="52" font-size="12" fill="#555555" text-anchor="middle">下位6ビット</text>
+
+  <!-- ソースビット: 0011 000001 000010 -->
+  <g font-size="16" font-family="Menlo,Consolas,monospace" text-anchor="middle">
+    <!-- グループ1: 0011 -->
+    <g>
+      <rect x="160" y="60" width="24" height="30" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="184" y="60" width="24" height="30" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="208" y="60" width="24" height="30" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="232" y="60" width="24" height="30" fill="#dbe9f6" stroke="#2166ac"/>
+      <text x="172" y="81" fill="#2166ac">0</text>
+      <text x="196" y="81" fill="#2166ac">0</text>
+      <text x="220" y="81" fill="#2166ac">1</text>
+      <text x="244" y="81" fill="#2166ac">1</text>
+    </g>
+    <!-- グループ2: 000001 -->
+    <g>
+      <rect x="272" y="60" width="24" height="30" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="296" y="60" width="24" height="30" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="320" y="60" width="24" height="30" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="344" y="60" width="24" height="30" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="368" y="60" width="24" height="30" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="392" y="60" width="24" height="30" fill="#fbe3dc" stroke="#d7301f"/>
+      <text x="284" y="81" fill="#d7301f">0</text>
+      <text x="308" y="81" fill="#d7301f">0</text>
+      <text x="332" y="81" fill="#d7301f">0</text>
+      <text x="356" y="81" fill="#d7301f">0</text>
+      <text x="380" y="81" fill="#d7301f">0</text>
+      <text x="404" y="81" fill="#d7301f">1</text>
+    </g>
+    <!-- グループ3: 000010 -->
+    <g>
+      <rect x="432" y="60" width="24" height="30" fill="#efefef" stroke="#555555"/>
+      <rect x="456" y="60" width="24" height="30" fill="#efefef" stroke="#555555"/>
+      <rect x="480" y="60" width="24" height="30" fill="#efefef" stroke="#555555"/>
+      <rect x="504" y="60" width="24" height="30" fill="#efefef" stroke="#555555"/>
+      <rect x="528" y="60" width="24" height="30" fill="#efefef" stroke="#555555"/>
+      <rect x="552" y="60" width="24" height="30" fill="#efefef" stroke="#555555"/>
+      <text x="444" y="81" fill="#333333">0</text>
+      <text x="468" y="81" fill="#333333">0</text>
+      <text x="492" y="81" fill="#333333">0</text>
+      <text x="516" y="81" fill="#333333">0</text>
+      <text x="540" y="81" fill="#333333">1</text>
+      <text x="564" y="81" fill="#333333">0</text>
+    </g>
+  </g>
+
+  <!-- 矢印 -->
+  <path d="M208,96 C208,140 212,160 212,202" fill="none" stroke="#2166ac" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
+  <path d="M344,96 C344,140 404,160 404,202" fill="none" stroke="#d7301f" stroke-width="1.8" marker-end="url(#arrow-red)"/>
+  <path d="M504,96 C504,140 620,160 620,202" fill="none" stroke="#555555" stroke-width="1.8" marker-end="url(#arrow-gray)"/>
+
+  <text x="68" y="195" font-size="13" fill="#333">1110xxxx 10xxxxxx 10xxxxxx の「x」の位置に上のビットを順に流し込む</text>
+
+  <!-- 結果バイト列 -->
+  <g font-size="16" font-family="Menlo,Consolas,monospace" text-anchor="middle">
+    <!-- 1バイト目: 1110 0011 -->
+    <g>
+      <rect x="68"  y="210" width="24" height="30" fill="#4d4d4d" stroke="#333333"/>
+      <rect x="92"  y="210" width="24" height="30" fill="#4d4d4d" stroke="#333333"/>
+      <rect x="116" y="210" width="24" height="30" fill="#4d4d4d" stroke="#333333"/>
+      <rect x="140" y="210" width="24" height="30" fill="#4d4d4d" stroke="#333333"/>
+      <text x="80"  y="231" fill="#ffffff">1</text>
+      <text x="104" y="231" fill="#ffffff">1</text>
+      <text x="128" y="231" fill="#ffffff">1</text>
+      <text x="152" y="231" fill="#ffffff">0</text>
+      <rect x="164" y="210" width="24" height="30" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="188" y="210" width="24" height="30" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="212" y="210" width="24" height="30" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="236" y="210" width="24" height="30" fill="#dbe9f6" stroke="#2166ac"/>
+      <text x="176" y="231" fill="#2166ac">0</text>
+      <text x="200" y="231" fill="#2166ac">0</text>
+      <text x="224" y="231" fill="#2166ac">1</text>
+      <text x="248" y="231" fill="#2166ac">1</text>
+    </g>
+    <!-- 2バイト目: 10 000001 -->
+    <g>
+      <rect x="284" y="210" width="24" height="30" fill="#4d4d4d" stroke="#333333"/>
+      <rect x="308" y="210" width="24" height="30" fill="#4d4d4d" stroke="#333333"/>
+      <text x="296" y="231" fill="#ffffff">1</text>
+      <text x="320" y="231" fill="#ffffff">0</text>
+      <rect x="332" y="210" width="24" height="30" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="356" y="210" width="24" height="30" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="380" y="210" width="24" height="30" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="404" y="210" width="24" height="30" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="428" y="210" width="24" height="30" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="452" y="210" width="24" height="30" fill="#fbe3dc" stroke="#d7301f"/>
+      <text x="344" y="231" fill="#d7301f">0</text>
+      <text x="368" y="231" fill="#d7301f">0</text>
+      <text x="392" y="231" fill="#d7301f">0</text>
+      <text x="416" y="231" fill="#d7301f">0</text>
+      <text x="440" y="231" fill="#d7301f">0</text>
+      <text x="464" y="231" fill="#d7301f">1</text>
+    </g>
+    <!-- 3バイト目: 10 000010 -->
+    <g>
+      <rect x="500" y="210" width="24" height="30" fill="#4d4d4d" stroke="#333333"/>
+      <rect x="524" y="210" width="24" height="30" fill="#4d4d4d" stroke="#333333"/>
+      <text x="512" y="231" fill="#ffffff">1</text>
+      <text x="536" y="231" fill="#ffffff">0</text>
+      <rect x="548" y="210" width="24" height="30" fill="#efefef" stroke="#555555"/>
+      <rect x="572" y="210" width="24" height="30" fill="#efefef" stroke="#555555"/>
+      <rect x="596" y="210" width="24" height="30" fill="#efefef" stroke="#555555"/>
+      <rect x="620" y="210" width="24" height="30" fill="#efefef" stroke="#555555"/>
+      <rect x="644" y="210" width="24" height="30" fill="#efefef" stroke="#555555"/>
+      <rect x="668" y="210" width="24" height="30" fill="#efefef" stroke="#555555"/>
+      <text x="560" y="231" fill="#333333">0</text>
+      <text x="584" y="231" fill="#333333">0</text>
+      <text x="608" y="231" fill="#333333">0</text>
+      <text x="632" y="231" fill="#333333">0</text>
+      <text x="656" y="231" fill="#333333">1</text>
+      <text x="680" y="231" fill="#333333">0</text>
+    </g>
+  </g>
+
+  <!-- 16進表記 -->
+  <g font-size="16" font-weight="bold" fill="#333333" text-anchor="middle" font-family="Menlo,Consolas,monospace">
+    <text x="164" y="266">0xE3</text>
+    <text x="380" y="266">0x81</text>
+    <text x="596" y="266">0x82</text>
+  </g>
+
+  <text x="380" y="306" font-size="16" fill="#333" text-anchor="middle">「あ」のUTF-8符号化結果: E3 81 82 (3バイト)。黒いマスは固定のマーカービット</text>
+</svg>

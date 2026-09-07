@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 545" font-family="'Hiragino Sans','Noto Sans JP',sans-serif">
+<rect x="3" y="3" width="974" height="539" rx="14" fill="#fcfdfe" stroke="#d5dde4" stroke-width="1.5"/>
+<text x="490.0" y="36" font-size="18" fill="#333" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">なぜ「各ビットを反転して1を足す」と 2⁴−x になるのか</text>
+<text x="240" y="76" font-size="15.5" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">10進: 1000円で437円の買い物のお釣り</text>
+<text x="240" y="96" font-size="12.5" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">1000−437 = (999−437)+1</text>
+<rect x="40" y="112" width="180" height="150" rx="10" fill="#f6f7f9" stroke="#d5dde4"/>
+<text x="130.0" y="136" font-size="12.5" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">素直に引くと…</text>
+<text x="158.5" y="170" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">0</text>
+<text x="139.5" y="170" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">0</text>
+<text x="120.5" y="170" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">0</text>
+<text x="101.5" y="170" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">1</text>
+<text x="158.5" y="196" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">7</text>
+<text x="139.5" y="196" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">3</text>
+<text x="120.5" y="196" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">4</text>
+<text x="105.5" y="196" font-size="18" fill="#333" text-anchor="end" font-family="'Menlo','Consolas',monospace" xml:space="preserve">−</text>
+<line x1="84.5" y1="206" x2="172.0" y2="206" stroke="#333" stroke-width="1.6"/>
+<path d="M 158.5 152 Q 149.0 142 142.5 150" fill="none" stroke="#d7301f" stroke-width="1.4"/>
+<path d="M 140.5 145 L 141.5 152 L 148.5 149 Z" fill="#d7301f"/>
+<path d="M 139.5 152 Q 130.0 142 123.5 150" fill="none" stroke="#d7301f" stroke-width="1.4"/>
+<path d="M 121.5 145 L 122.5 152 L 129.5 149 Z" fill="#d7301f"/>
+<path d="M 120.5 152 Q 111.0 142 104.5 150" fill="none" stroke="#d7301f" stroke-width="1.4"/>
+<path d="M 102.5 145 L 103.5 152 L 110.5 149 Z" fill="#d7301f"/>
+<text x="130.0" y="230" font-size="12" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">0−7は引けない</text>
+<text x="130.0" y="248" font-size="11.5" fill="#d7301f" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">繰り下がりが連鎖して面倒</text>
+<rect x="236" y="112" width="214" height="310" rx="10" fill="#eef4fb" stroke="#2166ac" stroke-width="1.5"/>
+<text x="343.0" y="136" font-size="13" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">回り道すると簡単</text>
+<rect x="360.0" y="156" width="26" height="78" rx="6" fill="#ffffff" stroke="#c3d4e6"/>
+<rect x="330.0" y="156" width="26" height="78" rx="6" fill="#ffffff" stroke="#c3d4e6"/>
+<rect x="300.0" y="156" width="26" height="78" rx="6" fill="#ffffff" stroke="#c3d4e6"/>
+<text x="373.0" y="174" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">9</text>
+<text x="343.0" y="174" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">9</text>
+<text x="313.0" y="174" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">9</text>
+<text x="283.0" y="174" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve"> </text>
+<text x="373.0" y="200" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">7</text>
+<text x="343.0" y="200" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">3</text>
+<text x="313.0" y="200" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">4</text>
+<text x="285.0" y="200" font-size="18" fill="#333" text-anchor="end" font-family="'Menlo','Consolas',monospace" xml:space="preserve">−</text>
+<line x1="289.0" y1="210" x2="392.0" y2="210" stroke="#333" stroke-width="1.6"/>
+<text x="373.0" y="232" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas',monospace" xml:space="preserve">2</text>
+<text x="343.0" y="232" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas',monospace" xml:space="preserve">6</text>
+<text x="313.0" y="232" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas',monospace" xml:space="preserve">5</text>
+<text x="283.0" y="232" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas',monospace" xml:space="preserve"> </text>
+<text x="373.0" y="260" font-size="10" fill="#2e7d32" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">9−7</text>
+<text x="343.0" y="260" font-size="10" fill="#2e7d32" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">9−3</text>
+<text x="313.0" y="260" font-size="10" fill="#2e7d32" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">9−4</text>
+<text x="343.0" y="280" font-size="12.5" fill="#2e7d32" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">どの桁も繰り下がりなし!</text>
+<text x="343.0" y="300" font-size="12.5" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">各桁とも 9−(その桁) を書くだけ</text>
+<text x="343.0" y="332" font-size="12.5" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">最後に 1 を足す</text>
+<text x="343.0" y="358" font-size="17" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas',monospace" xml:space="preserve">562 + 1 = 563 円</text>
+<text x="720" y="76" font-size="15.5" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">2進: 2⁴−5 (−5の2の補数表現)</text>
+<text x="720" y="96" font-size="12.5" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">10000−0101 = (1111−0101)+1</text>
+<rect x="520" y="112" width="180" height="150" rx="10" fill="#f6f7f9" stroke="#d5dde4"/>
+<text x="610.0" y="136" font-size="12.5" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">素直に引くと…</text>
+<text x="648.0" y="170" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">0</text>
+<text x="629.0" y="170" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">0</text>
+<text x="610.0" y="170" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">0</text>
+<text x="591.0" y="170" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">0</text>
+<text x="572.0" y="170" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">1</text>
+<text x="648.0" y="196" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">1</text>
+<text x="629.0" y="196" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">0</text>
+<text x="610.0" y="196" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">1</text>
+<text x="591.0" y="196" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">0</text>
+<text x="576.0" y="196" font-size="18" fill="#333" text-anchor="end" font-family="'Menlo','Consolas',monospace" xml:space="preserve">−</text>
+<line x1="555.0" y1="206" x2="661.5" y2="206" stroke="#333" stroke-width="1.6"/>
+<path d="M 648.0 152 Q 638.5 142 632.0 150" fill="none" stroke="#d7301f" stroke-width="1.4"/>
+<path d="M 630.0 145 L 631.0 152 L 638.0 149 Z" fill="#d7301f"/>
+<path d="M 629.0 152 Q 619.5 142 613.0 150" fill="none" stroke="#d7301f" stroke-width="1.4"/>
+<path d="M 611.0 145 L 612.0 152 L 619.0 149 Z" fill="#d7301f"/>
+<path d="M 610.0 152 Q 600.5 142 594.0 150" fill="none" stroke="#d7301f" stroke-width="1.4"/>
+<path d="M 592.0 145 L 593.0 152 L 600.0 149 Z" fill="#d7301f"/>
+<path d="M 591.0 152 Q 581.5 142 575.0 150" fill="none" stroke="#d7301f" stroke-width="1.4"/>
+<path d="M 573.0 145 L 574.0 152 L 581.0 149 Z" fill="#d7301f"/>
+<text x="610.0" y="230" font-size="12" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">0−1は引けない</text>
+<text x="610.0" y="248" font-size="11.5" fill="#d7301f" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">繰り下がりが連鎖して面倒</text>
+<rect x="716" y="112" width="214" height="310" rx="10" fill="#eef4fb" stroke="#2166ac" stroke-width="1.5"/>
+<text x="823.0" y="136" font-size="13" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">回り道すると簡単</text>
+<rect x="851.0" y="156" width="22" height="78" rx="6" fill="#ffffff" stroke="#c3d4e6"/>
+<rect x="825.0" y="156" width="22" height="78" rx="6" fill="#ffffff" stroke="#c3d4e6"/>
+<rect x="799.0" y="156" width="22" height="78" rx="6" fill="#ffffff" stroke="#c3d4e6"/>
+<rect x="773.0" y="156" width="22" height="78" rx="6" fill="#ffffff" stroke="#c3d4e6"/>
+<text x="862.0" y="174" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">1</text>
+<text x="836.0" y="174" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">1</text>
+<text x="810.0" y="174" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">1</text>
+<text x="784.0" y="174" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">1</text>
+<text x="862.0" y="200" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">1</text>
+<text x="836.0" y="200" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">0</text>
+<text x="810.0" y="200" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">1</text>
+<text x="784.0" y="200" font-size="19" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace" xml:space="preserve">0</text>
+<text x="760.0" y="200" font-size="18" fill="#333" text-anchor="end" font-family="'Menlo','Consolas',monospace" xml:space="preserve">−</text>
+<line x1="764.0" y1="210" x2="879.0" y2="210" stroke="#333" stroke-width="1.6"/>
+<text x="862.0" y="232" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas',monospace" xml:space="preserve">0</text>
+<text x="836.0" y="232" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas',monospace" xml:space="preserve">1</text>
+<text x="810.0" y="232" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas',monospace" xml:space="preserve">0</text>
+<text x="784.0" y="232" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas',monospace" xml:space="preserve">1</text>
+<text x="862.0" y="260" font-size="10" fill="#2e7d32" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">1−1</text>
+<text x="836.0" y="260" font-size="10" fill="#2e7d32" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">1−0</text>
+<text x="810.0" y="260" font-size="10" fill="#2e7d32" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">1−1</text>
+<text x="784.0" y="260" font-size="10" fill="#2e7d32" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">1−0</text>
+<text x="823.0" y="280" font-size="12.5" fill="#2e7d32" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">どの桁も繰り下がりなし!</text>
+<text x="823.0" y="300" font-size="12.5" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">= 各ビットの反転!</text>
+<text x="823.0" y="332" font-size="12.5" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">最後に 1 を足す</text>
+<text x="823.0" y="358" font-size="17" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas',monospace" xml:space="preserve">1010 + 1 = 1011</text>
+<rect x="170" y="455" width="640" height="46" rx="10" fill="#f2f5f8"/>
+<text x="490.0" y="484" font-size="14" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Noto Sans JP',sans-serif" xml:space="preserve">2ⁿ − x ＝ ((2ⁿ−1) − x) + 1　　2ⁿ−1 = 111…1 からの引き算は繰り下がりが決して起きない</text>
+</svg>

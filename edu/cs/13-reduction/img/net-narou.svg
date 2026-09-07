@@ -1,0 +1,1165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+    "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xml:lang="ja" lang="ja" contentScriptType="text/ecmascript" width="2479.0"
+     xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify"
+     contentStyleType="text/css"
+     viewBox="-1299.000000 -1085.000000 2479.000000 2208.000000" height="2208.0"
+     preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
+     version="1.1">
+    <g id="edges">
+        <path fill="none" stroke-width="4.0"
+              d="M -668.406006,-171.061340 L 34.902527,34.134647"
+              class="id_フェルディナンド id_マイン" stroke-opacity="1.0" stroke="#a9a47f"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 617.697510,-169.225098 L 810.415771,-5.291943"
+              class="id_ベンノ id_ルッツ" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -138.398148,-408.225159 L -203.484863,-495.072540"
+              class="id_シャルロッテ id_ヴィルフリート" stroke-opacity="1.0" stroke="#5f831f"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 644.827209,56.774708 L 810.415771,-5.291943"
+              class="id_ギル id_ルッツ" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 34.902527,34.134647 L -203.484863,-495.072540"
+              class="id_マイン id_ヴィルフリート" stroke-opacity="1.0" stroke="#5f831f"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 34.902527,34.134647 L 810.415771,-5.291943"
+              class="id_マイン id_ルッツ" stroke-opacity="1.0" stroke="#39c27f"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 644.827209,56.774708 L 617.697510,-169.225098"
+              class="id_ギル id_ベンノ" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 617.697510,-169.225098 L 786.378113,-109.094986"
+              class="id_ベンノ id_マルク" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -423.378052,-243.283081 L -444.852356,-101.716576"
+              class="id_アナスタージウス id_エグランティーヌ" stroke-opacity="1.0"
+              stroke="#73c000"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -1047.566895,-382.036316 L -668.406006,-171.061340"
+              class="id_ディートリンデ id_フェルディナンド" stroke-opacity="1.0"
+              stroke="#df89ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -118.184944,352.960938 L -320.543945,419.840668"
+              class="id_アンゲリカ id_コルネリウス" stroke-opacity="1.0" stroke="#ff5584"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 644.827209,56.774708 L 770.846436,353.579376"
+              class="id_ギル id_フラン" stroke-opacity="1.0" stroke="#7fa682"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 544.355286,-40.172810 L 810.415771,-5.291943"
+              class="id_トゥーリ id_ルッツ" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -599.860474,484.165436 L 34.902527,34.134647"
+              class="id_ハルトムート id_マイン" stroke-opacity="1.0" stroke="#a9a47f"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 644.827209,56.774708 L 34.902527,34.134647"
+              class="id_ギル id_マイン" stroke-opacity="1.0" stroke="#39c27f"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -636.836914,636.097168 L -599.860474,484.165436"
+              class="id_クラリッサ id_ハルトムート" stroke-opacity="1.0" stroke="#df89ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -138.398148,-408.225159 L 34.902527,34.134647"
+              class="id_シャルロッテ id_マイン" stroke-opacity="1.0" stroke="#73c000"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -320.543945,419.840668 L -337.370361,547.864502"
+              class="id_コルネリウス id_レオノーレ" stroke-opacity="1.0" stroke="#ff5584"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -118.184944,352.960938 L -5.229967,536.874451"
+              class="id_アンゲリカ id_ダームエル" stroke-opacity="1.0" stroke="#ff5584"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 544.355286,-40.172810 L 34.902527,34.134647"
+              class="id_トゥーリ id_マイン" stroke-opacity="1.0" stroke="#39c27f"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -5.229967,536.874451 L -11.159177,683.670471"
+              class="id_ダームエル id_ブリギッテ" stroke-opacity="1.0" stroke="#ff5584"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 617.697510,-169.225098 L 34.902527,34.134647"
+              class="id_ベンノ id_マイン" stroke-opacity="1.0" stroke="#39c27f"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -423.984802,287.819183 L -655.885925,223.601700"
+              class="id_エックハルト id_ユストクス" stroke-opacity="1.0" stroke="#ef6fc1"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 786.378113,-109.094986 L 810.415771,-5.291943"
+              class="id_マルク id_ルッツ" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -668.406006,-171.061340 L -203.484863,-495.072540"
+              class="id_フェルディナンド id_ヴィルフリート" stroke-opacity="1.0"
+              stroke="#95679e"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 1155.570557,322.620850 L 1015.833374,390.472046"
+              class="id_ディルク id_デリア" stroke-opacity="1.0" stroke="#ff8805"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -437.621155,969.077271 L -566.658997,1037.238770"
+              class="id_フィリーネ id_ローデリヒ" stroke-opacity="1.0" stroke="#df89ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 770.846436,353.579376 L 1078.273804,474.715363"
+              class="id_フラン id_ロジーナ" stroke-opacity="1.0" stroke="#ff8805"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -320.543945,419.840668 L -599.860474,484.165436"
+              class="id_コルネリウス id_ハルトムート" stroke-opacity="1.0" stroke="#ef6fc1"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -599.860474,484.165436 L -437.621155,969.077271"
+              class="id_ハルトムート id_フィリーネ" stroke-opacity="1.0" stroke="#df89ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 1015.833374,390.472046 L 770.846436,353.579376"
+              class="id_デリア id_フラン" stroke-opacity="1.0" stroke="#ff8805"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -599.860474,484.165436 L -668.406006,-171.061340"
+              class="id_ハルトムート id_フェルディナンド" stroke-opacity="1.0"
+              stroke="#df89ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 770.846436,353.579376 L 853.520996,707.667236"
+              class="id_フラン id_モニカ" stroke-opacity="1.0" stroke="#ff8805"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 770.846436,353.579376 L 810.415771,-5.291943"
+              class="id_フラン id_ルッツ" stroke-opacity="1.0" stroke="#7fa682"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 524.944458,-302.539215 L 617.697510,-169.225098"
+              class="id_オットー id_ベンノ" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -320.543945,419.840668 L -5.229967,536.874451"
+              class="id_コルネリウス id_ダームエル" stroke-opacity="1.0" stroke="#ff5584"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 770.846436,353.579376 L 617.697510,-169.225098"
+              class="id_フラン id_ベンノ" stroke-opacity="1.0" stroke="#7fa682"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -668.406006,-171.061340 L -655.885925,223.601700"
+              class="id_フェルディナンド id_ユストクス" stroke-opacity="1.0" stroke="#df89ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -5.229967,536.874451 L 34.902527,34.134647"
+              class="id_ダームエル id_マイン" stroke-opacity="1.0" stroke="#b98a42"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -482.848358,-562.189697 L -512.936096,-698.049072"
+              class="id_ハンネローレ id_レスティラウト" stroke-opacity="1.0" stroke="#4c463e"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -423.984802,287.819183 L -668.406006,-171.061340"
+              class="id_エックハルト id_フェルディナンド" stroke-opacity="1.0"
+              stroke="#ef6fc1"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 770.846436,353.579376 L 34.902527,34.134647"
+              class="id_フラン id_マイン" stroke-opacity="1.0" stroke="#b9a402"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -668.406006,-171.061340 L -960.319214,-236.290115"
+              class="id_フェルディナンド id_レティーツィア" stroke-opacity="1.0"
+              stroke="#df89ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -5.229967,536.874451 L 770.846436,353.579376"
+              class="id_ダームエル id_フラン" stroke-opacity="1.0" stroke="#ff6e44"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -444.852356,-101.716576 L -668.406006,-171.061340"
+              class="id_エグランティーヌ id_フェルディナンド" stroke-opacity="1.0"
+              stroke="#a9a47f"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -1131.562622,-451.373199 L -1047.566895,-382.036316"
+              class="id_ゲオルギーネ id_ディートリンデ" stroke-opacity="1.0" stroke="#df89ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -118.184944,352.960938 L -337.370361,547.864502"
+              class="id_アンゲリカ id_レオノーレ" stroke-opacity="1.0" stroke="#ff5584"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -136.843826,-928.822449 L 19.271904,-997.058411"
+              class="id_ブリュンヒルデ id_リーゼレータ" stroke-opacity="1.0" stroke="#4c463e"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -118.184944,352.960938 L -423.984802,287.819183"
+              class="id_アンゲリカ id_エックハルト" stroke-opacity="1.0" stroke="#ff5584"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 782.546265,465.269135 L 770.846436,353.579376"
+              class="id_ザーム id_フラン" stroke-opacity="1.0" stroke="#ff8805"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 644.827209,56.774708 L 745.798340,-235.264175"
+              class="id_ギル id_フリーダ" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -268.601471,614.297180 L -337.370361,547.864502"
+              class="id_ユーディット id_レオノーレ" stroke-opacity="1.0" stroke="#ff5584"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 869.750366,773.171936 L 853.520996,707.667236"
+              class="id_ニコラ id_モニカ" stroke-opacity="1.0" stroke="#ff8805"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 644.827209,56.774708 L 544.355286,-40.172810"
+              class="id_ギル id_トゥーリ" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -5.229967,536.874451 L -437.621155,969.077271"
+              class="id_ダームエル id_フィリーネ" stroke-opacity="1.0" stroke="#ef6fc1"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 1015.833374,390.472046 L 1078.273804,474.715363"
+              class="id_デリア id_ロジーナ" stroke-opacity="1.0" stroke="#ff8805"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -203.484863,-495.072540 L -180.913437,-630.996216"
+              class="id_ヴィルフリート id_ヴェローニカ" stroke-opacity="1.0" stroke="#4c463e"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -1130.223999,-127.385277 L -668.406006,-171.061340"
+              class="id_ヒルシュール id_フェルディナンド" stroke-opacity="1.0"
+              stroke="#df89ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 446.800934,-231.451111 L 544.355286,-40.172810"
+              class="id_コリンナ id_トゥーリ" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -444.852356,-101.716576 L 34.902527,34.134647"
+              class="id_エグランティーヌ id_マイン" stroke-opacity="1.0" stroke="#73c000"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -320.543945,419.840668 L 34.902527,34.134647"
+              class="id_コルネリウス id_マイン" stroke-opacity="1.0" stroke="#b98a42"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 644.827209,56.774708 L 1015.833374,390.472046"
+              class="id_ギル id_デリア" stroke-opacity="1.0" stroke="#7fa682"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -193.132401,-858.927185 L -203.484863,-495.072540"
+              class="id_リヒャルダ id_ヴィルフリート" stroke-opacity="1.0" stroke="#4c463e"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -482.848358,-562.189697 L -203.484863,-495.072540"
+              class="id_ハンネローレ id_ヴィルフリート" stroke-opacity="1.0" stroke="#4c463e"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -482.848358,-562.189697 L 34.902527,34.134647"
+              class="id_ハンネローレ id_マイン" stroke-opacity="1.0" stroke="#5f831f"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 446.800934,-231.451111 L 617.697510,-169.225098"
+              class="id_コリンナ id_ベンノ" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 544.355286,-40.172810 L 617.697510,-169.225098"
+              class="id_トゥーリ id_ベンノ" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 1078.273804,474.715363 L 1159.314575,544.299255"
+              class="id_ロジーナ id_ヴィルマ" stroke-opacity="1.0" stroke="#ff8805"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -668.406006,-171.061340 L -825.194641,-309.789398"
+              class="id_フェルディナンド id_メスティオノーラ" stroke-opacity="1.0"
+              stroke="#df89ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 745.798340,-235.264175 L 617.697510,-169.225098"
+              class="id_フリーダ id_ベンノ" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -423.984802,287.819183 L -320.543945,419.840668"
+              class="id_エックハルト id_コルネリウス" stroke-opacity="1.0" stroke="#ff5584"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -118.184944,352.960938 L 34.902527,34.134647"
+              class="id_アンゲリカ id_マイン" stroke-opacity="1.0" stroke="#b98a42"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 524.944458,-302.539215 L 446.800934,-231.451111"
+              class="id_オットー id_コリンナ" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -482.848358,-562.189697 L -668.406006,-171.061340"
+              class="id_ハンネローレ id_フェルディナンド" stroke-opacity="1.0"
+              stroke="#95679e"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -118.184944,352.960938 L 19.271904,-997.058411"
+              class="id_アンゲリカ id_リーゼレータ" stroke-opacity="1.0" stroke="#a54d61"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -423.378052,-243.283081 L -668.406006,-171.061340"
+              class="id_アナスタージウス id_フェルディナンド" stroke-opacity="1.0"
+              stroke="#a9a47f"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -599.860474,484.165436 L -337.370361,547.864502"
+              class="id_ハルトムート id_レオノーレ" stroke-opacity="1.0" stroke="#ef6fc1"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 53.398972,-1064.284912 L 19.271904,-997.058411"
+              class="id_グレーティア id_リーゼレータ" stroke-opacity="1.0" stroke="#4c463e"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -1130.223999,-127.385277 L -1278.592163,-64.348137"
+              class="id_ヒルシュール id_ライムント" stroke-opacity="1.0" stroke="#df89ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -136.843826,-928.822449 L -193.132401,-858.927185"
+              class="id_ブリュンヒルデ id_リヒャルダ" stroke-opacity="1.0" stroke="#4c463e"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -482.848358,-562.189697 L -641.806091,-629.306274"
+              class="id_ハンネローレ id_ヒルデブラント" stroke-opacity="1.0" stroke="#4c463e"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 243.999817,-105.825844 L 34.902527,34.134647"
+              class="id_ジルヴェスター id_マイン" stroke-opacity="1.0" stroke="#73c000"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 117.802879,-242.027939 L 34.902527,34.134647"
+              class="id_カルステッド id_マイン" stroke-opacity="1.0" stroke="#73c000"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -118.184944,352.960938 L -268.601471,614.297180"
+              class="id_アンゲリカ id_ユーディット" stroke-opacity="1.0" stroke="#ff5584"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -423.984802,287.819183 L -5.229967,536.874451"
+              class="id_エックハルト id_ダームエル" stroke-opacity="1.0" stroke="#ff5584"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -423.378052,-243.283081 L -208.011475,-33.356033"
+              class="id_アナスタージウス id_ジギスヴァルト" stroke-opacity="1.0"
+              stroke="#73c000"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 116.833237,102.368271 L 34.902527,34.134647"
+              class="id_エルヴィーラ id_マイン" stroke-opacity="1.0" stroke="#73c000"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -599.860474,484.165436 L -655.885925,223.601700"
+              class="id_ハルトムート id_ユストクス" stroke-opacity="1.0" stroke="#df89ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -405.783691,1102.776001 L -437.621155,969.077271"
+              class="id_コンラート id_フィリーネ" stroke-opacity="1.0" stroke="#df89ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -5.229967,536.874451 L -599.860474,484.165436"
+              class="id_ダームエル id_ハルトムート" stroke-opacity="1.0" stroke="#ef6fc1"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -208.011475,-33.356033 L 34.902527,34.134647"
+              class="id_ジギスヴァルト id_マイン" stroke-opacity="1.0" stroke="#73c000"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 644.827209,56.774708 L 786.378113,-109.094986"
+              class="id_ギル id_マルク" stroke-opacity="1.0" stroke="#00c4ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 446.800934,-231.451111 L 34.902527,34.134647"
+              class="id_コリンナ id_マイン" stroke-opacity="1.0" stroke="#39c27f"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -5.229967,536.874451 L -268.601471,614.297180"
+              class="id_ダームエル id_ユーディット" stroke-opacity="1.0" stroke="#ff5584"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -839.092285,-7.268543 L -668.406006,-171.061340"
+              class="id_ジェルヴァージオ id_フェルディナンド" stroke-opacity="1.0"
+              stroke="#df89ff"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 117.802879,-242.027939 L 243.999817,-105.825844"
+              class="id_カルステッド id_ジルヴェスター" stroke-opacity="1.0" stroke="#73c000"/>
+        <path fill="none" stroke-width="4.0"
+              d="M -117.361916,-173.775116 L 34.902527,34.134647"
+              class="id_ボニファティウス id_マイン" stroke-opacity="1.0" stroke="#73c000"/>
+        <path fill="none" stroke-width="4.0"
+              d="M 991.830261,-66.521149 L 810.415771,-5.291943"
+              class="id_ラルフ id_ルッツ" stroke-opacity="1.0" stroke="#00c4ff"/>
+    </g>
+    <g id="nodes">
+        <circle fill-opacity="1.0" fill="#df89ff" r="35.37343" cx="-668.406"
+                class="id_フェルディナンド" cy="-171.06134" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#73c000" r="50.0" cx="34.902527"
+                class="id_マイン" cy="34.134647" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#00c4ff" r="22.90358" cx="617.6975"
+                class="id_ベンノ" cy="-169.2251" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#00c4ff" r="22.519558" cx="810.4158"
+                class="id_ルッツ" cy="-5.2919426" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#73c000" r="20.0" cx="-138.39815"
+                class="id_シャルロッテ" cy="-408.22516" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#4c463e" r="24.798107" cx="-203.48486"
+                class="id_ヴィルフリート" cy="-495.07254" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#00c4ff" r="22.948013" cx="644.8272"
+                class="id_ギル" cy="56.774708" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#00c4ff" r="20.0" cx="786.3781"
+                class="id_マルク" cy="-109.094986" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#73c000" r="20.179714" cx="-423.37805"
+                class="id_アナスタージウス" cy="-243.28308" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#73c000" r="20.326103" cx="-444.85236"
+                class="id_エグランティーヌ" cy="-101.716576" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#df89ff" r="21.928051" cx="-1047.5669"
+                class="id_ディートリンデ" cy="-382.03632" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff5584" r="25.452211" cx="-118.184944"
+                class="id_アンゲリカ" cy="352.96094" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff5584" r="20.580315" cx="-320.54395"
+                class="id_コルネリウス" cy="419.84067" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff8805" r="31.494911" cx="770.84644"
+                class="id_フラン" cy="353.57938" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#00c4ff" r="20.049986" cx="544.3553"
+                class="id_トゥーリ" cy="-40.17281" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#df89ff" r="26.065536" cx="-599.8605"
+                class="id_ハルトムート" cy="484.16544" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#df89ff" r="20.0" cx="-636.8369"
+                class="id_クラリッサ" cy="636.09717" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff5584" r="20.173168" cx="-337.37036"
+                class="id_レオノーレ" cy="547.8645" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff5584" r="27.375813" cx="-5.229967"
+                class="id_ダームエル" cy="536.87445" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff5584" r="20.0" cx="-11.159177"
+                class="id_ブリギッテ" cy="683.6705" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff5584" r="21.126482" cx="-423.9848"
+                class="id_エックハルト" cy="287.81918" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#df89ff" r="20.017853" cx="-655.8859"
+                class="id_ユストクス" cy="223.6017" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff8805" r="20.0" cx="1155.5706"
+                class="id_ディルク" cy="322.62085" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff8805" r="22.019691" cx="1015.8334"
+                class="id_デリア" cy="390.47205" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#df89ff" r="23.820396" cx="-437.62115"
+                class="id_フィリーネ" cy="969.0773" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#df89ff" r="20.0" cx="-566.659"
+                class="id_ローデリヒ" cy="1037.2388" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff8805" r="21.928051" cx="1078.2738"
+                class="id_ロジーナ" cy="474.71536" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff8805" r="21.928051" cx="853.521"
+                class="id_モニカ" cy="707.66724" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#00c4ff" r="20.0" cx="524.94446"
+                class="id_オットー" cy="-302.5392" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#4c463e" r="23.820396" cx="-482.84836"
+                class="id_ハンネローレ" cy="-562.1897" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#4c463e" r="20.0" cx="-512.9361"
+                class="id_レスティラウト" cy="-698.0491" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#df89ff" r="20.0" cx="-960.3192"
+                class="id_レティーツィア" cy="-236.29012" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#df89ff" r="20.0" cx="-1131.5626"
+                class="id_ゲオルギーネ" cy="-451.3732" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#4c463e" r="20.179714" cx="-136.84383"
+                class="id_ブリュンヒルデ" cy="-928.82245" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#4c463e" r="22.8528" cx="19.271904"
+                class="id_リーゼレータ" cy="-997.0584" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff8805" r="20.0" cx="782.54626"
+                class="id_ザーム" cy="465.26913" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#00c4ff" r="20.0" cx="745.79834"
+                class="id_フリーダ" cy="-235.26418" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff5584" r="20.055597" cx="-268.60147"
+                class="id_ユーディット" cy="614.2972" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff8805" r="20.0" cx="869.75037"
+                class="id_ニコラ" cy="773.17194" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#4c463e" r="20.0" cx="-180.91344"
+                class="id_ヴェローニカ" cy="-630.9962" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#df89ff" r="21.928051" cx="-1130.224"
+                class="id_ヒルシュール" cy="-127.38528" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#00c4ff" r="20.685926" cx="446.80093"
+                class="id_コリンナ" cy="-231.45111" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#4c463e" r="21.040195" cx="-193.1324"
+                class="id_リヒャルダ" cy="-858.9272" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#ff8805" r="20.0" cx="1159.3146"
+                class="id_ヴィルマ" cy="544.29926" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#df89ff" r="20.0" cx="-825.19464"
+                class="id_メスティオノーラ" cy="-309.7894" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#4c463e" r="20.0" cx="53.39897"
+                class="id_グレーティア" cy="-1064.2849" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#df89ff" r="20.0" cx="-1278.5922"
+                class="id_ライムント" cy="-64.34814" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#4c463e" r="20.0" cx="-641.8061"
+                class="id_ヒルデブラント" cy="-629.3063" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#73c000" r="20.0" cx="243.99982"
+                class="id_ジルヴェスター" cy="-105.82584" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#73c000" r="20.0" cx="117.80288"
+                class="id_カルステッド" cy="-242.02794" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#73c000" r="20.326103" cx="-208.01147"
+                class="id_ジギスヴァルト" cy="-33.356033" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#73c000" r="20.0" cx="116.83324"
+                class="id_エルヴィーラ" cy="102.36827" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#df89ff" r="20.0" cx="-405.7837"
+                class="id_コンラート" cy="1102.776" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#df89ff" r="20.0" cx="-839.0923"
+                class="id_ジェルヴァージオ" cy="-7.2685432" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#73c000" r="20.0" cx="-117.361916"
+                class="id_ボニファティウス" cy="-173.77512" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+        <circle fill-opacity="1.0" fill="#00c4ff" r="20.0" cx="991.83026"
+                class="id_ラルフ" cy="-66.52115" stroke="#000000"
+                stroke-opacity="1.0" stroke-width="1.0"/>
+    </g>
+    <g id="node-labels-outline">
+        <text stroke-linecap="round" font-size="85" x="-668.406" y="-151.40509"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_フェルディナンド"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="13.28125px">
+            フェルディナンド
+        </text>
+        <text stroke-linecap="round" font-size="120" x="34.902527" y="59.244648"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_マイン"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="18.75px">
+            マイン
+        </text>
+        <text stroke-linecap="round" font-size="55" x="617.6975" y="-158.70634"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ベンノ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="8.59375px">
+            ベンノ
+        </text>
+        <text stroke-linecap="round" font-size="54" x="810.4158" y="5.899558"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ルッツ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="8.4375px">
+            ルッツ
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-138.39815"
+              y="-398.09717" fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_シャルロッテ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            シャルロッテ
+        </text>
+        <text stroke-linecap="round" font-size="60" x="-203.48486"
+              y="-481.22754" fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ヴィルフリート"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="9.375px">
+            ヴィルフリート
+        </text>
+        <text stroke-linecap="round" font-size="55" x="644.8272" y="69.79596"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ギル"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="8.59375px">
+            ギル
+        </text>
+        <text stroke-linecap="round" font-size="48" x="786.3781" y="-98.762985"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_マルク"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            マルク
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-423.37805"
+              y="-232.14708" fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_アナスタージウス"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            アナスタージウス
+        </text>
+        <text stroke-linecap="round" font-size="49" x="-444.85236" y="-90.33633"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_エグランティーヌ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.65625px">
+            エグランティーヌ
+        </text>
+        <text stroke-linecap="round" font-size="53" x="-1047.5669"
+              y="-369.78006" fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ディートリンデ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="8.28125px">
+            ディートリンデ
+        </text>
+        <text stroke-linecap="round" font-size="61" x="-118.184944"
+              y="367.08246" fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_アンゲリカ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="9.53125px">
+            アンゲリカ
+        </text>
+        <text stroke-linecap="round" font-size="49" x="-320.54395" y="430.6084"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_コルネリウス"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.65625px">
+            コルネリウス
+        </text>
+        <text stroke-linecap="round" font-size="76" x="770.84644" y="368.95038"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_フラン"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="11.875px">
+            フラン
+        </text>
+        <text stroke-linecap="round" font-size="48" x="544.3553" y="-29.93681"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_トゥーリ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            トゥーリ
+        </text>
+        <text stroke-linecap="round" font-size="63" x="-599.8605" y="497.6002"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ハルトムート"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="9.84375px">
+            ハルトムート
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-636.8369" y="646.4292"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_クラリッサ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            クラリッサ
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-337.37036" y="558.1365"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_レオノーレ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            レオノーレ
+        </text>
+        <text stroke-linecap="round" font-size="66" x="-5.229967" y="552.58246"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ダームエル"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="10.3125px">
+            ダームエル
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-11.159177" y="695.0345"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ブリギッテ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ブリギッテ
+        </text>
+        <text stroke-linecap="round" font-size="51" x="-423.9848" y="298.79694"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_エックハルト"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.96875px">
+            エックハルト
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-655.8859" y="233.9337"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ユストクス"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ユストクス
+        </text>
+        <text stroke-linecap="round" font-size="48" x="1155.5706" y="333.73285"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ディルク"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ディルク
+        </text>
+        <text stroke-linecap="round" font-size="53" x="1015.8334" y="402.7283"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_デリア"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="8.28125px">
+            デリア
+        </text>
+        <text stroke-linecap="round" font-size="57" x="-437.62115" y="981.603"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_フィリーネ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="8.90625px">
+            フィリーネ
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-566.659" y="1048.3387"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ローデリヒ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ローデリヒ
+        </text>
+        <text stroke-linecap="round" font-size="53" x="1078.2738" y="486.7596"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ロジーナ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="8.28125px">
+            ロジーナ
+        </text>
+        <text stroke-linecap="round" font-size="53" x="853.521" y="718.77075"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_モニカ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="8.28125px">
+            モニカ
+        </text>
+        <text stroke-linecap="round" font-size="48" x="524.94446" y="-292.2672"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_オットー"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            オットー
+        </text>
+        <text stroke-linecap="round" font-size="57" x="-482.84836"
+              y="-549.66394" fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ハンネローレ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="8.90625px">
+            ハンネローレ
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-512.9361" y="-687.78906"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_レスティラウト"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            レスティラウト
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-960.3192" y="-226.2821"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_レティーツィア"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            レティーツィア
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-1131.5626" y="-439.9972"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ゲオルギーネ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ゲオルギーネ
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-136.84383"
+              y="-917.67444" fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ブリュンヒルデ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ブリュンヒルデ
+        </text>
+        <text stroke-linecap="round" font-size="55" x="19.271904" y="-984.1747"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_リーゼレータ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="8.59375px">
+            リーゼレータ
+        </text>
+        <text stroke-linecap="round" font-size="48" x="782.54626" y="476.27313"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ザーム"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ザーム
+        </text>
+        <text stroke-linecap="round" font-size="48" x="745.79834" y="-223.84018"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_フリーダ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            フリーダ
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-268.60147" y="625.3972"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ユーディット"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ユーディット
+        </text>
+        <text stroke-linecap="round" font-size="48" x="869.75037" y="782.87994"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ニコラ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ニコラ
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-180.91344"
+              y="-619.95624" fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ヴェローニカ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ヴェローニカ
+        </text>
+        <text stroke-linecap="round" font-size="53" x="-1130.224" y="-116.44078"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ヒルシュール"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="8.28125px">
+            ヒルシュール
+        </text>
+        <text stroke-linecap="round" font-size="50" x="446.80093" y="-220.86362"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_コリンナ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.8125px">
+            コリンナ
+        </text>
+        <text stroke-linecap="round" font-size="50" x="-193.1324" y="-847.02716"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_リヒャルダ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.8125px">
+            リヒャルダ
+        </text>
+        <text stroke-linecap="round" font-size="48" x="1159.3146" y="555.37524"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ヴィルマ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ヴィルマ
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-825.19464" y="-299.5174"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_メスティオノーラ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            メスティオノーラ
+        </text>
+        <text stroke-linecap="round" font-size="48" x="53.39897" y="-1053.137"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_グレーティア"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            グレーティア
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-1278.5922"
+              y="-54.112137" fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ライムント"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ライムント
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-641.8061" y="-618.15826"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ヒルデブラント"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ヒルデブラント
+        </text>
+        <text stroke-linecap="round" font-size="48" x="243.99982" y="-94.60585"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ジルヴェスター"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ジルヴェスター
+        </text>
+        <text stroke-linecap="round" font-size="48" x="117.80288" y="-231.49194"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_カルステッド"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            カルステッド
+        </text>
+        <text stroke-linecap="round" font-size="49" x="-208.01147"
+              y="-21.755283" fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ジギスヴァルト"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.65625px">
+            ジギスヴァルト
+        </text>
+        <text stroke-linecap="round" font-size="48" x="116.83324" y="113.444275"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_エルヴィーラ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            エルヴィーラ
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-405.7837" y="1113.012"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_コンラート"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            コンラート
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-839.0923" y="3.819457"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ジェルヴァージオ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ジェルヴァージオ
+        </text>
+        <text stroke-linecap="round" font-size="48" x="-117.361916"
+              y="-162.55511" fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ボニファティウス"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ボニファティウス
+        </text>
+        <text stroke-linecap="round" font-size="48" x="991.83026" y="-56.621147"
+              fill="#000000" stroke-linejoin="round"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ラルフ"
+              stroke="#ffffff" stroke-opacity="0.8" stroke-width="7.5px">
+            ラルフ
+        </text>
+    </g>
+    <g id="node-labels">
+        <text font-size="85" x="-668.406" y="-151.40509" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_フェルディナンド">
+            フェルディナンド
+        </text>
+        <text font-size="120" x="34.902527" y="59.244648" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_マイン">
+            マイン
+        </text>
+        <text font-size="55" x="617.6975" y="-158.70634" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ベンノ">
+            ベンノ
+        </text>
+        <text font-size="54" x="810.4158" y="5.899558" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ルッツ">
+            ルッツ
+        </text>
+        <text font-size="48" x="-138.39815" y="-398.09717" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_シャルロッテ">
+            シャルロッテ
+        </text>
+        <text font-size="60" x="-203.48486" y="-481.22754" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ヴィルフリート">
+            ヴィルフリート
+        </text>
+        <text font-size="55" x="644.8272" y="69.79596" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ギル">
+            ギル
+        </text>
+        <text font-size="48" x="786.3781" y="-98.762985" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_マルク">
+            マルク
+        </text>
+        <text font-size="48" x="-423.37805" y="-232.14708" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_アナスタージウス">
+            アナスタージウス
+        </text>
+        <text font-size="49" x="-444.85236" y="-90.33633" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_エグランティーヌ">
+            エグランティーヌ
+        </text>
+        <text font-size="53" x="-1047.5669" y="-369.78006" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ディートリンデ">
+            ディートリンデ
+        </text>
+        <text font-size="61" x="-118.184944" y="367.08246" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_アンゲリカ">
+            アンゲリカ
+        </text>
+        <text font-size="49" x="-320.54395" y="430.6084" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_コルネリウス">
+            コルネリウス
+        </text>
+        <text font-size="76" x="770.84644" y="368.95038" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_フラン">
+            フラン
+        </text>
+        <text font-size="48" x="544.3553" y="-29.93681" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_トゥーリ">
+            トゥーリ
+        </text>
+        <text font-size="63" x="-599.8605" y="497.6002" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ハルトムート">
+            ハルトムート
+        </text>
+        <text font-size="48" x="-636.8369" y="646.4292" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_クラリッサ">
+            クラリッサ
+        </text>
+        <text font-size="48" x="-337.37036" y="558.1365" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_レオノーレ">
+            レオノーレ
+        </text>
+        <text font-size="66" x="-5.229967" y="552.58246" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ダームエル">
+            ダームエル
+        </text>
+        <text font-size="48" x="-11.159177" y="695.0345" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ブリギッテ">
+            ブリギッテ
+        </text>
+        <text font-size="51" x="-423.9848" y="298.79694" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_エックハルト">
+            エックハルト
+        </text>
+        <text font-size="48" x="-655.8859" y="233.9337" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ユストクス">
+            ユストクス
+        </text>
+        <text font-size="48" x="1155.5706" y="333.73285" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ディルク">
+            ディルク
+        </text>
+        <text font-size="53" x="1015.8334" y="402.7283" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_デリア">
+            デリア
+        </text>
+        <text font-size="57" x="-437.62115" y="981.603" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_フィリーネ">
+            フィリーネ
+        </text>
+        <text font-size="48" x="-566.659" y="1048.3387" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ローデリヒ">
+            ローデリヒ
+        </text>
+        <text font-size="53" x="1078.2738" y="486.7596" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ロジーナ">
+            ロジーナ
+        </text>
+        <text font-size="53" x="853.521" y="718.77075" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_モニカ">
+            モニカ
+        </text>
+        <text font-size="48" x="524.94446" y="-292.2672" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_オットー">
+            オットー
+        </text>
+        <text font-size="57" x="-482.84836" y="-549.66394" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ハンネローレ">
+            ハンネローレ
+        </text>
+        <text font-size="48" x="-512.9361" y="-687.78906" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_レスティラウト">
+            レスティラウト
+        </text>
+        <text font-size="48" x="-960.3192" y="-226.2821" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_レティーツィア">
+            レティーツィア
+        </text>
+        <text font-size="48" x="-1131.5626" y="-439.9972" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ゲオルギーネ">
+            ゲオルギーネ
+        </text>
+        <text font-size="48" x="-136.84383" y="-917.67444" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ブリュンヒルデ">
+            ブリュンヒルデ
+        </text>
+        <text font-size="55" x="19.271904" y="-984.1747" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_リーゼレータ">
+            リーゼレータ
+        </text>
+        <text font-size="48" x="782.54626" y="476.27313" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ザーム">
+            ザーム
+        </text>
+        <text font-size="48" x="745.79834" y="-223.84018" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_フリーダ">
+            フリーダ
+        </text>
+        <text font-size="48" x="-268.60147" y="625.3972" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ユーディット">
+            ユーディット
+        </text>
+        <text font-size="48" x="869.75037" y="782.87994" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ニコラ">
+            ニコラ
+        </text>
+        <text font-size="48" x="-180.91344" y="-619.95624" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ヴェローニカ">
+            ヴェローニカ
+        </text>
+        <text font-size="53" x="-1130.224" y="-116.44078" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ヒルシュール">
+            ヒルシュール
+        </text>
+        <text font-size="50" x="446.80093" y="-220.86362" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_コリンナ">
+            コリンナ
+        </text>
+        <text font-size="50" x="-193.1324" y="-847.02716" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_リヒャルダ">
+            リヒャルダ
+        </text>
+        <text font-size="48" x="1159.3146" y="555.37524" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ヴィルマ">
+            ヴィルマ
+        </text>
+        <text font-size="48" x="-825.19464" y="-299.5174" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_メスティオノーラ">
+            メスティオノーラ
+        </text>
+        <text font-size="48" x="53.39897" y="-1053.137" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_グレーティア">
+            グレーティア
+        </text>
+        <text font-size="48" x="-1278.5922" y="-54.112137" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ライムント">
+            ライムント
+        </text>
+        <text font-size="48" x="-641.8061" y="-618.15826" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ヒルデブラント">
+            ヒルデブラント
+        </text>
+        <text font-size="48" x="243.99982" y="-94.60585" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ジルヴェスター">
+            ジルヴェスター
+        </text>
+        <text font-size="48" x="117.80288" y="-231.49194" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_カルステッド">
+            カルステッド
+        </text>
+        <text font-size="49" x="-208.01147" y="-21.755283" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ジギスヴァルト">
+            ジギスヴァルト
+        </text>
+        <text font-size="48" x="116.83324" y="113.444275" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_エルヴィーラ">
+            エルヴィーラ
+        </text>
+        <text font-size="48" x="-405.7837" y="1113.012" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_コンラート">
+            コンラート
+        </text>
+        <text font-size="48" x="-839.0923" y="3.819457" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ジェルヴァージオ">
+            ジェルヴァージオ
+        </text>
+        <text font-size="48" x="-117.361916" y="-162.55511" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ボニファティウス">
+            ボニファティウス
+        </text>
+        <text font-size="48" x="991.83026" y="-56.621147" fill="#000000"
+              style="text-anchor: middle; dominant-baseline: central;"
+              font-family="Hiragino Maru Gothic ProN" class="id_ラルフ">
+            ラルフ
+        </text>
+    </g>
+</svg>

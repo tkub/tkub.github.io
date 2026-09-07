@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>コンピューター科学概論 講義資料</title>
+<meta name="description" content="大学初年次向け「コンピューター科学概論」の講義資料(全13章)。2進法と数の表現、文字コード、論理回路、情報理論、アルゴリズムと計算量、停止性問題、P≠NP予想まで。久保山哲二(学習院大学)、CC BY-NC-SA 4.0。">
+<link rel="canonical" href="https://tkub.github.io/edu/cs/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="久保山哲二">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://tkub.github.io/edu/cs/">
+<meta property="og:title" content="コンピューター科学概論 講義資料">
+<meta property="og:description" content="大学初年次向けコンピューター科学概論の講義資料(全13章、HTML、CC BY-NC-SA 4.0)。">
+<meta property="og:image" content="https://tkub.github.io/edu/cs/banner-cs.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{
+  --accent:#2166ac;
+  --accent2:#d7301f;
+  --text:#333;
+  --muted:#666;
+  --line:#ddd;
+  --bg:#fafafa;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Hiragino Sans','Noto Sans JP','Yu Gothic',sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.8;
+}
+header{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+}
+/* サイト共通ヘッダー(assets/style.css と同じ体裁) */
+.site-bar{border-bottom:1px solid #d8dde3;padding:1.1rem 1.2rem 0.9rem;background:#fff}
+.site-bar .inner{max-width:960px;margin:0 auto;padding:0 24px}
+.site-bar .name{font-size:1.15rem;font-weight:600;line-height:1.5}
+.site-bar .name a{color:#222;text-decoration:none}
+.site-bar .name .en{color:#6e7378;font-weight:400;margin-left:0.6em;font-size:0.9em}
+.site-bar nav{margin-top:0.3rem;font-size:0.95rem}
+.site-bar nav a{color:#26466e;text-decoration:none;margin-right:1.2em}
+.site-bar nav a:hover{text-decoration:underline}
+.banner{
+  max-width:960px;margin:0 auto;padding:0;
+}
+.banner img{width:100%;height:180px;object-fit:cover;display:block}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+h1{
+  font-size:1.7rem;margin:1.2rem 0 0.2rem;
+}
+.subtitle{color:var(--muted);margin:0 0 1rem;font-size:0.95rem}
+main{padding:1rem 0 3rem}
+section{margin:2rem 0}
+h2{
+  font-size:1.2rem;
+  border-bottom:2px solid var(--accent);
+  padding-bottom:0.3rem;
+}
+ol.toc{
+  list-style:none;padding:0;margin:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+}
+@media(max-width:700px){ol.toc{grid-template-columns:1fr}}
+ol.toc li{
+  background:#fff;border:1px solid var(--line);border-radius:8px;
+}
+ol.toc a{
+  display:block;padding:12px 16px;color:var(--text);text-decoration:none;
+  border-radius:8px;
+}
+ol.toc a:hover{background:#eef4fa}
+.num{
+  display:inline-block;min-width:2.1em;font-weight:bold;color:var(--accent);
+}
+.sub{display:block;margin-left:2.1em;font-size:0.85rem;color:var(--muted)}
+.badge{
+  display:inline-block;font-size:0.75rem;color:#fff;background:var(--muted);
+  border-radius:4px;padding:0 6px;margin-left:6px;vertical-align:middle;
+}
+.notice{
+  background:#fff;border:1px solid var(--line);border-radius:8px;
+  padding:16px 20px;font-size:0.95rem;
+}
+footer{
+  border-top:1px solid var(--line);background:#fff;
+  padding:1.5rem 0;font-size:0.9rem;color:var(--muted);
+}
+footer a{color:var(--accent)}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="site-bar">
+  <div class="inner">
+    <div class="name"><a href="../../">久保山哲二</a><span class="en">Tetsuji KUBOYAMA</span></div>
+    <nav>
+      <a href="../../">ホーム</a>
+      <a href="https://tk.cc.gakushuin.ac.jp/">研究室サイト</a>
+    </nav>
+  </div>
+</div>
+<header>
+  <div class="banner"><img src="banner-cs.jpg" alt="コンピューター科学概論"></div>
+  <div class="wrap">
+    <h1>コンピューター科学概論</h1>
+    <p class="subtitle">全学向け情報科目</p>
+    <p class="author">担当：久保山哲二</p>
+  </div>
+</header>
+<main class="wrap">
+
+<section>
+<h2>目次</h2>
+<ol class="toc">
+  <li><a href="01-introduction/cs-01.html"><span class="num">1.</span>コンピューター科学への導入<span class="sub">この授業で学ぶこと・前提知識</span></a></li>
+  <li><a href="02-history/cs-02.html"><span class="num">2.</span>コンピューター発展史とデータの単位<span class="sub">階差機関からマイクロプロセッサまで・ビットとバイト</span></a></li>
+  <li><a href="03-number/cs-03.html"><span class="num">3.</span>コンピューター内部の数の表現<span class="sub">2進法・2の補数・浮動小数点と数値誤差</span></a></li>
+  <li><a href="04-character/cs-04.html"><span class="num">4.</span>コンピューター内部の文字の表現<span class="sub">文字コード・Unicode・絵文字</span></a></li>
+  <li><a href="05-font/cs-05.html"><span class="num">5.</span>フォントとタイポグラフィ<span class="badge">補足＋スライド</span><span class="sub">書体の仕組みと文書作成</span></a></li>
+  <li><a href="06-boole/cs-06.html"><span class="num">6.</span>論理回路とブール代数<span class="sub">真理値表・論理ゲート・標準形</span></a></li>
+  <li><a href="07-karnaugh/cs-07.html"><span class="num">7.</span>論理回路の簡単化と回路設計<span class="sub">カルノー図・加算器・関数的完全性</span></a></li>
+  <li><a href="08-flipflop/cs-08.html"><span class="num">8.</span>順序回路とフリップフロップ<span class="sub">記憶する回路・レジスタ・カウンタ</span></a></li>
+  <li><a href="09-infotheory/cs-09.html"><span class="num">9.</span>情報理論の初歩<span class="sub">符号化と圧縮の限界・誤り訂正とシャノンの定理</span></a></li>
+  <li><a href="10-algorithm/cs-10.html"><span class="num">10.</span>アルゴリズムと計算量<span class="sub">整列アルゴリズム・O記法・計算量の下界</span></a></li>
+  <li><a href="11-halting/cs-11.html"><span class="num">11.</span>コンピューターでは解けない問題<span class="sub">停止性問題と対角線論法</span></a></li>
+  <li><a href="12-pnp/cs-12.html"><span class="num">12.</span>計算困難性とP≠NP予想<span class="sub">PとNP・NP完全・co-NP・現代暗号との関係</span></a></li>
+  <li><a href="13-reduction/cs-13.html"><span class="num">13.</span>NP完全性と多項式時間還元<span class="sub">還元の連鎖でNP完全性を証明する</span></a></li>
+  <li><a href="03-number/binary-notation.html"><span class="num">付</span>2進法の表記と変換<span class="sub">補足資料: 基数変換の計算法</span></a></li>
+</ol>
+</section>
+
+<section>
+<h2>この資料について</h2>
+<div class="notice">
+<p>本資料は、新型コロナウイルス感染症の流行期(2020年〜)に大学のオンライン授業用として作成した講義資料を元に、生成AIを用いて全体の整理・内容点検を行い、Web公開用に再編集したものです。</p>
+<p>誤りの指摘や改善の提案を歓迎します。上記の各章は、読み物としても独立して読めるように構成していますが、章の順に読み進めることを想定しています。各章末には練習問題とその解答があります。</p>
+<p>数式の表示にはMathJaxを使用しています。表示が崩れる場合はブラウザのJavaScriptを有効にしてください。</p>
+</div>
+</section>
+
+<section>
+<h2>ライセンス</h2>
+<div class="notice">
+<p>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja" rel="license">
+<img src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png" alt="CC BY-NC-SA 4.0" style="vertical-align:middle;border:0">
+</a>
+本教材は<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja" rel="license">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンス(CC BY-NC-SA 4.0)</a>のもとで公開しています。
+出典を明示すれば、非営利目的での利用・改変・再配布ができます。改変した資料は同じライセンスで公開してください。
+</p>
+</div>
+</section>
+
+</main>
+<footer>
+<div class="wrap">
+<p>© 久保山哲二 — コンピューター科学概論 講義資料 /
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja" rel="license">CC BY-NC-SA 4.0</a></p>
+</div>
+</footer>
+</body>
+</html>

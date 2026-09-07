@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">計算量を読む二つの段階</title><desc id="desc">挿入ソートの値の比較回数を数える。最良でn-1、最悪でn(n-1)/2。同じ最悪計算量にO、Omega、Thetaのいずれも使える。平均には入力分布が必要。</desc><rect width="100%" height="100%" fill="white"/>
+<text x="28" y="36" font-size="24" fill="#233647" text-anchor="start" font-weight="700">① 数える対象を決める → ② 増え方を評価する</text>
+<rect x="25" y="75" width="425" height="250" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<rect x="510" y="75" width="425" height="250" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="45" y="111" font-size="21" fill="#235e85" text-anchor="start" font-weight="700">① 挿入ソートの「値の比較回数」</text>
+<text x="45" y="161" font-size="18" fill="#233647" text-anchor="start">入力サイズ n ＝ 並べる要素の個数</text>
+<text x="45" y="204" font-size="18" fill="#233647" text-anchor="start">最良：すでに昇順 → n − 1 回</text>
+<text x="45" y="247" font-size="18" fill="#233647" text-anchor="start">最悪：異なる値が降順 → n(n − 1)/2 回</text>
+<text x="45" y="290" font-size="18" fill="#233647" text-anchor="start">平均：入力の出やすさを決めて計算</text>
+<line x1="460" y1="203" x2="500" y2="203" stroke="#235e85" stroke-width="2"/>
+<path d="M 491 198 L 500 203 L 491 208" fill="none" stroke="#235e85" stroke-width="2"/>
+<text x="530" y="111" font-size="21" fill="#235e85" text-anchor="start" font-weight="700">② その関数をどう評価するか</text>
+<text x="530" y="161" font-size="20" fill="#233647" text-anchor="start">最悪の比較回数 n(n − 1)/2 は</text>
+<text x="530" y="204" font-size="20" fill="#233647" text-anchor="start">上から抑える：O(n²)</text>
+<text x="530" y="247" font-size="20" fill="#233647" text-anchor="start">下から抑える：Ω(n²)</text>
+<text x="530" y="290" font-size="20" fill="#233647" text-anchor="start">上下から挟む：Θ(n²)</text>
+<text x="28" y="367" font-size="20" fill="#233647" text-anchor="start">最良の n − 1 回にも O(n) を使える。O が「最悪」を意味するわけではない。</text>
+<text x="28" y="402" font-size="17" fill="#233647" text-anchor="start">ここでは n ≧ 1。秒数ではなく比較回数を数え、十分大きな n で増え方を評価する。</text>
+</svg>

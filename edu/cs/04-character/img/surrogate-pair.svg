@@ -1,0 +1,100 @@
+<svg xml:lang="ja" lang="ja" viewBox="0 0 760 560" xmlns="http://www.w3.org/2000/svg" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+  <defs>
+    <marker id="sp-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" fill="#333333"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="760" height="560" fill="#ffffff"/>
+
+  <!-- Step 0 -->
+  <rect x="180" y="20" width="400" height="50" rx="8" fill="#ffffff" stroke="#333333" stroke-width="1.5"/>
+  <text x="380" y="51" font-size="18" fill="#333" text-anchor="middle">「🍣」 U+1F363 (BMP外のコードポイント)</text>
+
+  <path d="M380,70 L380,103" stroke="#333333" stroke-width="1.5" marker-end="url(#sp-arrow)"/>
+  <text x="395" y="92" font-size="13" fill="#555">0x10000 を引く</text>
+
+  <!-- Step 1 -->
+  <rect x="180" y="107" width="400" height="50" rx="8" fill="#ffffff" stroke="#333333" stroke-width="1.5"/>
+  <text x="380" y="138" font-size="18" fill="#333" text-anchor="middle" font-family="Menlo,Consolas,monospace">0x1F363 − 0x10000 = 0xF363</text>
+
+  <path d="M380,157 L380,190" stroke="#333333" stroke-width="1.5" marker-end="url(#sp-arrow)"/>
+  <text x="395" y="179" font-size="13" fill="#555">20ビットの2進数で表し、10ビットずつに分ける</text>
+
+  <!-- Step 2: 20 bits -->
+  <rect x="150" y="194" width="460" height="86" rx="8" fill="#ffffff" stroke="#333333" stroke-width="1.5"/>
+  <text x="272" y="216" font-size="13" fill="#2166ac" text-anchor="middle">上位10ビット = 0x03C</text>
+  <text x="488" y="216" font-size="13" fill="#d7301f" text-anchor="middle">下位10ビット = 0x363</text>
+  <g font-size="14" font-family="Menlo,Consolas,monospace" text-anchor="middle">
+    <g>
+      <rect x="172" y="226" width="20" height="28" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="192" y="226" width="20" height="28" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="212" y="226" width="20" height="28" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="232" y="226" width="20" height="28" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="252" y="226" width="20" height="28" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="272" y="226" width="20" height="28" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="292" y="226" width="20" height="28" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="312" y="226" width="20" height="28" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="332" y="226" width="20" height="28" fill="#dbe9f6" stroke="#2166ac"/>
+      <rect x="352" y="226" width="20" height="28" fill="#dbe9f6" stroke="#2166ac"/>
+      <text x="182" y="245" fill="#2166ac">0</text>
+      <text x="202" y="245" fill="#2166ac">0</text>
+      <text x="222" y="245" fill="#2166ac">0</text>
+      <text x="242" y="245" fill="#2166ac">0</text>
+      <text x="262" y="245" fill="#2166ac">1</text>
+      <text x="282" y="245" fill="#2166ac">1</text>
+      <text x="302" y="245" fill="#2166ac">1</text>
+      <text x="322" y="245" fill="#2166ac">1</text>
+      <text x="342" y="245" fill="#2166ac">0</text>
+      <text x="362" y="245" fill="#2166ac">0</text>
+    </g>
+    <g>
+      <rect x="388" y="226" width="20" height="28" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="408" y="226" width="20" height="28" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="428" y="226" width="20" height="28" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="448" y="226" width="20" height="28" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="468" y="226" width="20" height="28" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="488" y="226" width="20" height="28" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="508" y="226" width="20" height="28" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="528" y="226" width="20" height="28" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="548" y="226" width="20" height="28" fill="#fbe3dc" stroke="#d7301f"/>
+      <rect x="568" y="226" width="20" height="28" fill="#fbe3dc" stroke="#d7301f"/>
+      <text x="398" y="245" fill="#d7301f">1</text>
+      <text x="418" y="245" fill="#d7301f">1</text>
+      <text x="438" y="245" fill="#d7301f">0</text>
+      <text x="458" y="245" fill="#d7301f">1</text>
+      <text x="478" y="245" fill="#d7301f">1</text>
+      <text x="498" y="245" fill="#d7301f">0</text>
+      <text x="518" y="245" fill="#d7301f">0</text>
+      <text x="538" y="245" fill="#d7301f">0</text>
+      <text x="558" y="245" fill="#d7301f">1</text>
+      <text x="578" y="245" fill="#d7301f">1</text>
+    </g>
+  </g>
+
+  <path d="M272,280 C272,305 230,300 226,318" fill="none" stroke="#333333" stroke-width="1.5" marker-end="url(#sp-arrow)"/>
+  <path d="M488,280 C488,305 534,300 538,318" fill="none" stroke="#333333" stroke-width="1.5" marker-end="url(#sp-arrow)"/>
+  <text x="150" y="308" font-size="13" fill="#555">0xD800 に加算</text>
+  <text x="560" y="308" font-size="13" fill="#555">0xDC00 に加算</text>
+
+  <!-- Step 3 -->
+  <rect x="80" y="322" width="290" height="80" rx="8" fill="#f4f8fc" stroke="#2166ac" stroke-width="1.5"/>
+  <text x="225" y="352" font-size="15" fill="#2166ac" text-anchor="middle">上位サロゲート</text>
+  <text x="225" y="380" font-size="16" fill="#333" text-anchor="middle" font-family="Menlo,Consolas,monospace">0xD800 + 0x03C = 0xD83C</text>
+
+  <rect x="390" y="322" width="290" height="80" rx="8" fill="#fdf4f2" stroke="#d7301f" stroke-width="1.5"/>
+  <text x="535" y="352" font-size="15" fill="#d7301f" text-anchor="middle">下位サロゲート</text>
+  <text x="535" y="380" font-size="16" fill="#333" text-anchor="middle" font-family="Menlo,Consolas,monospace">0xDC00 + 0x363 = 0xDF63</text>
+
+  <path d="M225,402 C225,430 320,430 340,448" fill="none" stroke="#333333" stroke-width="1.5" marker-end="url(#sp-arrow)"/>
+  <path d="M535,402 C535,430 440,430 420,448" fill="none" stroke="#333333" stroke-width="1.5" marker-end="url(#sp-arrow)"/>
+
+  <!-- Result -->
+  <rect x="160" y="452" width="440" height="62" rx="8" fill="#ffffff" stroke="#333333" stroke-width="2"/>
+  <text x="380" y="480" font-size="18" fill="#333" text-anchor="middle">サロゲートペア:
+    <tspan font-family="Menlo,Consolas,monospace" fill="#2166ac" font-weight="bold"> D83C</tspan>
+    <tspan font-family="Menlo,Consolas,monospace" fill="#d7301f" font-weight="bold"> DF63</tspan>
+  </text>
+  <text x="380" y="503" font-size="14" fill="#555" text-anchor="middle">2つの16ビット符号単位の組(UTF-16で計4バイト)</text>
+
+  <text x="380" y="545" font-size="13" fill="#555" text-anchor="middle">サロゲート領域: 上位 U+D800〜U+DBFF、下位 U+DC00〜U+DFFF</text>
+</svg>

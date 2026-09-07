@@ -1,0 +1,131 @@
+<svg xml:lang="ja" lang="ja" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 770 524" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif">
+  <defs>
+    <marker id="flow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#2e7d32"/>
+    </marker>
+  </defs>
+
+  <style>
+    .ttl   { font-size:15.5px; font-weight:700; fill:#37474f; }
+    .box   { font-size:14px; fill:#283593; }
+    .room  { font-size:13px; fill:#455a64; }
+    .glabel{ font-size:12.5px; font-weight:700; }
+    .gsub  { font-size:12px; }
+    .tok   { font-size:15px; font-weight:700; fill:#5d4037; }
+    .note  { font-size:12.5px; fill:#546e7a; }
+    .open  { fill:#2e7d32; }
+    .close { fill:#c62828; }
+  </style>
+
+  <!-- ===== 凡例 ===== -->
+  <g>
+    <rect x="488" y="13" width="270" height="30" rx="5" fill="#fafafa" stroke="#cfd8dc"/>
+    <rect x="498" y="21" width="16" height="14" fill="#c8e6c9" stroke="#2e7d32"/>
+    <text x="520" y="33" class="gsub" fill="#37474f">開＝透過 (E=1)</text>
+    <rect x="630" y="21" width="16" height="14" fill="#ffcdd2" stroke="#c62828"/>
+    <text x="652" y="33" class="gsub" fill="#37474f">閉＝保持 (E=0)</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- PANEL 1 : CLK = 0 -->
+  <!-- ============================================================ -->
+  <text x="14" y="32" class="ttl">CLK = 0 ── 1段目の門が開き、D の値を部屋に取り込む</text>
+
+  <!-- 通路の壁 -->
+  <line x1="102" y1="112" x2="608" y2="112" stroke="#90a4ae" stroke-width="2"/>
+  <line x1="102" y1="172" x2="608" y2="172" stroke="#90a4ae" stroke-width="2"/>
+
+  <!-- 入力D -->
+  <rect x="12" y="120" width="88" height="40" rx="6" fill="#e8eaf6" stroke="#5c6bc0"/>
+  <text x="56" y="145" text-anchor="middle" class="box">入力 D</text>
+
+  <!-- 部屋 -->
+  <rect x="252" y="118" width="176" height="46" rx="6" fill="#f5f5f5" stroke="#9e9e9e"/>
+
+  <!-- 出力Q -->
+  <rect x="610" y="120" width="92" height="40" rx="6" fill="#e8eaf6" stroke="#5c6bc0"/>
+  <text x="656" y="145" text-anchor="middle" class="box">出力 Q</text>
+
+  <!-- 流れ: D → 部屋 (門1は開) -->
+  <line x1="104" y1="142" x2="246" y2="142" stroke="#2e7d32" stroke-width="3" marker-end="url(#flow)"/>
+  <!-- 部屋から先はせき止め -->
+  <g stroke="#c62828" stroke-width="2.5">
+    <line x1="462" y1="134" x2="476" y2="150"/>
+    <line x1="476" y1="134" x2="462" y2="150"/>
+  </g>
+
+  <!-- 値トークン (部屋の中) -->
+  <circle cx="340" cy="141" r="17" fill="#fff59d" stroke="#f9a825" stroke-width="2"/>
+  <text x="340" y="146" text-anchor="middle" class="tok">1</text>
+
+  <!-- 門1 : 開 (持ち上がった状態) -->
+  <line x1="161" y1="112" x2="161" y2="172" stroke="#cfd8dc" stroke-dasharray="3 3"/>
+  <line x1="175" y1="112" x2="175" y2="172" stroke="#cfd8dc" stroke-dasharray="3 3"/>
+  <rect x="161" y="74" width="14" height="32" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="168" y="70" text-anchor="middle" class="glabel open">▲ 開</text>
+  <text x="168" y="190" text-anchor="middle" class="glabel" fill="#37474f">1段目の門</text>
+  <text x="168" y="207" text-anchor="middle" class="gsub open">E=1（透過）</text>
+
+  <!-- 部屋ラベル -->
+  <text x="340" y="190" text-anchor="middle" class="room">部屋（Q1）</text>
+  <text x="340" y="207" text-anchor="middle" class="note">値をためる</text>
+
+  <!-- 門2 : 閉 (通路をふさぐ) -->
+  <rect x="499" y="112" width="14" height="60" fill="#ffcdd2" stroke="#c62828" stroke-width="2"/>
+  <text x="506" y="190" text-anchor="middle" class="glabel" fill="#37474f">2段目の門</text>
+  <text x="506" y="207" text-anchor="middle" class="gsub close">E=0（保持）</text>
+  <text x="506" y="104" text-anchor="middle" class="glabel close">閉</text>
+
+  <!-- ============================================================ -->
+  <!-- 遷移 -->
+  <!-- ============================================================ -->
+  <line x1="200" y1="228" x2="200" y2="286" stroke="#78909c" stroke-width="2.5" marker-end="url(#flow)" opacity="0.85"/>
+  <text x="222" y="252" class="note" fill="#455a64">CLK が 0→1 に変わる瞬間、</text>
+  <text x="222" y="270" class="note" fill="#455a64">2つの門が入れ替わる（同時には開かない）</text>
+
+  <!-- ============================================================ -->
+  <!-- PANEL 2 : CLK = 1   (dy = +292) -->
+  <!-- ============================================================ -->
+  <text x="14" y="324" class="ttl">CLK = 1 ── 2段目の門が開き、部屋の値を出口 Q へ送り出す</text>
+
+  <line x1="102" y1="404" x2="608" y2="404" stroke="#90a4ae" stroke-width="2"/>
+  <line x1="102" y1="464" x2="608" y2="464" stroke="#90a4ae" stroke-width="2"/>
+
+  <rect x="12" y="412" width="88" height="40" rx="6" fill="#e8eaf6" stroke="#5c6bc0"/>
+  <text x="56" y="437" text-anchor="middle" class="box">入力 D</text>
+
+  <rect x="252" y="410" width="176" height="46" rx="6" fill="#f5f5f5" stroke="#9e9e9e"/>
+
+  <rect x="610" y="412" width="92" height="40" rx="6" fill="#e8eaf6" stroke="#5c6bc0"/>
+  <text x="656" y="437" text-anchor="middle" class="box">出力 Q</text>
+
+  <!-- Dは入れない (門1閉) -->
+  <g stroke="#c62828" stroke-width="2.5">
+    <line x1="124" y1="426" x2="138" y2="442"/>
+    <line x1="138" y1="426" x2="124" y2="442"/>
+  </g>
+  <!-- 流れ: 部屋 → Q (門2は開) -->
+  <line x1="430" y1="434" x2="606" y2="434" stroke="#2e7d32" stroke-width="3" marker-end="url(#flow)"/>
+
+  <!-- 値トークン (出口へ移動中) -->
+  <circle cx="566" cy="434" r="17" fill="#fff59d" stroke="#f9a825" stroke-width="2"/>
+  <text x="566" y="439" text-anchor="middle" class="tok">1</text>
+
+  <!-- 門1 : 閉 -->
+  <rect x="161" y="404" width="14" height="60" fill="#ffcdd2" stroke="#c62828" stroke-width="2"/>
+  <text x="168" y="396" text-anchor="middle" class="glabel close">閉</text>
+  <text x="168" y="482" text-anchor="middle" class="glabel" fill="#37474f">1段目の門</text>
+  <text x="168" y="499" text-anchor="middle" class="gsub close">E=0（保持）</text>
+
+  <!-- 部屋ラベル -->
+  <text x="340" y="482" text-anchor="middle" class="room">部屋（Q1）</text>
+  <text x="340" y="499" text-anchor="middle" class="note">値を送り出す</text>
+
+  <!-- 門2 : 開 -->
+  <line x1="499" y1="404" x2="499" y2="464" stroke="#cfd8dc" stroke-dasharray="3 3"/>
+  <line x1="513" y1="404" x2="513" y2="464" stroke="#cfd8dc" stroke-dasharray="3 3"/>
+  <rect x="499" y="366" width="14" height="32" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="506" y="362" text-anchor="middle" class="glabel open">▲ 開</text>
+  <text x="506" y="482" text-anchor="middle" class="glabel" fill="#37474f">2段目の門</text>
+  <text x="506" y="499" text-anchor="middle" class="gsub open">E=1（透過）</text>
+</svg>

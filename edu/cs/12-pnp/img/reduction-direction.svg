@@ -1,0 +1,50 @@
+<svg xml:lang="ja" lang="ja" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 300" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+  <rect x="0" y="0" width="780" height="300" fill="#ffffff"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#333"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="7" refY="3.5" orient="auto">
+      <path d="M0,0 L8,3.5 L0,7 Z" fill="#d7301f"/>
+    </marker>
+  </defs>
+
+  <text x="30" y="40" font-size="16" fill="#333" font-weight="bold">問題Bを問題Aに多項式時間還元して解く</text>
+
+  <!-- pipeline boxes -->
+  <g>
+    <rect x="20" y="90" width="120" height="56" rx="8" fill="#ffffff" stroke="#333" stroke-width="1.8"/>
+    <text x="80" y="123" font-size="15" text-anchor="middle" fill="#333">問題Bの入力</text>
+
+    <rect x="175" y="82" width="160" height="72" rx="8" fill="#dbe9f6" stroke="#2166ac" stroke-width="2"/>
+    <text x="255" y="110" font-size="15" text-anchor="middle" fill="#17457e" font-weight="bold">多項式時間変換 f</text>
+    <text x="255" y="134" font-size="12.5" text-anchor="middle" fill="#17457e">（入力の翻訳）</text>
+
+    <rect x="370" y="90" width="120" height="56" rx="8" fill="#ffffff" stroke="#333" stroke-width="1.8"/>
+    <text x="430" y="123" font-size="15" text-anchor="middle" fill="#333">問題Aの入力</text>
+
+    <rect x="525" y="82" width="160" height="72" rx="8" fill="#dbe9f6" stroke="#2166ac" stroke-width="2"/>
+    <text x="605" y="110" font-size="15" text-anchor="middle" fill="#17457e" font-weight="bold">問題Aの</text>
+    <text x="605" y="134" font-size="15" text-anchor="middle" fill="#17457e" font-weight="bold">アルゴリズム</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#333" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="140" y1="118" x2="168" y2="118"/>
+    <line x1="335" y1="118" x2="363" y2="118"/>
+    <line x1="490" y1="118" x2="518" y2="118"/>
+    <line x1="685" y1="118" x2="713" y2="118"/>
+  </g>
+
+  <!-- output -->
+  <text x="722" y="112" font-size="16" fill="#333" font-weight="bold">Yes</text>
+  <text x="722" y="134" font-size="16" fill="#333" font-weight="bold">/ No</text>
+  <text x="700" y="170" font-size="12.5" fill="#666">そのまま問題Bの答え</text>
+
+  <!-- hardness annotation -->
+  <path d="M 80 200 C 80 240, 605 240, 605 200" fill="none" stroke="#d7301f" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <text x="345" y="215" font-size="16" text-anchor="middle" fill="#d7301f" font-weight="bold">難しさ： B ≦ A</text>
+  <text x="345" y="262" font-size="13.5" text-anchor="middle" fill="#333">問題Aが解ければ問題Bも解ける</text>
+  <text x="345" y="282" font-size="13.5" text-anchor="middle" fill="#333">→ 問題Aは問題Bと同等か、それ以上に難しい（B ⪯<tspan font-size="10" dy="3">P</tspan><tspan dy="-3"> A）</tspan></text>
+</svg>

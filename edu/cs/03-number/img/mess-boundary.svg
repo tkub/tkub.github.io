@@ -1,0 +1,205 @@
+<svg xml:lang="ja" lang="ja" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 629.68 272" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+<defs>
+<pattern id="hred" patternUnits="userSpaceOnUse" width="7" height="7" patternTransform="rotate(45)">
+  <rect width="7" height="7" fill="#fdeeec"/>
+  <line x1="0" y1="0" x2="0" y2="7" stroke="#d7301f" stroke-width="1.1" stroke-opacity="0.55"/>
+</pattern>
+</defs>
+<rect x="44" y="30" width="260.4" height="152" rx="8" fill="#eef4fb"/>
+<rect x="304.4" y="30" width="259.4" height="152" rx="8" fill="#fdf0ee"/>
+<rect x="563.8" y="30" width="53.879999999999995" height="152" rx="8" fill="#eef4fb"/>
+<path d="M 52 77.0 L 52 165 Q 52 171.5 58.5 171.5 L 84.38 171.5 Q 90.88 171.5 90.88 165 L 90.88 77.0" fill="none" stroke="#333" stroke-width="2.4" stroke-opacity="1.0"/>
+<line x1="52" y1="170.0" x2="61" y2="170.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="52" y1="160.7" x2="57.5" y2="160.7" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="52" y1="151.4" x2="57.5" y2="151.4" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="52" y1="142.1" x2="57.5" y2="142.1" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="52" y1="132.8" x2="57.5" y2="132.8" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="52" y1="123.5" x2="61" y2="123.5" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="52" y1="114.19999999999999" x2="57.5" y2="114.19999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="52" y1="104.89999999999999" x2="57.5" y2="104.89999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="52" y1="95.6" x2="57.5" y2="95.6" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="52" y1="86.3" x2="57.5" y2="86.3" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="52" y1="77.0" x2="61" y2="77.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<text x="46" y="174.0" font-size="11" fill="#666" text-anchor="end" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">0</text>
+<text x="46" y="127.5" font-size="11" fill="#666" text-anchor="end" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">5</text>
+<text x="46" y="81.0" font-size="11" fill="#666" text-anchor="end" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">10</text>
+<text x="71.44" y="63.0" font-size="16" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">0</text>
+<text x="71.44" y="196" font-size="12" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">0</text>
+<path d="M 105.38 160.7 L 105.38 165 Q 105.38 170 110.38 170 L 136.26 170 Q 141.26 170 141.26 165 L 141.26 160.7 Z" fill="#cfe4f7"/>
+<line x1="105.38" y1="160.7" x2="141.26" y2="160.7" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 103.88 77.0 L 103.88 165 Q 103.88 171.5 110.38 171.5 L 136.26 171.5 Q 142.76 171.5 142.76 165 L 142.76 77.0" fill="none" stroke="#333" stroke-width="2.4" stroke-opacity="1.0"/>
+<line x1="103.88" y1="170.0" x2="112.88" y2="170.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="103.88" y1="160.7" x2="109.38" y2="160.7" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="103.88" y1="151.4" x2="109.38" y2="151.4" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="103.88" y1="142.1" x2="109.38" y2="142.1" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="103.88" y1="132.8" x2="109.38" y2="132.8" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="103.88" y1="123.5" x2="112.88" y2="123.5" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="103.88" y1="114.19999999999999" x2="109.38" y2="114.19999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="103.88" y1="104.89999999999999" x2="109.38" y2="104.89999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="103.88" y1="95.6" x2="109.38" y2="95.6" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="103.88" y1="86.3" x2="109.38" y2="86.3" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="103.88" y1="77.0" x2="112.88" y2="77.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<text x="123.32" y="63.0" font-size="16" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">1</text>
+<text x="123.32" y="196" font-size="12" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">1</text>
+<path d="M 157.26 151.4 L 157.26 165 Q 157.26 170 162.26 170 L 188.14 170 Q 193.14 170 193.14 165 L 193.14 151.4 Z" fill="#cfe4f7"/>
+<line x1="157.26" y1="151.4" x2="193.14" y2="151.4" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 155.76 77.0 L 155.76 165 Q 155.76 171.5 162.26 171.5 L 188.14 171.5 Q 194.64 171.5 194.64 165 L 194.64 77.0" fill="none" stroke="#333" stroke-width="2.4" stroke-opacity="1.0"/>
+<line x1="155.76" y1="170.0" x2="164.76" y2="170.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="155.76" y1="160.7" x2="161.26" y2="160.7" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="155.76" y1="151.4" x2="161.26" y2="151.4" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="155.76" y1="142.1" x2="161.26" y2="142.1" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="155.76" y1="132.8" x2="161.26" y2="132.8" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="155.76" y1="123.5" x2="164.76" y2="123.5" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="155.76" y1="114.19999999999999" x2="161.26" y2="114.19999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="155.76" y1="104.89999999999999" x2="161.26" y2="104.89999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="155.76" y1="95.6" x2="161.26" y2="95.6" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="155.76" y1="86.3" x2="161.26" y2="86.3" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="155.76" y1="77.0" x2="164.76" y2="77.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<text x="175.2" y="63.0" font-size="16" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">2</text>
+<text x="175.2" y="196" font-size="12" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">2</text>
+<path d="M 209.14 142.1 L 209.14 165 Q 209.14 170 214.14 170 L 240.01999999999998 170 Q 245.01999999999998 170 245.01999999999998 165 L 245.01999999999998 142.1 Z" fill="#cfe4f7"/>
+<line x1="209.14" y1="142.1" x2="245.01999999999998" y2="142.1" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 207.64 77.0 L 207.64 165 Q 207.64 171.5 214.14 171.5 L 240.01999999999998 171.5 Q 246.51999999999998 171.5 246.51999999999998 165 L 246.51999999999998 77.0" fill="none" stroke="#333" stroke-width="2.4" stroke-opacity="1.0"/>
+<line x1="207.64" y1="170.0" x2="216.64" y2="170.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="207.64" y1="160.7" x2="213.14" y2="160.7" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="207.64" y1="151.4" x2="213.14" y2="151.4" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="207.64" y1="142.1" x2="213.14" y2="142.1" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="207.64" y1="132.8" x2="213.14" y2="132.8" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="207.64" y1="123.5" x2="216.64" y2="123.5" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="207.64" y1="114.19999999999999" x2="213.14" y2="114.19999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="207.64" y1="104.89999999999999" x2="213.14" y2="104.89999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="207.64" y1="95.6" x2="213.14" y2="95.6" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="207.64" y1="86.3" x2="213.14" y2="86.3" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="207.64" y1="77.0" x2="216.64" y2="77.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<text x="227.07999999999998" y="63.0" font-size="16" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">3</text>
+<text x="227.07999999999998" y="196" font-size="12" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">3</text>
+<path d="M 261.02 132.8 L 261.02 165 Q 261.02 170 266.02 170 L 291.9 170 Q 296.9 170 296.9 165 L 296.9 132.8 Z" fill="#cfe4f7"/>
+<line x1="261.02" y1="132.8" x2="296.9" y2="132.8" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 259.52 77.0 L 259.52 165 Q 259.52 171.5 266.02 171.5 L 291.9 171.5 Q 298.4 171.5 298.4 165 L 298.4 77.0" fill="none" stroke="#333" stroke-width="2.4" stroke-opacity="1.0"/>
+<line x1="259.52" y1="170.0" x2="268.52" y2="170.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="259.52" y1="160.7" x2="265.02" y2="160.7" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="259.52" y1="151.4" x2="265.02" y2="151.4" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="259.52" y1="142.1" x2="265.02" y2="142.1" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="259.52" y1="132.8" x2="265.02" y2="132.8" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="259.52" y1="123.5" x2="268.52" y2="123.5" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="259.52" y1="114.19999999999999" x2="265.02" y2="114.19999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="259.52" y1="104.89999999999999" x2="265.02" y2="104.89999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="259.52" y1="95.6" x2="265.02" y2="95.6" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="259.52" y1="86.3" x2="265.02" y2="86.3" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="259.52" y1="77.0" x2="268.52" y2="77.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<text x="278.96" y="63.0" font-size="16" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">4</text>
+<text x="278.96" y="196" font-size="12" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">4</text>
+<rect x="312.9" y="77.0" width="35.879999999999995" height="46.5" fill="url(#hred)"/>
+<line x1="312.9" y1="77.0" x2="348.78" y2="77.0" stroke="#d7301f" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M 312.9 123.5 L 312.9 165 Q 312.9 170 317.9 170 L 343.78 170 Q 348.78 170 348.78 165 L 348.78 123.5 Z" fill="#cfe4f7"/>
+<line x1="312.9" y1="123.5" x2="348.78" y2="123.5" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 311.4 77.0 L 311.4 165 Q 311.4 171.5 317.9 171.5 L 343.78 171.5 Q 350.28 171.5 350.28 165 L 350.28 77.0" fill="none" stroke="#333" stroke-width="2.4" stroke-opacity="1.0"/>
+<line x1="311.4" y1="170.0" x2="320.4" y2="170.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="311.4" y1="160.7" x2="316.9" y2="160.7" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="311.4" y1="151.4" x2="316.9" y2="151.4" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="311.4" y1="142.1" x2="316.9" y2="142.1" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="311.4" y1="132.8" x2="316.9" y2="132.8" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="311.4" y1="123.5" x2="320.4" y2="123.5" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="311.4" y1="114.19999999999999" x2="316.9" y2="114.19999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="311.4" y1="104.89999999999999" x2="316.9" y2="104.89999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="311.4" y1="95.6" x2="316.9" y2="95.6" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="311.4" y1="86.3" x2="316.9" y2="86.3" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="311.4" y1="77.0" x2="320.4" y2="77.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<text x="330.84" y="63.0" font-size="16" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">−5</text>
+<text x="330.84" y="196" font-size="12" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">5</text>
+<rect x="364.78" y="77.0" width="35.879999999999995" height="37.19999999999999" fill="url(#hred)"/>
+<line x1="364.78" y1="77.0" x2="400.65999999999997" y2="77.0" stroke="#d7301f" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M 364.78 114.19999999999999 L 364.78 165 Q 364.78 170 369.78 170 L 395.65999999999997 170 Q 400.65999999999997 170 400.65999999999997 165 L 400.65999999999997 114.19999999999999 Z" fill="#cfe4f7"/>
+<line x1="364.78" y1="114.19999999999999" x2="400.65999999999997" y2="114.19999999999999" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 363.28 77.0 L 363.28 165 Q 363.28 171.5 369.78 171.5 L 395.65999999999997 171.5 Q 402.15999999999997 171.5 402.15999999999997 165 L 402.15999999999997 77.0" fill="none" stroke="#333" stroke-width="2.4" stroke-opacity="1.0"/>
+<line x1="363.28" y1="170.0" x2="372.28" y2="170.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="363.28" y1="160.7" x2="368.78" y2="160.7" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="363.28" y1="151.4" x2="368.78" y2="151.4" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="363.28" y1="142.1" x2="368.78" y2="142.1" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="363.28" y1="132.8" x2="368.78" y2="132.8" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="363.28" y1="123.5" x2="372.28" y2="123.5" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="363.28" y1="114.19999999999999" x2="368.78" y2="114.19999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="363.28" y1="104.89999999999999" x2="368.78" y2="104.89999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="363.28" y1="95.6" x2="368.78" y2="95.6" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="363.28" y1="86.3" x2="368.78" y2="86.3" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="363.28" y1="77.0" x2="372.28" y2="77.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<text x="382.71999999999997" y="63.0" font-size="16" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">−4</text>
+<text x="382.71999999999997" y="196" font-size="12" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">6</text>
+<rect x="416.65999999999997" y="77.0" width="35.879999999999995" height="27.89999999999999" fill="url(#hred)"/>
+<line x1="416.65999999999997" y1="77.0" x2="452.53999999999996" y2="77.0" stroke="#d7301f" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M 416.65999999999997 104.89999999999999 L 416.65999999999997 165 Q 416.65999999999997 170 421.65999999999997 170 L 447.53999999999996 170 Q 452.53999999999996 170 452.53999999999996 165 L 452.53999999999996 104.89999999999999 Z" fill="#cfe4f7"/>
+<line x1="416.65999999999997" y1="104.89999999999999" x2="452.53999999999996" y2="104.89999999999999" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 415.15999999999997 77.0 L 415.15999999999997 165 Q 415.15999999999997 171.5 421.65999999999997 171.5 L 447.53999999999996 171.5 Q 454.03999999999996 171.5 454.03999999999996 165 L 454.03999999999996 77.0" fill="none" stroke="#333" stroke-width="2.4" stroke-opacity="1.0"/>
+<line x1="415.15999999999997" y1="170.0" x2="424.15999999999997" y2="170.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="415.15999999999997" y1="160.7" x2="420.65999999999997" y2="160.7" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="415.15999999999997" y1="151.4" x2="420.65999999999997" y2="151.4" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="415.15999999999997" y1="142.1" x2="420.65999999999997" y2="142.1" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="415.15999999999997" y1="132.8" x2="420.65999999999997" y2="132.8" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="415.15999999999997" y1="123.5" x2="424.15999999999997" y2="123.5" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="415.15999999999997" y1="114.19999999999999" x2="420.65999999999997" y2="114.19999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="415.15999999999997" y1="104.89999999999999" x2="420.65999999999997" y2="104.89999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="415.15999999999997" y1="95.6" x2="420.65999999999997" y2="95.6" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="415.15999999999997" y1="86.3" x2="420.65999999999997" y2="86.3" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="415.15999999999997" y1="77.0" x2="424.15999999999997" y2="77.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<text x="434.59999999999997" y="63.0" font-size="16" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">−3</text>
+<text x="434.59999999999997" y="196" font-size="12" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">7</text>
+<rect x="468.53999999999996" y="77.0" width="35.879999999999995" height="18.599999999999994" fill="url(#hred)"/>
+<line x1="468.53999999999996" y1="77.0" x2="504.41999999999996" y2="77.0" stroke="#d7301f" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M 468.53999999999996 95.6 L 468.53999999999996 165 Q 468.53999999999996 170 473.53999999999996 170 L 499.41999999999996 170 Q 504.41999999999996 170 504.41999999999996 165 L 504.41999999999996 95.6 Z" fill="#cfe4f7"/>
+<line x1="468.53999999999996" y1="95.6" x2="504.41999999999996" y2="95.6" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 467.03999999999996 77.0 L 467.03999999999996 165 Q 467.03999999999996 171.5 473.53999999999996 171.5 L 499.41999999999996 171.5 Q 505.91999999999996 171.5 505.91999999999996 165 L 505.91999999999996 77.0" fill="none" stroke="#333" stroke-width="2.4" stroke-opacity="1.0"/>
+<line x1="467.03999999999996" y1="170.0" x2="476.03999999999996" y2="170.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="467.03999999999996" y1="160.7" x2="472.53999999999996" y2="160.7" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="467.03999999999996" y1="151.4" x2="472.53999999999996" y2="151.4" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="467.03999999999996" y1="142.1" x2="472.53999999999996" y2="142.1" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="467.03999999999996" y1="132.8" x2="472.53999999999996" y2="132.8" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="467.03999999999996" y1="123.5" x2="476.03999999999996" y2="123.5" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="467.03999999999996" y1="114.19999999999999" x2="472.53999999999996" y2="114.19999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="467.03999999999996" y1="104.89999999999999" x2="472.53999999999996" y2="104.89999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="467.03999999999996" y1="95.6" x2="472.53999999999996" y2="95.6" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="467.03999999999996" y1="86.3" x2="472.53999999999996" y2="86.3" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="467.03999999999996" y1="77.0" x2="476.03999999999996" y2="77.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<text x="486.47999999999996" y="63.0" font-size="16" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">−2</text>
+<text x="486.47999999999996" y="196" font-size="12" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">8</text>
+<rect x="520.42" y="77.0" width="35.879999999999995" height="9.299999999999997" fill="url(#hred)"/>
+<line x1="520.42" y1="77.0" x2="556.3" y2="77.0" stroke="#d7301f" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M 520.42 86.3 L 520.42 165 Q 520.42 170 525.42 170 L 551.3 170 Q 556.3 170 556.3 165 L 556.3 86.3 Z" fill="#cfe4f7"/>
+<line x1="520.42" y1="86.3" x2="556.3" y2="86.3" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 518.92 77.0 L 518.92 165 Q 518.92 171.5 525.42 171.5 L 551.3 171.5 Q 557.8 171.5 557.8 165 L 557.8 77.0" fill="none" stroke="#333" stroke-width="2.4" stroke-opacity="1.0"/>
+<line x1="518.92" y1="170.0" x2="527.92" y2="170.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="518.92" y1="160.7" x2="524.42" y2="160.7" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="518.92" y1="151.4" x2="524.42" y2="151.4" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="518.92" y1="142.1" x2="524.42" y2="142.1" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="518.92" y1="132.8" x2="524.42" y2="132.8" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="518.92" y1="123.5" x2="527.92" y2="123.5" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="518.92" y1="114.19999999999999" x2="524.42" y2="114.19999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="518.92" y1="104.89999999999999" x2="524.42" y2="104.89999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="518.92" y1="95.6" x2="524.42" y2="95.6" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="518.92" y1="86.3" x2="524.42" y2="86.3" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="518.92" y1="77.0" x2="527.92" y2="77.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<text x="538.3599999999999" y="63.0" font-size="16" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">−1</text>
+<text x="538.3599999999999" y="196" font-size="12" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">9</text>
+<path d="M 572.3 77.0 L 572.3 165 Q 572.3 170 577.3 170 L 603.18 170 Q 608.18 170 608.18 165 L 608.18 77.0 Z" fill="#cfe4f7"/>
+<line x1="572.3" y1="77.0" x2="608.18" y2="77.0" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 570.8 77.0 L 570.8 165 Q 570.8 171.5 577.3 171.5 L 603.18 171.5 Q 609.68 171.5 609.68 165 L 609.68 77.0" fill="none" stroke="#333" stroke-width="2.4" stroke-opacity="1.0"/>
+<line x1="570.8" y1="170.0" x2="579.8" y2="170.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="570.8" y1="160.7" x2="576.3" y2="160.7" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="570.8" y1="151.4" x2="576.3" y2="151.4" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="570.8" y1="142.1" x2="576.3" y2="142.1" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="570.8" y1="132.8" x2="576.3" y2="132.8" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="570.8" y1="123.5" x2="579.8" y2="123.5" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="570.8" y1="114.19999999999999" x2="576.3" y2="114.19999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="570.8" y1="104.89999999999999" x2="576.3" y2="104.89999999999999" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="570.8" y1="95.6" x2="576.3" y2="95.6" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="570.8" y1="86.3" x2="576.3" y2="86.3" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<line x1="570.8" y1="77.0" x2="579.8" y2="77.0" stroke="#666" stroke-width="1.1" stroke-opacity="1.0"/>
+<text x="590.24" y="63.0" font-size="16" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">→ 0</text>
+<text x="590.24" y="196" font-size="12" fill="#666" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">10</text>
+<text x="22" y="196" font-size="12" fill="#666" text-anchor="start" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">水位</text>
+<line x1="304.9" y1="22" x2="304.9" y2="204" stroke="#333" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="304.9" y="16" font-size="13" fill="#333" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">正負の境目(取り決め)</text>
+<text x="175.2" y="218" font-size="12.5" fill="#2166ac" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">水位4まで → 水位をそのまま読む</text>
+<text x="434.59999999999997" y="218" font-size="12.5" fill="#d7301f" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">水位5〜9 → 空きを負の数として読む</text>
+<text x="617" y="242" font-size="11.5" fill="#666" text-anchor="end" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">水位10は満杯の1本</text>
+<text x="617" y="258" font-size="11.5" fill="#666" text-anchor="end" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">→ 取り除いて水位0へ</text>
+</svg>

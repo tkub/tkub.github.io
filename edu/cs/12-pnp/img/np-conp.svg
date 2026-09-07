@@ -1,0 +1,34 @@
+<svg xml:lang="ja" lang="ja" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 440" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+  <rect x="0" y="0" width="760" height="440" fill="#ffffff"/>
+
+  <!-- NP -->
+  <ellipse cx="280" cy="210" rx="230" ry="155" fill="#eef4fa" fill-opacity="0.8" stroke="#2166ac" stroke-width="2.5"/>
+  <text x="135" y="110" font-size="18" text-anchor="middle" fill="#2166ac" font-weight="bold">NP</text>
+
+  <!-- co-NP -->
+  <ellipse cx="480" cy="210" rx="230" ry="155" fill="#fdeae5" fill-opacity="0.55" stroke="#d7301f" stroke-width="2.5"/>
+  <text x="625" y="110" font-size="18" text-anchor="middle" fill="#d7301f" font-weight="bold">co-NP</text>
+
+  <!-- intersection label -->
+  <text x="380" y="140" font-size="15" text-anchor="middle" fill="#333" font-weight="bold">NP∩co-NP</text>
+  <circle cx="380" cy="168" r="4" fill="#333"/>
+  <text x="380" y="190" font-size="12" text-anchor="middle" fill="#333">素因数分解の判定版</text>
+
+  <!-- P -->
+  <ellipse cx="380" cy="255" rx="78" ry="52" fill="#c6dbef" stroke="#2166ac" stroke-width="2"/>
+  <text x="380" y="250" font-size="17" text-anchor="middle" fill="#17457e" font-weight="bold">P</text>
+  <text x="380" y="275" font-size="12" text-anchor="middle" fill="#17457e">素数判定</text>
+
+  <!-- NP-complete -->
+  <ellipse cx="115" cy="245" rx="60" ry="42" fill="#f6c9bd" stroke="#d7301f" stroke-width="2"/>
+  <text x="115" y="242" font-size="15" text-anchor="middle" fill="#a02010" font-weight="bold">NP完全</text>
+  <text x="115" y="262" font-size="12" text-anchor="middle" fill="#a02010">(SAT等)</text>
+
+  <!-- co-NP-complete -->
+  <ellipse cx="645" cy="245" rx="60" ry="42" fill="#f6c9bd" stroke="#d7301f" stroke-width="2"/>
+  <text x="645" y="242" font-size="15" text-anchor="middle" fill="#a02010" font-weight="bold">co-NP完全</text>
+  <text x="645" y="262" font-size="12" text-anchor="middle" fill="#a02010">(UNSAT等)</text>
+
+  <!-- caption -->
+  <text x="380" y="420" font-size="16" text-anchor="middle" fill="#333" font-weight="bold">NP≠co-NP(かつP≠NP)と予想される場合</text>
+</svg>

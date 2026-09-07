@@ -1,0 +1,84 @@
+<svg xml:lang="ja" lang="ja" viewBox="0 0 500 585" xmlns="http://www.w3.org/2000/svg" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+  <rect x="0" y="0" width="500" height="560" fill="#ffffff"/>
+
+  <!-- 負の領域(値8〜15)のくさび形 -->
+  <path d="M250,250 L287.5,438.3 A192,192 0 0 1 212.5,61.7 Z" fill="#fdecea"/>
+  <!-- 非負の領域(値0〜7)のくさび形 -->
+  <path d="M250,250 L212.5,61.7 A192,192 0 0 1 287.5,438.3 Z" fill="#eaf1f8"/>
+
+  <circle cx="250" cy="250" r="192" fill="none" stroke="#333333" stroke-width="1.5"/>
+  <circle cx="250" cy="250" r="148" fill="none" stroke="#333333" stroke-width="1"/>
+
+  <!-- 中央 -->
+  <text x="250" y="243" font-size="15" fill="#666" text-anchor="middle">4ビット整数</text>
+  <text x="250" y="265" font-size="15" fill="#666" text-anchor="middle">(mod 16)</text>
+
+  <!-- 内側: 2進表現 -->
+  <g font-size="12" fill="#555555" text-anchor="middle" dominant-baseline="middle" font-family="Menlo,Consolas,monospace">
+    <text x="250" y="135">0000</text>
+    <text x="294" y="143.8">0001</text>
+    <text x="331.3" y="168.7">0010</text>
+    <text x="356.2" y="206">0011</text>
+    <text x="365" y="250">0100</text>
+    <text x="356.2" y="294">0101</text>
+    <text x="331.3" y="331.3">0110</text>
+    <text x="294" y="356.2">0111</text>
+    <text x="250" y="365">1000</text>
+    <text x="206" y="356.2">1001</text>
+    <text x="168.7" y="331.3">1010</text>
+    <text x="143.8" y="294">1011</text>
+    <text x="135" y="250">1100</text>
+    <text x="143.8" y="206">1101</text>
+    <text x="168.7" y="168.7">1110</text>
+    <text x="206" y="143.8">1111</text>
+  </g>
+
+  <!-- 中間: 符号なしの値 -->
+  <g font-size="17" font-weight="bold" fill="#333333" text-anchor="middle" dominant-baseline="middle">
+    <text x="250" y="80">0</text>
+    <text x="315.1" y="92.9">1</text>
+    <text x="370.2" y="129.8">2</text>
+    <text x="407.1" y="184.9">3</text>
+    <text x="420" y="250">4</text>
+    <text x="407.1" y="315.1">5</text>
+    <text x="370.2" y="370.2">6</text>
+    <text x="315.1" y="407.1">7</text>
+    <text x="250" y="420">8</text>
+    <text x="184.9" y="407.1">9</text>
+    <text x="129.8" y="370.2">10</text>
+    <text x="92.9" y="315.1">11</text>
+    <text x="80" y="250">12</text>
+    <text x="92.9" y="184.9">13</text>
+    <text x="129.8" y="129.8">14</text>
+    <text x="184.9" y="92.9">15</text>
+  </g>
+
+  <!-- 外側: 2の補数表現としての解釈 -->
+  <g font-size="18" font-weight="bold" text-anchor="middle" dominant-baseline="middle">
+    <text x="250" y="34" fill="#2166ac">0</text>
+    <text x="332.7" y="50.4" fill="#2166ac">1</text>
+    <text x="402.7" y="97.3" fill="#2166ac">2</text>
+    <text x="449.6" y="167.3" fill="#2166ac">3</text>
+    <text x="466" y="250" fill="#2166ac">4</text>
+    <text x="449.6" y="332.7" fill="#2166ac">5</text>
+    <text x="402.7" y="402.7" fill="#2166ac">6</text>
+    <text x="332.7" y="449.6" fill="#2166ac">7</text>
+    <text x="250" y="466" fill="#d7301f">−8</text>
+    <text x="167.3" y="449.6" fill="#d7301f">−7</text>
+    <text x="97.3" y="402.7" fill="#d7301f">−6</text>
+    <text x="50.4" y="332.7" fill="#d7301f">−5</text>
+    <text x="34" y="250" fill="#d7301f">−4</text>
+    <text x="50.4" y="167.3" fill="#d7301f">−3</text>
+    <text x="97.3" y="97.3" fill="#d7301f">−2</text>
+    <text x="167.3" y="50.4" fill="#d7301f">−1</text>
+  </g>
+
+  <!-- 凡例 -->
+  <g font-size="13" fill="#333333">
+    <rect x="52" y="500" width="14" height="14" fill="#eaf1f8" stroke="#2166ac"/>
+    <text x="72" y="512">最上位ビット0 → 0または正 (0〜7)</text>
+    <rect x="52" y="524" width="14" height="14" fill="#fdecea" stroke="#d7301f"/>
+    <text x="72" y="536">最上位ビット1 → 負 (−8〜−1)</text>
+    <text x="52" y="566" fill="#555">内側: ビット列、中間: 符号なしとしての値、外側: 2の補数表現としての値</text>
+  </g>
+</svg>

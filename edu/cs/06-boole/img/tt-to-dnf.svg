@@ -1,0 +1,56 @@
+<svg xml:lang="ja" lang="ja" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+<rect x="3" y="3" width="754" height="414" rx="14" fill="#fcfdfe" stroke="#d5dde4" stroke-width="1.5"/>
+<rect x="22" y="18" width="64" height="28" rx="14" fill="#2166ac"/>
+<text x="54.0" y="37" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">手順</text>
+<text x="100" y="38" font-size="17" fill="#333" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">真理値表から積和標準形を作る</text>
+<rect x="70" y="90" width="150" height="38" fill="#eef2f6"/>
+<text x="95" y="115" font-size="15" fill="#333" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">x</text>
+<text x="145" y="115" font-size="15" fill="#333" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">y</text>
+<text x="195" y="115" font-size="15" fill="#333" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">f(x,y)</text>
+<text x="95" y="153" font-size="15" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">0</text>
+<text x="145" y="153" font-size="15" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">0</text>
+<text x="195" y="153" font-size="15" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">0</text>
+<text x="95" y="191" font-size="15" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">0</text>
+<text x="145" y="191" font-size="15" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">1</text>
+<text x="195" y="191" font-size="15" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">0</text>
+<rect x="70" y="204" width="150" height="38" fill="#fff7d6" stroke="#d7301f" stroke-width="2"/>
+<text x="95" y="229" font-size="15" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">1</text>
+<text x="145" y="229" font-size="15" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">0</text>
+<text x="195" y="229" font-size="15" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">1</text>
+<rect x="70" y="242" width="150" height="38" fill="#fff7d6" stroke="#d7301f" stroke-width="2"/>
+<text x="95" y="267" font-size="15" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">1</text>
+<text x="145" y="267" font-size="15" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">1</text>
+<text x="195" y="267" font-size="15" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">1</text>
+<rect x="70" y="90" width="150" height="190" fill="none" stroke="#b9c6d2" stroke-width="1.5"/>
+<text x="145.0" y="304" font-size="13" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">f=1の行だけを拾う</text>
+<rect x="300" y="96" width="170" height="64" rx="10" fill="#eef4fb" stroke="#2166ac"/>
+<text x="385" y="122" font-size="12.5" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">変数の値→リテラル</text>
+<text x="385" y="144" font-size="12.5" fill="#2166ac" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">1 → そのまま / 0 → 否定</text>
+<path d="M 226 223.0 C 290 223.0 490 207.0 520 207.0" fill="none" stroke="#d7301f" stroke-width="1.8" marker-end="none"/>
+<path d="M 520 201.0 L 530 207.0 L 520 213.0 Z" fill="#d7301f"/>
+<path d="M 226 261.0 C 290 261.0 490 277.0 520 277.0" fill="none" stroke="#d7301f" stroke-width="1.8"/>
+<path d="M 520 271.0 L 530 277.0 L 520 283.0 Z" fill="#d7301f"/>
+<text x="545" y="213.0" font-size="20" fill="#333" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">x</text>
+<text x="559" y="213.0" font-size="20" fill="#333" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">·</text>
+<text x="569" y="213.0" font-size="20" fill="#333" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">y</text>
+<line x1="568" y1="196.0" x2="581" y2="196.0" stroke="#333" stroke-width="1.8"/>
+<text x="594" y="213.0" font-size="12" fill="#666" text-anchor="start" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif"> (x=1, y=0)</text>
+<text x="545" y="283.0" font-size="20" fill="#333" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">x</text>
+<text x="559" y="283.0" font-size="20" fill="#333" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">·</text>
+<text x="569" y="283.0" font-size="20" fill="#333" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">y</text>
+<text x="594" y="283.0" font-size="12" fill="#666" text-anchor="start" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif"> (x=1, y=1)</text>
+<text x="565" y="250.0" font-size="17" fill="#333" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">＋</text>
+<text x="568" y="252.0" font-size="12" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif"></text>
+<rect x="200" y="316" width="360" height="52" rx="10" fill="#eaf2fa" stroke="#2166ac" stroke-width="2"/>
+<text x="324.0" y="350" font-size="20" fill="#2166ac" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">f</text>
+<text x="338.0" y="350" font-size="20" fill="#2166ac" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">=</text>
+<text x="352.0" y="350" font-size="20" fill="#2166ac" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">x</text>
+<text x="366.0" y="350" font-size="20" fill="#2166ac" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">·</text>
+<text x="376.0" y="350" font-size="20" fill="#2166ac" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">y</text>
+<line x1="375.0" y1="333" x2="388.0" y2="333" stroke="#2166ac" stroke-width="1.8"/>
+<text x="390.0" y="350" font-size="20" fill="#2166ac" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">+</text>
+<text x="404.0" y="350" font-size="20" fill="#2166ac" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">x</text>
+<text x="418.0" y="350" font-size="20" fill="#2166ac" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">·</text>
+<text x="428.0" y="350" font-size="20" fill="#2166ac" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">y</text>
+<text x="460.0" y="350" font-size="13" fill="#2166ac" text-anchor="start" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">(積和標準形)</text>
+</svg>

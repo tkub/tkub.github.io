@@ -1,0 +1,3907 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor.js 4.0.11">
+<meta name="author" content="久保山哲二">
+<title>コンピューター内部の文字の表現</title>
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Uncomment @import statement below to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+script{display:none!important}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:transparent}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+/* dfn{font-style:italic} */
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:none}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
+pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:normal}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
+.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock pre.nowrap,.literalblock pre.nowrap pre,.listingblock pre.nowrap,.listingblock pre.nowrap pre{white-space:pre;word-wrap:normal}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:#999}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
+table.pyhltable td.code{padding-left:.75em;padding-right:0}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #dddddf}
+pre.pygments .lineno{display:inline-block;margin-right:.25em}
+table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
+/* .quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify} */
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);padding:1em;font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin:0 0 1.25em;padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+table.tableblock{max-width:100%;border-collapse:separate}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd){background:#f8f8f7}
+table.stripes-none tr,table.stripes-odd tr:nth-of-type(even){background:none}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+td>div.verse{white-space:pre}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background-color:#00fafa}
+.black{color:#000}
+.black-background{background-color:#000}
+.blue{color:#0000bf}
+.blue-background{background-color:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background-color:#fa00fa}
+.gray{color:#606060}
+.gray-background{background-color:#7d7d7d}
+.green{color:#006000}
+.green-background{background-color:#007d00}
+.lime{color:#00bf00}
+.lime-background{background-color:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background-color:#7d0000}
+.navy{color:#000060}
+.navy-background{background-color:#00007d}
+.olive{color:#606000}
+.olive-background{background-color:#7d7d00}
+.purple{color:#600060}
+.purple-background{background-color:#7d007d}
+.red{color:#bf0000}
+.red-background{background-color:#fa0000}
+.silver{color:#909090}
+.silver-background{background-color:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background-color:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background-color:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background-color:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+
+/* ============================================================
+   コンピューター科学概論 デザイン調整層 (2026)
+   図版と同じ配色(#2166ac / #d7301f)で全体を統一する。
+   ============================================================ */
+:root{
+  --cs-ink:#2b3440;
+  --cs-head:#1c3d5f;
+  --cs-accent:#2166ac;
+  --cs-red:#d7301f;
+  --cs-muted:#5a6b7b;
+  --cs-line:#dde5ec;
+  --cs-bg-soft:#f6f8fa;
+  --cs-sans:'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;
+  --cs-mono:'SF Mono','Menlo','Consolas',monospace;
+}
+
+/* ---- 基本 ---- */
+body{font-family:var(--cs-sans);color:var(--cs-ink);background:#fff;
+  -webkit-font-smoothing:antialiased}
+#content{max-width:50em}
+#content p,#content .paragraph>p{line-height:1.95;letter-spacing:.01em}
+.paragraph{margin-bottom:1.15em}
+a{color:var(--cs-accent)}
+a:hover{color:#17497a}
+img{max-width:100%;height:auto}
+
+/* ---- ヘッダ ---- */
+#header h1{font-family:var(--cs-sans);font-weight:700;color:var(--cs-head);
+  font-size:1.9em;letter-spacing:.02em;
+  border-bottom:3px solid var(--cs-accent);padding-bottom:.35em}
+#header .details{color:var(--cs-muted);border-bottom:0;font-size:.85em}
+
+/* ---- 見出し階層 ---- */
+h1,h2,h3,h4,h5,#toctitle{font-family:var(--cs-sans);font-weight:700;color:var(--cs-head)}
+#content h2{font-size:1.5em;margin-top:2.2em;padding-bottom:.3em;
+  border-bottom:2px solid var(--cs-accent);color:var(--cs-head)}
+#content h3{font-size:1.24em;margin-top:1.9em;padding-bottom:.22em;
+  border-bottom:1px solid var(--cs-line)}
+#content h4{font-size:1.08em;margin-top:1.6em}
+#content h2>a.anchor,#content h3>a.anchor{color:#b9c6d2}
+
+/* ---- 右side目次 ---- */
+#toc.toc2{background:#f8fafc;border-color:#e4eaf0;font-family:var(--cs-sans)}
+#toc.toc2 #toctitle{color:var(--cs-head);font-size:1em}
+#toc.toc2 ul{font-family:var(--cs-sans)}
+#toc a{color:#4a5b6c;text-decoration:none}
+#toc a:hover{color:var(--cs-accent);text-decoration:underline}
+#toc ul.sectlevel1>li{margin-top:.45em}
+#toc ul.sectlevel2{font-size:.92em;margin-top:.2em}
+
+/* ---- 補足ブロック(NOTE/TIP/WARNING/IMPORTANT/CAUTION) ---- */
+.admonitionblock>table{border:1px solid var(--cs-line);border-radius:10px;
+  border-collapse:separate;overflow:hidden;background:#fff}
+.admonitionblock>table td.icon{padding:.9em .2em .9em .9em;min-width:2.6em}
+.admonitionblock>table td.icon [class^="fa icon-"]{font-size:1.6em;cursor:default;text-shadow:none}
+.admonitionblock>table td.content{padding:.9em 1.1em;border-left:0;
+  color:var(--cs-ink);font-size:.95em;line-height:1.85}
+.admonitionblock>table td.content>.title{color:var(--cs-head);font-weight:700}
+.admonitionblock.note>table{background:#f2f7fc;border-color:#c7d9ea}
+.admonitionblock.note td.icon .icon-note::before{color:var(--cs-accent)}
+.admonitionblock.tip>table{background:#f1f8f2;border-color:#c4dcc6}
+.admonitionblock.tip td.icon .icon-tip::before{color:#2e7d32;text-shadow:none}
+.admonitionblock.important>table{background:#fdf1ef;border-color:#eac3bd}
+.admonitionblock.important td.icon .icon-important::before{color:var(--cs-red)}
+.admonitionblock.warning>table{background:#fdf6ea;border-color:#e8d5b0}
+.admonitionblock.warning td.icon .icon-warning::before{color:#b26a00}
+.admonitionblock.caution>table{background:#fdf6ea;border-color:#e8d5b0}
+.admonitionblock.caution td.icon .icon-caution::before{color:#b26a00}
+
+/* ---- 例・引用・サイドバー ---- */
+.exampleblock>.content{background:#fdfdfe;border:1px solid var(--cs-line);
+  border-radius:10px;box-shadow:none;padding:1em 1.25em}
+.sidebarblock{background:var(--cs-bg-soft);border:1px solid var(--cs-line);border-radius:10px}
+.quoteblock blockquote,.quoteblock blockquote p{color:var(--cs-muted)}
+.quoteblock{border-left:3px solid var(--cs-line)}
+*:not(pre)>code{background:#f2f4f6;border-radius:4px;padding:.08em .35em;
+  font-family:var(--cs-mono);font-size:.88em;color:#3a4653;word-spacing:normal}
+
+/* ---- コードブロック ---- */
+.listingblock pre,.literalblock pre,
+.listingblock pre[class^="highlight"]{background:var(--cs-bg-soft);
+  border:1px solid #e6ebf0;border-radius:8px;
+  font-family:var(--cs-mono);font-size:.9em;line-height:1.6;padding:1em 1.2em}
+
+/* ---- 表 ---- */
+table.tableblock{border-color:var(--cs-line);font-size:.95em}
+table.tableblock th{background:#eef3f8;color:var(--cs-head);font-weight:700;
+  font-family:var(--cs-sans)}
+table.tableblock th,table.tableblock td{padding:.5em .8em}
+table.frame-topbot{border-top:2px solid var(--cs-head);border-bottom:2px solid var(--cs-head)}
+table.grid-rows td{border-color:#e6ebf0}
+
+/* ---- ブロックのキャプション ---- */
+.imageblock>.title,.tableblock+.title,table.tableblock caption,
+.exampleblock>.title,.listingblock>.title,.videoblock>.title,
+.imageblock .title,.stemblock>.title,caption.title{
+  color:var(--cs-muted);font-weight:600;font-size:.9em;
+  font-style:normal;line-height:1.6;font-family:var(--cs-sans)}
+.imageblock{margin:1.4em 0}
+.imageblock.text-center{margin-left:auto;margin-right:auto}
+
+/* ---- 折りたたみ(解答など) ---- */
+details{margin:1em 0}
+details>summary{background:#eef3f8;border:1px solid var(--cs-line);
+  border-radius:8px;padding:.5em .9em;font-weight:700;color:var(--cs-head);
+  cursor:pointer;user-select:none}
+details>summary:hover{background:#e2ecf5}
+details[open]>summary{border-radius:8px 8px 0 0}
+
+/* ---- 数式 ---- */
+.stemblock>.content{overflow-x:auto;padding:.2em 0}
+
+/* ---- 定義リスト([horizontal]など) ---- */
+td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
+.dlist dt{color:var(--cs-head);font-weight:700;font-style:normal}
+
+/* ---- 箇条書きの行間 ---- */
+.ulist li,.olist li{margin-bottom:.35em;line-height:1.85}
+
+/* ---- フッタ ---- */
+#footer{background:none;border-top:1px solid var(--cs-line);margin-top:3em}
+#footer-text,#footer div{color:var(--cs-muted);font-size:.85em}
+
+/* ---- 印刷 ---- */
+@media print{
+  #toc.toc2{display:none}
+  body.toc2{margin-right:0!important;margin-left:0!important}
+  #content h2{border-bottom-color:#888}
+}
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+<script>
+  window.MathJax = {
+    loader: { load: ['output/chtml'] },
+    startup: { output: 'chtml' }
+  };
+</script>
+</head>
+<body class="article toc2 toc-right">
+<div id="header">
+<h1>コンピューター内部の文字の表現</h1>
+<div class="details">
+<span id="author" class="author">久保山哲二</span><br>
+<span id="revnumber">version 1.0</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">目次</div>
+<ul class="sectlevel1">
+<li><a href="#_今回の授業">1. 今回の授業</a>
+<ul class="sectlevel2">
+<li><a href="#_まず押さえる文字番号バイト列">1.1. まず押さえる：文字・番号・バイト列</a></li>
+<li><a href="#_文字コードの変遷">1.2. 文字コードの変遷</a>
+<ul class="sectlevel3">
+<li><a href="#_ascii">ASCII</a></li>
+<li><a href="#_改行コード">改行コード</a></li>
+<li><a href="#_jis_x_0201">JIS X 0201</a></li>
+</ul>
+</li>
+<li><a href="#_字体字形書体">1.3. 字体、字形、書体</a></li>
+<li><a href="#_符号化文字集合と文字符号化方式">1.4. 符号化文字集合と文字符号化方式</a>
+<ul class="sectlevel3">
+<li><a href="#_発展日本の文字を含む符号化文字集合">発展：日本の文字を含む符号化文字集合</a></li>
+<li><a href="#_発展unicode以前の日本の文字の符号化方式">発展：Unicode以前の日本の文字の符号化方式</a></li>
+</ul>
+</li>
+<li><a href="#unicode-basics">1.5. Unicode の基礎</a>
+<ul class="sectlevel3">
+<li><a href="#_世界中の文字を含む文字集合_unicode">世界中の文字を含む文字集合 Unicode</a></li>
+<li><a href="#_unicodeコードポイントマップ">Unicodeコードポイントマップ</a></li>
+<li><a href="#_unicode_の符号化方式">Unicode の符号化方式</a></li>
+<li><a href="#_utf_16_と_utf_32_におけるバイトの並び順">UTF-16 と UTF-32 におけるバイトの並び順</a></li>
+<li><a href="#_符号化のトレンド">符号化のトレンド</a></li>
+<li><a href="#_文字コード発展概略">文字コード発展概略</a></li>
+<li><a href="#_機種依存文字と文字化け">機種依存文字と文字化け</a></li>
+</ul>
+</li>
+<li><a href="#_unicode_の応用_1_包摂と異体字">1.6. Unicode の応用 (1): 包摂と異体字</a>
+<ul class="sectlevel3">
+<li><a href="#_異体字シーケンスideographic_variation_sequence_ivs">異体字シーケンス(Ideographic Variation Sequence: IVS)</a></li>
+<li><a href="#_unicodeでは包摂されなかった文字">Unicodeでは包摂されなかった文字</a></li>
+</ul>
+</li>
+<li><a href="#_unicode_の応用_2_異体字セレクタと外字問題">1.7. Unicode の応用 (2): 異体字セレクタと外字問題</a>
+<ul class="sectlevel3">
+<li><a href="#_残された外字問題とその背景">残された「外字問題」とその背景</a></li>
+<li><a href="#_mj文字情報基盤からmj行政事務標準文字への発展">MJ文字情報基盤からMJ+(行政事務標準文字)への発展</a></li>
+</ul>
+</li>
+<li><a href="#_unicode_の応用_3_文字の合成と正規化">1.8. Unicode の応用 (3): 文字の合成と正規化</a>
+<ul class="sectlevel3">
+<li><a href="#_合成済み文字と結合文字列">「合成済み文字」と「結合文字列」</a></li>
+<li><a href="#_濁音と半濁音の合成">濁音と半濁音の合成</a></li>
+<li><a href="#_正規化">正規化</a></li>
+</ul>
+</li>
+<li><a href="#_unicode_の応用_4_絵文字">1.9. Unicode の応用 (4): 絵文字</a></li>
+<li><a href="#_プログラミング言語とunicode">1.10. プログラミング言語とUnicode</a></li>
+<li><a href="#_windows_と_macos_で文字コードの確認">1.11. Windows と macOS で文字コードの確認</a>
+<ul class="sectlevel3">
+<li><a href="#_windows_の_powershell_での確認方法">Windows の PowerShell での確認方法</a></li>
+<li><a href="#_macos_の_terminal_での確認方法">macOS の Terminal での確認方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_理解度チェック練習問題">2. 理解度チェック(練習問題)</a>
+<ul class="sectlevel2">
+<li><a href="#_基礎_ascii_改行コード_用語">2.1. 基礎: ASCII / 改行コード / 用語</a></li>
+<li><a href="#_unicode_以前の日本語符号化方式">2.2. Unicode 以前の日本語符号化方式</a></li>
+<li><a href="#_unicode_の基礎_符号化方式とbom">2.3. Unicode の基礎: 符号化方式とBOM</a></li>
+<li><a href="#_unicode_の応用_包摂正規化絵文字">2.4. Unicode の応用: 包摂・正規化・絵文字</a></li>
+</ul>
+</li>
+<li><a href="#_問題">3. 問題</a></li>
+<li><a href="#_問題の解答">4. 問題の解答</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_今回の授業"><a class="link" href="#_今回の授業">1. 今回の授業</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コンピューター内でのデータの表現として、今回は普段なにげなく扱っている文字の表現について説明します。</p>
+</div>
+<div class="paragraph">
+<p>文字コードは歴史的経緯が複雑です。まず、現在の仕組みを読むための見取り図を押さえましょう。</p>
+</div>
+<div class="sect2">
+<h3 id="_まず押さえる文字番号バイト列"><a class="link" href="#_まず押さえる文字番号バイト列">1.1. まず押さえる：文字・番号・バイト列</a></h3>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/character-pipeline.svg" alt="あはUnicodeではU+3042であり、UTF-8ではE3 81 82の3バイトになる">
+</div>
+<div class="title">図 1. 文字に付ける番号と、保存するバイト列を分ける</div>
+</div>
+<div class="paragraph">
+<p><strong>Unicodeは文字の番号などを定める規格、UTF-8はその番号をバイト列にする方式</strong>です。「UnicodeかUTF-8か」という二者択一ではありません。保存するときの符号化方式と、読み出すときの方式を合わせることが、文字化けを防ぐ基本です。</p>
+</div>
+<div class="paragraph">
+<p>もう1つ、「1文字」という言葉に注意しましょう。たとえば「が」は、1つのコードポイントでも、「か」と結合濁点の2つのコードポイントでも表せます。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/character-count.svg" alt="がは1コードポイント3バイト、かと結合濁点は2コードポイント6バイト。どちらも通常1書記素クラスタ">
+</div>
+<div class="title">図 2. 文字数を数えるときは単位を決める</div>
+</div>
+<div class="paragraph">
+<p>見た目の1文字に近いまとまりを<strong>書記素クラスタ</strong>と呼びます。番号の個数・バイト数・書記素クラスタ数は別々の量です。詳しい仕組みは後の正規化と絵文字の節で説明します。</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">読み進め方：最初に必要なところと、仕組みを掘り下げるところ</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>基本の流れ</strong>：ASCII → 字体・字形・書体 → 符号化文字集合と文字符号化方式 → <a href="#unicode-basics">Unicodeの基礎</a>。途中の日本語の旧方式は、初読では飛ばして構いません。</p>
+</li>
+<li>
+<p><strong>実用で大切なこと</strong>：符号化方式を合わせること、文字数の単位を決めること、同じ見た目でも文字列が一致するとは限らないこと。</p>
+</li>
+<li>
+<p><strong>発展・参照用</strong>：JISの区点番号と旧方式の変換、UTFのビット配置、BOMとバイト順、IVS・外字制度、言語別のAPI。細部は必要になったときに戻って読めます。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_文字コードの変遷"><a class="link" href="#_文字コードの変遷">1.2. 文字コードの変遷</a></h3>
+<div class="paragraph">
+<p>文字コードとはコンピューター内部での文字表現の方法です。コンピューター内部では整数や浮動小数点といった数値を2進法で表現されていたように、文字もコンピューター内部では2進法で表現されています。しかし、文字をコンピューター内部で表現する方法は、文字そのものの複雑さのために数値表現と比べて遥かに煩雑です。</p>
+</div>
+<div class="paragraph">
+<p>コンピューター上で最初に文字を扱う必要性が生じたのは、おそらくコンピューターとのデータのやりとりのためでしょう。プログラムやデータを人間が解釈しやすく表示するには、特定のコンピューターの機種上でのみ文字と内部表現の対応がとれていれば十分でした。やがて、コンピューターが計算以外の用途、執筆やコンピューターネットワークを介したコミュニケーションに使われるようになると、異なる機種のコンピューターでも同様に文字が読めるように何らかの共通表現を定める必要が生じました。</p>
+</div>
+<div class="sect3">
+<h4 id="_ascii"><a class="link" href="#_ascii">ASCII</a></h4>
+<div class="paragraph">
+<p>米国で1963年に策定され、現在もUTF-8の一部としてそのまま生き続けている、もっとも基礎的な文字コードがASCII(アスキー、American Standard Code for Information Interchange)です。後に概念が整理され、ASCIIは7ビットの符号位置が割り当てられた符号化文字集合として位置づけられます。</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<caption class="title">表 1. 文字コード表(ASCII)</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">下位＼上位</th>
+<th class="tableblock halign-center valign-top">0_</th>
+<th class="tableblock halign-center valign-top">1_</th>
+<th class="tableblock halign-center valign-top">2_</th>
+<th class="tableblock halign-center valign-top">3_</th>
+<th class="tableblock halign-center valign-top">4_</th>
+<th class="tableblock halign-center valign-top">5_</th>
+<th class="tableblock halign-center valign-top">6_</th>
+<th class="tableblock halign-center valign-top">7_</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_0</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">NULL</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">DLE</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">SP</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>@</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>P</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>`</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>p</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_1</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">SOH</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">DC1</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>!</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>A</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>Q</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>a</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>q</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_2</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">STX</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">DC2</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>&quot;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>B</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>R</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>b</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>r</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_3</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">ETX</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">DC3</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>#</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>3</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>C</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>S</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>c</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>s</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_4</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">EOT</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">DC4</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>$</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>4</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>D</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>T</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>d</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>t</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_5</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">ENQ</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">NAK</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>%</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>5</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>E</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>U</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>e</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>u</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_6</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">ACK</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">SYN</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>&amp;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>6</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>F</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>V</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>f</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>v</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_7</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">BEL</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">ETB</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>'</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>7</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>G</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>W</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>g</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>w</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_8</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">BS</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">CAN</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>(</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>8</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>H</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>X</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>h</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>x</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_9</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">HT</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">EM</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>)</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>9</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>I</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>Y</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>i</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>y</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_A</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">LF</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">SUB</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>:</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>J</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>Z</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>j</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>z</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_B</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">VT</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">ESC</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>+</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>K</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>[</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>k</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>{</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_C</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">FF</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">FS</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>,</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>&lt;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>L</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>\</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>l</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>|</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_D</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">CR</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">GS</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>-</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>=</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>M</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>]</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>m</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>}</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_E</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">SO</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">RS</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>.</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>&gt;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>N</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>^</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>n</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>~</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">_F</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">SI</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">US</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>/</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>?</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>O</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>_</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>o</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="small yellow">DEL</span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>ASCIIは米国で日常的に用いる文字として、数字、アルファベットの大文字・小文字と括弧、ピリオド、コンマなどの役物、ドル記号等を含んでいます。黄色の文字は表示のための文字ではなく、ディスプレイやプリンターの動作等をコントロールするために使われる特別なコードで<strong>制御文字</strong>といいます。また、SPは空白記号(スペース)を表しています。</p>
+</div>
+<div class="paragraph">
+<p>この表のすべての文字の位置は16進法で特定できます。上位桁を表す列0〜7と下位桁を表す行0〜Fの2つの座標を用います。</p>
+</div>
+<div class="paragraph">
+<p>たとえば文字 <code>A</code> は上位の「<strong>4_</strong>」の列と下位の「<strong><em>1</strong>」の行の交差する位置にありますので対応する値は16進法で \(41_{(16)}\) 、2進法では、\(1000001_{(2)}\) となります。また文字 <code>a</code> は上位の「<strong>6</em></strong>」の列と下位の「<strong>_1</strong>」の行の交差する位置にありますので対応する値は16進法で \(61_{(16)}\) 、2進法では、\(1100001_{(2)}\) となります。ASCIIの英字 A〜Z / a〜z に限れば、右から6ビット目（値32の桁）を反転すると大文字・小文字を相互変換できます。英字以外にこの操作をすると、別の記号などに変わってしまいます。</p>
+</div>
+<div class="paragraph">
+<p>16進法の上位桁が0〜7までしか無いことから、上位桁は3ビットであることがわかります。つまり、ASCIIに含まれるすべての文字は、7ビットでその位置を特定できることがわかります。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>今後は16進法と2進法による数の表現に、C, Java, Python, Ruby, Julia, JavaScript など多くのプログラミング言語でそのまま使える以下の表記を用います。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>16進法による数の表記として \(41_{(16)}\) の代わりに、先頭に <code>0x</code> をつけた <code>0x41</code> を用います。ここで、<code>x</code> は16進法を表すHe<strong>x</strong>adecimal の <code>x</code> です。</p>
+</li>
+<li>
+<p>同様に、2進法による数の表記として  \(1000001_{(2)}\) の代わりに、先頭に <code>0b</code> をつけた <code>0b1000001</code> を用います(この <code>b</code> はもちろん2進法を表す <strong>b</strong>inary からです)。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>コンピューター内部での数としての表現でも、文字がアルファベット順に並んでいるおかげで、符号値の大小比較が、そのままアルファベット順の比較になります(ただし大文字と小文字が混ざる場合は、すべての大文字がすべての小文字より前に来ることに注意してください)。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_改行コード"><a class="link" href="#_改行コード">改行コード</a></h4>
+<div class="paragraph">
+<p>普段、文章を書いている時に、なにげなく Enter/Return キーを押して改行しているとき、コンピューター内部では、「改行」も<strong>制御文字</strong>として対応する改行コードが記録されています。</p>
+</div>
+<div class="paragraph">
+<p>面倒なのは歴史的経緯もあって、使っているOSによって改行の符号化も異なるということです。以下の表が対応表です。古い Mac(OS9)を除けば、Unix/Linux と macOS の LF(Line Feed)と、Windows の CR+LF (Carriage Return + Line Feed) の2種類の改行コードが用いられています。LFはもともとタイプライターで紙を縦に1行分送る動作に相当します。キャリッジはタイプライターの、紙をはさんで横に1文字ずつずらしてゆく部位です。このキャリッジが行末まできたときに、行頭位置まで戻す動作をキャリッジ・リターン(CR)といいます。カーソルで説明すると、カーソルを一行下にずらすのがLFで、行末に来たカーソルを行頭に戻すのがCRです。</p>
+</div>
+<table class="tableblock frame-ends grid-rows fit-content">
+<caption class="title">表 2. OSの改行コード</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">OS</th>
+<th class="tableblock halign-left valign-top">改行コード</th>
+<th class="tableblock halign-left valign-top">制御文字</th>
+<th class="tableblock halign-left valign-top">表現</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unix/Linux</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0x0A</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\n</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mac(OS X/macOS)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0x0A</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\n</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mac(OS9以前)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0x0D</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\r</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Windows</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0x0D 0x0A</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CR+LF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>\r\n</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>これはOSごとの伝統的な慣習です。実際の改行方式はアプリや設定でも変わります。LFに対応していない古いWindowsアプリなどでは、LFのファイルを開くと改行が認識されない場合があります。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_jis_x_0201"><a class="link" href="#_jis_x_0201">JIS X 0201</a></h4>
+<div class="paragraph">
+<p>世界各国でコンピューターが使われはじめると、米国のASCIIをもとに1967年に国際勧告ISO/R 646が定められました(後に国際規格ISO/IEC 646となります)。当時は、まだ国を跨ってコンピューターの文書がやり取りされることが想定されていなかったため、規格では表の中で国ごとに自由に文字を割り当ててよい位置が定められました。</p>
+</div>
+<div class="paragraph">
+<p>日本では、この勧告をもとに1969年に初の文字コード規格として JIS C 6220(1987年に JIS X 0201 へ改称)が制定され、また、その際、以下の記号の置き換えをしました。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ASCIIの <code>0x5C</code> の位置のバックスラッシュ記号 <code>\</code> を <code>¥</code> に置き換え</p>
+</li>
+<li>
+<p>ASCIIの <code>0x7E</code> の位置のチルダ記号 <code>~</code> をオーバーライン <code>‾</code> に置き換え</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>また、ASCIIの7ビットから8ビットの文字コードに拡張し、新たに増えた128文字分の領域を利用して、いわゆる半角カタカナを追加しました。コンピューター上で漢字や平仮名が表現できなかった時代には、このカタカナが唯一の日本語の文字表現でした。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>この日本独自の文字の置き換えは、現在に至るまで混乱を引き起こしています。
+現代のWindowsやmacOSで、特にOfficeアプリケーションなどでバックスラッシュ（\）が円マーク（¥）として表示される問題は、JIS X 0201中の置き換えの問題というわけではありません。Unicodeには円マーク用の専用コードポイント(<code>U+00A5</code>)とバックスラッシュ用のコードポイント(<code>U+005C</code>)が別々に存在するにもかかわらず、日本語環境では歴史的互換性のために意図的に混同されることがあるのです。</p>
+</div>
+<div class="paragraph">
+<p>過去のデータとの互換性から、日本ではバックスラッシュ記号 <code>\</code> (<code>U+005C</code>)の位置に円マーク <code>¥</code> をグリフとして組み込んでいるフォントが多く、本来、半角のバックスラッシュであるにもかかわらず <code>¥</code> として表示されてしまっていることがあります。
+たとえば、みなさんは、Windows の Explorer で以下のような <code>¥</code> 記号で区切られたフォルダ表示をみたことがないでしょうか(該当する箇所でクリックするとこのような表示になります)。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/yenmark.png" alt="yenmark">
+</div>
+</div>
+<div class="paragraph">
+<p>これは、Cドライブの下の Windows フォルダの中にある System フォルダのさらに中にある Speech フォルダを表しています。この箇所、もともと以下のように表示されることを意図しています。</p>
+</div>
+<div class="paragraph text-center">
+<p><code>C:\Windows\System\Speech</code></p>
+</div>
+<div class="paragraph">
+<p>念のため以下に同じ文字列を図でも表示しておきます。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/2-5-2021-00-44-37-AM.png" alt="2 5 2021 00 44 37 AM">
+</div>
+</div>
+<div class="paragraph">
+<p>やはり、バックスラッシュの方が区切り記号としてスッキリして見やすいですね。</p>
+</div>
+<div class="paragraph">
+<p>表示はアプリ、フォント、言語設定、版によって異なります。見た目だけで円記号かバックスラッシュかを判断せず、コードポイントを調べると区別できます。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>この問題は、日本のコンピューター黎明期の互換性のために設けられた仕様が、グローバル化したソフトウェア環境の中で今日まで引き継がれている例です。同じコードポイントに対して異なる字形(グリフ)を割り当てる慣習が、Unicode時代になっても完全には解消されていません。プログラミングやパス指定など、バックスラッシュが重要な意味を持つ場面で混乱を招くことがあるため、注意が必要です。</p>
+</div>
+<div class="paragraph">
+<p>以降では、文字コードをより体系的に理解するための枠組みについて説明します。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_字体字形書体"><a class="link" href="#_字体字形書体">1.3. 字体、字形、書体</a></h3>
+<div class="paragraph">
+<p>まず、文字コードの理解の基本となる言葉の定義をします。なお、この定義はひろく共通認識となっているわけではありません。この授業での定義として読んでください。</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">字体</dt>
+<dd>
+<p>文字を構成している点や線のつながり。構造・骨組みとしての文字の抽象的概念。</p>
+</dd>
+<dt class="hdlist1">字形</dt>
+<dd>
+<p>字体を実際に手書き・印刷・画面表示などで表現した図形としての文字</p>
+</dd>
+<dt class="hdlist1">グリフ</dt>
+<dd>
+<p>コンピューター内でのデータとしての字形表現</p>
+</dd>
+<dt class="hdlist1">書体</dt>
+<dd>
+<p>一貫したデザインで作成された字形の集合<br>
+【例】明朝体、ゴシック体など</p>
+</dd>
+<dt class="hdlist1">フォント</dt>
+<dd>
+<p>コンピューターで用いるデータとしての書体。<br>
+【例】游明朝、MS ゴシック、メイリオなど</p>
+</dd>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/letters.png" alt="letters">
+</div>
+<div class="title">図 3. 字体・字形・書体・グリフ・フォントのイメージ</div>
+</div>
+<div class="paragraph">
+<p>字体と字形、字形と書体の境界は明確にあるわけではありません。</p>
+</div>
+<div class="paragraph">
+<p>コンピューターでも異なる字体に対して同じ内部表現が割当てられている例がたくさんあります。たとえば、文字「そ」と「き」に対して、下の図ではそれぞれ異なる字体が示してあります。この文字については字体の違いを文字コードでは表現できません。それぞれ左側が「ヒラギノ角ゴシック」右が「凸版文久ゴシック」というフォントの違いによって、はじめて区別できるようになります。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/so-ki.png" alt="so ki">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_符号化文字集合と文字符号化方式"><a class="link" href="#_符号化文字集合と文字符号化方式">1.4. 符号化文字集合と文字符号化方式</a></h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">符号化文字集合(Coded Character Set: CCS)</dt>
+<dd>
+<p>コンピューターで用いる文字を集めて文字ごとに対応する番号を付けたもの。要はコンピューターで用いる文字を集めた表で、表の座標で表の中の文字を一意に特定できるようにしたものです。この座標もしくは番号を<strong>符号位置(コードポイント)</strong>といいます。</p>
+</dd>
+<dt class="hdlist1">文字符号化方式(Character Encoding Scheme: CES)</dt>
+<dd>
+<p>符号位置をコンピューター内部で表現する方法。</p>
+</dd>
+</dl>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/coding.png" alt="coding">
+</div>
+<div class="title">図 4. 符号化文字集合と文字符号化方式</div>
+</div>
+<div class="paragraph">
+<p>ASCIIが作られた時代には、まだ 符号化文字集合と文字符号化方式のような概念は明確には存在せず、両者の概念は未分化でした。
+現在のほとんどのコンピューターはバイトアドレッシング方式といって、1バイト単位でメモリ上のデータ格納場所を指定して読み取っているため、1バイト=8ビットの領域に、それよりビット数の少ない7ビットのASCIIにより表現された文字1文字分のデータを収めることができます。
+メモリが高価であった時代には、8ビット単位でデータを扱うマシンでも、8文字を7バイト(56ビット)に隙間なくつめて収納する方式もありました。通常のテキストファイルでは1文字を1バイトに収める方式が一般的です。7ビットを詰める方法自体が使えなくなったわけではありません。</p>
+</div>
+<div class="paragraph">
+<p>やがて、世界中の文字を含んだ符号化文字集合が作られるようになると符号位置を表す数字が巨大になり、その表現には2バイト以上必要になってしまいました。2バイト以上のデータが続く場合、文字の読み取り開始位置を間違うと、まったく違う文字と解釈してしまう恐れがあります。そのような曖昧さが発生しないように、コンピューターに符号位置を格納する方法を取り決める必要があります。</p>
+</div>
+<div class="paragraph">
+<p>ASCII や JIS X 0201 は、互換性を保つように他の符号化文字集合に取り込まれて利用されていますので、以降では、ASCIIやJIS X 0201 を符号化文字集合として話を進めます。</p>
+</div>
+<div class="sect3">
+<h4 id="_発展日本の文字を含む符号化文字集合"><a class="link" href="#_発展日本の文字を含む符号化文字集合">発展：日本の文字を含む符号化文字集合</a></h4>
+<div class="paragraph">
+<p>ASCIIとJIS X 0201の後に日本で標準化された代表的な2つの符号化文字集合 JIS X 0208 と JIS X 0213 について概観します。</p>
+</div>
+<div class="paragraph">
+<p>JIS X 0208やJIS X 0213 などの日本語文字集合では、文字の位置を <strong>面区点</strong> という座標で表します。この位置を表す座標のことを <strong>面区点番号</strong> と呼びます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>面</strong>：文字集合の大きな区画。面の概念はJIS X 0213で導入されたもので、JIS X 0208は全体が1つの面に相当し、JIS X 0213には1面と2面がある</p>
+</li>
+<li>
+<p><strong>区</strong>：各面内の行に相当し、1〜94までの区画がある</p>
+</li>
+<li>
+<p><strong>点</strong>：各区内の列に相当し、1〜94までの位置がある</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>94という数は、ASCIIの7ビットのうち制御文字と空白、DELを除いた領域(<code>0x21</code>〜<code>0x7E</code>)に収録できる文字数94と一致します。また、この領域を2つ分用いれば 94×94=8,836 となり当時想定されていた日本語の文字数を十分に含んでいたことから、このような構成になりました。</p>
+</div>
+<div class="paragraph">
+<p>たとえば、JIS X 0208 と JIS X 0213 では、文字「あ」は1面4区2点に配置されています。これを、 <code>1-04-02</code> のように表記します。</p>
+</div>
+<div class="sect4">
+<h5 id="_jis_x_0208"><a class="link" href="#_jis_x_0208">JIS X 0208</a></h5>
+<div class="paragraph">
+<p>JIS X 0208で定められた第一水準漢字2,965字と第二水準漢字3,390字の計6,355字の漢字、および図形文字524字を含む計6,879文字の符号化文字集合です。2バイト(16ビット)の符号位置を用います。1978年に初版が制定され、1983年、1990年と改訂を重ねながら、日本語処理の基盤として広く普及しました。</p>
+</div>
+<div class="paragraph">
+<p>非漢字としては、記号147字(1〜2区)、英数字62字(3区)、ひらがな83字(4区)、カタカナ86字(5区)、ギリシャ文字48字(6区)、キリル文字66字(7区)、罫線素片32字(8区)の計524字を含み、漢字は使用頻度にしたがい、第一水準と第二水準に分類して収録されています。</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">第一水準漢字（2,965字）</dt>
+<dd>
+<p>常用漢字を中心とした使用頻度の高い漢字です。16〜47区に配置され、日本語文書の95%以上をカバーします。新聞・雑誌での使用頻度、教育漢字、行政文書での使用を基準に選定されました。</p>
+</dd>
+<dt class="hdlist1">第二水準漢字（3,390字）</dt>
+<dd>
+<p>人名用漢字、地名漢字、専門分野で使用される漢字です。48〜84区に配置されています。戸籍法施行規則で認められている人名用漢字や、学術・医学・法律などの専門分野の漢字が含まれます。</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>日常的に用いるほとんどの文字は、この文字集合で事足ります。前述の JIS X 0201 は、7ビットおよび8ビットでの符号化が想定されており、8ビットを用いる場合には7ビットから新たに増える128文字分の領域にカタカナを割り当てました。JIS X 0201 と JIS X 0208 には両者とも数字、カタカナ、英語アルファベットが定義されているため、JIS X 0201 に含まれる文字をいわゆる<strong>半角文字</strong>(半角英数、半角カタカナ)、JIS X 0208に含まれる文字を<strong>全角文字</strong>(全角英数、全角カタカナ)として区別をしています。</p>
+</div>
+<div class="paragraph">
+<p>もともとは符号化文字集合に含まれる文字自体にはそもそもその字形まで規定する意図はなかったはずですが、半角文字と全角文字は1980年代中盤から1990年代にひろまったワープロ専用機で定着しました。当時のワープロはすべてのひらがなと漢字が同じ幅と間隔で配置されるいわゆるベタ組みで正方形の枠を並べた中に各文字を配置していました。しかし、JIS X 0201 に含まれる文字については、その半分の幅で組まれ、半角英数、半角カタカナなどと呼ばれて JIS X 0208 に含まれる文字と区別されました。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Microsoft Word は、英語の文字の組み方に倣っており、ベタ組みではありません。また、フォントによっても文字の幅は異なるため、半角文字といっても、かならずしも全角文字の半分の幅にはなりません。(Windowsのメモ帳では半角文字は全角文字の半分の幅になるように表示されます。)</p>
+</div>
+<table class="tableblock frame-ends grid-all fit-content">
+<caption class="title">表 3. いわゆる全角文字と半角文字の幅比較</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">全角<br>
+半角</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">１２３４５６７８９０<br>
+11223344556677889900</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">全角<br>
+半角</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ＡＢＣＤＥＦＧＨＩＪＫ<br>
+AABBCCDDEFFGGHIIJJKK</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">全角<br>
+半角</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">アイウエオカキクケコ<br>
+ｱｱｲｲｳｳｴｴｵｵｶｶｷｷｸｸｹｹｺｺ</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>半角や全角という呼称は必ずしも実態を反映していませんが、Unicodeでは半角カタカナに “HALFWIDTH KATAKANA”、全角英数字には “FULLWIDTH LATIN/DIGIT” という名称が与えられています。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>いわゆる半角と全角の使い分けについては、Word等で文章を書くときは次の方針に従うのがおすすめです。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>英語アルファベットと数字については半角文字を使う</p>
+</li>
+<li>
+<p>カタカナについては全角文字を使う</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_jis_x_0213"><a class="link" href="#_jis_x_0213">JIS X 0213</a></h5>
+<div class="paragraph">
+<p>JIS X 0213は2000年に制定され（2004年に改正）、JIS X 0208では対応できなかった文字ニーズに応えるために開発されました。JIS X 0208 の拡張であり、JISで定められた第一水準と第二水準の漢字に加えて、第三水準と第四水準の漢字3,695文字（2004年の改正後の数。2000年の初版では3,685文字）および、非漢字記号を含む符号化文字集合です。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>第1面: JIS X 0208の文字を包含し、新たに第三水準漢字を追加</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1区〜94区、各区に1点〜94点</p>
+</li>
+<li>
+<p>JIS X 0208のすべての文字(6,879文字)が含まれる</p>
+</li>
+<li>
+<p>さらに第三水準漢字1,259字と非漢字記号等が追加</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>第2面: 第四水準漢字を中心とした追加文字</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1区〜94区、各区に1点〜94点</p>
+</li>
+<li>
+<p>主に第四水準漢字2,436字を収録</p>
+</li>
+<li>
+<p>人名用漢字、地名漢字、古典籍の文字など</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>理論上は各面で94×94=8,836の符号位置が可能ですが、JIS X 0213は実際にはこの範囲をすべて使い切ってはいません。全ての区画を使い切っているわけではなく、文字の種類ごとに区画を割り当てています。いずれにしても、JIS X 0213 の符号位置は以下のように基本的に2バイト(16ビット)で表現可能です。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>面の表現</strong>: 面番号（1または2）は1ビットで表現可能</p>
+</li>
+<li>
+<p><strong>区の表現</strong>: 94区なので7ビット（128通り）で十分表現可能</p>
+</li>
+<li>
+<p><strong>点の表現</strong>: 94点なので同じく7ビットで表現可能</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>実際の符号化では、面区点番号を文字符号化方式(ISO-2022-JP, Shift_JIS、EUC-JPなど)によって異なる方法でバイト列に変換します。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Shift_JIS: 従来のShift_JIS(WindowsのCP932を含む)が符号化できるのは概ねJIS X 0208の範囲(CP932はこれにNEC・IBM拡張文字を加えたもの)。JIS X 0213に対応した拡張版のShift_JIS-2004では第三・第四水準の漢字も2バイトで符号化できるが、普及は限定的</p>
+</li>
+<li>
+<p>EUC-JP: 1面は2バイト、2面は一部でサポートされ3バイト</p>
+</li>
+<li>
+<p>ISO-2022-JP: 素の規格(RFC 1468)はJIS X 0208しか扱えないため第一・第二水準のみ。JIS X 0213対応版(ISO-2022-JP-2004)では1面・2面も扱える</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>したがって、JIS X 0213自体は符号化文字集合として2バイトの符号位置を使用しますが、実際のファイルやメモリ上での表現方法は選択した文字符号化方式によって決まります。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>収録文字の選定基準</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>戸籍に使用される人名用漢字</strong>: 人の名前に使われる漢字を優先的に収録</p>
+</li>
+<li>
+<p><strong>法令や公用文書で使用される漢字</strong>: 公文書での利用頻度が高い漢字</p>
+</li>
+<li>
+<p><strong>常用漢字表外の漢字で使用頻度の高いもの</strong>: 新聞や雑誌などで比較的よく使われる漢字</p>
+</li>
+<li>
+<p><strong>JIS X 0212(補助漢字)からの再編入</strong>: 1990年に制定されたが普及しなかった補助漢字の一部</p>
+</li>
+<li>
+<p><strong>国語辞典に収録されている漢字</strong>: 日本語として一定の地位を確立している漢字</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>この選定過程では、情報処理学会や文字研究者、出版社、官公庁などからの意見も取り入れられました。第三水準には1,259字、第四水準には2,436字の漢字が追加され、JIS X 0208と合わせると約1万字の漢字をカバーすることになりました。</p>
+</div>
+<div class="paragraph">
+<p>JIS X 0208が最初に策定された1978年には、コンピューターを用いて日常的に情報伝達をするには十分と考えられる文字集合が考えられていました。しかし、コンピューターの普及により、当初の想定を超えて、これらの文字集合が、歴史資料や文学作品の電子化といった文化の担い手としての重責まで負わされることになりました。</p>
+</div>
+<div class="paragraph">
+<p>当時の規格に対しては、いわゆる文化人などからの批判が多く見られましたが、そもそも技術やコンピューターを取り巻く社会事情が全く異なっていた点を考慮する必要があるでしょう。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_発展unicode以前の日本の文字の符号化方式"><a class="link" href="#_発展unicode以前の日本の文字の符号化方式">発展：Unicode以前の日本の文字の符号化方式</a></h4>
+<div class="paragraph">
+<p>かつては、主として以下の3種類の符号化方式がWebページ作りや、プログラミング、文書作成等の様々な場面で、混在して使われていました。いずれも JIS X 0208 を扱うための方式ですが、設計思想や利用環境が異なります。それぞれの特徴を以下の表にまとめます。</p>
+</div>
+<div class="paragraph">
+<p>表の列見出しにある「自己同期性」とは、バイト列の途中から読み始めても文字境界を判定できる性質のことです。後述するように、Shift_JIS にこの性質がないことが、思わぬセキュリティ問題を引き起こした例もあります。なお、完全な自己同期性をもつのは後述するUTF-8で、EUC-JPはASCIIのバイトと日本語のバイトを混同しないというだけで、2バイト文字同士の境界を途中から判定することはできません。</p>
+</div>
+<table class="tableblock frame-all grid-rows fit-content">
+<caption class="title">表 4. 3方式の設計思想の比較</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">方式</th>
+<th class="tableblock halign-left valign-top">主な用途</th>
+<th class="tableblock halign-left valign-top">通信ビット幅</th>
+<th class="tableblock halign-left valign-top">状態</th>
+<th class="tableblock halign-left valign-top">半角カナの扱い</th>
+<th class="tableblock halign-left valign-top">自己同期性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO-2022-JP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">電子メール</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7ビットでもOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">あり(モード切替)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">含まない</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">なし(モード把握が必要)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shift_JIS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Windows系</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8ビット</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">なし</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1バイトで表現</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">なし(2バイト目がASCIIと重なりうる)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EUC-JP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UNIX系</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8ビット</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">なし</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2バイトで表現</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">不完全(ASCIIと日本語のバイトは重ならないが、2バイト文字同士の境界は途中からは判定できない)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>以下では、それぞれの方式について、具体的な符号化例とともに見ていきます。各例は、その方式の設計上の特徴がよく現れるように選んでありますので、表を見るときには <strong>「見どころ」</strong> に注意してください。</p>
+</div>
+<div class="sect4">
+<h5 id="_iso_2022_jp"><a class="link" href="#_iso_2022_jp">ISO-2022-JP</a></h5>
+<div class="paragraph">
+<p>いわゆるJISコードとよばれている符号化です。文字集合としてASCIIとJIS X 0208を含みますが、JIS X 0201の半角カタカナは含まれません。ASCIIに属する文字は1バイト、JIS X 0208の漢字・ひらがな・全角カタカナなどは2バイトを用いて表現する可変長符号化方式です。</p>
+</div>
+<div class="paragraph">
+<p>各バイトの8ビット目は使わないように設計されているため、7ビット通信環境でも問題なく使用できます。そのため、インターネット初期の電子メールシステムで広く採用されました。</p>
+</div>
+<div class="paragraph">
+<p>複数の符号化文字集合を3バイトの制御コード(エスケープシーケンス)により切り替えて扱います。そのため、現在どの文字集合で書かれているかは局所的には判断できず、データを先頭から順に読み進めて切り替え制御を確認する必要があります。</p>
+</div>
+<div class="paragraph">
+<p>以下の表は ISO-2022-JP で「<code>ABあい\n</code>」を符号化した際のバイト列です(最後の <code>\n</code> は Line Feed による改行を表しています)。バイト列の値はすべて16進表記です。8ビットのうち最上位ビットが一切使われていません(つまり、各バイトの16進表記の上位桁が8以上になることがありません)。ASCII互換ですが、日本語の JIS X 0208 の文字を使うときには切り替えのための3バイトの制御コードが挿入されていることがわかります。日本語から、再びASCII文字を用いるときにはASCIIモードに復帰するための3バイトの制御コードが挿入されます。</p>
+</div>
+<table class="tableblock frame-all grid-cols fit-content center">
+<caption class="title">表 5. ISO-2022-JPによる「<code>ABあい\n</code>」の符号化</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">バイト列</th>
+<th class="tableblock halign-center valign-top"><code>41</code></th>
+<th class="tableblock halign-center valign-top"><code>42</code></th>
+<th class="tableblock halign-center valign-top"><code>1B</code></th>
+<th class="tableblock halign-center valign-top"><code>24</code></th>
+<th class="tableblock halign-center valign-top"><code>42</code></th>
+<th class="tableblock halign-center valign-top"><code>24</code></th>
+<th class="tableblock halign-center valign-top"><code>22</code></th>
+<th class="tableblock halign-center valign-top"><code>24</code></th>
+<th class="tableblock halign-center valign-top"><code>24</code></th>
+<th class="tableblock halign-center valign-top"><code>1B</code></th>
+<th class="tableblock halign-center valign-top"><code>28</code></th>
+<th class="tableblock halign-center valign-top"><code>42</code></th>
+<th class="tableblock halign-center valign-top"><code>0A</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">文字</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>A</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>B</code></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #fdd;"><p class="tableblock"> <code>\e</code></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #fdd;"><p class="tableblock"><code>$</code></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #fdd;"><p class="tableblock"><code>B</code></p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><code>あ</code></p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><code>い</code></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #fdd;"><p class="tableblock"> <code>\e</code></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #fdd;"><p class="tableblock"><code>(</code></p></td>
+<td class="tableblock halign-center valign-top" style="background-color: #fdd;"><p class="tableblock"><code>B</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>\n</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">備考</p></th>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock">ASCII</p></td>
+<td class="tableblock halign-center valign-top" colspan="3" style="background-color: #fdd;"><p class="tableblock"> <span class="small">JIS X 0208へ</span></p></td>
+<td class="tableblock halign-center valign-top" colspan="4"><p class="tableblock">JIS X 0208</p></td>
+<td class="tableblock halign-center valign-top" colspan="3" style="background-color: #fdd;"><p class="tableblock"> <span class="small">ASCIIへ復帰</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>LF</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">この例のポイント</div>
+<div class="ulist">
+<ul>
+<li>
+<p>どのバイトも <code>0x80</code> 未満(2桁目が <code>0x0</code>〜<code>0x7</code>)に収まっており、<strong>8ビット目を一切使わない</strong>ため、7ビットしか通せない通信路でも安全に運べます。</p>
+</li>
+<li>
+<p>「あ」「い」と日本語が連続している部分は、1度モードを切り替えれば追加の切替コードは不要です。<strong>長い日本語ほど、相対的に切替コストが小さくなる</strong>設計です。</p>
+</li>
+<li>
+<p>JIS X 0201の半角カタカナは扱えません。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>ISO-2022-JPは、7ビット通信環境でも使えるように設計された符号化方式で、モード切替で複数の文字集合を扱います。
+区と点の番号にそれぞれ <code>0x20</code> を加えることで、符号化します。</p>
+</div>
+<div class="paragraph">
+<p>以下は、JIS X 0208 モードでの面区点からの変換の例です。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>「あ」の(区番号, 点番号) = (4, 2)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>第1バイト = 区番号 <code>4</code> + <code>0x20</code> = <code>0x24</code></p>
+</li>
+<li>
+<p>第2バイト = 点番号 <code>2</code> + <code>0x20</code> = <code>0x22</code></p>
+</li>
+<li>
+<p>結果: <code>0x24</code> <code>0x22</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_shift_jis"><a class="link" href="#_shift_jis">Shift_JIS</a></h5>
+<div class="paragraph">
+<p>マイクロソフトが採用し MS-DOS や Windows で広く使われてきた符号化で、符号化文字集合 JIS X 0201 と JIS X 0208 を、それぞれ1バイトと2バイトで符号化する可変長符号化方式です。Shift_JIS はさらにマイクロソフトで独自拡張されました。日本語のほとんどの文字は2バイトで表現されます。後で示すようにShift_JISを依然として用いている大企業のWebサイトが複数あります。</p>
+</div>
+<table class="tableblock frame-all grid-cols fit-content center">
+<caption class="title">表 6. Shift_JISによる「<code>ABｱｲ\表\n</code>」の符号化</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">バイト列</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>41</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>42</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>B1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>B2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><code>5C</code></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>95</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong><code>5C</code></strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0A</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">文字</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>A</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>B</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>ｱ</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>ｲ</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>\</code></p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><code>表</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>\n</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">この例のポイント</div>
+<div class="ulist">
+<ul>
+<li>
+<p>半角カナの <code>ｱ</code> <code>ｲ</code> がそれぞれ <strong>1バイト</strong> (<code>B1</code>, <code>B2</code>) で符号化されている点に注目してください。あとで見るEUC-JPとの違いです。</p>
+</li>
+<li>
+<p>「<code>\</code>」の <code>0x5C</code> (5バイト目) と、「表」の2バイト目 <code>0x5C</code> (7バイト目) が、<strong>まったく同じ値</strong> になっています。バイト列だけを見ても、後者がASCIIの <code>\</code> なのか、それとも2バイト文字「表」の一部なのかは、文脈なしには判断できません。</p>
+</li>
+<li>
+<p>このため、たとえばバックスラッシュを単純検索すると、「表」の2バイト目を誤検出することがあります。これが Shift_JIS が <strong>自己同期性をもたない</strong> ということの意味です。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Shift_JISでは区点番号をやや複雑な方法で符号化しますので、ここでは詳細には触れません。</p>
+</div>
+<div class="paragraph">
+<p>例:「表」(41区29点)の場合</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>第1バイト = <code>0x81</code> + (41 - 1) / 2 = <code>0x81</code> + 20 = <code>0x95</code></p>
+</li>
+<li>
+<p>第2バイト = <code>0x3F</code> + 29 = <code>0x5C</code></p>
+</li>
+<li>
+<p>Shift_JIS での「表」 = <code>0x95</code> <code>0x5C</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>（この式は奇数区のうち区番号1〜61、点番号1〜63の場合に使えます。区番号63以上、偶数区、点64以上では別のオフセットが必要です。）</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Shift_JISが引き起こしたセキュリティの脆弱性</div>
+<div class="paragraph">
+<p>Shift_JISは、前述のように2バイト文字の2バイト目がASCIIの文字と重なる可能性があります。このような文字コードの設計上の特性が、思わぬセキュリティ問題を引き起こした例があります。</p>
+</div>
+<div class="paragraph">
+<p>符号化方式の解釈が送信側と受信側で食い違うと、構文上の意味が変わる危険があります。WHATWG Encoding Standardは、2011年に報告された、不正なShift_JISの先頭バイトと引用符の扱いの不一致を例に挙げています。これは、正常な2バイト文字を含めるだけで必ず攻撃になる、という意味ではありません。</p>
+</div>
+<div class="paragraph">
+<p>同標準は、新しい形式やプロトコルではUTF-8を使うよう求めています。同じバイト列を同じ規則で解釈し、不正な列の扱いもそろえることが重要です。出典：<a href="https://encoding.spec.whatwg.org/#security-background">Encoding Standard: Security background</a>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_euc_jp"><a class="link" href="#_euc_jp">EUC-JP</a></h5>
+<div class="paragraph">
+<p>EUC-JP(Extended Unix Code packed format for JaPanese)は、UNIXとよばれるOS上で日本語を扱う際に用いられてきた文字コードです。ASCIIの文字は1文字1バイト、それ以外のほとんどの日本語の仮名・漢字などは2バイトで符号化される可変長符号化方式です。2バイトの符号化では1バイト目も、2バイト目も8ビット目の最上位ビットが1になっており、ASCIIの符号と絶対に重ならないように設計されています。いわゆる半角カタカナも2バイトで符号化されています。また、JIS X 0212補助漢字に該当する文字は3バイトで符号化されますが、同様に2バイト目と3バイト目の最上位ビットは1になるように設計されています。</p>
+</div>
+<table class="tableblock frame-all grid-cols fit-content center">
+<caption class="title">表 7. EUC-JPによる「<code>ABｱｲ\表\n</code>」の符号化</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">バイト列</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>41</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>42</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>8E</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>B1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>8E</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>B2</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>5C</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>C9</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>BD</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0A</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">文字</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>A</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>B</code></p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><code>ｱ</code></p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><code>ｲ</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>\</code></p></td>
+<td class="tableblock halign-center valign-top" colspan="2"><p class="tableblock"><code>表</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>\n</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">この例のポイント</div>
+<div class="ulist">
+<ul>
+<li>
+<p>半角カナの <code>ｱ</code> が <code>8E B1</code> の <strong>2バイト</strong> で符号化されている点が、Shift_JIS との違いです。先頭の <code>0x8E</code> は「次の1バイトは半角カナだよ」というシフト記号(Single Shift 2)で、これに半角カナのコード <code>0xB1</code> が続きます。</p>
+</li>
+<li>
+<p>「表」は <code>C9 BD</code> で、いずれのバイトも最上位ビットが <code>1</code> (<code>0x80</code> 以上) です。同様に半角カナを表す <code>0x8E</code> も <code>0x80</code> 以上の値です。一方、ASCIIの <code>\</code> は <code>0x5C</code> で <code>0x80</code> 未満。<strong>日本語に関わるバイトには必ず <code>0x80</code> 以上の値しか出てこない</strong>ので、Shift_JIS のようなASCIIとの誤検出は起きません。</p>
+</li>
+<li>
+<p>この設計のために、ASCIIだけで書ける英数字に比べると同じ「半角カナ」を表すのに2倍のバイトを消費するという代償もあります。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>EUC-JPは単純な方法で面区点をバイト列に変換します。</p>
+</div>
+<div class="paragraph">
+<p>例：「表」(41区29点)の場合</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>第1バイト = <code>0xA0</code> + 41 = <code>0xC9</code></p>
+</li>
+<li>
+<p>第2バイト = <code>0xA0</code> + 29 = <code>0xBD</code></p>
+</li>
+<li>
+<p>EUC-JPでの「表」 = <code>0xC9BD</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>いわゆる半角カタカナの場合、第1バイトを <code>0x8E</code>(Single Shift 2)とし、第2バイトには JIS X 0201 の半角カナコード(7ビット)に <code>0x80</code> を加えた値を置きます。例: 「ｱ」は JIS X 0201 の8ビット符号では <code>0xB1</code> (7ビットのカナ集合では <code>0x31</code>)なので、EUC-JP では <code>0x8E</code> <code>0xB1</code> (= <code>0x31 + 0x80</code>)となります。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_3方式の比較まとめ"><a class="link" href="#_3方式の比較まとめ">3方式の比較まとめ</a></h5>
+<div class="paragraph">
+<p>ここまで見てきた3方式を比較します。</p>
+</div>
+<table class="tableblock frame-all grid-rows stretch">
+<caption class="title">表 8. 3方式のバイト構造の比較</caption>
+<colgroup>
+<col width="20%">
+<col width="40%">
+<col width="40%">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">文字コード</th>
+<th class="tableblock halign-left valign-top">バイト構造</th>
+<th class="tableblock halign-left valign-top">特徴</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO-2022-JP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ASCII: <code>0xxxxxxx</code><br>
+JIS X 0208: <code>0xxxxxxx</code> <code>0xxxxxxx</code><br>
+(切替コード <code>1B 24 42</code> / <code>1B 28 42</code> で囲む)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">全バイトの最上位ビットが0(7ビット安全)。モード切替が必要</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shift_JIS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ASCII / 半角カナ: <code>0xxxxxxx</code> または <code>1xxxxxxx</code><br>
+JIS X 0208: <code>1xxxxxxx</code> <code>xxxxxxxx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2バイト目はASCIIと重なる範囲があり、誤検出の可能性がある</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EUC-JP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ASCII: <code>0xxxxxxx</code><br>
+JIS X 0208: <code>1xxxxxxx</code> <code>1xxxxxxx</code><br>
+半角カナ: <code>10001110</code> <code>1xxxxxxx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">日本語のバイトはすべて最上位ビットが1。ASCIIと混同しない</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="./img/byte-range-map.svg" alt="ASCII、Shift_JIS、EUC-JPの各バイトが取りうる値の範囲を塗り分けた図">
+</div>
+<div class="title">図 5. バイト値の範囲マップ(各方式でバイト値0x00〜0xFFがどう使われるか)</div>
+</div>
+<div class="paragraph">
+<p>直感的には、同じ「<code>A表</code>」という文字列を3方式で符号化すると、たとえば以下のように違ってきます (<code>\n</code> は省略)。</p>
+</div>
+<table class="tableblock frame-all grid-rows fit-content">
+<caption class="title">表 9. 「<code>A表</code>」を3方式で符号化した場合</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">方式</th>
+<th class="tableblock halign-left valign-top">バイト列</th>
+<th class="tableblock halign-left valign-top">バイト数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ISO-2022-JP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>41</code> <code>1B 24 42</code> <code>49 3D</code> <code>1B 28 42</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9バイト</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shift_JIS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>41</code> <code>95 5C</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3バイト</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EUC-JP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>41</code> <code>C9 BD</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3バイト</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>ISO-2022-JPは漢字を1文字使うだけで切替コードのオーバーヘッドが発生するため、短い日本語ではバイト数が膨らみます。一方、長い日本語であれば1度の切替で済むので、相対的なオーバーヘッドは小さくなります。Shift_JIS と EUC-JP は同じバイト数ですが、Shift_JIS は2バイト目にASCIIと重なる <code>0x5C</code> などの値が現れるのに対し、EUC-JP は2バイト目も最上位ビットが1の値しか出ないため、ASCIIと混同されないという違いがあります。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="unicode-basics"><a class="link" href="#unicode-basics">1.5. Unicode の基礎</a></h3>
+<div class="sect3">
+<h4 id="_世界中の文字を含む文字集合_unicode"><a class="link" href="#_世界中の文字を含む文字集合_unicode">世界中の文字を含む文字集合 Unicode</a></h4>
+<div class="paragraph">
+<p>インターネットで世界中のWebページにアクセスできる時代になると、国ごとに異なる文字コードでWebページが記述されていると、閲覧時にはどの符号化文字集合かがわからず、いわゆる文字化けが頻発しました(英語のWikipediaでもmojibakeという項目があります)。また、世界中で共通のOS(Windows, macOS, Linuxなど)や、ソフトウェア(Microsoft Officeなど)が使われるようになると、ソフトウェアの開発も国ごとに開発をし直したりするコストが問題になりました。</p>
+</div>
+<div class="paragraph">
+<p>そこで、世界中の文字を含む大きな符号化文字集合を作成することになりました。そうしてできたのが、Unicodeです。「Uni=単一の」「code=符号」の名前のとおり、世界中の文字を共通に扱うことを目指す規格です。すべての文字が収録済みという意味ではありません。1991年に Unicode 1.0 が策定されて以来、現在に至るまで版をかさねています。</p>
+</div>
+<div class="paragraph">
+<p>Unicode上の文字の位置を<strong>コードポイント</strong>と呼びます。たとえば「学」という漢字のコードポイントは <code>U+5B66</code> のような形式で表します。 <code>5B66</code> の部分は16進法による数表現です。コードポイントは、Unicodeという符号化文字集合の中で文字の位置を特定するための識別子であり、コンピューター内部での表現(バイト列)ではないことに注意してください。</p>
+</div>
+<div class="paragraph">
+<p>Unicode では、中国語、日本語、朝鮮語、ベトナム語で使われている漢字を統合して、共通して使える漢字には同じコードポイントを割り当てています。これをCJK(CJKV)統合漢字とよびます。実際には字形や由来が異なる漢字が統合されたこともあり批判もありました。しかし、様々な言語で共通に用いられているラテン文字は統合して符号化されていることを考えると、言語を跨って共通に使われている文字を統合しようという考え自体は自然なものです。</p>
+</div>
+<div class="paragraph">
+<p>コードポイントを複数組合せて1文字を表現する仕組みがあることから、1文字が必ずしも1つのコードポイントで表現されるわけではありません。</p>
+</div>
+<div class="paragraph">
+<p>複数の符号化文字集合があった場合、コードポイント(もしくはコードポイントに相当する付番)は独立に与えられていますので、符号化文字集合が異なれば、同じコードポイントでも異なる文字に対応することがあります。しかし、UnicodeはASCIIを包含する形で設計されているため、Unicodeの最初の128文字はASCIIと一致します。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_unicodeコードポイントマップ"><a class="link" href="#_unicodeコードポイントマップ">Unicodeコードポイントマップ</a></h4>
+<div class="paragraph">
+<p>Unicodeのコードポイント空間は17の「面(plane)」に分かれています。以下の表はその概要を示しています。</p>
+</div>
+<table class="tableblock frame-all grid-rows fit-content">
+<caption class="title">表 10. Unicodeコードポイント領域の概要</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">面番号</th>
+<th class="tableblock halign-left valign-top">名称</th>
+<th class="tableblock halign-left valign-top">主な収録文字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 (U+0000-U+FFFF)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">基本多言語面 (BMP)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ASCII、ラテン文字、漢字（CJK統合漢字）、ひらがな、カタカナなど</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 (U+10000-U+1FFFF)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">追加多言語面 (SMP)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">歴史的文字、音楽記号、絵文字など</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2 (U+20000-U+2FFFF)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">表意文字補助面 (SIP)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CJK統合漢字拡張B〜F・Iなど</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3 (U+30000-U+3FFFF)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">第三漢字面 (TIP)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CJK統合漢字拡張G・Hなど(拡張GはUnicode 13.0/2020年で追加)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4-13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">未割当て</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">（将来の拡張用）</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14 (U+E0000-U+EFFFF)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">特殊目的補助面</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">言語タグ、異体字セレクタなど</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15-16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">私用面 (PUA)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">私的利用のために予約</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>文字は情報を伝えるための重要なインフラです。</p>
+</div>
+<div class="paragraph">
+<p>文字コードは文学や歴史学の分野では無縁だと思う向きもあるかもしれません。現在、ほとんどの文学作品はコンピューター上で執筆されています。また、電子化された文書は文化を継承する重要な資料となっています。（そうでなければ、Unicodeに現在使われていないヒエログリフやルーン文字や楔形文字(クネイフォーム)などを含むことはなかったでしょう。ヒエログリフの例:「𓀀𓄿𓅱𓆑𓅓」。フォントが対応していなければ見えません。）</p>
+</div>
+<div class="paragraph">
+<p>膨大な文字の標準化や字形のフォントデザインには気の遠くなりそうな地道な作業があります。単なる文字数の問題ではなく、錯視等の人の視覚特性を考慮したデザインをする必要があります。そのため、たとえば同じ偏の漢字でも、つくりが異なると偏のデザインも、つくりとのバランスによって修正されます。日本語の場合、通常最低2万字形以上、制作には一般には2年以上はかかると言われています。Unicodeの漢字をすべてカバーしようとすると9万文字以上のデザインをしなくてはなりません。</p>
+</div>
+<div class="paragraph">
+<p>インフラとしてのフォントデザインに興味を持った方は「一〇〇年目の書体づくり―『秀英体 平成の大改刻』の記録」(大日本印刷, 2013)をおすすめします。延べ12万字形の7年間に渡る書体開発の記録です。普段、文字を意識せずに文章を読むことができる背後には、緻密なデザインと膨大な作業があることがよくわかります(現在は電子図書のみで入手可能)。</p>
+</div>
+<div class="paragraph">
+<p>我々は、文字インフラを大変な労力をかけて整備してきた方々、そして、現在もインフラ整備に取り組んでいる方々の恩恵を受けています。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_unicode_の符号化方式"><a class="link" href="#_unicode_の符号化方式">Unicode の符号化方式</a></h4>
+<div class="paragraph">
+<p>まずは次の違いを押さえてください。表の単位は<strong>1つのUnicodeスカラー値</strong>です。見た目の1文字にスカラー値が複数必要な場合は、それぞれを符号化します。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col width="25%">
+<col width="25%">
+<col width="50%">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">方式</th>
+<th class="tableblock halign-left valign-top">1スカラー値の長さ</th>
+<th class="tableblock halign-left valign-top">押さえる特徴</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UTF-16</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2または4バイト</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BMP外は16ビットの符号単位2つで表す</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UTF-8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1〜4バイト</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ASCIIの範囲は同じ1バイト。あ・がなどは3バイト</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UTF-32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4バイト</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">固定長。ただし見た目の1文字が4バイトとは限らない</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>以下は、この違いを生んだ背景と具体的な符号化の仕組みです。ビットの計算は折りたたみ欄に分けています。</p>
+</div>
+<div class="sect4">
+<h5 id="_出発点文字の番号をそのまま16ビットで表す"><a class="link" href="#_出発点文字の番号をそのまま16ビットで表す">出発点：文字の番号をそのまま16ビットで表す</a></h5>
+<div class="paragraph">
+<p>初期のUnicodeは、文字に付けた番号を16ビットでそのまま表す設計でした。たとえば「あ」の番号 <code>U+3042</code> は、16ビットの値 <code>0x3042</code> で表せます。番号と内部表現を直接対応させる、素直な考え方です。この16ビット固定の方式は <strong>UCS-2</strong> と呼ばれます（2バイトを並べる順序は後で説明します）。</p>
+</div>
+<div class="paragraph">
+<p>しかし、文字を割り当てる領域を16ビットの範囲より広げると、すべての番号を1つの16ビット値に収めることはできません。そこで、従来の表現を引き継ぎながら、一部の番号を16ビット値2つの組で表すように拡張したものが <strong>UTF-16</strong> です。この「単純な出発点 → 拡張が必要になった理由」の順で見ていきましょう。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">初期の16ビット固定方式とUTF-16の区別</div>
+<div class="paragraph">
+<p>Unicode 1.x の16ビット固定の方式と、サロゲートペアを持つUTF-16は区別します。UTF-16はUnicode 2.0（1996年）で導入されました。なお、UTF-8はすでにUnicode 1.1に含まれていました。以下はUTF-16の方がUTF-8より先に成立したという年表ではなく、16ビットの設計から仕組みを理解するための説明順序です。
+参照：<a href="https://www.unicode.org/faq/utf_bom.html">Unicode FAQ</a>、<a href="https://www.unicode.org/reports/tr17/">Unicode Character Encoding Model</a>。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>現在のUnicodeでは、コードポイントの範囲は16ビットに収まらず、最大値を表すには21ビット必要です。ただし、各文字を21ビット固定で保存するわけではありません。番号の範囲と、保存する際の符号化方式を分けて考えます。</p>
+</div>
+<div class="paragraph">
+<p>Unicodeのコードポイントの範囲は <code>U+0000</code>〜<code>U+10FFFF</code> の1,114,112個です。このうちサロゲート領域 <code>U+D800</code>〜<code>U+DFFF</code> を除いた1,112,064個を<strong>Unicodeスカラー値</strong>と呼びます。UTF-8・UTF-16・UTF-32はいずれも同じスカラー値の範囲を符号化します。</p>
+</div>
+<div class="paragraph">
+<p>21ビットの枠があっても、そのすべてを文字に使えるわけではありません。サロゲート以外にも、非文字として予約された位置や私用領域、未割当ての位置があります。符号化できる値の数と、収録済みの文字数は区別しましょう。参照：<a href="https://www.unicode.org/versions/Unicode17.0.0/core-spec/chapter-3/">Unicode 17.0 第3章</a>。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_utf_16"><a class="link" href="#_utf_16">UTF-16</a></h5>
+<div class="paragraph">
+<p>UTF-16は、16ビットを1つの<strong>符号単位</strong>（code unit）とし、1スカラー値を1つまたは2つの符号単位で表す方式です。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>BMP内のスカラー値</strong>：番号をそのまま1つの16ビット値で表します。「あ」なら <code>0x3042</code> で、2バイトです。</p>
+</li>
+<li>
+<p><strong>BMP外のスカラー値</strong>（<code>U+10000</code> 以上）：2つの16ビット値に変換して表すので、4バイトです。この組を<strong>サロゲートペア</strong>と呼びます。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>サロゲートペアの前半には <code>0xD800</code>〜<code>0xDBFF</code>、後半には <code>0xDC00</code>〜<code>0xDFFF</code> の値を使います。これらの範囲は通常の文字の番号には使わず、ペアを識別するために予約されています。計算方法を覚える前に、<strong>従来の16ビット表現を保ちつつ、2つ組で表せる範囲を広げた</strong>ことを押さえてください。</p>
+</div>
+<details>
+<summary class="title">発展：サロゲートペアの計算（初読では省略可）</summary>
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="./img/surrogate-pair.svg" alt="U+1F363からサロゲートペアD83C DF63を求める手順">
+</div>
+<div class="title">図 6. サロゲートペアの計算過程(「🍣」U+1F363の場合)</div>
+</div>
+</div>
+</details>
+<div class="paragraph">
+<p>Windowsでは文字の内部表現にUTF-16LEを採用しています(LEの意味については後述)。これは1990年代初頭の技術状況と設計判断を反映したものであり、その後のUnicodeの発展や業界動向とは異なる道筋をたどることになりました。現在のWindowsも、互換性維持のためにこの設計を継続しています。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_utf_8"><a class="link" href="#_utf_8">UTF-8</a></h5>
+<div class="paragraph">
+<p>一方、ASCIIの英数字まで2バイトにすると、従来のASCIIのバイト列とは一致しません。そこで次に、ASCIIとの互換性を保ちながらUnicodeを表す方式を見ます。</p>
+</div>
+<div class="paragraph">
+<p>UTF-8は、ASCIIの範囲をそのまま1バイトで表せるUnicodeの符号化方式です。1つのスカラー値を1〜4バイトで表します。「あ」「学」などは3バイト、BMP外の漢字や多くの絵文字は4バイトです。ただし、結合文字や絵文字の組み合わせを含む「見た目の1文字」全体では、4バイトを超える場合もあります。</p>
+</div>
+<details>
+<summary class="title">発展：UTF-8のビット配置と「あ」の符号化（初読では省略可）</summary>
+<div class="content">
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">コードポイントの<br>
+ビット数</th>
+<th class="tableblock halign-center valign-top">コードポイントの範囲</th>
+<th class="tableblock halign-left valign-top">符号化 (右詰め)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7bit</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>U+0000</code>〜<code>U+007F</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red">0</span>xxx xxxx</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11bit</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>U+0080</code>〜<code>U+07FF</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red">110</span>x xxxx <span class="red">10</span>xx xxxx</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16bit</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>U+0800</code>〜<code>U+FFFF</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red">1110</span> xxxx <span class="red">10</span>xx xxxx <span class="red">10</span>xx xxxx</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21bit</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>U+10000</code>〜<code>U+10FFFF</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="red">1111 0</span>xxx <span class="red">10</span>xx xxxx <span class="red">10</span>xx xxxx <span class="red">10</span>xx xxxx</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>（4ビットごとの空白は読みやすさのためです。UTF-8では、サロゲート <code>U+D800</code>〜<code>U+DFFF</code>、<code>U+10FFFF</code> を超える値、必要以上に長い符号化は不正です。）</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/utf8-packing.svg" alt="「あ」のコードポイント16ビットをUTF-8の3バイトに詰め込む様子">
+</div>
+<div class="title">図 7. UTF-8のビットの詰め込み(「あ」U+3042の場合)</div>
+</div>
+</div>
+</details>
+</div>
+<div class="sect4">
+<h5 id="_utf_32"><a class="link" href="#_utf_32">UTF-32</a></h5>
+<div class="paragraph">
+<p>Unicodeのすべてのスカラー値（最大21ビット）を32ビット(4バイト)の固定長で符号化する方式です。ASCIIに含まれる文字だけで書かれた文書では、ASCIIの4倍の領域を消費するため一般には用いられませんが比較的処理が単純になるため、高速化のためにプログラミング言語やデータベース中で用いられます。（後で説明する動的合成や異体字セレクタを考慮すると1文字がかならず4バイトになるわけではありません。）</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Windows の「メモ帳」では、規定の符号化方式が、長らく使われてきた Shift_JIS から UTF-8 にかわりました。メモ帳では Shift_JIS に相当する符号化方式は ANSI と表示されています。また、やや古いメモ帳では、UTF-16LE は Unicode と表示されています。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/notepad.png" alt="notepad">
+</div>
+</div>
+<div class="paragraph">
+<p>Word, Excel, PowerPoint などのオフィスツールのファイルは文字列を UTF-8 で格納しています。しかし、Excel に CSV ファイルを取り込む際には、Shift_JIS であればそのまま読み込めますが、UTF-8 の場合はかつて、UTF-8 であることの目印として3バイトのバイト列をファイルの先頭につける必要がありました(近年の Excel では UTF-8 対応が改善されており、この目印がなくても正しく読み込める場合が増えています)。この3バイトの目印は UTF-8 シグネチャと呼ばれるもので、詳細は後述のBOMの節で説明します。Unix/Linux 環境では一般には付けない慣習がありますが、Windows のアプリケーションでは広く使用されています。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>UTF-8とUTF-16はスカラー値ごとの長さが可変です。UTF-32では、BOMなどを除いた正しいデータのバイト数を4で割ればスカラー値の個数がわかります。ただし、どの方式でも、バイト数だけから見た目の文字数を求めることはできません。</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_utf_16_と_utf_32_におけるバイトの並び順"><a class="link" href="#_utf_16_と_utf_32_におけるバイトの並び順">UTF-16 と UTF-32 におけるバイトの並び順</a></h4>
+<div class="paragraph">
+<p>UTF-16では文字を表現するのに16ビット(=2バイト)単位でデータを扱います。この2バイトをメモリ上や保存ファイル内でどのような順序で並べるかについて、2つの方式が存在しています。これにより、同じ文字データでも、使われるコンピューターの種類によって異なる並び方で保存されることがあります。この曖昧さを解消するために、ファイルの先頭に特殊な目印を付ける方法があります。これを Byte Order Mark(<strong>BOM</strong>)と呼び、このファイルが「どちらの並び方で保存されているか」を示します。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>例えば、日本語の「あ」(コード番号 <code>U+3042</code>)は、同じUTF-16でも、コンピューターによってファイルに <code>0x30</code> <code>0x42</code> の順にデータを配置する場合と、 <code>0x42</code> <code>0x30</code> の順に配置する場合があります。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>0x30</code> <code>0x42</code>  のように人が読むときと同じ順序に数字を配置する方式を、ビッグエンディアン(Big-Endian)といい、
+<code>0x42</code> <code>0x30</code>  のように逆順に数字を配置する方式を、リトルエンディアン(Little-Endian)といいます。</p>
+</div>
+<div class="paragraph">
+<p>これらの名称は『ガリバー旅行記』のエピソードに由来しています。物語では、ゆで卵を食べる際に「大きい端から割るべきか(ビッグエンディアン)」「小さい端から割るべきか(リトルエンディアン)」で小人の国(リリパット)の住人が2つの派閥に分かれて争いが起きます。</p>
+</div>
+<div class="sect4">
+<h5 id="_utf_16の派生形式について"><a class="link" href="#_utf_16の派生形式について">UTF-16の派生形式について</a></h5>
+<div class="paragraph">
+<p>UTF-16には、バイト順序によって以下の派生形式があります。</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">UTF-16</dt>
+<dd>
+<p>エンディアン(バイト順序)が指定されていない一般的な形式です。通常、ファイルの先頭にBOMを使用して順序を示します。</p>
+</dd>
+<dt class="hdlist1">UTF-16BE</dt>
+<dd>
+<p>ビッグエンディアン方式を規定の方式として符号化する方式です。</p>
+</dd>
+<dt class="hdlist1">UTF-16LE</dt>
+<dd>
+<p>リトルエンディアン方式を規定の方式として符号化する方式です。</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>UTF-16(BOM付き)とUTF-16LE/BEの違いは微妙ですが、UTF-16LE/BEはエンディアン方式を規定のものとして扱い、BOMが省略されることが多いという点が異なります。一方、単に「UTF-16」と呼ばれる場合は、通常BOMが付いており、そのBOMによってバイト順序を判断します。</p>
+</div>
+<div class="paragraph">
+<p>では、なぜほとんどの文字が2バイトの Shift_JIS や EUC-JP ではエンディアンの区別が不要なのに、UTF-16やUTF-32のときだけエンディアンが問題になるのでしょうか。</p>
+</div>
+<div class="paragraph">
+<p>現在のほとんどのコンピューターはバイトアドレッシング方式といって、メモリの領域1バイトごとに番地がふってあり、1バイト単位でデータにアクセスする場合は、メモリに並んでいる順番にデータを取得することができます。ところが、2バイト単位になると、歴史的な経緯もあって、ビッグエンディアン、リトルエンディアンという2通りのデータの格納方法が存在するからなのです。</p>
+</div>
+<div class="paragraph">
+<p>通常同じコンピューター内でデータを扱う場合には、エンディアンは問題になりません。しかし、文字はコンピューターをまたがってやり取りされるため、方式の違うコンピューター間でも一貫したデータの読み取りができるように取り決めが必要になります。</p>
+</div>
+<div class="paragraph">
+<p>Shift_JISは1バイト文字と2バイト文字が混在していますが、各文字のバイト列はオクテット単位(バイト単位)で順番に読み込まれて処理されます。
+最初のバイトを見て「これは1バイト文字か2バイト文字の先頭か」を判断し、必要に応じて次のバイトを読み込みます。
+また、UTF-8 でもオクテット単位でデータを順に格納するため、エンディアンは問題となりません。</p>
+</div>
+<div class="paragraph">
+<p>UTF-16は16ビットの符号単位、UTF-32は32ビットの符号単位をバイト列に直すため、そのバイト順を定めます。UTF-8やShift_JISはバイトの並びそのものを規定しているので、この選択がありません。これはデータ形式の取り決めであり、CPUが必ず2バイトを一度に読み込むという意味ではありません。どちらのCPUでも、指定されたバイト順のファイルを読み書きできます。</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>この節の内容はコンピューターの内部設計に関わるため、少し難しく感じるかもしれません。もう少し詳しく説明します。
+「エンディアン」とは、複数バイトの情報をメモリ上にどのように並べるかという方式のことです。大きく分けて次の2種類があります。</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">ビッグエンディアン</dt>
+<dd>
+<p>人間が読み書きする順序と同じように、上の桁から順に並べる方式です。
+例えば、16進法で <code>1234</code> という数値は、メモリ上では <code>12</code> <code>34</code> の順に配置されます。この方式は直感的で理解しやすいため、多くのファイルフォーマットやネットワーク通信で使われています。</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>TCPやIPのヘッダーに含まれる複数バイトの整数などは、ビッグエンディアン（ネットワークバイトオーダー）を用います。ただし、インターネットを流れるすべてのデータがこの順序というわけではなく、形式ごとの規定に従います。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>IPアドレス「<code>192.168.1.1</code>」を2進数で表すと「<code>11000000.10101000.00000001.00000001</code>」となりますが、これをネットワーク上で送る際には、最初のバイト「<code>11000000</code>」（192）から順に送信します。</p>
+</li>
+<li>
+<p>ポート番号「8080」(16進法で「<code>1F90</code>」)は、ネットワーク上では「<code>1F</code>」「<code>90</code>」の順で送信されます。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>バイト順は通信する双方で一致させる必要があります。IPアドレスは国番号ではなく、経路選択ではネットワークのプレフィックス（先頭部分）を使います。バイト順だけから通信や計算の速さの優劣が決まるわけではありません。</p>
+</div>
+<div class="paragraph">
+<p>多くの標準的なファイルフォーマットもビッグエンディアンを採用しています。
+PNG画像、JPEG画像、音声ファイルのAIFFなどのファイルフォーマットに含まれる数値データにもビッグエンディアンが使用されています。</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">リトルエンディアン</dt>
+<dd>
+<p>下の桁から順に並べる方式です。
+16進法の <code>1234</code> という数値が、メモリ上では <code>34</code> <code>12</code> の順に配置されます。パソコンで広く使われるx86などはこの方式です。</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="title">Juliaでのエンディアンの確認（リトルエンディアンの実行例）</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; collect(reinterpret(UInt8, UInt16[0x1234]))
+2-element Vector{UInt8}:
+ 0x34
+ 0x12</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>reinterpret</code> は、同じデータを別の型の並びとして読みます。ビッグエンディアンの環境では順番が逆になります。</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>BOMによる指定</strong></p>
+</div>
+<div class="paragraph">
+<p>UTF-16では、ファイルの先頭に、コードポイント <code>U+FEFF</code> (ZERO WIDTH NO-BREAK SPACE)を配置します。
+この <code>U+FEFF</code> をUTF-16で符号化した2バイトが、そのままBOMとして機能します。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ビッグエンディアンで符号化すると <code>FE FF</code></p>
+</li>
+<li>
+<p>リトルエンディアンで符号化すると <code>FF FE</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>受信側は最初の2バイトを見て、どちらのバイトオーダーで符号化されているかを判断し、その後のデータ部分は、BOMで示されたバイトオーダーで符号化されます。</p>
+</div>
+<div class="paragraph">
+<p>UTF-32でも、同様にファイルの先頭にコードポイント <code>U+FEFF</code> (ZERO WIDTH NO-BREAK SPACE)を1つ配置します。これをUTF-32で符号化した4バイトがBOMとして機能します。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>00 00 FE FF</code> ならビッグエンディアン</p>
+</li>
+<li>
+<p><code>FF FE 00 00</code> ならリトルエンディアン</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>と判定します。</p>
+</div>
+<div class="paragraph">
+<p><strong>プロトコルや実装で合意</strong></p>
+</div>
+<div class="paragraph">
+<p>UTF-16LE や UTF-16BEという名前で、システム間でのプロトコル仕様や設定ファイル、APIの仕様などで方式を取り決めておきます。この場合、ファイル自体にはバイトオーダーの情報は含まれません。例えばWindowsのAPIやファイルシステムではUTF-16LEが規定です。また、RFC 2781では、"UTF-16"というラベルが指定されたテキストにBOMがない場合はビッグエンディアンと解釈すると規定されています。</p>
+</div>
+<div class="paragraph">
+<p>UTF-8自体はエンディアン問題がないため本来BOMは不要ですが、主にWindowsシステムでの互換性や文字コード自動検出のためにUTF-8シグネチャ(UTF-8 Signature)という特殊なバイト列をファイルの先頭に付加することがあり「UTF-8 BOM(Byte Order Mark)」とも呼ばれます。具体的には、以下の3バイトの並びです。</p>
+</div>
+<div class="paragraph">
+<p><code>EF BB BF</code></p>
+</div>
+<div class="paragraph">
+<p>これは、Unicode文字「Zero Width No-Break Space（ゼロ幅改行なし空白）」のコードポイント <code>U+FEFF</code> を UTF-8 でエンコードしたものです。Windowsシステムでの互換性や文字コード自動検出のために使用されますが、問題を引き起こすこともあり、一般には推奨されません。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_符号化のトレンド"><a class="link" href="#_符号化のトレンド">符号化のトレンド</a></h4>
+<div class="paragraph">
+<p>下の図では、世界中のWebページで使われている文字コードの割合の経年変化をプロットしています。
+これをみると、2008年にそれまで最も使われていたASCIIやラテン文字集合が、Unicode(主としてUTF-8)に取って代わられたことがわかります。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/unicode.png" alt="unicode">
+</div>
+<div class="title">図 8. <a href="https://googleblog.blogspot.com/2012/02/unicode-over-60-percent-of-web.html">Unicode over 60 percent of the web, Feb. 3, 2012</a></div>
+</div>
+<div class="paragraph">
+<p>その後も、Unicodeは急速に普及し、現在では約99%のWebサイトでUnicodeが使われていることが、以下のグラフからもわかります。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/web-char-code-usage.png" alt="web char code usage">
+</div>
+<div class="title">図 9. <a href="https://w3techs.com/technologies/history_overview/character_encoding/ms/y">Historical yearly trends in the usage statistics of character encodings for websites (2025.5取得)</a></div>
+</div>
+<div class="paragraph">
+<p>国内も多くのサイトが Unicode(なかでもUTF-8)で記述されていますが、たとえば、以下のサイトは現時点(2026年現在)でも Shift_JIS を用いています。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.itmedia.co.jp" target="_blank" rel="noopener">ITmedia</a> / <a href="https://kakaku.com" target="_blank" rel="noopener">価格.com</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>巨大なサイトになると、符号化方式を変更するのは大変な作業を要するのかもしれません。</p>
+</div>
+<div class="paragraph">
+<p>参考までに、世界中のWebサイトで使われている言語の割合についても以下にプロットを掲載しておきます。英語が全Webサイトのうち約50%、日本語の割合は現在5%程度であることがわかります。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/language-trend.png" alt="language trend">
+</div>
+<div class="title">図 10. <a href="https://w3techs.com/technologies/history_overview/content_language/ms/y" target="_blank" rel="noopener">Historical yearly trends in the usage statistics of content languages for websites (2025.5取得)</a></div>
+</div>
+<div class="paragraph">
+<p>ここまでの解説を以下の図にまとめました。図中の異体字セレクタについてはこれから説明します。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/code.svg" alt="文字コードの概略まとめ">
+</div>
+<div class="title">図 11. 文字コードの概略まとめ</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Webページを閲覧する際に、意味不明な文字列の羅列が表示される、いわゆる「文字化け」がおこることがあります。
+これは、Webブラウザが、閲覧中のWebページが、どの文字コードで書かれているのかを推定する際に、間違ってしまうことが原因の1つです。現在では、特に理由がない限りは UTF-8 でWebページを記述するのがおすすめです。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>文字化けの正体は、バイト列の「区切り方」と「対応表」の取り違えです。例として、「こんにちは」をUTF-8で符号化したバイト列を、Shift_JISだと思い込んで復号するとどうなるかを見てみましょう。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/mojibake-flow.svg" alt="文字化けの仕組み">
+</div>
+<div class="title">図 12. UTF-8のバイト列をShift_JISとして読むと「縺薙ｓ縺ｫ縺｡縺ｯ」になる</div>
+</div>
+<div class="paragraph">
+<p>UTF-8では日本語1文字が3バイトであるのに対し、Shift_JISではひらがな・漢字が2バイト、半角カナが1バイトです。区切る単位が異なるため、最初の1文字からすでにズレが生じ、以降もズレたまま無関係な文字に化けてゆきます。日本語のWebやメールでしばしば見かける「縺」だらけの文字化けは、このUTF-8→Shift_JIS誤読の典型例です。逆向きの取り違え(Shift_JISをUTF-8として読む)では、UTF-8として不正なバイト列が現れるため、置換文字「�」(U+FFFD)が並びがちです。<strong>元のバイト列が残っていれば</strong>、正しい符号化方式で読み直すことで復元できます。ただし、置換文字「�」を含む状態で上書き保存すると元の情報が失われ、符号化方式を変えるだけでは復元できないことがあります。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_文字コード発展概略"><a class="link" href="#_文字コード発展概略">文字コード発展概略</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>1963年</strong> - ASCII策定（7ビット、128文字。1967年の改訂でほぼ現在の形になる）</p>
+</li>
+<li>
+<p><strong>1969年</strong> - JIS C 6220(のちのJIS X 0201)策定（日本初の文字コード規格）</p>
+</li>
+<li>
+<p><strong>1978年</strong> - JIS C 6226(のちのJIS X 0208)第一版（第一・第二水準漢字を含む）</p>
+</li>
+<li>
+<p><strong>1991年</strong> - Unicode 1.0公開</p>
+</li>
+<li>
+<p><strong>1991〜1995年</strong> - Windows/Mac/UNIXでの文字コードの乱立(Shift_JIS vs EUC vs ISO-2022-JP, etc.)</p>
+</li>
+<li>
+<p><strong>1996年</strong> - Unicode 2.0（サロゲートペア導入）</p>
+</li>
+<li>
+<p><strong>2000年前後</strong> - Webでの文字コード混在問題が深刻化</p>
+</li>
+<li>
+<p><strong>2008年</strong> - Unicodeがインターネット上で最も使われる文字コードに(ASCII・ラテン文字集合を追い抜く)</p>
+</li>
+<li>
+<p><strong>2010年</strong> - 文字情報基盤(MJ)整備事業がIPAにより開始</p>
+</li>
+<li>
+<p><strong>2012年</strong> - Webページの60%以上がUnicodeを採用</p>
+</li>
+<li>
+<p><strong>2024年</strong> - Unicode 16.0（収録文字数 約15万5千）</p>
+</li>
+<li>
+<p><strong>2025年</strong> - Unicode 17.0（収録文字数 約15万9千）</p>
+</li>
+<li>
+<p><strong>2026年現在</strong> - Webページの約99%がUTF-8を採用</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_機種依存文字と文字化け"><a class="link" href="#_機種依存文字と文字化け">機種依存文字と文字化け</a></h4>
+<div class="paragraph">
+<p>「①」や「㈱」などのいわゆる「<strong>機種依存文字</strong>」と呼ばれていた文字のほとんどは、現在Unicodeに収められているため、Unicodeが扱えるシステムでは相互に問題なくやり取りできます。</p>
+</div>
+<div class="paragraph">
+<p>かつて、メールでは1バイトあたり7ビットまでの領域を利用して送信する決まりでした。今ではほとんどのシステムで8ビット対応しており、7ビットまでのシステムであっても、内部で送信可能な形式に文字を変換して送信するクライアントがほとんどになりましたので、かつての「機種依存文字」も意識せずに送信することが可能です。実際に、メールについてもスマートフォンを含めて現在ほとんどの電子メールクライアントでは、Unicodeを用いて送信可能です。ただし、依然として1バイトあたり7ビットまでという制限に対応した文字符号化方式である ISO-2022-JP を用いて送信するメールシステムもあるため、「機種依存文字」は依然として文字化けを引き起こす可能性があります。また、「①」「②」などのかつての「機種依存文字」に対応するフォントが受け取り側で存在しない場合も、正しく表示されないことがあります。</p>
+</div>
+<div class="paragraph">
+<p>文字化けが発生する要因としては主として以下の3つの原因が考えられます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Webブラウザ等の表示アプリケーションが文字符号化方式を誤って解釈</p>
+</li>
+<li>
+<p>フォントの未対応</p>
+</li>
+<li>
+<p>表示ソフトウェアの未対応</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_unicode_の応用_1_包摂と異体字"><a class="link" href="#_unicode_の応用_1_包摂と異体字">1.6. Unicode の応用 (1): 包摂と異体字</a></h3>
+<div class="paragraph">
+<p>ここまでは Unicode のコードポイントを「文字に1対1で割り当てられた番号」として扱ってきました。しかし、漢字の世界には「これは同じ字とみなすべきか、別の字か」という、簡単には決められない問題が常につきまといます。たとえば「辻」「葛」「𠮷」など、字体の細かな違いをどう扱うかは古くから議論があります。本節では、Unicode がこの問題をどう取り扱っているかを見ていきます。</p>
+</div>
+<div class="sect3">
+<h4 id="_異体字シーケンスideographic_variation_sequence_ivs"><a class="link" href="#_異体字シーケンスideographic_variation_sequence_ivs">異体字シーケンス(Ideographic Variation Sequence: IVS)</a></h4>
+<div class="paragraph">
+<p>同じ文字と見なせる複数の異なる字体をひとつの文字としてまとめて扱うことを<strong>包摂</strong>といいます。Unicodeで包摂された字体には同じコードポイントが与えられます。</p>
+</div>
+<div class="paragraph">
+<p>ひとつの文字にまとめられるといっても、用途によっては異なる字体の文字を表示したいことがあります。このように包摂される字体の中の特定の形を示すために使われるのが<strong>異体字セレクタ</strong>(Variation Selector)です。</p>
+</div>
+<div class="paragraph">
+<p>たとえば、「工&#xE0101;」は「工」の異体字であると考えられます。文字としては「工」が「工&#xE0101;」を包摂しているとして、「工」を<strong>基底文字</strong>として唯一のコードポイント <code>U+5DE5</code> が割り当てられています。しかし、実用上は両方の字体を使いたいことがあるため、Unicodeでは<strong>異体字シーケンス</strong>(Ideographic Variation Sequence: IVS)という仕組みが導入されています。これは、同じ文字と考えられる異なる字体の文字(異体字)に対して枝番号を与える仕組みです。異体字セレクタという枝番号を基底文字の後ろにつけることで、同じ文字に対して、異なる240の字体を扱うことが可能になります。基底文字と異体字セレクタを併せたコードポイント列を異体字シーケンスと呼びます。</p>
+</div>
+<div class="paragraph text-center">
+<p>基底文字のコードポイント＋異体字セレクタ( <code>U+E0100</code> ～ <code>U+E01EF</code> )</p>
+</div>
+<div class="paragraph">
+<p>たとえば、 以下のように異体字セレクタにあたるコードポイントを、「工」のコードポイントの後ろに並べるだけで、「工」の異体字を表すことができます。</p>
+</div>
+<table class="tableblock frame-ends grid-cols fit-content">
+<caption class="title">表 11. 「工」の異体字</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Unicode</th>
+<th class="tableblock halign-left valign-top">対応する字体</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+5DE5</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">工</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+5DE5</code>  <code>U+E0100</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">工&#xE0100;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+5DE5</code>  <code>U+E0101</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">工&#xE0101;</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-rows fit-content">
+<caption class="title">表 12. 異体字の表示例</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">基底文字</th>
+<th class="tableblock halign-left valign-top">異体字セレクタなし</th>
+<th class="tableblock halign-left valign-top">VS17 (<code>U+E0100</code>)</th>
+<th class="tableblock halign-left valign-top">VS18 (<code>U+E0101</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">工 (<code>U+5DE5</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">工</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">工&#xE0100;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">工&#xE0101;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">羽 (<code>U+7FBD</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">羽</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">羽&#xE0100;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">羽&#xE0101;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">辻 (<code>U+8FBB</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">辻</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">辻&#xE0100;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">辻&#xE0101;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">葛 (<code>U+845B</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">葛</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">葛&#xE0100;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">葛&#xE0101;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">閒 (<code>U+9592</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">閒</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">閒&#xE0100;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">閒&#xE0101;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">海 (<code>U+6D77</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">海</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">海&#xE0100;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">海&#xE0101;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">齊 (<code>U+9F4A</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">齊</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">齊&#xE0100;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">齊&#xE0101;</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>この表示はフォントによって異なります。見え方に違いがない場合は、使っているシステムやブラウザが異体字セレクタを十分にサポートしていないか、使用しているフォントに該当する異体字のグリフが含まれていない可能性があります。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>異体字セレクタを付けないときの表示はフォントや言語設定で変わります。また、同じセレクタを別の基底文字に付けても、同じ種類の字体の変化を意味するとは限りません。検索で異体字を区別するかどうかも、用途に応じた取り決めが必要です。</p>
+</div>
+<div class="paragraph">
+<p>登録されたIVSと字体の対応は、<strong>IVD（異体字データベース）で定められています</strong>。フォント作者がその意味を自由に入れ替えるものではありません。同じ字体でも明朝体・ゴシック体などのデザインは変わり、未対応のフォントでは指定が反映されない場合があります。「字体の指定」と「輪郭まで同一の画像の指定」は別です。出典：<a href="https://www.unicode.org/reports/tr37/">Unicode UTS #37</a>。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_unicodeでは包摂されなかった文字"><a class="link" href="#_unicodeでは包摂されなかった文字">Unicodeでは包摂されなかった文字</a></h4>
+<div class="paragraph">
+<p>歴史的な経緯等もあって、同じ文字とみなせるにも関わらず異体字セレクタとして包摂されていない文字もたくさんあります。</p>
+</div>
+<div class="paragraph">
+<p>以下の2つの表は、包摂関係にあると考えられる2つの字体に異なるコードポイントが与えられている例です。</p>
+</div>
+<table class="tableblock frame-ends grid-cols fit-content">
+<caption class="title">表 13. 「高」と「髙」</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">字体</th>
+<th class="tableblock halign-left valign-top">コードポイント</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">高</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+9AD8</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">髙</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+9AD9</code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-ends grid-cols fit-content">
+<caption class="title">表 14. 「吉」と「𠮷」</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">字体</th>
+<th class="tableblock halign-left valign-top">コードポイント</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">吉</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+5409</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">𠮷</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+20BB7</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>JIS X 0208 の第1水準に包摂されていた2つの字体「鷗」と「鴎」は、第一次規格(1978)では「鷗」が用いられました。しかし、第二次規格(1983)では当時のディスプレイ性能や標準的であった1文字24x24ドットのプリンターの状況などから「鴎」の字体が用いられました。後の JIS X 0213 においては両者に異なる符号位置を割り当てました(元の第1水準の位置 1-18-10 に「鴎」、新設の 1-94-69 に「鷗」)。Unicode でもこの区別は引き継がれており、別々のコードポイント(鴎=<code>U+9D0E</code>、鷗=<code>U+9DD7</code>)に割り当てられています。</p>
+</div>
+<div class="paragraph">
+<p>また、次の2つの字形は書体の違いとして処理されているため、両者は同じコードポイントを持つ文字で、かつ異体字の登録もありません。そのため、異なるフォントを選ぶことでしか両者の違いには対応することができません。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/variant-of-rei.png" alt="variant of rei" width="100">
+</div>
+</div>
+<div class="paragraph">
+<p>このように、文字コードの体系は様々な経緯で現在の形に至っており、一貫性があるわけでもありません。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_unicode_の応用_2_異体字セレクタと外字問題"><a class="link" href="#_unicode_の応用_2_異体字セレクタと外字問題">1.7. Unicode の応用 (2): 異体字セレクタと外字問題</a></h3>
+<div class="paragraph">
+<p>前節で見た異体字シーケンス (IVS) の仕組みは、抽象的な議論にとどまらず、実際の社会的課題を解決する手段としても活用されています。その代表例が、日本の行政システムにおける「外字問題」です。本節では、JIS X 0213 でも残された限界と、IVS を使ってそれをどう乗り越えようとしてきたかを、文字情報基盤(MJ)から行政事務標準文字(MJ+)に至る取り組みとともに見ていきます。</p>
+</div>
+<div class="sect3">
+<h4 id="_残された外字問題とその背景"><a class="link" href="#_残された外字問題とその背景">残された「外字問題」とその背景</a></h4>
+<div class="paragraph">
+<p>JIS X 0213で第三・第四水準として約3,700字の漢字が追加されましたが、それでも特に以下の問題は根本的な解決には至りませんでした。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>戸籍漢字の完全収録の難しさ</strong>:
+日本の戸籍に記載されている漢字は古くからのものも含め非常に多様であり、一部の特殊な字体はJIS X 0213でもカバーされませんでした。</p>
+</li>
+<li>
+<p><strong>字体の厳密な区別の問題</strong>:
+前節で見た「高」と「髙」のように、一般的には同じ文字として扱われるが微妙に字体の異なる文字について、それぞれ独立したコードポイントを割り当てるのが適切かという問題が残されました。</p>
+</li>
+<li>
+<p><strong>自治体システム間の互換性問題</strong>:
+各自治体が独自に外字を定義していたため、システム間でのデータ交換時に文字化けや情報の欠落が発生していました。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mj文字情報基盤からmj行政事務標準文字への発展"><a class="link" href="#_mj文字情報基盤からmj行政事務標準文字への発展">MJ文字情報基盤からMJ+(行政事務標準文字)への発展</a></h4>
+<div class="paragraph">
+<p>これらの課題に対応するため、経済産業省・内閣官房の支援のもと、独立行政法人情報処理推進機構(IPA)が2010年(平成22年度)から「文字情報基盤(MJ)整備事業」を開始しました。これは2002〜2008年に実施された「汎用電子情報交換環境整備プログラム」を引き継ぐ形で、行政で用いられる人名漢字等 約6万文字を整備するプロジェクトです。</p>
+</div>
+<div class="paragraph">
+<p>事業の中で「IPAmj明朝フォント」と「MJ文字情報一覧表」が開発・公開され、Unicodeに含まれない文字も国際規格化(ISO/IEC 10646)へ申請されました。2017年にはMJのすべての漢字がUnicodeへ収録されました。2020年にはIPAから一般社団法人 文字情報技術促進協議会へ事業成果が移管されています。</p>
+</div>
+<div class="paragraph">
+<p>その後、2021年に発足したデジタル庁が、地方公共団体の基幹業務システムの統一・標準化に向けて、MJをさらに拡張した文字セット「行政事務標準文字(通称MJ+)」を整備することになりました。MJ+は2024年3月に第1.0版が公表され、MJ約6万文字に対して、戸籍などで実際に使われていた約1万字の文字を追加した約7万文字の文字セットです。</p>
+</div>
+<div class="admonitionblock note boxed">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">「外字問題」とMJ+</div>
+<div class="paragraph">
+<p>名前に珍しい漢字が含まれていると、行政手続きで思わぬ障害に遭遇することがあります。自治体のコンピューターシステムに漢字が登録されておらず、「□」や「〓」といった記号で表示されたり、別の似た字に置き換えられたりする「外字問題」です。これは単なる表示の問題ではなく、システム間でデータをやり取りする際に情報が失われるリスクをかかえています。</p>
+</div>
+<div class="paragraph">
+<p>MJ+の重要な点は、単に文字図形(グリフ)を集めただけでなく、こうした外字をUnicodeの異体字セレクタの仕組みによって表現できるように設計されたことです。これにより、文字コードの新規割り当てではなく、既存のUnicodeコードポイントに異体字セレクタを組み合わせる方式で、互換性を保ちながら膨大な数の字体をデジタル表現することが可能になりました。</p>
+</div>
+<div class="paragraph">
+<p>名前は個人のアイデンティティの核心部分です。正確な漢字表記が維持されることは、単なる利便性の問題を超えて、個人のデジタル・アイデンティティを守ることにつながります。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>MJ+における異体字セレクタの活用方法は以下のとおりです。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>基底文字とバリエーション</strong>:
+例えば「辻」という漢字は、Unicode上では単一のコードポイント(<code>U+8FBB</code>)が割り当てられていますが、実際の字体には複数のバリエーションがあります。</p>
+</li>
+<li>
+<p><strong>異体字セレクタの付加</strong>:
+Unicode上のVS（Variation Selector）を基底文字に付加することで、特定の字体を指定します。</p>
+</li>
+<li>
+<p><strong>IVD（Ideographic Variation Database）への登録</strong>:
+これらの異体字と対応するセレクタの組み合わせは「IVD（異体字データベース）」として国際的に登録され、管理されています。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>異体字セレクタによる解決策を実現するためには、対応するフォントの開発が不可欠です。IPAmj明朝フォントなど、MJ文字情報基盤に対応したフォントが開発され、約6万字の日本語文字をカバーしています。MJ+用には、デジタル庁から「行政事務標準文字基本フォントファイル」が整備されており、自治体の基幹業務システムで利用されつつあります。</p>
+</div>
+<div class="paragraph">
+<p>このMJおよびMJ+の取り組みは、「コードポイントを増やす」という従来のアプローチから、「異体字セレクタとフォントによる解決」という新しい方法への転換を示しています。この方法は、互換性を保ちながら多数の字体をデジタル表現するための現実的な解決策です。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_unicode_の応用_3_文字の合成と正規化"><a class="link" href="#_unicode_の応用_3_文字の合成と正規化">1.8. Unicode の応用 (3): 文字の合成と正規化</a></h3>
+<div class="paragraph">
+<p>異体字セレクタは「基底文字 + 異体字セレクタ」という2つのコードポイントの組み合わせで1つの字を表していました。実は Unicode には、これと同じように <strong>複数のコードポイントを組み合わせて1つの字を表す</strong> 仕組みが他にもいくつかあります。これが、Unicodeのプログラマー泣かせなところでもあります。この仕組みのために、Unicodeで書かれた文字が何文字なのか数えるのが面倒ですし、同じ字体の文字に結果的に複数の符号化表現が存在することになります。本節では、ラテン文字のアクセント、日本語の濁点・半濁点、そしてハングルといった具体例をもとに、合成と「正規化」の考え方を見ていきます。</p>
+</div>
+<div class="sect3">
+<h4 id="_合成済み文字と結合文字列"><a class="link" href="#_合成済み文字と結合文字列">「合成済み文字」と「結合文字列」</a></h4>
+<div class="paragraph">
+<p>先行する文字と組合わせて使う文字のことを<strong>結合文字</strong>といいます。異体字セレクタも、単独の目に見える字形を持たない結合文字に分類されます。</p>
+</div>
+<div class="paragraph">
+<p>a とアキュートアクセントを結合した文字 &#x00e1; を Unicode で表現するには2通りの方法があります。
+合成済みの字体 &#x00e1; のコードポイント <code>U+00E1</code> を用いる方法と、 a のコードポイント <code>U+0061</code> と結合用のアキュートアクセント(つまり結合文字)のコードポイント <code>U+0301</code> を並べて動的に結合して字体を作る方法の2つです。動的結合をした場合には、複数のコードポイントが連なるため、「（動的）結合文字列」と呼びます。</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<caption class="title">表 15. 合成済み文字と結合文字列(á)</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">合成済み文字</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#x00e1;</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+00E1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">結合文字列</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#x0061;&#x0301;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#x0061; + &#x0301;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+0061</code> <code>U+0301</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>ハングルなどのより複雑な組合せが可能な文字では、複数のコードポイントを組合せて1つの文字を表現することもできます。</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<caption class="title">表 16. 合成済み文字と結合文字列(한)</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">合成済み文字</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#xD55C;</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+D55C</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">結合文字列</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#x1112;&#x1161;&#x11ab;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#x1112; + &#x1161; + &#x11ab;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+1112</code> <code>U+1161</code> <code>U+11AB</code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_濁音と半濁音の合成"><a class="link" href="#_濁音と半濁音の合成">濁音と半濁音の合成</a></h4>
+<div class="paragraph">
+<p>次に濁点の動的合成と事前合成された文字の違いを見てみます。</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<caption class="title">表 17. 合成済み文字と結合文字列(じ)</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">合成済み文字</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#x3058;</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+3058</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">結合文字列</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">し&#x3099;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">し + &#x3099;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+3057</code> <code>U+3099</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>濁点や半濁点を含む仮名の表現は「合成済み文字」と「結合文字列」の2通り存在します。実はこの違いが実際に問題を引き起こす例があります。Windowsでは、ファイル名に濁点や半濁点を含む文字がある場合、通常は合成済み文字(NFC相当)で符号化されます。一方、かつてのmacOSのファイルシステム(HFS+)は、ファイル名をNFDに類似した形式に正規化して保存していました(NFC/NFDについては後の「正規化」の節で説明します)。現在のmacOSのファイルシステムAPFSは、ファイル名をどちらの形にも正規化せずそのまま保存しますが、互換性のために両形式を同じ名前として扱う仕組みが残っており、アプリケーションによっては依然として分解された形式のファイル名が作られることがあります。そのため、両方の形式が混在してしまう可能性があります。</p>
+</div>
+<div class="paragraph">
+<p>Windowsをはじめとする多くの環境では、異なる正規化形式のファイル名は同じ名前に揃えられることなく別の名前として扱われます。この違いによって、macOSからコピーしたファイルの濁点や半濁点が独立した1つの文字として離れて「<code>テ ゛ータ</code>」のように表示される環境もあります。そのため、両形式のファイル名が混在している場合、「データ」や「コンピューター」といった単語を含むファイルを適切に検索できなくなる可能性もあります。</p>
+</div>
+<div class="paragraph">
+<p>macOSでは例えば以下のようにしてファイル名をすべて NFC 形式に書き換えることができます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sh hljs" data-lang="sh">$ convmv -r -f utf8 -t utf8 --nfc --notest /対象ディレクトリ</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Windowsでは過去のアプリケーションやシステムとの互換性の問題もあり、ZIPアーカイブ内のファイル名の符号化には Shift_JIS(CP932) が使われ続けています。そのため、macOSとの間でZIPファイルで圧縮したファイルをやりとりすると、ファイル名が文字化けしてしまうことがあります。</p>
+</div>
+<div class="paragraph">
+<p>最近のWindowsでは試験的にファイル名の文字コードが UTF-8 となるように設定変更することが可能ですが、対応していないアプリケーションや、他の Windows マシンとのデータのやり取りを考慮すると、現段階でUTF-8に設定変更するのはリスクがあり悩ましいところです。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>次にプログラミング言語Pythonを使って上の表の確認をしてみます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; hex(ord('じ'))
+'0x3058' # 「じ」のコードポイントは \u3058 であることがわかる
+&gt;&gt;&gt; j1='\u3058'
+&gt;&gt;&gt; j1
+'じ'
+&gt;&gt;&gt; j2='\u3057'+'\u3099'
+&gt;&gt;&gt; j2
+'じ'
+&gt;&gt;&gt; j1 == j2
+False # 見た目は同じでも実体は違う
+&gt;&gt;&gt; len(j1)
+1
+&gt;&gt;&gt; len(j2)
+2 # 1文字なのに長さは2となる</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ほとんどのプログラミング言語では結合文字列を1つの文字と解釈せず、結合文字を独立した文字としてカウントします。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_正規化"><a class="link" href="#_正規化">正規化</a></h4>
+<div class="paragraph">
+<p>結合文字列の仕組みは便利なようですが、同じ見た目で合成済み文字としてコードポイントを与えられた文字も存在するため、コンピューター内部には1つの文字に対して複数の符号表現が存在することがあります。そのため、検索の際に問題が発生することがあります。</p>
+</div>
+<div class="paragraph">
+<p>また、結合文字列がサポートされていない環境では、Windowsのファイル名のような問題が発生します。これらの違いを吸収するためには、同じUnicodeであっても環境に合わせて結合文字列を1つの合成済み文字に変換したり、その逆の変換をしたりする必要があります。このような変換を正規化といい、方向性によって次の2つの標準化形式へ変換する標準化があります。</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">正規化形式C (Normalization Form C / NFC): 正規結合(Canonical Composition)</dt>
+<dd>
+<p>正準等価な文字列を、分解・並べ替えの後、規定に従って可能な箇所を合成した形式（合成しないと規定された文字もあります）</p>
+</dd>
+<dt class="hdlist1">正規化形式D (Normalization Form D / NFD): 正規分解(Canonical Decomposition)</dt>
+<dd>
+<p>正準分解の規定がある文字を分解し、結合文字を規定の順序に並べた形式（すべての文字が分解されるわけではありません）</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>いずれの正規化形式も厳密な定義は技術的な問題を多く含むので詳細には立ち入りません。
+また、同様に詳細には触れませんが〈① ＝ 1〉、〈㈱ ＝ (株)〉、〈㋿ ＝ 令和〉、〈《半角カナ》 ＝ 《全角カナ》〉のように、さらに文字の互換性を広い範囲で認めた正規化形式として <strong>NFKC</strong>, <strong>NFKD</strong> があります。</p>
+</div>
+<div class="paragraph">
+<p>以下はテキストファイルの<strong>内容</strong>を変換して標準出力に出す例です。ファイル名自体は変更しません。UTF-8-MACの扱いは実装に依存するので、一般のUnicode文字列を正規化する実習にはPythonの <code>unicodedata.normalize</code> を使うと明確です。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ nkf --ic=utf8-mac --oc=utf-8n &lt;ファイル名&gt;
+$ iconv -f UTF-8-MAC -t UTF-8 &lt;ファイル名&gt;</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-rows fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">表示される文字</th>
+<th class="tableblock halign-left valign-top">NFC (合成形式)</th>
+<th class="tableblock halign-left valign-top">NFD (分解形式)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">が</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+304C</code> (1コードポイント)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+304B</code> <code>U+3099</code> (2コードポイント)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">é</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+00E9</code> (1コードポイント)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+0065</code> <code>U+0301</code> (2コードポイント)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">한</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+D55C</code> (1コードポイント)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>U+1112</code> <code>U+1161</code> <code>U+11AB</code> (3コードポイント)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_unicode_の応用_4_絵文字"><a class="link" href="#_unicode_の応用_4_絵文字">1.9. Unicode の応用 (4): 絵文字</a></h3>
+<div class="paragraph">
+<p>絵文字は、Unicodeのもっとも目立つ「応用」の1つです。前節で扱った合成の仕組み(複数コードポイントを組み合わせて1字を作る考え方)を、文字の枠を超えて拡張したものとも言えます。日本では様々な携帯電話のキャリアが独自に絵文字を実装していました。そのため、異なるキャリアへ絵文字を含むメールを送ると文字化けが発生していました。2009年にGoogleとAppleにより、絵文字の Unicode への収録が提案され、2010年のUnicode 6.0で日本発祥の <strong>Emoji</strong> として取り込まれました。2026年現在、3,900文字以上の絵文字が Unicode に収められています(シーケンスを含む)。</p>
+</div>
+<div class="paragraph">
+<p>絵文字は様々な文字の合成によって文字を表現する仕組みがあります。絵文字には人種や性別等への配慮もあり、たとえば肌の色もコードポイントの組合せによって変えることができます。以下の図は、人と肌の色と絵文字の組合せによって得られる絵文字の例を図示しています。複数の絵文字は、ゼロ幅接合文字(zero width joiner) <code>U+200D</code> を用いて合成します。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>〈人 👨〉〈肌の色〉〈接合文字〉〈フライパン 🍳〉= 〈料理人 👨‍🍳〉</p>
+</li>
+<li>
+<p>〈人 👨〉〈肌の色〉〈接合文字〉〈稲 🌾〉= 〈農民 👨‍🌾〉</p>
+</li>
+<li>
+<p>〈人 👨〉〈肌の色〉〈接合文字〉〈ロケット 🚀〉= 〈宇宙飛行士 👨‍🚀〉</p>
+</li>
+<li>
+<p>絵文字と肌の色(skin tone)の組合せ</p>
+<div class="ulist">
+<ul>
+<li>
+<p>👩, 👩&#x1f3fb; <code>U+1F3FB</code>, 👩&#x1f3fc; <code>U+1F3FC</code>,  👩&#x1f3fd; <code>U+1F3FD</code>, 👩&#x1f3fe; <code>U+1F3FE</code>, 👩&#x1f3ff; <code>U+1F3FF</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>などがあります。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/emoji-diagram.svg" alt="emoji diagram">
+</div>
+</div>
+<div class="paragraph">
+<p>このように Unicode では1文字がコードポイントの複雑な組合せによって決まることもあるため、単純な規則では文字数を数えることができません。そこで、Unicode では利用者からは1文字にみえる文字の単位を<strong>書記素クラスタ(grapheme cluster)</strong>として、コードポイントの並びを書記素クラスタに分割する方法が示されています(<a href="http://www.unicode.org/reports/tr29/" target="_blank" rel="noopener">UNICODE TEXT SEGMENTATION</a>)。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">家族の絵文字：見た目が変わってもコードポイント列は区別する</div>
+<div class="paragraph">
+<p>家族の絵文字の表示は、フォントやOSの版によって、人物を描いたものやシルエットなどに変わることがあります。ただし、見た目の変更と、Unicodeのコードポイント列の変更は別です。以下の例はコードポイント列の構造を確認するためのものです。</p>
+</div>
+<div class="paragraph">
+<p>家族をあらわす絵文字は、要素となる絵文字の大人と子供の性別などの構成を変えることによって様々な組合せで表示できます(もちろん対応するフォントがないとダメです)。ゼロ幅接合文字(zero width joiner) <code>U+200D</code> を用いて絵文字を合成します。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>〈&#x1F468; <code>U+1F468</code>〉〈<code>U+200D</code>〉〈&#x1F467; <code>U+1F467</code>〉 = 〈<span class="big">&#x1F468;&zwj;&#x1F467;</span> <code>U+1F468 U+200D U+1F467</code>〉</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>以下の例ではコードポイントを省略して、合成文字を「＋」で表します:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x1F468; + &#x1F469; + &#x1F467; = <span class="big">&#x1F468;&zwj;&#x1F469;&zwj;&#x1F467;</span></p>
+</li>
+<li>
+<p>&#x1F468; + &#x1F469; + &#x1F467; + &#x1F466; = <span class="big">&#x1F468;&#x200D;&#x1F469;&zwj;&#x1F467;&zwj;&#x1F466;</span></p>
+</li>
+<li>
+<p>&#x1F469; + &#x1F469; + &#x1F467; + &#x1F467; = <span class="big">&#x1F469;&zwj;&#x1F469;&zwj;&#x1F467;&zwj;&#x1F467;</span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>最後の例は、絵文字4文字と接合文字3文字の計7文字の結合文字列によって構成されています。家族の絵文字1文字はUTF-8で符号化すると25バイトもあります(4字×4B/字+3字×3B/字=25B)。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>絵文字に使われているフォントはWindows, macOS, Android等のOSや、使っているアプリケーションやアプリケーション中でのフォントの設定によって異なることがあります。たとえば、寿司「🍣」はどのように見えているでしょうか。私にはトロ2貫に見えていますが、環境によってはカッパ巻きになってしまうこともあり、同じ寿司でも随分と印象が変わってしまいます。念のため、私のコンピューター環境(macOS)で見える寿司の絵文字を画像として貼り付けておきます。</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<caption class="title">表 18. 絵文字とその画像</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">変換</th>
+<th class="tableblock halign-center valign-top">絵文字</th>
+<th class="tableblock halign-center valign-top">私の環境で見えている絵文字<br>
+(Mac Color Emoji)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">すし</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="big">🍣</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="image"><img src="./img/sushi.png" alt="sushi" width="50"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">ひーろー</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="big">🦸‍♂️</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="image"><img src="./img/hero.png" alt="hero" width="50"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">てれび</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="big">📺</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="image"><img src="./img/tv.png" alt="tv" width="50"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">のうふ</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="big">👨‍🌾</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="image"><img src="./img/farmer.png" alt="farmer" width="50"></span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>私の環境ではテレビの絵文字はとても昭和風でブラウン管です。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>絵文字が国際標準として整備される過程では、人種・性別・身体的特徴をどう表現するかという、技術的というよりは社会的な論点が継続的に議論されています。日本国内のキャリア間でしか使われていなかった絵文字が、国際的な利用を前提とする Unicode に取り込まれたことで、こうした議論の対象になった面があります。</p>
+</div>
+<div class="paragraph">
+<p>絵文字の普及を語る代表的な事例に、1999年、当時NTTドコモで働いていた栗田穣崇氏が、携帯電話向けインターネットサービス「iモード」のために作成した176種類の12×12ピクセルの小さなアイコン群があります。携帯電話のメールにおける感情表現の限界を打破するために考案された小さな絵は、日本国内で人気を博し、すぐに他の携帯キャリアも独自の絵文字を開発するようになりました。</p>
+</div>
+<div class="paragraph">
+<p>その後、Googleでは2007年から Mark Davis らが、絵文字のUnicode標準化をUnicodeコンソーシアムに働きかけ始めました。日本でも2008年7月にソフトバンクから iPhone 3G が発売され、Apple もiOS 2.2 で日本版に絵文字機能を実装(当初はソフトバンクの符号化を流用)。続いて2009年1月、AppleのYasuo Kida氏とPeter Edberg氏が、絵文字をUnicodeに加える正式な提案を提出しました。これらが受け入れられ、2010年10月のUnicode 6.0 で 722文字の絵文字が標準化されました(うち114文字は2009年のUnicode 5.2 でARIB拡張記号として既に追加済み、残り608文字が6.0で新規)。日本のガラケーで使われていた絵文字を Apple と Google が Unicode に取り込んだ動きの背景には、日本でのスマートフォンのシェアを伸ばそうという経営戦略もあったと考えられています。そのため、普遍性のなさそうな日本独特のガラケーの絵文字もたくさんUnicodeのEmojiとして取り込まれています。</p>
+</div>
+<div class="paragraph">
+<p>絵文字が世界中で急速に普及した理由の一つは、言語の壁を超えて感情や概念を伝えられることでした。オックスフォード辞書が2015年の「今年の言葉」に初めて単語ではなく絵文字「😂」（笑い泣き）を選んだことは、絵文字の文化的重要性を象徴しています。</p>
+</div>
+<div class="paragraph">
+<p>この由来から、「🏣」（郵便局）や「🏯」（城）、「🎏」（こいのぼり）など日本文化に特有の絵文字も多く含まれていました。次の例は、Unicode 提案時の英語による説明と、対応する絵文字の組み合わせを示しています。日本のガラケー文化に由来する絵文字を国際標準に取り込もうとした際、英語話者にとって馴染みのない概念を、どのような語彙で表現したかが読み取れます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>📛(<code>U+1F4DB</code>): 名札</p>
+</li>
+<li>
+<p>🈵(<code>U+1F235</code>): 「満席」「満車」記号</p>
+</li>
+<li>
+<p>🈹(<code>U+1F239</code>): 「割引」記号</p>
+</li>
+<li>
+<p>🍱(<code>U+1F371</code>):  弁当</p>
+</li>
+<li>
+<p>💮(<code>U+1F4AE</code>): よくできました(brilliant homework)</p>
+</li>
+<li>
+<p>💩(<code>U+1F4A9</code>): 友好的な顔の犬の糞 (dog dirt with friendly face)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>現在、絵文字はUnicodeコンソーシアムの下で厳格に管理され、新しい絵文字の追加には詳細な選考プロセスがあります。当初は日本発の文化だった絵文字は、今や多様性と包括性を重視したグローバルなデジタル言語へと進化しています。</p>
+</div>
+<div class="paragraph">
+<p>もともとの「字体」という抽象概念に対してコードポイントを割り当てるという当初の理想的な設定からすると、Emojiは随分遠いところまで来ました。Emojiは文字であるにもかかわらず、色や接合文字の様々な規定があり、実装コストも高いものになっています。Unicodeによる文字を正しく表示するためには、プログラマーが相当の労力を掛ける必要が生じています。</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">国旗と国際政治</div>
+<div class="paragraph">
+<p>Unicode絵文字の中でも特に政治的な議論を引き起こしたのが国旗の絵文字です。2010年、Unicode 6.0では国旗絵文字を直接追加するのではなく、ISO 3166-1の国コードを組み合わせた「地域指示子」という巧妙な仕組みを導入しました。これにより、政治的に複雑な「どの地域が国家として認められるか」という判断をUnicodeコンソーシアムではなくISOに委ねる形となりました。</p>
+</div>
+<div class="paragraph">
+<p>しかし、この仕組みもまた国際問題に巻き込まれてしまいます。2017年、台湾の旗 🇹🇼 が中国市場向けのApple製品で非表示になりました。</p>
+</div>
+<div class="paragraph">
+<p>このように、文字コードの標準化団体は技術的な問題だけでなく、時に国際政治の問題にも向き合わなくてはなりません。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_プログラミング言語とunicode"><a class="link" href="#_プログラミング言語とunicode">1.10. プログラミング言語とUnicode</a></h3>
+<div class="paragraph">
+<p>ほとんどのプログラミング言語では文字列をデータとして扱う仕組みが備わっています。多くの言語でコードポイントによる文字の記述などUnicodeに準拠した文字列の扱いが可能です。ただし、その符号化方式は言語によってまちまちです。</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<caption class="title">表 19. 文字列を扱うときの基本単位（物理的なメモリ配置とは区別する）</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">UTF-16の符号単位</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JavaScript, Java, Scala, C# の長さ・添字の基本単位</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">UTF-8の符号単位（バイト）</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JuliaのString（lengthはコードポイント数）</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">バイト列</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Goのstring。UTF-8以外のバイト列も格納できる。rangeはUTF-8として解釈する</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Unicodeコードポイント</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pythonのstr。CPythonは文字範囲に応じて格納幅を選ぶ</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>たとえばJavaの文字列の添字はUTF-16の符号単位を数えますが、実装が必ず1単位を2バイトのメモリに格納するとは限りません。Perlでも、バイト列とUnicodeの文字列を区別する必要があります。</p>
+</div>
+<div class="paragraph">
+<p>プログラミング言語Pythonで「㋿、㈱、㌔、Ⅶ、㊾」をNFKCによって正規化してみます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; import unicodedata
+&gt;&gt;&gt; unicodedata.normalize('NFKC', '㋿、㈱、㌔、Ⅶ、㊾')
+'令和、(株)、キロ、VII、49'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>プログラミング言語Juliaで「👩‍❤️‍💋‍👨」の文字数とバイト数を確認してみます(Julia は文字列を UTF-8 で符号化しています)。コードポイント <code>U+FE0F</code> は、絵文字で使われる異体字セレクタで、カラフルな絵文字がある場合は、その絵文字を選ぶように指定するものです。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; kiss="\U1F469\u200d\u2764\uFE0F\u200D\U1F48B\u200D\U1F468" # コードポイントで絵文字を入力
+"👩\u200d❤️\u200d💋\u200d👨" # ばらばら！
+julia&gt; print(kiss)
+👩‍❤️‍💋‍👨 # 1つの絵文字になった
+julia&gt; length(kiss) # 文字数
+8
+julia&gt; ncodeunits(kiss) # バイト数
+27</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>次にプログラミング言語 JavaScript で UTF-16 で符号化したときのバイト数を確認してみます。JavaScript は文字列を UTF-16 で符号化しています。「👩‍❤️‍💋‍👨」は計8つのコードポイント(👩, ZWJ, ❤, VS-16, ZWJ, 💋, ZWJ, 👨)で構成されており、人物を表す3つの絵文字(👩, 💋, 👨)はサロゲートペアを用いて4バイトで符号化され、残りの5つ(ZWJ×3, ❤, VS-16)はそれぞれ2バイトで符号化されますので、3字×4B/字+5字×2B/字=22B となります。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">&gt; kiss="\u{1F469}\u200d\u2764\uFE0F\u200D\u{1F48B}\u200D\u{1F468}" // コードポイントで絵文字を入力
+'👩‍❤️‍💋‍👨'
+&gt; kiss.length * 2 // UTF-16で符号化したバイト数（BOMなし）
+22</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>JavaScriptの <code>\u{&#8230;&#8203;}</code> はコードポイントを指定する表記です。<code>kiss.length</code> はUTF-16の符号単位の数であり、<code>length * 2</code> はUTF-16としてのバイト数です。実際の処理系のメモリ使用量を測っているわけではありません。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>ハンバーガーの絵文字</strong> <span class="big">🍔</span></p>
+</div>
+<div class="paragraph">
+<p>Unicodeの絵文字でハンバーガーの具材の順番が問題になったことがありました。2017年、あるユーザーがGoogleとAppleのハンバーガー絵文字を比較する書込みを当時のTwitterにしたことから議論が始まります。</p>
+</div>
+<div class="paragraph">
+<p>Googleの絵文字では、チーズがパティの下にあり、Appleではチーズがパティの上にあり、レタスの位置も両社の絵文字では異なっていました。そこで、チーズがパティの上か下かで論争に発展し、どちらが正しい順番なのかが議論になりました。ハンバーガーチェーン店に確認する人やメディアも現れ、パティの上にチーズを乗せるのが一般的だという結論になりました。</p>
+</div>
+<div class="paragraph">
+<p>つまり、Googleの絵文字の順番は一般的ではなかったのです。この騒動を受けて、Googleの当時のCEOは「みんなが正しい順番で合意すれば月曜日にすぐ直す」とツイート。結局、Android 8.1でGoogleは絵文字のチーズの位置を、パティの上に修正しました。</p>
+</div>
+<div class="paragraph">
+<p>絵文字はUnicodeコンソーシアムが標準を定めていますが、フォントは各社が独自にデザインするため、同じ絵文字でも見た目が異なることがあります。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_windows_と_macos_で文字コードの確認"><a class="link" href="#_windows_と_macos_で文字コードの確認">1.11. Windows と macOS で文字コードの確認</a></h3>
+<div class="paragraph">
+<p>Windows の PowerShell や macOS の Terminal を使ったことがある人は、文字のコンピューター内部での表現を直に確認してみてください。</p>
+</div>
+<div class="sect3">
+<h4 id="_windows_の_powershell_での確認方法"><a class="link" href="#_windows_の_powershell_での確認方法">Windows の PowerShell での確認方法</a></h4>
+<div class="paragraph">
+<p><code>ABCabc</code> の内部表現をしらべます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-powershell hljs" data-lang="powershell">PS&gt; "ABCabc"  | Format-Hex
+           00 01 02 03 04 05 06 07
+00000000   41 42 43 61 62 63        ABCabc
+            A  B  C  a  b  c</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ファイル <code>text.txt</code> の内部表現をしらべます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-powershell hljs" data-lang="powershell">PS&gt; Format-Hex  text.txt
+00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+41 42 43 61 62 63 0D 0A
+A  B  C  a  b  c CR LF</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_macos_の_terminal_での確認方法"><a class="link" href="#_macos_の_terminal_での確認方法">macOS の Terminal での確認方法</a></h4>
+<div class="paragraph">
+<p>ここでは、文字コード変換ツール <code>nkf</code> のインストールを前提にしています。</p>
+</div>
+<div class="paragraph">
+<p>文字列 <code>あいうえお</code> の UTF-8 による符号化を確認しています(3行目は参考に付け加えた行です)。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ echo "あいうえお" |nkf -u | xxd -g 3
+00000000: e38182 e38184 e38186 e38188 e3818a 0a
+UTF8      あ     い      う     え     お     LF</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>次の例では、文字列 <code>あいうえお</code> の UTF-16(BE:ビッグエンディアン) による符号化を確認しています。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ echo "あいうえお"|nkf -w16B | xxd -g 2
+00000000: feff 3042 3044 3046 3048 304a 000a
+UTF16BE   BOM  あ   い   う   え   お   LF</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>文字列 <code>あいうえお</code> の UTF-16(LE:リトルエンディアン) による符号化を確認しています。上記のUTF-16(BE)と比較してみてください。人が目視する際には16進法の4桁の数字がそのまま上位下位の順に並んでいますのでビッグエンディアンの方が認識しやすいと思います。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ echo "あいうえお"|nkf -w16L | xxd -g 2
+00000000: fffe 4230 4430 4630 4830 4a30 0a00
+UTF16LE   BOM  あ   い   う   え    お   LF</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>文字列 <code>あいうえお</code> の Shift_JIS による符号化を確認しています。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ echo "あいうえお"|nkf -sLw | xxd -g 2
+00000000: 82a0 82a2 82a4 82a6 82a8 0d0a
+SJIS      あ   い   う   え   お   CRLF</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>UTF-8の場合は以下のコマンドを用いると対応する文字を合わせて表示してくれるので便利です。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">$ echo "あいうえお" | nkf -u | od -tx1c
+0000000    e3  81  82  e3  81  84  e3  81  86  e3  81  88  e3  81  8a  0a
+          あ  **  **  い  **  **  う  **  **  え  **  **  お  **  **  \n
+0000020</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>nkf</code> は文字コード推定など様々な機能がある便利なツールですが、BMP外(<code>U+FFFF</code> を超える)のコードポイントをもつ文字に対しては、うまく変換できないようです（たとえば、「𠮷」を含む文字）。macOSやLinuxなどで、実データの文字コード変換をするときには、<code>iconv</code> を使うことを推奨します。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>文字コードをめぐる標準化には様々な苦労がありました。1980年代からワープロやコンピューターが普及しはじめると、標準化に対する理解不足や技術者に対する偏見から有名作家が工業規格としての文字の標準化を「文化破壊」と貶めることもありました。Unicodeの標準化では、国家間での様々な利害や価値観が衝突するため、文化、文字、技術に対する深い理解と、根気強い交渉力が必要となります。</p>
+</div>
+<div class="paragraph">
+<p>このような苦労の過程を実際に標準化に携わった著者が記した</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>「ユニコード戦記 ─文字符号の国際標準化バトル」小林龍生, 東京電機大学出版局, 2011.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>はおすすめです。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_理解度チェック練習問題"><a class="link" href="#_理解度チェック練習問題">2. 理解度チェック(練習問題)</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ここまでの内容について、理解度を確認するための練習問題です。各問題の解答と解説は問題の直下に折りたたんでありますので、自分なりの答えを考えてから確認してください。</p>
+</div>
+<div class="sect2">
+<h3 id="_基礎_ascii_改行コード_用語"><a class="link" href="#_基礎_ascii_改行コード_用語">2.1. 基礎: ASCII / 改行コード / 用語</a></h3>
+<div class="exampleblock">
+<div class="title">例 1. 練習1: ASCIIに関する記述として、正しいものをすべて選べ。</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>ASCIIは7ビットですべての文字位置を特定できる</p>
+</li>
+<li>
+<p>ASCIIは1963年に米国で策定された文字コードである</p>
+</li>
+<li>
+<p>ASCIIには日本語のひらがなが含まれる</p>
+</li>
+<li>
+<p>ASCIIの大文字と小文字は、6ビット目を反転するだけで相互変換できる</p>
+</li>
+<li>
+<p>ASCIIの制御文字は、画面表示のための文字である</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>正解: 1, 2, 4</p>
+</div>
+<div class="paragraph">
+<p>3 は誤り(ASCIIは英数字と記号、制御文字のみ)。5 は誤り(制御文字はディスプレイやプリンターの動作などをコントロールするための文字)。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">例 2. 練習2: 改行コードについての記述として、正しいものをすべて選べ。</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Unix/Linux と現代の macOS は LF (<code>\n</code>) を改行コードとして用いる</p>
+</li>
+<li>
+<p>Windows は CR+LF (<code>\r\n</code>) を改行コードとして用いる</p>
+</li>
+<li>
+<p>CR の文字コードは <code>0x0A</code> である</p>
+</li>
+<li>
+<p>macOSやLinuxで作成されたテキストファイルをWindowsで開くと、改行が認識されない場合がある</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>正解: 1, 2, 4</p>
+</div>
+<div class="paragraph">
+<p>3 は誤り。CR (Carriage Return) は <code>0x0D</code>、LF (Line Feed) が <code>0x0A</code> です。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">例 3. 練習3: 「符号化文字集合(CCS)」と「文字符号化方式(CES)」の関係について、正しい記述を選べ。</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>符号化文字集合は、コンピューター内部での実際のバイト表現を定める</p>
+</li>
+<li>
+<p>文字符号化方式は、各文字に対する番号(コードポイント)を定める</p>
+</li>
+<li>
+<p>同じ符号化文字集合(例: Unicode)に対して、複数の文字符号化方式(例: UTF-8, UTF-16, UTF-32)が存在しうる</p>
+</li>
+<li>
+<p>ASCIIや JIS X 0201 では、符号化文字集合と文字符号化方式の概念は明確に分離されていた</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>正解: 3</p>
+</div>
+<div class="paragraph">
+<p>1 と 2 は説明が逆。4 は誤りで、ASCIIや JIS X 0201 が作られた当時は両者の概念は未分化でした。</p>
+</div>
+</div>
+</details>
+</div>
+<div class="sect2">
+<h3 id="_unicode_以前の日本語符号化方式"><a class="link" href="#_unicode_以前の日本語符号化方式">2.2. Unicode 以前の日本語符号化方式</a></h3>
+<div class="exampleblock">
+<div class="title">例 4. 練習4: ISO-2022-JP / Shift_JIS / EUC-JP について、正しい記述をすべて選べ。</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>ISO-2022-JP はモード切替によって複数の文字集合を扱い、各バイトの最上位ビットを使わないため、7ビット通信路でも安全に送れる</p>
+</li>
+<li>
+<p>Shift_JIS は半角カタカナを1バイトで、JIS X 0208 の文字を2バイトで符号化する</p>
+</li>
+<li>
+<p>EUC-JP は半角カタカナを1バイトで、JIS X 0208 の文字を2バイトで符号化する</p>
+</li>
+<li>
+<p>EUC-JP では日本語に関わるすべてのバイトが最上位ビット1なので、ASCIIと重ならない</p>
+</li>
+<li>
+<p>Shift_JIS では2バイト文字の2バイト目に <code>0x5C</code>(ASCIIの <code>\</code> と同じ値)が現れることがある</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>正解: 1, 2, 4, 5</p>
+</div>
+<div class="paragraph">
+<p>3 は誤り。EUC-JP では半角カタカナを <strong>2バイト</strong>(先頭の単独シフト <code>0x8E</code> + コード)で符号化します。1バイトで符号化するのは Shift_JIS のほうです。EUC-JP は、日本語に関わるバイトの最上位ビットをすべて1にする設計を貫いたために、半角カタカナのバイト数が増えるという代償を払っています。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">例 5. 練習5: 文字符号化方式の「自己同期性」について、正しい記述を選べ。</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>自己同期性とは、バイト列の途中から読み始めても文字境界を判定できる性質である</p>
+</li>
+<li>
+<p>UTF-8 と EUC-JP はいずれも自己同期性をもつ</p>
+</li>
+<li>
+<p>Shift_JIS は自己同期性をもち、いかなる場合も2バイト目をASCIIと取り違える危険がない</p>
+</li>
+<li>
+<p>自己同期性は検索やセキュリティの観点から重要である</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>正解: 1, 4</p>
+</div>
+<div class="paragraph">
+<p>2 は誤り。完全な自己同期性をもつのはUTF-8です。EUC-JPはASCIIのバイトと日本語のバイトが重ならないというだけで、2バイト文字同士の境界は途中からは判定できません。3 も誤り。Shift_JIS は2バイト文字の2バイト目がASCIIの範囲(例えば <code>0x5C</code> = <code>\</code>)と重なることがあり、自己同期性をもちません。これがクロスサイトスクリプティング(XSS)などのセキュリティ問題を引き起こした例があります。</p>
+</div>
+</div>
+</details>
+</div>
+<div class="sect2">
+<h3 id="_unicode_の基礎_符号化方式とbom"><a class="link" href="#_unicode_の基礎_符号化方式とbom">2.3. Unicode の基礎: 符号化方式とBOM</a></h3>
+<div class="exampleblock">
+<div class="title">例 6. 練習6: UTF-8で符号化したとき、1文字あたりのバイト数として正しい組合せを選べ。</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>半角英数字 → 1バイト、漢字「学」(<code>U+5B66</code>) → 3バイト</p>
+</li>
+<li>
+<p>半角英数字 → 2バイト、漢字「学」 → 4バイト</p>
+</li>
+<li>
+<p>半角英数字 → 1バイト、漢字「学」 → 2バイト</p>
+</li>
+<li>
+<p>半角英数字 → 1バイト、漢字「学」 → 4バイト</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>正解: 1</p>
+</div>
+<div class="paragraph">
+<p>UTF-8では、ASCIIに含まれる文字(<code>U+0000</code>〜<code>U+007F</code>)は1バイト、<code>U+0080</code>〜<code>U+07FF</code> は2バイト、<code>U+0800</code>〜<code>U+FFFF</code>(漢字を含むほとんどの日本語)は3バイト、BMP外(<code>U+10000</code> 以上)の文字(多くの絵文字など)は4バイトで符号化されます。「学」(<code>U+5B66</code>)は3バイト範囲です。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">例 7. 練習7: BOM(Byte Order Mark) について、正しい記述をすべて選べ。</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>UTF-16 の BOM <code>FE FF</code> はビッグエンディアンを示す</p>
+</li>
+<li>
+<p>UTF-16 の BOM <code>FF FE</code> はリトルエンディアンを示す</p>
+</li>
+<li>
+<p>UTF-8 の BOM (シグネチャ) は <code>EF BB BF</code> で、エンディアンを示すために必要である</p>
+</li>
+<li>
+<p>BOM の正体はコードポイント <code>U+FEFF</code>(ZERO WIDTH NO-BREAK SPACE)である</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>正解: 1, 2, 4</p>
+</div>
+<div class="paragraph">
+<p>3 は誤り。UTF-8 はバイト単位で処理されるためエンディアンの問題は本来発生せず、BOM は不要です。Windows 環境などでファイルが UTF-8 であることを示すための「シグネチャ」として使われることはありますが、エンディアンを示すためのものではありません。</p>
+</div>
+</div>
+</details>
+</div>
+<div class="sect2">
+<h3 id="_unicode_の応用_包摂正規化絵文字"><a class="link" href="#_unicode_の応用_包摂正規化絵文字">2.4. Unicode の応用: 包摂・正規化・絵文字</a></h3>
+<div class="exampleblock">
+<div class="title">例 8. 練習8: Unicode における「包摂」と「異体字シーケンス(IVS)」について、正しい記述をすべて選べ。</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>包摂とは、字形の異なる複数の文字を1つの基底文字としてまとめ、同じコードポイントを与える仕組みである</p>
+</li>
+<li>
+<p>異体字セレクタを基底文字の後ろに付加することで、最大240種の字体バリエーションを表現できる</p>
+</li>
+<li>
+<p>異体字セレクタを使えば、表示されるグリフはフォントによらず常に同じになる</p>
+</li>
+<li>
+<p>「高」と「髙」のように、同じ字とみなせるが異なるコードポイントを持つ字もUnicodeに存在する</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>正解: 1, 2, 4</p>
+</div>
+<div class="paragraph">
+<p>3 は誤り。登録されたIVSは字体を指定しますが、明朝体・ゴシック体などのデザインまで同一にはしません。対応する字形がないフォントでは指定が反映されない場合もあります。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">例 9. 練習9: 「が」をUnicodeで表現する2つの方法と正規化について、正しい記述をすべて選べ。</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>合成済み文字 <code>U+304C</code> は1コードポイント、結合文字列 <code>U+304B U+3099</code> は2コードポイントである</p>
+</li>
+<li>
+<p>ほとんどのプログラミング言語で文字列の長さを取ると、結合文字列のほうが大きくなる</p>
+</li>
+<li>
+<p>NFC(正規結合)による正規化では、結合文字列が合成済み文字に変換される</p>
+</li>
+<li>
+<p>NFD(正規分解)による正規化では、合成済み文字が結合文字列に変換される</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>正解: すべて(1, 2, 3, 4)</p>
+</div>
+<div class="paragraph">
+<p>NFC は合成済み形式へまとめる方向、NFD は結合文字列に分解する方向の正規化です。同じ字に対して複数の符号表現が存在することは、検索などで問題を引き起こす要因となるため、何らかの正規化形式に揃えて扱うことが重要です。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">例 10. 練習10: 家族の絵文字 👨‍👩‍👧‍👦 についての記述として、正しいものをすべて選べ。</div>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>4つの絵文字をゼロ幅接合文字(ZWJ, <code>U+200D</code>)で連結して構成されている</p>
+</li>
+<li>
+<p>UTF-8 で符号化すると 25 バイトを占める</p>
+</li>
+<li>
+<p>利用者が目にする1つの絵文字に対して、コードポイントは7つ用いる</p>
+</li>
+<li>
+<p>利用者から1文字に見える単位を「書記素クラスタ(grapheme cluster)」と呼ぶ</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>正解: すべて(1, 2, 3, 4)</p>
+</div>
+<div class="paragraph">
+<p>4つの絵文字(👨, 👩, 👧, 👦)はそれぞれ4バイト、3つのZWJはそれぞれ3バイト(BMP内のため UTF-8 で3バイト)です。合計 4×4 + 3×3 = 25バイトとなります。</p>
+</div>
+</div>
+</details>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_問題"><a class="link" href="#_問題">3. 問題</a></h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>１. ASCIIコードで表現できる文字数は何文字か。<br>
+　a) 64文字<br>
+　b) 128文字<br>
+　c) 256文字<br>
+　d) 512文字</p>
+</div>
+<div class="paragraph">
+<p>２. ASCIIで記録した英数字だけの文字列 <code>ABC123</code> と同じバイト列になる文字符号化方式はどれか（BOMは付けない。複数回答可）。<br>
+　a) ISO-2022-JP<br>
+　b) Shift_JIS<br>
+　c) EUC-JP<br>
+　d) UTF-8<br>
+　e) UTF-16</p>
+</div>
+<div class="paragraph">
+<p>３. Unicodeの符号化方式について、正しい説明を選べ。<br>
+　a) UTF-8は、Unicodeのすべてのコードポイントを1バイトで表現できる<br>
+　b) UTF-16は、Unicodeのすべてのコードポイントを2バイトで表現できる<br>
+　c) UTF-32は、Unicodeのすべてのスカラー値を4バイトで表現できる</p>
+</div>
+<div class="paragraph">
+<p>４. 日本で初めて制定された文字コード規格である JIS X 0201 で、ASCIIに加えて日本独自の文字として追加された字種は何か。</p>
+</div>
+</div>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_問題の解答"><a class="link" href="#_問題の解答">4. 問題の解答</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>まず自分で解いてから読むことをすすめます。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>ASCIIコードは7ビットなので、2<sup>7</sup>=128 となり、最大128文字。ただし、符号化では1文字1バイトでファイルに記録されています。</p>
+</li>
+<li>
+<p>正解は (a), (b), (c), (d)。この文字列はどれも英数字1字につき1バイトで、<code>41 42 43 31 32 33</code>（16進）となる。(e)のUTF-16では1字につき2バイトが必要。ISO-2022-JPのモード切替や、JIS X 0201の円記号などを含む一般の文字列の互換性は、別に考える必要がある。</p>
+</li>
+<li>
+<p>(c)のみが正解。(a),(b)については可変長であり、UTF-8は1バイトから4バイトの可変長、UTF-16は2バイトと4バイトの可変長の符号化方式である。</p>
+</li>
+<li>
+<p>新たに追加された字種はカタカナ(いわゆる半角カタカナ)です。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>以上です</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.0<br>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(","\\)"]],
+    displayMath: [["\\[","\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$","\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<hr style="margin-top:3em">
+<div style="font-size:0.85em;color:#666;line-height:1.7;padding-bottom:2em">
+<p><a href="../index.html">&#8592; 目次へ戻る</a></p>
+<p>© 久保山哲二 「コンピューター科学概論」講義資料 —
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja" rel="license">CC BY-NC-SA 4.0</a>
+(表示 - 非営利 - 継承)で公開しています。</p>
+</div>
+</body>
+</html>

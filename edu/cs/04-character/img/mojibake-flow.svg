@@ -1,0 +1,70 @@
+<svg xml:lang="ja" lang="ja" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 470" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+<rect x="3" y="3" width="874" height="464" rx="14" fill="#fcfdfe" stroke="#d5dde4" stroke-width="1.5"/>
+<rect x="22" y="18" width="88" height="28" rx="14" fill="#d7301f"/>
+<text x="66.0" y="37" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">文字化け</text>
+<text x="124" y="38" font-size="17" fill="#333" text-anchor="start" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">「こんにちは」はなぜ「縺薙ｓ縺ｫ縺｡縺ｯ」になるのか</text>
+<rect x="66.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="90.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">E3</text>
+<rect x="116.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="140.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">81</text>
+<rect x="166.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="190.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">93</text>
+<rect x="216.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="240.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">E3</text>
+<rect x="266.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="290.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">82</text>
+<rect x="316.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="340.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">93</text>
+<rect x="366.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="390.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">E3</text>
+<rect x="416.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="440.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">81</text>
+<rect x="466.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="490.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">AB</text>
+<rect x="516.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="540.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">E3</text>
+<rect x="566.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="590.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">81</text>
+<rect x="616.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="640.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">A1</text>
+<rect x="666.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="690.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">E3</text>
+<rect x="716.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="740.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">81</text>
+<rect x="766.0" y="206" width="48" height="38" rx="5" fill="#ffffff" stroke="#b9c6d2"/>
+<text x="790.0" y="231" font-size="16" fill="#333" text-anchor="middle" font-family="'Menlo','Consolas',monospace">AF</text>
+<text x="57.0" y="231" font-size="11.5" fill="#666" text-anchor="end" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">バイト列</text>
+<text x="440.0" y="92" font-size="14" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">送信側: UTF-8の区切り(日本語はどれも3バイト)</text>
+<path d="M 69.0 198 L 69.0 186 L 211.0 186 L 211.0 198" fill="none" stroke="#2166ac" stroke-width="2"/>
+<text x="140.0" y="174" font-size="22" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">こ</text>
+<path d="M 219.0 198 L 219.0 186 L 361.0 186 L 361.0 198" fill="none" stroke="#2166ac" stroke-width="2"/>
+<text x="290.0" y="174" font-size="22" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">ん</text>
+<path d="M 369.0 198 L 369.0 186 L 511.0 186 L 511.0 198" fill="none" stroke="#2166ac" stroke-width="2"/>
+<text x="440.0" y="174" font-size="22" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">に</text>
+<path d="M 519.0 198 L 519.0 186 L 661.0 186 L 661.0 198" fill="none" stroke="#2166ac" stroke-width="2"/>
+<text x="590.0" y="174" font-size="22" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">ち</text>
+<path d="M 669.0 198 L 669.0 186 L 811.0 186 L 811.0 198" fill="none" stroke="#2166ac" stroke-width="2"/>
+<text x="740.0" y="174" font-size="22" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">は</text>
+<path d="M 69.0 252 L 69.0 264 L 161.0 264 L 161.0 252" fill="none" stroke="#d7301f" stroke-width="2"/>
+<text x="115.0" y="290" font-size="21" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">縺</text>
+<path d="M 169.0 252 L 169.0 264 L 261.0 264 L 261.0 252" fill="none" stroke="#d7301f" stroke-width="2"/>
+<text x="215.0" y="290" font-size="21" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">薙</text>
+<path d="M 269.0 252 L 269.0 264 L 361.0 264 L 361.0 252" fill="none" stroke="#d7301f" stroke-width="2"/>
+<text x="315.0" y="290" font-size="21" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">ｓ</text>
+<path d="M 369.0 252 L 369.0 264 L 461.0 264 L 461.0 252" fill="none" stroke="#d7301f" stroke-width="2"/>
+<text x="415.0" y="290" font-size="21" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">縺</text>
+<path d="M 469.0 252 L 469.0 264 L 511.0 264 L 511.0 252" fill="none" stroke="#d7301f" stroke-width="2"/>
+<text x="490.0" y="290" font-size="21" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">ｫ</text>
+<path d="M 519.0 252 L 519.0 264 L 611.0 264 L 611.0 252" fill="none" stroke="#d7301f" stroke-width="2"/>
+<text x="565.0" y="290" font-size="21" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">縺</text>
+<path d="M 619.0 252 L 619.0 264 L 661.0 264 L 661.0 252" fill="none" stroke="#d7301f" stroke-width="2"/>
+<text x="640.0" y="290" font-size="21" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">｡</text>
+<path d="M 669.0 252 L 669.0 264 L 761.0 264 L 761.0 252" fill="none" stroke="#d7301f" stroke-width="2"/>
+<text x="715.0" y="290" font-size="21" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">縺</text>
+<path d="M 769.0 252 L 769.0 264 L 811.0 264 L 811.0 252" fill="none" stroke="#d7301f" stroke-width="2"/>
+<text x="790.0" y="290" font-size="21" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">ｯ</text>
+<text x="440.0" y="320" font-size="14" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">受信側: Shift_JISだと思って区切って読む(2バイト文字と1バイト半角カナが混在)</text>
+<rect x="22" y="362" width="836" height="34" rx="8" fill="#f2f5f8"/>
+<text x="440.0" y="384" font-size="14" fill="#333" text-anchor="middle" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">最初の「区切り」がズレると、以降もズレたまま復号され、意味不明の文字列になる</text>
+<text x="440.0" y="418" font-size="13.5" fill="#2e7d32" text-anchor="middle" font-weight="bold" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">バイト列そのものは壊れていない → 正しい文字コード(UTF-8)で読み直せば元に戻る</text>
+</svg>

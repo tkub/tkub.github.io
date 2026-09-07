@@ -1,0 +1,26 @@
+<svg xml:lang="ja" lang="ja" xmlns="http://www.w3.org/2000/svg" width="660" height="290" viewBox="0 0 660 290" font-family="Helvetica, Arial, sans-serif">
+<rect x="0" y="0" width="660" height="290" fill="#ffffff"/>
+<rect x="150" y="28" width="46" height="46" rx="6" fill="#ffffff" stroke="#9e9e9e" stroke-width="1.5"/><text x="173.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">9</text>
+<rect x="200" y="28" width="46" height="46" rx="6" fill="#ffffff" stroke="#9e9e9e" stroke-width="1.5"/><text x="223.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">1</text>
+<rect x="250" y="28" width="46" height="46" rx="6" fill="#ffffff" stroke="#9e9e9e" stroke-width="1.5"/><text x="273.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">4</text>
+<rect x="300" y="28" width="46" height="46" rx="6" fill="#ffffff" stroke="#9e9e9e" stroke-width="1.5"/><text x="323.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">3</text>
+<rect x="350" y="28" width="46" height="46" rx="6" fill="#ffffff" stroke="#9e9e9e" stroke-width="1.5"/><text x="373.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">7</text>
+<rect x="400" y="28" width="46" height="46" rx="6" fill="#fff9c4" stroke="#f9a825" stroke-width="1.5"/><text x="423.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">6</text>
+<rect x="450" y="28" width="46" height="46" rx="6" fill="#ffffff" stroke="#9e9e9e" stroke-width="1.5"/><text x="473.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">2</text>
+<rect x="500" y="28" width="46" height="46" rx="6" fill="#ffffff" stroke="#9e9e9e" stroke-width="1.5"/><text x="523.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">3</text>
+<text x="423.0" y="20" font-size="13" text-anchor="middle" fill="#f9a825" font-weight="bold">基準値 6</text>
+<rect x="60" y="180" width="46" height="46" rx="6" fill="#c8e6c9" stroke="#66bb6a" stroke-width="1.5"/><text x="83.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">1</text>
+<rect x="110" y="180" width="46" height="46" rx="6" fill="#c8e6c9" stroke="#66bb6a" stroke-width="1.5"/><text x="133.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">4</text>
+<rect x="160" y="180" width="46" height="46" rx="6" fill="#c8e6c9" stroke="#66bb6a" stroke-width="1.5"/><text x="183.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">3</text>
+<rect x="210" y="180" width="46" height="46" rx="6" fill="#c8e6c9" stroke="#66bb6a" stroke-width="1.5"/><text x="233.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">2</text>
+<rect x="260" y="180" width="46" height="46" rx="6" fill="#c8e6c9" stroke="#66bb6a" stroke-width="1.5"/><text x="283.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">3</text>
+<rect x="324" y="180" width="46" height="46" rx="6" fill="#fff9c4" stroke="#f9a825" stroke-width="1.5"/><text x="347.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">6</text>
+<rect x="388" y="180" width="46" height="46" rx="6" fill="#ffcdd2" stroke="#e57373" stroke-width="1.5"/><text x="411.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">7</text>
+<rect x="438" y="180" width="46" height="46" rx="6" fill="#ffcdd2" stroke="#e57373" stroke-width="1.5"/><text x="461.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">9</text>
+<text x="183.0" y="156" font-size="14" text-anchor="middle" fill="#388e3c" font-weight="bold">6より小さいグループ</text>
+<text x="436.0" y="156" font-size="14" text-anchor="middle" fill="#d32f2f" font-weight="bold">6より大きい</text>
+<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#555"/></marker></defs>
+<path d="M 415.0 80 C 363.0 120, 170 125, 170 177" fill="none" stroke="#555" stroke-width="1.8" marker-end="url(#ah)"/>
+<path d="M 431.0 80 C 483.0 120, 432 125, 432 177" fill="none" stroke="#555" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="330" y="262" font-size="14" text-anchor="middle" fill="#555">左右のグループを、それぞれ同じやり方で整列（再帰）</text>
+</svg>

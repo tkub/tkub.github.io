@@ -1,0 +1,47 @@
+<svg xml:lang="ja" lang="ja" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 440" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#d7301f"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="600" height="440" fill="#ffffff"/>
+  <!-- 軸ラベル -->
+  <text x="240" y="42" text-anchor="middle" font-size="15" font-style="italic" fill="#333">zw</text>
+  <text x="68" y="215" text-anchor="middle" font-size="15" font-style="italic" fill="#333">xy</text>
+  <!-- 列ラベル -->
+  <text x="150" y="66" text-anchor="middle" font-size="15" fill="#333">00</text>
+  <text x="210" y="66" text-anchor="middle" font-size="15" fill="#333">01</text>
+  <text x="270" y="66" text-anchor="middle" font-size="15" fill="#333">11</text>
+  <text x="330" y="66" text-anchor="middle" font-size="15" fill="#333">10</text>
+  <!-- 行ラベル -->
+  <text x="96" y="125" text-anchor="end" font-size="15" fill="#333">00</text>
+  <text x="96" y="185" text-anchor="end" font-size="15" fill="#333">01</text>
+  <text x="96" y="245" text-anchor="end" font-size="15" fill="#333">11</text>
+  <text x="96" y="305" text-anchor="end" font-size="15" fill="#333">10</text>
+  <!-- 格子 -->
+  <rect x="120" y="90" width="240" height="240" fill="none" stroke="#333" stroke-width="2"/>
+  <line x1="180" y1="90" x2="180" y2="330" stroke="#333" stroke-width="1"/>
+  <line x1="240" y1="90" x2="240" y2="330" stroke="#333" stroke-width="1"/>
+  <line x1="300" y1="90" x2="300" y2="330" stroke="#333" stroke-width="1"/>
+  <line x1="120" y1="150" x2="360" y2="150" stroke="#333" stroke-width="1"/>
+  <line x1="120" y1="210" x2="360" y2="210" stroke="#333" stroke-width="1"/>
+  <line x1="120" y1="270" x2="360" y2="270" stroke="#333" stroke-width="1"/>
+  <!-- 4隅の1 -->
+  <text x="150" y="126" text-anchor="middle" font-size="17" fill="#333">1</text>
+  <text x="330" y="126" text-anchor="middle" font-size="17" fill="#333">1</text>
+  <text x="150" y="306" text-anchor="middle" font-size="17" fill="#333">1</text>
+  <text x="330" y="306" text-anchor="middle" font-size="17" fill="#333">1</text>
+  <!-- 4隅を1つのグループとして囲む枠(端からはみ出して描く) -->
+  <rect x="105" y="75" width="81" height="81" rx="10" fill="none" stroke="#2166ac" stroke-width="2.5"/>
+  <rect x="294" y="75" width="81" height="81" rx="10" fill="none" stroke="#2166ac" stroke-width="2.5"/>
+  <rect x="105" y="264" width="81" height="81" rx="10" fill="none" stroke="#2166ac" stroke-width="2.5"/>
+  <rect x="294" y="264" width="81" height="81" rx="10" fill="none" stroke="#2166ac" stroke-width="2.5"/>
+  <!-- 上下のつながりを示す矢印 -->
+  <path d="M390,105 C428,165 428,255 390,315" fill="none" stroke="#d7301f" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="440" y="205" font-size="14" fill="#d7301f">上下の端は</text>
+  <text x="440" y="227" font-size="14" fill="#d7301f">つながっている</text>
+  <!-- 左右のつながりを示す矢印 -->
+  <path d="M135,355 C195,395 285,395 345,355" fill="none" stroke="#d7301f" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="240" y="410" text-anchor="middle" font-size="14" fill="#d7301f">左右の端はつながっている</text>
+  <text x="240" y="434" text-anchor="middle" font-size="14" fill="#333">4隅の4マスは、巻き付きにより1つのグループとして囲める</text>
+</svg>

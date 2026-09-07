@@ -1,0 +1,91 @@
+<svg xml:lang="ja" lang="ja" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 440" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+  <rect x="0" y="0" width="780" height="440" fill="#ffffff"/>
+
+  <!-- ===== left: balanced partition ===== -->
+  <text x="185" y="34" font-size="16" text-anchor="middle" fill="#2166ac" font-weight="bold">平衡した分割（理想的な場合）</text>
+
+  <!-- edges -->
+  <g stroke="#333" stroke-width="1.3">
+    <line x1="185" y1="80" x2="105" y2="140"/>
+    <line x1="185" y1="80" x2="265" y2="140"/>
+    <line x1="105" y1="170" x2="65" y2="225"/>
+    <line x1="105" y1="170" x2="145" y2="225"/>
+    <line x1="265" y1="170" x2="225" y2="225"/>
+    <line x1="265" y1="170" x2="305" y2="225"/>
+  </g>
+  <!-- nodes -->
+  <g>
+    <rect x="153" y="55" width="64" height="28" rx="14" fill="#dbe9f6" stroke="#2166ac" stroke-width="1.5"/>
+    <text x="185" y="74" font-size="15" text-anchor="middle" fill="#333">n</text>
+    <rect x="73" y="142" width="64" height="28" rx="14" fill="#dbe9f6" stroke="#2166ac" stroke-width="1.5"/>
+    <text x="105" y="161" font-size="15" text-anchor="middle" fill="#333">n/2</text>
+    <rect x="233" y="142" width="64" height="28" rx="14" fill="#dbe9f6" stroke="#2166ac" stroke-width="1.5"/>
+    <text x="265" y="161" font-size="15" text-anchor="middle" fill="#333">n/2</text>
+    <rect x="37" y="227" width="56" height="26" rx="13" fill="#dbe9f6" stroke="#2166ac" stroke-width="1.5"/>
+    <text x="65" y="245" font-size="14" text-anchor="middle" fill="#333">n/4</text>
+    <rect x="117" y="227" width="56" height="26" rx="13" fill="#dbe9f6" stroke="#2166ac" stroke-width="1.5"/>
+    <text x="145" y="245" font-size="14" text-anchor="middle" fill="#333">n/4</text>
+    <rect x="197" y="227" width="56" height="26" rx="13" fill="#dbe9f6" stroke="#2166ac" stroke-width="1.5"/>
+    <text x="225" y="245" font-size="14" text-anchor="middle" fill="#333">n/4</text>
+    <rect x="277" y="227" width="56" height="26" rx="13" fill="#dbe9f6" stroke="#2166ac" stroke-width="1.5"/>
+    <text x="305" y="245" font-size="14" text-anchor="middle" fill="#333">n/4</text>
+  </g>
+  <text x="185" y="285" font-size="18" text-anchor="middle" fill="#333">⋮</text>
+
+  <!-- per-level cost -->
+  <g font-size="13" fill="#666">
+    <text x="345" y="74" text-anchor="start">→ 計 約n回</text>
+    <text x="345" y="161" text-anchor="start">→ 計 約n回</text>
+    <text x="345" y="245" text-anchor="start">→ 計 約n回</text>
+  </g>
+
+  <!-- depth brace -->
+  <line x1="18" y1="60" x2="18" y2="290" stroke="#333" stroke-width="1.2"/>
+  <line x1="18" y1="60" x2="26" y2="60" stroke="#333" stroke-width="1.2"/>
+  <line x1="18" y1="290" x2="26" y2="290" stroke="#333" stroke-width="1.2"/>
+  <text x="30" y="330" font-size="13.5" fill="#333">深さ 約log₂n段</text>
+
+  <text x="185" y="375" font-size="15" text-anchor="middle" fill="#2166ac" font-weight="bold">各レベル約n回 × 約log₂n段</text>
+  <text x="185" y="400" font-size="16" text-anchor="middle" fill="#2166ac" font-weight="bold">＝ O(n log n)</text>
+
+  <!-- divider -->
+  <line x1="435" y1="30" x2="435" y2="410" stroke="#bbb" stroke-width="1" stroke-dasharray="3 5"/>
+
+  <!-- ===== right: skewed partition ===== -->
+  <text x="610" y="34" font-size="16" text-anchor="middle" fill="#d7301f" font-weight="bold">偏った分割（最悪の場合）</text>
+
+  <!-- edges -->
+  <g stroke="#333" stroke-width="1.3">
+    <line x1="560" y1="80" x2="590" y2="130"/>
+    <line x1="590" y1="158" x2="620" y2="208"/>
+    <line x1="620" y1="236" x2="650" y2="286"/>
+  </g>
+  <!-- nodes -->
+  <g>
+    <rect x="528" y="55" width="64" height="28" rx="14" fill="#f6c9bd" stroke="#d7301f" stroke-width="1.5"/>
+    <text x="560" y="74" font-size="15" text-anchor="middle" fill="#333">n</text>
+    <rect x="558" y="132" width="64" height="28" rx="14" fill="#f6c9bd" stroke="#d7301f" stroke-width="1.5"/>
+    <text x="590" y="151" font-size="15" text-anchor="middle" fill="#333">n−1</text>
+    <rect x="588" y="210" width="64" height="28" rx="14" fill="#f6c9bd" stroke="#d7301f" stroke-width="1.5"/>
+    <text x="620" y="229" font-size="15" text-anchor="middle" fill="#333">n−2</text>
+  </g>
+  <text x="663" y="300" font-size="18" fill="#333">⋱</text>
+  <rect x="668" y="308" width="44" height="26" rx="13" fill="#f6c9bd" stroke="#d7301f" stroke-width="1.5"/>
+  <text x="690" y="326" font-size="14" text-anchor="middle" fill="#333">1</text>
+
+  <!-- per-level cost -->
+  <g font-size="13" fill="#666">
+    <text x="545" y="120" text-anchor="end">n−1回 ↖</text>
+    <text x="575" y="198" text-anchor="end">n−2回 ↖</text>
+    <text x="605" y="276" text-anchor="end">n−3回 ↖</text>
+  </g>
+
+  <!-- depth annotation -->
+  <line x1="740" y1="60" x2="740" y2="335" stroke="#333" stroke-width="1.2"/>
+  <line x1="732" y1="60" x2="740" y2="60" stroke="#333" stroke-width="1.2"/>
+  <line x1="732" y1="335" x2="740" y2="335" stroke="#333" stroke-width="1.2"/>
+  <text x="744" y="200" font-size="13.5" fill="#333" writing-mode="tb">深さ 約n段</text>
+
+  <text x="610" y="375" font-size="15" text-anchor="middle" fill="#d7301f" font-weight="bold">(n−1)+(n−2)+⋯+1</text>
+  <text x="610" y="400" font-size="16" text-anchor="middle" fill="#d7301f" font-weight="bold">＝ O(n²)</text>
+</svg>

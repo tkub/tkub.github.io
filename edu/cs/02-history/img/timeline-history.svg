@@ -1,0 +1,71 @@
+<svg xml:lang="ja" lang="ja" viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+<rect x="0" y="0" width="900" height="330" fill="#ffffff"/>
+<rect x="165.8" y="215" width="142.0" height="34" fill="#2166ac" fill-opacity="0.1"/>
+<line x1="236.8" y1="249" x2="236.8" y2="248" stroke="#333" stroke-width="0.8"/>
+<text x="236.8" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">第1世代</text>
+<text x="236.8" y="274" text-anchor="middle" font-size="10" fill="#333">リレー・真空管</text>
+<rect x="307.8" y="215" width="47.3" height="34" fill="#2166ac" fill-opacity="0.22"/>
+<line x1="331.4" y1="249" x2="331.4" y2="276" stroke="#333" stroke-width="0.8"/>
+<text x="331.4" y="288" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">第2世代</text>
+<text x="331.4" y="302" text-anchor="middle" font-size="10" fill="#333">トランジスタ</text>
+<rect x="355.1" y="215" width="55.2" height="34" fill="#2166ac" fill-opacity="0.1"/>
+<line x1="382.7" y1="249" x2="382.7" y2="248" stroke="#333" stroke-width="0.8"/>
+<text x="382.7" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">第3世代</text>
+<text x="382.7" y="274" text-anchor="middle" font-size="10" fill="#333">IC</text>
+<rect x="410.3" y="215" width="71.0" height="34" fill="#2166ac" fill-opacity="0.22"/>
+<line x1="445.8" y1="249" x2="445.8" y2="276" stroke="#333" stroke-width="0.8"/>
+<text x="445.8" y="288" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">第3.5世代</text>
+<text x="445.8" y="302" text-anchor="middle" font-size="10" fill="#333">LSI</text>
+<rect x="481.3" y="215" width="362.9" height="34" fill="#2166ac" fill-opacity="0.1"/>
+<line x1="662.8" y1="249" x2="662.8" y2="248" stroke="#333" stroke-width="0.8"/>
+<text x="662.8" y="260" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">第4世代</text>
+<text x="662.8" y="274" text-anchor="middle" font-size="10" fill="#333">VLSI・ULSI</text>
+<line x1="40" y1="205" x2="98" y2="205" stroke="#333" stroke-width="2"/>
+<path d="M 104 197 L 112 213" stroke="#333" stroke-width="1.5" fill="none"/>
+<path d="M 112 197 L 120 213" stroke="#333" stroke-width="1.5" fill="none"/>
+<line x1="126" y1="205" x2="875" y2="205" stroke="#333" stroke-width="2"/>
+<path d="M 875 205 l -10 -5 v 10 z" fill="#333"/>
+<line x1="70.0" y1="137" x2="70.0" y2="199" stroke="#333" stroke-width="0.8"/>
+<circle cx="70.0" cy="205" r="4.5" fill="#2166ac"/>
+<text x="70.0" y="105" text-anchor="middle" font-size="12" font-weight="bold" fill="#2166ac">1822</text>
+<text x="70.0" y="118" text-anchor="middle" font-size="11" fill="#333">階差機関(構想)</text>
+<text x="70.0" y="131" text-anchor="middle" font-size="11" fill="#333">バベッジ</text>
+<line x1="173.7" y1="72" x2="173.7" y2="199" stroke="#333" stroke-width="0.8"/>
+<circle cx="173.7" cy="205" r="4.5" fill="#2166ac"/>
+<text x="173.7" y="40" text-anchor="middle" font-size="12" font-weight="bold" fill="#2166ac">1941</text>
+<text x="173.7" y="53" text-anchor="middle" font-size="11" fill="#333">Z3 (ツーゼ)</text>
+<text x="173.7" y="66" text-anchor="middle" font-size="11" fill="#333">リレー式</text>
+<line x1="189.4" y1="127" x2="189.4" y2="199" stroke="#333" stroke-width="0.8"/>
+<circle cx="189.4" cy="205" r="4.5" fill="#2166ac"/>
+<text x="189.4" y="95" text-anchor="middle" font-size="12" font-weight="bold" fill="#2166ac">1943</text>
+<text x="189.4" y="108" text-anchor="middle" font-size="11" fill="#333">Colossus</text>
+<text x="189.4" y="121" text-anchor="middle" font-size="11" fill="#333">真空管式</text>
+<line x1="213.1" y1="169" x2="213.1" y2="199" stroke="#333" stroke-width="0.8"/>
+<circle cx="213.1" cy="205" r="4.5" fill="#2166ac"/>
+<text x="213.1" y="150" text-anchor="middle" font-size="12" font-weight="bold" fill="#2166ac">1946</text>
+<text x="213.1" y="163" text-anchor="middle" font-size="11" fill="#333">ENIAC</text>
+<line x1="231.3" y1="39" x2="231.3" y2="199" stroke="#333" stroke-width="0.8"/>
+<circle cx="231.3" cy="205" r="4.5" fill="#d7301f"/>
+<text x="231.3" y="20" text-anchor="middle" font-size="12" font-weight="bold" fill="#d7301f">1947</text>
+<text x="231.3" y="33" text-anchor="middle" font-size="11" fill="#333">トランジスタ発明</text>
+<line x1="311.7" y1="127" x2="311.7" y2="199" stroke="#333" stroke-width="0.8"/>
+<circle cx="311.7" cy="205" r="4.5" fill="#d7301f"/>
+<text x="311.7" y="95" text-anchor="middle" font-size="12" font-weight="bold" fill="#d7301f">1958/59</text>
+<text x="311.7" y="108" text-anchor="middle" font-size="11" fill="#333">IC発明</text>
+<text x="311.7" y="121" text-anchor="middle" font-size="11" fill="#333">キルビー/ノイス</text>
+<line x1="410.3" y1="62" x2="410.3" y2="199" stroke="#333" stroke-width="0.8"/>
+<circle cx="410.3" cy="205" r="4.5" fill="#2166ac"/>
+<text x="410.3" y="30" text-anchor="middle" font-size="12" font-weight="bold" fill="#2166ac">1971</text>
+<text x="410.3" y="43" text-anchor="middle" font-size="11" fill="#333">Intel 4004</text>
+<text x="410.3" y="56" text-anchor="middle" font-size="11" fill="#333">マイクロプロセッサ</text>
+<line x1="473.4" y1="152" x2="473.4" y2="199" stroke="#333" stroke-width="0.8"/>
+<circle cx="473.4" cy="205" r="4.5" fill="#2166ac"/>
+<text x="473.4" y="120" text-anchor="middle" font-size="12" font-weight="bold" fill="#2166ac">1979</text>
+<text x="473.4" y="133" text-anchor="middle" font-size="11" fill="#333">PC-8001</text>
+<text x="473.4" y="146" text-anchor="middle" font-size="11" fill="#333">パソコン普及へ</text>
+<line x1="812.7" y1="77" x2="812.7" y2="199" stroke="#333" stroke-width="0.8"/>
+<circle cx="812.7" cy="205" r="4.5" fill="#2166ac"/>
+<text x="812.7" y="45" text-anchor="middle" font-size="12" font-weight="bold" fill="#2166ac">現代</text>
+<text x="812.7" y="58" text-anchor="middle" font-size="11" fill="#333">マルチコア</text>
+<text x="812.7" y="71" text-anchor="middle" font-size="11" fill="#333">GPU・スマホ</text>
+</svg>

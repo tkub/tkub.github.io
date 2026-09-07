@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 530" width="960" height="530" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">SATからクリークへ：手順2</title><desc id="desc">3つの節にリテラルの出現を配置。同じ文字でも出現する節が違えば別の頂点。辺は異なる節の相補的でないペアをすべて結ぶ。手順3では第1節の否定x、第2節の否定y、第3節のzを二重丸で選ぶ。</desc><rect width="100%" height="100%" fill="white"/>
+<text x="28" y="36" font-size="24" fill="#233647" text-anchor="start" font-weight="700">② 両立できる代表どうしを結ぶ</text>
+<rect x="35" y="90" width="220" height="225" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="47" y="115" font-size="17" fill="#235e85" text-anchor="start">第1節</text>
+<rect x="480" y="90" width="130" height="225" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="492" y="115" font-size="17" fill="#235e85" text-anchor="start">第2節</text>
+<rect x="230" y="360" width="270" height="110" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="242" y="385" font-size="17" fill="#235e85" text-anchor="start">第3節</text>
+<line x1="125" y1="150" x2="550" y2="270" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="125" y1="150" x2="280" y2="410" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="125" y1="150" x2="445" y2="420" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="80" y1="260" x2="530" y2="150" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="80" y1="260" x2="280" y2="410" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="80" y1="260" x2="445" y2="420" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="220" y1="270" x2="530" y2="150" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="220" y1="270" x2="550" y2="270" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="220" y1="270" x2="280" y2="410" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="220" y1="270" x2="445" y2="420" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="530" y1="150" x2="280" y2="410" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="530" y1="150" x2="445" y2="420" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="550" y1="270" x2="445" y2="420" stroke="#a5b2bb" stroke-width="1.5"/>
+<circle cx="125" cy="150" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="125" y="158" font-size="25" fill="#233647" text-anchor="middle">x</text>
+<line x1="117" y1="135" x2="133" y2="135" stroke="#233647" stroke-width="1.8"/>
+<circle cx="80" cy="260" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="80" y="268" font-size="25" fill="#233647" text-anchor="middle">y</text>
+<circle cx="220" cy="270" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="220" y="278" font-size="25" fill="#233647" text-anchor="middle">z</text>
+<circle cx="530" cy="150" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="530" y="158" font-size="25" fill="#233647" text-anchor="middle">x</text>
+<circle cx="550" cy="270" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="550" y="278" font-size="25" fill="#233647" text-anchor="middle">y</text>
+<line x1="542" y1="255" x2="558" y2="255" stroke="#233647" stroke-width="1.8"/>
+<circle cx="280" cy="410" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="280" y="418" font-size="25" fill="#233647" text-anchor="middle">y</text>
+<circle cx="445" cy="420" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="445" y="428" font-size="25" fill="#233647" text-anchor="middle">z</text>
+<line x1="650" y1="80" x2="650" y2="475" stroke="#d3dce1" stroke-width="1.5"/>
+<text x="680" y="120" font-size="18" fill="#233647" text-anchor="start">辺を引く条件は2つ。</text>
+<text x="680" y="155" font-size="18" fill="#233647" text-anchor="start">・異なる節に属する</text>
+<text x="680" y="190" font-size="18" fill="#233647" text-anchor="start">・互いの否定ではない</text>
+<text x="680" y="225" font-size="18" fill="#233647" text-anchor="start"></text>
+<text x="680" y="260" font-size="18" fill="#233647" text-anchor="start">同じ節の中には辺がない。</text>
+<text x="680" y="295" font-size="18" fill="#233647" text-anchor="start">x と x の否定の間にも</text>
+<text x="680" y="330" font-size="18" fill="#233647" text-anchor="start">辺は引かない。</text>
+<text x="28" y="510" font-size="17" fill="#233647" text-anchor="start">上線は否定を表す。3枚の図で、頂点の位置は変えていません。</text>
+</svg>

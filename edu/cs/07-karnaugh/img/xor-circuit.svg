@@ -1,0 +1,43 @@
+<svg xml:lang="ja" lang="ja" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 300" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+  <rect x="0" y="0" width="580" height="300" fill="#ffffff"/>
+  <!-- 入力ラベル -->
+  <text x="28" y="68" font-size="18" font-style="italic" fill="#333">x</text>
+  <text x="28" y="244" font-size="18" font-style="italic" fill="#333">y</text>
+  <!-- x の配線 -->
+  <line x1="42" y1="62" x2="150" y2="62" stroke="#333" stroke-width="2"/>
+  <circle cx="100" cy="62" r="3.5" fill="#333"/>
+  <line x1="100" y1="62" x2="100" y2="202" stroke="#333" stroke-width="2"/>
+  <line x1="100" y1="202" x2="250" y2="202" stroke="#333" stroke-width="2"/>
+  <!-- y の配線 -->
+  <line x1="42" y1="238" x2="150" y2="238" stroke="#333" stroke-width="2"/>
+  <circle cx="120" cy="238" r="3.5" fill="#333"/>
+  <line x1="120" y1="238" x2="120" y2="98" stroke="#333" stroke-width="2"/>
+  <line x1="120" y1="98" x2="250" y2="98" stroke="#333" stroke-width="2"/>
+  <!-- NOTゲート(上: xの否定) -->
+  <path d="M150,48 L182,62 L150,76 Z" fill="#ffffff" stroke="#333" stroke-width="2"/>
+  <circle cx="187" cy="62" r="5" fill="#ffffff" stroke="#333" stroke-width="2"/>
+  <line x1="192" y1="62" x2="250" y2="62" stroke="#333" stroke-width="2"/>
+  <!-- NOTゲート(下: yの否定) -->
+  <path d="M150,224 L182,238 L150,252 Z" fill="#ffffff" stroke="#333" stroke-width="2"/>
+  <circle cx="187" cy="238" r="5" fill="#ffffff" stroke="#333" stroke-width="2"/>
+  <line x1="192" y1="238" x2="250" y2="238" stroke="#333" stroke-width="2"/>
+  <!-- ANDゲート(上) -->
+  <path d="M250,50 h25 a30,30 0 0 1 0,60 h-25 Z" fill="#ffffff" stroke="#333" stroke-width="2"/>
+  <text x="269" y="85" text-anchor="middle" font-size="11" fill="#333">AND</text>
+  <!-- ANDゲート(下) -->
+  <path d="M250,190 h25 a30,30 0 0 1 0,60 h-25 Z" fill="#ffffff" stroke="#333" stroke-width="2"/>
+  <text x="269" y="225" text-anchor="middle" font-size="11" fill="#333">AND</text>
+  <!-- AND出力からORへの配線 -->
+  <line x1="305" y1="80" x2="350" y2="80" stroke="#333" stroke-width="2"/>
+  <line x1="350" y1="80" x2="350" y2="135" stroke="#333" stroke-width="2"/>
+  <line x1="350" y1="135" x2="388" y2="135" stroke="#333" stroke-width="2"/>
+  <line x1="305" y1="220" x2="350" y2="220" stroke="#333" stroke-width="2"/>
+  <line x1="350" y1="220" x2="350" y2="165" stroke="#333" stroke-width="2"/>
+  <line x1="350" y1="165" x2="388" y2="165" stroke="#333" stroke-width="2"/>
+  <!-- ORゲート -->
+  <path d="M380,120 q18,30 0,60 q45,-6 70,-30 q-25,-24 -70,-30 Z" fill="#ffffff" stroke="#333" stroke-width="2"/>
+  <text x="410" y="154" text-anchor="middle" font-size="11" fill="#333">OR</text>
+  <!-- 出力 -->
+  <line x1="450" y1="150" x2="515" y2="150" stroke="#333" stroke-width="2"/>
+  <text x="524" y="156" font-size="18" font-style="italic" fill="#333">x⊕y</text>
+</svg>

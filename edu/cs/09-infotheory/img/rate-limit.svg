@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 430" role="img" aria-labelledby="title desc">
+<title id="title">通信路容量は誤り率を0に近づける速度の限界</title>
+<desc id="desc">p=0.1の2元対称通信路。容量Cは約0.531。容量を超える速度でも有限のビット誤り率は実現でき、符号化なしではR=1、誤り率0.1となる。</desc>
+<rect width="850" height="430" fill="white"/>
+<g font-family="Hiragino Sans, Noto Sans JP, sans-serif" fill="#222" font-size="15">
+<text x="85" y="28" font-size="19" font-weight="bold">2元対称通信路（反転確率 p = 0.1）</text>
+<line x1="85" y1="300.0" x2="735" y2="300.0" stroke="#ccc" />
+<text x="72" y="305.0" text-anchor="end">0</text>
+<line x1="85" y1="258.0" x2="735" y2="258.0" stroke="#ccc" />
+<text x="72" y="263.0" text-anchor="end">0.02</text>
+<line x1="85" y1="216.0" x2="735" y2="216.0" stroke="#ccc" />
+<text x="72" y="221.0" text-anchor="end">0.04</text>
+<line x1="85" y1="174.0" x2="735" y2="174.0" stroke="#ccc" />
+<text x="72" y="179.0" text-anchor="end">0.06</text>
+<line x1="85" y1="132.0" x2="735" y2="132.0" stroke="#ccc" />
+<text x="72" y="137.0" text-anchor="end">0.08</text>
+<line x1="85" y1="90.0" x2="735" y2="90.0" stroke="#ccc" />
+<text x="72" y="95.0" text-anchor="end">0.1</text>
+<text x="85" y="324" text-anchor="middle">0</text>
+<text x="215.0" y="324" text-anchor="middle">0.2</text>
+<text x="345.0" y="324" text-anchor="middle">0.4</text>
+<text x="475.0" y="324" text-anchor="middle">0.6</text>
+<text x="605.0" y="324" text-anchor="middle">0.8</text>
+<text x="735" y="324" text-anchor="middle">1</text>
+<line x1="85" y1="55" x2="85" y2="300" stroke="#222" stroke-width="2"/>
+<line x1="85" y1="300" x2="750" y2="300" stroke="#222" stroke-width="2"/>
+<line x1="430.1528641669672" y1="55" x2="430.1528641669672" y2="300" stroke="#c73737" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="430.1528641669672" y="51" text-anchor="middle" fill="#ad2525">C ≈ 0.531</text>
+<text x="24" y="202" transform="rotate(-90 24 202)" text-anchor="middle">ビット誤り率</text>
+<text x="740" y="355" text-anchor="end">伝送速度 R（ビット／通信路の使用1回）</text>
+<polyline points="735.00,90.00 301.67,241.20 215.00,282.02 177.86,294.27 157.22,298.13 144.09,299.38 128.33,299.93 115.95,300.00 105.97,300.00 96.40,300.00" fill="none" stroke="#2568a6" stroke-width="2"/>
+<circle cx="735.0" cy="90.0" r="4" fill="#2568a6"/>
+<circle cx="301.66666666666663" cy="241.2" r="4" fill="#2568a6"/>
+<text x="311.66666666666663" y="231.2" >N=3</text>
+<circle cx="215.0" cy="282.024" r="4" fill="#2568a6"/>
+<circle cx="177.85714285714283" cy="294.2712" r="4" fill="#2568a6"/>
+<circle cx="157.22222222222223" cy="298.129068" r="4" fill="#2568a6"/>
+<circle cx="144.0909090909091" cy="299.379017232" r="4" fill="#2568a6"/>
+<circle cx="128.33333333333334" cy="299.9293877352672" r="4" fill="#2568a6"/>
+<circle cx="115.95238095238095" cy="299.99715856355886" r="4" fill="#2568a6"/>
+<circle cx="105.96774193548387" cy="299.99998561247355" r="4" fill="#2568a6"/>
+<circle cx="96.40350877192982" cy="299.9999999999816" r="4" fill="#2568a6"/>
+<text x="580" y="80" font-size="13">符号化なし：R=1、誤り率0.1</text>
+<text x="157" y="246" fill="#2568a6">繰り返し符号</text>
+<text x="510" y="166" fill="#ad2525">R &gt; C の点すべてが</text>
+<text x="510" y="190" fill="#ad2525">達成不可能なのではない</text>
+<line x1="90" y1="300" x2="427.1528641669672" y2="300" stroke="#217a52" stroke-width="5"/>
+<text x="85" y="390" fill="#217a52">R &lt; C：ブロック長を増やすことで、誤り率を0に近づけられる</text>
+<text x="85" y="415" fill="#ad2525">R &gt; C：一定の速度を保って、誤り率を0に近づけることはできない</text>
+</g></svg>

@@ -1,0 +1,2847 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor.js 4.0.11">
+<meta name="author" content="久保山哲二">
+<title>コンピューター内部の数の表現</title>
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Uncomment @import statement below to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+script{display:none!important}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:transparent}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+/* dfn{font-style:italic} */
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:none}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
+pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:normal}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
+.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock pre.nowrap,.literalblock pre.nowrap pre,.listingblock pre.nowrap,.listingblock pre.nowrap pre{white-space:pre;word-wrap:normal}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:#999}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
+table.pyhltable td.code{padding-left:.75em;padding-right:0}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #dddddf}
+pre.pygments .lineno{display:inline-block;margin-right:.25em}
+table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
+/* .quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify} */
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);padding:1em;font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin:0 0 1.25em;padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+table.tableblock{max-width:100%;border-collapse:separate}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd){background:#f8f8f7}
+table.stripes-none tr,table.stripes-odd tr:nth-of-type(even){background:none}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+td>div.verse{white-space:pre}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background-color:#00fafa}
+.black{color:#000}
+.black-background{background-color:#000}
+.blue{color:#0000bf}
+.blue-background{background-color:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background-color:#fa00fa}
+.gray{color:#606060}
+.gray-background{background-color:#7d7d7d}
+.green{color:#006000}
+.green-background{background-color:#007d00}
+.lime{color:#00bf00}
+.lime-background{background-color:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background-color:#7d0000}
+.navy{color:#000060}
+.navy-background{background-color:#00007d}
+.olive{color:#606000}
+.olive-background{background-color:#7d7d00}
+.purple{color:#600060}
+.purple-background{background-color:#7d007d}
+.red{color:#bf0000}
+.red-background{background-color:#fa0000}
+.silver{color:#909090}
+.silver-background{background-color:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background-color:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background-color:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background-color:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+
+/* ============================================================
+   コンピューター科学概論 デザイン調整層 (2026)
+   図版と同じ配色(#2166ac / #d7301f)で全体を統一する。
+   ============================================================ */
+:root{
+  --cs-ink:#2b3440;
+  --cs-head:#1c3d5f;
+  --cs-accent:#2166ac;
+  --cs-red:#d7301f;
+  --cs-muted:#5a6b7b;
+  --cs-line:#dde5ec;
+  --cs-bg-soft:#f6f8fa;
+  --cs-sans:'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;
+  --cs-mono:'SF Mono','Menlo','Consolas',monospace;
+}
+
+/* ---- 基本 ---- */
+body{font-family:var(--cs-sans);color:var(--cs-ink);background:#fff;
+  -webkit-font-smoothing:antialiased}
+#content{max-width:50em}
+#content p,#content .paragraph>p{line-height:1.95;letter-spacing:.01em}
+.paragraph{margin-bottom:1.15em}
+a{color:var(--cs-accent)}
+a:hover{color:#17497a}
+img{max-width:100%;height:auto}
+
+/* ---- ヘッダ ---- */
+#header h1{font-family:var(--cs-sans);font-weight:700;color:var(--cs-head);
+  font-size:1.9em;letter-spacing:.02em;
+  border-bottom:3px solid var(--cs-accent);padding-bottom:.35em}
+#header .details{color:var(--cs-muted);border-bottom:0;font-size:.85em}
+
+/* ---- 見出し階層 ---- */
+h1,h2,h3,h4,h5,#toctitle{font-family:var(--cs-sans);font-weight:700;color:var(--cs-head)}
+#content h2{font-size:1.5em;margin-top:2.2em;padding-bottom:.3em;
+  border-bottom:2px solid var(--cs-accent);color:var(--cs-head)}
+#content h3{font-size:1.24em;margin-top:1.9em;padding-bottom:.22em;
+  border-bottom:1px solid var(--cs-line)}
+#content h4{font-size:1.08em;margin-top:1.6em}
+#content h2>a.anchor,#content h3>a.anchor{color:#b9c6d2}
+
+/* ---- 右side目次 ---- */
+#toc.toc2{background:#f8fafc;border-color:#e4eaf0;font-family:var(--cs-sans)}
+#toc.toc2 #toctitle{color:var(--cs-head);font-size:1em}
+#toc.toc2 ul{font-family:var(--cs-sans)}
+#toc a{color:#4a5b6c;text-decoration:none}
+#toc a:hover{color:var(--cs-accent);text-decoration:underline}
+#toc ul.sectlevel1>li{margin-top:.45em}
+#toc ul.sectlevel2{font-size:.92em;margin-top:.2em}
+
+/* ---- 補足ブロック(NOTE/TIP/WARNING/IMPORTANT/CAUTION) ---- */
+.admonitionblock>table{border:1px solid var(--cs-line);border-radius:10px;
+  border-collapse:separate;overflow:hidden;background:#fff}
+.admonitionblock>table td.icon{padding:.9em .2em .9em .9em;min-width:2.6em}
+.admonitionblock>table td.icon [class^="fa icon-"]{font-size:1.6em;cursor:default;text-shadow:none}
+.admonitionblock>table td.content{padding:.9em 1.1em;border-left:0;
+  color:var(--cs-ink);font-size:.95em;line-height:1.85}
+.admonitionblock>table td.content>.title{color:var(--cs-head);font-weight:700}
+.admonitionblock.note>table{background:#f2f7fc;border-color:#c7d9ea}
+.admonitionblock.note td.icon .icon-note::before{color:var(--cs-accent)}
+.admonitionblock.tip>table{background:#f1f8f2;border-color:#c4dcc6}
+.admonitionblock.tip td.icon .icon-tip::before{color:#2e7d32;text-shadow:none}
+.admonitionblock.important>table{background:#fdf1ef;border-color:#eac3bd}
+.admonitionblock.important td.icon .icon-important::before{color:var(--cs-red)}
+.admonitionblock.warning>table{background:#fdf6ea;border-color:#e8d5b0}
+.admonitionblock.warning td.icon .icon-warning::before{color:#b26a00}
+.admonitionblock.caution>table{background:#fdf6ea;border-color:#e8d5b0}
+.admonitionblock.caution td.icon .icon-caution::before{color:#b26a00}
+
+/* ---- 例・引用・サイドバー ---- */
+.exampleblock>.content{background:#fdfdfe;border:1px solid var(--cs-line);
+  border-radius:10px;box-shadow:none;padding:1em 1.25em}
+.sidebarblock{background:var(--cs-bg-soft);border:1px solid var(--cs-line);border-radius:10px}
+.quoteblock blockquote,.quoteblock blockquote p{color:var(--cs-muted)}
+.quoteblock{border-left:3px solid var(--cs-line)}
+*:not(pre)>code{background:#f2f4f6;border-radius:4px;padding:.08em .35em;
+  font-family:var(--cs-mono);font-size:.88em;color:#3a4653;word-spacing:normal}
+
+/* ---- コードブロック ---- */
+.listingblock pre,.literalblock pre,
+.listingblock pre[class^="highlight"]{background:var(--cs-bg-soft);
+  border:1px solid #e6ebf0;border-radius:8px;
+  font-family:var(--cs-mono);font-size:.9em;line-height:1.6;padding:1em 1.2em}
+
+/* ---- 表 ---- */
+table.tableblock{border-color:var(--cs-line);font-size:.95em}
+table.tableblock th{background:#eef3f8;color:var(--cs-head);font-weight:700;
+  font-family:var(--cs-sans)}
+table.tableblock th,table.tableblock td{padding:.5em .8em}
+table.frame-topbot{border-top:2px solid var(--cs-head);border-bottom:2px solid var(--cs-head)}
+table.grid-rows td{border-color:#e6ebf0}
+
+/* ---- ブロックのキャプション ---- */
+.imageblock>.title,.tableblock+.title,table.tableblock caption,
+.exampleblock>.title,.listingblock>.title,.videoblock>.title,
+.imageblock .title,.stemblock>.title,caption.title{
+  color:var(--cs-muted);font-weight:600;font-size:.9em;
+  font-style:normal;line-height:1.6;font-family:var(--cs-sans)}
+.imageblock{margin:1.4em 0}
+.imageblock.text-center{margin-left:auto;margin-right:auto}
+
+/* ---- 折りたたみ(解答など) ---- */
+details{margin:1em 0}
+details>summary{background:#eef3f8;border:1px solid var(--cs-line);
+  border-radius:8px;padding:.5em .9em;font-weight:700;color:var(--cs-head);
+  cursor:pointer;user-select:none}
+details>summary:hover{background:#e2ecf5}
+details[open]>summary{border-radius:8px 8px 0 0}
+
+/* ---- 数式 ---- */
+.stemblock>.content{overflow-x:auto;padding:.2em 0}
+
+/* ---- 定義リスト([horizontal]など) ---- */
+td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
+.dlist dt{color:var(--cs-head);font-weight:700;font-style:normal}
+
+/* ---- 箇条書きの行間 ---- */
+.ulist li,.olist li{margin-bottom:.35em;line-height:1.85}
+
+/* ---- フッタ ---- */
+#footer{background:none;border-top:1px solid var(--cs-line);margin-top:3em}
+#footer-text,#footer div{color:var(--cs-muted);font-size:.85em}
+
+/* ---- 印刷 ---- */
+@media print{
+  #toc.toc2{display:none}
+  body.toc2{margin-right:0!important;margin-left:0!important}
+  #content h2{border-bottom-color:#888}
+}
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+<script>
+  window.MathJax = {
+    loader: { load: ['output/chtml'] },
+    startup: { output: 'chtml' }
+  };
+</script>
+</head>
+<body class="article toc2 toc-right">
+<div id="header">
+<h1>コンピューター内部の数の表現</h1>
+<div class="details">
+<span id="author" class="author">久保山哲二</span><br>
+<span id="revnumber">version 1.0</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">目次</div>
+<ul class="sectlevel1">
+<li><a href="#_今回の内容">1. 今回の内容</a></li>
+<li><a href="#_プログラミング言語による整数の2進表現と16進表現">2. プログラミング言語による整数の2進表現と16進表現</a>
+<ul class="sectlevel2">
+<li><a href="#_python">2.1. Python</a></li>
+<li><a href="#_ruby">2.2. Ruby</a></li>
+<li><a href="#_julia">2.3. Julia</a></li>
+<li><a href="#_javascript">2.4. JavaScript</a></li>
+</ul>
+</li>
+<li><a href="#_コンピューター内での数の表現">3. コンピューター内での数の表現</a>
+<ul class="sectlevel2">
+<li><a href="#_符号付き絶対値表現">3.1. 符号付き絶対値表現</a></li>
+<li><a href="#_補数表現による負の数の表現">3.2. 補数表現による負の数の表現</a>
+<ul class="sectlevel3">
+<li><a href="#_アイデア_上からの空きで負の数を表す">アイデア: 「上からの空き」で負の数を表す</a></li>
+<li><a href="#_正負の境目を決める">正負の境目を決める</a></li>
+<li><a href="#_足し算してみる_注ぎ足すだけで引き算までできる">足し算してみる — 「注ぎ足すだけ」で引き算までできる</a></li>
+<li><a href="#_うまくいかない場合_桁あふれ">うまくいかない場合 — 桁あふれ</a></li>
+</ul>
+</li>
+<li><a href="#_2の補数表現">3.3. 2の補数表現</a>
+<ul class="sectlevel3">
+<li><a href="#_桁上げと桁あふれを区別する">桁上げと桁あふれを区別する</a></li>
+</ul>
+</li>
+<li><a href="#two-complement-proof">3.4. 発展：合同式で確かめる（読み飛ばせます）</a></li>
+<li><a href="#_実数の浮動小数点表現による近似">3.5. 実数の浮動小数点表現による近似</a>
+<ul class="sectlevel3">
+<li><a href="#_浮動小数点floating_point表現">浮動小数点(Floating Point)表現</a></li>
+<li><a href="#_小数の変換">小数の変換</a></li>
+<li><a href="#_ieee_754による浮動小数点表現">IEEE 754による浮動小数点表現</a></li>
+<li><a href="#_コンピューターでの指数表記">コンピューターでの指数表記</a></li>
+<li><a href="#_表現誤差">表現誤差</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_数値計算における様々な誤差">4. 数値計算における様々な誤差</a>
+<ul class="sectlevel2">
+<li><a href="#_丸め誤差と数値の吸収">4.1. 丸め誤差と数値の吸収</a>
+<ul class="sectlevel3">
+<li><a href="#_丸め誤差とは">丸め誤差とは</a></li>
+<li><a href="#_数値の吸収">数値の吸収</a></li>
+</ul>
+</li>
+<li><a href="#_桁落ち">4.2. 桁落ち</a>
+<ul class="sectlevel3">
+<li><a href="#_桁落ちとは何か">桁落ちとは何か</a></li>
+<li><a href="#_実例_近い値の引き算">実例: 近い値の引き算</a></li>
+<li><a href="#_二次方程式の解の公式と桁落ち">二次方程式の解の公式と桁落ち</a></li>
+</ul>
+</li>
+<li><a href="#_コンピューターの計算に由来する実際の問題例">4.3. コンピューターの計算に由来する実際の問題例</a>
+<ul class="sectlevel3">
+<li><a href="#_宇宙探査に円周率は何桁必要">宇宙探査に円周率は何桁必要？</a></li>
+<li><a href="#_2038年問題year_2038_problem">2038年問題(Year 2038 Problem)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_問題">5. 問題</a></li>
+<li><a href="#_問題の解答">6. 問題の解答</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>授業資料の間違いに気づいた場合は、ぜひ教えてください。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_今回の内容"><a class="link" href="#_今回の内容">1. 今回の内容</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>まずは、前回の問題の説明をします。
+その後、コンピューター内での数値の表現を扱います。
+（情報技術者試験の基本情報などでも頻出の内容です。）</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_プログラミング言語による整数の2進表現と16進表現"><a class="link" href="#_プログラミング言語による整数の2進表現と16進表現">2. プログラミング言語による整数の2進表現と16進表現</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>C, Python, Ruby, Julia, JavaScript, Java 等の多くのプログラミング言語では、2進法の <code>1010</code> は、<code>0b1010</code> と表記します(C言語の2進リテラルはC23規格からの標準対応です)。<code>b</code> は2進を表す binary の頭文字です。また、16進法の <code>ab</code> は <code>0xab</code> と表記します。<code>x</code> は16進を表す he<span class="underline">x</span>adecimal からです。</p>
+</div>
+<div class="sect2">
+<h3 id="_python"><a class="link" href="#_python">2.1. Python</a></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; 0b11101010
+234
+&gt;&gt;&gt; 0xea
+234
+&gt;&gt;&gt; bin(234)
+'0b11101010'
+&gt;&gt;&gt; hex(234)
+'0xea'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ruby"><a class="link" href="#_ruby">2.2. Ruby</a></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-ruby hljs" data-lang="ruby">irb&gt; 0b11101010
+234
+irb&gt; 0xea
+234
+irb&gt; 234.to_s(2)
+"11101010"
+irb&gt; 234.to_s(16)
+"ea"</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_julia"><a class="link" href="#_julia">2.3. Julia</a></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; Int(0b11101010)
+234
+julia&gt; Int(0xea)
+234
+julia&gt; string(234, base=2)
+"11101010"
+julia&gt; string(234, base=16)
+"ea"</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_javascript"><a class="link" href="#_javascript">2.4. JavaScript</a></h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">&gt; 0b11101010
+234
+&gt; 0xea
+234
+&gt; (234).toString(2)
+'11101010'
+&gt; (234).toString(16)
+'ea'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>ほとんどのプログラミング言語では標準では10進法の整数から2進法や16進法への変換は整数のみですが、JavaScript では10進法の小数から2進法や16進法への変換も可能です。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_コンピューター内での数の表現"><a class="link" href="#_コンピューター内での数の表現">3. コンピューター内での数の表現</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ここでは、コンピューター内での数の表現について考えます。コンピューター内部では、0と1のみで数を表現する必要があります。0または正の整数については、<strong>符号なし整数</strong>として素直に2進法で表現することができます。このような場合、1つの整数に \(n\) ビット用いる場合は、\(0\sim 2^n-1\) の範囲の整数が表現できます。
+たとえば、プログラミング言語Cでは、 <code>unsigned int</code> という型宣言により、多くの処理系では32ビットの符号なし整数を扱うことができます（\(0\sim 2^{32}-1\)の範囲の整数）。</p>
+</div>
+<div class="paragraph">
+<p>一方で、負の数を含む整数表現については、歴史的には様々な手法が提案されてきました。ここでは、「符号付き絶対値表現」と、現在主流となっている「2の補数表現」について説明します。</p>
+</div>
+<div class="sect2">
+<h3 id="_符号付き絶対値表現"><a class="link" href="#_符号付き絶対値表現">3.1. 符号付き絶対値表現</a></h3>
+<div class="paragraph">
+<p>コンピューター内では、負の整数をどう表現するのでしょうか。もっとも素直に思いつくのが、正負を表す符号のために1ビットを使う方法です。コンピューター内で1つの整数表現に \(n\) ビットを使うとすると、一番左側の1ビット（最上位ビット）を正負の符号に用い、\(n-1\) ビットを絶対値の表現につかう方法です。最上位ビットが1のとき負、0のとき正を表します。（符号付き絶対値表現をした2進法による表記には、下付きの「(2s)」をつけて表すことにします。）</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>整数として4ビットを用いる場合、下位の3ビットで整数の絶対値を表す（つまり、0〜7）</p>
+</li>
+<li>
+<p>最上位の1ビットを用いて符号を表す</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>たとえば、4ビットを用いて \(-5\) を表現する際には、負なので最上位ビットを1として、絶対値5を残りの3ビットで表現します。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align*}
+{\underbrace{1}_{\text{符号}}\underbrace{101}_{\text{絶対値}}}{}_{\text{(2s)}}=-5_{(10)}
+\end{align*}\]
+</div>
+</div>
+<table class="tableblock frame-ends grid-rows fit-content center">
+<caption class="title">表 1. 4ビットを用いた符号つき整数表現</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">表現したい数</th>
+<th class="tableblock halign-right valign-top">符号付き絶対値表現</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−0</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>001</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>010</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>011</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−4</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>100</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−5</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−6</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>110</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−7</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>111</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>000</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>001</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>010</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>011</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>100</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>110</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>111</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>この表現の問題点は、\(1000_{\text{(2s)}}=-0\) と \(0000_{\text{(2s)}}=+0\) のように、0の表現が2通りになってしまうことです。また、正の整数と負の整数を素直に加算することができません。\(3 + (-2)\) を単純に計算すると下記のように \(-5\) になってしまいます。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{array}{rrr}
+  &amp; 0011_{\text{(2s)}} &amp; 3\\
++ &amp; 1010_{\text{(2s)}} &amp; -2\\
+\hline
+&amp; 1101_{\text{(2s)}} &amp; -5
+\end{array}\]
+</div>
+</div>
+<div class="paragraph">
+<p>そのため、整数の正負や演算ごとに場合分けをして加算回路と減算回路を準備しておく必要があります。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_補数表現による負の数の表現"><a class="link" href="#_補数表現による負の数の表現">3.2. 補数表現による負の数の表現</a></h3>
+<div class="paragraph">
+<p>2の補数表現では、負の数を含む足し算も、符号なし整数と同じ足し算の仕組みで計算できます。符号付き絶対値表現では符号に応じて足すか引くかを選ぶ必要がありましたが、ここでは負の数の表し方そのものを工夫します。</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">この節の読み方</div>
+<div class="paragraph">
+<p>まずメスシリンダーで仕組みをつかみ、次に容量を16に変えて4ビットの2の補数表現へ進みます。「桁上げと桁あふれを区別する」までが基本です。後の「発展：合同式で確かめる」は、読み飛ばして浮動小数点表現へ進めます。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>まず、身近な例でこのような表現方法を考えてみましょう。ここでは、0から10までの目盛りが入った容量10のメスシリンダーを使い、水位は整数だけを考えます。計算の途中で満杯になった1本は取り除くので、数を記録するときの水位は0〜9の10通りです。メスシリンダーにマイナスの量の水を入れることはできませんから、水の量は常に0以上です。この状況で、どうすれば負の数を表せるでしょうか。</p>
+</div>
+<div class="sect3">
+<h4 id="_アイデア_上からの空きで負の数を表す"><a class="link" href="#_アイデア_上からの空きで負の数を表す">アイデア: 「上からの空き」で負の数を表す</a></h4>
+<div class="paragraph">
+<p>発想を転換して、メスシリンダーを上から見てみます。水位6まで水が入っているとき、すりきり一杯(10)までの空きは \(10-6=4\) です。この「<strong>あと4足りない</strong>」という空きの量を、負の数 \(-4\) の絶対値とみなすことにします。つまり、</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>正の数は、水位をそのまま読む</p>
+</li>
+<li>
+<p>負の数は、上からの空き(10−水位)にマイナスを付けて読む</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>という2通りの読み方をするのです。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/mess-repr.svg" alt="メスシリンダーによる正負の数の表し方" width="620">
+</div>
+<div class="title">図 1. 正の数は「水の量」、負の数は「上からの空き」で表す</div>
+</div>
+<div class="paragraph">
+<p>一般に、\(y=10-x\) の関係にある \(x\) と \(y\) について、</p>
+</div>
+<div class="paragraph text-center">
+<p>\(x\) の<strong>10の補数</strong>は \(y\) である</p>
+</div>
+<div class="paragraph">
+<p>といいます。負の数 \(-4\) を、絶対値4の10の補数である6(水位6)で表す——これが<strong>補数表現</strong>です。コンピューター内部の「水位」にあたるものが、0以上の整数(ビット列)です。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_正負の境目を決める"><a class="link" href="#_正負の境目を決める">正負の境目を決める</a></h4>
+<div class="paragraph">
+<p>ところで、水位6を見たとき、「正の数6」と読むのか「空き4、すなわち \(-4\)」と読むのかは、どうやって区別するのでしょうか。ここは取り決めが必要なところです。この章では、</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>水位0〜4 → 0または正の数として、水位をそのまま読む</p>
+</li>
+<li>
+<p>水位5〜9 → 負の数として、空きにマイナスを付けて読む</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>と取り決めます。水位10は計算途中の満杯の状態です。満杯の1本を取り除き、空のメスシリンダー（水位0）を結果として残します。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/mess-boundary.svg" alt="正負の境目">
+</div>
+<div class="title">図 2. 水位0〜9の読み方と、満杯になったときの処理</div>
+</div>
+<div class="paragraph">
+<p>この取り決めで、\(-5\) から \(4\) までの10通りの整数が表せるようになりました（結果を記録する水位は0〜9なので、0の表現も水位0の1通りです）。</p>
+</div>
+<div class="paragraph">
+<p>境目は取り決めですが、ここでは正と負にほぼ半分ずつ割り当てました。後で2進法に移ると、この分け方によって「先頭のビットだけで正負がわかる」という利点が生まれます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_足し算してみる_注ぎ足すだけで引き算までできる"><a class="link" href="#_足し算してみる_注ぎ足すだけで引き算までできる">足し算してみる — 「注ぎ足すだけ」で引き算までできる</a></h4>
+<div class="paragraph">
+<p>この表現の威力は足し算で発揮されます。<strong>負の数が混ざっていても、対応する水位の水をただ注ぎ足すだけでよい</strong>のです。引き算のための特別な仕組みは要りません。ルールは1つだけ——あふれたら、あふれた分を2本目のメスシリンダーに受けて、満杯になった1本目(=10)は捨てます。</p>
+</div>
+<div class="paragraph">
+<p>まず、\((-4)+3\) を計算してみます。\(-4\) は水位6、\(3\) は水位3で用意し、注ぎ合わせると水位9になります。9は負の領域ですから、空き1を読んで答えは \(-1\)。正解です。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/mess-op1.svg" alt="例1 (−4)+3の計算">
+</div>
+</div>
+<div class="paragraph">
+<p>次に \((-3)+4\) です。\(7+4=11\) となるので水があふれます。あふれた分1を2本目に受け、満杯の1本目は捨てます。2本目に残った水位1が答えです。\(10\) を捨てる操作が、ちょうど \(11-10=1\) の計算になっています。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/mess-op2.svg" alt="例2 (−3)+4の計算">
+</div>
+</div>
+<div class="paragraph">
+<p>負の数同士の \((-1)+(-2)\) も、まったく同じ手順で計算できます。\(9+8=17\) であふれ、2本目に残るのは水位7。7は負の領域なので空き3を読んで、答えは \(-3\) です。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/mess-op3.svg" alt="例3 (−1)+(−2)の計算">
+</div>
+</div>
+<div class="paragraph">
+<p>\((-3)+3\) のような「足すと0になる」組合せでは、ちょうど満杯になります。満杯になった1本を取り除くと、残りの水はありません。空のメスシリンダー、水位0が答えです。互いに打ち消し合う数を足すと0になる性質が、水の操作に対応しています。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/mess-op4.svg" alt="例4 (−3)+3の計算">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_うまくいかない場合_桁あふれ"><a class="link" href="#_うまくいかない場合_桁あふれ">うまくいかない場合 — 桁あふれ</a></h4>
+<div class="paragraph">
+<p>では、\(3+4\) はどうなるでしょうか。水位は7になり、一見正しく計算できているように見えます。しかし、取り決めにより水位7は負の領域です。空き3を読むと、\(3+4=-3\) という、あり得ない結果になってしまいました。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/mess-op5.svg" alt="失敗例 3+4の計算">
+</div>
+</div>
+<div class="paragraph">
+<p>原因は答えの側にあります。正しい答え7が、この取り決めで表せる範囲 \(-5\sim 4\) からはみ出しているのです。このように、計算結果があらかじめ取り決めた範囲を超えてしまうことで発生する誤りを「<strong>桁あふれ</strong>」と呼びます。ここでは水はあふれていません。それでも、数としては桁あふれです。逆に、水があふれた先ほどの \((-3)+4\) は正しく計算できました。<strong>水があふれることと、数の桁あふれは別のこと</strong>なのです。結果が範囲内に収まっている限り、「注ぎ足すだけ」の仕組みは常に正しく働きます。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2の補数表現"><a class="link" href="#_2の補数表現">3.3. 2の補数表現</a></h3>
+<div class="paragraph">
+<p>コンピューター内部で使われる2の補数表現は、前節のメスシリンダーの仕組みをそのまま2進法に置き換えたものです。まず容量を16に変えてみましょう。水位0〜15は、4ビットの <code>0000</code>〜<code>1111</code> に対応します。0〜7をそのまま読み、8〜15は「16までの空き」にマイナスを付けて読むと、−8〜7が表せます。一般に、\(n\) ビットでは容量 \(2^n\) と考えます。対応関係を先に頭に入れておくと、この節の内容はすべてメスシリンダーの話の言い換えとして読めます。</p>
+</div>
+<table class="tableblock frame-ends grid-rows stretch">
+<caption class="title">表 2. メスシリンダーと2の補数表現の対応</caption>
+<colgroup>
+<col width="41.6666%">
+<col width="58.3334%">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">メスシリンダー(容量10)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2の補数表現(\(n\)ビット)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">容量10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(2^n\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">記録する水位（0〜9）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ビット列を符号なし整数として読んだ値</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">空き(10−水位)で負の数を表す</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2の補数(\(2^n-m\))で \(-m\) を表す</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">水位5以上を負の数の領域とする</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">最上位ビットが1なら負の数とみなす</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">満杯の1本を取り除き、残りの水位を読む</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(n+1\)ビット目への桁上げは無視する</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>負の数 \(-m\) を表す水位は、容量から \(m\) を引いた \(2^n-m\) です。固定した \(n\) ビットで、この値を \(m\) の<strong>2の補数</strong>と呼びます。たとえば4ビットで \(-5\) を表すには、\(16-5=11\)、すなわち <code>1011</code> を使います。0については、反転して1を足し、下位 \(n\) ビットを残すと0になります。</p>
+</div>
+<div class="paragraph">
+<p>一般に、\(n\) ビットの2の補数表現の範囲は</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[-2^{n-1}\leq v\leq 2^{n-1}-1\]
+</div>
+</div>
+<div class="paragraph">
+<p>です。最上位ビットが0なら0または正、1なら負と判断できます。この教材では、ビット列をこの規則で読むことを下付きの「(2c)」で示し、符号なしの2進数として読む場合の「(2)」と区別します。</p>
+</div>
+<table id="tab-2c" class="tableblock frame-ends grid-rows stretch center">
+<caption class="title">表 3. 4ビットを用いた2の補数表現</caption>
+<colgroup>
+<col width="27.2727%">
+<col width="36.3636%">
+<col width="36.3637%">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">表現したい数</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">2の補数表現</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">「2の補数表現」を符号なし2進表現として解釈したときの数</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−8</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>000</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">8</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−7</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>001</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">9</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−6</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>010</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">10</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−5</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>011</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">11</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−4</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>100</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">12</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>101</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">13</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>110</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">14</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">−1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>1</strong>111</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>000</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>001</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>010</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>011</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>100</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>101</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>110</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">6</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>0</strong>111</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">7</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="./img/mod16-wheel.svg" alt="0から15を円環状に並べ、外周に2の補数表現としての解釈−8〜7を併記した図">
+</div>
+<div class="title">図 3. 水位が16で0に戻る円環と4ビットの2の補数表現</div>
+</div>
+<div class="paragraph">
+<p>まず、正の整数から、2の補数表現による負の整数の求め方について説明します。
+ここでは、整数表現に用いるビット数を4とします。
+このとき、\(-5\) の2の補数表現を求めるには、正の整数 \(5\) の2の補数を計算します。つまり、</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[2^4-5=11=1011_{(2)}\]
+</div>
+</div>
+<div class="paragraph">
+<p>と計算します。よって、\(11\) は2の補数表現では \(-5\) を表していることになります（<a href="#tab-2c">表 3</a>参照）。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[-5=1011_{\text{(2c)}}\]
+</div>
+</div>
+<div class="paragraph">
+<p>また、逆に11の2の補数を求めると、5になることは明らかでしょう。つまり、<strong>「2の補数表現された負の整数」の絶対値を知りたいときは、2の補数を計算すればよいことがわかります</strong>。</p>
+</div>
+<div class="paragraph">
+<p>ところで、コンピューター内部では数は2進法で表現されていますので、2の補数の計算は10進法を使うより2進法のままで計算した方が簡単です。以下のように考えます。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align*}
+2^4-5 &amp;= \big((2^4-1)-5\big) + 1\\
+      &amp;= (1111_{(2)} - 0101_{(2)}) + 1_{(2)}\\
+      &amp;= 1010_{(2)} + 1_{(2)}\\
+      &amp;= 1011_{(2)}
+\end{align*}\]
+</div>
+</div>
+<div class="paragraph">
+<p>\(2^4=10000_{(2)}\) ですから \(2^4-1\) の2進表現は4つの1が並んだ \(1111_{(2)}\) となります。この値から、5の4ビット2進表現 \(0101_{(2)}\) を引いた結果は、\(0101_{(2)}\) の各桁のビットの0と1を入れ替える（ビットを反転する）ことと等価です。各桁のビットの反転によって、\(1010_{(2)}\) となります。最初に1を引いてしまったので、その分を最後に加えて、\(1011_{(2)}\) が得られます。これで、2の補数表現で、\(-5\) に相当する表記がえられました。これを、\(1011_{\text{(2c)}}=-5\) と書くことにします。</p>
+</div>
+<div class="paragraph">
+<p>この手続をまとめると、以下のようになります。（4ビットを整数表現に用いるとします。）</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>5 を2進法に変換 →  0101<sub>(2)</sub></p>
+</li>
+<li>
+<p>0101<sub>(2)</sub> の各桁のビットを反転  → 1010<sub>(2)</sub></p>
+</li>
+<li>
+<p>1010<sub>(2)</sub> に 1 を加算 → 1011<sub>(2)</sub></p>
+</li>
+<li>
+<p>\(-5=1011_{\text{(2c)}}\)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>なぜこの手続きで \(2^4-5\) が計算できるのかは、買い物のお釣りの計算にたとえるとよくわかります。1000円を出して437円の買い物をしたときのお釣り \(1000-437\) を素直に筆算すると、繰り下がりが連鎖して面倒です。そこで、まず999円から引いて、最後に1円を足します。\(999-437\) は、どの桁も「9−その桁」を書くだけで繰り下がりが決して起きません。2進法ではこの「9−その桁」にあたるものが「1−そのビット」、すなわち<strong>ビットの反転</strong>なのです。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/flip-add-one.svg" alt="ビット反転と1の加算で2の補数が求められる理由">
+</div>
+<div class="title">図 4. 「各ビットを反転して1を足す」と2の補数が求められる理由</div>
+</div>
+<div class="exampleblock">
+<div class="title">例 1. 2の補数を用いた計算</div>
+<div class="content">
+<div class="paragraph">
+<p>4ビットを整数表現に用いるとして、\(3 + (-7)\) を計算してみましょう。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(3\) を2進法に変換 → \(0011_{(2)}\)</p>
+<div class="ulist">
+<ul>
+<li>
+<p>正の整数なのでそのまま2の補数表現とする → \(3=0011_{\text{(2c)}}\)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>\(7\) の2の補数を計算して \(-7\) を表す</p>
+<div class="ulist">
+<ul>
+<li>
+<p>まず \(7\) を2進法に変換 → \(0111_{(2)}\)</p>
+</li>
+<li>
+<p>\(0111_{(2)}\) の各ビットを反転 → \(1000_{(2)}\)</p>
+</li>
+<li>
+<p>\(1000_{(2)}\) に1を加算 → \(1001_{(2)}\)</p>
+</li>
+<li>
+<p>よって \(-7=1001_{\text{(2c)}}\)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>\(3+(-7)\) を2の補数表現で計算すると次の筆算のようになります（1<sub>(2)</sub>+1<sub>(2)</sub>で桁上りが生じることに注意）。</p>
+</li>
+</ul>
+</div>
+\begin{array}{rrr}
+  & 0011_{\text{(2c)}} & 3\\
++ & 1001_{\text{(2c)}} & -7\\
+\hline
+& 1100_{\text{(2c)}} &
+\end{array}
+<div class="ulist">
+<ul>
+<li>
+<p>\(1100_{\text{(2c)}}\) の最上位ビットが1なので、これは負の整数であることがわかります。
+そこで、各ビットを反転して1を足し、その結果を符号なしで読むと絶対値がわかります。</p>
+<div class="ulist">
+<ul>
+<li>
+<p>\(1100_{(2)}\) の各ビットを反転 → \(0011_{(2)}\)</p>
+</li>
+<li>
+<p>\(0011_{(2)}\) に1を加算 → \(0100_{(2)}\)</p>
+</li>
+<li>
+<p>よって、\(0100_{(2)}=4\) より、\(1100_{\text{(2c)}}=-4\) であることが確認できました</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_桁上げと桁あふれを区別する"><a class="link" href="#_桁上げと桁あふれを区別する">桁上げと桁あふれを区別する</a></h4>
+<div class="paragraph">
+<p>4ビットの2の補数表現で表せる範囲は <strong>−8〜7</strong> です。計算の正しい答えがこの範囲に入っていれば、下位4ビットを残す足し算で正しく計算できます。範囲から外れることを、符号付き整数の<strong>桁あふれ（オーバーフロー）</strong>といいます。</p>
+</div>
+<div class="paragraph">
+<p>一方、<strong>5ビット目への桁上げ</strong>は、水を注ぎ合わせて満杯の1本ができることに対応します。この1本を取り除くこと自体は、計算の失敗ではありません。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">表 4. 桁上げの有無だけでは、桁あふれを判定できない</caption>
+<colgroup>
+<col width="20%">
+<col width="30%">
+<col width="20%">
+<col width="30%">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">計算</th>
+<th class="tableblock halign-left valign-top">ビット列を符号なしで足した結果</th>
+<th class="tableblock halign-left valign-top">下位4ビットの読み方</th>
+<th class="tableblock halign-left valign-top">正しい答えは範囲内か</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(3+(-7)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0011 + 1001 = 1100</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1100</code> → −4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">はい。正しく計算できる</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\((-3)+5\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1101 + 0101 = 1 0010</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0010</code> → 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">はい。桁上げがあっても正しい</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(1+7\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0001 + 0111 = 1000</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1000</code> → −8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">いいえ。8は範囲外</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\((-4)+(-5)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1100 + 1011 = 1 0111</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>0111</code> → 7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">いいえ。−9は範囲外</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>表の空白で区切った先頭の <code>1</code> が、取り除く5ビット目です。筆算の途中は符号なしのビット列として計算し、<strong>下位4ビットを残してから</strong>2の補数表現として読みます。</p>
+</div>
+<div class="paragraph">
+<p>異符号の2数を足した答えは、その2数の間に収まるため、桁あふれは起きません。同符号の2数を足して結果の符号が変わった場合が、桁あふれです。メスシリンダーの \(3+4\) の例と同じ見方です。</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">ここまでで押さえたいこと</div>
+<div class="ulist">
+<ul>
+<li>
+<p>負の数は「満杯まであといくつか」で表す。</p>
+</li>
+<li>
+<p>足し算では、満杯の1本に相当する桁上げを取り除き、残りを読む。</p>
+</li>
+<li>
+<p>正しい答えが表現範囲に入っているかどうかは、別に確認する。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>桁あふれが起きたときのプログラムの動作は、言語や型によって異なります。ここで学んだ固定ビット幅の計算の仕組みだけから、すべての言語の動作が決まるわけではありません。</p>
+</div>
+<div class="exampleblock">
+<div class="title">例 2. プログラミング言語での桁あふれの観察</div>
+<div class="content">
+<div class="paragraph">
+<p>データサイエンスや人工知能等の分野で現在もっとも広く使われているプログラミング言語Pythonでは、整数は最初から任意精度で表現されており、メモリなどの資源が許す限り必要な桁数が増えるため、固定幅の整数のような桁あふれは起こりません。
+そのため、固定ビット幅の整数を扱うためには、<code>numpy</code> という数値演算のためのライブラリをあらかじめ導入しておく必要があります。以下では <code>numpy</code> が使えることを前提に、Pythonでの桁あふれの例を見てみます。</p>
+</div>
+<div class="paragraph">
+<p>8ビットの2の補数表現による整数の演算 \(127+1\) と \((-128)+(-1)\) の計算結果です。（<code>np.int8(127)</code> は8ビットの2の補数表現による整数で127を意味しています。）
+この例では範囲を超えた結果が8ビットに収められます。NumPyの整数スカラーの桁あふれは、設定によって警告や例外の対象になります。以下では動作を明示するため、警告を表示する設定にしています。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; _ = np.seterr(over="warn")
+&gt;&gt;&gt; print(int(np.int8(127) + np.int8(1)))
+-128
+
+&gt;&gt;&gt; print(int(np.int8(-128) + np.int8(-1)))
+127
+
+&gt;&gt;&gt; print(int(np.int8(100) + np.int8(100)))
+-56</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>最後の例では \(100+100\) が \(-56\) になっています。8ビットの2の補数表現で表せる範囲は \(-128\leq m\leq 127\) であり、\(200\) はこの範囲を超えているためです。</p>
+</div>
+<div class="paragraph">
+<p>これもメスシリンダーで説明できます。8ビットの2の補数表現は、容量 \(2^8=256\) のメスシリンダーで、水位128以上を負の領域と取り決めたものにあたります。水位100の水どうしを注ぎ合わせると水位200になります。水はあふれていないのに、水位200は境目の128を越えて負の領域に入ってしまっているため、空き \(256-200=56\) を読んで \(-56\) となるのです。容量10のメスシリンダーでの失敗例 \(3+4\) と、まったく同じ仕組みです。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/mess-op-8bit.svg" alt="8ビットにおける100+100の桁あふれ">
+</div>
+<div class="title">図 5. 8ビット(容量256)での失敗例 100+100</div>
+</div>
+<div class="paragraph">
+<p>（警告の行は省略しています。<code>over="raise"</code> に設定すれば例外が発生します。参照：<a href="https://numpy.org/doc/stable/reference/generated/numpy.seterr.html">NumPy seterr</a>。）</p>
+</div>
+<div class="paragraph">
+<p>次に、データ科学分野で広くつかわれているプログラミング言語Juliaでの例です。
+（<code>Int8(127)</code> は8ビットの2の補数表現による整数で127を意味しています。また、 <code>bitstring</code> は与えられた値のコンピューター内部での2進法による表現を取り出す関数です。）
+Juliaもビット数で定まる値の範囲を超えると、何のエラーも出さずにあふれたビットを無視して結果を返していることがわかります。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; Int8(127) + Int8(1)
+-128
+
+julia&gt; Int8(-128) + Int8(-1)
+127
+
+julia&gt; bitstring(Int8(-128))
+"10000000"
+
+julia&gt; bitstring(Int8(-1))
+"11111111"
+
+julia&gt; bitstring(Int8(127))
+"01111111"</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>様々なメリットのある2の補数表現ですが、欠点もあります。大小比較がやや複雑になることです。ビット列を符号なし整数としてそのまま比較すると、負の数のほうが大きな値になってしまい、大小関係が一致しないためです。後述する浮動小数点の指数部で、2の補数ではなくバイアス表現が使われるのはこの点を避けるためです。</p>
+</div>
+<div class="paragraph">
+<p>ここまでは、整数同士の加算で計算結果が表現可能な範囲を超えてしまう「2の補数表現での桁あふれ」を扱ってきました。これに関連して、もう一つよく似た現象として、<strong>ビット幅の異なる型へ値を変換する際のオーバーフロー</strong>があります。これは2の補数の加算で起こる桁あふれとは仕組みは異なりますが、「定められたビット数で表せる範囲を超えてしまう」という点では同じカテゴリの問題です。次のコラムは、こうした型変換時のオーバーフローが引き起こした有名な実例です。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">型変換のオーバーフローが起こした大規模事故 — アリアン5の打ち上げ失敗</div>
+<div class="paragraph">
+<p>1996年6月4日、アリアン5の初飛行は打ち上げ直後に失敗しました。調査報告によれば、慣性基準装置で水平速度に関連する内部変数を64ビット浮動小数点から16ビット符号付き整数へ変換した際、値が範囲に収まらず例外が発生しました。同じソフトウェアを使う予備装置も停止していたため、切り替えでは救えませんでした。</p>
+</div>
+<div class="paragraph">
+<p>問題の処理はアリアン4から引き継いだ姿勢の初期調整の機能で、アリアン5では飛行中に必要のないものでした。新しい飛行条件に対して、以前の「この値は範囲を超えない」という想定を確かめ直せていなかったのです。範囲外の値を検出する機能があっても、その後どう対処するかまで設計する必要があります。</p>
+</div>
+<div class="paragraph">
+<p>出典：<a href="https://esamultimedia.esa.int/docs/esa-x-1819eng.pdf">ESA・CNES調査委員会報告書（1996年、特に2.1・2.2節）</a>。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="two-complement-proof"><a class="link" href="#two-complement-proof">3.4. 発展：合同式で確かめる（読み飛ばせます）</a></h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+ここは数学的な裏付けを知りたい人のための節です。計算方法と桁あふれは、ここまでのメスシリンダーの説明で理解できます。読み飛ばす場合は、次の「実数の浮動小数点表現による近似」へ進んでください。
+</td>
+</tr>
+</table>
+</div>
+<details>
+<summary class="title">証明を開く：満杯の1本を取り除いても、何が保たれるのか</summary>
+<div class="content">
+<div class="paragraph">
+<p>容量を \(N=2^n\) とします。整数 \(a,b\) の差が \(N\) の倍数のとき、両者は \(N\) を法として<strong>合同</strong>といい、\(a\equiv b\pmod N\) と書きます。「満杯の何本分かだけ違う」という意味です。たとえば、容量16では \(-5\equiv11\pmod{16}\) です。合同は等号ではなく、\(-5=11\) という意味ではありません。</p>
+</div>
+<div class="paragraph">
+<p>正負を含む整数 \(a,b\) を記録する水位を \(u,v\) とすると、ある整数 \(q,r\) を使って \(u=a+qN,\ v=b+rN\) と書けます。したがって、</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[u+v=a+b+(q+r)N.\]
+</div>
+</div>
+<div class="paragraph">
+<p>つまり、記録した水位どうしを足しても、本来の和との違いは満杯の整数本分だけです。満杯の1本を取り除く操作も、\(N\) を引くだけなので、この性質を保ちます。これが、正負を分けずに足し算できる理由です。</p>
+</div>
+<div class="paragraph">
+<p><strong>ただし、合同なだけでは答えは一つに決まりません。</strong> 容量16なら、7も−9も23も互いに合同です。2の補数表現では、−8〜7という連続した16個の整数から一つを選んで読みます。この範囲内にあって同じ水位に対応する異なる整数はありません。異なる2数の差の絶対値は16未満で、16の倍数にはならないからです。</p>
+</div>
+<div class="paragraph">
+<p>よって、<strong>本来の答えが表現範囲内にあれば、読み出した値はその答えに一致します。</strong> 範囲外なら、同じ水位に対応する別の値を読んでしまいます。これが桁あふれです。</p>
+</div>
+<div class="paragraph">
+<p>引き算も同じで、\(-b\) に対応するビット列を足せば、下位 \(n\) ビットが得られます。乗算についても、</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[uv=ab+N(ar+bq+qrN)\]
+</div>
+</div>
+<div class="paragraph">
+<p>なので、積の下位 \(n\) ビットは符号なし乗算と共通です。ただし、より広いビット幅で積全体を求めるには符号を考慮する必要があります。通常の整数の割り算には、このような置き換えは一般には使えません。</p>
+</div>
+<div class="paragraph">
+<p>最小値の符号反転にも注意しましょう。4ビットの−8は <code>1000</code> です。反転して1を足しても下位4ビットは <code>1000</code> のままです。これは手順の例外ではなく、正しい答えの+8が4ビットの符号付き範囲に入らないためです。+8まで扱いたければ、先にビット幅を広げます。</p>
+</div>
+</div>
+</details>
+</div>
+<div class="sect2">
+<h3 id="_実数の浮動小数点表現による近似"><a class="link" href="#_実数の浮動小数点表現による近似">3.5. 実数の浮動小数点表現による近似</a></h3>
+<div class="paragraph">
+<p>前節までは、整数の表現を考えてきました。ここからは、実数について考えます。コンピューターは有限の桁しか扱えませんので、すべての実数を正確に表現することはできません。たとえば0.5は2進法で正確に表せますが、0.1は有限桁では表せず、近似値になります。そのために、生じる問題があります。
+ほとんどのプログラミング言語 C, C++, Java, JavaScript, Python, Ruby, R, Julia 等では、\(1.0 - 0.9\) と \(0.1\) の値が等しくなりません。</p>
+</div>
+<div class="paragraph">
+<p>実際にPythonによって \(1.0-0.9-0.1\) の計算と、\(1.0-0.9 = 0.1\) であることのチェックしてみます。
+すると、前者の結果は、0になっていませんし、後者は等しければ <code>True</code>（真） となるはずが、 「等しくない」と <code>False</code>（偽） を結果として返しています。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; 1.0 - 0.9 - 0.1
+-2.7755575615628914e-17
+
+&gt;&gt;&gt; 1.0 - 0.9 == 0.1
+False</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>同様に、 \(0.1+0.2\) と \(0.3-0.2\) の計算と、\(0.3-0.2 = 0.1\) であることのチェックしてみます。やはり、おかしな結果が得られているのが確認できます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; 0.1 + 0.2
+0.30000000000000004
+
+&gt;&gt;&gt; 0.3 - 0.2
+0.09999999999999998
+
+&gt;&gt;&gt; 0.3 - 0.2 == 0.1
+False</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>なぜこのような簡単な計算ができないのでしょうか。コンピューターを使って数値計算をするときには、コンピューター内部での数の表現方法に関する知識がないと、とんでもない計算をしてしまう可能性があります。この節では、コンピューター内部での実数の近似表現である浮動小数点表現について学び、どうして上記のようなことが起こるのかを考えてみます。</p>
+</div>
+<div class="sect3">
+<h4 id="_浮動小数点floating_point表現"><a class="link" href="#_浮動小数点floating_point表現">浮動小数点(Floating Point)表現</a></h4>
+<div class="paragraph">
+<p>\(-1234000000\) のような数を表すときに0の続く部分は数の情報としては冗長で領域の無駄遣いになってしまいます。また、\(0.0000001234\) のように小数点以下に0が並ぶ小さな数についても同様です。そこで、それぞれ \(-1.234\times 10^9\) および \(1.234\times 10^{-7}\) のように小数点の位置を指数表現によって移動して表現する方法を<strong>浮動小数点表現</strong>といいます。 ここでは、とくに整数部が必ず一桁で、かつ0以外の値がくるように小数点の位置を調整した数の表現方法を<strong>正規化された浮動小数点表現</strong>と呼びます。以後、特に断らない限りは、浮動小数点表現は正規化されたものを指すことにします。</p>
+</div>
+<div class="paragraph">
+<p>例えば、\(-123.4\times 10^7\) は浮動小数点表現ですが、正規化されていません。\(-1.234\times 10^9\) は正規化されています。</p>
+</div>
+<div class="paragraph">
+<p>浮動小数点表現における、各部位の名称は以下のとおりです。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\underbrace{-}_{\text{符号}}\underbrace{1.234}_{\text{仮数}}\times \underbrace{10} _{\text{基数}}\!^{\overbrace{9} ^{\text{指数}}}\]
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+このような指数表記のコンピューターでの入力・表示方法については後述します。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_小数の変換"><a class="link" href="#_小数の変換">小数の変換</a></h4>
+<div class="paragraph">
+<p>ところで、コンピューター内部では10進法ではなくて2進法で数を表現しなくてはなりません。
+第1回授業で2進法の小数を10進法に変換する方法を説明しました。まずは、その復習からです。</p>
+</div>
+<div class="exampleblock">
+<div class="title">例 3. 2進法の小数を10進法に変換する</div>
+<div class="content">
+<div class="stemblock">
+<div class="content">
+\[\begin{align*}
+0.10011_{(2)} &amp;= \mathbf 1\times 2^{-1} +  \mathbf 0\times 2^{-2} + \mathbf 0\times 2^{-3} + \mathbf 1\times 2^{-4} + \mathbf 1\times 2^{-5}\\
+             &amp;= \mathbf 1\times 0.5 + \mathbf 0\times 0.25 + \mathbf 0\times 0.125 + \mathbf 1\times 0.0625 + \mathbf 1\times 0.03125\\
+             &amp;= 0.59375
+\end{align*}\]
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>この逆で、10進法の小数を2進法に変換する場合にはどうすればよいでしょうか。
+10進法では、10倍すると全体の桁が左に1つずれて（シフトして）、小数が順番に1の位に現れますので、順に10倍してその値を拾っていけば、小数の各桁の値がすべて一の位に出現することがわかります。同じように、2進法で小数を1つ左にシフトするには2倍すればよいので、これを小数の数が全部1の位にでてくるまで繰り返します。</p>
+</div>
+<div class="exampleblock">
+<div class="title">例 4. 10進法の小数を2進法に変換する</div>
+<div class="content">
+<div class="stemblock">
+<div class="content">
+\[\begin{array}{lll}
+  0.59375 &amp; \times 2 =&amp; \mathbf 1.1875 \\
+  0.1875  &amp; \times 2 =&amp; \mathbf 0.375 \\
+  0.375  &amp; \times 2 =&amp; \mathbf 0.75 \\
+  0.75  &amp; \times 2 =&amp; \mathbf 1.5\\
+  0.5  &amp; \times 2 =&amp; \mathbf 1.
+\end{array}\]
+</div>
+</div>
+<div class="paragraph">
+<p>よって、1の位にでてきた値を、小数第一位から順に並べて、変換完了です。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[ 0.59375 = 0.10011_{(2)}\]
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ieee_754による浮動小数点表現"><a class="link" href="#_ieee_754による浮動小数点表現">IEEE 754による浮動小数点表現</a></h4>
+<div class="paragraph">
+<p>ようやく実際にコンピューター内部での小数を含む数字の表現について説明する準備ができました。ここでは、コンピューターの浮動小数点表現の中でもっとも一般に用いられているIEEE754という標準に基づく方法を紹介します。（IEEEは「アイ・トリプル・イー」と読みます。世界最大の工学系の学会です。）</p>
+</div>
+<div class="paragraph">
+<p>IEEE754の規格の細部を扱うことはできませんので、最低限の内容についてここでは触れます。また、一般には浮動小数点表現に32ビット（単精度）や64ビット（倍精度）を用いますが、ここでは簡単のため、16ビット（半精度）の浮動小数点表現を用いて説明します。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>半精度は説明のための「おもちゃ」ではありません。大量の数値を扱う深層学習では、メモリ消費とデータ転送のコストを抑えるため、精度をあえて落とした半精度(FP16)や、その変種で指数部を単精度と同じ8ビットに広げたbfloat16が広く使われています。GPUなどのAI向け演算装置は、これらの短い形式を高速に処理する専用回路を備えています。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>まず、先程求めた \(0.59375\) の2進法による表現 \(0.10011_{(2)}\) を正規化された浮動小数点表現で表すと、</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[1.0011_{(2)}\times 2^{-1}\]
+</div>
+</div>
+<div class="paragraph">
+<p>となります。</p>
+</div>
+<div class="paragraph">
+<p>なぜ仮数部を2進表現で 1.xxx の形に正規化するのでしょうか。主に3つの理由があります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>表現の一意性</p>
+<div class="ulist">
+<ul>
+<li>
+<p>例えば 0.5×2¹ と 1.0×2⁰ は同じ値ですが、正規化しないと複数の表現が可能になってしまいます</p>
+</li>
+<li>
+<p>0でない正規化可能な値では、仮数の大きさを1以上2未満にそろえると指数と仮数が一つに決まります（有限桁で表せない実数は丸めて近似します）</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>精度の最大化</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2進表現された数の正規化では、仮数部の最上位ビットが常に1となることが分かっているため、この1を省略して保存できます</p>
+</li>
+<li>
+<p>その分、より多くの有効桁数を表現できます</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>比較演算の効率化</p>
+<div class="ulist">
+<ul>
+<li>
+<p>正の正規化数どうしなら、指数部の比較だけで大まかな大小関係がわかります</p>
+</li>
+<li>
+<p>同じ指数なら仮数部を比較します。負の数では大小が逆になり、0やNaNなどは別に扱います</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>例えば、\(0.0110_{(2)}\times 2^2\) は正規化すると \(1.1000_{(2)}\times2^0\) となります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>16ビットを用いる場合、「符号（1ビット）」、「指数（5ビット）」、「仮数（10ビット）」の各領域に16ビットを分割します。</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/floating-point.svg" alt="IEEE754半精度の格納形式" width="400">
+</div>
+</div>
+</li>
+<li>
+<p>符号部は正のとき 0、 負のとき 1 とします。今回は正の数なので 0 です。</p>
+</li>
+<li>
+<p>指数部は 5ビットを用いて \(-14\sim 15\) までの範囲の指数を表現します。指数が \(n\) のとき、\(n+15\) に値を変換してから、2進法の表記に変換します。<strong>2の補数を用いないのは、指数部の大小比較を簡単にするためです。</strong> ここでは、指数が \(-1\) なので、\(-1+15=14=01110_{(2)}\) となります。（指数部を  <code>11111</code> とすると無限大または非数値(NaN)を表すために用いられます。）</p>
+</li>
+<li>
+<p>仮数部は \(1.0011_{(2)}\) ですが、正規化した場合、必ず1の位は1となるので、この1は節約して省きます。すると、残りの小数点以下のビット列は <code>0011</code> となります。この右側に6ビットの0をつめて、<code>0011000000</code> となります。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>このようにして、実数を有限の浮動小数点表現で以下のように表すわけです。</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">符号(1ビット)</th>
+<th class="tableblock halign-right valign-top">指数(5ビット)</th>
+<th class="tableblock halign-right valign-top">仮数(10ビット)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>01110</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0011000000</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>全部つなげると、<code>0 01110 0011000000</code> となります。これが、0.59375 の16ビット浮動小数点表現となります。整数とは表現や計算の方法が大きく異なるため、ほとんどのコンピューターの演算装置は、浮動小数点の計算専用の演算装置を内蔵しています（これを FPU(Floating Point Unit) といいます）。</p>
+</div>
+<div class="paragraph">
+<p>指数部では、なぜ単純な2進表現ではなく、バイアス表現（+15を加算）を使うのでしょうか。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>比較の簡単化</p>
+<div class="ulist">
+<ul>
+<li>
+<p>符号付き数の比較には特別な回路が必要ですが</p>
+</li>
+<li>
+<p>バイアス表現では単純な符号なし整数として比較できます</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>特殊値の扱い</p>
+<div class="ulist">
+<ul>
+<li>
+<p>全ビット0はゼロや非正規化数(後述)のための特殊値、全ビット1は特殊値（無限大/NaN）を表すように自然に対応（正規化数の最小の指数は <code>00001</code> = \(-14\) です）</p>
+</li>
+<li>
+<p>これにより、特殊値の検出が容易になります</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>実例で見てみましょう。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>指数 \(-14\) を表すには: \(\mathbf{-14} + 15 = 1 \rightarrow 00001_{(2)}\)</p>
+</li>
+<li>
+<p>指数 \(0\) を表すには: \(\mathbf{0} + 15 = 15 \rightarrow 01111_{(2)}\)</p>
+</li>
+<li>
+<p>指数 \(+15\) を表すには: \(\mathbf{15} + 15 = 30 \rightarrow 11110_{(2)}\)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>ところで、このままでは \(0\) を表現することが出来ません。なぜなら、仮数部の正規化によって記載されていない \(1\) が必ず最上位ビットには隠れているからです。実は、上記の規則以外に下記のような例外的な表現があります。</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">正のゼロ(\(+0\))</dt>
+</dl>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">符号(1ビット)</th>
+<th class="tableblock halign-right valign-top">指数(5ビット)</th>
+<th class="tableblock halign-right valign-top">仮数(10ビット)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>00000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0000000000</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">負のゼロ(\(-0\))</dt>
+</dl>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">符号(1ビット)</th>
+<th class="tableblock halign-right valign-top">指数(5ビット)</th>
+<th class="tableblock halign-right valign-top">仮数(10ビット)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>00000</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0000000000</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">正の無限大(\(+\infty\))</dt>
+</dl>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">符号(1ビット)</th>
+<th class="tableblock halign-right valign-top">指数(5ビット)</th>
+<th class="tableblock halign-right valign-top">仮数(10ビット)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>11111</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0000000000</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">負の無限大(\(-\infty\))</dt>
+</dl>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">符号(1ビット)</th>
+<th class="tableblock halign-right valign-top">指数(5ビット)</th>
+<th class="tableblock halign-right valign-top">仮数(10ビット)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>11111</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0000000000</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">非数(NaN: Not a Number)</dt>
+</dl>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">符号(1ビット)</th>
+<th class="tableblock halign-right valign-top">指数(5ビット)</th>
+<th class="tableblock halign-right valign-top">仮数(10ビット)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0</code> or <code>1</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>11111</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0000000000</code> 以外の値</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>正のゼロと負のゼロがあると、複素数の計算の極座標表示等でメリットがあります。また、非数については、\(0/0\) などの未定義の計算結果を表す際などに用いられます。</p>
+</div>
+<div class="paragraph">
+<p>なお、指数部が <code>00000</code> で仮数部が0以外の値は<strong>非正規化数</strong>と呼ばれ、0付近の非常に小さい値を細かく表すために用いられます（本授業では詳細は扱いません）。</p>
+</div>
+<div class="paragraph">
+<p>先程と同様にプログラミング言語Juliaでも確認してみます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; bitstring(Float16(0.59375))
+"0011100011000000"
+julia&gt; bitstring(Float16(0))
+"0000000000000000"
+julia&gt; bitstring(Float16(0)/Float16(0)) # NaN
+"0111111000000000"
+julia&gt; bitstring(Float16(1)/Float16(0)) # +∞
+"0111110000000000"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Juliaで扱う浮動小数点表現が、説明と一致していることがわかります。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_コンピューターでの指数表記"><a class="link" href="#_コンピューターでの指数表記">コンピューターでの指数表記</a></h4>
+<div class="paragraph">
+<p>コンピューターやExcelなどでは次のような数値表現をよく見かけます。</p>
+</div>
+<div class="paragraph text-center">
+<p><code>1.23e-14</code></p>
+</div>
+<div class="paragraph">
+<p>これは、科学的記数法(指数表記)と呼ばれる表記方法です。この表記は次のように解釈します。
+<code>1.23</code> は仮数部(significand) <code>e-14</code> は「10の-14乗」を意味する指数部です。記号「e」は「exponential」（指数）の略です。
+つまり、<code>1.23e-14</code> は数学的には次のように表されます。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[1.23 \times 10^{-14}\]
+</div>
+</div>
+<div class="paragraph">
+<p>コンピューターやプログラミング言語では、非常に大きな数値や非常に小さな数値を表現する際にこの指数表記が使われます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>1.0e-13</code> は \(1.0 \times 10^{-13}\) （0.0000000000001）を表す</p>
+</li>
+<li>
+<p><code>2.5e6</code> は \(2.5 \times 10^6\) （2,500,000）を表す</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>この表記方法は、とても小さな数値や大きな数値を簡潔に表現できるだけでなく、浮動小数点数の内部表現(IEEE 754標準)とも関連しています。浮動小数点数は内部的に「仮数部」と「指数部」に分けて格納されており、この表記はその内部構造を反映しています。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_表現誤差"><a class="link" href="#_表現誤差">表現誤差</a></h4>
+<div class="paragraph">
+<p>このようにして10進法の数値を浮動小数点表現によって表す際の問題点についてここでは見てゆきます。
+10進法の \(0.1_{(10)}\) を浮動小数点表現することを考えます。
+そこで、まず、2進法に変換します。</p>
+</div>
+<div class="exampleblock">
+<div class="title">例 5. 10進法の小数を2進法に変換する</div>
+<div class="content">
+<div class="paragraph">
+<p>以下のように 0.1<sub>(10)</sub> を順次2倍して、1の位にでてくる値（0または1）を並べてゆきます。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{array}{lll}
+  0.1 &amp; \times 2 =&amp; \mathbf 0.2 \\
+  0.2 &amp; \times 2 =&amp; \mathbf 0.4 \\
+  0.4  &amp; \times 2 =&amp; \mathbf 0.8 \\
+  0.8  &amp; \times 2 =&amp; \mathbf 1.6\\
+  0.6  &amp; \times 2 =&amp; \mathbf 1.2\\
+  0.2  &amp; \times 2 =&amp; \mathbf 0.4\\
+  \vdots   &amp;  \vdots &amp; \vdots \\
+\end{array}\]
+</div>
+</div>
+<div class="paragraph">
+<p>2行目と6行目に0.2が出現していますので、これ以降は循環することになります。
+つまり、0.1<sub>(10)</sub> は2進法では、1の位にでてきた値を、小数第一位から順に並べると</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[ 0.000110011001100110011001100110011\cdots_{(2)} = 0.0\dot{0}01\dot{1}_{(2)}\]
+</div>
+</div>
+<div class="paragraph">
+<p>と無限に続く循環小数になります。</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>10進法では有限桁で表すことができる小数が、2進法では循環小数になってしまう例をみました。では、2進法では有限桁で表すことができる小数が、10進法で表すと循環小数になってしまうことはあるのでしょうか？ 考えてみてください。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>10進法の 0.1 を16ビットの浮動小数点表現（半精度）を用いて表すと、1.1001100110<sub>(2)</sub> × 2<sup>-4</sup> より</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>符号部は正なので <code>0</code></p>
+</li>
+<li>
+<p>指数部は \(-4+15=11=01011_{(2)}\)</p>
+</li>
+<li>
+<p>仮数部は1の位の1を省略して <code>1001100110</code>(IEEE 754の既定の丸め方式は最近接偶数丸めですが、この例では切り捨てと同じ結果になります)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>となります。よって、0.1<sub>(10)</sub>の16ビット浮動小数点表現は</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>0 01011 1001100110</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>となります。つまり、0.1 の2進法表現は循環小数になるにもかかわらず、正規化された浮動小数点表現では2進法小数点以下10ビットまでしか値を表現できないことになります。こうして、10進法の値との間に誤差が生じることになります。このような誤差を<strong>「表現誤差」</strong>と呼びます。</p>
+</div>
+<div class="paragraph">
+<p>実際に 0.00011001100110<sub>(2)</sub> を10進法に変換すると 0.0999755859375 となります。
+Juliaで実行してみると、たしかに値が一致することがわかります(Python や JavaScript, Cなどで実行しても同様の結果となります)。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; using Printf
+julia&gt; @printf("%0.16f",Float16(0.1))
+0.0999755859375000</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; 0.1 + 0.2
+0.30000000000000004  # 0.3ではない
+
+julia&gt; 0.1 + 0.2 == 0.3
+false  # 等しくないと判定される</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>他にもコンピューターでの計算には、様々な誤差の要因があります。コンピューターで重要な計算をする際には、誤差がどのように生じるか、きちんと学ぶ必要があります。</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>PythonやJuliaなどのプログラミング言語の多くには、このような2進法による表現誤差が発生しないように10進法の演算を提供するライブラリがあります。金額など、10進の有限小数を正確に扱いたい場合に有用です。入力を文字列で与え、必要な精度と丸め方も設定します。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; from decimal import Decimal
+&gt;&gt;&gt; Decimal('0.3') - Decimal('0.2')
+Decimal('0.1')</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>この例は表現誤差なく計算できます。ただし、10進法でも1/3のような循環小数は有限桁では表せず、演算の精度を超えると丸めが必要です。Decimalを使えば、どんな計算も正確になるという意味ではありません。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Excelで小数点を扱う場合には <code>0.3-0.2</code> は <code>0.1</code> となり、一見すると表現誤差がないように見えるものの、単純な利用では誤差が見えないように隠蔽されているだけで本質的には同様の誤差があることを念頭にいれて使う必要があります。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.microsoft.com/ja-jp/office/troubleshoot/excel/floating-point-arithmetic-inaccurate-result" target="_blank" rel="noopener">浮動小数点演算が Excel で不正確な結果をもたらす可能性がある</a></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_数値計算における様々な誤差"><a class="link" href="#_数値計算における様々な誤差">4. 数値計算における様々な誤差</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>コンピューターでの数値計算には表現誤差の他にも様々な誤差の要因があります。主な誤差の種類と対策について見ていきます。</p>
+</div>
+<div class="sect2">
+<h3 id="_丸め誤差と数値の吸収"><a class="link" href="#_丸め誤差と数値の吸収">4.1. 丸め誤差と数値の吸収</a></h3>
+<div class="sect3">
+<h4 id="_丸め誤差とは"><a class="link" href="#_丸め誤差とは">丸め誤差とは</a></h4>
+<div class="paragraph">
+<p>丸め誤差は、計算結果を有限の桁数で表現する際に発生する誤差です。コンピューターでは浮動小数点数で実数を近似するため、表現できない値は最も近い値に丸められます。特に繰り返し計算を行う場合、丸め誤差が蓄積されて大きな問題になることがあります。</p>
+</div>
+<div class="listingblock">
+<div class="title">丸め誤差の蓄積例</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; s = 0
+0
+
+julia&gt; for i=1:10000; s += 0.0001; end
+
+julia&gt; s
+0.9999999999999062  # 理論値は1.0</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_数値の吸収"><a class="link" href="#_数値の吸収">数値の吸収</a></h4>
+<div class="paragraph">
+<p>吸収は丸め誤差の一種で、大きな数と小さな数の演算（特に加減算）で、小さな数の寄与が完全に失われる現象です。これは浮動小数点数の精度限界によるものです。</p>
+</div>
+<div class="listingblock">
+<div class="title">吸収の例（Python）</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; a = 1e16
+&gt;&gt;&gt; b = 1.0
+&gt;&gt;&gt; result = a + b
+&gt;&gt;&gt; print(result == a)
+True  # 小さな値が「吸収」されている
+&gt;&gt;&gt; print(result - a)  # 理論値は1.0
+0.0  # 小さな値の情報が完全に失われている</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>このケースでは、<code>1.0</code> が <code>1e16</code> と比べてあまりにも小さいため、浮動小数点数の精度限界により、加算結果は単に <code>1e16</code> となります。これは、大きな数の最下位の桁よりも小さな数は表現できないためです。</p>
+</div>
+<div class="paragraph">
+<p>浮動小数点数の精度限界は、科学技術計算や金融計算など、多くの分野で重要な問題となります。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_桁落ち"><a class="link" href="#_桁落ち">4.2. 桁落ち</a></h3>
+<div class="sect3">
+<h4 id="_桁落ちとは何か"><a class="link" href="#_桁落ちとは何か">桁落ちとは何か</a></h4>
+<div class="paragraph">
+<p>桁落ちは、近い値同士の引き算で有効桁数が大幅に減少する現象です。浮動小数点演算では特に深刻な問題となります。</p>
+</div>
+<div class="paragraph">
+<p>近い数値を引くと上位の桁が打ち消され、小さな差が残ります。もとの数に含まれていた近似誤差が、その小さな差に対して大きな割合を占めることがあります。これが問題になる桁落ちです。近い数の引き算がいつも不正確になるわけではありません。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_実例_近い値の引き算"><a class="link" href="#_実例_近い値の引き算">実例: 近い値の引き算</a></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; a = 1.0000000000001
+1.0000000000001
+
+julia&gt; b = 1.0
+1.0
+
+julia&gt; a - b
+9.992007221626409e-14 # 理論値は1.0e-13</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>a と b は非常に近い値です。理論的には次のようになるはずです。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[a - b = (1+1×10^{-13}) - 1 = 1×10^{-13}\]
+</div>
+</div>
+<div class="paragraph">
+<p>ここでは、<code>a</code> を2進浮動小数点数として格納する時点で近似誤差が入っています。<code>a - b</code> の引き算自体は、格納された2数に対して正確です。それでも、もとの10進数どうしの差と比べると約0.08%の誤差があります。引き算が新たに誤差を生んだのではなく、入力時の小さな誤差が、差に対しては大きく現れたのです。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_二次方程式の解の公式と桁落ち"><a class="link" href="#_二次方程式の解の公式と桁落ち">二次方程式の解の公式と桁落ち</a></h4>
+<div class="paragraph">
+<p>桁落ちが実用上の問題を引き起こす典型例として、二次方程式の解の公式があります。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[ax^2 + bx + c = 0\]
+</div>
+</div>
+<div class="paragraph">
+<p>の解の公式は次式のとおりであることを思い出してください。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]
+</div>
+</div>
+<div class="paragraph">
+<p>次の二次方程式を考えてみます。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[(x - 10000000)(x - 0.0000001) = 0\]
+</div>
+</div>
+<div class="paragraph">
+<p>これを展開すると</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[x^2 - 10000000.0000001x + 1 = 0\]
+</div>
+</div>
+<div class="paragraph">
+<p>となります。この方程式の厳密な解は \(x_1 = 10000000\) と \(x_2 = 0.0000001\) です。</p>
+</div>
+<div class="paragraph">
+<p>解の公式を使ってコンピューターで計算すると、次のようになります。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import math
+a = 1
+b = -10000000.0000001
+c = 1
+# 判別式
+d = b*b - 4*a*c
+# 解の公式
+x1 = (-b + math.sqrt(d)) / (2*a)
+x2 = (-b - math.sqrt(d)) / (2*a)
+print(f"x1 = {x1}")  # 出力: x1 = 10000000.0
+print(f"x2 = {x2}")  # 出力: x2 = 9.96515154838562e-08</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>\(x_1\) の値は正確ですが、\(x_2\) の真の値は \(1 \times 10^{-7}\) であるのに対し、計算結果は \(9.96515154838562 \times 10^{-8}\) となり、約0.35%の誤差が生じています。厳密な解に対して計算値は小さく出ており、この程度でも科学計算や金融計算では問題になることがあります。</p>
+</div>
+<div class="sect4">
+<h5 id="_なぜ桁落ちが起こるのか"><a class="link" href="#_なぜ桁落ちが起こるのか">なぜ桁落ちが起こるのか</a></h5>
+<div class="paragraph">
+<p>\(x_2\) の計算では次のようになります。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[x_2 = \frac{10000000.0000001 - \sqrt{(10000000.0000001)^2 - 4}}{2}\]
+</div>
+</div>
+<div class="paragraph">
+<p>この計算では、非常に大きな値 \(10000000.0000001\) とそれにごく近い値 \(\sqrt{(10000000.0000001)^2 - 4}\) の差を求めています。これらの差は本来非常に小さいですが、大きな数の引き算を経由するため、有効桁数が大幅に失われます。浮動小数点演算では、このような状況で精度の悪化が著しくなります。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_対策と改善効果"><a class="link" href="#_対策と改善効果">対策と改善効果</a></h5>
+<div class="paragraph">
+<p>解と係数の関係式を利用することで桁落ちを回避できます。二次方程式の解の積は \(\dfrac{c}{a}\) であるため、この例では \(x_1 \times x_2 = \dfrac{1}{1} = 1\) が成り立ちます。</p>
+</div>
+<div class="paragraph">
+<p>そこで、以下のように計算手順を変更します。この実習用の例では、有限の係数を使い、判別式などの途中計算がオーバーフロー・アンダーフローしない場合を考えます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import math
+
+def solve_quadratic(a, b, c):
+  """二次方程式を桁落ちを避けて解く"""
+  if a == 0:
+    raise ValueError("a は0以外とする")
+  d = b*b - 4*a*c
+  if d &lt; 0:
+    raise ValueError("この例では実数解だけを扱う")
+  if b == 0 and c == 0:
+    return 0.0, 0.0
+  if b &gt;= 0:
+    x1 = (-b - math.sqrt(d)) / (2*a)
+  else:
+    x1 = (-b + math.sqrt(d)) / (2*a)
+  # 桁落ちが少ない方の解を先に計算し、積の公式で他方を求める
+  x2 = c / (a * x1)
+  return x1, x2
+
+a, b, c = 1, -10000000.0000001, 1
+x1, x2 = solve_quadratic(a, b, c)
+print(f"改良版解法: x1 = {x1}, x2 = {x2}")
+# 出力例: 改良版解法: x1 = 10000000.0, x2 = 1e-07</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_従来解法と改良解法の比較"><a class="link" href="#_従来解法と改良解法の比較">従来解法と改良解法の比較</a></h5>
+<div class="paragraph">
+<p>両方の解法で得られた結果を比較してみましょう。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col width="25%">
+<col width="25%">
+<col width="25%">
+<col width="25%">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">解法</th>
+<th class="tableblock halign-left valign-top">x₁</th>
+<th class="tableblock halign-left valign-top">x₂</th>
+<th class="tableblock halign-left valign-top">x₂の相対誤差</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">公式通りの解法</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10000000.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9.96515154838562e-08</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">約0.35%</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">改良解法</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10000000.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1e-07</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">約 \(4.5\times10^{-15}\) %</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>従来解法では \(x_2\) に約0.35%の誤差が生じていましたが、改良解法では誤差が大幅に小さくなっています。ただし、表示が <code>1e-07</code> でも内部値は \(10^{-7}\) の近似値であり、誤差が0になったわけではありません。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_コンピューターの計算に由来する実際の問題例"><a class="link" href="#_コンピューターの計算に由来する実際の問題例">4.3. コンピューターの計算に由来する実際の問題例</a></h3>
+<div class="sect3">
+<h4 id="_宇宙探査に円周率は何桁必要"><a class="link" href="#_宇宙探査に円周率は何桁必要">宇宙探査に円周率は何桁必要？</a></h4>
+<div class="paragraph">
+<p>NASA・JPLの技術者Marc Raymanは、惑星間航行の計算には円周率として <code>3.141592653589793</code> を使うと説明しています。たとえば直径640億kmの円の周長を、この小数点以下15桁に丸めた円周率で計算しても、円周率の丸めに由来する差は約1.5cmです。</p>
+</div>
+<div class="paragraph">
+<p>ここでの教訓は、桁数を際限なく増やすことではなく、<strong>必要な精度に対して、どの誤差がどれだけ影響するかを見積もること</strong>です。この例は円周率の近似だけの影響を見たもので、実際の航行計算全体の誤差が1.5cmという意味ではありません。</p>
+</div>
+<div class="paragraph">
+<p>出典：<a href="https://www.jpl.nasa.gov/edu/news/how-many-decimals-of-pi-do-we-really-need/">NASA JPL「How Many Decimals of Pi Do We Really Need?」</a>。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_2038年問題year_2038_problem"><a class="link" href="#_2038年問題year_2038_problem">2038年問題(Year 2038 Problem)</a></h4>
+<div class="paragraph">
+<p>多くのコンピューターシステムで時間を記録するために使われる「UNIXタイムスタンプ」は、1970年1月1日00:00:00 UTCを基準とする秒数です（POSIXではうるう秒を数えません）。これを32ビット符号付き整数で保持する実装では、2038年1月19日03:14:07 UTCに最大値(2<sup>31</sup>-1 = 2,147,483,647)に達し、その次の1秒を表せなくなります。すでに64ビットなどの広い型を使う実装は、この32ビットの限界には該当しません。</p>
+</div>
+<div class="paragraph">
+<p>桁あふれにより、時間が1901年12月13日20:45:52に「ジャンプバック」する可能性があり、時間に依存するシステムで重大な障害が発生する恐れがあります。この問題を避けるためには、64ビットタイムスタンプへの移行が必要です。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_問題"><a class="link" href="#_問題">5. 問題</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>以下の問題を解いてください。(1)〜(5)の解答は章末にあります。</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+(1)
+</td>
+<td class="hdlist2">
+<p>8ビットの2の補数表現で整数を表すとする。次の問に答えよ。</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(58_{(10)}\) を2進法で表わせ</p>
+</li>
+<li>
+<p>\(-100_{(10)}\) を2の補数表現で表わせ</p>
+</li>
+<li>
+<p>(a)と(b)で得られた2の補数表現を加算して \(58+(-100)\) を計算せよ</p>
+</li>
+<li>
+<p>(c)で得られた値の2の補数を計算して、対応する正の値（絶対値）を求め、10進法の表現に変換せよ</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+(2)
+</td>
+<td class="hdlist2">
+<p>10進法の \(-0.203125\) を16ビットの浮動小数点表現を用いて表すとき、次の問に答えよ。</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(-0.203125_{(10)}\) を2進法で表わせ</p>
+</li>
+<li>
+<p>16ビットの浮動小数点表現の符号部を2進法で示せ</p>
+</li>
+<li>
+<p>16ビットの浮動小数点表現の指数部を2進法で示せ</p>
+</li>
+<li>
+<p>16ビットの浮動小数点表現の仮数部を2進法で示せ</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+(3)
+</td>
+<td class="hdlist2">
+<p>4ビットの2の補数表現で整数を表すとする。次の加算で桁あふれが発生するか否かを答えよ。発生する場合は、その理由を述べよ。</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(5+3\)</p>
+</li>
+<li>
+<p>\(5+(-3)\)</p>
+</li>
+<li>
+<p>\((-5)+(-4)\)</p>
+</li>
+<li>
+<p>\((-5)+4\)</p>
+</li>
+<li>
+<p>8ビットの2の補数表現の場合、\(100+100\) の計算結果はどのような値になるか。2の補数表現の筆算で確かめよ</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+(4)
+</td>
+<td class="hdlist2">
+<p>桁落ちを観察してみよう。10進法で有効桁数6桁の浮動小数点表現を用いて計算するものとする(各値は \(d.ddddd \times 10^n\) の形で表す)。次の問に答えよ。</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(a = 3.14159\), \(b = 3.14156\) とする。\(a - b\) を計算せよ。</p>
+</li>
+<li>
+<p>(a)の結果を、有効桁数6桁の浮動小数点表現で表せ。</p>
+</li>
+<li>
+<p>\(a,b\) が厳密な値なら、(a)の引き算に誤差はあるか。次に、\(a,b\) が未知の値を小数点以下5桁に丸めた近似値で、それぞれの絶対誤差が最大 \(0.000005\) である場合、差の絶対誤差は最大いくらになるか。</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+(5)
+</td>
+<td class="hdlist2">
+<p>二次方程式 \(x^2 + 100x + 1 = 0\) の解を、10進法有効桁数6桁の浮動小数点表現で計算したい。\(\sqrt{9996} \fallingdotseq 99.9800\) (有効桁数6桁) とする。</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>解の公式から、\(x_1 = \dfrac{-100 - \sqrt{9996}}{2}\) を計算せよ。</p>
+</li>
+<li>
+<p>解の公式から、\(x_2 = \dfrac{-100 + \sqrt{9996}}{2}\) を計算せよ。</p>
+</li>
+<li>
+<p>二次方程式の解と係数の関係 \(x_1 \cdot x_2 = \dfrac{c}{a}\) を用いて、(a)の \(x_1\) から \(x_2\) を計算せよ。</p>
+</li>
+<li>
+<p>(b)と(c)で得られた \(x_2\) の値を比較せよ。どちらが桁落ちの影響を受けているか考察せよ。</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_問題の解答"><a class="link" href="#_問題の解答">6. 問題の解答</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>まず自分で解いてから読むことをすすめます。ここでは(1)〜(5)の解答を示します。</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+(1)
+</td>
+<td class="hdlist2">
+<p>8ビットの2の補数表現で整数を表すとする。次の問に答えよ。<br></p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(58_{(10)}\) を2進法で表わせ</p>
+</li>
+<li>
+<p>\(-100_{(10)}\) を2の補数表現で表わせ</p>
+</li>
+<li>
+<p>(a)と(b)で得られた2の補数表現を加算して \(58+(-100)\) を計算せよ</p>
+</li>
+<li>
+<p>(c)で得られた値の2の補数を計算して、対応する正の値（絶対値）を求め、10進法の表現に変換せよ</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+(2)
+</td>
+<td class="hdlist2">
+<p>10進法の −0.203125 を16ビットの浮動小数点表現を用いて表すとき、次の問に答えよ。</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(−0.203125_{(10)}\) を2進法で表わせ</p>
+</li>
+<li>
+<p>16ビットの浮動小数点表現の符号部を2進法で示せ</p>
+</li>
+<li>
+<p>16ビットの浮動小数点表現の指数部を2進法で示せ</p>
+</li>
+<li>
+<p>16ビットの浮動小数点表現の仮数部を2進法で示せ</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>(1)</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(58_{(10)} = 2^5 + 2^4 + 2^3 + 2^1  = 00111010_{(2)} \)</p>
+</li>
+<li>
+<p>\(100_{(10)} = 2^6 + 2^5 + 2^2 = 01100100_{(2)} \)<br>
+ビット反転 → \(10011011_{(2)}\)<br>
+1加算 → \(10011100_{(2)}\)<br>
+よって \(-100_{(10)} = 10011100_{(\text{2c})}\)</p>
+</li>
+<li>
+<p>以下の筆算により加算</p>
+</li>
+</ol>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{array}{rrr}
+  &amp; 00111010_{(\text{2c})} &amp; 58\\
++ &amp; 10011100_{(\text{2c})} &amp; -100\\
+\hline
+&amp; 11010110_{(\text{2c})} &amp;
+\end{array}\]
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a" start="4">
+<li>
+<p>\(11010110_{(\text{2c})}\) <br>
+ビット反転 → \(00101001_{(2)}\)<br>
+1加算 → \(00101010_{(2)}=42\)<br>
+よって、\(11010110_{(\text{2c})}=-42\)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>(2)</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(-0.203125_{(10)}=-0.001101_{(2)}\) <br>
+\(0.203125_{(10)}\) を2進法に変換するには以下ように2をかけながら、1の位に0または1を掃き出していき、上から順に小数点第一位からならべます。</p>
+</li>
+</ol>
+</div>
+\begin{align*}
+  0.203125 \times 2 =& \mathbf 0.40625\\
+  0.40625 \times 2 =& \mathbf 0.8125\\
+  0.8125 \times 2 =& \mathbf 1.625\\
+  0.625 \times 2 =& \mathbf 1.25\\
+  0.25 \times 2 =& \mathbf 0.5\\
+  0.5 \times 2 =& \mathbf 1.
+\end{align*}
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a" start="2">
+<li>
+<p>負なので符号部は  <code>1</code></p>
+</li>
+<li>
+<p>\(-0.203125_{(10)}=-0.001101_{(2)}=-1.101_{(2)}\times 2^{-3}\)<br>
+より、指数部は\(-3\)なので \(-3+15=12_{(10)}=01100_{(2)}\)</p>
+</li>
+<li>
+<p>仮数部はすでに求めた \(-1.101_{(2)}\times 2^{-3}\) について、<br>
+整数部の1を除くと  <code>101</code> となる。仮数部を10桁にするために右側に7つ0を埋めて仮数部は <code>1010000000</code> となる。</p>
+</li>
+</ol>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">符号(1ビット)</th>
+<th class="tableblock halign-right valign-top">指数(5ビット)</th>
+<th class="tableblock halign-right valign-top">仮数(10ビット)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>01100</code></p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1010000000</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>(3)</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(5+3=8\) は、4ビットの2の補数表現で表せる範囲（\(-8\sim 7\)）を超えるため、桁あふれが発生する</p>
+</li>
+<li>
+<p>異符号の加算なので桁あふれは発生しない</p>
+</li>
+<li>
+<p>\((-5)+(-4)=-9\) は、表せる範囲（\(-8\sim 7\)）を超えるため、桁あふれが発生する</p>
+</li>
+<li>
+<p>異符号の加算なので桁あふれは発生しない</p>
+</li>
+<li>
+<p>\(100=01100100_{(2)}\) より、以下の筆算で加算する</p>
+<div class="stemblock">
+<div class="content">
+\[\begin{array}{rrr}
+  &amp; 01100100_{(\text{2c})} &amp; 100\\
++ &amp; 01100100_{(\text{2c})} &amp; 100\\
+\hline
+&amp; 11001000_{(\text{2c})} &amp;
+\end{array}\]
+</div>
+</div>
+<div class="paragraph">
+<p>\(11001000_{(\text{2c})}\) は最上位ビットが1なので負の数である。2の補数を取ると \(00111000_{(2)}=56\) となるので、計算結果は \(-56\) となる（\(200-256=-56\) とも整合する）。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>(4)</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(3.14159 - 3.14156 = 0.00003\)</p>
+</li>
+<li>
+<p>\(3.00000 \times 10^{-5}\)</p>
+</li>
+<li>
+<p>入力が厳密なら差 \(0.00003\) も正確に表せる。入力が近似値なら、差の絶対誤差は最大 \(0.000005+0.000005=0.00001\)。計算した差 \(0.00003\) に対して約33%にもなる。表示の桁数だけから、答えの信頼できる桁数は決められない。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>(5)</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(x_1 = \dfrac{-100 - 99.9800}{2} = \dfrac{-199.980}{2} = -99.9900\)</p>
+</li>
+<li>
+<p>\(x_2 = \dfrac{-100 + 99.9800}{2} = \dfrac{-0.0200}{2} = -0.0100\)（近い値どうしの引き算で有効桁数が大幅に失われている）</p>
+</li>
+<li>
+<p>\(x_2 = \dfrac{1}{x_1} = \dfrac{1}{-99.9900} = -0.0100010\cdots \fallingdotseq -0.0100010\)</p>
+</li>
+<li>
+<p>(b)の値は桁落ちの影響を受けて有効桁数が失われている。(c)では引き算を経由しないため桁落ちを回避できている。</p>
+</li>
+</ol>
+</div>
+<hr>
+<div class="paragraph">
+<p>以上です</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.0<br>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(","\\)"]],
+    displayMath: [["\\[","\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$","\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<hr style="margin-top:3em">
+<div style="font-size:0.85em;color:#666;line-height:1.7;padding-bottom:2em">
+<p><a href="../index.html">&#8592; 目次へ戻る</a></p>
+<p>© 久保山哲二 「コンピューター科学概論」講義資料 —
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja" rel="license">CC BY-NC-SA 4.0</a>
+(表示 - 非営利 - 継承)で公開しています。</p>
+</div>
+</body>
+</html>
