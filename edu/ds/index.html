@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>アンチパターンで学ぶデータ分析 --- 作家の判別を題材に</title>
+<meta name="description" content="文章の特徴から作家を判別する一つの問題を最初から最後まで追いながら、データ分析と機械学習の一通り(数える・比べる・分ける・当てる・疑う)を学ぶ日本語の教科書。ありがちな間違いを実際に実行して数字がどれだけ歪むかを測ってから正す。全263ページ、PDF、CC BY 4.0。marimo教材つき。">
+<link rel="canonical" href="https://tkub.github.io/edu/ds/">
+
+<meta property="og:type" content="book">
+<meta property="og:site_name" content="久保山哲二">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:url" content="https://tkub.github.io/edu/ds/">
+<meta property="og:title" content="アンチパターンで学ぶデータ分析 --- 作家の判別を題材に">
+<meta property="og:description" content="近代文学74作品とライトノベル60区間の文体を数値にして、クラスタリング・著者判定・ジャンル判別を行いながら、前処理から評価の落とし穴までを続けて学ぶ教科書。アンチパターン61箇所と定石35箇所を実測つきで示す。全263ページ、CC BY 4.0。">
+<meta name="twitter:card" content="summary">
+
+<meta name="citation_title" content="アンチパターンで学ぶデータ分析 --- 作家の判別を題材に">
+<meta name="citation_author" content="久保山哲二">
+<meta name="citation_author" content="Kuboyama, Tetsuji">
+<meta name="citation_author_institution" content="学習院大学">
+<meta name="citation_publication_date" content="2026/09/07">
+<meta name="citation_language" content="ja">
+<meta name="citation_abstract_html_url" content="https://tkub.github.io/edu/ds/">
+<meta name="citation_pdf_url" content="https://tkub.github.io/edu/ds/antipattern-ds.pdf">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "@id": "https://tkub.github.io/edu/ds/#book",
+  "name": "アンチパターンで学ぶデータ分析 --- 作家の判別を題材に",
+  "alternateName": "Learning Data Analysis from Anti-Patterns: Authorship Attribution as a Running Example",
+  "url": "https://tkub.github.io/edu/ds/",
+  "bookFormat": "https://schema.org/EBook",
+  "bookEdition": "1.2.0",
+  "datePublished": "2026-09-07",
+  "numberOfPages": 263,
+  "inLanguage": "ja",
+  "isAccessibleForFree": true,
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "description": "文章の特徴から作家を判別する一つの問題を最初から最後まで追いながら、データ分析と機械学習の一通りを学ぶ教科書。特徴設計、距離と標準化、組成データ、クラスタリング、次元削減、分類、評価、データ漏洩、次元の呪い、深層モデルとの比較、ジャンル判別を扱う。各章のアンチパターンと定石は実データで測ってから示す。",
+  "author": {
+    "@type": "Person",
+    "name": "久保山哲二",
+    "alternateName": "Tetsuji Kuboyama",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "学習院大学" }
+  },
+  "about": [
+    "データ分析", "データサイエンス", "機械学習", "統計", "計量文体論", "著者判別", "著者推定",
+    "アンチパターン", "データ漏洩", "交差検証", "特徴量設計", "標準化", "組成データ", "clr変換",
+    "クラスタリング", "k-means", "階層的クラスタリング", "主成分分析", "PCA", "UMAP", "t-SNE",
+    "次元の呪い", "k近傍法", "ランダムフォレスト", "勾配ブースティング", "SVM", "ロジスティック回帰",
+    "ROC", "AUC", "較正", "信頼区間", "多重テスト", "n-gram", "BERT", "青空文庫", "marimo", "Python", "scikit-learn"
+  ],
+  "keywords": "データ分析, データサイエンス, 機械学習, 統計, 計量文体論, 著者判別, アンチパターン, データ漏洩, 交差検証, 特徴量, 標準化, 組成データ, クラスタリング, 次元削減, PCA, UMAP, 次元の呪い, ランダムフォレスト, 評価指標, 信頼区間, 多重テスト, 青空文庫, marimo, Python, scikit-learn, 教科書, 入門, 日本語",
+  "encoding": {
+    "@type": "MediaObject",
+    "contentUrl": "https://tkub.github.io/edu/ds/antipattern-ds.pdf",
+    "encodingFormat": "application/pdf"
+  }
+}
+</script>
+<style>
+  :root {
+    --navy: rgb(31,56,100);
+    --blue: rgb(62,110,160);
+    --teal: rgb(42,130,120);
+    --orange: rgb(200,120,40);
+    --gray: rgb(110,115,120);
+    --bg: rgb(245,247,250);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+    color: #222;
+    line-height: 1.9;
+    background: #fff;
+  }
+  header {
+    background: var(--navy);
+    color: #fff;
+    padding: 56px 24px 40px;
+    border-bottom: 4px solid var(--orange);
+  }
+  .inner { max-width: 860px; margin: 0 auto; }
+  header .series { color: rgba(255,255,255,.75); font-size: .95rem; }
+  header h1 { margin: .3em 0 .2em; font-size: 2rem; }
+  header .subtitle { color: rgba(255,255,255,.85); font-size: 1.1rem; }
+  header .meta { margin-top: 1.2em; font-size: .95rem; color: rgba(255,255,255,.85); }
+  main { padding: 40px 24px 24px; }
+  h2 {
+    color: var(--navy);
+    font-size: 1.25rem;
+    border-bottom: 1px solid #ccd3dc;
+    padding-bottom: .3em;
+    margin-top: 2.2em;
+  }
+  a { color: var(--blue); }
+  .buttons { margin: 1.6em 0; }
+  .btn {
+    display: inline-block;
+    background: var(--navy);
+    color: #fff;
+    text-decoration: none;
+    padding: .65em 1.4em;
+    border-radius: 4px;
+    margin-right: .8em;
+    margin-bottom: .6em;
+  }
+  .btn:hover { background: var(--blue); }
+  .btn.secondary { background: var(--bg); color: var(--navy); border: 1px solid var(--navy); }
+  ul.toc { padding-left: 1.4em; }
+  ul.toc li { margin: .25em 0; }
+  .note {
+    background: var(--bg);
+    border: 1px solid #ccd3dc;
+    border-radius: 6px;
+    padding: 1em 1.4em;
+    font-size: .95rem;
+  }
+  dl.history dt { font-weight: bold; color: var(--navy); }
+  dl.history dd { margin: 0 0 .8em 1.2em; }
+  table.ex { border-collapse: collapse; width: 100%; font-size: .93rem; }
+  table.ex th, table.ex td { border: 1px solid #ccd3dc; padding: .45em .7em; text-align: left; vertical-align: top; }
+  table.ex th { background: var(--bg); font-weight: 600; }
+  .tablewrap { overflow-x: auto; }
+  pre, code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  }
+  pre {
+    background: var(--bg);
+    border: 1px solid #ccd3dc;
+    border-radius: 6px;
+    padding: 1em;
+    overflow-x: auto;
+    font-size: .85rem;
+    line-height: 1.5;
+  }
+  code {
+    font-size: .9em;
+    background: var(--bg);
+    border: 1px solid #ccd3dc;
+    border-radius: 3px;
+    padding: .05em .35em;
+  }
+  footer {
+    margin-top: 3em;
+    padding: 1.6em 24px 2.4em;
+    border-top: 1px solid #ccd3dc;
+    color: var(--gray);
+    font-size: .9rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="series">データ分析を学ぶ人のためのテキスト</div>
+    <h1>アンチパターンで学ぶデータ分析</h1>
+    <div class="subtitle">作家の判別を題材に</div>
+    <div class="meta">
+      久保山哲二(学習院大学計算機センター/大学院人文科学研究科アーカイブズ学専攻)<br>
+      バージョン1.2.0(2026年9月7日)・全263ページ・CC BY 4.0
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="inner">
+
+    <div class="buttons">
+      <a class="btn" href="antipattern-ds.pdf">PDF をダウンロード(1.2.0)</a>
+      <a class="btn secondary" href="antipattern-ds-notebooks.zip">marimo教材(zip)</a>
+    </div>
+
+    <h2>概要</h2>
+    <p>文章の特徴から作家を判別する、という一つの問題を最初から最後まで追いながら、
+    データ分析と機械学習の一通り(数える・比べる・分ける・当てる・疑う)を学ぶ教科書です。
+    各章では、ありがちな間違いを実際に実行し、数字がどれだけ歪むかを測ってから正します。
+    アンチパターン61箇所と定石35箇所を巻末に一覧にしてあり、Tips集としても引けます。</p>
+
+    <p>題材は青空文庫の近代文学8名74作品と、ライトノベル6シリーズ60区間です。
+    内容語を使わず、字種の比率・文長の分布・読点の前に来る平仮名という文体の特徴だけを数値にして、
+    クラスタリング、著者判定、ジャンル判別を行います。
+    一つの題材を最後まで追うことで、前処理から評価の落とし穴までを続けて扱えます。
+    本文中の図と数値は、この実データで実際に測ったものです。</p>
+
+    <p>15年あまり、全学向けのデータサイエンス科目から他大学の理系向け集中講義まで、
+    さまざまな授業で使ってきた教材を1冊にまとめ直したものです。
+    入門の語り口のまま、ところどころ発展的な内容(組成データの対数比変換、
+    ミンコフスキー不等式、ラグランジュ未定乗数法と固有値問題、高次元空間の幾何など)へ深入りします。
+    大学初年次から大学院初年級まで、専攻を問わず、自分でデータを分析する人を想定しています。</p>
+
+    <h2>構成</h2>
+    <ul class="toc">
+      <li>第1章 はじめに --- 問いの立て方、データの偏りと構造</li>
+      <li>第2章 テキストを数える --- Zipf の法則、ポアソン分布、機能語と内容語</li>
+      <li>第3章 特徴を設計する --- 前処理、字種比率、文長分布、読点の癖、正規化、組成データと clr 変換</li>
+      <li>第4章 距離を測る --- 距離の公理、ミンコフスキー、コサイン、標準化の要否、効果量、相関の非推移性</li>
+      <li>第5章 まとまりを見つける --- 階層クラスタリング、k-means、ARI とシルエット</li>
+      <li>第6章 次元を減らす --- PCA、バイプロット、MDS、UMAP/t-SNE、スイスロール、超立方体</li>
+      <li>第7章 著者を当てる --- kNN、線形モデル、決定木、ランダムフォレスト、勾配ブースティング、特徴重要度と SHAP</li>
+      <li>第8章 正しく測る --- 交差検証、層別化、適合率と再現率、ROC/AUC、較正、信頼区間の読み方、学習曲線</li>
+      <li>第9章 罠を避ける --- データ漏洩6種、n-gram の罠、入れ子交差検証、多重テスト、偏りとばらつき、次元の呪い、生成AIの罠</li>
+      <li>第10章 学習された表現と比べる --- 手作りの特徴、埋め込み、生テキストを入力する深層モデル</li>
+      <li>第11章 ジャンルを分ける --- 1特徴で解ける問題、交絡、閉世界仮定と「該当なし」</li>
+      <li>付録 marimo教材の使い方・高次元空間の幾何・不偏性をめぐる補足・参考文献・アンチパターンと定石の一覧・索引</li>
+    </ul>
+
+    <h2>本書で実測するアンチパターンの例</h2>
+    <div class="tablewrap">
+    <table class="ex">
+      <tr><th>やってしまいがちなこと</th><th>実測すると</th></tr>
+      <tr><td>データ全体で標準化してから、訓練用とテスト用に分ける</td>
+          <td>正解ラベルは渡していないのに、テストデータの分布が訓練に混ざる。人工例では、これだけで正解率が0%から100%に変わる</td></tr>
+      <tr><td>著者と無関係な乱数をたくさん作り、全データを見て「著者とよく対応する列」を選んでから交差検証</td>
+          <td>何も当たらないはずの乱数で、最頻クラスを答え続けるだけの基準線の2倍の正解率が出る。選択を交差検証の内側に入れると基準線まで戻る</td></tr>
+      <tr><td>長編の各巻を別々の作品として扱い、無作為に分けて交差検証</td>
+          <td>同じ長編の別の巻が訓練とテストの両方に入る。長編ごとに分け直すと正解率が下がる。著者とシリーズが1対1に対応するライトノベルでは、正解率が1から0になる</td></tr>
+      <tr><td>設定をたくさん試して、最も良かった正解率を報告する</td>
+          <td>情報のない乱数でも、平均は基準線を下回るのに、最良の1つだけなら基準線を上回る</td></tr>
+      <tr><td>平仮名の比率と漢字の比率の強い負の相関を「漢字を多用する作家は平仮名を控える」と読む</td>
+          <td>平仮名+片仮名+漢字=1 なので、一方が増えれば他方は減るしかない。合計が固定された比率どうしの相関は、それだけでは何も示さない</td></tr>
+    </table>
+    </div>
+
+    <h2>marimo教材</h2>
+    <p>本書の付録Aで説明している4本のノートブックと、それが読む特徴量ファイルを配布しています
+    (<a href="antipattern-ds-notebooks.zip">antipattern-ds-notebooks.zip</a>、約55KB)。
+    次元削減の地図と近傍の比較、k-means の反復、分類のしきい値、漏洩の対照実験を、
+    スライダーや選択欄で条件を変えながら試せます。</p>
+    <p><a href="https://docs.astral.sh/uv/getting-started/installation/">uv</a> を入れたうえで、
+    展開したフォルダで次を実行するとブラウザに教材が表示されます。</p>
+<pre>uvx marimo run --sandbox 04_clustering.py</pre>
+    <p>ライトノベルの本文は著作権が存続しているため、本文からは復元できない特徴量のみを扱っています。</p>
+
+    <h2>改訂履歴</h2>
+    <dl class="history">
+      <dt>1.2.0(2026年9月7日)・263ページ</dt>
+      <dd>内容の点検結果を反映。第3章(組成データ)、第8章(信頼区間)、第9章(n-gram、特徴選択の漏れ)の
+      実験と説明を中心に、第2・6・10・11章の説明を修正。</dd>
+      <dt>1.1.1(2026年9月6日)・263ページ</dt>
+      <dd>初期の公開版。</dd>
+    </dl>
+
+    <h2>ライセンスと引用</h2>
+    <p>本文・図版はクリエイティブ・コモンズ表示 4.0 国際ライセンス
+    (<a href="https://creativecommons.org/licenses/by/4.0/deed.ja" rel="license">CC BY 4.0</a>)、
+    付属教材のコードは MIT License で提供します。
+    出典を表示すれば、複製・再配布・改変・授業や出版での利用を自由に行えます。
+    近代文学の本文は<a href="https://www.aozora.gr.jp/">青空文庫</a>に拠ります(すべてパブリックドメイン作品)。</p>
+    <pre>久保山哲二『アンチパターンで学ぶデータ分析 --- 作家の判別を題材に』
+バージョン1.2.0、2026年、CC BY 4.0。</pre>
+
+    <div class="note">
+      本書は著者が15年あまり授業で使ってきた教材をもとに、
+      大規模言語モデル Claude(Anthropic)の助けも借りて構成を整理し、
+      内容の点検と作図に活用しました。
+      本文中の数値はすべて実データで計算したものです。
+      本書の内容に関する文責は久保山哲二にあります。
+      本文組版は LuaLaTeX(luatexja、原ノ味フォント)、図版は TikZ/PGFPlots によります。
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="inner">
+    連絡先:tkuboyama@tk.cc.gakushuin.ac.jp
+  </div>
+</footer>
+
+</body>
+</html>
