@@ -155,9 +155,15 @@
     color: var(--gray);
     font-size: .9rem;
   }
+  .home-nav { padding: .65rem 24px; font-size: .9rem; }
+  .home-nav a { color: var(--navy); }
+  .home-nav a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
 </style>
 </head>
 <body>
+<nav class="home-nav" aria-label="サイトナビゲーション">
+  <div class="inner"><a href="../../">トップページ</a></div>
+</nav>
 
 <header>
   <div class="inner">
@@ -277,6 +283,7 @@
 
 <footer>
   <div class="inner">
+    <p><a href="../../">トップページに戻る</a></p>
     連絡先:tkuboyama@tk.cc.gakushuin.ac.jp
   </div>
 </footer>
