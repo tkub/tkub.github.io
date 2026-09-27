@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.26">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <meta name="author" content="久保山哲二">
 <title>計算困難性とP≠NP予想</title>
 <style>
@@ -562,6 +562,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
@@ -608,7 +609,6 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <li><a href="#_計算量と暗号">5. 計算量と暗号</a></li>
 <li><a href="#_むすび">6. むすび</a></li>
 <li><a href="#_練習問題">7. 練習問題</a></li>
-<li><a href="#_練習問題の解答">8. 練習問題の解答</a></li>
 </ul>
 </div>
 </div>
@@ -627,7 +627,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <h2 id="_時間計算量から考える問題の難しさ"><a class="link" href="#_時間計算量から考える問題の難しさ">1. 時間計算量から考える問題の難しさ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>前回は与えられた問題が「計算できるかできないか」について議論しました。今回は、ある問題が計算可能であっても、それはどのくらい難しいのかという点に着目します。前々回の授業では整列問題という１つの問題を題材にアルゴリズムを考えました。今回は、いくつかの問題を題材にして、コンピューター科学で問題の難しさについてどのように考えるのかを見てゆきます。</p>
+<p>前章(第11章)では、与えられた問題が「計算できるかできないか」について議論しました。この章では、ある問題が計算可能であっても、それはどのくらい難しいのかという点に着目します。第10章では整列問題という１つの問題を題材にアルゴリズムを考えました。この章では、いくつかの問題を題材にして、コンピューター科学で問題の難しさについてどのように考えるのかを見てゆきます。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -640,7 +640,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>「問題の難しさ」とは何でしょうか？</strong></p>
 </div>
 <div class="paragraph">
-<p>日常生活でも「この問題は難しい」「あの問題は簡単」と言いますが、コンピューター科学では「問題の難しさ」を数学的に厳密に定義します。具体的には、<strong>入力サイズが大きくなったときに計算時間がどのように増加するか</strong>によって難しさを測ります。これは「最悪時間計算量」という概念で表現されます。</p>
+<p>日常生活でも「この問題は難しい」「あの問題は簡単」と言いますが、コンピューター科学では「問題の難しさ」を数学的に定義します。具体的には、<strong>入力サイズが大きくなったときに、その問題を解く最良のアルゴリズムでも計算時間がどのように増加するか</strong>によって難しさを測ります。ここでの計算時間は、第10章で学んだ「最悪時間計算量」(同じサイズの入力のうち最も時間がかかる場合の計算時間)で考えます。</p>
 </div>
 </td>
 </tr>
@@ -654,10 +654,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p><strong>ここでは頂点を駅、辺を路線と考えてみましょう</strong>。</p>
 </div>
-<div class="imageblock text-center">
+<div id="fig-stations" class="imageblock text-center">
 <div class="content">
-<img src="./img/graph-ex1.svg" alt="graph ex1" width="430">
+<img src="./img/stations.svg" alt="頂点aからfの6個と辺10本のグラフ" width="400">
 </div>
+<div class="title">図 1. 駅と路線のグラフ</div>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -697,19 +698,20 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>ハミルトンとは？</strong></p>
 </div>
 <div class="paragraph">
-<p>ウィリアム・ローワン・ハミルトン（1805-1865）はアイルランドの数学者・物理学者です。四元数の発見者としても知られ、物理学の「ハミルトニアン」にもその名が残っています。グラフ理論におけるハミルトン路の名は、彼が考案した「イコシアンゲーム」に由来します。これは正十二面体の辺をたどって、20個の頂点すべてを1度ずつ巡るパズルです。</p>
+<p>ウィリアム・ローワン・ハミルトン（1805-1865）はアイルランドの数学者・物理学者です。四元数の発見者としても知られ、物理学の「ハミルトニアン」にもその名が残っています。グラフ理論におけるハミルトン路の名は、彼が考案した「イコシアンゲーム」に由来します。これは正十二面体の辺をたどって、20個の頂点すべてを1度ずつ巡り、出発点に戻るパズルです。</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>以下にハミルトン路の1つの例を赤線で示しています。</p>
+<p>以下にハミルトン路の1つの例を赤線で示しています。a → b → d → f → e → c の順に、どの駅もちょうど1度ずつ通っています。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/graph-ex1-hp.svg" alt="graph ex1 hp" width="400">
+<img src="./img/stations-hpath.svg" alt="a→b→d→f→e→cのハミルトン路" width="400">
 </div>
+<div class="title">図 2. ハミルトン路の例</div>
 </div>
 <div class="paragraph">
 <p>また、旅だとすると出発地点に戻りたいので、<strong>出発駅を除いて同じ駅は2度通らずに、すべての駅を巡って出発点に戻る経路を見つける問題</strong>もあります。</p>
@@ -723,12 +725,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
-<p>ハミルトン閉路の例を以下に示しました。</p>
+<p>ハミルトン閉路の例を以下に示しました。先ほどのハミルトン路の終点 c から出発点 a へ戻る辺を加えたものです。</p>
 </div>
-<div class="imageblock text-center">
+<div id="fig-stations-hc" class="imageblock text-center">
 <div class="content">
-<img src="./img/graph-ex1-hc.svg" alt="graph ex1 hc" width="400">
+<img src="./img/stations-hcycle.svg" alt="a→b→d→f→e→c→aのハミルトン閉路" width="400">
 </div>
+<div class="title">図 3. ハミルトン閉路の例</div>
 </div>
 <div class="paragraph">
 <p>さて、鉄道マニアの中にはすべての駅ではなくて、すべての路線を制覇したいという場合もあると思います。この場合は、<strong>「同じ路線は1度だけしか通らずに、すべての路線を巡る経路を見つける問題」</strong>を解くことになります。駅は何度通過しても構いません。</p>
@@ -751,62 +754,80 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>オイラーとは？</strong></p>
 </div>
 <div class="paragraph">
-<p>レオンハルト・オイラー（1707-1783）はスイス生まれの数学者で、数学史上最も多産な数学者の一人とされています。グラフ理論の父とも呼ばれ、ケーニヒスベルクの橋の問題（7つの橋をすべて1度ずつ渡ることはできるか？）に取り組み、1736年にそれが不可能であることを証明しました。この研究がオイラー路の概念とグラフ理論の出発点であり、一筆書き問題の原型でもあります。</p>
+<p>レオンハルト・オイラー（1707-1783）はスイス生まれの数学者で、数学史上最も多産な数学者の一人とされています。グラフ理論の父とも呼ばれ、ケーニヒスベルク(現在のロシア領カリーニングラード)の橋の問題（7つの橋をすべて1度ずつ渡ることはできるか？）に取り組み、1736年にそれが不可能であることを示しました(章末の練習問題で確かめます)。この研究がオイラー路の概念とグラフ理論の出発点であり、一筆書き問題の原型でもあります。</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>以下にオイラー路の例を示しています。ハミルトン路のように単純に経路を示すことが難しいので、辺に番号と矢印をつけて経路を巡る順番を示しています。辺の番号の順番にたどると一筆書きできることがわかると思います。</p>
+<p>以下にオイラー路の例を示しています。ハミルトン路のように単純に経路を示すことが難しいので、辺に番号と矢印をつけて経路を巡る順番を示しています。辺の番号の順番にたどると一筆書きできることがわかると思います。駅 b, c, e は2度ずつ通っていますが、どの路線もちょうど1度だけ通っています。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/graph-ex1-ep.svg" alt="graph ex1 ep" width="400">
+<img src="./img/stations-epath.svg" alt="d→b→a→c→b→e→c→f→e→d→fのオイラー路" width="400">
 </div>
+<div class="title">図 4. オイラー路の例(番号は辺を通る順番)</div>
 </div>
 <div class="paragraph">
-<p>ここで、練習問題です。以下の3つのグラフについて、ハミルトン路とオイラー路を見つける問題を、それぞれ解いてみてください。</p>
+<p>ハミルトン路とオイラー路の違いを表にまとめておきます。</p>
 </div>
-<div class="exampleblock">
-<div class="content">
+<table class="tableblock frame-ends grid-rows fit-content">
+<caption class="title">表 1. ハミルトン路とオイラー路</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">ハミルトン路</th>
+<th class="tableblock halign-left valign-top">オイラー路</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">1度ずつ通るもの</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">すべての頂点(駅)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">すべての辺(路線)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">2度以上通ってよいもの</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">なし(辺は通らないものがあってよい)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">頂点</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">出発点に戻る場合</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ハミルトン閉路</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">オイラー閉路</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
-<p>【グラフ1】</p>
+<p>ここで、練習問題です。以下の3つのグラフについて、ハミルトン路とオイラー路があるかどうかを、それぞれ調べてみてください。あるなら実際に1つ見つけてください。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/graph-ex4-e0h1.svg" alt="graph ex4 e0h1" width="300">
+<img src="./img/quiz-graph1.svg" alt="5頂点のグラフ1" width="300">
 </div>
-</div>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>【グラフ2】</p>
+<div class="title">図 5. グラフ1</div>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/graph-ex3-e1h0.svg" alt="graph ex3 e1h0" width="400">
+<img src="./img/quiz-graph2.svg" alt="6頂点のグラフ2" width="400">
 </div>
-</div>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>【グラフ3】</p>
+<div class="title">図 6. グラフ2</div>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/graph-ex2-e0h0.svg" alt="graph ex2 e0h0" width="400">
+<img src="./img/quiz-graph3.svg" alt="6頂点のグラフ3" width="400">
 </div>
+<div class="title">図 7. グラフ3</div>
 </div>
-</div>
-</div>
-<div class="paragraph">
-<p>以下のようになれば、ハミルトン路とオイラー路の問題は理解できていると思います。</p>
-</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
 <table class="tableblock frame-ends grid-none fit-content">
 <colgroup>
 <col>
@@ -838,6 +859,21 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </tr>
 </tbody>
 </table>
+<div class="ulist">
+<ul>
+<li>
+<p>グラフ1: a → b → c → d → e がハミルトン路です。オイラー路がないことは、次の節で説明する次数の条件(次数が奇数の頂点が a, b, c, e の4つある)から分かります。</p>
+</li>
+<li>
+<p>グラフ2: a → b → d → c → b → e → d → f がオイラー路です(次の節で求め方を説明します)。ハミルトン路はありません。a と f は辺が1本しかないので、ハミルトン路の両端になるしかありません。すると経路は a → b で始まり d → f で終わり、その間で c と e の両方を通る必要があります。しかし c と e はどちらも b と d にしかつながっておらず、c と e の間に辺もないので、b と d の間に両方を並べることはできません。</p>
+</li>
+<li>
+<p>グラフ3: ハミルトン路はグラフ2と同じ理由でありません(グラフ3はグラフ2から辺を1本除いたものです)。オイラー路は、次数が奇数の頂点が a, b, d, f の4つあるのでありません。</p>
+</li>
+</ul>
+</div>
+</div>
+</details>
 </div>
 <div class="sect2">
 <h3 id="_どちらが難しい"><a class="link" href="#_どちらが難しい">1.2. どちらが難しい？</a></h3>
@@ -877,19 +913,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect3">
 <h4 id="_オイラー路問題"><a class="link" href="#_オイラー路問題">オイラー路問題</a></h4>
 <div class="paragraph">
-<p>オイラー路、つまり一筆書きの存在確認の方法は知っている人が多いかもしれません。以下の例をもう一度考えてみましょう。</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>【グラフ2】</p>
+<p>オイラー路、つまり一筆書きの存在確認の方法は知っている人が多いかもしれません。先ほどのグラフ2をもう一度考えてみましょう。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/graph-ex3-e1h0.svg" alt="graph ex3 e1h0" width="400">
+<img src="./img/quiz-graph2.svg" alt="6頂点のグラフ2" width="400">
 </div>
-</div>
-</div>
+<div class="title">図 8. グラフ2(再掲)</div>
 </div>
 <div class="paragraph">
 <p>まず、頂点に接している辺の数を数えます。この数のことを頂点の<strong>次数</strong>といいます。<br>
@@ -942,7 +972,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>なぜこの判定法が成り立つのか？</strong></p>
 </div>
 <div class="paragraph">
-<p>直感的に考えてみましょう。一筆書きでは、各頂点で「入ってくる」辺と「出ていく」辺が対になっている必要があります。途中の頂点では、入る回数と出る回数が同じなので、接続する辺の数（次数）は偶数でなければなりません。例外は始点と終点だけで、これらでは辺が1本ずつ「余る」ので次数が奇数になります。</p>
+<p>直感的に考えてみましょう。一筆書きでは、各頂点で「入ってくる」辺と「出ていく」辺が対になっている必要があります。途中の頂点では、入る回数と出る回数が同じなので、接続する辺の数（次数）は偶数でなければなりません。例外は始点と終点だけで、これらでは辺が1本ずつ「余る」ので次数が奇数になります(始点と終点が同じなら、余った2本が対になって偶数になります)。</p>
+</div>
+<div class="paragraph">
+<p>これで分かるのは「一筆書きできるなら次数はこの条件を満たす」という向きです。逆向きの「条件を満たせば必ず一筆書きできる」ことも正しく、ヒールホルツァー(Hierholzer)の1873年の論文で証明されました。</p>
 </div>
 </td>
 </tr>
@@ -977,8 +1010,14 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </li>
 </ol>
 </div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/quiz-graph2-epath.svg" alt="a→b→d→c→b→e→d→fのオイラー路" width="400">
+</div>
+<div class="title">図 9. グラフ2で見つけたオイラー路(番号は辺を通る順番)</div>
+</div>
 <div class="paragraph">
-<p>これは<strong>Fleuryのアルゴリズム</strong>として知られている方法です。最悪時間計算量は辺の数を \(m\)とすると \(\text O(m^2)\) となります（もう少し速いアルゴリズムは知られていますがやや複雑なので割愛します）。現在のところ1873年に提案されたHierholzerアルゴリズムが、オイラー路を求める最良の上界をもつアルゴリズムで、その計算量は\(\text O(m)\)  です。Fleuryのアルゴリズムは後に発表されましたが、効率で劣るこちらを紹介したのは、考え方がシンプルだからです（計算量がかかるのは、通過して辺を削除する際に「極力どの頂点にも到達できるようにしたまま通過・削除する」という条件を判定する部分です）。</p>
+<p>これは<strong>Fleuryのアルゴリズム</strong>(フルーリーのアルゴリズム、1883年)として知られている方法です。時間がかかるのは、辺を通って削除するたびに「その辺を消しても、残りの辺がばらばらにならないか」を確かめる部分で、この確認を素直に毎回やり直すと、最悪時間計算量は辺の数を \(m\) として \(\text O(m^2)\) になります。これより前、1873年の論文に基づくHierholzer(ヒールホルツァー)のアルゴリズムを使うと、オイラー路は \(\text O(m)\) 時間で求められます。答えとして \(m\) 本の辺を並べて出力するだけでも \(m\) に比例する時間がかかるので、これ以上は本質的に速くできません。ここでFleuryのアルゴリズムを紹介したのは、考え方が単純だからです。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1001,7 +1040,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect3">
 <h4 id="_ハミルトン路問題"><a class="link" href="#_ハミルトン路問題">ハミルトン路問題</a></h4>
 <div class="paragraph">
-<p>ハミルトン路を見つける問題は、オイラー路を見つける問題よりも<strong>はるかに大きな上界しか知られていません</strong>。ハミルトン路は、すべての頂点を通る経路を見つける問題でした。すぐに思いつく方法は、次のような方法でしょう。</p>
+<p>ハミルトン路を見つける問題については、オイラー路を見つける問題よりも<strong>はるかに大きな上界しか知られていません</strong>。つまり、知られている最速のアルゴリズムでも、最悪の場合にはオイラー路よりはるかに時間がかかります。ハミルトン路は、すべての頂点をちょうど1度ずつ通る経路を見つける問題でした。すぐに思いつく方法は、次のような方法でしょう。</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1074,14 +1113,17 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>動的計画法による改善</strong></p>
 </div>
 <div class="paragraph">
-<p>Bellman–Held–Karpアルゴリズムは「動的計画法」という手法を使います。これは「同じ部分問題を何度も解く無駄を省く」アイデアです。\(\text O(n^2 2^n)\) は \(\text O(n!)\) よりは小さいですが、それでも指数時間であることに変わりはありません。\(2^n\) も \(n!\) も、\(n\) が大きくなると実用的でない時間がかかります。</p>
+<p>Bellman–Held–Karpアルゴリズムは「動的計画法」という手法を使います。これは「同じ部分問題を何度も解く無駄を省く」アイデアです。ハミルトン路の場合は、「訪れた頂点の集合」と「最後にいる頂点」の組ごとに、そこまでたどり着けるかどうかを表に記録します。途中までの順番が違っても、訪れた頂点の集合と最後の頂点が同じなら、その先の可能性は同じだからです。</p>
+</div>
+<div class="paragraph">
+<p>\(\text O(n^2 2^n)\) は \(\text O(n \cdot n!)\) よりはずっと小さいですが、それでも指数時間であることに変わりはありません。その後も改良は続いており、たとえば無向グラフについては2010年にBjörklundが \(\text O(1.657^n)\) 程度の時間で(ごく小さな確率で誤る可能性を許す乱択アルゴリズムとして)判定する方法を示しましたが、これも指数時間です。</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>頂点間に距離（重み）を与えて、すべての頂点をちょうど1度ずつ巡って出発点に戻る経路のうち最短のものを求める問題、いわばハミルトン閉路問題の重み付き版に相当する問題を考えると、日常的にも役に立ちそうな問題設定であることがわかると思います。この問題は、巡回セールスマン問題（Traveling Salesman Problem: TSP）として知られています。</p>
+<p>頂点間に距離（重み）を与えて、すべての頂点をちょうど1度ずつ巡って出発点に戻る経路のうち最短のものを求める問題、つまりハミルトン閉路問題の重み付き版に相当する問題を考えると、日常的にも役に立ちそうな問題設定であることがわかると思います。この問題は、巡回セールスマン問題（Traveling Salesman Problem: TSP）として知られています。</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1105,7 +1147,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>製造業</strong>: 工場での機械の動作順序</p>
 </li>
 <li>
-<p><strong>半導体製造</strong>: チップ上の配線設計</p>
+<p><strong>電子機器の製造</strong>: プリント基板に多数の穴をあけるドリルの移動順序</p>
 </li>
 <li>
 <p><strong>観光業</strong>: 効率的な観光ルート</p>
@@ -1113,7 +1155,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </ul>
 </div>
 <div class="paragraph">
-<p>多くの現実問題がTSPとして定式化できるため、たとえ完全に解けなくても近似解を求める研究が盛んに行われています。</p>
+<p>多くの現実問題がTSPとして定式化できるため、最短であることが保証された解(厳密解)が求められない規模でも、十分に短い経路(近似解)を求める研究が盛んに行われています。</p>
 </div>
 </td>
 </tr>
@@ -1124,7 +1166,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect2">
 <h3 id="_ゲノムアセンブリとオイラー路問題"><a class="link" href="#_ゲノムアセンブリとオイラー路問題">1.3. ゲノムアセンブリとオイラー路問題</a></h3>
 <div class="paragraph">
-<p>生物の遺伝情報であるゲノム配列を解読する作業は、問題の定式化のしかたによって、ハミルトン路問題にもオイラー路問題にもなります。短い断片を大量に読み取る現在主流のシーケンサーのデータでは、オイラー路問題として解く定式化が広く使われています。</p>
+<p>生物の遺伝情報であるゲノム配列を解読する作業は、問題の定式化のしかたによって、ハミルトン路問題にもオイラー路問題にもなります。短い断片(数百文字程度)を大量に読み取るシーケンサーのデータでは、オイラー路問題として解く定式化が広く使われています。</p>
 </div>
 <div class="paragraph">
 <p>ここでは、非常に単純化した形でこの問題を説明します（生命科学科の学生には単純化しすぎ！と怒られそうですが、ご容赦ください）。</p>
@@ -1147,10 +1189,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </table>
 </div>
 <div class="paragraph">
-<p>「<code>めかぶどうめだか</code>」という文字列が解読したいゲノム配列だとします。(実際にはご存知のようにACGTの4つのアルファベットからなる非常に長い記号列)。ゲノム配列は実際にはとても長い配列なので一度に解読することはできません。そこでまず元のゲノム配列を複数本に複製して、そのゲノム配列を短い断片に切りわけます。</p>
+<p>「<code>めかぶどうめだか</code>」という文字列が解読したいゲノム配列だとします(実際のDNAの配列は、A, C, G, Tの4種類の文字からなる非常に長い記号列です)。ゲノム配列は実際にはとても長い配列なので一度に解読することはできません。そこでまず元のゲノム配列を複数本に複製して、そのゲノム配列を短い断片に切りわけます。</p>
 </div>
 <div class="paragraph">
-<p>ぶつ切りにした結果以下のような文字の断片が得られたとします。</p>
+<p>ぶつ切りにした結果、以下のような文字の断片が得られたとします。1行が複製1本分で、空白は断片が得られなかった部分です。</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1160,19 +1202,19 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
-<p>この断片から前後が重なっている文字を見つけ出してつなぎ合わせて、元の長い文字列を再構成する作業をゲノムアセンブリといいます。たとえば、「<code>めかぶ</code>」と「<code>ぶどう</code>」の「<code>ぶ</code>」が重なっているので、この2つをつなげて「<code>めかぶどう</code>」のようにつなげます。</p>
+<p>この断片から前後が重なっている文字を見つけ出してつなぎ合わせて、元の長い文字列を再構成する作業をゲノムアセンブリといいます。同じ断片(ここでは「<code>めかぶ</code>」)が複数得られることもありますが、1つにまとめて考えます。たとえば、「<code>めかぶ</code>」と「<code>ぶどう</code>」の「<code>ぶ</code>」が重なっているので、この2つをつなげて「<code>めかぶどう</code>」のようにつなげます。</p>
 </div>
 <div class="paragraph">
 <p>ここでは、説明を簡単にするために前後が重なっている部分は1文字だけにしています。（実用的にはこれでは関係ないものまでつながってしまう可能性があるため、実際には複数の連続した文字列がオーバーラップする部分をつなげます。）</p>
 </div>
 <div class="paragraph">
-<p>今回は話を単純にするために重なりを1文字にしたので、すべての単語を用いてしりとりを完成させる問題になります。この問題は頂点（ノード）に単語を配置して、しりとりとして繋がる可能性のある頂点間を矢印のついた辺でつなぐと下図のようなグラフができます。このグラフからハミルトン路を見つけることができれば、全単語をもちいたしりとり問題を解いたことになります。ただし、辺には矢印がついていて一方通行です。一般の有向ハミルトン路問題にも多項式時間の解法は知られていません。ただし、ここでしりとりから作った特殊なグラフには、後述の別の解き方があります。</p>
+<p>ここでは話を単純にするために重なりを1文字にしたので、すべての単語を1度ずつ用いてしりとりを完成させる問題になります(「ん」で終わると負け、といったルールは考えません)。この問題は頂点（ノード）に単語を配置して、しりとりとして繋がる可能性のある頂点間を矢印のついた辺でつなぐと下図のようなグラフができます。このグラフからハミルトン路を見つけることができれば、全単語をもちいたしりとり問題を解いたことになります。ただし、辺には矢印がついていて一方通行です。一般の有向ハミルトン路問題にも多項式時間の解法は知られていません。ただし、ここでしりとりから作った特殊なグラフには、後述の別の解き方があります。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="./img/shiritori-hamilton.svg" alt="しりとり問題をハミルトン路問題として表したグラフ" width="560">
 </div>
-<div class="title">図 1. ハミルトン路を用いたしりとり問題の表現</div>
+<div class="title">図 10. ハミルトン路を用いたしりとり問題の表現</div>
 </div>
 <div class="paragraph">
 <p>実際にハミルトン路を求めてみると、</p>
@@ -1193,10 +1235,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="content">
 <img src="./img/shiritori-euler.svg" alt="しりとり問題をオイラー路問題として表したグラフ" width="480">
 </div>
-<div class="title">図 2. オイラー路を用いたしりとり問題の表現</div>
+<div class="title">図 11. オイラー路を用いたしりとり問題の表現</div>
 </div>
 <div class="paragraph">
-<p>このグラフ上でオイラー路をみつければ、それがすべての単語を用いたしりとりになっていることがわかると思います。このように、元の文字列を再構成するためにオイラー路問題を解くためのグラフのことを、このグラフを考案したオランダの数学者にちなんで、de Bruijn グラフ（ド・ブルイングラフ）と呼びます。</p>
+<p>このグラフ上でオイラー路をみつければ、それがすべての単語を用いたしりとりになっていることがわかると思います。め → ぶ → う → め → か と矢印をたどると、めかぶ → ぶどう → うめ → めだか の順に単語が並びます。一方通行の辺からなるグラフでは、次数の代わりに各頂点に入る辺と出る辺の数を比べることで、オイラー路の有無を同じように判定できます(章末の練習問題8で扱います)。このように、元の文字列を再構成するためにオイラー路問題を解くグラフを、この形のグラフを1946年に考案したオランダの数学者ド・ブルインにちなんで、de Bruijn グラフ（ド・ブルイングラフ）と呼びます。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1209,7 +1251,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>【実際のゲノムアセンブリとの対応】</strong></p>
 </div>
 <div class="paragraph">
-<p>しりとりの例は、話を単純にするために「重なりは1文字、頂点も1文字」としました。実際のゲノムアセンブリで使われる de Bruijn グラフでは、読み取った断片（リード）をさらに一定の長さ \(k\) の部分文字列（\(k\)-mer）にすべて切り出し、各 \(k\)-mer の先頭 \(k-1\) 文字と末尾 \(k-1\) 文字を頂点、\(k\)-mer そのものを辺とするグラフを作ります。つまり重なりは \(k-1\) 文字で、しりとりの例は \(k=2\) に相当する最も単純な場合です。</p>
+<p>しりとりの例は、話を単純にするために「重なりは1文字、頂点も1文字」としました。実際のゲノムアセンブリで使われる de Bruijn グラフでは、読み取った断片（リード）をさらに一定の長さ \(k\) の部分文字列（\(k\)-mer）にすべて切り出し、各 \(k\)-mer の先頭 \(k-1\) 文字と末尾 \(k-1\) 文字を頂点、\(k\)-mer そのものを辺とするグラフを作ります。つまり重なりは \(k-1\) 文字です。しりとりの例は、重なりが1文字という点で \(k=2\) に相当する最も単純な場合です。</p>
 </div>
 <div class="paragraph">
 <p>また、実際のデータには読み取りの誤りが含まれ、ゲノムには同じ配列の繰り返しもあるため、オイラー路を1本見つけて終わり、というほど単純ではありません。グラフから誤りに由来する部分を取り除いたり、複数ありうる経路から妥当なものを選んだりする、多くの工夫が加わっています。</p>
@@ -1222,7 +1264,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>この単純化したモデルでは、一般のハミルトン路探索を使うより、オイラー路として解くほうが効率的です。ただし、実際のゲノムアセンブリには読み取り誤りや反復配列などがあり、すべてが一筆書きだけで解決するわけではありません。</p>
 </div>
 <div class="paragraph">
-<p>実際のゲノムアセンブリの作業では非常に巨大な de Bruijn グラフができます。このグラフをメモリ上で小さく表現したまま（<strong>簡潔de Bruijnグラフ</strong>）経路をたどるアルゴリズムが開発されています。新型コロナウイルス（SARS-CoV-2）のゲノムも、簡潔de Bruijnグラフを用いる解析ソフト（MEGAHIT）で最初の全ゲノム配列が組み立てられました。そして、解読されたゲノム配列こそが mRNAワクチンを設計する出発点になったのです。現在のワクチン開発や創薬の背後には、さまざまなアルゴリズムの貢献があります。</p>
+<p>実際のゲノムアセンブリの作業では非常に巨大な de Bruijn グラフができます。このグラフをメモリ上で小さく表現したまま（<strong>簡潔de Bruijnグラフ</strong>）経路をたどるアルゴリズムが開発されています。新型コロナウイルス（SARS-CoV-2）で最初期に公開された全ゲノム配列も、簡潔de Bruijnグラフを用いる解析ソフトMEGAHITで組み立てたものが使われました(論文では別のソフトTrinityも併用しています)。2020年1月に公開されたこの配列が、mRNAワクチンを設計する出発点になりました。現在のワクチン開発や創薬の背後には、さまざまなアルゴリズムの貢献があります。</p>
+</div>
+<div class="paragraph">
+<p>出典：<a href="https://www.nature.com/articles/s41586-020-2008-3">Wu et al., A new coronavirus associated with human respiratory disease in China, Nature 579 (2020)</a>。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1235,7 +1280,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>理論と実践の結びつき</strong></p>
 </div>
 <div class="paragraph">
-<p>この例は、純粋に理論的に見える数学的概念（グラフ理論、計算量理論）が、実際の生命科学研究や医療技術開発に直接貢献していることを示しています。COVID-19パンデミック下でのワクチン開発の速さも、こうした基礎理論の蓄積があったからこそ可能でした。</p>
+<p>この例は、純粋に理論的に見える数学的概念（グラフ理論、計算量理論）が、実際の生命科学研究や医療技術開発に貢献していることを示しています。COVID-19パンデミック下でのワクチン開発の速さも、こうした基礎理論の蓄積に支えられていました。</p>
 </div>
 </td>
 </tr>
@@ -1275,14 +1320,14 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>富岳の計算能力について</strong></p>
 </div>
 <div class="paragraph">
-<p>\(10^{20}\) という数は1の後に0が20個つく数、つまり1垓（がい）です。この想像を絶する計算速度を持つコンピューターでも、指数時間のアルゴリズムには太刀打ちできないということを、以下の表で確認してみましょう。</p>
+<p>\(10^{20}\) という数は1の後に0が20個つく数、つまり1垓（がい）です。表の各欄は、\(n\) や \(2^n\) などの回数の計算を1秒間に \(10^{20}\) 回の速さで行ったときの時間です。この想像を絶する計算速度を持つコンピューターでも、指数時間のアルゴリズムには太刀打ちできないということを、以下の表で確認してみましょう。</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <table class="tableblock frame-ends grid-none fit-content">
-<caption class="title">表 1. 計算時間の増加</caption>
+<caption class="title">表 2. 計算時間の増加</caption>
 <colgroup>
 <col>
 <col>
@@ -1340,7 +1385,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <td class="tableblock halign-right valign-top"><p class="tableblock">\(2.8\times 10^{-18}\)秒</p></td>
 <td class="tableblock halign-right valign-top"><p class="tableblock">\(2.5\times 10^{-17}\)秒</p></td>
 <td class="tableblock halign-right valign-top"><p class="tableblock">\(1.1\times 10^{-5}\)秒</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">\(9.6\times 10^{36}\) 年</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock">\(100\)</p></td>
@@ -1348,7 +1393,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <td class="tableblock halign-right valign-top"><p class="tableblock">\(6.6\times 10^{-18}\)秒</p></td>
 <td class="tableblock halign-right valign-top"><p class="tableblock">\(10^{-16}\)秒</p></td>
 <td class="tableblock halign-right valign-top"><p class="tableblock">\(400\)年</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">\(3\times 10^{130}\) 年</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock">\(1000\)</p></td>
@@ -1376,6 +1421,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>表の「-」は、値が大きすぎるため省略した欄です。</p>
+</div>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -1398,12 +1446,12 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>これは宇宙の年齢（約138億年 = \(1.38 \times 10^{10}\) 年）の \(2.5 \times 10^{263}\) 倍です</p>
 </li>
 <li>
-<p>文字通り「宇宙が何度も生まれ変わる」時間が必要ということです</p>
+<p>宇宙の誕生から現在までの時間を、途方もない回数くり返しても足りません</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>どんなにコンピューターが高速化しても、指数時間のアルゴリズムは現実的ではありません。</p>
+<p>どんなにコンピューターが高速化しても、入力が大きいときには指数時間のアルゴリズムは現実的ではありません。</p>
 </div>
 </td>
 </tr>
@@ -1452,7 +1500,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>Yes/Noで答える決定問題のうち、最悪時間計算量が入力の長さの多項式でおさえられるアルゴリズムをもつ問題すべての集まり（このような集まりをクラスといいます）を<strong>P問題</strong>とよびます（多項式時間のことを英語で <strong>P</strong>olynomial Time というため）。</p>
 </div>
 <div class="paragraph">
-<p>整列やオイラー路の構成は、多項式時間で解ける探索・出力の問題です。Pは厳密には決定問題のクラスなので、例えば「オイラー路は存在するか」という形にしてPへの所属を述べます。一方で、ハミルトン路を見つける問題が、<strong>P問題</strong>に含まれるかどうかは未解決問題です。つまり、多項式時間を超えるような時間計算量の下界が知られていないのです（すでに見たように現在の時間計算量の上界は指数時間でした）。</p>
+<p>整列やオイラー路の構成は、多項式時間で解ける探索・出力の問題です。Pは厳密には決定問題のクラスなので、例えば「オイラー路は存在するか」という形にしてPへの所属を述べます。オイラー路の存在は、各頂点の次数を数えて連結かどうかを確かめるだけで判定できるので、この問題はPに属します。一方で、「ハミルトン路は存在するか」を判定する問題が<strong>P問題</strong>に含まれるかどうかは未解決問題です。多項式時間のアルゴリズムは見つかっておらず(すでに見たように、知られている上界は指数時間でした)、かといって「どんなアルゴリズムでも多項式時間では解けない」という下界の証明もないのです。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1494,7 +1542,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect2">
 <h3 id="_検証が多項式時間でできる問題のクラス_np問題"><a class="link" href="#_検証が多項式時間でできる問題のクラス_np問題">1.5. 検証が多項式時間でできる問題のクラス: <strong>NP問題</strong></a></h3>
 <div class="paragraph">
-<p>すでにみてきた整列問題や、ハミルトン路・オイラー路を見つける問題は、いずれも解の候補が示されれば、それが本当に解になっているのかどうか検証することが簡単にできます。
+<p>すでにみてきた整列問題や、ハミルトン路・オイラー路を見つける問題は、解くのが易しいか難しいかにかかわらず、いずれも解の候補が示されれば、それが本当に解になっているのかどうか検証することが簡単にできます。
 整列問題では、与えられた並びの値を、隣り合う値が非減少順であることに加え、入力と同じ要素が同じ個数ずつ含まれていることも確認します。ハミルトン路問題では、解として示された経路をたどりながら、各頂点がちょうど1度ずつ現れ、連続する頂点の間に辺があることを確認します。オイラー路については、示された経路が、すべての辺を重複せずに含んでいることを確認します。いずれも、入力サイズに対して、多項式時間で検証できることは想像できると思います。</p>
 </div>
 <div class="admonitionblock tip">
@@ -1526,11 +1574,24 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </li>
 <li>
+<p><strong>素因数分解</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>解くこと: 3233 を2つの素数の積に分ける（桁数の大きな数では、とても難しいと考えられている）</p>
+</li>
+<li>
+<p>検証すること: \(53 \times 61 = 3233\) を掛け算で確かめる（簡単）</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
 <p><strong>迷路</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>解くこと: スタートからゴールまでの道を見つける（難しいかもしれない）</p>
+<p>解くこと: スタートからゴールまでの道を見つける</p>
 </li>
 <li>
 <p>検証すること: 示された道が正しいかたどってみる（簡単）</p>
@@ -1541,48 +1602,39 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </ul>
 </div>
 <div class="paragraph">
-<p>「解くのは難しいかもしれないが、少なくとも検証は簡単」という性質を持つ問題が<strong>NP問題</strong>です。</p>
+<p>迷路は、実は道を見つけるほうも、分かれ道を順に調べていく方法で、迷路の大きさにほぼ比例する時間でできます。「解くのは難しいかもしれないが、少なくともYesの答えの確認は簡単」という性質を持つ問題が<strong>NP問題</strong>で、迷路のように解くのも簡単な問題もNPに含まれます(正確な定義はすぐ後で述べます)。</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><strong>NP</strong>は、Yesである各入力に対して、入力の長さの多項式以内の長さの証拠があり、それを多項式時間で検証できる決定問題のクラスです。Noである入力では、どんな証拠を渡しても検証器が受理しないことが必要です。証拠を効率よく見つけられるとは限りません。
-（厳密には、解候補を2進法で表記したときに、入力サイズに対して多項式サイズで表すことができるという条件も必要ですが、ここでは詳細には立ち入りません。）</p>
-</div>
-<div class="paragraph">
-<p>NP問題のNPは、Nondeterministic Polynomial Time が由来です。検証が容易というのは、厳密に非決定性チューリングマシンという計算モデル上で多項式時間で解ける問題として定式化されますが、これについてもこの授業では立ち入りません（非決定的=nondeterministic）。</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p><strong>NPの正式な定義</strong></p>
-</div>
-<div class="paragraph">
-<p>NPは「Nondeterministic Polynomial Time」の略です。</p>
+<p><strong>NP</strong>は、次の2つの条件を満たす検証の手続き(<strong>検証器</strong>)をもつ決定問題のクラスです。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Nondeterministic（非決定的）</strong>: 複数の選択肢から「正しい」ものを瞬時に選べる理想的な計算機械</p>
+<p>答えがYesである各入力には、入力の長さの多項式以内の長さの<strong>証拠</strong>(証明書ともいいます)があり、検証器はそれを多項式時間で確かめて受理する。</p>
 </li>
 <li>
-<p><strong>Polynomial Time（多項式時間）</strong>: そのような機械で多項式時間で解ける</p>
+<p>答えがNoである入力では、どんな証拠を渡しても検証器は受理しない。</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>実際のコンピューターは「決定的」で、すべての選択肢を順次試す必要があります。しかし「正しい答え」が与えられれば、それが正解かどうかは多項式時間で検証できます。これがNP問題の直感的な理解です。</p>
+<p>ハミルトン路の存在判定なら、証拠は頂点の並び、検証器は「各頂点がちょうど1度ずつ現れ、隣り合う頂点の間に辺がある」ことを確かめる手続きです。ハミルトン路をもたないグラフでは、どんな並びを渡しても、この確認のどこかで必ず失敗します。</p>
 </div>
-</td>
-</tr>
-</table>
+<div id="fig-np-verifier" class="imageblock text-center">
+<div class="content">
+<img src="./img/np-verifier.svg" alt="Yesの入力には受理される証拠が少なくとも1つあり、Noの入力ではどの証拠も受理されない">
+</div>
+<div class="title">図 12. NPの検証のしくみ(ハミルトン路の存在判定の場合)</div>
+</div>
+<div class="paragraph">
+<p>証拠を効率よく見つけられるとは限りません。NPの定義は、見つけ方は問わず、「見せてもらえれば確かめられる」ことだけを求めています。</p>
+</div>
+<div class="paragraph">
+<p>NP問題のNPは、Nondeterministic Polynomial Time(非決定性多項式時間)の略です。NPはもともと、<strong>非決定性チューリングマシン</strong>という仮想的な計算機で多項式時間で解ける問題として定義されました。これは、分かれ道に来るたびに、あたかも正解につながる道を選べるかのように振る舞う機械です。そのとき選んだ道の列を証拠とみなすと、上の検証による定義と同じクラスになることが知られています。この章では、検証による定義を使います。なお、NPは「多項式時間ではない(Non-Polynomial)」の略ではありません。次の節で見るとおり、Pの問題もすべてNPに含まれます。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1592,7 +1644,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </td>
 <td class="content">
 <div class="paragraph">
-<p>本来のP問題やNP問題は、前章で定義した<strong>決定問題</strong>（Yes/Noで答えられる問題）の範囲で定義されます。たとえば、ハミルトン路の場合は、「与えられたグラフに対してハミルトン路が存在するか？」を問う問題になります。存在すれば Yes、存在しなければ No を出力します。しかし、この授業で扱ったようにハミルトン路を見つける問題（探索問題）であっても、計算量については大きな違いはありません。</p>
+<p><strong>決定問題と探索問題</strong></p>
+</div>
+<div class="paragraph">
+<p>P問題やNP問題は、第11章で定義した<strong>決定問題</strong>（Yes/Noで答えられる問題）の範囲で定義されます。たとえば、ハミルトン路の場合は、「与えられたグラフに対してハミルトン路が存在するか？」を問う問題になります。存在すれば Yes、存在しなければ No を出力します。</p>
+</div>
+<div class="paragraph">
+<p>実際に経路を1つ見つける問題(<strong>探索問題</strong>)と、存在を判定する問題とで、多項式時間で解けるかどうかは変わりません。経路を見つけられれば、存在も分かります。逆に、存在を判定する多項式時間のアルゴリズムがあれば、次のようにして経路も見つけられます。辺を1本ずつ順に取り除いてみて、「取り除いてもまだハミルトン路があるか」を判定します。あればその辺は捨て、なければ元に戻します。これをすべての辺について行うと、最後に残った辺がちょうど1本のハミルトン路になります。判定は辺の数と同じ回数だけなので、全体も多項式時間です。</p>
 </div>
 </td>
 </tr>
@@ -1605,10 +1663,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <h2 id="_pnp予想"><a class="link" href="#_pnp予想">2. P≠NP予想</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>NP問題のクラスは、解候補さえ与えられれば検証は容易なので、解候補を全列挙してから検証するタイプのアルゴリズムがすぐに作れてしまいます。しかし、実際には解候補の個数は膨大なことがほとんどであり、計算量も大きくなってしまいます。ハミルトン路の場合も、解候補は全頂点の順列を与えれば良いことがすぐに分かります。これは頂点数 \(n\) に対してちょうど \(n!\) 個ありますから、ナイーブなアルゴリズムの計算量も \(\text O(n!)\) になってしまいます。</p>
+<p>NP問題のクラスは、解候補さえ与えられれば検証は容易なので、解候補を全列挙してから検証するタイプのアルゴリズムがすぐに作れてしまいます。しかし、実際には解候補の個数は膨大なことがほとんどであり、計算量も大きくなってしまいます。ハミルトン路の場合も、解候補は全頂点の順列を与えれば良いことがすぐに分かります。これは頂点数 \(n\) に対してちょうど \(n!\) 個あり、それぞれの検証に \(n\) に比例する時間がかかりますから、ナイーブなアルゴリズムの計算量は \(\text O(n\cdot n!)\) になってしまいます。</p>
 </div>
 <div class="paragraph">
-<p>整列問題でも並びの順列を全列挙して、一つ一つ単調増加していることをチェックするアルゴリズムを設計することができます。すでにご存知のように、整列問題では、そんな効率の悪いことをしなくても多項式時間のアルゴリズムが見つかっています。しかし、このような多項式時間の上界が見つかっていないようなNP問題については、依然として虱潰しに解候補を列挙するアルゴリズムよりも劇的に効率を上げることができずにいます。</p>
+<p>整列問題でも並びの順列を全列挙して、一つ一つ非減少順に並んでいるかをチェックするアルゴリズムを設計することができます。すでにご存知のように、整列問題では、そんな効率の悪いことをしなくても多項式時間のアルゴリズムが見つかっています。しかし、ハミルトン路のように多項式時間の上界が見つかっていないNP問題については、動的計画法のような工夫で指数の底を小さくすることはできても、しらみつぶしに近い指数時間の方法から抜け出せずにいます。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1618,22 +1676,23 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </td>
 <td class="content">
 <div class="paragraph">
-<p><strong>なぜ総当たりしかできないのか？</strong></p>
+<p><strong>なぜ効率のよい方法が見つからないのか？</strong></p>
 </div>
 <div class="paragraph">
-<p>NP問題の多くで、現在知られている最良のアルゴリズムが「総当たり（しらみつぶし）」に近い方法しかないのは、問題の構造が非常に複雑だからです。局所的な情報から全体の最適解を予測することが困難で、結果的に多くの可能性を調べざるを得ないのです。</p>
+<p>オイラー路では「各頂点の次数」という局所的な情報を数えるだけで、全体として一筆書きできるかが分かりました。ハミルトン路には、このような決め手となる性質が見つかっていません。ある頂点をどの順番で通るかという選択が、ずっと先の選択にまで影響するため、多くの可能性を調べざるを得ないのです。ただし、これは現時点で方法が見つかっていないという経験上の話で、「効率のよい方法は存在しない」ことが証明されているわけではありません。</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="imageblock right">
-<div class="content">
-<img src="./img/p-np.svg" alt="p np">
-</div>
-</div>
 <div class="paragraph">
-<p>P問題のクラスに属する問題集合を \(\text P\)、NP問題のクラスに属する問題集合を \(\text{NP}\) とおくことにします。すると、P問題ならばNP問題であることは明らかですから、\(\text P\subseteq\text{NP}\) です。なぜなら、解そのものを多項式時間で見つけられるなら、検証も多項式時間でできるのは当たり前だからです。問題は、\(\text P\subsetneq\text{NP}\) なのか（即ち、\(\text P\neq\text{NP}\) なのか）、\(\text P=\text{NP}\) なのかが、1970年代から今に至るまで多くの優れた研究者のチャレンジを寄せ付けず、未だに証明されていないのです。多くの研究者の見立てでは \(\text P\neq\text{NP}\) と予想されていて、右図のような包含関係があると考えられています。</p>
+<p>P問題のクラスに属する問題集合を \(\text P\)、NP問題のクラスに属する問題集合を \(\text{NP}\) とおくことにします。すると、P問題ならばNP問題であることは明らかですから、\(\text P\subseteq\text{NP}\) です。なぜなら、答えそのものを多項式時間で計算できるなら、「渡された証拠は見ずに自分で答えを計算し、Yesなら受理する」という検証器が作れるからです。問題は、\(\text P\subsetneq\text{NP}\) なのか（つまり、\(\text P\neq\text{NP}\) なのか）、\(\text P=\text{NP}\) なのかが、1970年代から今に至るまで多くの優れた研究者のチャレンジを寄せ付けず、未だに証明されていないのです。多くの研究者の見立てでは \(\text P\neq\text{NP}\) と予想されていて、下の図のような包含関係があると考えられています。</p>
+</div>
+<div id="fig-p-np" class="imageblock text-center">
+<div class="content">
+<img src="./img/classes-p-np.svg" alt="NPの中にPがあり、ハミルトン路の存在判定はPの外にあると予想される" width="440">
+</div>
+<div class="title">図 13. PとNPの包含関係(P≠NPと予想される場合)</div>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -1657,7 +1716,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>現在「難しい」とされる多くの問題が実は簡単に解ける可能性がある</p>
 </li>
 <li>
-<p>暗号技術の多くが無意味になる可能性がある</p>
+<p>現在使われている暗号の多くが、理論上は効率よく破れることになる(ただし、見つかったアルゴリズムの計算量が \(n^{100}\) のような高い次数の多項式なら、実際への影響は限られるかもしれません)</p>
 </li>
 </ul>
 </div>
@@ -1709,7 +1768,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>【P≠NP問題を最初に問うたのは誰か — ゲーデルの手紙】</strong></p>
 </div>
 <div class="paragraph">
-<p>P≠NP予想が定式化されたのは1970年代初頭ですが、実は本質的に同じ問いが、それより15年も前に立てられていたことが後にわかりました。不完全性定理で知られる論理学者クルト・ゲーデルが、1956年3月にフォン・ノイマンへ宛てた手紙です。ゲーデルはそこで、「長さ \(n\) の証明をもつ論理式が与えられたとき、その証明を機械が見つけるのに必要なステップ数は \(n\) に比例、あるいは \(n^2\) に比例する程度まで減らせるだろうか」と問い、もしそれが可能なら「Yes/Noで答えられる問題に関する数学者の頭脳労働は、完全に機械で置き換えられることになる」と書いています。これは、現在の言葉でいえば「NPに属する問題が多項式時間で解けるか」という問いにほかなりません。</p>
+<p>P≠NP予想が定式化されたのは1970年代初頭ですが、実は本質的に同じ問いが、それより15年も前に立てられていたことが後にわかりました。不完全性定理で知られる論理学者クルト・ゲーデルが、1956年3月にフォン・ノイマンへ宛てた手紙です。ゲーデルはそこで、「与えられた論理式に長さ \(n\) の証明があるかどうかを機械で判定するとき、必要なステップ数は \(n\) に比例、あるいは \(n^2\) に比例する程度まで減らせるだろうか」と問い、もしそれが可能なら「Yes/Noで答えられる問題に関する数学者の頭脳労働は、完全に機械で置き換えられることになる」と書いています。これは、現在の言葉でいえば「NPに属する問題が多項式時間で解けるか」という問いにほかなりません。</p>
 </div>
 <div class="paragraph">
 <p>当時フォン・ノイマンはがんの闘病中で、返信をしたかどうかは知られていません。手紙自体も長く忘れられており、発見されて計算量理論の研究者に知られるようになったのは1980年代末のことでした。P≠NP予想の重要性を、分野が誕生する前に見抜いていた人物がいたわけです。</p>
@@ -1727,7 +1786,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>NP問題の中で最も難しい問題の集まりを、<strong>NP完全問題</strong>といいます。また、NP完全問題に属する問題を<strong>NP完全</strong>であるといいます。正確には「NPに属し、かつNPのどの問題もそれに多項式時間還元できる問題」のことです（多項式時間還元についてはこの後で説明します）。よって、NP完全問題に属する問題が多項式時間で解けることがわかれば、NP問題はすべて多項式時間で解ける（つまり、\(\text{NP}=\text P\)）ことが言えることになります。一方で、おおかたの予想通り \(\text{NP}\neq\text P\) であるなら、ある問題がNP完全問題であることを示せれば、その問題がP問題でないことを示すことになります。</p>
 </div>
 <div class="paragraph">
-<p>「最も難しい問題」と言いましたが、何をもって問題の「難しさ」に順序をつけるのでしょうか。ここで登場するのが前回触れた還元の考え方です。問題Bを問題Aに帰着（還元）して解けるならば、問題Bは問題Aと同等かそれより易しい問題であると考えられます。この還元は、目的に応じて2通りの使い方があります。</p>
+<p>「最も難しい問題」と言いましたが、何をもって問題の「難しさ」に順序をつけるのでしょうか。ここで登場するのが第11章で触れた還元の考え方です。問題Bを問題Aに帰着（還元）して解けるならば、問題Bは問題Aと同等かそれより易しい問題であると考えられます。この還元は、目的に応じて2通りの使い方があります。</p>
 </div>
 <div class="dlist">
 <dl>
@@ -1802,8 +1861,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/preduction.svg" alt="preduction">
+<img src="./img/preduction.svg" alt="問題Bの入力を多項式時間で問題Aの入力に変換し、問題Aのアルゴリズムの出力を問題Bの答えとする">
 </div>
+<div class="title">図 14. 多項式時間還元のイメージ(問題Bを問題Aに還元する)</div>
 </div>
 <div class="paragraph">
 <p>還元の「向き」と難しさの関係をパイプラインの形でまとめると、次の図のようになります。</p>
@@ -1812,7 +1872,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="content">
 <img src="./img/reduction-direction.svg" alt="還元の向きを示すパイプライン図">
 </div>
-<div class="title">図 3. 多項式時間還元の向きと難しさの関係</div>
+<div class="title">図 15. 多項式時間還元の向きと難しさの関係</div>
 </div>
 </div>
 <div class="sect2">
@@ -1832,10 +1892,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="content">
 <img src="./img/round-table4.svg" alt="round table4" width="260">
 </div>
-<div class="title">図 4. 円卓の席配置</div>
+<div class="title">図 16. 円卓の席配置</div>
 </div>
 <table class="tableblock frame-ends grid-all fit-content">
-<caption class="title">表 2. 知人関係の表</caption>
+<caption class="title">表 3. 知人関係の表</caption>
 <colgroup>
 <col>
 <col>
@@ -1895,17 +1955,17 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p>さて、下のグラフについてハミルトン閉路の存在の有無を判定する問題を、円卓の席配置の存在の有無を判定する問題に変換してみましょう。</p>
 </div>
-<div class="imageblock center text-center">
+<div class="imageblock text-center">
 <div class="content">
-<img src="./img/graph-ex1.svg" alt="graph ex1" width="300">
+<img src="./img/stations.svg" alt="頂点aからfの6個と辺10本のグラフ" width="300">
 </div>
-<div class="title">図 5. ハミルトン閉路があるかどうか判定したいグラフ</div>
+<div class="title">図 17. ハミルトン閉路があるかどうか判定したいグラフ</div>
 </div>
 <div class="paragraph">
 <p>このグラフを知人関係を表す表に変換してみます。</p>
 </div>
 <table class="tableblock frame-ends grid-all fit-content">
-<caption class="title">表 3. 知人関係の表</caption>
+<caption class="title">表 4. 知人関係の表</caption>
 <colgroup>
 <col>
 <col>
@@ -1991,19 +2051,19 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="content">
 <img src="./img/reduction.svg" alt="reduction">
 </div>
-<div class="title">図 6. 知り合いだけが隣に来るような席の配置</div>
+<div class="title">図 18. 知り合いだけが隣に来るような席の配置</div>
 </div>
 <div class="paragraph">
 <p>このように円卓の席配置が存在するとき、かつそのときに限り、ハミルトン閉路も存在し、以下のようになります。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/graph-ex1-hc.svg" alt="graph ex1 hc" width="300">
+<img src="./img/stations-hcycle.svg" alt="a→b→d→f→e→c→aのハミルトン閉路" width="300">
 </div>
-<div class="title">図 7. ハミルトン閉路</div>
+<div class="title">図 19. ハミルトン閉路</div>
 </div>
 <div class="paragraph">
-<p>この入力の変換が多項式時間でできるかどうかは、きちんと細かい議論が必要なのですが、直感的には直接的な変換ですし、多項式時間であるのはほぼ自明であるとしてこの授業では説明を割愛します。</p>
+<p>この入力の変換は、頂点の組 \(n^2\) 通りのそれぞれについて、辺があれば表に「✔」を書き写すだけです。したがって \(\text O(n^2)\) 時間、つまり多項式時間でできます。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2013,17 +2073,17 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </td>
 <td class="content">
 <div class="paragraph">
-<p>この例の重要な点は、以下の同値性です。</p>
+<p>この例の重要な点は、変換したどの入力についても成り立つ、以下の同値性です。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>グラフにハミルトン閉路が存在する</strong> ⟺ <strong>対応する知人関係で円卓配置が可能</strong></p>
+<p><strong>グラフにハミルトン閉路が存在する</strong> ⟺ <strong>変換してできた知人関係で円卓配置が可能</strong></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>この同値性により、どちらか一方の問題を解ければ、もう一方も解けることになります。そして変換（グラフ→知人関係表）が多項式時間でできるため、円卓問題がハミルトン閉路問題と「同じくらい難しい」ということが分かります。</p>
+<p>この同値性により、円卓問題を解くアルゴリズムがあれば、グラフを知人関係表に変換してから使うことで、ハミルトン閉路問題も解けます。そして変換（グラフ→知人関係表）が多項式時間でできるため、円卓問題は少なくともハミルトン閉路問題と同じくらい難しい、ということが分かります。(この例では逆向きの変換も同じようにできるので、2つの問題は同じ難しさですが、それは逆向きの還元を別に示して初めて言えることです。)</p>
 </div>
 </td>
 </tr>
@@ -2070,7 +2130,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </td>
 <td class="content">
 <div class="paragraph">
-<p>数独がNP完全問題であることは、最初の授業ですこし触れたとおりです。<strong>ぷよぷよの連鎖問題</strong>もNP完全であることが知られています。問題サイズは盤面の大きさであり、決定問題としての問いは「\(k\) 連鎖可能であるか」です。テトリスの列消去問題についても同様の問題設定で、NP完全であることが示されています。</p>
+<p>第1章で触れた数独も、盤面を \(n^2\times n^2\) マスに一般化した「解があるか」という問題がNP完全であることが知られています(2003年、八登崇之・瀬田剛広)。<strong>ぷよぷよの連鎖問題</strong>もNP完全であることが知られています。問題サイズは盤面の大きさであり、決定問題としての問いは「\(k\) 連鎖可能であるか」です。テトリスでも、落ちてくるブロックの列が最初から分かっているときに「\(k\) 列以上消せるか」を問う問題がNP完全であることが示されています。</p>
 </div>
 </td>
 </tr>
@@ -2090,7 +2150,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </dd>
 <dt class="hdlist1">問題</dt>
 <dd>
-<p>与えられた論理式の値を1にする変数への値（0または1）の割当ては存在するか</p>
+<p>与えられた論理式の値を1にする変数への値（0または1）の割り当ては存在するか</p>
 </dd>
 <dt class="hdlist1">出力</dt>
 <dd>
@@ -2101,7 +2161,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
-<p>この問題は出力がYes/Noの問題ですが、実際に変数への値の割当てを見つける問題と変更しても計算量の議論はそれほど変わりません。実際にYesとなる証拠である変数の割当てが示されると、検証は変数に示された値を代入して計算するだけですので、多項式時間で計算可能です。</p>
+<p>この問題は出力がYes/Noの問題ですが、実際に変数への値の割り当てを見つける問題と変更しても計算量の議論はそれほど変わりません。実際にYesとなる証拠である変数の割り当てが示されると、検証は変数に示された値を代入して計算するだけですので、多項式時間で計算可能です。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2149,7 +2209,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="paragraph">
 <p>真理値表を書くのが確実ですが、変数が5つありますので面倒です。
-この論理式の値を1にする変数の割当ては複数ありますが \(x=v=1\), \(w=0\) であれば、残りの変数の値はなんであってもよさそうです。よって、たとえば \(f(1,0,1,1,1)=1\) となります。よって、答えは Yes です。</p>
+この論理式の値を1にする変数の割り当ては複数ありますが \(x=v=1\), \(w=0\) であれば、残りの変数の値はなんであってもよさそうです。よって、たとえば \(f(1,0,1,1,1)=1\) となります。よって、答えは Yes です。</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -2193,7 +2253,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
-<p>この論理式については、\(g(x,y,z)=1\) となるような変数 \(x,y,z\) への値の割当ては存在しないため、答えは No です。今回は変数が3つなので真理値表を書いてもそれほど手間ではありませんが、変数が \(n\) 個の場合、真理値表の行数は \(2^n\) になりますので、真理値表を使えば指数時間かかります。</p>
+<p>この論理式については、\(g(x,y,z)=1\) となるような変数 \(x,y,z\) への値の割り当ては存在しないため、答えは No です。この例では変数が3つなので真理値表を書いてもそれほど手間ではありませんが、変数が \(n\) 個の場合、真理値表の行数は \(2^n\) になりますので、真理値表を使えば指数時間かかります。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2206,7 +2266,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>なぜ答えがNoなのか？</strong></p>
 </div>
 <div class="paragraph">
-<p>\(g(x,y,z)\) を満たす割当てが存在しないことを示してみましょう。</p>
+<p>\(g(x,y,z)\) を満たす割り当てが存在しないことを示してみましょう。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2242,7 +2302,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>計算の万能モデル「チューリングマシン」</strong>: まず、あらゆるコンピューターの計算は、前章で扱った<strong>チューリングマシン</strong>（無限に長いテープと、テープの記号を読み書きするヘッドからなる仮想機械）の動作としてモデル化できる、という大前提があります。</p>
 </li>
 <li>
-<p><strong>NP問題と「勘のいい」マシン</strong>: NP問題は「『<strong>非決定性</strong>』チューリングマシンで多項式時間で解ける問題」として定義されます。この「非決定性」とは、いわば「勘が鋭く、常に正しい選択肢を選べる」能力です。あらゆる可能性を同時に試せる、とイメージしてもよいでしょう。</p>
+<p><strong>NP問題と「勘のいい」マシン</strong>: NP問題は「『<strong>非決定性</strong>』チューリングマシンで多項式時間で解ける問題」としても定義できます。この「非決定性」とは、「勘が鋭く、常に正しい選択肢を選べる」能力です。あらゆる可能性を同時に試せる、とイメージしてもよいでしょう。検証による定義でいえば、マシンが選ぶ選択肢の列が証拠にあたります。</p>
 </li>
 <li>
 <p><strong>クックとレヴィンの大発見</strong>: 彼らは、「<strong>どんな非決定性チューリングマシンの動作（つまり、どんなNP問題の計算過程）でも、それを表現するSATの論理式に変換（エンコード）できる</strong>」ことを示しました。</p>
@@ -2258,12 +2318,12 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </li>
 <li>
-<p><strong>証明の完了</strong>: この組み立てが元の入力サイズの多項式時間ででき、できあがる論理式も多項式サイズにおさまります。その結果、「元のNP問題の答えがYesである」ことと「組み立てた論理式が充足可能である」ことが同値になります。つまり、<strong>どんなNP問題もSAT問題に多項式時間還元できる</strong>わけです。SAT自身は割当てを代入するだけで検証が多項式時間ででき、NPに属していますから、SATは「NPに属し、かつNPのどの問題もそれに還元できる問題」、すなわち<strong>NP完全</strong>の第1号となったのです。</p>
+<p><strong>証明の完了</strong>: この組み立てが元の入力サイズの多項式時間ででき、できあがる論理式も多項式サイズにおさまります。その結果、「元のNP問題の答えがYesである」ことと「組み立てた論理式が充足可能である」ことが同値になります。つまり、<strong>どんなNP問題もSAT問題に多項式時間還元できる</strong>わけです。SAT自身は割り当てを代入するだけで検証が多項式時間ででき、NPに属していますから、SATは「NPに属し、かつNPのどの問題もそれに還元できる問題」、つまり<strong>NP完全</strong>の第1号となったのです。</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>クック（1971年）とレヴィン（1973年発表）の独立な結果は、還元の連鎖の出発点になりました。クックの発表の翌年、1972年にはカープが、SATを含む21の問題の間で還元を示して、それらがNP完全であることを一気に示します。その中には、ハミルトン閉路に関する問題も含まれていました。この授業でオイラー路と対比してきたハミルトン路の問題は、NP完全だったのです。還元を積み重ねてNP完全性を芋づる式に広げていく話は、次回くわしく扱います。</p>
+<p>クック（1971年）とレヴィン（1973年発表）の独立な結果は、還元の連鎖の出発点になりました。クックの発表の翌年、1972年にはカープが、SATを含む21の問題の間で還元を示して、それらがNP完全であることを一気に示します。その中には、ハミルトン閉路に関する問題も含まれていました。ハミルトン路の存在判定も、ハミルトン閉路からの還元によってNP完全であることが示されます。この章でオイラー路と対比してきたハミルトン路の問題は、NP完全だったのです。還元を積み重ねてNP完全性を芋づる式に広げていく話は、第13章でくわしく扱います。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2276,7 +2336,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>【冷戦をまたいだ同時発見 — クックとレヴィン】</strong></p>
 </div>
 <div class="paragraph">
-<p>興味深いのは、SAT問題のNP完全性の証明に、同時期に2人の人物がまったく独立にたどり着いていたということです。当時トロント大学の准教授であったスティーブン・クックと、もうひとりは、モスクワ大学で確率論の大家であるコルモゴロフの元で指導をうけていた大学院生のレオニード・レヴィンです。当時の世界は東西陣営で軍拡競争が激しく行われている冷戦下でしたから、東西陣営間での自由な研究者の人的交流もほとんどなく、互いにほぼ独立した状況で同様の発見に到達していたのです。レヴィンの業績が西側諸国でも徐々に認識されるようになったのは、彼が1978年に米国へ移住し、MITで博士号を取得した1970年代末以降のことです。余談ですが、前々回の授業に登場したクイックソートの考案者ホーアが1959年に留学し、機械翻訳の研究をしていた先も、同じモスクワ大学のコルモゴロフの研究室でした。</p>
+<p>興味深いのは、SAT問題のNP完全性の証明に、同時期に2人の人物がまったく独立にたどり着いていたということです。当時トロント大学の准教授であったスティーブン・クックと、もうひとりは、モスクワ大学で確率論の大家であるコルモゴロフの元で指導をうけていた大学院生のレオニード・レヴィンです。当時の世界は東西陣営で軍拡競争が激しく行われている冷戦下でしたから、東西陣営間での自由な研究者の人的交流もほとんどなく、互いにほぼ独立した状況で同様の発見に到達していたのです。レヴィンの業績が西側諸国でも徐々に認識されるようになったのは、彼が1978年に米国へ移住し、MITで博士号を取得した1970年代末以降のことです。余談ですが、第10章に登場したクイックソートの考案者ホーアが1959年から留学し、機械翻訳に取り組みながらクイックソートを思いついたのも、同じモスクワ大学でした。ホーアはそこでコルモゴロフのもとで確率論を学んでいます。</p>
 </div>
 <div class="paragraph">
 <p>現在、SAT問題がNP完全問題であるという事実は<strong>クック-レヴィンの定理</strong>として知られています。</p>
@@ -2332,13 +2392,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </table>
 </div>
 <div class="paragraph">
-<p>これらのクラスの包含関係を、P≠NPの場合とP=NPの場合とで対比して描くと、以下のようになります。</p>
+<p>これらのクラスの包含関係を、P≠NPの場合とP=NPの場合とで対比して描くと、以下のようになります。どちらの場合も、NPとNP困難の重なりがNP完全です(これは上の定義そのものです)。P≠NPの場合、NP完全問題はどれもPに属さないので、NP完全とPは重なりません。また、P≠NPなら、PにもNP完全にも属さないNPの問題が存在することも証明されています(ラドナーの定理、1975年)。素因数分解の判定版は、そのような問題の候補と考えられています。</p>
 </div>
-<div class="imageblock">
+<div id="fig-np-hard" class="imageblock text-center">
 <div class="content">
-<img src="./img/p-np-classes.svg" alt="PとNPの包含関係図">
+<img src="./img/classes-np-hard.svg" alt="P≠NPならNPとNP困難の重なりがNP完全でPと重ならない。P=NPならP=NP=NP完全">
 </div>
-<div class="title">図 8. P・NP・NP完全・NP困難の包含関係（左：P≠NPの場合、右：P=NPの場合）</div>
+<div class="title">図 20. P・NP・NP完全・NP困難の包含関係（左：P≠NPの場合、右：P=NPの場合）</div>
 </div>
 </div>
 </div>
@@ -2358,16 +2418,16 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect2">
 <h3 id="_noの証拠が検証できる問題のクラス_co_np問題"><a class="link" href="#_noの証拠が検証できる問題のクラス_co_np問題">4.2. Noの証拠が検証できる問題のクラス: co-NP問題</a></h3>
 <div class="paragraph">
-<p>そこで、NPの定義のYesとNoを入れ替えたクラスを考えます。「答えがNoであることの証拠が与えられれば、それを多項式時間で検証できる問題」のクラスを<strong>co-NP問題</strong>といいます。ある問題のYesとNoを入れ替えた問題を<strong>補問題</strong>とよぶと、co-NPとは「補問題がNPに属する問題」の集まりだと言うこともできます。</p>
+<p>そこで、NPの定義のYesとNoを入れ替えたクラスを考えます。答えがNoである各入力には多項式長の「Noの証拠」があって多項式時間で検証でき、答えがYesである入力ではどんな証拠も受理されない、という決定問題のクラスを<strong>co-NP問題</strong>といいます。ある問題のYesとNoを入れ替えた問題を<strong>補問題</strong>とよぶと、co-NPとは「補問題がNPに属する問題」の集まりだと言うこともできます。たとえば「グラフにハミルトン閉路は存在しないか」という問題は、ハミルトン閉路の存在判定の補問題なのでco-NPに属します。答えがNoであること(つまり閉路が存在すること)は、閉路を1つ示せば確かめられるからです。</p>
 </div>
 <div class="paragraph">
-<p>co-NPの代表例は、SAT問題の補問題である「与えられた論理式は充足可能でないか」を判定する問題(UNSAT)です。この問題の答えがNoであること、すなわち式が充足可能であることは、式の値を1にする割当てを1つ示せば多項式時間で検証できます。「与えられた論理式は恒真式か(どのような値の割当てでも値が1になるか)」を判定する問題(TAUTOLOGY)も同様です。恒真式でないことは、式の値を0にする割当てを1つ示せば検証できるので、この問題もco-NPに属します。ここでTAUTOLOGYの入力は任意の論理式とし、CNFだけには制限しません。UNSATやTAUTOLOGYは、SATがNPの中で最も難しい問題であるのと対をなして、co-NPの中で最も難しい問題(<strong>co-NP完全</strong>)であることが知られています。</p>
+<p>co-NPの代表例は、SAT問題の補問題である「与えられた論理式は充足可能でないか」を判定する問題(UNSAT)です。この問題の答えがNoであること、つまり式が充足可能であることは、式の値を1にする割り当てを1つ示せば多項式時間で検証できます。「与えられた論理式は恒真式か(どのような値の割り当てでも値が1になるか)」を判定する問題(TAUTOLOGY)も同様です。恒真式でないことは、式の値を0にする割り当てを1つ示せば検証できるので、この問題もco-NPに属します。ここでTAUTOLOGYの入力は任意の論理式とし、CNFだけには制限しません。UNSATやTAUTOLOGYは、SATがNPの中で最も難しい問題であるのと対をなして、co-NPの中で最も難しい問題(<strong>co-NP完全</strong>)であることが知られています。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_pはnpとco_npの両方に含まれる"><a class="link" href="#_pはnpとco_npの両方に含まれる">4.3. PはNPとco-NPの両方に含まれる</a></h3>
 <div class="paragraph">
-<p>Pに属する問題は、証拠に頼らなくても多項式時間で自力で答えを計算できます。この場合、Yesの証拠にもNoの証拠にも「計算の記録」をそのまま使うことができ、検証する側は同じ計算を多項式時間でなぞるだけで答えを確認できます。したがって、Pに属する問題はNPにもco-NPにも属し、</p>
+<p>Pに属する問題は、証拠に頼らなくても多項式時間で自力で答えを計算できます。この場合、検証する側は渡された証拠を見ずに自分で答えを計算すればよいので、Yesの側にもNoの側にも(空の)証拠で済む検証器が作れます。したがって、Pに属する問題はNPにもco-NPにも属し、</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -2387,13 +2447,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>P=NPか?と同じように、NP=co-NPか?も未解決問題です。ここでもNP完全問題が鍵を握ります。もしNP完全問題が1つでもco-NPに属することが示されれば、NPのすべての問題はその問題に多項式時間還元できるため、NP全体がco-NPに含まれることになり、さらに対称性からNP=co-NPが導かれます。多くの研究者はNP≠co-NPと予想していますから、裏を返すと「NP完全問題はco-NPには属さない」、つまり「SATには、充足不能であることの短い証拠は存在しない」と予想されていることになります。</p>
 </div>
 <div class="paragraph">
-<p>NP≠co-NPと予想される場合のクラスの包含関係を図にすると、次のようになります。前節の図の左側(P≠NPの場合)に、co-NPを描き加えた形になっています。</p>
+<p>NP≠co-NPと予想される場合のクラスの包含関係を図にすると、次のようになります。前節の図の左側(P≠NPの場合)に、co-NPを描き加えた形になっています。NP完全問題はco-NPと重ならず、co-NP完全問題はNPと重なりません。NP完全問題が1つでもco-NPに入ると、上で見たとおりNP=co-NPになってしまうからです。</p>
 </div>
-<div class="imageblock">
+<div id="fig-np-conp" class="imageblock text-center">
 <div class="content">
-<img src="./img/np-conp.svg" alt="NP・co-NP・Pの包含関係図">
+<img src="./img/classes-conp.svg" alt="NPとco-NPの重なりにPがあり、NP完全とco-NP完全はそれぞれ重なりの外にある">
 </div>
-<div class="title">図 9. NP≠co-NPと予想される場合の包含関係</div>
+<div class="title">図 21. P・NP・co-NPの包含関係(NP≠co-NPと予想される場合)</div>
 </div>
 </div>
 <div class="sect2">
@@ -2408,7 +2468,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <h2 id="_計算量と暗号"><a class="link" href="#_計算量と暗号">5. 計算量と暗号</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>問題が効率的に解けるというのは、いいことばかりかというと、現在の暗号にとってはそうでもありません。現代の暗号の多くは解読の計算困難性を利用して設計されています。この場合、最悪計算量よりも平均または最良計算量が重要です。例としてナップサック暗号の話をしましょう。</p>
+<p>問題が効率的に解けるというのは、いいことばかりかというと、現在の暗号にとってはそうでもありません。現代の暗号の多くは解読の計算困難性を利用して設計されています。この場合、最悪計算量よりも、鍵の作り方によって実際に生じる入力の(ほとんどすべての)場合に解読が難しいこと、つまり平均的な場合の困難性が重要です。例としてナップサック暗号の話をしましょう。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2429,7 +2489,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>暗号化</strong>: 誰でも簡単にできる（多項式時間）</p>
 </li>
 <li>
-<p><strong>解読</strong>: 正しい鍵なしでは困難（指数時間が必要と想定）</p>
+<p><strong>解読</strong>: 正しい鍵なしでは困難（多項式時間では解けないと想定）</p>
 </li>
 </ul>
 </div>
@@ -2447,12 +2507,12 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>ある容量のナップサックがあり、そこにあらかじめリストアップされている品物を詰めこむ問題を考えます。各々の品物には、きまった容量と価格があります。</p>
 </div>
 <div class="paragraph">
-<p>ナップサック問題は、ナップサックの容量内で、もっとも総額が高くなるような品物の数量と組合せを求める問題です。</p>
+<p>ナップサック問題は、各品物を詰めるか詰めないかを選んで、ナップサックの容量内で、もっとも総額が高くなるような品物の組合せを求める問題です。</p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>いま定義した「総額を最大にする組合せを求める」形のナップサック問題は、<strong>NP困難</strong>であることが証明されています（「総額を \(V\) 以上にできるか」というYes/No形式に直したものがNP完全です）。かつて、この難しさを頼りに、ナップサック問題を利用した暗号（ナップサック暗号）が設計されました。代表例のMerkle–Hellman暗号は、解きやすい超増加列を秘密鍵とし、変換によってその構造を隠す設計でした。超増加列が解きやすいこと自体は最初から分かっていたのです。しかし、基本方式では隠した構造を利用する多項式時間の攻撃をShamirが示しました。一般のナップサック問題が難しくても、この暗号の安全性は保証されません。</p>
+<p>いま定義した「総額を最大にする組合せを求める」形のナップサック問題は、<strong>NP困難</strong>であることが証明されています（「総額を \(V\) 以上にできるか」というYes/No形式に直したものがNP完全です）。かつて、この難しさを頼りに、ナップサック問題を利用した暗号（ナップサック暗号）が設計されました。代表例のMerkle–Hellman暗号(1978年)は、ナップサック問題の特別な場合である部分和問題(与えられた数の中からいくつかを選んで、合計をちょうど指定の値にできるか)を利用します。この暗号は、解きやすい<strong>超増加列</strong>(各数がそれより前の数の合計より大きい列。たとえば 2, 3, 7, 14, 30)を秘密鍵とし、掛け算と剰余による変換でその構造を隠して、一般の数の列に見える公開鍵を作ります。超増加列なら、大きい数から順に「引けるなら引く」を繰り返すだけで部分和問題が解けます。超増加列が解きやすいこと自体は最初から分かっていて、それを隠すのが設計の要でした。しかし1982年、Shamirは、基本方式では隠した構造を手がかりにして多項式時間で解読できることを示しました。一般のナップサック問題が難しくても、暗号に使われる特別な形の入力が易しければ、安全性は保証されないのです。</p>
 </div>
 <div class="paragraph">
 <p>出典：<a href="https://weizmann.elsevierpure.com/en/publications/polynomial-time-algorithm-for-breaking-the-basic-merkle-hellman-c/">Shamir, A Polynomial Time Algorithm for Breaking the Basic Merkle-Hellman Cryptosystem（1982年）</a>。</p>
@@ -2488,10 +2548,16 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </table>
 </div>
 <div class="paragraph">
-<p>暗号の分野で用いられている「素因数分解」や「グラフの同型性判定問題」は、NP完全問題であることは示されておらず、NP完全ではないだろうと考えられていますが、その正確な位置づけは未確定です（グラフの同型性判定については、2015年に準多項式時間アルゴリズムが発見されています。なお「準多項式時間」と、この後に出てくる「準指数時間」は、名前は似ていますが別の概念で、どちらも多項式時間と指数時間の間に位置する時間計算量です）。</p>
+<p>暗号の分野で重要な「素因数分解」や、暗号理論の例(ゼロ知識証明)によく使われる「グラフの同型性判定問題」は、判定版がNPに属しますが、NP完全であることは示されておらず、NP完全ではないだろうと考えられています。ただし、Pに属するかどうかも含めて、正確な位置づけは未確定です（グラフの同型性判定については、2015年にBabaiが準多項式時間アルゴリズムを発表しました。なお「準多項式時間」と、この後に出てくる「準指数時間」は、名前は似ていますが別の概念で、どちらも多項式時間と指数時間の間に位置する時間計算量です）。</p>
 </div>
 <div class="paragraph">
-<p>公開鍵暗号の1つであるRSA暗号の安全性の拠り所となっているのは、「素因数分解」の計算困難性です。素因数分解は因数を求める探索問題なので、決定問題のクラスNPにそのまま分類することはできません。対応する決定版「整数 N は2以上 k 以下の約数をもつか」なら、約数を証拠として多項式時間で確かめられるのでNPに属します。Nを素因数分解できればRSAの秘密鍵を求められますが、RSAの解読と素因数分解が同じ難しさだと証明されているわけではありません。しかし、素因数分解の多項式時間アルゴリズムは知られていません。一般数体ふるい法は、標準的なヒューリスティック解析では準指数時間と評価されます。ただし、これは任意の入力に対して証明された最悪時間の上界とは区別する必要があります。しかし、計算モデルが変わると計算量も変わってしまいます。量子コンピューターを用いると「素因数分解」は多項式時間で解けてしまうことが1994年にShorによって示されています。分解したい数のビット数（桁数）を \(b\) とすると \(\text O(b^3)\) 程度の計算量で、素因数分解の入力サイズはビット数ですから、これは多項式時間です。ただし、量子コンピューターをもちいてもNPに属する問題をすべて多項式時間で解くことは、どうやら不可能だろうと予想されています（量子コンピューターを用いてもNP完全の壁は依然としてありそうだという予想です）。</p>
+<p>公開鍵暗号の1つであるRSA暗号の安全性の拠り所となっているのは、「素因数分解」の計算困難性です。素因数分解は因数を求める探索問題なので、決定問題のクラスNPにそのまま分類することはできません。対応する決定版「整数 N は2以上 k 以下の約数をもつか」なら、約数を証拠として多項式時間で確かめられるのでNPに属します。Nを素因数分解できればRSAの秘密鍵を求められますが、逆に、RSAの解読が素因数分解と同じくらい難しいと証明されているわけではありません。</p>
+</div>
+<div class="paragraph">
+<p>通常のコンピューターでは、素因数分解の多項式時間アルゴリズムは知られていません。知られている最速の方法である一般数体ふるい法は、標準的なヒューリスティック解析(証明されていない仮定を置いた解析)では準指数時間と評価されます。これは、すべての入力に対して証明された最悪時間の上界ではない点に注意が必要です。</p>
+</div>
+<div class="paragraph">
+<p>一方で、計算モデルが変わると計算量も変わってしまいます。量子コンピューターを用いると「素因数分解」は多項式時間で解けてしまうことが1994年にShorによって示されています。分解したい数のビット数（桁数）を \(b\) とすると \(\text O(b^3)\) 程度の計算量で、素因数分解の入力サイズはビット数ですから、これは多項式時間です。ただし、量子コンピューターをもちいてもNPに属する問題をすべて多項式時間で解くことは、どうやら不可能だろうと予想されています（量子コンピューターを用いてもNP完全の壁は依然としてありそうだという予想です）。</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -2512,7 +2578,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>素因数分解: RSA暗号を破る(Shorのアルゴリズム)</p>
 </li>
 <li>
-<p>離散対数問題: 楕円曲線暗号を破る</p>
+<p>離散対数問題: 楕円曲線暗号などを破る(これもShorのアルゴリズム)</p>
 </li>
 </ul>
 </div>
@@ -2530,7 +2596,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </ul>
 </div>
 <div class="paragraph">
-<p>このため、「量子耐性暗号」の研究が進んでいます。量子計算機による既知の攻撃にも耐えることを目指す暗号方式です。古典計算で一方向と考えられる関数が、すべて量子計算にも強いわけではありません。</p>
+<p>このため、量子計算機による既知の攻撃にも耐えることを目指す「耐量子計算機暗号」(量子耐性暗号、PQC)への移行が進んでいます。米国標準技術研究所(NIST)は2024年8月に最初の3つの標準(鍵共有のML-KEM、電子署名のML-DSAとSLH-DSA)を公開し、2025年3月には予備の鍵共有方式としてHQCを選びました。ML-KEMとML-DSAは、格子と呼ばれる構造に関する問題の難しさを拠り所にしています。これらの問題も、量子計算機で効率よく解けないことが証明されているわけではなく、多くの研究者による攻撃の試みに耐えてきたことが根拠です。古典計算で一方向と考えられる関数が、すべて量子計算にも強いわけではありません。</p>
+</div>
+<div class="paragraph">
+<p>2026年9月の時点で、2048ビットのRSA暗号を実際に破れる規模の量子コンピューターは作られていません。ただし必要な規模の見積もりは研究とともに下がってきており、2025年のGidneyの見積もりでは、誤りを含む量子ビット100万個未満で1週間足らずとされ、2026年には別の誤り訂正の方式を仮定して、さらに1桁少ない量子ビット数とする見積もりも発表されています(いずれも、ハードウェアの性能に仮定を置いた理論上の見積もりです)。今のうちに暗号を置き換えておくのは、盗聴して保存しておいた通信を将来解読されるおそれがあるためです。</p>
+</div>
+<div class="paragraph">
+<p>出典：<a href="https://csrc.nist.gov/projects/post-quantum-cryptography/post-quantum-cryptography-standardization">NIST, Post-Quantum Cryptography Standardization</a>、<a href="https://arxiv.org/abs/2505.15917">Gidney, How to factor 2048 bit RSA integers with less than a million noisy qubits（2025年）</a>。</p>
 </div>
 </td>
 </tr>
@@ -2542,7 +2614,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <h2 id="_むすび"><a class="link" href="#_むすび">6. むすび</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>次回はいよいよ最後の講義です。今回は多項式時間還元を、抽象的な説明のあとで直接的な変換の例によって見ました。次回は、もう少し歯ごたえのある還元の例を扱う予定です。</p>
+<p>この章では、計算できる問題の中にも、多項式時間で解ける問題(P)と、Yesの答えの確認は多項式時間でできるものの、効率よく解く方法が知られていない問題があることを、オイラー路とハミルトン路の対比から見てきました。多項式時間還元は、この章では直接的な変換の例で見ただけでした。第13章では、SATをクリーク問題に還元するという、もう少し歯ごたえのある還元の例を扱います。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2552,42 +2624,30 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </td>
 <td class="content">
 <div class="paragraph">
-<p><strong>今回の授業で学んだこと</strong></p>
+<p><strong>この章で学んだこと</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>問題の難しさの数学的な分類</strong>: P問題、NP問題、NP完全問題</p>
+<p><strong>問題の難しさの数学的な分類</strong>: P、NP、NP完全、NP困難、co-NP</p>
 </li>
 <li>
-<p><strong>アルゴリズムの効率性</strong>: 多項式時間 vs 指数時間の決定的な違い</p>
+<p><strong>アルゴリズムの効率性</strong>: 多項式時間と指数時間の決定的な違い</p>
 </li>
 <li>
-<p><strong>理論と実践の関係</strong>: ゲノム解読、暗号技術への直接的応用</p>
+<p><strong>証拠と検証</strong>: NPは「Yesの証拠を多項式時間で確かめられる」問題のクラスで、co-NPはそのYesとNoを入れ替えたもの</p>
 </li>
 <li>
-<p><strong>未解決問題の重要性</strong>: P≠NP予想が持つ深い意味</p>
+<p><strong>還元の概念</strong>: 問題を別の問題に変換して解く手法と、それによる難しさの比較</p>
 </li>
 <li>
-<p><strong>還元の概念</strong>: 問題を別の問題に変換して解く手法</p>
+<p><strong>未解決問題</strong>: P≠NP予想、NP≠co-NP予想</p>
+</li>
+<li>
+<p><strong>理論と実践の関係</strong>: ゲノム解読、暗号技術とのつながり</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p>これらの概念は、コンピューター科学の理論的基盤として、また実際の技術開発における指針として、大切な役割を果たしています。</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-指数関数のO上界しか示されていない場合、それだけでは多項式時間ではないと結論できません。上界には、実際の増え方より大きな関数も使えるからです。
 </td>
 </tr>
 </table>
@@ -2597,94 +2657,223 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect1">
 <h2 id="_練習問題"><a class="link" href="#_練習問題">7. 練習問題</a></h2>
 <div class="sectionbody">
-<div class="sidebarblock">
+<div class="exampleblock">
+<div class="title">問題1: オイラー路とハミルトン路</div>
 <div class="content">
 <div class="paragraph">
-<p>【問1】入力サイズ \(n\) に対する時間計算量が各々次の 1〜4 で与えられているとする。このうち、示された上界だけで多項式時間だと保証できるものを選択せよ（複数選択可）。</p>
+<p>次の3つのグラフ(ア)(イ)(ウ)について、(1) オイラー路はあるか(あればオイラー閉路でもあるか)、(2) ハミルトン路はあるか、ハミルトン閉路はあるか、を答えよ。あるものは実際に1つ示し、ないものは理由を述べよ。なお、(ア)で2本の対角線が交わっている点は頂点ではない。</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/ex-graphs.svg" alt="(ア)家の形のグラフ、(イ)頂点gを共有する3つの三角形、(ウ)立方体の骨組み">
+</div>
+<div class="title">図 22. 練習問題のグラフ</div>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<table class="tableblock frame-ends grid-rows fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">グラフ</th>
+<th class="tableblock halign-center valign-top">オイラー路</th>
+<th class="tableblock halign-center valign-top">ハミルトン路</th>
+<th class="tableblock halign-center valign-top">ハミルトン閉路</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(ア)</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">あり(閉路ではない)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">あり</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">あり</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(イ)</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">あり(オイラー閉路)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">なし</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">なし</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(ウ)</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">なし</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">あり</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">あり</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
 <li>
-<p>\(\text O(2^{\log n})\)<br></p>
+<p>(ア) 次数は a が3、b が3、c が4、d が4、e が2 です。次数が奇数の頂点は a と b の2つなので、a から b へのオイラー路があります。たとえば a → b → c → d → a → c → e → d → b です。奇数の頂点があるのでオイラー閉路はありません。ハミルトン閉路は a → b → c → e → d → a です(ここから辺を1本除けばハミルトン路)。</p>
 </li>
 <li>
-<p>\(\text O(1.5^n\log n)\)<br></p>
+<p>(イ) 次数は g が6、他はすべて2で、すべて偶数なのでオイラー閉路があります。たとえば g → a → b → g → c → d → g → e → f → g です。ハミルトン路はありません。g 以外の頂点は3つの三角形に分かれていて、ある三角形から別の三角形へ移るには必ず g を通ります。ところがハミルトン路は g を1度しか通れないので、g の前と後で高々2つの三角形しか回れず、3つ目の三角形の頂点が残ってしまいます。</p>
 </li>
 <li>
-<p>\(\text O(1.0001^n)\)<br></p>
+<p>(ウ) 8つの頂点の次数がすべて3(奇数)なので、オイラー路はありません。ハミルトン閉路は a → b → c → d → h → g → f → e → a です。</p>
 </li>
-<li>
-<p>\(\text O(n^{5000})\)</p>
-</li>
-</ol>
+</ul>
 </div>
 <div class="paragraph">
-<p><strong>解法のヒント</strong>: \(2^{\log n}\) がどのような値になるか考えてみましょう。</p>
+<p>このように、オイラー路があるかどうかから、ハミルトン路があるかどうかは判断できません(逆も同じです)。オイラー路は次数を数えるだけで判定できましたが、ハミルトン路の有無には、そのような簡単な判定法が知られていません。(イ)のように構造を見抜いて説明できる場合もありますが、一般には多くの候補を調べることになります。</p>
 </div>
 </div>
-</div>
-<div class="sidebarblock">
+</details>
+<div class="exampleblock">
+<div class="title">問題2: ケーニヒスベルクの橋</div>
 <div class="content">
 <div class="paragraph">
-<p>【問2】 問題Aと問題Bが与えられたとき、問題Aを問題Bに多項式時間還元した。このとき、次の中から正しいものを選べ（複数選択可）。</p>
+<p>次の図は、オイラーが考えたケーニヒスベルクの7つの橋を、陸地を頂点、橋を辺として表したグラフである(同じ2つの陸地の間に橋が2本ある所は、2本の辺で表している)。</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>問題Aは少なくとも問題Bと同等か、または、問題Aの方が問題Bより難しい問題である</p>
-</li>
-<li>
-<p>問題Bは少なくとも問題Aと同等か、または、問題Bの方が問題Aより難しい問題である</p>
-</li>
-<li>
-<p>問題Aが多項式時間で解けるならば、問題Bも多項式時間で解ける</p>
-</li>
-<li>
-<p>問題Bが多項式時間で解けるならば、問題Aも多項式時間で解ける</p>
-</li>
-</ol>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/konigsberg.svg" alt="陸地A、B、C、Dと7本の橋" width="460">
+</div>
+<div class="title">図 23. ケーニヒスベルクの橋のグラフ</div>
 </div>
 <div class="paragraph">
-<p><strong>考え方</strong>：「問題Aを問題Bに還元する」ということは、「問題Aを解くために問題Bを道具として使う」ことを意味します。この関係から、どちらの問題がより難しいかを推論してみましょう。</p>
+<p>(1) 各頂点の次数を求め、7本の橋をすべてちょうど1度ずつ渡る散歩道がないことを説明せよ。</p>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_練習問題の解答"><a class="link" href="#_練習問題の解答">8. 練習問題の解答</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>まず自分で解いてから読むことをすすめます。</p>
+<p>(2) 橋を1本だけ新しく架けて、すべての橋をちょうど1度ずつ渡れるようにしたい。どの陸地の間に架ければよいか。そのとき、散歩の出発点と終点はどこになるか。</p>
 </div>
-<div class="sidebarblock">
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
 <div class="content">
 <div class="paragraph">
-<p>【問1】入力サイズ \(n\) に対する時間計算量が各々次の 1〜4 で与えられているとする。このうち、示された上界だけで多項式時間だと保証できるものを選択せよ（複数選択可）。</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>\(\text O(2^{\log n})\)</p>
-</li>
-<li>
-<p>\(\text O(1.5^n\log n)\)</p>
-</li>
-<li>
-<p>\(\text O(1.0001^n)\)</p>
-</li>
-<li>
-<p>\(\text O(n^{5000})\)</p>
-</li>
-</ol>
-</div>
-</div>
+<p>(1) 次数は A が3、B が3、C が5、D が3 で、次数が奇数の頂点が4つあります。一筆書きの条件(奇数の頂点が0個か2個)を満たさないので、すべての橋を1度ずつ渡る散歩道はありません。途中で通過する陸地には「入る橋」と「出る橋」が対になって必要なので、橋の数が奇数の陸地は出発点か終点にしかなれません。そのような陸地が4つもあるのは不可能です。</p>
 </div>
 <div class="paragraph">
-<p>多項式時間に分類されるのは(1)と(4)です。</p>
+<p>(2) 異なる2つの陸地の間であれば、どこに架けても構いません。新しい橋の両端の陸地は次数が1増えて偶数になり、奇数の頂点が残りの2つだけになるからです。そのとき、出発点と終点は、新しい橋を架けなかった残りの2つの陸地です。たとえば A と B の間に架けると、C から出発して D で終わる(または逆向きの)散歩道ができます。奇数の頂点が2つ残るので、出発点に戻ってくる散歩道(オイラー閉路)にはなりません。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題3: 証拠を検証する</div>
+<div class="content">
+<div class="paragraph">
+<p>本文の<a href="#fig-stations">駅と路線のグラフ</a>について、次の頂点の並びが、「ハミルトン路がある」ことや「オイラー路がある」ことの証拠として正しいかを判定せよ。正しくないものは、どの確認に失敗するかを述べよ。</p>
 </div>
 <div class="paragraph">
-<p>(1)については対数の底を \(c (c&gt;1)\) と置くと下記のように変形できますので多項式です。</p>
+<p>(1) ハミルトン路の証拠として: a, c, b, e, d, f</p>
+</div>
+<div class="paragraph">
+<p>(2) ハミルトン路の証拠として: a, b, c, d, e, f</p>
+</div>
+<div class="paragraph">
+<p>(3) ハミルトン路の証拠として: a, b, d, e, c</p>
+</div>
+<div class="paragraph">
+<p>(4) オイラー路の証拠として: f, d, e, f, c, e, b, c, a, b, d</p>
+</div>
+<div class="paragraph">
+<p>(5) オイラー路の証拠として: d, b, a, c, b, e, c, f, e, d</p>
+</div>
+<div class="paragraph">
+<p>また、(2)の結果から「このグラフにはハミルトン路がない」と結論してよいか答えよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) 正しい。6つの頂点がちょうど1度ずつ現れ、隣り合う頂点の間の辺 a–c, c–b, b–e, e–d, d–f がすべてあります。</p>
+</div>
+<div class="paragraph">
+<p>(2) 正しくない。c と d の間に辺がありません。</p>
+</div>
+<div class="paragraph">
+<p>(3) 正しくない。頂点 f が現れていません(5つの頂点しかない)。</p>
+</div>
+<div class="paragraph">
+<p>(4) 正しい。通る辺は f–d, d–e, e–f, f–c, c–e, e–b, b–c, c–a, a–b, b–d の10本で、グラフの10本の辺がそれぞれちょうど1度ずつ現れます。出発点 f と終点 d は、次数が奇数の2頂点です。</p>
+</div>
+<div class="paragraph">
+<p>(5) 正しくない。通る辺は9本で、辺 d–f を通っていません。</p>
+</div>
+<div class="paragraph">
+<p>(2)から「ハミルトン路がない」と結論してはいけません。検証器が拒否したのは、その並びが証拠になっていないということだけで、(1)のように別の並びなら受理されます。Noと結論するには、どの並びも受理されないことを示す必要があります。すべての並びを調べれば確かめられますが、その数は膨大です。ハミルトン路がないことを確かめられる短い証拠は、一般には知られていません(本文のco-NPの節を参照)。</p>
+</div>
+<div class="paragraph">
+<p>なお、ハミルトン路の証拠の確認は、「各頂点が1度ずつ現れるか」を印をつけながら数える作業と、隣り合う \(n-1\) 組について辺があるかを調べる作業だけです。どちらも頂点数 \(n\) や辺の数 \(m\) の多項式時間(たとえば \(\text O(nm)\) 以下)でできます。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題4: SATの判定</div>
+<div class="content">
+<div class="paragraph">
+<p>(1) 論理式 \(h(x,y,z)=(x+y)\cdot(\bar x+z)\cdot(\bar y+\bar z)\cdot(\bar x+\bar y)\) の値を1にする割り当てをすべて求めよ。</p>
+</div>
+<div class="paragraph">
+<p>(2) \(h\) に2つの節を加えた \(h'(x,y,z)=h(x,y,z)\cdot(\bar x+y)\cdot(x+z)\) は充足可能か。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) \((x,y,z)=(0,1,0)\) と \((1,0,1)\) の2つです。本文の \(g\) と同じく、\(x\) の値で場合分けします。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(x=1\) のとき: 第2節 \(\bar x+z\) から \(z=1\)、第4節 \(\bar x+\bar y\) から \(y=0\) が必要です。このとき第1節 \(x+y=1\)、第3節 \(\bar y+\bar z=1+0=1\) も満たされるので、\((1,0,1)\) は解です。</p>
+</li>
+<li>
+<p>\(x=0\) のとき: 第1節 \(x+y\) から \(y=1\)、第3節 \(\bar y+\bar z\) から \(z=0\) が必要です。このとき第2節 \(\bar x+z=1\)、第4節 \(\bar x+\bar y=1\) も満たされるので、\((0,1,0)\) は解です。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>どちらの場合も値が1つに決まったので、解はこの2つだけです(8通りの真理値表でも確かめられます)。</p>
+</div>
+<div class="paragraph">
+<p>(2) 充足可能ではありません(答えは No)。\(h'\) の値を1にするには、まず \(h\) の値が1でなければならないので、候補は(1)の2つだけです。\((1,0,1)\) では \(\bar x+y=0+0=0\)、\((0,1,0)\) では \(x+z=0+0=0\) となり、どちらも新しい節を満たしません。</p>
+</div>
+<div class="paragraph">
+<p>(1)のYesの答えは、割り当てを1つ示せばすぐに確かめられます。一方、(2)のNoの答えを示すには、ここでは場合分けですべての可能性をつぶしました。変数が増えると、このNoの確認は一般には短くできないと予想されています(本文のco-NPの節を参照)。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題5: 多項式時間といえるか</div>
+<div class="content">
+<div class="paragraph">
+<p>入力サイズ \(n\) に対する時間計算量の上界が、次の(1)〜(4)で与えられているとする。このうち、示された上界だけで多項式時間だと保証できるものをすべて選べ。</p>
+</div>
+<div class="paragraph">
+<p>(1) \(\text O(2^{\log n})\)<br>
+(2) \(\text O(1.5^n\log n)\)<br>
+(3) \(\text O(1.0001^n)\)<br>
+(4) \(\text O(n^{5000})\)</p>
+</div>
+<div class="paragraph">
+<p>ヒント: \(2^{\log n}\) がどのような値になるか考えてみよう。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1)と(4)です。</p>
+</div>
+<div class="paragraph">
+<p>(1)については対数の底を \(c\ (c&gt;1)\) と置くと下記のように変形できますので多項式です。</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -2695,38 +2884,156 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
-<p>底が2でも自然対数でも、定数でありさえすれば \(n\) の定数乗になり、結論は変わりません。(4)の \(\text O(n^{5000})\) も、指数が巨大なだけで \(n\) の定数乗なので多項式です。一方、(2)と(3)で上界に使っている関数は多項式では抑えられません。ただし、示されたものはO上界なので、対象の計算量そのものが多項式時間でないとまでは結論できません。</p>
+<p>底が2なら \(2^{\log_2 n}=n\)、自然対数なら \(n^{1/\log_2 e}\approx n^{0.69}\) で、底が定数でありさえすれば \(n\) の定数乗になり、結論は変わりません。(4)の \(\text O(n^{5000})\) も、指数が巨大なだけで \(n\) の定数乗なので多項式です(現実的な計算時間とはいえませんが)。</p>
 </div>
-<div class="sidebarblock">
+<div class="paragraph">
+<p>一方、(2)と(3)で上界に使っている関数は、どんな多項式でも抑えられません。\(1.0001^n\) は、\(n\) が小さいうちはほとんど増えませんが、\(n\) が十分大きくなると、どんな \(n^k\) よりも大きくなります。ただし、ここで示されているのはO記法による上界です。上界には実際の増え方より大きな関数も使えるので、「(2)(3)の計算量は多項式時間ではない」とまでは結論できません。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題6: 還元の向き</div>
 <div class="content">
 <div class="paragraph">
-<p>【問2】 問題Aと問題Bが与えられたとき、問題Aを問題Bに多項式時間還元した。このとき、次の中から正しいものを選べ（複数選択可）。</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>問題Aは少なくとも問題Bと同等か、または、問題Aの方が問題Bより難しい問題である</p>
-</li>
-<li>
-<p>問題Bは少なくとも問題Aと同等か、または、問題Bの方が問題Aより難しい問題である</p>
-</li>
-<li>
-<p>問題Aが多項式時間で解けるならば、問題Bも多項式時間で解ける</p>
-</li>
-<li>
-<p>問題Bが多項式時間で解けるならば、問題Aも多項式時間で解ける</p>
-</li>
-</ol>
-</div>
-</div>
+<p>問題Aを問題Bに多項式時間還元した(\(A\preceq_P B\))。このとき、次の中から正しいものをすべて選べ。</p>
 </div>
 <div class="paragraph">
-<p>(2)と(4)です。本文で示したとおりです。</p>
+<p>(1) 問題Aは、問題Bと同等か、問題Bより難しい問題である。<br>
+(2) 問題Bは、問題Aと同等か、問題Aより難しい問題である。<br>
+(3) 問題Aが多項式時間で解けるならば、問題Bも多項式時間で解ける。<br>
+(4) 問題Bが多項式時間で解けるならば、問題Aも多項式時間で解ける。</p>
 </div>
-<hr>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
 <div class="paragraph">
-<p>以上です</p>
+<p>(2)と(4)です。</p>
 </div>
+<div class="paragraph">
+<p>「問題Aを問題Bに還元する」とは、Aの入力をBの入力に多項式時間で変換し、Bを解くアルゴリズムを道具として使ってAを解くことです。したがって、Bが多項式時間で解ければ、「変換(多項式時間)+Bのアルゴリズム(多項式時間)」でAも多項式時間で解けます。これが(4)です。言い換えると、BはAを解ける程度には難しいので、(2)が成り立ちます。</p>
+</div>
+<div class="paragraph">
+<p>(3)は一般には成り立ちません。たとえば、オイラー路の存在判定(Pに属する)も、NPに属するのでSATに多項式時間還元できます(クック–レヴィンの定理)。しかし、それでSATが多項式時間で解けることにはなりません。易しい問題は、どんな難しい問題にも還元できてしまうのです。(1)は向きが逆です。「還元する側(A)が易しいか同等、還元される側(B)が難しいか同等」と覚えておきましょう。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題7: P、NP、co-NPのどれに入るか</div>
+<div class="content">
+<div class="paragraph">
+<p>次の決定問題が、P、NP、co-NPのどれに属することが知られているかを答えよ(当てはまるものはすべて答えること)。また、NPやco-NPに属するものは、Yesの証拠やNoの証拠として何を示せばよいかを述べよ。</p>
+</div>
+<div class="paragraph">
+<p>(1) グラフにオイラー路は存在するか。<br>
+(2) グラフにハミルトン閉路は存在するか。<br>
+(3) グラフにハミルトン閉路は存在しないか。<br>
+(4) 与えられた論理式は恒真式か(TAUTOLOGY)。<br>
+(5) 2以上の整数 \(N\) は合成数か(1と \(N\) 以外の約数をもつか)。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<table class="tableblock frame-ends grid-rows stretch">
+<colgroup>
+<col style="width: 8.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 58.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">問題</th>
+<th class="tableblock halign-left valign-top">属することが知られているクラス</th>
+<th class="tableblock halign-left valign-top">証拠</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(1)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P(したがってNPにもco-NPにも属する)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">次数を数え、連結かどうかを確かめれば判定できるので、証拠は不要です。Yesの証拠としてオイラー路そのものを使うこともできます。</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(2)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NP(NP完全)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yesの証拠: ハミルトン閉路(頂点の並び)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(3)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">co-NP(co-NP完全)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Noの証拠: ハミルトン閉路(閉路が存在するのでNo)</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(4)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">co-NP(co-NP完全)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Noの証拠: 論理式の値を0にする割り当て</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">(5)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P(したがってNPにもco-NPにも属する)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Yesの証拠: 1と \(N\) 以外の約数。Noの証拠(\(N\) が素数であること)にも短い証拠がある(1975年)。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>(2)がPに属するか、co-NPに属するかは未解決です。「Pには属さない」と答えるのは誤りで、それはP≠NPが証明されて初めて言えることです。また、(2)がco-NPに属すると分かれば、NP完全問題がco-NPに入ることになり、NP=co-NPが導かれます。</p>
+</li>
+<li>
+<p>(3)は(2)の補問題です。NPに属するかどうかは未解決で、属するならやはりNP=co-NPになります。</p>
+</li>
+<li>
+<p>(5)は素数判定の補問題です。2002年のAKSアルゴリズムにより素数判定がPに属すると分かったので、その答えを反転すれば(5)もPに属します。約数を示せばYesを確かめられる、という理由で「NP」とだけ答えても誤りではありませんが、知られている最も強い結果はPです。</p>
+</li>
+</ul>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題8: しりとりとオイラー路</div>
+<div class="content">
+<div class="paragraph">
+<p>(1) 単語「めだか」「かもめ」「めがね」「ねこ」「こま」「まめ」をすべて1度ずつ使うしりとりを作りたい。本文のように、文字を頂点とし、単語を「先頭の文字から末尾の文字へ向かう辺」とするグラフを考えて、しりとりが作れるかを判定し、作れるなら1つ示せ(「ん」で終わると負け、といったルールは考えない)。</p>
+</div>
+<div class="paragraph">
+<p>(2) (1)の6語に「かに」を加えた7語ではどうか。作れる場合、最初と最後の単語は何になるか。</p>
+</div>
+<div class="paragraph">
+<p>(3) 単語を頂点とする本文のもう1つの表し方では、しりとりを作る問題はどんな問題になるか。単語の数が非常に多いとき、計算の手間の面でどちらの表し方が有利か。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>一方通行の辺からなるグラフ(有向グラフ)では、次数の代わりに、各頂点に入る辺の数と出る辺の数を比べます。辺をもつ頂点どうしが(向きを無視して)つながっているとき、次のことが成り立ちます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>すべての頂点で「入る数 = 出る数」なら、オイラー閉路がある。</p>
+</li>
+<li>
+<p>「出る数 = 入る数 + 1」の頂点(出発点)と「入る数 = 出る数 + 1」の頂点(終点)が1つずつあり、他のすべての頂点で「入る数 = 出る数」なら、オイラー路がある。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>(1) 作れます。頂点は「め」「か」「ね」「こ」「ま」の5つ、辺は め→か(めだか)、か→め(かもめ)、め→ね(めがね)、ね→こ(ねこ)、こ→ま(こま)、ま→め(まめ)です。「め」は入る辺・出る辺が2本ずつ、他の頂点は1本ずつで、すべて等しいのでオイラー閉路があります。たとえば めだか → かもめ → めがね → ねこ → こま → まめ です。閉路なので、この並びをずらして(たとえば かもめ から)始めることもできます。</p>
+</div>
+<div class="paragraph">
+<p>(2) 作れます。「かに」(か→に)を加えると、「か」は出る辺が2本・入る辺が1本、「に」は入る辺が1本・出る辺が0本になり、他は等しいままです。したがって「か」で始まり「に」で終わるオイラー路があり、しりとりは か で始まる単語から始まって「かに」で終わります。最初に「かに」を使うと先に進めなくなるので、最初の単語は「かもめ」です。実際、7語すべてを使う並びは かもめ → めがね → ねこ → こま → まめ → めだか → かに のただ1通りです。</p>
+</div>
+<div class="paragraph">
+<p>(3) 単語を頂点とし、しりとりでつながる単語の間に矢印を引くと、しりとりを作る問題は、そのグラフで(有向の)ハミルトン路を見つける問題になります。オイラー路は辺の数にほぼ比例する時間で見つかりますが、一般のハミルトン路には指数時間の方法しか知られていません。したがって、単語の数が多いときは、文字を頂点としてオイラー路を探す表し方のほうが有利です。これが、ゲノムアセンブリで de Bruijn グラフが使われる理由の1つでした。</p>
+</div>
+</div>
+</details>
 </div>
 </div>
 </div>
@@ -2735,6 +3042,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 Version 1.3<br>
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",

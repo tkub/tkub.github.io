@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">位取り記数法: 10進法と2進法の比較</title><desc id="desc">同じ並び1010でも、10進法では各桁の重みが1000,100,10,1なので千十、2進法では重みが8,4,2,1なので10になる。</desc><rect width="100%" height="100%" fill="white"/>
+<text x="28" y="38" font-size="24" fill="#233647" text-anchor="start" font-weight="700">同じ「1010」でも、桁の重みが違う</text>
+<text x="28" y="140" font-size="21" fill="#2166ac" text-anchor="start" font-weight="700">10進法</text>
+<text x="28" y="168" font-size="16" fill="#5a6b7b" text-anchor="start">重みは10倍ずつ</text>
+<text x="230" y="84" font-size="17" fill="#5a6b7b" text-anchor="middle">10³=1000</text>
+<rect x="190" y="98" width="80" height="70" rx="8" fill="#e3edf6" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="230" y="148" font-size="34" fill="#233647" text-anchor="middle" font-weight="700">1</text>
+<text x="326" y="84" font-size="17" fill="#5a6b7b" text-anchor="middle">10²=100</text>
+<rect x="286" y="98" width="80" height="70" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="326" y="148" font-size="34" fill="#233647" text-anchor="middle" font-weight="700">0</text>
+<text x="422" y="84" font-size="17" fill="#5a6b7b" text-anchor="middle">10¹=10</text>
+<rect x="382" y="98" width="80" height="70" rx="8" fill="#e3edf6" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="422" y="148" font-size="34" fill="#233647" text-anchor="middle" font-weight="700">1</text>
+<text x="518" y="84" font-size="17" fill="#5a6b7b" text-anchor="middle">10⁰=1</text>
+<rect x="478" y="98" width="80" height="70" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="518" y="148" font-size="34" fill="#233647" text-anchor="middle" font-weight="700">0</text>
+<text x="580" y="128" font-size="22" fill="#233647" text-anchor="start">=</text>
+<text x="606" y="128" font-size="19" fill="#233647" text-anchor="start">1×1000+0×100+1×10+0×1</text>
+<text x="606" y="160" font-size="22" fill="#2166ac" text-anchor="start" font-weight="700">= 1010(千十)</text>
+<text x="28" y="300" font-size="21" fill="#d7301f" text-anchor="start" font-weight="700">2進法</text>
+<text x="28" y="328" font-size="16" fill="#5a6b7b" text-anchor="start">重みは2倍ずつ</text>
+<text x="230" y="244" font-size="17" fill="#5a6b7b" text-anchor="middle">2³=8</text>
+<rect x="190" y="258" width="80" height="70" rx="8" fill="#e3edf6" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="230" y="308" font-size="34" fill="#233647" text-anchor="middle" font-weight="700">1</text>
+<text x="326" y="244" font-size="17" fill="#5a6b7b" text-anchor="middle">2²=4</text>
+<rect x="286" y="258" width="80" height="70" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="326" y="308" font-size="34" fill="#233647" text-anchor="middle" font-weight="700">0</text>
+<text x="422" y="244" font-size="17" fill="#5a6b7b" text-anchor="middle">2¹=2</text>
+<rect x="382" y="258" width="80" height="70" rx="8" fill="#e3edf6" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="422" y="308" font-size="34" fill="#233647" text-anchor="middle" font-weight="700">1</text>
+<text x="518" y="244" font-size="17" fill="#5a6b7b" text-anchor="middle">2⁰=1</text>
+<rect x="478" y="258" width="80" height="70" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="518" y="308" font-size="34" fill="#233647" text-anchor="middle" font-weight="700">0</text>
+<text x="580" y="288" font-size="22" fill="#233647" text-anchor="start">=</text>
+<text x="606" y="288" font-size="19" fill="#233647" text-anchor="start">1×8+0×4+1×2+0×1</text>
+<text x="606" y="320" font-size="22" fill="#d7301f" text-anchor="start" font-weight="700">= 10(十)</text>
+<text x="28" y="385" font-size="17" fill="#5a6b7b" text-anchor="start">右端の桁の重みは1。左へ1桁進むごとに重みが基数倍(10進法なら10倍、2進法なら2倍)になる。</text>
+</svg>

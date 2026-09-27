@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="ja" lang="ja" viewBox="0 0 880 300" width="880" height="300" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif">
+<title id="title">シャノンの通信モデル</title>
+<desc id="desc">送信者のメッセージを符号化して通信路に送る。通信路ではノイズで一部のビットが反転する。受信側は復号して受信者に渡す。圧縮は符号化の段階で冗長性を取り除き、誤り訂正は符号化の段階で冗長性を加えて復号で誤りを直す。</desc>
+<rect width="880" height="300" fill="white"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#233647"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d7301f"/></marker><marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5a6b7b"/></marker></defs>
+<rect x="16" y="70" width="128" height="76" rx="10" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="80.0" y="102.2" font-size="19" fill="#1c3d5f" text-anchor="middle" font-weight="700">送信者</text>
+<text x="80.0" y="127.2" font-size="16" fill="#5a6b7b" text-anchor="middle" font-weight="400">メッセージ</text>
+<rect x="186" y="70" width="128" height="76" rx="10" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="250.0" y="102.2" font-size="19" fill="#1c3d5f" text-anchor="middle" font-weight="700">符号化</text>
+<text x="250.0" y="127.2" font-size="16" fill="#5a6b7b" text-anchor="middle" font-weight="400">送信側</text>
+<rect x="376" y="70" width="168" height="76" rx="10" fill="#e8f0f8" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="460.0" y="102.2" font-size="19" fill="#1c3d5f" text-anchor="middle" font-weight="700">通信路</text>
+<text x="460.0" y="127.2" font-size="16" fill="#5a6b7b" text-anchor="middle" font-weight="400">電波・ケーブル・媒体</text>
+<rect x="566" y="70" width="128" height="76" rx="10" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="630.0" y="102.2" font-size="19" fill="#1c3d5f" text-anchor="middle" font-weight="700">復号</text>
+<text x="630.0" y="127.2" font-size="16" fill="#5a6b7b" text-anchor="middle" font-weight="400">受信側</text>
+<rect x="736" y="70" width="128" height="76" rx="10" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="800.0" y="114.7" font-size="19" fill="#1c3d5f" text-anchor="middle" font-weight="700">受信者</text>
+<line x1="148" y1="108.0" x2="182" y2="108.0" stroke="#233647" stroke-width="2.2" marker-end="url(#ah)"/>
+<line x1="318" y1="108.0" x2="372" y2="108.0" stroke="#233647" stroke-width="2.2" marker-end="url(#ah)"/>
+<line x1="548" y1="108.0" x2="562" y2="108.0" stroke="#233647" stroke-width="2.2" marker-end="url(#ah)"/>
+<line x1="698" y1="108.0" x2="732" y2="108.0" stroke="#233647" stroke-width="2.2" marker-end="url(#ah)"/>
+<text x="460.0" y="234" font-size="19" fill="#d7301f" text-anchor="middle" font-weight="700">ノイズ</text>
+<line x1="460.0" y1="210" x2="460.0" y2="152" stroke="#d7301f" stroke-width="2.2" marker-end="url(#ahr)"/>
+<text x="345.0" y="56" font-size="16" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">110010111010</text>
+<text x="555.0" y="56" font-size="16" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">11<tspan fill="#d7301f" font-weight="700">1</tspan>010<tspan fill="#d7301f" font-weight="700">0</tspan><tspan fill="#d7301f" font-weight="700">0</tspan>1010</text>
+<text x="345.0" y="30" font-size="16" fill="#5a6b7b" text-anchor="middle">送信した記号列 X</text>
+<text x="555.0" y="30" font-size="16" fill="#5a6b7b" text-anchor="middle">受信した記号列 Y</text>
+<text x="250.0" y="180" font-size="16" fill="#233647" text-anchor="middle">圧縮: 冗長性を除く</text>
+<text x="250.0" y="204" font-size="16" fill="#233647" text-anchor="middle">誤り訂正: 冗長性を足す</text>
+<text x="630.0" y="180" font-size="16" fill="#233647" text-anchor="middle">誤りを見つけて直し</text>
+<text x="630.0" y="204" font-size="16" fill="#233647" text-anchor="middle">元のメッセージに戻す</text>
+<text x="864" y="286" font-size="15" fill="#5a6b7b" text-anchor="end">赤字: ノイズで反転したビット</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 570" width="860" height="570" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">P・NP・NP完全・NP困難の包含関係</title><desc id="desc">左はP≠NPの場合。NPとNP困難の重なりがちょうどNP完全で、Pとは重ならない。停止性問題はNPの外のNP困難。右はP=NPの場合で、P=NP=NP完全となりNP困難の中に入る。</desc><rect width="100%" height="100%" fill="white"/>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d7301f"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#233647"/></marker></defs>
+<defs><clipPath id="npclip"><ellipse cx="215" cy="350" rx="190" ry="132"/></clipPath></defs>
+<ellipse cx="215" cy="175" rx="200" ry="128" fill="#fbeae6" stroke="#d7301f" stroke-width="2.6" stroke-dasharray="8 6"/>
+<ellipse cx="215" cy="350" rx="190" ry="132" fill="#eaf1f8" fill-opacity="0.9" stroke="#2166ac" stroke-width="2.6"/>
+<g clip-path="url(#npclip)"><ellipse cx="215" cy="175" rx="200" ry="128" fill="#f6d0c7" stroke="none" stroke-width="0"/>
+</g>
+<ellipse cx="215" cy="175" rx="200" ry="128" fill="none" stroke="#d7301f" stroke-width="2.6" stroke-dasharray="8 6"/>
+<ellipse cx="215" cy="350" rx="190" ry="132" fill="none" stroke="#2166ac" stroke-width="2.6"/>
+<text x="215.0" y="82.0" font-size="22" fill="#d7301f" text-anchor="middle" font-weight="700">NP困難</text>
+<circle cx="150" cy="130" r="6" fill="#d7301f"/><text x="164.0" y="136.0" font-size="16" fill="#233647" text-anchor="start">停止性問題(NPの外)</text>
+<text x="215.0" y="256.0" font-size="20" fill="#a3261a" text-anchor="middle" font-weight="700">NP完全</text>
+<text x="215.0" y="280.0" font-size="16" fill="#233647" text-anchor="middle">SAT、ハミルトン路 など</text>
+<text x="62.0" y="360.0" font-size="24" fill="#2166ac" text-anchor="middle" font-weight="700">NP</text>
+<text x="215.0" y="328.0" font-size="16" fill="#5a6b7b" text-anchor="middle">どちらでもない問題の候補</text>
+<text x="215.0" y="349.0" font-size="16" fill="#5a6b7b" text-anchor="middle">(素因数分解の判定版など)</text>
+<ellipse cx="215" cy="418" rx="105" ry="44" fill="#c6dbef" stroke="#2166ac" stroke-width="2.6"/>
+<text x="215.0" y="414.0" font-size="22" fill="#1c3d5f" text-anchor="middle" font-weight="700">P</text>
+<text x="215.0" y="437.0" font-size="16" fill="#233647" text-anchor="middle">オイラー路、素数判定</text>
+<text x="215.0" y="516.0" font-size="17" fill="#233647" text-anchor="middle" font-weight="700">P≠NP の場合(多数派の予想)</text>
+<line x1="435" y1="40" x2="435" y2="500" stroke="#c4cfd6" stroke-width="1.5" stroke-dasharray="4 5"/>
+<ellipse cx="650" cy="268" rx="205" ry="225" fill="#fbeae6" stroke="#d7301f" stroke-width="2.6" stroke-dasharray="8 6"/>
+<ellipse cx="650" cy="350" rx="160" ry="115" fill="#c6dbef" stroke="#2166ac" stroke-width="2.6"/>
+<text x="650.0" y="82.0" font-size="22" fill="#d7301f" text-anchor="middle" font-weight="700">NP困難</text>
+<circle cx="585" cy="140" r="6" fill="#d7301f"/><text x="599.0" y="146.0" font-size="16" fill="#233647" text-anchor="start">停止性問題</text>
+<text x="650.0" y="340.0" font-size="24" fill="#1c3d5f" text-anchor="middle" font-weight="700">P = NP</text>
+<text x="650.0" y="370.0" font-size="18" fill="#1c3d5f" text-anchor="middle" font-weight="700">= NP完全 ※</text>
+<text x="650.0" y="516.0" font-size="17" fill="#233647" text-anchor="middle" font-weight="700">P=NP の場合</text>
+<text x="430.0" y="552.0" font-size="16" fill="#5a6b7b" text-anchor="middle">※ 答えが常にYesの問題と常にNoの問題の2つだけは、P=NPでもNP完全になりません。</text>
+</svg>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.26">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <meta name="author" content="久保山哲二">
 <title>論理回路(3) 順序回路とフリップフロップ</title>
 <style>
@@ -562,6 +562,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
@@ -597,17 +598,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </ul>
 </li>
 <li><a href="#_ここから先の話">3. ここから先の話</a></li>
-<li><a href="#_練習問題">4. 練習問題</a>
-<ul class="sectlevel2">
-<li><a href="#_1srラッチの状態追跡">4.1. 【1】SRラッチの状態追跡</a></li>
-<li><a href="#_2ゲーテッドdラッチ">4.2. 【2】ゲーテッドDラッチ</a></li>
-<li><a href="#_3dフリップフロップとの違い">4.3. 【3】Dフリップフロップとの違い</a></li>
-<li><a href="#_4特性方程式の確認">4.4. 【4】特性方程式の確認</a></li>
-<li><a href="#_5シフトレジスタ">4.5. 【5】シフトレジスタ</a></li>
-<li><a href="#_6記憶方式とフリップフロップの個数">4.6. 【6】記憶方式とフリップフロップの個数</a></li>
-</ul>
-</li>
-<li><a href="#_練習問題_タイミングチャート">5. 練習問題: タイミングチャート</a></li>
+<li><a href="#_練習問題">4. 練習問題</a></li>
 </ul>
 </div>
 </div>
@@ -673,10 +664,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p>この動作では、自動販売機が「これまでにいくら投入されたか」を記憶しています。</p>
 </div>
-<div class="imageblock">
+<div class="imageblock text-center">
 <div class="content">
-<img src="./img/sequential-circuit.svg" alt="sequential circuit">
+<img src="./img/sequential-circuit.svg" alt="組合せ回路の出力の一部を状態保持のための記憶装置に入れ、記憶した値を次の計算で組合せ回路の入力に戻す構成。記憶装置にはクロック信号が入る">
 </div>
+<div class="title">図 1. 順序回路の構成</div>
 </div>
 <div class="paragraph">
 <p>順序回路は、組合せ回路と記憶装置（メモリ）から構成される回路です。多くの場合、状態を更新するタイミングを揃えるためにクロックを併用します（同期式順序回路）。上図にあるように、組合せ回路への外部からの入力に加えて、記憶装置に蓄えた前回の組合せ回路の計算結果を入力として加えます。そうして、得られた出力を記憶装置に蓄え、次の計算で、組合せ回路への入力の一部として用います。こうして、時間とともに状態が遷移することになります。</p>
@@ -695,7 +687,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </ul>
 </div>
 <div class="paragraph">
-<p>コンピューターは、内部の記憶装置に状態を記録しながら、その記録をまた利用して処理をしていますので順序回路です。今回は、状態を記憶するためのメモリを実現する論理回路について学びます。</p>
+<p>コンピューターは、内部の記憶装置に状態を記録しながら、その記録をまた利用して処理をしていますので順序回路です。この章では、状態を記憶するためのメモリを実現する論理回路について学びます。</p>
 </div>
 </div>
 </div>
@@ -705,7 +697,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect2">
 <h3 id="_記憶装置の種類"><a class="link" href="#_記憶装置の種類">2.1. 記憶装置の種類</a></h3>
 <div class="paragraph">
-<p>パソコンを買うときに、メモリ(RAM)が8GBあるとか16GBあるとかいうときのメモリは、<strong>主記憶装置</strong>を指します（メモリ容量はGBという表記でGiBを表すことに注意）。主記憶装置は、コンピューターの心臓部である<strong>中央処理装置（CPU: Central Processing Unit）</strong>で処理するプログラムや計算のためのデータを蓄えたり、結果を書き込んだりします。磁気テープなどのように決まった順序通りにデータを読み込んだり書き込んだりするシーケンシャル・アクセス・メモリ（Sequential Access Memory）ではなく、記憶装置の領域の様々な場所に番地を介してアクセスできるため、<strong>RAM</strong>（Random Access Memory）と呼ばれるメモリの一種です。</p>
+<p>パソコンを買うときに、メモリ(RAM)が8GBあるとか16GBあるとかいうときのメモリは、<strong>主記憶装置</strong>を指します（メモリ容量の表記では、慣習としてGBが \(2^{30}\) バイト単位のGiBを表すことに注意）。主記憶装置は、コンピューターの心臓部である<strong>中央処理装置（CPU: Central Processing Unit）</strong>で処理するプログラムや計算のためのデータを蓄えたり、結果を書き込んだりします。磁気テープなどのように決まった順序通りにデータを読み込んだり書き込んだりするシーケンシャル・アクセス・メモリ（Sequential Access Memory）ではなく、記憶装置の領域の様々な場所に番地を介してアクセスできるため、<strong>RAM</strong>（Random Access Memory）と呼ばれるメモリの一種です。</p>
 </div>
 <div class="paragraph">
 <p>一般的なパソコンの主記憶に使われるDRAMは、電源が入っているときだけデータを記憶することができます。このように、電源が切れると記憶を保持できない記憶装置を、<strong>揮発性</strong>メモリといいます。代表的なDRAMの1ビットの記憶セルは、1つのキャパシタ（コンデンサ）と1つのトランジスタによって最小単位が構成されています。キャパシタは、2つの導体を絶縁体で挟んだ構造をしており、電荷を蓄えることができます。この電荷が蓄えられている（充電）か、いない（放電）かで、1ビットのデータ（1か0）を保持します。蓄えた電荷はトランジスタなどの漏れ電流によって少しずつ失われるため、放電しきる前に、繰返しデータを書き込み直す必要があります（例えば64ミリ秒以内に全行をリフレッシュする製品がありますが、必要な間隔は温度や製品仕様によります）。この動作をリフレッシュといいます。頻繁に再充電をしなくてはならない性質のために、キャパシタにより記憶保持をするタイプのメモリは <strong>DRAM</strong>（Dynamic RAM）と呼ばれています。</p>
@@ -722,10 +714,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <td class="content">
 <div class="title">コラム: コアメモリと「コアダンプ」</div>
 <div class="paragraph">
-<p>半導体メモリが普及する前、1950年代から1960年代の主記憶装置は<strong>磁気コアメモリ</strong>でした。これは、フェライト（磁性体）でできた小さなドーナツ状のリング（コア）に細い導線を手作業で通したもので、リングの磁化の向きで1ビットを記憶します。電源を切っても磁化は残るため不揮発性で、製造のピーク時には年間250億個ものコアが手作業で配線されていたといわれます。</p>
+<p>半導体メモリが普及する前、1950年代から1960年代の主記憶装置は<strong>磁気コアメモリ</strong>でした。これは、フェライト（磁性体）でできた小さなドーナツ状のリング（コア）に細い導線を手作業で通したもので、リングの磁化の向きで1ビットを記憶します。電源を切っても磁化は残るため不揮発性です。コアに導線を通す作業の多くは手作業で、1970年にはIBMだけで年間200億個ものコアを生産していたとされます。</p>
 </div>
 <div class="paragraph">
-<p>1970年にIntelが発売した <strong>1103</strong> は、容量1Kビット（1024ビット）の世界初の商業的に成功したDRAMでした。1ビットあたり約1セントという価格で磁気コアメモリを置き換えていき、1972年には世界で最も売れた半導体メモリチップになって、磁気コアメモリの時代を終わらせました。なお、現在のDRAMで標準的な「1トランジスタ+1キャパシタ」のセル構造は、IBMのRobert Dennardが1968年に特許を取得したもので、1103自体はまだ3トランジスタ方式でした。</p>
+<p>1970年にIntelが発売した <strong>1103</strong> は、容量1Kビット（1024ビット）の世界初の商業的に成功したDRAMでした。1ビットあたり約1セントという価格で、1972年には世界で最も売れた半導体メモリチップになりました。これをきっかけに主記憶は磁気コアメモリから半導体メモリへと置き換わり、1970年代の終わりにはコアメモリはほぼ使われなくなります。なお、現在のDRAMで標準的な「1トランジスタ+1キャパシタ」のセル構造は、IBMのRobert Dennardが1968年に特許を取得したもので、1103自体はまだ3トランジスタ方式でした。</p>
 </div>
 <div class="paragraph">
 <p>プログラムが異常終了したときに、デバッグのためメモリの内容をファイルに書き出すことを、今でも「<strong>コアダンプ（core dump）</strong>」と呼びます。この「コア」は、磁気コアメモリの名残です。</p>
@@ -743,36 +735,40 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect3">
 <h4 id="_1ビットを記憶する回路"><a class="link" href="#_1ビットを記憶する回路">1ビットを記憶する回路</a></h4>
 <div class="paragraph">
-<p>1ビットを記憶する記憶装置を設計します。まず、下の図のようにNOTゲートを2つつなぐと、左と右で2つの状態が存在することがわかります。この2状態で、1ビット、すなわち0と1を記憶する装置を設計します（下図参照）。</p>
+<p>1ビットを記憶する記憶装置を設計します。まず、下の図のようにNOTゲートを2つつなぐと、左と右で2つの状態が存在することがわかります。この2状態で、1ビット、つまり0と1を記憶する装置を設計します（下図参照）。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/stable1.svg" alt="stable1">
+<img src="./img/stable1.svg" alt="2つのNOTゲートを輪のようにつないだ回路。左は左側の配線が0で右側が1、右は左側が1で右側が0の状態">
 </div>
+<div class="title">図 2. 2つのNOTゲートをつないだ回路の2つの状態</div>
 </div>
 <div class="paragraph">
 <p>そこで、上図の下側のNOTゲートの方向を上側のNOTゲートと同じ方向にしてから、値を読み取る出力線を外にのばします。\(Q\) と \(\overline{Q}\) のように、2つの出力は反転して相補的な関係にあります（下図参照）。アルファベットの \(Q\) が用いられるのは慣習です。コンピューター科学分野では、状態を \(Q\) でよく表現します。メモリのビット状態を表すので、\(Q\) というわけです（図と <strong><em>Q</em></strong> の書体が異なるのはご容赦ください）。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/stable2.svg" alt="stable2">
+<img src="./img/stable2.svg" alt="上下のNOTゲートを同じ向きに並べ、出力を交差させて相手の入力に戻した回路。出力QとQの否定を右に取り出している">
 </div>
+<div class="title">図 3. NOTゲートの向きをそろえて出力を取り出した回路</div>
 </div>
 <div class="paragraph">
-<p>次に、前章の問題で確認したように、2つのNOTゲートをNORゲートに置き換えます（下図参照）。</p>
+<p>次に、2つのNOTゲートをNORゲートに置き換えます。NORゲートの2つの入力に同じ値 \(x\) を入れると、\(\overline{x+x}=\bar x\) となり、NOTゲートと同じ働きをします（下図参照）。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/stable-nor.svg" alt="stable nor">
+<img src="./img/stable-nor.svg" alt="2つのNORゲートの入力をそれぞれ束ね、出力を交差させて相手の入力に戻した回路">
 </div>
+<div class="title">図 4. NOTゲートをNORゲートに置き換えた回路</div>
 </div>
 <div class="paragraph">
 <p>このままでは、1ビットを記憶させることができませんので、NORゲートの空いている方の入力から外へ線をのばし、上側の値を \(R\)、下側の値を \(S\) とします。それぞれ、記憶させるビットの <strong>R</strong>eset と <strong>S</strong>et を表しています（下図参照）。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/sr-latch1.svg" alt="sr latch1">
+<img src="./img/sr-latch1.svg" alt="上のNORゲートの入力にRとQの否定、下のNORゲートの入力にSとQが入り、上の出力がQ、下の出力がQの否定になる回路">
 </div>
+<div class="title">図 5. SRラッチ</div>
 </div>
 <div class="paragraph">
 <p>この回路を、<strong>SRラッチ</strong>とよびます。ビットの保持をドアの開閉になぞらえて、英語でかんぬきを意味するラッチを用います。
@@ -791,6 +787,12 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </li>
 <li>
 <p>\((S,R)=(1,1)\): 「1も記憶、0も記憶」→ 矛盾するので禁止</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>これらを1つずつ確かめます。以下の図では、値が1の配線を青、0の配線を赤で示しています。</p>
+</div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">《1》 \((S,R)=(0,1)\)のとき</dt>
@@ -799,13 +801,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </dd>
 </dl>
 </div>
-</li>
-</ul>
-</div>
-<div class="imageblock text-center">
+<div class="imageblock text-center text-center">
 <div class="content">
 <img src="./img/sr-latch10.svg" alt="sr latch10">
 </div>
+<div class="title">図 6. (S,R)=(0,1)のときのSRラッチ</div>
 </div>
 <div class="dlist">
 <dl>
@@ -815,10 +815,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </dd>
 </dl>
 </div>
-<div class="imageblock text-center">
+<div class="imageblock text-center text-center">
 <div class="content">
 <img src="./img/sr-latch01.svg" alt="sr latch01">
 </div>
+<div class="title">図 7. (S,R)=(1,0)のときのSRラッチ</div>
 </div>
 <div class="dlist">
 <dl>
@@ -828,10 +829,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </dd>
 </dl>
 </div>
-<div class="imageblock text-center">
+<div class="imageblock text-center text-center">
 <div class="content">
-<img src="./img/sr-latch11.svg" alt="sr latch11">
+<img src="./img/sr-latch11.svg" alt="両方のNORゲートに1が入り、QとQの否定がどちらも0">
 </div>
+<div class="title">図 8. (S,R)=(1,1)のときのSRラッチ</div>
 </div>
 <div class="dlist">
 <dl>
@@ -845,10 +847,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </dd>
 </dl>
 </div>
-<div class="imageblock text-center">
+<div class="imageblock text-center text-center">
 <div class="content">
 <img src="./img/sr-latch000.svg" alt="sr latch000">
 </div>
+<div class="title">図 9. (S,R)=(0,0)でQ=0のときのSRラッチ</div>
 </div>
 <div class="dlist">
 <dl>
@@ -858,10 +861,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </dd>
 </dl>
 </div>
-<div class="imageblock text-center">
+<div class="imageblock text-center text-center">
 <div class="content">
 <img src="./img/sr-latch001.svg" alt="sr latch001">
 </div>
+<div class="title">図 10. (S,R)=(0,0)でQ=1のときのSRラッチ</div>
 </div>
 <div class="paragraph">
 <p>以上の振る舞いを下の表にまとめました。ただし、状態変数 \(Q\) に、以前の状態から次の状態が決まることを明示するために時間の添字をつけています。</p>
@@ -1012,12 +1016,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </tbody>
 </table>
 <div class="paragraph">
-<p>この表で、出力の値が「*」となっている部分は、入力 \((S,R)=(1,1)\) を禁止することにしているので、禁止している入力の出力が0でも1でも気にしないという意味でドントケア(don&#8217;t care)と呼ばれます。この表をもとに、カルノー図を作成すると下図のようになります。論理回路の簡単化と回路設計の章ではカルノー図で組合せ回路を簡単化しましたが、ここでは同じ手法を、出力が入力に戻ってくる順序回路の式（特性方程式）の導出に応用します。</p>
+<p>この表で、出力の値が「*」となっている部分は、入力 \((S,R)=(1,1)\) を禁止することにしているので、禁止している入力の出力が0でも1でも気にしないという意味でドントケア(don&#8217;t care)と呼ばれます。この表をもとに、カルノー図を作成すると下図のようになります。論理回路の簡単化と回路設計の章ではカルノー図とドントケアを使って組合せ回路を簡単化しましたが、ここでは同じ手法を、出力が入力に戻ってくる順序回路の式（特性方程式）の導出に応用します。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/karnaugh-sr-latch.svg" alt="karnaugh sr latch">
+<img src="./img/karnaugh-sr-latch.svg" alt="行SR、列Q_tのカルノー図。行11はドントケア。行11と10の4マスを囲む枠がS、列1の行00と行10を上下の端でつなぐ枠がRの否定とQ_t" width="320">
 </div>
+<div class="title">図 11. SRラッチの特性表のカルノー図</div>
 </div>
 <div class="paragraph">
 <p>カルノー図で、ドントケアを囲んでいるのは、ここが0でも1でも構わないため都合よく解釈すればよいからです（とにかく、できるだけ広く囲めるようにすればよい）。すると、以下の式が導出されます。</p>
@@ -1028,13 +1033,16 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
-<p>これを、SRラッチの<strong>特性方程式</strong>といいます。特性方程式によって、SRラッチの振る舞いの見通しがよくなりました。
-状態遷移図を下図に示しました。</p>
+<p>これを、SRラッチの<strong>特性方程式</strong>といいます。特性方程式によって、SRラッチの振る舞いの見通しがよくなりました。「\(S=1\) なら1になる。そうでなければ、\(R=0\) のときだけ今の値 \(Q_t\) を保つ」と読めます。</p>
+</div>
+<div class="paragraph">
+<p>状態の変化を、状態を丸、入力による移り変わりを矢印で表したものを<strong>状態遷移図</strong>といいます。SRラッチの状態遷移図を下図に示しました。禁止入力 \((S,R)=(1,1)\) は描いていません。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/state-trans.svg" alt="state trans">
+<img src="./img/state-trans.svg" alt="state trans" width="R)=(0" height="0)と(0">
 </div>
+<div class="title">図 12. SRラッチの状態遷移図</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1051,7 +1059,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>機械式のスイッチやボタンは、押した瞬間に金属の接点が物理的に何度か跳ね返り、ほんの数ミリ秒のあいだ ON/OFF を細かく繰り返します（<strong>チャタリング</strong>）。この信号をそのままコンピューターに入れると、1回押しただけなのに何回も押したと誤認されてしまいます。</p>
 </div>
 <div class="paragraph">
-<p>そこで、切り替え式のスイッチをSRラッチにつなぎます。両方の接点に同時に触れない方式を使い、接続されていない入力はプルダウン抵抗で0に保ち、接続された入力は1になる回路を考えます。入力を単に宙に浮かせるだけでは0にはなりません。接点がいったん \(S\) 側に触れて \(Q=1\) になれば、その後に接点が跳ね返って宙に浮いても \((S,R)=(0,0)\)（保持）になるだけで、\(Q\) は1のまま安定します。ラッチの「いちど決めた値を保持する」性質が、跳ね返りのノイズを吸収してくれるわけです。今回作った回路が、そのまま実世界のノイズ対策に使われています。</p>
+<p>そこで、切り替え式のスイッチをSRラッチにつなぎます。両方の接点に同時に触れない方式を使い、接続されていない入力はプルダウン抵抗で0に保ち、接続された入力は1になる回路を考えます。入力を単に宙に浮かせるだけでは0にはなりません。接点がいったん \(S\) 側に触れて \(Q=1\) になれば、その後に接点が跳ね返って宙に浮いても \((S,R)=(0,0)\)（保持）になるだけで、\(Q\) は1のまま安定します。ラッチの「いちど決めた値を保持する」性質が、跳ね返りのノイズを吸収してくれるわけです。この章で作った回路が、そのまま実世界のノイズ対策に使われています。</p>
 </div>
 </td>
 </tr>
@@ -1066,8 +1074,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/gated-sr-latch.svg" alt="gated sr latch">
+<img src="./img/gated-sr-latch-circuit.svg" alt="2つのANDゲートでRとSにそれぞれEとの論理積をとり、その出力R&#8217;とS&#8217;をNORゲート2つのSRラッチに入れる回路">
 </div>
+<div class="title">図 13. ゲーテッドSRラッチ</div>
 </div>
 <div class="paragraph">
 <p>この回路は、\(E=1\) のときのみ、入力 \(S\), \(R\) の値をSRラッチの入力として伝え、\(E=0\)のときは、\((S',R')=(0,0)\) がSRラッチの入力となります。つまり、SRラッチでは以前記憶した値が保持され変化しません。この動作は、ANDゲートでは入力に1つでも0の値があれば、出力が0となることから明らかです。記号 \(E\) は、SRラッチの機能を「有効にする」ということで、<strong>enable</strong> に由来します。</p>
@@ -1080,16 +1089,58 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/gated-d-latch.svg" alt="gated d latch">
+<img src="./img/gated-d-latch.svg" alt="Dを上のANDにはNOTを通して、下のANDにはそのまま入れ、2つのANDの他方の入力にEを入れてSRラッチにつないだ回路。右はDとEを入力、QとQの否定を出力とする箱の記号">
 </div>
+<div class="title">図 14. ゲーテッドDラッチ(左)とその記号(右)</div>
 </div>
 <div class="paragraph">
-<p>この回路の振る舞いを確認しておきます。\(E=1\) のときのみ、\(D\) の値を \(Q\) に伝え、\(E=0\) のときは、入力 \(D\) の値を無視して、直前の \(Q\) の値を保持し続けます。このような動作を時系列で観察したのが下の図です（<strong>タイミングチャート</strong>とよびます）。矩形波が高い値のとき1、低い値のとき0を表しています。薄い色の0〜14の数字は時間を表しています。</p>
+<p>この回路の振る舞いを確認しておきます。\(E=1\) のときのみ、\(D\) の値を \(Q\) に伝え、\(E=0\) のときは、入力 \(D\) の値を無視して、直前の \(Q\) の値を保持し続けます。表にまとめると次のようになります（\(\ast\) は0でも1でも同じという意味です）。</p>
+</div>
+<table class="tableblock frame-ends grid-none fit-content">
+<caption class="title">表 3. ゲーテッドDラッチの動作</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">\(E\)</th>
+<th class="tableblock halign-center valign-top">\(D\)</th>
+<th class="tableblock halign-center valign-top">\(Q_{t+1}\)</th>
+<th class="tableblock halign-left valign-top"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(\ast\)</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">\(Q_t\)</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">保持</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0を記憶</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1を記憶</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>このような動作を時系列で観察したのが下の図です（<strong>タイミングチャート</strong>とよびます）。矩形波が高い値のとき1、低い値のとき0を表しています。上端の0〜14の数字は時刻を表しています。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/gated-d-latch-timing.svg" alt="gated d latch timing">
+<img src="./img/gated-d-latch-timing2.svg" alt="時刻0から14までのE、D、Qの波形。Eが1の区間ではQがDと同じ値になり、Eが0の区間ではQが直前の値を保つ">
 </div>
+<div class="title">図 15. ゲーテッドDラッチのタイミングチャート</div>
 </div>
 <div class="paragraph">
 <p>まず、時刻0から3までの間、\(D=1\) となっていることに着目してください。時刻0から1までは、\(Q\) に \(D\) の値が反映されていません。ところが、時刻1で、\(E=1\) となったタイミングで \(D\) の値が読み込まれ、\(Q=1\) となっています。\(E=1\) の間は、\(D\) の値は即座に \(Q\) に伝播しますので、時刻3で \(D=0\) となったとたんに \(Q=0\) となっていることがわかります。</p>
@@ -1114,10 +1165,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p>そこで考案されたのが<strong>エッジトリガー</strong>方式の<strong>Dフリップフロップ</strong>です。Dフリップフロップは、ゲーテッドDラッチを<strong>左下図</strong>のように2段につないで、入力を受け付けるタイミングを制御する\(E\) 部分への入力を、1段目のラッチには反転させて入力し、2段目のラッチではそのまま入力しています。CLK信号は<strong>クロック</strong>を表し、固定周期で0と1を繰り返す信号です。この左下図の回路を、まとめて<strong>右下図</strong>のように表します。</p>
 </div>
-<div class="imageblock">
+<div class="imageblock text-center">
 <div class="content">
-<img src="./img/d-flipflop.svg" alt="d flipflop">
+<img src="./img/d-flipflop.svg" alt="ゲーテッドDラッチ2つを直列につなぎ、1段目のEにはCLKをNOTで反転した信号、2段目のEにはCLKをそのまま入れた回路。右は三角形の印の付いたクロック入力をもつ箱の記号">
 </div>
+<div class="title">図 16. Dフリップフロップの構成(左)と記号(右)</div>
 </div>
 <div class="paragraph">
 <p>（図では最終出力を \(Q_2\)、1段目の出力を \(Q_1\) と表記していますが、本文の \(Q\) は図の \(Q_2\) にあたります）</p>
@@ -1141,7 +1193,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>2つの扉は、クロック \(\mathrm{CLK}\) によって<strong>逆向きに</strong>開閉します。1段目には反転した \(\overline{\mathrm{CLK}}\) が、2段目にはそのままの \(\mathrm{CLK}\) が入るためです。</p>
 </div>
 <table class="tableblock frame-ends grid-rows stretch">
-<caption class="title">表 3. 2つの門の開閉</caption>
+<caption class="title">表 4. 2つの門の開閉</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1179,9 +1231,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="content">
 <img src="./img/d-ff-gate-analogy.svg" alt="d ff gate analogy">
 </div>
+<div class="title">図 17. 2つの門のたとえ</div>
 </div>
 <div class="paragraph">
-<p>\(\mathrm{CLK}\) が0から1に変わる瞬間に、外扉が閉まると同時に内扉が開きます。このとき、部屋にあった値（＝立ち上がりの瞬間の \(D\)）だけが出口へ押し出され、それ以降は外から新しい値が入れません。これが「立ち上がりの瞬間の \(D\) だけを読み取って記憶する」という、エッジトリガーの正体です。</p>
+<p>\(\mathrm{CLK}\) が0から1に変わる瞬間に、外扉が閉まると同時に内扉が開きます。このとき、部屋にあった値（＝立ち上がりの瞬間の \(D\)）だけが出口へ押し出され、それ以降は外から新しい値が入れません。この回路では、こうして「立ち上がりの瞬間の \(D\) だけを読み取って記憶する」エッジトリガーの動作が実現されます（実際の集積回路のフリップフロップには、別の構成のものもあります）。</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1191,12 +1244,42 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
+<p>表にまとめると次のようになります。ラッチの表と違い、「いつ」値を取り込むかがクロックの変化で決まります。</p>
+</div>
+<table class="tableblock frame-ends grid-none fit-content">
+<caption class="title">表 5. Dフリップフロップの動作</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">\(\mathrm{CLK}\)</th>
+<th class="tableblock halign-left valign-top">出力 \(Q\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0から1に変わる瞬間(立ち上がり)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">直前の \(D\) の値になる</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">それ以外(0のまま、1のまま、1から0に変わる)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">直前の値を保持</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>\(n\) 回目の立ち上がりの直後の出力を \(Q_{n+1}\)、その立ち上がりの直前の入力を \(D_n\) と書くと、\(Q_{n+1}=D_n\) と表せます。これがDフリップフロップの特性方程式です。時刻の刻みを「クロックの立ち上がりごと」と考えると、Dフリップフロップは入力を1クロック分遅らせて出力する回路だといえます。</p>
+</div>
+<div class="paragraph">
 <p>1段目（外扉）の出力 \(Q_1\)（＝部屋の中の値）と、最終出力 \(Q\) の関係を時系列で見ると下図のようになります。\(\mathrm{CLK}=0\) の間は外扉が開いていて \(Q_1\) が \(D\) を追いかけますが、出力 \(Q\) が変わるのは立ち上がりの瞬間だけです。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/d-ff-master-slave-timing.svg" alt="d ff master slave timing">
+<img src="./img/d-ff-master-slave-timing.svg" alt="CLK、D、1段目の出力Q1、出力Qの波形。Q1はCLK=0の間Dを追いかけ、QはCLKの立ち上がり(時刻2、6、10)でだけQ1の値に変わる">
 </div>
+<div class="title">図 18. Dフリップフロップ内部のタイミングチャート</div>
 </div>
 <div class="paragraph">
 <p>\(\mathrm{CLK}=0\) の区間で \(D\) が一時的に変化しても（図の時刻4〜5で \(D\) が一度0に下がっています）、立ち上がりの瞬間に \(Q_1\) にあった値だけが \(Q\) に伝わります。これが、ゲーテッドDラッチ（透過的）との決定的な違いです。</p>
@@ -1206,11 +1289,12 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/d-flipflop-timing.svg" alt="d flipflop timing">
+<img src="./img/d-flipflop-timing2.svg" alt="CLK、D、Qの波形。CLKの各立ち上がりでDの値を読み取り、少し遅れてQが変わる">
 </div>
+<div class="title">図 19. Dフリップフロップのタイミングチャート</div>
 </div>
 <div class="paragraph">
-<p>CLKの「↑」のあるタイミング（縦の点線）で、\(D\)の値を読み取り、\(Q\) に保持していることが読み取れるでしょうか。このタイミングチャートでは、\(Q\) に値が反映されるタイミングがやや遅くなっていることがわかるように誇張して時間の遅れを表現しています。これまで示したタイミングチャートでも厳密にはこのような遅延は存在していましたが、今回は説明のためにこの遅延をはっきりわかるように示しています。論理演算素子を通過する度にこのような遅延が生じます。これは、前章「論理回路の簡単化と回路設計」の「論理回路の遅延時間」の節で学んだ、ゲートの伝搬遅延に対応します。遅延の具体的な値は素子や負荷などで変わります。フリップフロップは複数のゲートを段に重ねた回路なので、入力から出力までにこの遅延が積み重なります。</p>
+<p>CLKの立ち上がり（赤い縦の点線）で、\(D\)の値を読み取り、\(Q\) に保持していることが読み取れるでしょうか。このタイミングチャートでは、\(Q\) に値が反映されるタイミングがやや遅くなっていることがわかるように誇張して時間の遅れを表現しています。これまで示したタイミングチャートでも厳密にはこのような遅延は存在していましたが、この図では説明のためにこの遅延をはっきりわかるように示しています。論理演算素子を通過する度にこのような遅延が生じます。これは、前章「論理回路の簡単化と回路設計」の「論理回路の遅延時間」の節で学んだ、ゲートの伝搬遅延に対応します。遅延の具体的な値は素子や負荷などで変わります。フリップフロップは複数のゲートを段に重ねた回路なので、入力から出力までにこの遅延が積み重なります。</p>
 </div>
 </div>
 <div class="sect3">
@@ -1218,10 +1302,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>データを取り込む時間を限定できる</strong>: セットアップ時間・ホールド時間を満たす範囲で、立ち上がり付近の入力を保持する（クロック自体のノイズなどは別途対策が必要）</p>
+<p><strong>データを取り込む時間を限定できる</strong>: 立ち上がりの瞬間の前後のごく短い時間だけ \(D\) が安定していれば、それ以外の時間に \(D\) が変化しても出力に影響しない（必要な時間の条件は、下のコラムのセットアップ時間・ホールド時間）</p>
 </li>
 <li>
-<p><strong>タイミング制御</strong>: いつデータを取り込むかを正確に制御できる</p>
+<p><strong>タイミング制御</strong>: いつデータを取り込むかを、クロックで正確に制御できる</p>
 </li>
 <li>
 <p><strong>同期設計</strong>: 複数のフリップフロップを同じクロックで同期動作させられる</p>
@@ -1229,7 +1313,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </ol>
 </div>
 <div class="paragraph">
-<p>これにより、コンピューターの中で数億個のフリップフロップが正確に協調動作できるのです。</p>
+<p>これにより、コンピューターの中の膨大な数のフリップフロップが、クロックに合わせて足並みをそろえて動作できるのです。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1240,7 +1324,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <td class="content">
 <div class="title">コラム: 一瞬どっちつかずになる「準安定状態」</div>
 <div class="paragraph">
-<p>フリップフロップが値を正しく読み取るには、立ち上がりの少し前から少し後まで \(D\) の値が安定している必要があります（この時間の余裕を<strong>セットアップ時間・ホールド時間</strong>といいます）。もし \(D\) が変化するタイミングとクロックの立ち上がりがちょうど重なってしまうと、出力が0でも1でもない中途半端な電圧でしばらくフラフラする<strong>準安定状態</strong>(metastability)に陥ることがあります。これは、SRラッチで \((S,R)=(1,1)\) を禁止した理由（競合状態）と根っこは同じです。</p>
+<p>フリップフロップが値を正しく読み取るには、立ち上がりの少し前から少し後まで \(D\) の値が安定している必要があります（この時間の余裕を<strong>セットアップ時間・ホールド時間</strong>といいます）。もし \(D\) が変化するタイミングとクロックの立ち上がりがちょうど重なってしまうと、出力が0でも1でもない中途半端な電圧でしばらくフラフラする<strong>準安定状態</strong>(metastability)に陥ることがあります。これは、SRラッチで \((S,R)=(1,1)\) から両入力を同時に0に戻したときの問題（競合状態）と似た現象で、どちらも2つの安定状態のどちらに落ち着くかがすぐには決まらない状態です。</p>
 </div>
 <div class="paragraph">
 <p>準安定状態がいつ解消するかは確率的にしか決まりません。鉛筆を芯の先で立てようとすると、倒れる向きが決まるまで一瞬ぐらつくのに似ています。とくに、別々のクロックで動く回路どうしをつなぐ場面（非同期）で問題になり、フリップフロップを2段重ねて誤動作の確率を十分小さくする、といった対策がとられます。ただし、2段の同期化は主に1ビットの信号の取り込みに使う方法であり、確率を厳密に0にするものでも、複数ビットを必ず一括して正しく取り込む方法でもありません。</p>
@@ -1272,10 +1356,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <td class="content">
 <div class="title">コラム: フリップフロップのはじまり</div>
 <div class="paragraph">
-<p>2つの素子を互いに接続して2つの安定状態をつくる、という今回のSRラッチの考え方は、コンピューターよりもずっと古くからありました。1918年、イギリスの物理学者William EcclesとFrank Jordanは、2本の真空管を組み合わせた回路の特許を出願しました。<strong>Eccles-Jordan回路（トリガー回路）</strong>と呼ばれるこの回路が、フリップフロップの祖先です。</p>
+<p>2つの素子を互いに接続して2つの安定状態をつくる、というSRラッチの考え方は、コンピューターよりもずっと古くからありました。1918年、イギリスの物理学者William EcclesとFrank Jordanは、2本の真空管を組み合わせた回路の特許を出願しました。<strong>Eccles-Jordan回路（トリガー回路）</strong>と呼ばれるこの回路が、フリップフロップの祖先です。</p>
 </div>
 <div class="paragraph">
-<p>おもしろいことに、2人はこれをコンピューターの部品として考えていたわけではなく、電信や電話のための信号を中継・増幅する装置として発明しました。これが「1ビットを記憶する装置」だと明確に位置づけられたのは、ずっと後の1948年、情報理論をつくったClaude Shannonによってです。</p>
+<p>おもしろいことに、2人はこれをコンピューターの部品として考えていたわけではなく、特許では、電信や電話の信号を中継・増幅する継電器（リレー）として説明しています。1919年に発表した論文では、この回路を「トリガー継電器」（信号をきっかけに状態が切り替わるリレー）と呼んでいます。その後、1932年にはイギリスのWynn-Williamsがこの種の回路を使って、放射線の粒子を2進法で数える計数器（scale of two counter）を作っています。1948年には、情報理論をつくったClaude Shannonが論文の中で、2つの安定状態をもつリレーやフリップフロップ回路は1ビットの情報を蓄えられる、と書いています。</p>
 </div>
 <div class="paragraph">
 <p>この回路は、第二次世界大戦中の1943年にイギリスで暗号解読のために作られた <strong>Colossus</strong> や、アメリカの <strong>ENIAC</strong> にも使われ、初期のコンピューターの記憶素子となりました。いま手元のスマートフォンやPCの中で動いている膨大な数のフリップフロップは、100年前の真空管2本の回路の子孫です。</p>
@@ -1293,16 +1377,18 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/shift-register.svg" alt="shift register">
+<img src="./img/shift-register.svg" alt="Dフリップフロップ4つを直列につなぎ、各段の出力Qを次の段のDに入れた回路。すべての段のクロック入力に同じCLKが入る。各段の出力をQ0からQ3として取り出している">
 </div>
+<div class="title">図 20. 4段のシフトレジスタ</div>
 </div>
 <div class="paragraph">
 <p>上図のように、Dフリップフロップを直列につないだだけです。この回路は以下のように、入力の値をクロックの周期に合わせて、左から右のDフリップフロップに順番に伝えていきます。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/shift-register-timing.svg" alt="shift register timing">
+<img src="./img/shift-register-timing2.svg" alt="CLK、Din、Q0からQ3の波形。立ち上がりごとにQ0がDinの値に、Q1がそれまでのQ0の値に、というように1段ずつ右へ値が移る">
 </div>
+<div class="title">図 21. シフトレジスタのタイミングチャート</div>
 </div>
 <div class="paragraph">
 <p>ところで、\(D_{\text{in}}\) の値が、CLKが0から1になったとたんに、\(Q_0\) から \(Q_3\) まで瞬時に伝わってしまうことはないのでしょうか。各Dフリップフロップは、クロックの立ち上がりの瞬間に、その直前に入力されていた値を取り込みます。立ち上がりの瞬間に2段目のDフリップフロップが取り込むのは、変化する前の \(Q_0\) の値です。そのため、\(Q_0\) の新しい値が \(Q_1\) に反映されるのは、次の立ち上がりのときになります。こうして、値は1クロックにつき1段ずつ右へ進んでゆくのです。</p>
@@ -1319,11 +1405,12 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/shift-register-anim.gif" alt="shift register anim">
+<img src="./img/shift-register-anim.gif" alt="6段のシフトレジスタで、入力のビットがクロックごとに1段ずつ右のランプへ移っていくアニメーション">
 </div>
+<div class="title">図 22. 6段のシフトレジスタの動作(アニメーション)</div>
 </div>
 <div class="paragraph">
-<p>また、2進法の数は桁を1つずらすと2倍または2分の1にすることに相当しますので、計算にも用いることができます。</p>
+<p>また、2進法の数は桁を1つずらすと2倍または2分の1（右へずらしたときの端数は切り捨て）にすることに相当しますので、計算にも用いることができます。</p>
 </div>
 </div>
 <div class="sect2">
@@ -1339,8 +1426,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/counter-anim.gif" alt="counter anim">
+<img src="./img/counter-anim.gif" alt="5つのDフリップフロップをつないだ2進カウンタで、クロックごとにランプの点灯が2進数で1ずつ増えていくアニメーション">
 </div>
+<div class="title">図 23. 5段の2進カウンタの動作(アニメーション)</div>
 </div>
 </div>
 </div>
@@ -1349,7 +1437,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <h2 id="_ここから先の話"><a class="link" href="#_ここから先の話">3. ここから先の話</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ここまでで、ようやく演算とメモリの構成のごく一部に触れることができました。ここから先のコンピューターの構成については、この授業では触れません。コンピューターをより深く理解するためには、さらに以下のような内容について学ぶことが必要です。</p>
+<p>ここまでで、ようやく演算とメモリの構成のごく一部に触れることができました。ここから先のコンピューターの構成については、本書では触れません。コンピューターをより深く理解するためには、さらに以下のような内容について学ぶことが必要です。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1370,11 +1458,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <h2 id="_練習問題"><a class="link" href="#_練習問題">4. 練習問題</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>順序回路は、図を眺めるだけではなかなか身につきません。以下の問題を、自分の手で一段ずつ追いかけてみてください。</p>
+<p>順序回路は、図を眺めるだけではなかなか身につきません。以下の問題を、自分の手で一段ずつ追いかけてみてください。タイミングチャートを描く問題では、\(Q\) の初期値は0とし、ゲートの遅延は考えません（入力の変化と同じ時刻に \(Q\) を変化させて描いてかまいません）。</p>
 </div>
-<div class="sect2">
-<h3 id="_1srラッチの状態追跡"><a class="link" href="#_1srラッチの状態追跡">4.1. 【1】SRラッチの状態追跡</a></h3>
 <div class="exampleblock">
+<div class="title">問題1: SRラッチの状態追跡</div>
 <div class="content">
 <div class="paragraph">
 <p>以下のSRラッチの状態変化を追跡せよ。</p>
@@ -1388,8 +1475,8 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 </div>
-<div class="exampleblock">
-<div class="title">例 3. 解答・解説</div>
+<details>
+<summary class="title">解答</summary>
 <div class="content">
 <div class="paragraph">
 <p>特性方程式 \(Q_{t+1} = S + \overline R\cdot Q_t\) にしたがって、一段ずつ追います。</p>
@@ -1462,12 +1549,220 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p>さらに問題なのは、この後に \((S,R)=(0,0)\)（保持）へ移ったときです。両方のNORゲートが同時に0から切り替わろうとして、どちらの出力が先に確定するかで最終状態が0になるか1になるか決まりません（<strong>競合状態、レースコンディション</strong>）。前章「論理回路の簡単化と回路設計」の「論理回路の遅延時間」の節で学んだように、ゲートには遅延時間があり、2つのNORゲートの遅延がぴったり同じになることはありません。そのわずかな差で勝負が決まってしまうため、結果が予測できないのです。値が予測できないため、\((S,R)=(1,1)\) は禁止入力とします。</p>
 </div>
+<div class="paragraph">
+<p>ステップ5の時点の \(Q=0\) は、特性方程式 \(S+\overline R\cdot Q_t\) の値(1)とは一致しません。特性方程式は、\((S,R)=(1,1)\) をドントケアとして作った式なので、禁止入力に対する出力は表していません。</p>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_2ゲーテッドdラッチ"><a class="link" href="#_2ゲーテッドdラッチ">4.2. 【2】ゲーテッドDラッチ</a></h3>
+</details>
 <div class="exampleblock">
+<div class="title">問題2: SRラッチの特性方程式の確認</div>
+<div class="content">
+<div class="paragraph">
+<p>SRラッチの特性方程式 \(Q_{t+1} = S + \overline R\cdot Q_t\) が、本文の表（<a href="#tbl-sr-char">SRラッチの動作(2)</a>）を再現することを確かめよ。また、\((S,R)=(1,1)\) の2行をドントケアとして扱ったことが、この式にどう表れているか説明せよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>\((S,R,Q_t)\) の8通りを代入します（\((1,1,\ast)\) 以外は<a href="#tbl-sr-char">SRラッチの動作(2)</a>と一致）。</p>
+</div>
+<table class="tableblock frame-ends grid-rows stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">\(S\)</th>
+<th class="tableblock halign-center valign-top">\(R\)</th>
+<th class="tableblock halign-center valign-top">\(Q_t\)</th>
+<th class="tableblock halign-center valign-top">\(S+\overline R\cdot Q_t\)</th>
+<th class="tableblock halign-center valign-top"><a href="#tbl-sr-char">SRラッチの動作(2)</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(0+1\cdot0=0\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(0+1\cdot1=1\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(0+0\cdot0=0\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(0+0\cdot1=0\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(1+1\cdot0=1\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(1+1\cdot1=1\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(1+0\cdot0=1\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(\ast\)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(1+0\cdot1=1\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(\ast\)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>下の2行（禁止入力）では、式の値はどちらも1になります。これは、カルノー図でドントケアを「1」とみなして囲み、\(S=1\) の領域をまとめて1つの項\(S\) にしたことの結果です。ドントケアを「0」とみなせば、\(\overline R\cdot(S+Q_t)\) という形にもできます。どちらの式も、禁止入力以外の6行では同じ値になります。「都合よく解釈してよい」とは、式が簡単になる方を選んでよいという意味です。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題3: ゲーテッドDラッチの特性表と特性方程式</div>
+<div class="content">
+<div class="paragraph">
+<p>ゲーテッドDラッチについて、入力 \(E\)、\(D\) と現在の出力 \(Q_t\) の8通りの組合せに対して、次の出力 \(Q_{t+1}\) を示す表（特性表）を作れ。さらに、カルノー図を用いて特性方程式（\(Q_{t+1}\) を \(E\)、\(D\)、\(Q_t\) の積和形で表した式）を求めよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>\(E=0\) の4行では \(Q_{t+1}=Q_t\)（保持）、\(E=1\) の4行では \(Q_{t+1}=D\) です。</p>
+</div>
+<table class="tableblock frame-ends grid-rows stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">\(E\)</th>
+<th class="tableblock halign-center valign-top">\(D\)</th>
+<th class="tableblock halign-center valign-top">\(Q_t\)</th>
+<th class="tableblock halign-center valign-top">\(Q_{t+1}\)</th>
+<th class="tableblock halign-left valign-top"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">保持</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">保持</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">保持</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">保持</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(D\) を取り込む</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(D\) を取り込む</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(D\) を取り込む</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(D\) を取り込む</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>行に \(ED\)、列に \(Q_t\) をとってカルノー図を描くと、次のように2つの枠で囲めます。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-d-latch.svg" alt="行ED、列Q_tのカルノー図。行11の2マスを囲む枠がED、列1の行00と01を囲む枠がEの否定とQ_t">
+</div>
+<div class="title">図 24. 問題3の解答のカルノー図</div>
+</div>
+<div class="stemblock">
+<div class="content">
+\[Q_{t+1} = E\cdot D + \overline E\cdot Q_t\]
+</div>
+</div>
+<div class="paragraph">
+<p>「\(E=1\) なら \(D\)、\(E=0\) なら \(Q_t\)」を式にしたものです。前章の2入力データセレクタの式 \(y=\bar s\cdot d_0 + s\cdot d_1\) と比べると、選択信号 \(s\) が \(E\)、\(d_0\) が \(Q_t\)、\(d_1\) が \(D\) にあたります。ゲーテッドDラッチは、「新しい値 \(D\)」と「今の値 \(Q_t\)」のどちらを次の値にするかを \(E\) で選ぶ回路だと見ることができます。</p>
+</div>
+<div class="paragraph">
+<p>SRラッチと違って禁止入力がないので、ドントケアはありません。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題4: ゲーテッドDラッチの動作</div>
 <div class="content">
 <div class="paragraph">
 <p>ゲーテッドDラッチについて、\(E\) と\(D\) が下表のように変化するとき、\(Q\) の値を埋めよ。初期状態は \(Q=0\) とする。</p>
@@ -1535,30 +1830,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </table>
 </div>
 </div>
-<div class="exampleblock">
-<div class="title">例 4. 解答・解説</div>
+<details>
+<summary class="title">解答</summary>
 <div class="content">
-<div class="paragraph">
-<p>\(E=1\) のときは\(Q\) が\(D\) をそのまま映し（透過）、\(E=0\) のときは直前の\(Q\) を保持します。波形で表すと下図のようになります（黄色の帯が答えの\(Q\)）。</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./img/q2-answer-timing.svg" alt="q2 answer timing">
-</div>
-</div>
-<div class="paragraph">
-<p>ポイントは、時刻3〜4と時刻7です。ここは\(E=0\) なので、その間に\(D\) が変化しても（時刻3〜4の\(D=1\to0\)、時刻7の\(D=0\)）、\(Q\) は時刻2・時刻6で取り込んだ値を保持し続けます。</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_3dフリップフロップとの違い"><a class="link" href="#_3dフリップフロップとの違い">4.3. 【3】Dフリップフロップとの違い</a></h3>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><strong>ゲーテッドDラッチ</strong>（\(E=\mathrm{CLK}\)）と<strong>立ち上がりエッジトリガーのDフリップフロップ</strong>に、同じ\(\mathrm{CLK}\) と\(D\) を与える。立ち上がりエッジは時刻1と時刻5にあるとする。初期状態は \(Q=0\) とする。両者の\(Q\) を埋め、なぜ違いが出るかを説明せよ。</p>
-</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 11.1111%;">
@@ -1570,6 +1844,149 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
 <col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">時刻</th>
+<th class="tableblock halign-center valign-top">0</th>
+<th class="tableblock halign-center valign-top">1</th>
+<th class="tableblock halign-center valign-top">2</th>
+<th class="tableblock halign-center valign-top">3</th>
+<th class="tableblock halign-center valign-top">4</th>
+<th class="tableblock halign-center valign-top">5</th>
+<th class="tableblock halign-center valign-top">6</th>
+<th class="tableblock halign-center valign-top">7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(E\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(D\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(Q\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>\(E=1\) のときは\(Q\) が\(D\) をそのまま映し（透過）、\(E=0\) のときは直前の\(Q\) を保持します。波形で表すと下図のようになります（黄色の帯が答えの\(Q\)）。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/q2-answer-timing2.svg" alt="時刻0から7のE、D、Qの波形。Qは時刻2で1、時刻5で0、時刻6で1になる">
+</div>
+<div class="title">図 25. 問題4の解答のタイミングチャート</div>
+</div>
+<div class="paragraph">
+<p>ポイントは、時刻0、時刻3〜4、時刻7です。ここは\(E=0\) なので、\(D\) がどんな値でも（時刻0の\(D=1\)、時刻3〜4の\(D=1\to0\)、時刻7の\(D=0\)）、\(Q\) は直前の値（初期値0、時刻2・時刻6で取り込んだ1）を保持し続けます。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題5: タイミングチャート(ゲーテッドDラッチ)</div>
+<div class="content">
+<div class="paragraph">
+<p><strong>ゲーテッドDラッチ</strong>のタイミングチャートを完成させよ(\(Q\) の波形を描け)。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/q1-timing-chart.svg" alt="EとDの波形と、空欄のQの行">
+</div>
+<div class="title">図 26. 問題5のタイミングチャート</div>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>\(E=1\) の時間帯（下図の赤で示した区間）だけ\(D\)の値をそのまま\(Q\)に反映し、それ以外の時間は値を保持することに注意すれば、下図のようになります。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/a1-timing-chart.svg" alt="Eが1の区間を赤で示し、QはEが1の区間だけDと同じ値になり、Eが0の区間は直前の値を保つ波形">
+</div>
+<div class="title">図 27. 問題5の解答</div>
+</div>
+<div class="paragraph">
+<p>\(E=1\) の区間の途中で \(D\) が変わると、\(Q\) もその場で変わります。1つ目の区間では、\(D\) が区間の途中で0に下がるので、\(Q\) も途中で0に戻ります。2つ目の区間は、区間の終わり近くで \(D\) が1になり、\(E\) が0に下がった後もその1を保持します。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題6: タイミングチャート(Dフリップフロップ)</div>
+<div class="content">
+<div class="paragraph">
+<p><strong>Dフリップフロップ</strong>のタイミングチャートを完成させよ(\(Q\) の波形を描け)。\(\mathrm{CLK}\) と \(D\) の波形は、問題5の \(E\) と \(D\) と同じ形である。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/q2-timing-chart.svg" alt="CLKとDの波形と、空欄のQの行">
+</div>
+<div class="title">図 28. 問題6のタイミングチャート</div>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>問題5とは異なり、赤い縦線（クロックの立ち上がりの瞬間）での\(D\)の値だけを読み込み、それ以外の時間は入力が変化しても出力を保持することに注意すれば、下図のようになります。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/a2-timing-chart.svg" alt="CLKの立ち上がりを赤で示し、Qは1回目の立ち上がりで1、2回目で0、3回目は0のまま、4回目で1になる波形">
+</div>
+<div class="title">図 29. 問題6の解答</div>
+</div>
+<div class="paragraph">
+<p>4回の立ち上がりでの \(D\) の値は、順に1, 0, 0, 1 です。3回目の立ち上がりの前に \(D\) は一度1になっていますが、立ち上がりの瞬間には0に戻っているので読み込まれません。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題7: ラッチとフリップフロップの違い</div>
+<div class="content">
+<div class="paragraph">
+<p><strong>ゲーテッドDラッチ</strong>（\(E=\mathrm{CLK}\)）と<strong>立ち上がりエッジトリガーのDフリップフロップ</strong>に、同じ\(\mathrm{CLK}\) と\(D\) を与える。立ち上がりエッジは時刻1と時刻5にあるとする。初期状態は \(Q=0\) とする。両者の\(Q\) を埋め、なぜ違いが出るかを説明せよ。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.091%;">
 </colgroup>
 <thead>
 <tr>
@@ -1607,20 +2024,115 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ラッチの \(Q\)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">フリップフロップの \(Q\)</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="exampleblock">
-<div class="title">例 5. 解答・解説</div>
+<details>
+<summary class="title">解答</summary>
 <div class="content">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 27.2727%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 9.091%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">時刻</th>
+<th class="tableblock halign-center valign-top">0</th>
+<th class="tableblock halign-center valign-top">1</th>
+<th class="tableblock halign-center valign-top">2</th>
+<th class="tableblock halign-center valign-top">3</th>
+<th class="tableblock halign-center valign-top">4</th>
+<th class="tableblock halign-center valign-top">5</th>
+<th class="tableblock halign-center valign-top">6</th>
+<th class="tableblock halign-center valign-top">7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\mathrm{CLK}\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(D\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ラッチの \(Q\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">フリップフロップの \(Q\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0</strong></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0</strong></p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
-<p>波形で重ねて描くと下図のようになります（緑がラッチ、青がフリップフロップ。赤い縦線が立ち上がりエッジ）。</p>
+<p>波形で重ねて描くと下図のようになります（緑がラッチ、青がフリップフロップ(FF)。赤い点線が立ち上がりエッジ）。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/q3-answer-timing.svg" alt="q3 answer timing">
+<img src="./img/q3-answer-timing2.svg" alt="CLK、D、ラッチのQ、フリップフロップのQの波形。ラッチのQはCLKが1の間Dを追い、フリップフロップのQは時刻1と5の立ち上がりでだけ変わる">
 </div>
+<div class="title">図 30. 問題7の解答のタイミングチャート</div>
 </div>
 <div class="paragraph">
 <p><strong>ゲーテッドDラッチ</strong>は\(\mathrm{CLK}=1\) の間ずっと透過なので、時刻1〜2で\(D\) が1から0に下がると\(Q\) もそれを追って下がります。同様に時刻6〜7の\(D\) の0→1も追います。</p>
@@ -1632,108 +2144,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>つまり「クロックが1の間ずっと反応する（透過的）」のがラッチ、「クロックが0から1に変わる一瞬だけ反応する」のがフリップフロップです。</p>
 </div>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_4特性方程式の確認"><a class="link" href="#_4特性方程式の確認">4.4. 【4】特性方程式の確認</a></h3>
+</details>
 <div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>SRラッチの特性方程式 \(Q_{t+1} = S + \overline R\cdot Q_t\) が、本文の真理値表（<a href="#tbl-sr-char">SRラッチの動作(2)</a>）を再現することを確かめよ。また、\((S,R)=(1,1)\) の2行をドントケアとして扱ったことが、この式にどう表れているか説明せよ。</p>
-</div>
-</div>
-</div>
-<div class="exampleblock">
-<div class="title">例 6. 解答・解説</div>
-<div class="content">
-<div class="paragraph">
-<p>\((S,R,Q_t)\) の8通りを代入します（\((1,1,\ast)\) 以外は<a href="#tbl-sr-char">SRラッチの動作(2)</a>と一致）。</p>
-</div>
-<table class="tableblock frame-ends grid-rows stretch">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 20%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-center valign-top">\(S\)</th>
-<th class="tableblock halign-center valign-top">\(R\)</th>
-<th class="tableblock halign-center valign-top">\(Q_t\)</th>
-<th class="tableblock halign-center valign-top">\(S+\overline R\cdot Q_t\)</th>
-<th class="tableblock halign-left valign-top"><a href="#tbl-sr-char">SRラッチの動作(2)</a></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">\(0+1\cdot0=0\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">\(0+1\cdot1=1\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">\(0+0\cdot0=0\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">\(0+0\cdot1=0\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">\(1+1\cdot0=1\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">\(1+1\cdot1=1\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">\(1+0\cdot0=1\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(\ast\)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">\(1+0\cdot1=1\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(\ast\)</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>下の2行（禁止入力）では、式の値はどちらも1になります。これは、カルノー図でドントケアを「1」とみなして囲み、\(S=1\) の領域をまとめて1つの項\(S\) にしたことの結果です。ドントケアを「0」とみなせば、\(\overline R(S+Q)\) という形にもできます。式の簡単さは積和形などの表し方や、何を数えるかによって変わります。「都合よく解釈してよい」とは、式が簡単になる方を選んでよいという意味です。</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_5シフトレジスタ"><a class="link" href="#_5シフトレジスタ">4.5. 【5】シフトレジスタ</a></h3>
-<div class="exampleblock">
+<div class="title">問題8: シフトレジスタ</div>
 <div class="content">
 <div class="paragraph">
 <p>4段シフトレジスタ（出力 \(Q_0,Q_1,Q_2,Q_3\)）を考える。全段0で初期化し、直列入力 \(D_{\text{in}}\) が各クロックの立ち上がり直前に次の値をとる。</p>
@@ -1776,8 +2189,8 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 </div>
-<div class="exampleblock">
-<div class="title">例 7. 解答・解説</div>
+<details>
+<summary class="title">解答</summary>
 <div class="content">
 <div class="paragraph">
 <p>立ち上がりごとに、\(Q_0\leftarrow D_{\text{in}}\)、\(Q_1\leftarrow Q_0\)、\(Q_2\leftarrow Q_1\)、\(Q_3\leftarrow Q_2\) が同時に起こります（すべて直前の値を使う点に注意）。</p>
@@ -1851,12 +2264,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p>クロック1のビット（1）は、1クロックごとに1段ずつ右に進み、<strong>クロック4</strong>で \(Q_3\) に到達します。このとき \((Q_3,Q_2,Q_1,Q_0)=(1,0,1,1)\) となり、クロック1〜4で入れた 1,0,1,1 が4ビットまとめて取り出せます。逐次的に入ってきたビット列を、一定の桁数のまとまりとして取り出す「直列入力-並列出力」の動作です。</p>
 </div>
+<div class="paragraph">
+<p>よくある誤りは、\(Q_0\) の新しい値がそのまま同じクロックで \(Q_1\) にも伝わると考えることです。本文で説明したとおり、各段は立ち上がりの直前の値を取り込むので、1クロックで進むのは1段だけです。</p>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_6記憶方式とフリップフロップの個数"><a class="link" href="#_6記憶方式とフリップフロップの個数">4.6. 【6】記憶方式とフリップフロップの個数</a></h3>
+</details>
 <div class="exampleblock">
+<div class="title">問題9: 記憶方式とフリップフロップの個数</div>
 <div class="content">
 <div class="paragraph">
 <p>(a) DRAMはリフレッシュが必要だが、SRAMは（電源が入っている限り）不要である。この違いを、両者の1ビットの記憶方法の違いから説明せよ。<br>
@@ -1864,87 +2278,17 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 </div>
-<div class="exampleblock">
-<div class="title">例 8. 解答・解説</div>
+<details>
+<summary class="title">解答</summary>
 <div class="content">
 <div class="paragraph">
-<p><strong>(a)</strong> DRAMはキャパシタに蓄えた電荷で1ビットを表します。電荷は漏れ電流によって少しずつ失われるため、放電しきって0と1の区別がつかなくなる前に、書き直す（リフレッシュ）必要があります。一方SRAMは、互いに帰還する2つのゲート（NOTやNOR）のラッチ構造で、電源がある限り安定状態が自分自身で保たれます。書き直さなくても状態が崩れないため、リフレッシュは不要です（その代わりSRAMは1ビットあたりのトランジスタ数が多く、記録密度は低くなります）。</p>
+<p><strong>(a)</strong> DRAMはキャパシタに蓄えた電荷で1ビットを表します。電荷は漏れ電流によって少しずつ失われるため、放電しきって0と1の区別がつかなくなる前に、書き直す（リフレッシュ）必要があります。一方SRAMは、互いに帰還する2つのインバーター（NOTゲート）のラッチ構造で、電源がある限り安定状態が自分自身で保たれます。書き直さなくても状態が崩れないため、リフレッシュは不要です（その代わりSRAMは1ビットあたりのトランジスタ数が多く、記録密度は低くなります）。</p>
 </div>
 <div class="paragraph">
 <p><strong>(b)</strong> Dフリップフロップ1個が1ビットを保持します。64ビットなら <strong>64個</strong> です。</p>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_練習問題_タイミングチャート"><a class="link" href="#_練習問題_タイミングチャート">5. 練習問題: タイミングチャート</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>タイミングチャートを描く問題です。いずれも \(Q\) の初期値は0であると仮定してください。まず自分で描いてから、続く解答を確認してください。
-（<strong>この問題では \(Q\) の遅延は考慮せず、遅延をチャートに図示しなくてかまいません。</strong> \(D\), \(\mathrm{CLK}\), \(E\) のいずれかの値の変化と全く同じタイミングで \(Q\) の値の変化を図示してください。）</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-【7】
-</td>
-<td class="hdlist2">
-<p><strong>ゲーテッドDラッチ</strong>のタイミングチャートを完成させてください(\(Q\) の波形を描いてください)。</p>
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./img/q1-timing-chart.svg" alt="q1 timing chart">
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>赤の時間帯だけ\(D\)の値をそのまま\(Q\)に反映し、それ以外の時間は値を保持することに注意すれば
-下図のようになります。</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./img/a1-timing-chart.svg" alt="a1 timing chart">
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-【8】
-</td>
-<td class="hdlist2">
-<p><strong>Dフリップフロップ</strong>のタイミングチャートを完成させてください(\(Q\) の波形を描いてください)。</p>
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./img/q2-timing-chart.svg" alt="q2 timing chart">
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>【7】とは異なり、赤い縦線（クロックの立ち上がりの瞬間）での\(D\)の値だけを読み込み、それ以外の時間は入力が変化しても出力を保持することに注意すれば
-下図のようになります。</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./img/a2-timing-chart.svg" alt="a2 timing chart">
-</div>
-</div>
+</details>
 <hr>
 <div class="paragraph">
 <p>以上です</p>
@@ -1957,6 +2301,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 Version 1.2<br>
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",

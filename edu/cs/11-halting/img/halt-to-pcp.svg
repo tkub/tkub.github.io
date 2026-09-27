@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">停止性問題をポストの対応問題に還元する</title><desc id="desc">停止性問題の入力であるプログラムPと入力xを、機械的な手順でドミノの組に変換する。Pがxでいつか止まるときに限って、そのドミノの組は上下をそろえられる。もしポストの対応問題を判定するプログラムがあれば、変換と組み合わせて停止性問題が解けてしまうが、それは不可能なので、ポストの対応問題を判定するプログラムも存在しない。</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#235e85"/></marker><marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#5a6b7b"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#d7301f"/></marker></defs><rect width="100%" height="100%" fill="white"/>
+<text x="28" y="36" font-size="24" fill="#233647" text-anchor="start" font-weight="700">停止性問題を、ポストの対応問題に「翻訳」する</text>
+<rect x="30" y="90" width="170" height="110" rx="10" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="115" y="128" font-size="17" fill="#5a6b7b" text-anchor="middle">停止性問題の入力</text>
+<text x="115" y="166" font-size="24" fill="#233647" text-anchor="middle" font-weight="700">P と x</text>
+<line x1="202" y1="145" x2="246" y2="145" stroke="#235e85" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="250" y="90" width="200" height="110" rx="10" fill="#ffffff" stroke="#233647" stroke-width="2"/>
+<text x="350" y="128" font-size="20" fill="#233647" text-anchor="middle" font-weight="700">変換</text>
+<text x="350" y="156" font-size="17" fill="#5a6b7b" text-anchor="middle">機械的な手順で</text>
+<text x="350" y="178" font-size="17" fill="#5a6b7b" text-anchor="middle">ドミノの組を作る</text>
+<line x1="452" y1="145" x2="496" y2="145" stroke="#235e85" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="500" y="90" width="150" height="110" rx="10" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="575" y="128" font-size="17" fill="#233647" text-anchor="middle" font-weight="700">ドミノの組</text>
+<rect x="530" y="144" width="26" height="42" rx="5" fill="#ffffff" stroke="#233647" stroke-width="1.5"/>
+<line x1="530" y1="165" x2="556" y2="165" stroke="#233647" stroke-width="1"/>
+<rect x="562" y="144" width="26" height="42" rx="5" fill="#ffffff" stroke="#233647" stroke-width="1.5"/>
+<line x1="562" y1="165" x2="588" y2="165" stroke="#233647" stroke-width="1"/>
+<rect x="594" y="144" width="26" height="42" rx="5" fill="#ffffff" stroke="#233647" stroke-width="1.5"/>
+<line x1="594" y1="165" x2="620" y2="165" stroke="#233647" stroke-width="1"/>
+<line x1="652" y1="145" x2="696" y2="145" stroke="#235e85" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="700" y="90" width="230" height="110" rx="10" fill="#ffffff" stroke="#d7301f" stroke-width="2.2" stroke-dasharray="7 5"/>
+<text x="815" y="124" font-size="18" fill="#d7301f" text-anchor="middle" font-weight="700">PCP 判定プログラム</text>
+<text x="815" y="150" font-size="17" fill="#d7301f" text-anchor="middle">（あると仮定）</text>
+<text x="815" y="180" font-size="20" fill="#233647" text-anchor="middle" font-weight="700">Yes / No</text>
+<rect x="30" y="226" width="900" height="76" rx="10" fill="#eaf2fa" stroke="#2166ac" stroke-width="1.5"/>
+<text x="50" y="256" font-size="17" fill="#2166ac" text-anchor="start" font-weight="700">変換の約束：P が x で停止する ⇔ 作ったドミノの組で上下の並びをそろえられる</text>
+<text x="50" y="286" font-size="17" fill="#233647" text-anchor="start">なので「Yes」は「停止する」、「No」は「停止しない」とそのまま読み替えられる。</text>
+<text x="30" y="340" font-size="17" fill="#233647" text-anchor="start">変換は必ず作れるので、もし PCP 判定プログラムがあれば停止性問題も解けてしまう。</text>
+<text x="30" y="370" font-size="17" fill="#d7301f" text-anchor="start" font-weight="700">しかし停止性問題は解けない → PCP を判定するプログラムも存在しない。</text>
+</svg>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.26">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <meta name="author" content="久保山哲二">
 <title>コンピューター内部の数の表現</title>
 <style>
@@ -562,124 +562,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-pre.rouge table td { padding: 5px; }
-pre.rouge table pre { margin: 0; }
-pre.rouge, pre.rouge .w {
-  color: #24292f;
-  background-color: #f6f8fa;
-}
-pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
-  color: #cf222e;
-}
-pre.rouge .gr {
-  color: #f6f8fa;
-}
-pre.rouge .gd {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-pre.rouge .nb {
-  color: #953800;
-}
-pre.rouge .nc {
-  color: #953800;
-}
-pre.rouge .no {
-  color: #953800;
-}
-pre.rouge .nn {
-  color: #953800;
-}
-pre.rouge .sr {
-  color: #116329;
-}
-pre.rouge .na {
-  color: #116329;
-}
-pre.rouge .nt {
-  color: #116329;
-}
-pre.rouge .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-pre.rouge .ges {
-  font-weight: bold;
-  font-style: italic;
-}
-pre.rouge .kc {
-  color: #0550ae;
-}
-pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
-  color: #0550ae;
-}
-pre.rouge .sb {
-  color: #0550ae;
-}
-pre.rouge .bp {
-  color: #0550ae;
-}
-pre.rouge .ne {
-  color: #0550ae;
-}
-pre.rouge .nl {
-  color: #0550ae;
-}
-pre.rouge .py {
-  color: #0550ae;
-}
-pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
-  color: #0550ae;
-}
-pre.rouge .o, pre.rouge .ow {
-  color: #0550ae;
-}
-pre.rouge .gh {
-  color: #0550ae;
-  font-weight: bold;
-}
-pre.rouge .gu {
-  color: #0550ae;
-  font-weight: bold;
-}
-pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
-  color: #0a3069;
-}
-pre.rouge .nd {
-  color: #8250df;
-}
-pre.rouge .nf, pre.rouge .fm {
-  color: #8250df;
-}
-pre.rouge .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
-  color: #6e7781;
-}
-pre.rouge .gl {
-  color: #6e7781;
-}
-pre.rouge .gt {
-  color: #6e7781;
-}
-pre.rouge .ni {
-  color: #24292f;
-}
-pre.rouge .si {
-  color: #24292f;
-}
-pre.rouge .ge {
-  color: #24292f;
-  font-style: italic;
-}
-pre.rouge .gs {
-  color: #24292f;
-  font-weight: bold;
-}
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 <script>
   window.MathJax = {
     loader: { load: ['output/chtml'] },
@@ -697,7 +580,7 @@ pre.rouge .gs {
 <div id="toc" class="toc2">
 <div id="toctitle">目次</div>
 <ul class="sectlevel1">
-<li><a href="#_今回の内容">1. 今回の内容</a></li>
+<li><a href="#_この章の内容">1. この章の内容</a></li>
 <li><a href="#_プログラミング言語による整数の2進表現と16進表現">2. プログラミング言語による整数の2進表現と16進表現</a>
 <ul class="sectlevel2">
 <li><a href="#_python">2.1. Python</a></li>
@@ -713,8 +596,8 @@ pre.rouge .gs {
 <ul class="sectlevel3">
 <li><a href="#_アイデア_上からの空きで負の数を表す">アイデア: 「上からの空き」で負の数を表す</a></li>
 <li><a href="#_正負の境目を決める">正負の境目を決める</a></li>
-<li><a href="#_足し算してみる_注ぎ足すだけで引き算までできる">足し算してみる — 「注ぎ足すだけ」で引き算までできる</a></li>
-<li><a href="#_うまくいかない場合_桁あふれ">うまくいかない場合 — 桁あふれ</a></li>
+<li><a href="#_足し算してみる_注ぎ足すだけで引き算までできる">足し算してみる: 「注ぎ足すだけ」で引き算までできる</a></li>
+<li><a href="#_うまくいかない場合_桁あふれ">うまくいかない場合: 桁あふれ</a></li>
 </ul>
 </li>
 <li><a href="#_2の補数表現">3.3. 2の補数表現</a>
@@ -757,8 +640,7 @@ pre.rouge .gs {
 </li>
 </ul>
 </li>
-<li><a href="#_問題">5. 問題</a></li>
-<li><a href="#_問題の解答">6. 問題の解答</a></li>
+<li><a href="#_練習問題">5. 練習問題</a></li>
 </ul>
 </div>
 </div>
@@ -766,17 +648,18 @@ pre.rouge .gs {
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>授業資料の間違いに気づいた場合は、ぜひ教えてください。</p>
+<p>本書の間違いに気づいた場合は、ぜひ教えてください。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_今回の内容"><a class="link" href="#_今回の内容">1. 今回の内容</a></h2>
+<h2 id="_この章の内容"><a class="link" href="#_この章の内容">1. この章の内容</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>まずは、前回の問題の説明をします。
-その後、コンピューター内での数値の表現を扱います。
-（情報技術者試験の基本情報などでも頻出の内容です。）</p>
+<p>この章では、コンピューター内部での数の表現を扱います。整数については負の数の表し方（2の補数表現）と桁あふれ、実数については浮動小数点表現と、それに伴う誤差を学びます。（基本情報技術者試験などでも頻出の内容です。）</p>
+</div>
+<div class="paragraph">
+<p>2進法・16進法の読み方や、10進法との相互の変換（基数変換）は、この章の前提です。忘れている人は、先に補足資料 <a href="binary-notation.html">数の表現：2進法と基数変換</a> で確認してください。この章では、基数を右下の括弧で示し、\(1010_{(2)}=10_{(10)}\) のように書きます。</p>
 </div>
 </div>
 </div>
@@ -784,20 +667,20 @@ pre.rouge .gs {
 <h2 id="_プログラミング言語による整数の2進表現と16進表現"><a class="link" href="#_プログラミング言語による整数の2進表現と16進表現">2. プログラミング言語による整数の2進表現と16進表現</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>C, Python, Ruby, Julia, JavaScript, Java 等の多くのプログラミング言語では、2進法の <code>1010</code> は、<code>0b1010</code> と表記します(C言語の2進リテラルはC23規格からの標準対応です)。<code>b</code> は2進を表す binary の頭文字です。また、16進法の <code>ab</code> は <code>0xab</code> と表記します。<code>x</code> は16進を表す he<span class="underline">x</span>adecimal からです。</p>
+<p>C, Python, Ruby, Julia, JavaScript, Java 等の多くのプログラミング言語では、2進法の \(1010_{(2)}\) を <code>0b1010</code> と表記します(C言語の2進リテラルはC23規格からの標準対応です)。<code>b</code> は2進を表す binary の頭文字です。また、16進法の \(\mathrm{AB}_{(16)}\) は <code>0xab</code> と表記します(大文字の <code>0xAB</code> でもかまいません)。<code>x</code> は16進を表す he<span class="underline">x</span>adecimal からです。</p>
 </div>
 <div class="sect2">
 <h3 id="_python"><a class="link" href="#_python">2.1. Python</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="mb">0b11101010</span>
-<span class="mi">234</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="mh">0xea</span>
-<span class="mi">234</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">bin</span><span class="p">(</span><span class="mi">234</span><span class="p">)</span>
-<span class="sh">'</span><span class="s">0b11101010</span><span class="sh">'</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">hex</span><span class="p">(</span><span class="mi">234</span><span class="p">)</span>
-<span class="sh">'</span><span class="s">0xea</span><span class="sh">'</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; 0b11101010
+234
+&gt;&gt;&gt; 0xea
+234
+&gt;&gt;&gt; bin(234)
+'0b11101010'
+&gt;&gt;&gt; hex(234)
+'0xea'</code></pre>
 </div>
 </div>
 </div>
@@ -805,14 +688,14 @@ pre.rouge .gs {
 <h3 id="_ruby"><a class="link" href="#_ruby">2.2. Ruby</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="ruby"><span class="n">irb</span><span class="o">&gt;</span> <span class="mb">0b11101010</span>
-<span class="mi">234</span>
-<span class="n">irb</span><span class="o">&gt;</span> <span class="mh">0xea</span>
-<span class="mi">234</span>
-<span class="n">irb</span><span class="o">&gt;</span> <span class="mi">234</span><span class="p">.</span><span class="nf">to_s</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="s2">"11101010"</span>
-<span class="n">irb</span><span class="o">&gt;</span> <span class="mi">234</span><span class="p">.</span><span class="nf">to_s</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
-<span class="s2">"ea"</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-ruby hljs" data-lang="ruby">irb&gt; 0b11101010
+234
+irb&gt; 0xea
+234
+irb&gt; 234.to_s(2)
+"11101010"
+irb&gt; 234.to_s(16)
+"ea"</code></pre>
 </div>
 </div>
 </div>
@@ -820,14 +703,14 @@ pre.rouge .gs {
 <h3 id="_julia"><a class="link" href="#_julia">2.3. Julia</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="kt">Int</span><span class="x">(</span><span class="mb">0b11101010</span><span class="x">)</span>
-<span class="mi">234</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="kt">Int</span><span class="x">(</span><span class="mh">0xea</span><span class="x">)</span>
-<span class="mi">234</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">string</span><span class="x">(</span><span class="mi">234</span><span class="x">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="x">)</span>
-<span class="s">"11101010"</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">string</span><span class="x">(</span><span class="mi">234</span><span class="x">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">16</span><span class="x">)</span>
-<span class="s">"ea"</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; Int(0b11101010)
+234
+julia&gt; Int(0xea)
+234
+julia&gt; string(234, base=2)
+"11101010"
+julia&gt; string(234, base=16)
+"ea"</code></pre>
 </div>
 </div>
 </div>
@@ -835,18 +718,18 @@ pre.rouge .gs {
 <h3 id="_javascript"><a class="link" href="#_javascript">2.4. JavaScript</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="javascript"><span class="o">&gt;</span> <span class="mb">0b11101010</span>
-<span class="mi">234</span>
-<span class="o">&gt;</span> <span class="mh">0xea</span>
-<span class="mi">234</span>
-<span class="o">&gt;</span> <span class="p">(</span><span class="mi">234</span><span class="p">).</span><span class="nf">toString</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="dl">'</span><span class="s1">11101010</span><span class="dl">'</span>
-<span class="o">&gt;</span> <span class="p">(</span><span class="mi">234</span><span class="p">).</span><span class="nf">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
-<span class="dl">'</span><span class="s1">ea</span><span class="dl">'</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">&gt; 0b11101010
+234
+&gt; 0xea
+234
+&gt; (234).toString(2)
+'11101010'
+&gt; (234).toString(16)
+'ea'</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>ほとんどのプログラミング言語では標準では10進法の整数から2進法や16進法への変換は整数のみですが、JavaScript では10進法の小数から2進法や16進法への変換も可能です。</p>
+<p>多くのプログラミング言語では、標準の関数で2進法や16進法の文字列に変換できるのは整数だけです。JavaScript の <code>toString(2)</code> は小数にも使え、たとえば <code>(0.625).toString(2)</code> は <code>'0.101'</code> になります。</p>
 </div>
 </div>
 </div>
@@ -887,7 +770,7 @@ pre.rouge .gs {
 </div>
 </div>
 <table class="tableblock frame-ends grid-rows fit-content center">
-<caption class="title">表 1. 4ビットを用いた符号つき整数表現</caption>
+<caption class="title">表 1. 4ビットを用いた符号付き絶対値表現</caption>
 <colgroup>
 <col>
 <col>
@@ -1025,7 +908,7 @@ pre.rouge .gs {
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/mess-repr.svg" alt="メスシリンダーによる正負の数の表し方" width="620">
+<img src="./img/mess-repr.svg" alt="メスシリンダーによる正負の数の表し方" width="640">
 </div>
 <div class="title">図 1. 正の数は「水の量」、負の数は「上からの空き」で表す</div>
 </div>
@@ -1036,13 +919,13 @@ pre.rouge .gs {
 <p>\(x\) の<strong>10の補数</strong>は \(y\) である</p>
 </div>
 <div class="paragraph">
-<p>といいます。負の数 \(-4\) を、絶対値4の10の補数である6(水位6)で表す——これが<strong>補数表現</strong>です。コンピューター内部の「水位」にあたるものが、0以上の整数(ビット列)です。</p>
+<p>といいます。負の数 \(-4\) を、絶対値4の10の補数である6(水位6)で表す方法が<strong>補数表現</strong>です。コンピューター内部の「水位」にあたるものが、0以上の整数(ビット列)です。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_正負の境目を決める"><a class="link" href="#_正負の境目を決める">正負の境目を決める</a></h4>
 <div class="paragraph">
-<p>ところで、水位6を見たとき、「正の数6」と読むのか「空き4、すなわち \(-4\)」と読むのかは、どうやって区別するのでしょうか。ここは取り決めが必要なところです。この章では、</p>
+<p>ところで、水位6を見たとき、「正の数6」と読むのか「空き4、つまり \(-4\)」と読むのかは、どうやって区別するのでしょうか。ここは取り決めが必要なところです。この章では、</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1055,9 +938,9 @@ pre.rouge .gs {
 </ul>
 </div>
 <div class="paragraph">
-<p>と取り決めます。水位10は計算途中の満杯の状態です。満杯の1本を取り除き、空のメスシリンダー（水位0）を結果として残します。</p>
+<p>と取り決めます。水位10は計算途中の満杯の状態です。満杯の1本を取り除き、空のメスシリンダー（水位0）を結果として残します。<a href="#fig-mess-boundary">図 2</a>に、水位ごとの読み方をまとめました。</p>
 </div>
-<div class="imageblock">
+<div id="fig-mess-boundary" class="imageblock">
 <div class="content">
 <img src="./img/mess-boundary.svg" alt="正負の境目">
 </div>
@@ -1071,52 +954,57 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect3">
-<h4 id="_足し算してみる_注ぎ足すだけで引き算までできる"><a class="link" href="#_足し算してみる_注ぎ足すだけで引き算までできる">足し算してみる — 「注ぎ足すだけ」で引き算までできる</a></h4>
+<h4 id="_足し算してみる_注ぎ足すだけで引き算までできる"><a class="link" href="#_足し算してみる_注ぎ足すだけで引き算までできる">足し算してみる: 「注ぎ足すだけ」で引き算までできる</a></h4>
 <div class="paragraph">
-<p>この表現の威力は足し算で発揮されます。<strong>負の数が混ざっていても、対応する水位の水をただ注ぎ足すだけでよい</strong>のです。引き算のための特別な仕組みは要りません。ルールは1つだけ——あふれたら、あふれた分を2本目のメスシリンダーに受けて、満杯になった1本目(=10)は捨てます。</p>
+<p>この表現の威力は足し算で発揮されます。<strong>負の数が混ざっていても、対応する水位の水をただ注ぎ足すだけでよい</strong>のです。引き算のための特別な仕組みは要りません。ルールは1つだけです。あふれたら、あふれた分を2本目のメスシリンダーに受けて、満杯になった1本目(=10)は捨てます。</p>
 </div>
 <div class="paragraph">
-<p>まず、\((-4)+3\) を計算してみます。\(-4\) は水位6、\(3\) は水位3で用意し、注ぎ合わせると水位9になります。9は負の領域ですから、空き1を読んで答えは \(-1\)。正解です。</p>
+<p>まず、\((-4)+3\) を計算してみます。\(-4\) は水位6、\(3\) は水位3で用意し、注ぎ合わせると水位9になります。9は負の領域ですから、空き1を読んで答えは \(-1\)。正解です（<a href="#fig-op1">図 3</a>）。</p>
 </div>
-<div class="imageblock">
+<div id="fig-op1" class="imageblock">
 <div class="content">
-<img src="./img/mess-op1.svg" alt="例1 (−4)+3の計算">
+<img src="./img/mess-op1.svg" alt="例1 (−4)+3の計算" width="640">
 </div>
-</div>
-<div class="paragraph">
-<p>次に \((-3)+4\) です。\(7+4=11\) となるので水があふれます。あふれた分1を2本目に受け、満杯の1本目は捨てます。2本目に残った水位1が答えです。\(10\) を捨てる操作が、ちょうど \(11-10=1\) の計算になっています。</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./img/mess-op2.svg" alt="例2 (−3)+4の計算">
-</div>
+<div class="title">図 3. 例1: (−4)+3 は、水位6と水位3を注ぎ合わせて水位9</div>
 </div>
 <div class="paragraph">
-<p>負の数同士の \((-1)+(-2)\) も、まったく同じ手順で計算できます。\(9+8=17\) であふれ、2本目に残るのは水位7。7は負の領域なので空き3を読んで、答えは \(-3\) です。</p>
+<p>次に \((-3)+4\) です。\(7+4=11\) となるので水があふれます。あふれた分1を2本目に受け、満杯の1本目は捨てます。2本目に残った水位1が答えです。\(10\) を捨てる操作が、ちょうど \(11-10=1\) の計算になっています（<a href="#fig-op2">図 4</a>）。</p>
 </div>
-<div class="imageblock">
+<div id="fig-op2" class="imageblock">
 <div class="content">
-<img src="./img/mess-op3.svg" alt="例3 (−1)+(−2)の計算">
+<img src="./img/mess-op2.svg" alt="例2 (−3)+4の計算" width="640">
 </div>
+<div class="title">図 4. 例2: (−3)+4 は、あふれた分1を残し、満杯の1本を捨てる</div>
 </div>
 <div class="paragraph">
-<p>\((-3)+3\) のような「足すと0になる」組合せでは、ちょうど満杯になります。満杯になった1本を取り除くと、残りの水はありません。空のメスシリンダー、水位0が答えです。互いに打ち消し合う数を足すと0になる性質が、水の操作に対応しています。</p>
+<p>負の数同士の \((-1)+(-2)\) も、まったく同じ手順で計算できます。\(9+8=17\) であふれ、2本目に残るのは水位7。7は負の領域なので空き3を読んで、答えは \(-3\) です（<a href="#fig-op3">図 5</a>）。</p>
 </div>
-<div class="imageblock">
+<div id="fig-op3" class="imageblock">
 <div class="content">
-<img src="./img/mess-op4.svg" alt="例4 (−3)+3の計算">
+<img src="./img/mess-op3.svg" alt="例3 (−1)+(−2)の計算" width="640">
 </div>
+<div class="title">図 5. 例3: 負の数どうしの (−1)+(−2) も同じ手順で計算できる</div>
+</div>
+<div class="paragraph">
+<p>\((-3)+3\) のような「足すと0になる」組合せでは、ちょうど満杯になります。満杯になった1本を取り除くと、残りの水はありません。空のメスシリンダー、水位0が答えです。互いに打ち消し合う数を足すと0になる性質が、水の操作に対応しています（<a href="#fig-op4">図 6</a>）。</p>
+</div>
+<div id="fig-op4" class="imageblock">
+<div class="content">
+<img src="./img/mess-op4.svg" alt="例4 (−3)+3の計算" width="640">
+</div>
+<div class="title">図 6. 例4: (−3)+3 はちょうど満杯になり、取り除くと水位0</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_うまくいかない場合_桁あふれ"><a class="link" href="#_うまくいかない場合_桁あふれ">うまくいかない場合 — 桁あふれ</a></h4>
+<h4 id="_うまくいかない場合_桁あふれ"><a class="link" href="#_うまくいかない場合_桁あふれ">うまくいかない場合: 桁あふれ</a></h4>
 <div class="paragraph">
-<p>では、\(3+4\) はどうなるでしょうか。水位は7になり、一見正しく計算できているように見えます。しかし、取り決めにより水位7は負の領域です。空き3を読むと、\(3+4=-3\) という、あり得ない結果になってしまいました。</p>
+<p>では、\(3+4\) はどうなるでしょうか。水位は7になり、一見正しく計算できているように見えます。しかし、取り決めにより水位7は負の領域です。空き3を読むと、\(3+4=-3\) という、あり得ない結果になってしまいました（<a href="#fig-op5">図 7</a>）。</p>
 </div>
-<div class="imageblock">
+<div id="fig-op5" class="imageblock">
 <div class="content">
-<img src="./img/mess-op5.svg" alt="失敗例 3+4の計算">
+<img src="./img/mess-op5.svg" alt="失敗例 3+4の計算" width="640">
 </div>
+<div class="title">図 7. 失敗例: 3+4 は水位7になり、負の数 −3 と読んでしまう</div>
 </div>
 <div class="paragraph">
 <p>原因は答えの側にあります。正しい答え7が、この取り決めで表せる範囲 \(-5\sim 4\) からはみ出しているのです。このように、計算結果があらかじめ取り決めた範囲を超えてしまうことで発生する誤りを「<strong>桁あふれ</strong>」と呼びます。ここでは水はあふれていません。それでも、数としては桁あふれです。逆に、水があふれた先ほどの \((-3)+4\) は正しく計算できました。<strong>水があふれることと、数の桁あふれは別のこと</strong>なのです。結果が範囲内に収まっている限り、「注ぎ足すだけ」の仕組みは常に正しく働きます。</p>
@@ -1162,7 +1050,7 @@ pre.rouge .gs {
 </tbody>
 </table>
 <div class="paragraph">
-<p>負の数 \(-m\) を表す水位は、容量から \(m\) を引いた \(2^n-m\) です。固定した \(n\) ビットで、この値を \(m\) の<strong>2の補数</strong>と呼びます。たとえば4ビットで \(-5\) を表すには、\(16-5=11\)、すなわち <code>1011</code> を使います。0については、反転して1を足し、下位 \(n\) ビットを残すと0になります。</p>
+<p>負の数 \(-m\) を表す水位は、容量から \(m\) を引いた \(2^n-m\) です。固定した \(n\) ビットで、この値を \(m\) の<strong>2の補数</strong>と呼びます。たとえば4ビットで \(-5\) を表すには、\(16-5=11\)、つまり <code>1011</code> を使います。なお、0の2の補数は \(2^n-0=2^n\) ですが、これは \(n\) ビットに収まらない満杯の状態なので、満杯の1本を取り除いて0とします。</p>
 </div>
 <div class="paragraph">
 <p>一般に、\(n\) ビットの2の補数表現の範囲は</p>
@@ -1270,11 +1158,14 @@ pre.rouge .gs {
 </tr>
 </tbody>
 </table>
-<div class="imageblock">
+<div class="paragraph">
+<p>4ビットのビット列16通りを、符号なしの値の順に円環状に並べたものが<a href="#fig-wheel">図 8</a>です。時計の文字盤のように、1を足すと時計回りに1目盛り進み、15の次は0に戻ります（満杯の1本を取り除くことにあたります）。外側の数字は、同じビット列を2の補数表現として読んだ値です。0から時計回りに7まで進むと正の数が並び、その次の <code>1000</code> で −8 に切り替わります。</p>
+</div>
+<div id="fig-wheel" class="imageblock">
 <div class="content">
 <img src="./img/mod16-wheel.svg" alt="0から15を円環状に並べ、外周に2の補数表現としての解釈−8〜7を併記した図">
 </div>
-<div class="title">図 3. 水位が16で0に戻る円環と4ビットの2の補数表現</div>
+<div class="title">図 8. 水位が16で0に戻る円環と4ビットの2の補数表現</div>
 </div>
 <div class="paragraph">
 <p>まず、正の整数から、2の補数表現による負の整数の求め方について説明します。
@@ -1295,7 +1186,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="paragraph">
-<p>また、逆に11の2の補数を求めると、5になることは明らかでしょう。つまり、<strong>「2の補数表現された負の整数」の絶対値を知りたいときは、2の補数を計算すればよいことがわかります</strong>。</p>
+<p>また、逆に11の2の補数を求めると、\(16-11=5\) です。つまり、<strong>「2の補数表現された負の整数」の絶対値を知りたいときは、2の補数を計算すればよいことがわかります</strong>。</p>
 </div>
 <div class="paragraph">
 <p>ところで、コンピューター内部では数は2進法で表現されていますので、2の補数の計算は10進法を使うより2進法のままで計算した方が簡単です。以下のように考えます。</p>
@@ -1314,9 +1205,10 @@ pre.rouge .gs {
 <p>\(2^4=10000_{(2)}\) ですから \(2^4-1\) の2進表現は4つの1が並んだ \(1111_{(2)}\) となります。この値から、5の4ビット2進表現 \(0101_{(2)}\) を引いた結果は、\(0101_{(2)}\) の各桁のビットの0と1を入れ替える（ビットを反転する）ことと等価です。各桁のビットの反転によって、\(1010_{(2)}\) となります。最初に1を引いてしまったので、その分を最後に加えて、\(1011_{(2)}\) が得られます。これで、2の補数表現で、\(-5\) に相当する表記がえられました。これを、\(1011_{\text{(2c)}}=-5\) と書くことにします。</p>
 </div>
 <div class="paragraph">
-<p>この手続をまとめると、以下のようになります。（4ビットを整数表現に用いるとします。）</p>
+<p>この手続きをまとめると、以下のようになります。</p>
 </div>
 <div class="exampleblock">
+<div class="title">例 1. 2の補数表現の求め方（4ビットで −5 を表す場合）</div>
 <div class="content">
 <div class="ulist">
 <ul>
@@ -1334,19 +1226,22 @@ pre.rouge .gs {
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>逆に、負の数を表すビット列から絶対値を求めるときも、同じ「反転して1を足す」手続きを使います。</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
-<p>なぜこの手続きで \(2^4-5\) が計算できるのかは、買い物のお釣りの計算にたとえるとよくわかります。1000円を出して437円の買い物をしたときのお釣り \(1000-437\) を素直に筆算すると、繰り下がりが連鎖して面倒です。そこで、まず999円から引いて、最後に1円を足します。\(999-437\) は、どの桁も「9−その桁」を書くだけで繰り下がりが決して起きません。2進法ではこの「9−その桁」にあたるものが「1−そのビット」、すなわち<strong>ビットの反転</strong>なのです。</p>
+<p>なぜこの手続きで \(2^4-5\) が計算できるのかは、買い物のお釣りの計算にたとえるとよくわかります。1000円を出して437円の買い物をしたときのお釣り \(1000-437\) を素直に筆算すると、繰り下がりが連鎖して面倒です。そこで、まず999円から引いて、最後に1円を足します。\(999-437\) は、どの桁も「9−その桁」を書くだけで繰り下がりが決して起きません。2進法ではこの「9−その桁」にあたるものが「1−そのビット」、つまり<strong>ビットの反転</strong>なのです（<a href="#fig-flip">図 9</a>）。</p>
 </div>
-<div class="imageblock">
+<div id="fig-flip" class="imageblock">
 <div class="content">
-<img src="./img/flip-add-one.svg" alt="ビット反転と1の加算で2の補数が求められる理由">
+<img src="./img/flip-add-one.svg" alt="ビット反転と1の加算で2の補数が求められる理由" width="720">
 </div>
-<div class="title">図 4. 「各ビットを反転して1を足す」と2の補数が求められる理由</div>
+<div class="title">図 9. 「各ビットを反転して1を足す」と2の補数が求められる理由</div>
 </div>
 <div class="exampleblock">
-<div class="title">例 1. 2の補数を用いた計算</div>
+<div class="title">例 2. 2の補数を用いた計算</div>
 <div class="content">
 <div class="paragraph">
 <p>4ビットを整数表現に用いるとして、\(3 + (-7)\) を計算してみましょう。</p>
@@ -1383,7 +1278,7 @@ pre.rouge .gs {
 </div>
 </li>
 <li>
-<p>\(3+(-7)\) を2の補数表現で計算すると次の筆算のようになります（1<sub>(2)</sub>+1<sub>(2)</sub>で桁上りが生じることに注意）。</p>
+<p>\(3+(-7)\) を2の補数表現で計算すると次の筆算のようになります（1<sub>(2)</sub>+1<sub>(2)</sub>で桁上げが生じることに注意）。</p>
 </li>
 </ul>
 </div>
@@ -1502,11 +1397,11 @@ pre.rouge .gs {
 <p>桁あふれが起きたときのプログラムの動作は、言語や型によって異なります。ここで学んだ固定ビット幅の計算の仕組みだけから、すべての言語の動作が決まるわけではありません。</p>
 </div>
 <div class="exampleblock">
-<div class="title">例 2. プログラミング言語での桁あふれの観察</div>
+<div class="title">例 3. プログラミング言語での桁あふれの観察</div>
 <div class="content">
 <div class="paragraph">
-<p>データサイエンスや人工知能等の分野で現在もっとも広く使われているプログラミング言語Pythonでは、整数は最初から任意精度で表現されており、メモリなどの資源が許す限り必要な桁数が増えるため、固定幅の整数のような桁あふれは起こりません。
-そのため、固定ビット幅の整数を扱うためには、<code>numpy</code> という数値演算のためのライブラリをあらかじめ導入しておく必要があります。以下では <code>numpy</code> が使えることを前提に、Pythonでの桁あふれの例を見てみます。</p>
+<p>データサイエンスや人工知能等の分野で広く使われているプログラミング言語Pythonでは、整数(<code>int</code>)は任意精度で表現されており、メモリなどの資源が許す限り必要な桁数が増えるため、固定幅の整数のような桁あふれは起こりません。
+そのため、固定ビット幅の整数を試すには、<code>numpy</code> という数値演算のためのライブラリを使います。以下では <code>numpy</code> が使えることを前提に、Pythonでの桁あふれの例を見てみます。</p>
 </div>
 <div class="paragraph">
 <p>8ビットの2の補数表現による整数の演算 \(127+1\) と \((-128)+(-1)\) の計算結果です。（<code>np.int8(127)</code> は8ビットの2の補数表現による整数で127を意味しています。）
@@ -1514,54 +1409,54 @@ pre.rouge .gs {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">seterr</span><span class="p">(</span><span class="n">over</span><span class="o">=</span><span class="sh">"</span><span class="s">warn</span><span class="sh">"</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">int8</span><span class="p">(</span><span class="mi">127</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="nf">int8</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
-<span class="o">-</span><span class="mi">128</span>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; import numpy as np
+&gt;&gt;&gt; _ = np.seterr(over="warn")
+&gt;&gt;&gt; print(int(np.int8(127) + np.int8(1)))
+-128
 
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">int8</span><span class="p">(</span><span class="o">-</span><span class="mi">128</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="nf">int8</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
-<span class="mi">127</span>
+&gt;&gt;&gt; print(int(np.int8(-128) + np.int8(-1)))
+127
 
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">int8</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="p">.</span><span class="nf">int8</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
-<span class="o">-</span><span class="mi">56</span></code></pre>
+&gt;&gt;&gt; print(int(np.int8(100) + np.int8(100)))
+-56</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>最後の例では \(100+100\) が \(-56\) になっています。8ビットの2の補数表現で表せる範囲は \(-128\leq m\leq 127\) であり、\(200\) はこの範囲を超えているためです。</p>
-</div>
-<div class="paragraph">
-<p>これもメスシリンダーで説明できます。8ビットの2の補数表現は、容量 \(2^8=256\) のメスシリンダーで、水位128以上を負の領域と取り決めたものにあたります。水位100の水どうしを注ぎ合わせると水位200になります。水はあふれていないのに、水位200は境目の128を越えて負の領域に入ってしまっているため、空き \(256-200=56\) を読んで \(-56\) となるのです。容量10のメスシリンダーでの失敗例 \(3+4\) と、まったく同じ仕組みです。</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./img/mess-op-8bit.svg" alt="8ビットにおける100+100の桁あふれ">
-</div>
-<div class="title">図 5. 8ビット(容量256)での失敗例 100+100</div>
 </div>
 <div class="paragraph">
 <p>（警告の行は省略しています。<code>over="raise"</code> に設定すれば例外が発生します。参照：<a href="https://numpy.org/doc/stable/reference/generated/numpy.seterr.html">NumPy seterr</a>。）</p>
 </div>
 <div class="paragraph">
-<p>次に、データ科学分野で広くつかわれているプログラミング言語Juliaでの例です。
+<p>最後の例では \(100+100\) が \(-56\) になっています。8ビットの2の補数表現で表せる範囲は \(-128\leq m\leq 127\) であり、\(200\) はこの範囲を超えているためです。</p>
+</div>
+<div class="paragraph">
+<p>これもメスシリンダーで説明できます。8ビットの2の補数表現は、容量 \(2^8=256\) のメスシリンダーで、水位128以上を負の領域と取り決めたものにあたります。水位100の水どうしを注ぎ合わせると水位200になります。水はあふれていないのに、水位200は境目の128を越えて負の領域に入ってしまっているため、空き \(256-200=56\) を読んで \(-56\) となるのです。容量10のメスシリンダーでの失敗例 \(3+4\) と、まったく同じ仕組みです（<a href="#fig-op-8bit">図 10</a>）。</p>
+</div>
+<div id="fig-op-8bit" class="imageblock">
+<div class="content">
+<img src="./img/mess-op-8bit.svg" alt="8ビットにおける100+100の桁あふれ" width="640">
+</div>
+<div class="title">図 10. 8ビット(容量256)での失敗例 100+100</div>
+</div>
+<div class="paragraph">
+<p>次に、科学技術計算やデータ分析で使われているプログラミング言語Juliaでの例です。
 （<code>Int8(127)</code> は8ビットの2の補数表現による整数で127を意味しています。また、 <code>bitstring</code> は与えられた値のコンピューター内部での2進法による表現を取り出す関数です。）
 Juliaもビット数で定まる値の範囲を超えると、何のエラーも出さずにあふれたビットを無視して結果を返していることがわかります。</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="kt">Int8</span><span class="x">(</span><span class="mi">127</span><span class="x">)</span> <span class="o">+</span> <span class="kt">Int8</span><span class="x">(</span><span class="mi">1</span><span class="x">)</span>
-<span class="o">-</span><span class="mi">128</span>
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; Int8(127) + Int8(1)
+-128
 
-<span class="n">julia</span><span class="o">&gt;</span> <span class="kt">Int8</span><span class="x">(</span><span class="o">-</span><span class="mi">128</span><span class="x">)</span> <span class="o">+</span> <span class="kt">Int8</span><span class="x">(</span><span class="o">-</span><span class="mi">1</span><span class="x">)</span>
-<span class="mi">127</span>
+julia&gt; Int8(-128) + Int8(-1)
+127
 
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">bitstring</span><span class="x">(</span><span class="kt">Int8</span><span class="x">(</span><span class="o">-</span><span class="mi">128</span><span class="x">))</span>
-<span class="s">"10000000"</span>
+julia&gt; bitstring(Int8(-128))
+"10000000"
 
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">bitstring</span><span class="x">(</span><span class="kt">Int8</span><span class="x">(</span><span class="o">-</span><span class="mi">1</span><span class="x">))</span>
-<span class="s">"11111111"</span>
+julia&gt; bitstring(Int8(-1))
+"11111111"
 
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">bitstring</span><span class="x">(</span><span class="kt">Int8</span><span class="x">(</span><span class="mi">127</span><span class="x">))</span>
-<span class="s">"01111111"</span></code></pre>
+julia&gt; bitstring(Int8(127))
+"01111111"</code></pre>
 </div>
 </div>
 </div>
@@ -1579,7 +1474,7 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="title">型変換のオーバーフローが起こした大規模事故 — アリアン5の打ち上げ失敗</div>
+<div class="title">型変換のオーバーフローが起こした大規模事故: アリアン5の打ち上げ失敗</div>
 <div class="paragraph">
 <p>1996年6月4日、アリアン5の初飛行は打ち上げ直後に失敗しました。調査報告によれば、慣性基準装置で水平速度に関連する内部変数を64ビット浮動小数点から16ビット符号付き整数へ変換した際、値が範囲に収まらず例外が発生しました。同じソフトウェアを使う予備装置も停止していたため、切り替えでは救えませんでした。</p>
 </div>
@@ -1633,7 +1528,7 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 <p>よって、<strong>本来の答えが表現範囲内にあれば、読み出した値はその答えに一致します。</strong> 範囲外なら、同じ水位に対応する別の値を読んでしまいます。これが桁あふれです。</p>
 </div>
 <div class="paragraph">
-<p>引き算も同じで、\(-b\) に対応するビット列を足せば、下位 \(n\) ビットが得られます。乗算についても、</p>
+<p>引き算 \(a-b\) も同じで、\(-b\) に対応するビット列を足せば、\(a-b\) と合同な水位が得られます。答えが表現範囲内なら、それが \(a-b\) です。乗算についても、</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1652,35 +1547,35 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 <div class="sect2">
 <h3 id="_実数の浮動小数点表現による近似"><a class="link" href="#_実数の浮動小数点表現による近似">3.5. 実数の浮動小数点表現による近似</a></h3>
 <div class="paragraph">
-<p>前節までは、整数の表現を考えてきました。ここからは、実数について考えます。コンピューターは有限の桁しか扱えませんので、すべての実数を正確に表現することはできません。たとえば0.5は2進法で正確に表せますが、0.1は有限桁では表せず、近似値になります。そのために、生じる問題があります。
-ほとんどのプログラミング言語 C, C++, Java, JavaScript, Python, Ruby, R, Julia 等では、\(1.0 - 0.9\) と \(0.1\) の値が等しくなりません。</p>
+<p>前節までは、整数の表現を考えてきました。ここからは、実数について考えます。コンピューターは有限の桁しか扱えませんので、すべての実数を正確に表現することはできません。たとえば0.5は2進法で正確に表せますが、0.1は有限桁では表せず、近似値になります。そのため、次のような問題が起こります。
+C, C++, Java, JavaScript, Python, Ruby, R, Julia など多くのプログラミング言語で、小数を通常の浮動小数点数（後で説明する倍精度）として計算すると、\(1.0 - 0.9\) と \(0.1\) の値が等しくなりません。</p>
 </div>
 <div class="paragraph">
-<p>実際にPythonによって \(1.0-0.9-0.1\) の計算と、\(1.0-0.9 = 0.1\) であることのチェックしてみます。
-すると、前者の結果は、0になっていませんし、後者は等しければ <code>True</code>（真） となるはずが、 「等しくない」と <code>False</code>（偽） を結果として返しています。</p>
+<p>実際にPythonで、\(1.0-0.9-0.1\) を計算し、\(1.0-0.9 = 0.1\) が成り立つかどうかを確かめてみます。
+前者の結果は0になりません。後者は、等しければ <code>True</code>（真）となるはずが、「等しくない」という意味の <code>False</code>（偽）を返しています。</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.9</span> <span class="o">-</span> <span class="mf">0.1</span>
-<span class="o">-</span><span class="mf">2.7755575615628914e-17</span>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; 1.0 - 0.9 - 0.1
+-2.7755575615628914e-17
 
-<span class="o">&gt;&gt;&gt;</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.9</span> <span class="o">==</span> <span class="mf">0.1</span>
-<span class="bp">False</span></code></pre>
+&gt;&gt;&gt; 1.0 - 0.9 == 0.1
+False</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>同様に、 \(0.1+0.2\) と \(0.3-0.2\) の計算と、\(0.3-0.2 = 0.1\) であることのチェックしてみます。やはり、おかしな結果が得られているのが確認できます。</p>
+<p>同様に、\(0.1+0.2\) と \(0.3-0.2\) を計算し、\(0.3-0.2 = 0.1\) が成り立つかどうかを確かめてみます。やはり、期待と違う結果になります。</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span>
-<span class="mf">0.30000000000000004</span>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; 0.1 + 0.2
+0.30000000000000004
 
-<span class="o">&gt;&gt;&gt;</span> <span class="mf">0.3</span> <span class="o">-</span> <span class="mf">0.2</span>
-<span class="mf">0.09999999999999998</span>
+&gt;&gt;&gt; 0.3 - 0.2
+0.09999999999999998
 
-<span class="o">&gt;&gt;&gt;</span> <span class="mf">0.3</span> <span class="o">-</span> <span class="mf">0.2</span> <span class="o">==</span> <span class="mf">0.1</span>
-<span class="bp">False</span></code></pre>
+&gt;&gt;&gt; 0.3 - 0.2 == 0.1
+False</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1719,10 +1614,10 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 <h4 id="_小数の変換"><a class="link" href="#_小数の変換">小数の変換</a></h4>
 <div class="paragraph">
 <p>ところで、コンピューター内部では10進法ではなくて2進法で数を表現しなくてはなりません。
-第1回授業で2進法の小数を10進法に変換する方法を説明しました。まずは、その復習からです。</p>
+2進法の小数を10進法に変換する方法は、第1章と補足資料 <a href="binary-notation.html">数の表現：2進法と基数変換</a> で説明しました。まずは、その復習からです。</p>
 </div>
 <div class="exampleblock">
-<div class="title">例 3. 2進法の小数を10進法に変換する</div>
+<div class="title">例 4. 2進法の小数を10進法に変換する</div>
 <div class="content">
 <div class="stemblock">
 <div class="content">
@@ -1740,7 +1635,7 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 10進法では、10倍すると全体の桁が左に1つずれて（シフトして）、小数が順番に1の位に現れますので、順に10倍してその値を拾っていけば、小数の各桁の値がすべて一の位に出現することがわかります。同じように、2進法で小数を1つ左にシフトするには2倍すればよいので、これを小数の数が全部1の位にでてくるまで繰り返します。</p>
 </div>
 <div class="exampleblock">
-<div class="title">例 4. 10進法の小数を2進法に変換する</div>
+<div class="title">例 5. 10進法の小数を2進法に変換する</div>
 <div class="content">
 <div class="stemblock">
 <div class="content">
@@ -1767,7 +1662,7 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 <div class="sect3">
 <h4 id="_ieee_754による浮動小数点表現"><a class="link" href="#_ieee_754による浮動小数点表現">IEEE 754による浮動小数点表現</a></h4>
 <div class="paragraph">
-<p>ようやく実際にコンピューター内部での小数を含む数字の表現について説明する準備ができました。ここでは、コンピューターの浮動小数点表現の中でもっとも一般に用いられているIEEE754という標準に基づく方法を紹介します。（IEEEは「アイ・トリプル・イー」と読みます。世界最大の工学系の学会です。）</p>
+<p>ようやく実際にコンピューター内部での小数を含む数字の表現について説明する準備ができました。ここでは、コンピューターの浮動小数点表現の中でもっとも一般に用いられているIEEE754という標準に基づく方法を紹介します。（IEEEは「アイ・トリプル・イー」と読みます。電気・電子・情報分野の技術者が集まる、世界最大規模の学会です。）</p>
 </div>
 <div class="paragraph">
 <p>IEEE754の規格の細部を扱うことはできませんので、最低限の内容についてここでは触れます。また、一般には浮動小数点表現に32ビット（単精度）や64ビット（倍精度）を用いますが、ここでは簡単のため、16ビット（半精度）の浮動小数点表現を用いて説明します。</p>
@@ -1846,26 +1741,27 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 <div class="paragraph">
 <p>例えば、\(0.0110_{(2)}\times 2^2\) は正規化すると \(1.1000_{(2)}\times2^0\) となります。</p>
 </div>
+<div class="paragraph">
+<p>16ビットの半精度では、16ビットを「符号部（1ビット）」「指数部（5ビット）」「仮数部（10ビット）」の3つの領域に分けます（<a href="#fig-fp16">図 11</a>）。</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>16ビットを用いる場合、「符号（1ビット）」、「指数（5ビット）」、「仮数（10ビット）」の各領域に16ビットを分割します。</p>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./img/floating-point.svg" alt="IEEE754半精度の格納形式" width="400">
-</div>
-</div>
+<p>符号部は正のとき 0、負のとき 1 とします。この例は正の数なので 0 です。</p>
 </li>
 <li>
-<p>符号部は正のとき 0、 負のとき 1 とします。今回は正の数なので 0 です。</p>
-</li>
-<li>
-<p>指数部は 5ビットを用いて \(-14\sim 15\) までの範囲の指数を表現します。指数が \(n\) のとき、\(n+15\) に値を変換してから、2進法の表記に変換します。<strong>2の補数を用いないのは、指数部の大小比較を簡単にするためです。</strong> ここでは、指数が \(-1\) なので、\(-1+15=14=01110_{(2)}\) となります。（指数部を  <code>11111</code> とすると無限大または非数値(NaN)を表すために用いられます。）</p>
+<p>指数部は5ビットを用いて \(-14\sim 15\) までの範囲の指数を表現します。指数が \(n\) のとき、\(n+15\) に値を変換してから、2進法の表記に変換します。このような表し方を<strong>バイアス表現</strong>といいます（2の補数を使わない理由は後で説明します）。ここでは、指数が \(-1\) なので、\(-1+15=14=01110_{(2)}\) となります。（指数部の <code>00000</code> と <code>11111</code> は、0や無限大などの特別な値のために取ってあります。）</p>
 </li>
 <li>
 <p>仮数部は \(1.0011_{(2)}\) ですが、正規化した場合、必ず1の位は1となるので、この1は節約して省きます。すると、残りの小数点以下のビット列は <code>0011</code> となります。この右側に6ビットの0をつめて、<code>0011000000</code> となります。</p>
 </li>
 </ul>
+</div>
+<div id="fig-fp16" class="imageblock">
+<div class="content">
+<img src="./img/fp16-format.svg" alt="半精度の符号部1ビット・指数部5ビット・仮数部10ビットと、0.59375のビット列0 01110 0011000000" width="720">
+</div>
+<div class="title">図 11. IEEE 754 半精度（16ビット）の格納形式と、0.59375 を表すビット列</div>
 </div>
 <div class="paragraph">
 <p>このようにして、実数を有限の浮動小数点表現で以下のように表すわけです。</p>
@@ -1892,10 +1788,24 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 </tbody>
 </table>
 <div class="paragraph">
-<p>全部つなげると、<code>0 01110 0011000000</code> となります。これが、0.59375 の16ビット浮動小数点表現となります。整数とは表現や計算の方法が大きく異なるため、ほとんどのコンピューターの演算装置は、浮動小数点の計算専用の演算装置を内蔵しています（これを FPU(Floating Point Unit) といいます）。</p>
+<p>全部つなげると、<code>0 01110 0011000000</code> となります。これが、0.59375 の16ビット浮動小数点表現となります。4ビットずつ区切って16進法で書くと <code>0011 1000 1100 0000</code> → <code>38C0</code> です。</p>
 </div>
 <div class="paragraph">
-<p>指数部では、なぜ単純な2進表現ではなく、バイアス表現（+15を加算）を使うのでしょうか。</p>
+<p>逆に、ビット列から値を読むときは、符号部を \(s\)、指数部を符号なし整数として読んだ値を \(e\)、仮数部のビット列を \(f\) として、次のように計算します（指数部が <code>00000</code> と <code>11111</code> 以外のとき）。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\text{値} = (-1)^{s}\times 1.f_{(2)}\times 2^{\,e-15}\]
+</div>
+</div>
+<div class="paragraph">
+<p>たとえば <code>0 01110 0011000000</code> なら、\(s=0,\ e=14\) なので \(+1.0011_{(2)}\times 2^{14-15}=1.0011_{(2)}\times 2^{-1}=0.59375\) に戻ります。</p>
+</div>
+<div class="paragraph">
+<p>整数とは表現や計算の方法が大きく異なるため、ほとんどのコンピューターの演算装置は、浮動小数点の計算専用の演算装置を内蔵しています（これを FPU(Floating Point Unit) といいます）。</p>
+</div>
+<div class="paragraph">
+<p>指数部では、なぜ2の補数表現ではなく、バイアス表現（+15を加算）を使うのでしょうか。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1904,23 +1814,20 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 <div class="ulist">
 <ul>
 <li>
-<p>符号付き数の比較には特別な回路が必要ですが</p>
+<p>2の補数表現のビット列を符号なし整数として比べると、負の数のほうが大きく見えてしまいます（2の補数表現の節で見た欠点です）。</p>
 </li>
 <li>
-<p>バイアス表現では単純な符号なし整数として比較できます</p>
+<p>バイアス表現では、指数が大きいほど指数部のビット列も符号なし整数として大きくなります。そのため、符号部が0の浮動小数点数どうし（非数を除く）は、16ビット全体を符号なし整数とみなして比べるだけで大小がわかります。</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>特殊値の扱い</p>
+<p>特別な値の区別</p>
 <div class="ulist">
 <ul>
 <li>
-<p>全ビット0はゼロや非正規化数(後述)のための特殊値、全ビット1は特殊値（無限大/NaN）を表すように自然に対応（正規化数の最小の指数は <code>00001</code> = \(-14\) です）</p>
-</li>
-<li>
-<p>これにより、特殊値の検出が容易になります</p>
+<p>指数部が <code>00000</code>（最小）と <code>11111</code>（最大）のビット列を、0や無限大などの特別な値のために取っておけます。正規化数の指数部は <code>00001</code>〜<code>11110</code> です。</p>
 </li>
 </ul>
 </div>
@@ -1944,161 +1851,94 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 </ul>
 </div>
 <div class="paragraph">
-<p>ところで、このままでは \(0\) を表現することが出来ません。なぜなら、仮数部の正規化によって記載されていない \(1\) が必ず最上位ビットには隠れているからです。実は、上記の規則以外に下記のような例外的な表現があります。</p>
+<p>ところで、このままでは \(0\) を表現することができません。仮数部の最上位には、省略した \(1\) が必ず隠れているからです。そこで、上記の規則とは別に、<a href="#tab-fp16-special">表 5</a>の例外的な表現が決められています。</p>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">正のゼロ(\(+0\))</dt>
-</dl>
-</div>
-<table class="tableblock frame-all grid-all fit-content">
+<table id="tab-fp16-special" class="tableblock frame-ends grid-rows stretch">
+<caption class="title">表 5. 半精度の特別な値</caption>
 <colgroup>
-<col>
-<col>
-<col>
+<col style="width: 27.2727%;">
+<col style="width: 18.1818%;">
+<col style="width: 18.1818%;">
+<col style="width: 36.3637%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-right valign-top">符号(1ビット)</th>
-<th class="tableblock halign-right valign-top">指数(5ビット)</th>
-<th class="tableblock halign-right valign-top">仮数(10ビット)</th>
+<th class="tableblock halign-left valign-top">値</th>
+<th class="tableblock halign-center valign-top">符号(1ビット)</th>
+<th class="tableblock halign-center valign-top">指数(5ビット)</th>
+<th class="tableblock halign-center valign-top">仮数(10ビット)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>00000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0000000000</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">正のゼロ(\(+0\))</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>00000</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0000000000</code></p></td>
 </tr>
-</tbody>
-</table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">負のゼロ(\(-0\))</dt>
-</dl>
-</div>
-<table class="tableblock frame-all grid-all fit-content">
-<colgroup>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
 <tr>
-<th class="tableblock halign-right valign-top">符号(1ビット)</th>
-<th class="tableblock halign-right valign-top">指数(5ビット)</th>
-<th class="tableblock halign-right valign-top">仮数(10ビット)</th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">負のゼロ(\(-0\))</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>00000</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0000000000</code></p></td>
 </tr>
-</thead>
-<tbody>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>00000</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0000000000</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">非正規化数（0に近い小さな値）</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code> または <code>1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>00000</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0000000000</code> 以外</p></td>
 </tr>
-</tbody>
-</table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">正の無限大(\(+\infty\))</dt>
-</dl>
-</div>
-<table class="tableblock frame-all grid-all fit-content">
-<colgroup>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
 <tr>
-<th class="tableblock halign-right valign-top">符号(1ビット)</th>
-<th class="tableblock halign-right valign-top">指数(5ビット)</th>
-<th class="tableblock halign-right valign-top">仮数(10ビット)</th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">正の無限大(\(+\infty\))</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>11111</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0000000000</code></p></td>
 </tr>
-</thead>
-<tbody>
 <tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>11111</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0000000000</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">負の無限大(\(-\infty\))</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>11111</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0000000000</code></p></td>
 </tr>
-</tbody>
-</table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">負の無限大(\(-\infty\))</dt>
-</dl>
-</div>
-<table class="tableblock frame-all grid-all fit-content">
-<colgroup>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
 <tr>
-<th class="tableblock halign-right valign-top">符号(1ビット)</th>
-<th class="tableblock halign-right valign-top">指数(5ビット)</th>
-<th class="tableblock halign-right valign-top">仮数(10ビット)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>1</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>11111</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0000000000</code></p></td>
-</tr>
-</tbody>
-</table>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">非数(NaN: Not a Number)</dt>
-</dl>
-</div>
-<table class="tableblock frame-all grid-all fit-content">
-<colgroup>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-right valign-top">符号(1ビット)</th>
-<th class="tableblock halign-right valign-top">指数(5ビット)</th>
-<th class="tableblock halign-right valign-top">仮数(10ビット)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0</code> or <code>1</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>11111</code></p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock"><code>0000000000</code> 以外の値</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">非数(NaN: Not a Number)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0</code> または <code>1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>11111</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>0000000000</code> 以外</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>正のゼロと負のゼロがあると、複素数の計算の極座標表示等でメリットがあります。また、非数については、\(0/0\) などの未定義の計算結果を表す際などに用いられます。</p>
+<p>正のゼロと負のゼロを区別すると、負の小さな値が0に丸められたときにも符号の情報が残ります。たとえば次のように、0で割った結果の符号が変わります。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\frac{1}{+0}=+\infty,\qquad \frac{1}{-0}=-\infty\]
+</div>
 </div>
 <div class="paragraph">
-<p>なお、指数部が <code>00000</code> で仮数部が0以外の値は<strong>非正規化数</strong>と呼ばれ、0付近の非常に小さい値を細かく表すために用いられます（本授業では詳細は扱いません）。</p>
+<p>非数は、\(0/0\) などの未定義の計算結果を表すために用いられます。</p>
 </div>
 <div class="paragraph">
-<p>先程と同様にプログラミング言語Juliaでも確認してみます。</p>
+<p>指数部が <code>00000</code> で仮数部が0以外の値は<strong>非正規化数</strong>と呼ばれ、0付近の非常に小さい値を細かく表すために用いられます（この教材では詳細は扱いません）。</p>
+</div>
+<div class="paragraph">
+<p>先程と同様にプログラミング言語Juliaでも確認してみます（<code>NaN16</code> は半精度の非数です）。</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="n">bitstring</span><span class="x">(</span><span class="kt">Float16</span><span class="x">(</span><span class="mf">0.59375</span><span class="x">))</span>
-<span class="s">"0011100011000000"</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">bitstring</span><span class="x">(</span><span class="kt">Float16</span><span class="x">(</span><span class="mi">0</span><span class="x">))</span>
-<span class="s">"0000000000000000"</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">bitstring</span><span class="x">(</span><span class="kt">Float16</span><span class="x">(</span><span class="mi">0</span><span class="x">)</span><span class="o">/</span><span class="kt">Float16</span><span class="x">(</span><span class="mi">0</span><span class="x">))</span> <span class="c"># NaN</span>
-<span class="s">"0111111000000000"</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">bitstring</span><span class="x">(</span><span class="kt">Float16</span><span class="x">(</span><span class="mi">1</span><span class="x">)</span><span class="o">/</span><span class="kt">Float16</span><span class="x">(</span><span class="mi">0</span><span class="x">))</span> <span class="c"># +∞</span>
-<span class="s">"0111110000000000"</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; bitstring(Float16(0.59375))
+"0011100011000000"
+julia&gt; bitstring(Float16(0))
+"0000000000000000"
+julia&gt; bitstring(Float16(1)/Float16(0)) # +∞
+"0111110000000000"
+julia&gt; bitstring(NaN16) # NaN
+"0111111000000000"</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Juliaで扱う浮動小数点表現が、説明と一致していることがわかります。</p>
+<p>Juliaで扱う浮動小数点表現が、説明と一致していることがわかります。なお、非数は符号部と仮数部の値が一つに決まっていません。\(0/0\) の計算で得られる非数のビット列は、CPUの種類によって異なることがあります（たとえばx86系のCPUでは符号部が1になります）。</p>
 </div>
 </div>
 <div class="sect3">
@@ -2111,7 +1951,7 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 </div>
 <div class="paragraph">
 <p>これは、科学的記数法(指数表記)と呼ばれる表記方法です。この表記は次のように解釈します。
-<code>1.23</code> は仮数部(significand) <code>e-14</code> は「10の-14乗」を意味する指数部です。記号「e」は「exponential」（指数）の略です。
+<code>1.23</code> が仮数部(significand)、<code>e-14</code> が「10の−14乗」を意味する指数部です。記号「e」は「exponent」（指数）の頭文字です。
 つまり、<code>1.23e-14</code> は数学的には次のように表されます。</p>
 </div>
 <div class="stemblock">
@@ -2133,18 +1973,18 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 </ul>
 </div>
 <div class="paragraph">
-<p>この表記方法は、とても小さな数値や大きな数値を簡潔に表現できるだけでなく、浮動小数点数の内部表現(IEEE 754標準)とも関連しています。浮動小数点数は内部的に「仮数部」と「指数部」に分けて格納されており、この表記はその内部構造を反映しています。</p>
+<p>この表記は、浮動小数点表現を10進法で書いたものです。内部表現(IEEE 754)も「仮数部」と「指数部」に分けて格納する点は同じですが、内部では基数が10ではなく2です。そのため、画面に <code>0.1</code> と表示されていても、内部の値が0.1ちょうどとは限りません。この点を次に見ます。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_表現誤差"><a class="link" href="#_表現誤差">表現誤差</a></h4>
 <div class="paragraph">
-<p>このようにして10進法の数値を浮動小数点表現によって表す際の問題点についてここでは見てゆきます。
+<p>10進法の数値を2進法の浮動小数点表現で表すときの問題点を見てゆきます。
 10進法の \(0.1_{(10)}\) を浮動小数点表現することを考えます。
-そこで、まず、2進法に変換します。</p>
+まず、2進法に変換します。</p>
 </div>
 <div class="exampleblock">
-<div class="title">例 5. 10進法の小数を2進法に変換する</div>
+<div class="title">例 6. 10進法の小数を2進法に変換する</div>
 <div class="content">
 <div class="paragraph">
 <p>以下のように 0.1<sub>(10)</sub> を順次2倍して、1の位にでてくる値（0または1）を並べてゆきます。</p>
@@ -2184,6 +2024,14 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 <div class="paragraph">
 <p>10進法では有限桁で表すことができる小数が、2進法では循環小数になってしまう例をみました。では、2進法では有限桁で表すことができる小数が、10進法で表すと循環小数になってしまうことはあるのでしょうか？ 考えてみてください。</p>
 </div>
+<details>
+<summary class="title">答え</summary>
+<div class="content">
+<div class="paragraph">
+<p>ありません。2進法で小数点以下 \(m\) 桁の小数は、ある整数 \(k\) を使って \(\dfrac{k}{2^m}\) と書けます。分母と分子に \(5^m\) を掛けると \(\dfrac{k\times 5^m}{10^m}\) となるので、10進法でも小数点以下 \(m\) 桁以内の有限小数です。たとえば \(0.001_{(2)}=\dfrac{1}{8}=0.125\) です。逆向きがうまくいかないのは、10進法の分母 \(10^m=2^m\times 5^m\) に含まれる因数5を、2のべき乗の分母では表せないからです。</p>
+</div>
+</div>
+</details>
 </td>
 </tr>
 </table>
@@ -2191,7 +2039,7 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 </div>
 </div>
 <div class="paragraph">
-<p>10進法の 0.1 を16ビットの浮動小数点表現（半精度）を用いて表すと、1.1001100110<sub>(2)</sub> × 2<sup>-4</sup> より</p>
+<p>10進法の 0.1 を16ビットの浮動小数点表現（半精度）で表してみます。正規化すると \(0.1_{(10)}=1.100110011001\cdots_{(2)}\times 2^{-4}\) なので、</p>
 </div>
 <div class="ulist">
 <ul>
@@ -2202,12 +2050,12 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 <p>指数部は \(-4+15=11=01011_{(2)}\)</p>
 </li>
 <li>
-<p>仮数部は1の位の1を省略して <code>1001100110</code>(IEEE 754の既定の丸め方式は最近接偶数丸めですが、この例では切り捨てと同じ結果になります)</p>
+<p>仮数部は、1の位の1を省略した小数点以下のうち、10ビットしか格納できません。<code>1001100110</code> の後ろに続くビットは <code>0110&#8230;&#8203;</code> で、捨てる部分は最下位ビットの重みの半分より小さいので、切り捨てた <code>1001100110</code> が最も近い値になります。</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>となります。よって、0.1<sub>(10)</sub>の16ビット浮動小数点表現は</p>
+<p>となります。IEEE 754の既定の丸め方式は「最も近い表現可能な値に丸める（ちょうど中間のときは最下位ビットが0の方に丸める）」で、この例では切り捨てと同じ結果になります。よって、0.1<sub>(10)</sub>の16ビット浮動小数点表現は</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -2215,26 +2063,47 @@ Juliaもビット数で定まる値の範囲を超えると、何のエラーも
 </div>
 </div>
 <div class="paragraph">
-<p>となります。つまり、0.1 の2進法表現は循環小数になるにもかかわらず、正規化された浮動小数点表現では2進法小数点以下10ビットまでしか値を表現できないことになります。こうして、10進法の値との間に誤差が生じることになります。このような誤差を<strong>「表現誤差」</strong>と呼びます。</p>
+<p>となります。つまり、0.1 の2進法表現は無限に続く循環小数なのに、浮動小数点表現では仮数部の10ビット分までしか格納できません。こうして、もとの10進法の値との間に誤差が生じます。このような誤差を<strong>表現誤差</strong>と呼びます。</p>
 </div>
 <div class="paragraph">
-<p>実際に 0.00011001100110<sub>(2)</sub> を10進法に変換すると 0.0999755859375 となります。
-Juliaで実行してみると、たしかに値が一致することがわかります(Python や JavaScript, Cなどで実行しても同様の結果となります)。</p>
+<p>実際に \(1.1001100110_{(2)}\times 2^{-4}=0.00011001100110_{(2)}\) を10進法に変換すると 0.0999755859375 となります。半精度で表せる数は飛び飛びで、0.1 の近くでは<a href="#fig-fp16-grid">図 12</a>のように並んでいます。0.1 そのものは表せないので、最も近い 0.0999755859375 が選ばれるのです。</p>
+</div>
+<div id="fig-fp16-grid" class="imageblock">
+<div class="content">
+<img src="./img/fp16-grid.svg" alt="0.1付近で半精度が表せる数の並びと、0.1が最も近い0.0999755859375に丸められる様子" width="720">
+</div>
+<div class="title">図 12. 半精度で表せる数は飛び飛び（0.1付近の拡大）</div>
+</div>
+<div class="paragraph">
+<p>Juliaで実行してみると、たしかに値が一致することがわかります(Python では NumPy の <code>float16</code> 型で同じ値を確認できます)。</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="k">using</span> <span class="n">Printf</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="nd">@printf</span><span class="x">(</span><span class="s">"%0.16f"</span><span class="x">,</span><span class="kt">Float16</span><span class="x">(</span><span class="mf">0.1</span><span class="x">))</span>
-<span class="mf">0.0999755859375000</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; using Printf
+julia&gt; @printf("%0.16f",Float16(0.1))
+0.0999755859375000</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>ふだんの計算で使われる倍精度（64ビット、仮数部52ビット）でも、仮数部の桁数が増えて誤差が小さくなるだけで、0.1 が正確に表せないことは変わりません。Pythonの <code>Decimal(0.1)</code> で、倍精度の0.1が内部で実際に持っている値を10進法で表示できます。</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span>
-<span class="mf">0.30000000000000004</span>  <span class="c"># 0.3ではない</span>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; from decimal import Decimal
+&gt;&gt;&gt; Decimal(0.1)
+Decimal('0.1000000000000000055511151231257827021181583404541015625')</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>0.1、0.2、0.3 はどれも少しずれた値で格納されているので、\(0.1+0.2\) の結果が、0.3 を格納した値と一致しないことがあります。これが、節の最初に見た現象の原因です。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; 0.1 + 0.2
+0.30000000000000004  # 0.3ではない
 
-<span class="n">julia</span><span class="o">&gt;</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">==</span> <span class="mf">0.3</span>
-<span class="nb">false</span>  <span class="c"># 等しくないと判定される</span></code></pre>
+julia&gt; 0.1 + 0.2 == 0.3
+false  # 等しくないと判定される</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2252,9 +2121,9 @@ Juliaで実行してみると、たしかに値が一致することがわかり
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="k">from</span> <span class="n">decimal</span> <span class="k">import</span> <span class="n">Decimal</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">Decimal</span><span class="p">(</span><span class="sh">'</span><span class="s">0.3</span><span class="sh">'</span><span class="p">)</span> <span class="o">-</span> <span class="n">Decimal</span><span class="p">(</span><span class="sh">'</span><span class="s">0.2</span><span class="sh">'</span><span class="p">)</span>
-<span class="n">Decimal</span><span class="p">(</span><span class="sh">'</span><span class="s">0.1</span><span class="sh">'</span><span class="p">)</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; from decimal import Decimal
+&gt;&gt;&gt; Decimal('0.3') - Decimal('0.2')
+Decimal('0.1')</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2272,10 +2141,10 @@ Juliaで実行してみると、たしかに値が一致することがわかり
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Excelで小数点を扱う場合には <code>0.3-0.2</code> は <code>0.1</code> となり、一見すると表現誤差がないように見えるものの、単純な利用では誤差が見えないように隠蔽されているだけで本質的には同様の誤差があることを念頭にいれて使う必要があります。</p>
+<p>Excelも内部では倍精度の浮動小数点数を使っているので、同じ表現誤差があります。ただし、ごくわずかな差を丸めて扱う処理（最適化）が組み込まれているため、誤差が見えにくくなっています。たとえば <code>=(0.1+0.2)=0.3</code> は <code>TRUE</code> になります。一方、<code>=(0.1+0.2)-0.3&gt;0</code> も <code>TRUE</code> になり、内部の倍精度の値では 0.1+0.2 が 0.3 よりわずかに（約 \(5.55\times 10^{-17}\)）大きいことがわかります。差を0に丸める処理は、引き算が計算の最後の演算である場合などに限られ、比較の途中の引き算には働かないためです。見た目の表示や比較の結果だけで「誤差がない」と判断しないようにしましょう。</p>
 </div>
 <div class="paragraph">
-<p><a href="https://docs.microsoft.com/ja-jp/office/troubleshoot/excel/floating-point-arithmetic-inaccurate-result" target="_blank" rel="noopener">浮動小数点演算が Excel で不正確な結果をもたらす可能性がある</a></p>
+<p>参照：<a href="https://learn.microsoft.com/ja-jp/office/troubleshoot/excel/floating-point-arithmetic-inaccurate-result" target="_blank" rel="noopener">浮動小数点演算を使用すると、Excel で不正確な結果が得られます（Microsoft）</a></p>
 </div>
 </td>
 </tr>
@@ -2301,38 +2170,44 @@ Juliaで実行してみると、たしかに値が一致することがわかり
 <div class="listingblock">
 <div class="title">丸め誤差の蓄積例</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="mi">0</span>
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; s = 0
+0
 
-<span class="n">julia</span><span class="o">&gt;</span> <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">10000</span><span class="x">;</span> <span class="n">s</span> <span class="o">+=</span> <span class="mf">0.0001</span><span class="x">;</span> <span class="k">end</span>
+julia&gt; for i=1:10000; s += 0.0001; end
 
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">s</span>
-<span class="mf">0.9999999999999062</span>  <span class="c"># 理論値は1.0</span></code></pre>
+julia&gt; s
+0.9999999999999062  # 理論値は1.0</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>0.0001 は2進法では循環小数なので、格納した時点で表現誤差があります。さらに、足し算のたびに結果が最も近い表現可能な値へ丸められます。1万回の足し算で、これらの小さな誤差が積み重なった結果、1.0 からずれました。</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_数値の吸収"><a class="link" href="#_数値の吸収">数値の吸収</a></h4>
 <div class="paragraph">
-<p>吸収は丸め誤差の一種で、大きな数と小さな数の演算（特に加減算）で、小さな数の寄与が完全に失われる現象です。これは浮動小数点数の精度限界によるものです。</p>
+<p>吸収は丸め誤差の一種で、大きな数と小さな数の足し算・引き算で、小さな数の寄与が失われる現象です。浮動小数点数の仮数部の桁数が限られているために起こります。</p>
+</div>
+<div class="paragraph">
+<p>仕組みは10進法で考えるとわかりやすいでしょう。有効数字4桁で計算するとき、\(1234+0.4=1234.4\) は4桁に丸めると1234に戻り、0.4 を足した効果が消えます（<a href="#fig-absorb-cancel">図 13</a>の左）。</p>
 </div>
 <div class="listingblock">
 <div class="title">吸収の例（Python）</div>
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">1e16</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">a</span><span class="p">)</span>
-<span class="bp">True</span>  <span class="c1"># 小さな値が「吸収」されている
-</span><span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">result</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span>  <span class="c1"># 理論値は1.0
-</span><span class="mf">0.0</span>  <span class="c1"># 小さな値の情報が完全に失われている</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">&gt;&gt;&gt; a = 1e16
+&gt;&gt;&gt; b = 1.0
+&gt;&gt;&gt; result = a + b
+&gt;&gt;&gt; print(result == a)
+True  # 小さな値が「吸収」されている
+&gt;&gt;&gt; print(result - a)  # 理論値は1.0
+0.0  # 小さな値の情報が完全に失われている</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>このケースでは、<code>1.0</code> が <code>1e16</code> と比べてあまりにも小さいため、浮動小数点数の精度限界により、加算結果は単に <code>1e16</code> となります。これは、大きな数の最下位の桁よりも小さな数は表現できないためです。</p>
+<p>倍精度の仮数部は2進法で53桁（省略した先頭の1を含む）で、10進法ではおよそ16桁に相当します。\(10^{16}\) 付近では、倍精度で表せる隣り合う数の間隔が2になっています。\(10^{16}+1\) はちょうど \(10^{16}\) と \(10^{16}+2\) の中間にあたり、丸めの規則（中間なら最下位ビットが0の方）で <code>1e16</code> に戻されます。</p>
 </div>
 <div class="paragraph">
-<p>浮動小数点数の精度限界は、科学技術計算や金融計算など、多くの分野で重要な問題となります。</p>
+<p>たくさんの数を足すときは、小さい数どうしを先に足すなど、計算の順序を工夫すると吸収の影響を減らせます。</p>
 </div>
 </div>
 </div>
@@ -2346,19 +2221,28 @@ Juliaで実行してみると、たしかに値が一致することがわかり
 <div class="paragraph">
 <p>近い数値を引くと上位の桁が打ち消され、小さな差が残ります。もとの数に含まれていた近似誤差が、その小さな差に対して大きな割合を占めることがあります。これが問題になる桁落ちです。近い数の引き算がいつも不正確になるわけではありません。</p>
 </div>
+<div class="paragraph">
+<p>10進法の有効数字4桁で見てみます。\(1.235-1.234=0.001\) では、答えの有効数字は1桁しか残りません（<a href="#fig-absorb-cancel">図 13</a>の右）。もし 1.235 と 1.234 が、それぞれ4桁目を四捨五入した値だったなら、本当の差は0.000〜0.002のどこかで、答えの0.001は1桁目からすでに信頼できません。</p>
+</div>
+<div id="fig-absorb-cancel" class="imageblock">
+<div class="content">
+<img src="./img/absorb-cancel.svg" alt="有効数字4桁の計算で、1234+0.4が1234に戻る吸収と、1.235−1.234で有効数字が1桁になる桁落ち" width="720">
+</div>
+<div class="title">図 13. 有効数字4桁で見た吸収（左）と桁落ち（右）</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_実例_近い値の引き算"><a class="link" href="#_実例_近い値の引き算">実例: 近い値の引き算</a></h4>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="mf">1.0000000000001</span>
-<span class="mf">1.0000000000001</span>
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; a = 1.0000000000001
+1.0000000000001
 
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="mf">1.0</span>
+julia&gt; b = 1.0
+1.0
 
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
-<span class="mf">9.992007221626409e-14</span> <span class="c"># 理論値は1.0e-13</span></code></pre>
+julia&gt; a - b
+9.992007221626409e-14 # 理論値は1.0e-13</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2415,17 +2299,17 @@ Juliaで実行してみると、たしかに値が一致することがわかり
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mf">10000000.0000001</span>
-<span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="c1"># 判別式
-</span><span class="n">d</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="n">b</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
-<span class="c1"># 解の公式
-</span><span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
-<span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">x1 = </span><span class="si">{</span><span class="n">x1</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>  <span class="c1"># 出力: x1 = 10000000.0
-</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">x2 = </span><span class="si">{</span><span class="n">x2</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>  <span class="c1"># 出力: x2 = 9.96515154838562e-08</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import math
+a = 1
+b = -10000000.0000001
+c = 1
+# 判別式
+d = b*b - 4*a*c
+# 解の公式
+x1 = (-b + math.sqrt(d)) / (2*a)
+x2 = (-b - math.sqrt(d)) / (2*a)
+print(f"x1 = {x1}")  # 出力: x1 = 10000000.0
+print(f"x2 = {x2}")  # 出力: x2 = 9.96515154838562e-08</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2455,29 +2339,29 @@ Juliaで実行してみると、たしかに値が一致することがわかり
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="kn">import</span> <span class="nn">math</span>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">import math
 
-<span class="k">def</span> <span class="nf">solve_quadratic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
-  <span class="sh">"""</span><span class="s">二次方程式を桁落ちを避けて解く</span><span class="sh">"""</span>
-  <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sh">"</span><span class="s">a は0以外とする</span><span class="sh">"</span><span class="p">)</span>
-  <span class="n">d</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="n">b</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
-  <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sh">"</span><span class="s">この例では実数解だけを扱う</span><span class="sh">"</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">return</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span>
-  <span class="k">if</span> <span class="n">b</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
-  <span class="k">else</span><span class="p">:</span>
-    <span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">math</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
-  <span class="c1"># 桁落ちが少ない方の解を先に計算し、積の公式で他方を求める
-</span>  <span class="n">x2</span> <span class="o">=</span> <span class="n">c</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">x1</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span>
+def solve_quadratic(a, b, c):
+  """二次方程式を桁落ちを避けて解く"""
+  if a == 0:
+    raise ValueError("a は0以外とする")
+  d = b*b - 4*a*c
+  if d &lt; 0:
+    raise ValueError("この例では実数解だけを扱う")
+  if b == 0 and c == 0:
+    return 0.0, 0.0
+  if b &gt;= 0:
+    x1 = (-b - math.sqrt(d)) / (2*a)
+  else:
+    x1 = (-b + math.sqrt(d)) / (2*a)
+  # 桁落ちが少ない方の解を先に計算し、積の公式で他方を求める
+  x2 = c / (a * x1)
+  return x1, x2
 
-<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">10000000.0000001</span><span class="p">,</span> <span class="mi">1</span>
-<span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="o">=</span> <span class="n">solve_quadratic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">改良版解法: x1 = </span><span class="si">{</span><span class="n">x1</span><span class="si">}</span><span class="s">, x2 = </span><span class="si">{</span><span class="n">x2</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
-<span class="c1"># 出力例: 改良版解法: x1 = 10000000.0, x2 = 1e-07</span></code></pre>
+a, b, c = 1, -10000000.0000001, 1
+x1, x2 = solve_quadratic(a, b, c)
+print(f"改良版解法: x1 = {x1}, x2 = {x2}")
+# 出力例: 改良版解法: x1 = 10000000.0, x2 = 1e-07</code></pre>
 </div>
 </div>
 </div>
@@ -2549,69 +2433,165 @@ Juliaで実行してみると、たしかに値が一致することがわかり
 </div>
 </div>
 <div class="sect1">
-<h2 id="_問題"><a class="link" href="#_問題">5. 問題</a></h2>
+<h2 id="_練習問題"><a class="link" href="#_練習問題">5. 練習問題</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>以下の問題を解いてください。(1)〜(5)の解答は章末にあります。</p>
+<p>基本の確認から始め、計算の練習、考える問題の順に並べています。解答は、自分で解いてから開いてください。</p>
 </div>
 <div class="exampleblock">
+<div class="title">問題1: 符号付き絶対値表現と2の補数表現</div>
 <div class="content">
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-(1)
-</td>
-<td class="hdlist2">
+<div class="paragraph">
+<p>4ビットで整数を表すとする。次の問に答えよ。</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(-3\) を符号付き絶対値表現で表せ。</p>
+</li>
+<li>
+<p>\(-3\) を2の補数表現で表せ。</p>
+</li>
+<li>
+<p>0を表すビット列は、符号付き絶対値表現と2の補数表現で、それぞれ何通りあるか。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>1011</code>。符号ビットを1とし、残りの3ビットに絶対値3（<code>011</code>）を書きます。</p>
+</li>
+<li>
+<p><code>1101</code>。3は <code>0011</code>、各ビットを反転して <code>1100</code>、1を足して <code>1101</code> です。\(16-3=13=1101_{(2)}\) としても求められます。</p>
+</li>
+<li>
+<p>符号付き絶対値表現では <code>0000</code>（+0）と <code>1000</code>（−0）の2通り、2の補数表現では <code>0000</code> の1通りです。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>(a)と(b)は、どちらも先頭のビットが1で「負」を表しますが、残りのビットの意味が違います。符号付き絶対値表現の <code>1101</code> は −5 を表すので、2つの表現を混同しないようにしましょう。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題2: 2の補数表現による加算</div>
+<div class="content">
+<div class="paragraph">
 <p>8ビットの2の補数表現で整数を表すとする。次の問に答えよ。</p>
+</div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>\(58_{(10)}\) を2進法で表わせ</p>
+<p>\(58_{(10)}\) を2進法で表せ。</p>
 </li>
 <li>
-<p>\(-100_{(10)}\) を2の補数表現で表わせ</p>
+<p>\(-100_{(10)}\) を2の補数表現で表せ。</p>
 </li>
 <li>
-<p>(a)と(b)で得られた2の補数表現を加算して \(58+(-100)\) を計算せよ</p>
+<p>(a)と(b)で得られた2の補数表現を加算して \(58+(-100)\) を計算せよ。</p>
 </li>
 <li>
-<p>(c)で得られた値の2の補数を計算して、対応する正の値（絶対値）を求め、10進法の表現に変換せよ</p>
+<p>(c)で得られた値の2の補数を計算して、対応する正の値（絶対値）を求め、10進法の表現に変換せよ。</p>
 </li>
 </ol>
 </div>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-(2)
-</td>
-<td class="hdlist2">
-<p>10進法の \(-0.203125\) を16ビットの浮動小数点表現を用いて表すとき、次の問に答えよ。</p>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>\(-0.203125_{(10)}\) を2進法で表わせ</p>
+<p>\(58 = 2^5 + 2^4 + 2^3 + 2^1\)、8ビットで <code>00111010</code> です。</p>
 </li>
 <li>
-<p>16ビットの浮動小数点表現の符号部を2進法で示せ</p>
+<p>\(100 = 2^6 + 2^5 + 2^2 = 01100100_{(2)}\)。各ビットを反転して <code>10011011</code>、1を足して <code>10011100</code>。よって \(-100 = 10011100_{\text{(2c)}}\) です。</p>
 </li>
 <li>
-<p>16ビットの浮動小数点表現の指数部を2進法で示せ</p>
+<p>次の筆算になります。9ビット目への桁上げは生じません。</p>
+<div class="stemblock">
+<div class="content">
+\[\begin{array}{rrr}
+  &amp; 00111010_{\text{(2c)}} &amp; 58\\
++ &amp; 10011100_{\text{(2c)}} &amp; -100\\
+\hline
+&amp; 11010110_{\text{(2c)}} &amp;
+\end{array}\]
+</div>
+</div>
 </li>
 <li>
-<p>16ビットの浮動小数点表現の仮数部を2進法で示せ</p>
+<p>最上位ビットが1なので負の数です。<code>11010110</code> の各ビットを反転して <code>00101001</code>、1を足して \(00101010_{(2)}=42\)。よって \(11010110_{\text{(2c)}}=-42\) で、\(58-100=-42\) と一致します。</p>
 </li>
 </ol>
 </div>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-(3)
-</td>
-<td class="hdlist2">
+<div class="paragraph">
+<p>異符号の2数の足し算なので、桁あふれは起こりません。(d)で、反転の前に1を引いたり、反転だけで止めたりする誤りが多いので注意しましょう。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題3: 2の補数表現のビット列を読む</div>
+<div class="content">
+<div class="paragraph">
+<p>次のビット列を8ビットの2の補数表現として読んだとき、表す整数を10進法で答えよ。</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><code>11110110</code></p>
+</li>
+<li>
+<p><code>10000000</code></p>
+</li>
+<li>
+<p><code>01111111</code></p>
+</li>
+<li>
+<p>16進法で <code>FF</code> と書かれた8ビットのビット列</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(-10\)。最上位ビットが1なので負の数です。反転して <code>00001001</code>、1を足して \(00001010_{(2)}=10\) なので −10 です。符号なしとして読んだ値246から容量256を引いて \(246-256=-10\) と求めることもできます。</p>
+</li>
+<li>
+<p>\(-128\)。反転して1を足しても <code>10000000</code> のままです。符号なしとして読むと128なので \(128-256=-128\) です。8ビットの2の補数表現で表せる最小の数で、+128 は表せません。</p>
+</li>
+<li>
+<p>\(127\)。最上位ビットが0なので、そのまま符号なしとして読みます。8ビットで表せる最大の数です。</p>
+</li>
+<li>
+<p>\(-1\)。\(\mathrm{FF}_{(16)}=11111111_{(2)}\) で、符号なしとして読むと255なので \(255-256=-1\) です。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>同じビット列でも、符号なし整数として読むか、2の補数表現として読むかで値が変わります。ビット列だけからは、どちらの読み方をするのかは決まりません。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題4: 桁あふれの判定</div>
+<div class="content">
+<div class="paragraph">
 <p>4ビットの2の補数表現で整数を表すとする。次の加算で桁あふれが発生するか否かを答えよ。発生する場合は、その理由を述べよ。</p>
+</div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -2627,195 +2607,110 @@ Juliaで実行してみると、たしかに値が一致することがわかり
 <p>\((-5)+4\)</p>
 </li>
 <li>
-<p>8ビットの2の補数表現の場合、\(100+100\) の計算結果はどのような値になるか。2の補数表現の筆算で確かめよ</p>
+<p>8ビットの2の補数表現の場合、\(100+100\) の計算結果はどのような値になるか。2の補数表現の筆算で確かめよ。</p>
 </li>
 </ol>
 </div>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-(4)
-</td>
-<td class="hdlist2">
-<p>桁落ちを観察してみよう。10進法で有効桁数6桁の浮動小数点表現を用いて計算するものとする(各値は \(d.ddddd \times 10^n\) の形で表す)。次の問に答えよ。</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>\(a = 3.14159\), \(b = 3.14156\) とする。\(a - b\) を計算せよ。</p>
-</li>
-<li>
-<p>(a)の結果を、有効桁数6桁の浮動小数点表現で表せ。</p>
-</li>
-<li>
-<p>\(a,b\) が厳密な値なら、(a)の引き算に誤差はあるか。次に、\(a,b\) が未知の値を小数点以下5桁に丸めた近似値で、それぞれの絶対誤差が最大 \(0.000005\) である場合、差の絶対誤差は最大いくらになるか。</p>
-</li>
-</ol>
-</div>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-(5)
-</td>
-<td class="hdlist2">
-<p>二次方程式 \(x^2 + 100x + 1 = 0\) の解を、10進法有効桁数6桁の浮動小数点表現で計算したい。\(\sqrt{9996} \fallingdotseq 99.9800\) (有効桁数6桁) とする。</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>解の公式から、\(x_1 = \dfrac{-100 - \sqrt{9996}}{2}\) を計算せよ。</p>
-</li>
-<li>
-<p>解の公式から、\(x_2 = \dfrac{-100 + \sqrt{9996}}{2}\) を計算せよ。</p>
-</li>
-<li>
-<p>二次方程式の解と係数の関係 \(x_1 \cdot x_2 = \dfrac{c}{a}\) を用いて、(a)の \(x_1\) から \(x_2\) を計算せよ。</p>
-</li>
-<li>
-<p>(b)と(c)で得られた \(x_2\) の値を比較せよ。どちらが桁落ちの影響を受けているか考察せよ。</p>
-</li>
-</ol>
-</div>
-</td>
-</tr>
-</table>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_問題の解答"><a class="link" href="#_問題の解答">6. 問題の解答</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>まず自分で解いてから読むことをすすめます。ここでは(1)〜(5)の解答を示します。</p>
-</div>
-<div class="exampleblock">
+<details>
+<summary class="title">解答</summary>
 <div class="content">
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-(1)
-</td>
-<td class="hdlist2">
-<p>8ビットの2の補数表現で整数を表すとする。次の問に答えよ。<br></p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>\(58_{(10)}\) を2進法で表わせ</p>
+<p>発生する。正しい答え8は、4ビットの2の補数表現で表せる範囲 \(-8\sim 7\) を超えます。実際に <code>0101 + 0011 = 1000</code> となり、−8 と読んでしまいます。5ビット目への桁上げは起きていないのに、桁あふれです。</p>
 </li>
 <li>
-<p>\(-100_{(10)}\) を2の補数表現で表わせ</p>
+<p>発生しない。異符号の加算の答えは、2数の間に収まるからです。<code>0101 + 1101 = 1 0010</code> で、5ビット目への桁上げを除いた <code>0010</code> が正しい答え2です。</p>
 </li>
 <li>
-<p>(a)と(b)で得られた2の補数表現を加算して \(58+(-100)\) を計算せよ</p>
+<p>発生する。正しい答え −9 は範囲 \(-8\sim 7\) を超えます。<code>1011 + 1100 = 1 0111</code> の下位4ビット <code>0111</code> を読むと 7 になってしまいます。</p>
 </li>
 <li>
-<p>(c)で得られた値の2の補数を計算して、対応する正の値（絶対値）を求め、10進法の表現に変換せよ</p>
-</li>
-</ol>
-</div>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-(2)
-</td>
-<td class="hdlist2">
-<p>10進法の −0.203125 を16ビットの浮動小数点表現を用いて表すとき、次の問に答えよ。</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>\(−0.203125_{(10)}\) を2進法で表わせ</p>
+<p>発生しない。異符号の加算です。<code>1011 + 0100 = 1111</code> で、正しい答え −1 です。</p>
 </li>
 <li>
-<p>16ビットの浮動小数点表現の符号部を2進法で示せ</p>
-</li>
-<li>
-<p>16ビットの浮動小数点表現の指数部を2進法で示せ</p>
-</li>
-<li>
-<p>16ビットの浮動小数点表現の仮数部を2進法で示せ</p>
-</li>
-</ol>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>(1)</p>
-</div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>\(58_{(10)} = 2^5 + 2^4 + 2^3 + 2^1  = 00111010_{(2)} \)</p>
-</li>
-<li>
-<p>\(100_{(10)} = 2^6 + 2^5 + 2^2 = 01100100_{(2)} \)<br>
-ビット反転 → \(10011011_{(2)}\)<br>
-1加算 → \(10011100_{(2)}\)<br>
-よって \(-100_{(10)} = 10011100_{(\text{2c})}\)</p>
-</li>
-<li>
-<p>以下の筆算により加算</p>
-</li>
-</ol>
-</div>
+<p>\(100=01100100_{(2)}\) より、以下の筆算で加算します。</p>
 <div class="stemblock">
 <div class="content">
 \[\begin{array}{rrr}
-  &amp; 00111010_{(\text{2c})} &amp; 58\\
-+ &amp; 10011100_{(\text{2c})} &amp; -100\\
+  &amp; 01100100_{\text{(2c)}} &amp; 100\\
++ &amp; 01100100_{\text{(2c)}} &amp; 100\\
 \hline
-&amp; 11010110_{(\text{2c})} &amp;
+&amp; 11001000_{\text{(2c)}} &amp;
 \end{array}\]
 </div>
 </div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a" start="4">
-<li>
-<p>\(11010110_{(\text{2c})}\) <br>
-ビット反転 → \(00101001_{(2)}\)<br>
-1加算 → \(00101010_{(2)}=42\)<br>
-よって、\(11010110_{(\text{2c})}=-42\)</p>
+<div class="paragraph">
+<p><code>11001000</code> は最上位ビットが1なので負の数として読まれます。反転して1を足すと \(00111000_{(2)}=56\) なので、計算結果は \(-56\) です（\(200-256=-56\) と同じ）。正しい答え200が範囲 \(-128\sim 127\) を超えるので、桁あふれです。</p>
+</div>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>(2)</p>
+<p>(a)と(c)のように、同符号の2数を足して結果の符号が変わったら桁あふれです。桁上げの有無では判定できないことを、(a)と(b)で確かめましょう。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題5: 半精度の浮動小数点表現への変換</div>
+<div class="content">
+<div class="paragraph">
+<p>10進法の \(-0.203125\) を16ビットの浮動小数点表現（半精度）で表すとき、次の問に答えよ。</p>
 </div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>\(-0.203125_{(10)}=-0.001101_{(2)}\) <br>
-\(0.203125_{(10)}\) を2進法に変換するには以下ように2をかけながら、1の位に0または1を掃き出していき、上から順に小数点第一位からならべます。</p>
+<p>\(-0.203125_{(10)}\) を2進法で表せ。</p>
+</li>
+<li>
+<p>符号部を2進法で示せ。</p>
+</li>
+<li>
+<p>指数部を2進法で示せ。</p>
+</li>
+<li>
+<p>仮数部を2進法で示せ。</p>
+</li>
+<li>
+<p>16ビット全体を16進法4桁で示せ。</p>
 </li>
 </ol>
 </div>
-\begin{align*}
-  0.203125 \times 2 =& \mathbf 0.40625\\
-  0.40625 \times 2 =& \mathbf 0.8125\\
-  0.8125 \times 2 =& \mathbf 1.625\\
-  0.625 \times 2 =& \mathbf 1.25\\
-  0.25 \times 2 =& \mathbf 0.5\\
-  0.5 \times 2 =& \mathbf 1.
-\end{align*}
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
 <div class="olist loweralpha">
-<ol class="loweralpha" type="a" start="2">
+<ol class="loweralpha" type="a">
 <li>
-<p>負なので符号部は  <code>1</code></p>
+<p>\(-0.203125_{(10)}=-0.001101_{(2)}\)。絶対値の 0.203125 に2を掛けながら、1の位に出てくる0または1を上から順に小数第一位から並べます。</p>
+<div class="stemblock">
+<div class="content">
+\[\begin{array}{lll}
+  0.203125 &amp; \times 2 =&amp; \mathbf 0.40625\\
+  0.40625 &amp; \times 2 =&amp; \mathbf 0.8125\\
+  0.8125 &amp; \times 2 =&amp; \mathbf 1.625\\
+  0.625 &amp; \times 2 =&amp; \mathbf 1.25\\
+  0.25 &amp; \times 2 =&amp; \mathbf 0.5\\
+  0.5 &amp; \times 2 =&amp; \mathbf 1.
+\end{array}\]
+</div>
+</div>
 </li>
 <li>
-<p>\(-0.203125_{(10)}=-0.001101_{(2)}=-1.101_{(2)}\times 2^{-3}\)<br>
-より、指数部は\(-3\)なので \(-3+15=12_{(10)}=01100_{(2)}\)</p>
+<p>負なので <code>1</code>。</p>
 </li>
 <li>
-<p>仮数部はすでに求めた \(-1.101_{(2)}\times 2^{-3}\) について、<br>
-整数部の1を除くと  <code>101</code> となる。仮数部を10桁にするために右側に7つ0を埋めて仮数部は <code>1010000000</code> となる。</p>
+<p>\(-0.001101_{(2)}=-1.101_{(2)}\times 2^{-3}\) より指数は −3 なので、\(-3+15=12=01100_{(2)}\)。</p>
+</li>
+<li>
+<p>正規化した仮数 \(1.101_{(2)}\) から整数部の1を除くと <code>101</code>。10ビットにするため右側に0を7つ補って <code>1010000000</code>。</p>
+</li>
+<li>
+<p><code>1 01100 1010000000</code> を4ビットずつ区切ると <code>1011 0010 1000 0000</code> なので、<code>B280</code> です。</p>
 </li>
 </ol>
 </div>
@@ -2841,43 +2736,68 @@ Juliaで実行してみると、たしかに値が一致することがわかり
 </tbody>
 </table>
 <div class="paragraph">
-<p>(3)</p>
+<p>符号は仮数部ではなく符号部だけで表すので、仮数部に「負」の情報は入りません。指数部に −3 の2の補数表現を書いてしまう誤りにも注意しましょう（15を足すバイアス表現です）。(e)の区切りは、符号部・指数部・仮数部の境目とは関係なく、先頭から4ビットずつです。</p>
 </div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題6: 浮動小数点表現の値と表現誤差</div>
+<div class="content">
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>\(5+3=8\) は、4ビットの2の補数表現で表せる範囲（\(-8\sim 7\)）を超えるため、桁あふれが発生する</p>
+<p>半精度のビット列 <code>0 10010 1010000000</code> が表す値を10進法で答えよ。</p>
 </li>
 <li>
-<p>異符号の加算なので桁あふれは発生しない</p>
+<p>次の10進数のうち、2進法の浮動小数点数で（仮数部の桁数が足りる限り）正確に表せるものをすべて選び、理由を説明せよ。<br>
+0.75、0.2、0.375、0.3、2.5</p>
 </li>
-<li>
-<p>\((-5)+(-4)=-9\) は、表せる範囲（\(-8\sim 7\)）を超えるため、桁あふれが発生する</p>
-</li>
-<li>
-<p>異符号の加算なので桁あふれは発生しない</p>
-</li>
-<li>
-<p>\(100=01100100_{(2)}\) より、以下の筆算で加算する</p>
-<div class="stemblock">
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
 <div class="content">
-\[\begin{array}{rrr}
-  &amp; 01100100_{(\text{2c})} &amp; 100\\
-+ &amp; 01100100_{(\text{2c})} &amp; 100\\
-\hline
-&amp; 11001000_{(\text{2c})} &amp;
-\end{array}\]
-</div>
-</div>
-<div class="paragraph">
-<p>\(11001000_{(\text{2c})}\) は最上位ビットが1なので負の数である。2の補数を取ると \(00111000_{(2)}=56\) となるので、計算結果は \(-56\) となる（\(200-256=-56\) とも整合する）。</p>
-</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>13。符号部0で正、指数部 \(10010_{(2)}=18\) から15を引いて指数は3、仮数は省略した1を補って \(1.101_{(2)}\) です。\(1.101_{(2)}\times 2^{3}=1101_{(2)}=13\) となります。</p>
+</li>
+<li>
+<p>0.75、0.375、2.5。\(0.75=\frac{3}{4}=0.11_{(2)}\)、\(0.375=\frac{3}{8}=0.011_{(2)}\)、\(2.5=\frac{5}{2}=10.1_{(2)}\) と、分母が2のべき乗の分数で書けるので、有限桁の2進小数になります。0.2 と 0.3 は既約分数 \(\frac{1}{5}\)、\(\frac{3}{10}\) の分母に因数5が含まれるので、2進法では循環小数になり、正確には表せません。</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>(4)</p>
+<p>(b)は「10進法で桁が少ないか」ではなく「分母が2のべき乗か」で決まります。0.2 のように短い10進小数でも表現誤差が生じます。</p>
 </div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題7: 桁落ちを観察する</div>
+<div class="content">
+<div class="paragraph">
+<p>10進法で有効桁数6桁の浮動小数点表現を用いて計算するものとする(各値は \(d.ddddd \times 10^n\) の形で表す)。次の問に答えよ。</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(a = 3.14159\), \(b = 3.14156\) とする。\(a - b\) を計算せよ。</p>
+</li>
+<li>
+<p>(a)の結果を、有効桁数6桁の浮動小数点表現で表せ。</p>
+</li>
+<li>
+<p>\(a,b\) が厳密な値なら、(a)の引き算に誤差はあるか。次に、\(a,b\) が未知の値を小数点以下5桁に丸めた近似値で、それぞれの絶対誤差が最大 \(0.000005\) である場合、差の絶対誤差は最大いくらになるか。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -2887,33 +2807,63 @@ Juliaで実行してみると、たしかに値が一致することがわかり
 <p>\(3.00000 \times 10^{-5}\)</p>
 </li>
 <li>
-<p>入力が厳密なら差 \(0.00003\) も正確に表せる。入力が近似値なら、差の絶対誤差は最大 \(0.000005+0.000005=0.00001\)。計算した差 \(0.00003\) に対して約33%にもなる。表示の桁数だけから、答えの信頼できる桁数は決められない。</p>
+<p>入力が厳密なら、差 \(0.00003\) も正確に表せるので誤差はありません。入力が近似値なら、差の絶対誤差は最大 \(0.000005+0.000005=0.00001\) です。これは計算した差 \(0.00003\) に対して約33%にもなります。</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>(5)</p>
+<p>(b)の表示は6桁ありますが、入力が近似値なら、下の5桁の0には意味がありません。表示の桁数だけから、答えの信頼できる桁数は決められないのです。</p>
 </div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題8: 二次方程式の解と桁落ち</div>
+<div class="content">
+<div class="paragraph">
+<p>二次方程式 \(x^2 + 100x + 1 = 0\) の解を、10進法有効桁数6桁の浮動小数点表現で計算したい。\(\sqrt{9996} \fallingdotseq 99.9800\) (有効桁数6桁) とする。</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>解の公式から、\(x_1 = \dfrac{-100 - \sqrt{9996}}{2}\) を計算せよ。</p>
+</li>
+<li>
+<p>解の公式から、\(x_2 = \dfrac{-100 + \sqrt{9996}}{2}\) を計算せよ。</p>
+</li>
+<li>
+<p>二次方程式の解と係数の関係 \(x_1 \cdot x_2 = \dfrac{c}{a}\) を用いて、(a)の \(x_1\) から \(x_2\) を計算せよ。</p>
+</li>
+<li>
+<p>(b)と(c)で得られた \(x_2\) の値を比較せよ。どちらが桁落ちの影響を受けているか考察せよ。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
 <p>\(x_1 = \dfrac{-100 - 99.9800}{2} = \dfrac{-199.980}{2} = -99.9900\)</p>
 </li>
 <li>
-<p>\(x_2 = \dfrac{-100 + 99.9800}{2} = \dfrac{-0.0200}{2} = -0.0100\)（近い値どうしの引き算で有効桁数が大幅に失われている）</p>
+<p>\(x_2 = \dfrac{-100 + 99.9800}{2} = \dfrac{-0.0200}{2} = -0.0100\)。近い値どうしの引き算で、有効桁数が大幅に失われています。</p>
 </li>
 <li>
-<p>\(x_2 = \dfrac{1}{x_1} = \dfrac{1}{-99.9900} = -0.0100010\cdots \fallingdotseq -0.0100010\)</p>
+<p>\(c/a=1\) なので \(x_2 = \dfrac{1}{x_1} = \dfrac{1}{-99.9900} = -0.0100010\cdots \fallingdotseq -0.0100010\)</p>
 </li>
 <li>
-<p>(b)の値は桁落ちの影響を受けて有効桁数が失われている。(c)では引き算を経由しないため桁落ちを回避できている。</p>
+<p>(b)は桁落ちの影響を受けています。(c)は引き算を経由しないため、桁落ちを避けられています。</p>
 </li>
 </ol>
 </div>
-<hr>
 <div class="paragraph">
-<p>以上です</p>
+<p>より精密に計算した真の値は \(x_2=-0.01000100020\cdots\) で、(c)は有効数字6桁まで一致します。(b)は 100 と 99.9800 の上位の桁が打ち消し合い、6桁で計算しているのに差 0.0200 の有効数字は3桁しか残っていません。真の値との相対誤差は、(c)が約 \(2\times 10^{-8}\) なのに対し、(b)は約 \(1\times 10^{-4}\) と、およそ5000倍になります。本文の「対策と改善効果」と同じ考え方です。</p>
 </div>
+</div>
+</details>
 </div>
 </div>
 </div>
@@ -2922,6 +2872,13 @@ Juliaで実行してみると、たしかに値が一致することがわかり
 Version 1.0<br>
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",

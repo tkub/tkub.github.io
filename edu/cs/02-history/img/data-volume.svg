@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">非圧縮のデータ量を見積もる式</title><desc id="desc">テキストは文字数×1文字のバイト数。画像は横の画素数×縦の画素数×3バイト。音声は標本化周波数×量子化ビット数×チャンネル数×秒数÷8。動画は1フレームのバイト数×フレームレート×秒数。圧縮後の大きさは非圧縮の大きさを圧縮比で割る。</desc><rect width="100%" height="100%" fill="white"/>
+<text x="28" y="38" font-size="23" fill="#233647" text-anchor="start" font-weight="700">非圧縮のデータ量は「かけ算」で見積もれる</text>
+<rect x="28" y="62" width="444" height="194" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="48" y="98" font-size="21" fill="#2166ac" text-anchor="start" font-weight="700">テキスト</text>
+<text x="48" y="136" font-size="19" fill="#233647" text-anchor="start" font-weight="700">文字数 × 1文字のバイト数</text>
+<text x="48" y="164" font-size="17" fill="#233647" text-anchor="start">UTF-8: 英数字 1B、日本語の多く 3B</text>
+<line x1="48" y1="182" x2="452" y2="182" stroke="#c4cfd6" stroke-width="1"/>
+<text x="48" y="212" font-size="18" fill="#233647" text-anchor="start">例: 7万7500字 × 3B ≈ 233kB</text>
+<text x="48" y="238" font-size="17" fill="#5a6b7b" text-anchor="start">(小説『人間失格』)</text>
+<rect x="488" y="62" width="444" height="194" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="508" y="98" font-size="21" fill="#2166ac" text-anchor="start" font-weight="700">画像</text>
+<text x="508" y="136" font-size="19" fill="#233647" text-anchor="start" font-weight="700">横の画素数 × 縦の画素数 × 3B</text>
+<text x="508" y="164" font-size="17" fill="#233647" text-anchor="start">1画素 = 赤・緑・青 各8ビット</text>
+<line x1="508" y1="182" x2="912" y2="182" stroke="#c4cfd6" stroke-width="1"/>
+<text x="508" y="212" font-size="18" fill="#233647" text-anchor="start">例: 4608 × 3456 × 3B ≈ 47.8MB</text>
+<text x="508" y="238" font-size="17" fill="#5a6b7b" text-anchor="start">(約1600万画素の写真)</text>
+<rect x="28" y="272" width="444" height="194" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="48" y="308" font-size="21" fill="#2166ac" text-anchor="start" font-weight="700">音声</text>
+<text x="48" y="346" font-size="19" fill="#233647" text-anchor="start" font-weight="700">標本化周波数 × 量子化ビット数</text>
+<text x="48" y="374" font-size="17" fill="#233647" text-anchor="start">× チャンネル数 × 秒数 ÷ 8 [B]</text>
+<line x1="48" y1="392" x2="452" y2="392" stroke="#c4cfd6" stroke-width="1"/>
+<text x="48" y="422" font-size="18" fill="#233647" text-anchor="start">例: 44100 × 16 × 2 × 60 ÷ 8</text>
+<text x="48" y="448" font-size="17" fill="#5a6b7b" text-anchor="start">≈ 10.6MB(CD音質で1分)</text>
+<rect x="488" y="272" width="444" height="194" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="508" y="308" font-size="21" fill="#2166ac" text-anchor="start" font-weight="700">動画</text>
+<text x="508" y="346" font-size="19" fill="#233647" text-anchor="start" font-weight="700">1フレームのバイト数 × フレームレート</text>
+<text x="508" y="374" font-size="17" fill="#233647" text-anchor="start">× 秒数(+ 音声)</text>
+<line x1="508" y1="392" x2="912" y2="392" stroke="#c4cfd6" stroke-width="1"/>
+<text x="508" y="422" font-size="18" fill="#233647" text-anchor="start">例: 1920 × 1080 × 3B × 30</text>
+<text x="508" y="448" font-size="17" fill="#5a6b7b" text-anchor="start">≈ 187MB(フルHDで1秒)</text>
+<rect x="28" y="488" width="904" height="56" rx="8" fill="white" stroke="#d7301f" stroke-width="2"/>
+<text x="48" y="524" font-size="20" fill="#d7301f" text-anchor="start" font-weight="700">保存・配信されるファイルの大きさ ≈ 非圧縮の大きさ ÷ 圧縮比</text>
+</svg>

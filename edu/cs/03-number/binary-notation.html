@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.26">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <meta name="author" content="久保山哲二">
 <title>数の表現：2進法と基数変換</title>
 <style>
@@ -562,6 +562,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 <script>
   window.MathJax = {
     loader: { load: ['output/chtml'] },
@@ -602,8 +603,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <li><a href="#_小数部の変換繰り返し乗算法">2.2.3. 小数部の変換：繰り返し乗算法</a></li>
 </ul>
 </li>
+<li><a href="#_2進表現と16進表現の相互変換">2.3. 2進表現と16進表現の相互変換</a></li>
 </ul>
 </li>
+<li><a href="#exercises">3. 練習問題</a></li>
 </ul>
 </div>
 </div>
@@ -618,11 +621,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="stemblock">
 <div class="content">
-\[[1984]_{10} = \mathbf{1} \times 10^3 + \mathbf{9} \times 10^2 + \mathbf{8} \times 10^1 + \mathbf{4} \times 10^0\]
+\[1984_{(10)} = \mathbf{1} \times 10^3 + \mathbf{9} \times 10^2 + \mathbf{8} \times 10^1 + \mathbf{4} \times 10^0\]
 </div>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 50%;">
-<caption class="title">表 1. 10進表現 [1984]₁₀ の桁と重み</caption>
+<caption class="title">表 1. 10進表現 1984<sub>(10)</sub> の桁と重み</caption>
 <colgroup>
 <col>
 <col>
@@ -647,7 +650,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="ulist">
 <ul>
 <li>
-<p><strong>表現と意味は別モノ</strong>：[1984]₁₀ は「10進表現された数 1984」を表す</p>
+<p><strong>表現と意味は別モノ</strong>：1984<sub>(10)</sub> は「10進表現された数 1984」を表す</p>
+</li>
+<li>
+<p>この資料では、基数を右下の括弧で示して 1984<sub>(10)</sub>、1010<sub>(2)</sub> のように書きます（本文の第3章と同じ表記です）。基数が明らかなときは省略します。</p>
 </li>
 <li>
 <p>10進表現 \(n\) 桁で表現できる数の範囲：\(0 \;\sim\; 10^n - 1\)（例：3桁では 0〜999）</p>
@@ -662,11 +668,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="stemblock">
 <div class="content">
-\[[1010]_2 = \mathbf{1} \times 2^3 + \mathbf{0} \times 2^2 + \mathbf{1} \times 2^1 + \mathbf{0} \times 2^0 = 8 + 2 = 10\]
+\[1010_{(2)} = \mathbf{1} \times 2^3 + \mathbf{0} \times 2^2 + \mathbf{1} \times 2^1 + \mathbf{0} \times 2^0 = 8 + 2 = 10\]
 </div>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 40%;">
-<caption class="title">表 2. 2進表現 [1010]₂ の桁と重み</caption>
+<caption class="title">表 2. 2進表現 1010<sub>(2)</sub> の桁と重み</caption>
 <colgroup>
 <col>
 <col>
@@ -704,7 +710,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p>一般に1つの桁に n 種類の記号を用いる数の表現を <strong>n進法</strong>といい、n を<strong>基数(base、radix)</strong>といいます。</p>
 </div>
-<table class="tableblock frame-ends grid-rows" style="width: 70%;">
+<table id="tab-radix" class="tableblock frame-ends grid-rows" style="width: 70%;">
 <caption class="title">表 3. 基数の異なる数の対応表</caption>
 <colgroup>
 <col>
@@ -882,7 +888,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="stemblock">
 <div class="title">例</div>
 <div class="content">
-\[[1011\ 1001]_2 = [B9]_{16}\]
+\[1011\ 1001_{(2)} = \mathrm{B9}_{(16)}\]
 </div>
 </div>
 </div>
@@ -899,7 +905,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>各桁の値と桁の重み（2のべき乗）の積の和として求めます。</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 65%;">
-<caption class="title">表 4. 例：[110101]₂ → 10進表現</caption>
+<caption class="title">表 4. 例：110101<sub>(2)</sub> → 10進表現</caption>
 <colgroup>
 <col>
 <col>
@@ -941,7 +947,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
-<p>よって \({[110101]}_2 = {[53]}_{10}\)</p>
+<p>よって \(110101_{(2)} = 53_{(10)}\)</p>
 </div>
 </div>
 <div class="sect3">
@@ -951,11 +957,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="stemblock">
 <div class="content">
-\[[110101]_2 = ((((1 \times 2 + 1) \times 2 + 0) \times 2 + 1) \times 2 + 0) \times 2 + 1 = 53\]
+\[110101_{(2)} = ((((1 \times 2 + 1) \times 2 + 0) \times 2 + 1) \times 2 + 0) \times 2 + 1 = 53\]
 </div>
 </div>
 <table class="tableblock frame-none grid-none" style="width: 70%;">
-<caption class="title">表 7. 例：[110101]₂ → [53]₁₀（Horner法）</caption>
+<caption class="title">表 7. 例：110101<sub>(2)</sub> → 53<sub>(10)</sub>（Horner法）</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1025,7 +1031,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>小数点以下の各桁の重みは \(2^{-1},\, 2^{-2},\, 2^{-3},\, \ldots\) となります。</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 55%;">
-<caption class="title">表 8. 例：[0.1011]₂ → 10進表現</caption>
+<caption class="title">表 8. 例：0.1011<sub>(2)</sub> → 10進表現</caption>
 <colgroup>
 <col>
 <col>
@@ -1059,7 +1065,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
-<p>よって \({[0.1011]}_2 = {[0.6875]}_{10}\)</p>
+<p>よって \(0.1011_{(2)} = 0.6875_{(10)}\)</p>
 </div>
 </div>
 <div class="sect3">
@@ -1068,7 +1074,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>下位桁から<strong>「基数の2で割って次の桁（上位側）を足す」</strong>操作を繰り返します。整数部のHorner法と方向が逆になります。</p>
 </div>
 <table class="tableblock frame-none grid-none" style="width: 70%;">
-<caption class="title">表 11. 例：[0.1011]₂ → [0.6875]₁₀（Horner法）</caption>
+<caption class="title">表 11. 例：0.1011<sub>(2)</sub> → 0.6875<sub>(10)</sub>（Horner法）</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1136,24 +1142,8 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </tr>
 </tbody>
 </table>
-<div class="sidebarblock">
-<div class="content">
 <div class="paragraph">
-<p><strong>練習問題（2進 → 10進・16進）</strong></p>
-</div>
-<div class="paragraph">
-<p>問1）\({[1011110]}_2\) を10進表現に変換せよ</p>
-</div>
-<div class="paragraph">
-<p>問2）\({[1011110]}_2\) を16進表現に変換せよ</p>
-</div>
-<div class="paragraph">
-<p>問3）\({[11010111.011]}_2\) を10進表現に変換せよ</p>
-</div>
-<div class="paragraph">
-<p>問4）\({[11010111.011]}_2\) を16進表現に変換せよ</p>
-</div>
-</div>
+<p>2進表現から10進表現への変換は、章末の<a href="#exercises">練習問題</a>の問題1・問題2で練習できます。</p>
 </div>
 </div>
 </div>
@@ -1165,7 +1155,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>変換する数を、それ以下で最大の2の冪から順に「詰めて」いきます。使った2の冪に対応するビットを1とし、使わなかったビットを0とします。</p>
 </div>
 <div class="paragraph">
-<div class="title">例：[53]₁₀ → 2進表現</div>
+<div class="title">例：53<sub>(10)</sub> → 2進表現</div>
 <p>53 以下で最大の2の冪は \(2^5 = 32\)。大きい順に順次差し引きます：
 \(53 - 32 = 21 \;\to\; 21 - 16 = 5 \;\to\; 5 - 4 = 1 \;\to\; 1 - 1 = 0\)</p>
 </div>
@@ -1210,7 +1200,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </tbody>
 </table>
 <div class="paragraph">
-<p>よって \({[53]}_{10} = {[110101]}_2\)</p>
+<p>よって \(53_{(10)} = 110101_{(2)}\)</p>
 </div>
 </div>
 <div class="sect3">
@@ -1222,7 +1212,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>この方法は、整数の各桁を1つずつ求めていく手順として理解できます。</p>
 </div>
 <table class="tableblock frame-none grid-none" style="width: 75%;">
-<caption class="title">表 15. 例：[53]₁₀ → [110101]₂（繰り返し除算法）</caption>
+<caption class="title">表 15. 例：53<sub>(10)</sub> → 110101<sub>(2)</sub>（繰り返し除算法）</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1307,7 +1297,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </tbody>
 </table>
 <div class="paragraph">
-<p>余りを<strong>下から上の順</strong>に並べると：<strong>1 1 0 1 0 1</strong> → \({[110101]}_2\)</p>
+<p>余りを<strong>下から上の順</strong>に並べると：<strong>1 1 0 1 0 1</strong> → \(110101_{(2)}\)</p>
 </div>
 <div class="paragraph">
 <p>整数部のHorner法（2→10方向）が「上位桁から掛けて足す」なのに対し、この除算法は「下位桁から1桁ずつ取り出す」逆の手順に対応しています。</p>
@@ -1316,10 +1306,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect3">
 <h4 id="_小数部の変換繰り返し乗算法"><a class="link" href="#_小数部の変換繰り返し乗算法">2.2.3. 小数部の変換：繰り返し乗算法</a></h4>
 <div class="paragraph">
-<p><strong>小数部に2を掛け、整数部（0 または 1）を記録し、小数部が0になるまで繰り返します。整数部を上から順に並べます。</strong></p>
+<p><strong>小数部に2を掛け、整数部（0 または 1）を記録し、小数部が0になるまで繰り返します。整数部を上から順に並べます。</strong> 小数部がいつまでも0にならない場合は、必要な桁数で打ち切ります。</p>
+</div>
+<div class="paragraph">
+<p>2を掛けると、2進表現の小数点が1桁右にずれ、小数第1位の桁が整数部に出てきます。10進法で10を掛けると小数第1位が整数部に出てくるのと同じしくみです。</p>
 </div>
 <table class="tableblock frame-all grid-rows" style="width: 60%;">
-<caption class="title">表 16. 繰り返し乗算による変換 [0.671875]₁₀ → [0.101011]₂</caption>
+<caption class="title">表 16. 繰り返し乗算による変換 0.671875<sub>(10)</sub> → 0.101011<sub>(2)</sub></caption>
 <colgroup>
 <col>
 <col>
@@ -1330,33 +1323,33 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <th class="tableblock halign-center valign-top"><p class="tableblock">整数部</p></th>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><div class="literal"><pre> 0.671875 × 2 = *1*.34375</pre></div></td>
+<td class="tableblock halign-right valign-top"><div class="literal"><pre> 0.671875 × 2 = 1.34375</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><div class="literal"><pre> 0.34375  × 2 = *0*.6875</pre></div></td>
+<td class="tableblock halign-right valign-top"><div class="literal"><pre> 0.34375  × 2 = 0.6875</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><div class="literal"><pre> 0.6875   × 2 = *1*.375</pre></div></td>
+<td class="tableblock halign-right valign-top"><div class="literal"><pre> 0.6875   × 2 = 1.375</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><div class="literal"><pre> 0.375    × 2 = *0*.75</pre></div></td>
+<td class="tableblock halign-right valign-top"><div class="literal"><pre> 0.375    × 2 = 0.75</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>0</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><div class="literal"><pre> 0.75     × 2 = *1*.5</pre></div></td>
+<td class="tableblock halign-right valign-top"><div class="literal"><pre> 0.75     × 2 = 1.5</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-right valign-top"><div class="literal"><pre> 0.5      × 2 = *1*.0</pre></div></td>
+<td class="tableblock halign-right valign-top"><div class="literal"><pre> 0.5      × 2 = 1.0</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><strong>1</strong></p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>整数部を上から順に並べると：<strong>1 0 1 0 1 1</strong> → \({[0.101011]}_2\)</p>
+<p>整数部を上から順に並べると：<strong>1 0 1 0 1 1</strong> → \(0.101011_{(2)}\)</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1366,33 +1359,232 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </td>
 <td class="content">
 <div class="paragraph">
-<p>10進の小数がすべて有限桁の2進小数になるわけではありません。\(0.1_{10}\) は2進表現すると無限循環小数になります。これは、コンピューター上での浮動小数点演算における「表現誤差」の原因の1つです（次回以降の授業で扱います）。</p>
+<p>10進の小数がすべて有限桁の2進小数になるわけではありません。\(0.1_{(10)}\) は2進表現すると無限循環小数になります。これは、コンピューター上での浮動小数点演算における「表現誤差」の原因の1つです（第3章 <a href="cs-03.html">コンピューター内部の数の表現</a> で扱います）。</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="sidebarblock">
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2進表現と16進表現の相互変換"><a class="link" href="#_2進表現と16進表現の相互変換">2.3. 2進表現と16進表現の相互変換</a></h3>
+<div class="paragraph">
+<p>\(2^4=16\) なので、2進表現の4桁が16進表現の1桁にちょうど対応します。そのため、2進表現と16進表現の変換は、10進表現を経由せずに「4ビットずつ区切って読み替える」だけでできます（<a href="#fig-hex-grouping">図 1</a>）。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>小数点を基準に</strong>、整数部は右から左へ、小数部は左から右へ、4ビットずつ区切る</p>
+</li>
+<li>
+<p>4ビットに足りない端には0を補う（整数部は左端に、小数部は右端に補う。値は変わらない）</p>
+</li>
+<li>
+<p>各4ビットを、<a href="#tab-radix">表 3</a>を使って16進表現の1桁（0〜9、A〜F）に読み替える</p>
+</li>
+</ol>
+</div>
+<div id="fig-hex-grouping" class="imageblock">
+<div class="content">
+<img src="./img/hex-grouping.svg" alt="1011110は0101 1110で5E、11010111.011は1101 0111.0110でD7.6" width="720">
+</div>
+<div class="title">図 1. 2進表現と16進表現の変換：小数点から4ビットずつ区切る</div>
+</div>
+<div class="paragraph">
+<p>16進表現から2進表現へ戻すときは逆に、16進表現の各桁を4ビットの2進表現に置き換えます。たとえば \(\mathrm{B9}_{(16)}\) は、B → <code>1011</code>、9 → <code>1001</code> なので <code>1011 1001</code> です。</p>
+</div>
+<div class="paragraph">
+<p>小数部の0を補う位置を間違えやすいので注意しましょう。\(0.011_{(2)}\) の右端に0を補った <code>0110</code> は 6 ですが、左端に補って <code>0011</code> とすると 3 になり、誤りです。小数部の右端の0は値を変えませんが、左端（小数点のすぐ右）に0を入れると値が変わってしまいます。</p>
+</div>
+<div class="paragraph">
+<p>8進表現の場合も同じ考え方で、3ビットずつ区切ります。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="exercises"><a class="link" href="#exercises">3. 練習問題</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>基本の変換から順に並べています。解答は、自分で解いてから開いてください。</p>
+</div>
+<div class="exampleblock">
+<div class="title">問題1: 2進表現から10進表現へ（整数）</div>
 <div class="content">
 <div class="paragraph">
-<p><strong>練習問題（10進 → 2進・16進）</strong></p>
+<p>\(1011110_{(2)}\) を10進表現に変換せよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>\(94_{(10)}\)。</p>
 </div>
 <div class="paragraph">
-<p>問5）\({[183]}_{10}\) を2進表現と16進表現に変換せよ</p>
+<p>重みを使うと \(64+16+8+4+2=94\) です。Horner法なら、上位桁から \(1\to 2\to 5\to 11\to 23\to 47\to 94\) と「2倍して次の桁を足す」を繰り返します。桁の重みは右端が \(2^0=1\) であることに注意しましょう。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題2: 2進表現から10進表現へ（小数を含む）</div>
+<div class="content">
+<div class="paragraph">
+<p>\(11010111.011_{(2)}\) を10進表現に変換せよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>\(215.375_{(10)}\)。</p>
 </div>
 <div class="paragraph">
-<p>問6）\({[137]}_{10}\) を2進表現と16進表現に変換せよ</p>
+<p>整数部は \(128+64+16+4+2+1=215\)、小数部は \(0.011_{(2)}=0.25+0.125=0.375\) です。小数第1位の重みは \(2^{-1}=0.5\) で、\(0.1\) ではありません。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題3: 2進表現から16進表現へ</div>
+<div class="content">
+<div class="paragraph">
+<p>次の2進表現を16進表現に変換せよ。</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(1011110_{(2)}\)</p>
+</li>
+<li>
+<p>\(11010111.011_{(2)}\)</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(\mathrm{5E}_{(16)}\)。右から4ビットずつ区切ると <code>101 1110</code>。左端に0を補って <code>0101 1110</code> → 5、E です。</p>
+</li>
+<li>
+<p>\(\mathrm{D7.6}_{(16)}\)。小数点から区切って <code>1101 0111 . 011</code>。小数部は右端に0を補って <code>0110</code> → 6 です。</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>問7）\({[0.90625]}_{10}\) を2進表現と16進表現に変換せよ</p>
+<p>(b)で小数部を <code>0011</code> → 3 としてしまうのが典型的な誤りです（<a href="#fig-hex-grouping">図 1</a>）。検算として、\(\mathrm{D7.6}_{(16)}=13\times 16+7+\frac{6}{16}=215.375\) が問題2の答えと一致することを確かめられます。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題4: 10進表現から2進表現・16進表現へ（整数）</div>
+<div class="content">
+<div class="paragraph">
+<p>次の10進表現を、2進表現と16進表現に変換せよ。</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(183_{(10)}\)</p>
+</li>
+<li>
+<p>\(137_{(10)}\)</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(10110111_{(2)}\)、\(\mathrm{B7}_{(16)}\)。2で繰り返し割ると、余りは下から順に 1, 0, 1, 1, 0, 1, 1, 1 です（\(183=128+32+16+4+2+1\)）。<code>1011 0111</code> と区切って B、7。</p>
+</li>
+<li>
+<p>\(10001001_{(2)}\)、\(89_{(16)}\)。\(137=128+8+1\) です。<code>1000 1001</code> と区切って 8、9。16進表現の「89」を10進の89と読み違えないように、基数を必ず書きましょう。</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>問8）\({[0.1]}_{10}\) を2進表現と16進表現に変換せよ</p>
+<p>16進表現は、10進表現を16で繰り返し割っても求められます（183 ÷ 16 = 11 余り 7 → B7）。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題5: 10進表現から2進表現・16進表現へ（小数）</div>
+<div class="content">
+<div class="paragraph">
+<p>次の10進表現を、2進表現と16進表現に変換せよ。</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(0.90625_{(10)}\)</p>
+</li>
+<li>
+<p>\(0.1_{(10)}\)</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>\(0.11101_{(2)}\)、\(0.\mathrm{E8}_{(16)}\)。2を掛けていくと、整数部に 1, 1, 1, 0, 1 が出て、小数部が0になります（0.90625 → 1.8125 → 1.625 → 1.25 → 0.5 → 1.0）。16進表現へは、小数点から右へ <code>1110 1000</code> と区切り（右端に0を3つ補う）、E、8 です。</p>
+</li>
+<li>
+<p>\(0.000110011001100\cdots_{(2)}\)（<code>0011</code> の繰り返し）、\(0.1999\cdots_{(16)}\)（9の繰り返し）。2を掛けていくと 0.2 → 0.4 → 0.8 → 1.6 → 1.2 → 0.4 → … と、0.2以降が循環するので、有限桁では表せません。4ビットずつ区切ると <code>0001 1001 1001 …</code> なので、16進表現では 1 の後に 9 が続きます。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>(b)の結果は、10進表現では短い小数が2進表現では循環小数になる例です。第3章の「表現誤差」につながります。</p>
 </div>
 </div>
+</details>
+<div class="exampleblock">
+<div class="title">問題6: 基数の性質を考える</div>
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>2進表現で8桁（8ビット）の数は、10進表現で0からいくつまでを表せるか。また、16進表現では何桁になるか。</p>
+</li>
+<li>
+<p>ある数の2進表現の右端に0を1つ付け加えると、値はどうなるか。10進表現の場合と比べて説明せよ。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>0から \(2^8-1=255\) まで。16進表現では2桁（\(00_{(16)}\) 〜 \(\mathrm{FF}_{(16)}\)）です。4ビットで16進表現の1桁になるので、8ビットはちょうど2桁です。</p>
+</li>
+<li>
+<p>値は2倍になります。すべての桁が1つ上の位（重みが2倍の位）へずれるからです。10進表現で右端に0を付けると10倍になるのと同じしくみで、一般に \(n\) 進表現では \(n\) 倍になります。</p>
+</li>
+</ol>
+</div>
+</div>
+</details>
 </div>
 </div>
 </div>
@@ -1400,6 +1592,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div id="footer-text">
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",

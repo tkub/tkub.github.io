@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 680" width="960" height="680" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">コンピューター発展史の年表</title><desc id="desc">1822年のバベッジの階差機関の構想から、1941年Z3、1943〜44年Colossus、1946年ENIAC公開、1947年トランジスタ発明、1951年EDVAC稼働、1956年FUJIC完成、1958〜59年IC発明、1964年IBM System/360、1971年Intel 4004、1979年PC-8001、2020年代のマルチコア・GPU・AI用チップまで。下の帯はハードウェアの世代の目安。</desc><rect width="100%" height="100%" fill="white"/>
+<line x1="20" y1="330" x2="112" y2="330" stroke="#233647" stroke-width="3"/>
+<path d="M 116 344 L 126 316 M 128 344 L 138 316" stroke="#233647" stroke-width="2.5" fill="none"/>
+<line x1="142" y1="330" x2="938" y2="330" stroke="#233647" stroke-width="3"/>
+<path d="M 950 330 L 934 322 L 934 338 Z" fill="#233647"/>
+<circle cx="75" cy="330" r="7" fill="#2166ac" stroke="none"/>
+<line x1="75" y1="322" x2="75" y2="268" stroke="#5a6b7b" stroke-width="1.3"/>
+<text x="75" y="236" font-size="17" fill="#2166ac" text-anchor="middle" font-weight="700">1822</text>
+<text x="75" y="260" font-size="16" fill="#233647" text-anchor="middle">階差機関の構想</text>
+<line x1="175.43478260869566" y1="51" x2="175.43478260869566" y2="322" stroke="#c4cfd6" stroke-width="1.5"/>
+<circle cx="175.43478260869566" cy="330" r="7" fill="#2166ac" stroke="none"/>
+<text x="180.43478260869566" y="44" font-size="17" fill="#233647" text-anchor="start"><tspan fill="#2166ac" font-weight="700">1941</tspan> Z3(リレー式、ツーゼ)</text>
+<line x1="200.8695652173913" y1="85" x2="200.8695652173913" y2="322" stroke="#c4cfd6" stroke-width="1.5"/>
+<circle cx="200.8695652173913" cy="330" r="7" fill="#2166ac" stroke="none"/>
+<text x="205.8695652173913" y="78" font-size="17" fill="#233647" text-anchor="start"><tspan fill="#2166ac" font-weight="700">1943〜44</tspan> Colossus(暗号解読)</text>
+<line x1="217.82608695652175" y1="119" x2="217.82608695652175" y2="322" stroke="#c4cfd6" stroke-width="1.5"/>
+<circle cx="217.82608695652175" cy="330" r="7" fill="#2166ac" stroke="none"/>
+<text x="222.82608695652175" y="112" font-size="17" fill="#233647" text-anchor="start"><tspan fill="#2166ac" font-weight="700">1946</tspan> ENIAC公開(真空管)</text>
+<line x1="226.30434782608694" y1="153" x2="226.30434782608694" y2="322" stroke="#c4cfd6" stroke-width="1.5"/>
+<circle cx="226.30434782608694" cy="330" r="7" fill="#d7301f" stroke="none"/>
+<text x="231.30434782608694" y="146" font-size="17" fill="#233647" text-anchor="start"><tspan fill="#d7301f" font-weight="700">1947</tspan> トランジスタ発明</text>
+<line x1="260.2173913043478" y1="187" x2="260.2173913043478" y2="322" stroke="#c4cfd6" stroke-width="1.5"/>
+<circle cx="260.2173913043478" cy="330" r="7" fill="#2166ac" stroke="none"/>
+<text x="265.2173913043478" y="180" font-size="17" fill="#233647" text-anchor="start"><tspan fill="#2166ac" font-weight="700">1951</tspan> EDVAC稼働(プログラム内蔵方式)</text>
+<line x1="302.6086956521739" y1="221" x2="302.6086956521739" y2="322" stroke="#c4cfd6" stroke-width="1.5"/>
+<circle cx="302.6086956521739" cy="330" r="7" fill="#2166ac" stroke="none"/>
+<text x="307.6086956521739" y="214" font-size="17" fill="#233647" text-anchor="start"><tspan fill="#2166ac" font-weight="700">1956</tspan> FUJIC完成(日本)</text>
+<line x1="323.804347826087" y1="255" x2="323.804347826087" y2="322" stroke="#c4cfd6" stroke-width="1.5"/>
+<circle cx="323.804347826087" cy="330" r="7" fill="#d7301f" stroke="none"/>
+<text x="328.804347826087" y="248" font-size="17" fill="#233647" text-anchor="start"><tspan fill="#d7301f" font-weight="700">1958/59</tspan> IC(集積回路)発明</text>
+<line x1="370.4347826086956" y1="289" x2="370.4347826086956" y2="322" stroke="#c4cfd6" stroke-width="1.5"/>
+<circle cx="370.4347826086956" cy="330" r="7" fill="#2166ac" stroke="none"/>
+<text x="375.4347826086956" y="282" font-size="17" fill="#233647" text-anchor="start"><tspan fill="#2166ac" font-weight="700">1964</tspan> IBM System/360</text>
+<line x1="429.7826086956522" y1="338" x2="429.7826086956522" y2="431" stroke="#c4cfd6" stroke-width="1.5"/>
+<circle cx="429.7826086956522" cy="330" r="7" fill="#2166ac" stroke="none"/>
+<text x="434.7826086956522" y="448" font-size="17" fill="#233647" text-anchor="start"><tspan fill="#2166ac" font-weight="700">1971</tspan> Intel 4004(マイクロプロセッサ)</text>
+<line x1="497.60869565217394" y1="338" x2="497.60869565217394" y2="397" stroke="#c4cfd6" stroke-width="1.5"/>
+<circle cx="497.60869565217394" cy="330" r="7" fill="#2166ac" stroke="none"/>
+<text x="502.60869565217394" y="414" font-size="17" fill="#233647" text-anchor="start"><tspan fill="#2166ac" font-weight="700">1979</tspan> PC-8001(パソコンの普及へ)</text>
+<line x1="879.1304347826087" y1="338" x2="879.1304347826087" y2="363" stroke="#c4cfd6" stroke-width="1.5"/>
+<circle cx="879.1304347826087" cy="330" r="7" fill="#2166ac" stroke="none"/>
+<text x="940" y="380" font-size="17" fill="#233647" text-anchor="end"><tspan fill="#2166ac" font-weight="700">2020年代</tspan> マルチコア・GPU・AI用チップ</text>
+<line x1="166.95652173913044" y1="330" x2="166.95652173913044" y2="338" stroke="#233647" stroke-width="1.5"/>
+<text x="166.95652173913044" y="358" font-size="15" fill="#5a6b7b" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="6">1940</text>
+<line x1="251.73913043478262" y1="330" x2="251.73913043478262" y2="338" stroke="#233647" stroke-width="1.5"/>
+<text x="251.73913043478262" y="358" font-size="15" fill="#5a6b7b" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="6">1950</text>
+<line x1="336.52173913043475" y1="330" x2="336.52173913043475" y2="338" stroke="#233647" stroke-width="1.5"/>
+<text x="336.52173913043475" y="358" font-size="15" fill="#5a6b7b" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="6">1960</text>
+<line x1="421.30434782608694" y1="330" x2="421.30434782608694" y2="338" stroke="#233647" stroke-width="1.5"/>
+<text x="421.30434782608694" y="358" font-size="15" fill="#5a6b7b" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="6">1970</text>
+<line x1="506.0869565217391" y1="330" x2="506.0869565217391" y2="338" stroke="#233647" stroke-width="1.5"/>
+<text x="506.0869565217391" y="358" font-size="15" fill="#5a6b7b" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="6">1980</text>
+<line x1="590.8695652173913" y1="330" x2="590.8695652173913" y2="338" stroke="#233647" stroke-width="1.5"/>
+<text x="590.8695652173913" y="358" font-size="15" fill="#5a6b7b" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="6">1990</text>
+<line x1="675.6521739130435" y1="330" x2="675.6521739130435" y2="338" stroke="#233647" stroke-width="1.5"/>
+<text x="675.6521739130435" y="358" font-size="15" fill="#5a6b7b" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="6">2000</text>
+<line x1="760.4347826086956" y1="330" x2="760.4347826086956" y2="338" stroke="#233647" stroke-width="1.5"/>
+<text x="760.4347826086956" y="358" font-size="15" fill="#5a6b7b" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="6">2010</text>
+<line x1="845.2173913043479" y1="330" x2="845.2173913043479" y2="338" stroke="#233647" stroke-width="1.5"/>
+<text x="845.2173913043479" y="358" font-size="15" fill="#5a6b7b" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="6">2020</text>
+<line x1="930.0" y1="330" x2="930.0" y2="338" stroke="#233647" stroke-width="1.5"/>
+<text x="930.0" y="358" font-size="15" fill="#5a6b7b" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="6">2030</text>
+<rect x="175.43478260869566" y="482" width="144.13043478260872" height="34" rx="0" fill="#e3edf6" stroke="white" stroke-width="2"/>
+<rect x="319.5652173913044" y="482" width="50.869565217391255" height="34" rx="0" fill="#cddcec" stroke="white" stroke-width="2"/>
+<rect x="370.4347826086956" y="482" width="59.34782608695656" height="34" rx="0" fill="#e3edf6" stroke="white" stroke-width="2"/>
+<rect x="429.7826086956522" y="482" width="76.30434782608694" height="34" rx="0" fill="#cddcec" stroke="white" stroke-width="2"/>
+<rect x="506.0869565217391" y="482" width="423.9130434782609" height="34" rx="0" fill="#e3edf6" stroke="white" stroke-width="2"/>
+<line x1="247.5" y1="516" x2="234.7826086956522" y2="526" stroke="#5a6b7b" stroke-width="1"/>
+<text x="234.7826086956522" y="546" font-size="16" fill="#233647" text-anchor="middle"><tspan font-weight="700">第1世代</tspan> リレー・真空管</text>
+<line x1="345.0" y1="516" x2="345.0" y2="566" stroke="#5a6b7b" stroke-width="1"/>
+<text x="345.0" y="586" font-size="16" fill="#233647" text-anchor="middle"><tspan font-weight="700">第2世代</tspan> トランジスタ</text>
+<line x1="400.1086956521739" y1="516" x2="400.1086956521739" y2="526" stroke="#5a6b7b" stroke-width="1"/>
+<text x="400.1086956521739" y="546" font-size="16" fill="#233647" text-anchor="middle"><tspan font-weight="700">第3世代</tspan> IC</text>
+<line x1="467.9347826086956" y1="516" x2="472.17391304347825" y2="606" stroke="#5a6b7b" stroke-width="1"/>
+<text x="472.17391304347825" y="626" font-size="16" fill="#233647" text-anchor="middle"><tspan font-weight="700">第3.5世代</tspan> LSI</text>
+<line x1="718.0434782608696" y1="516" x2="718.0434782608696" y2="526" stroke="#5a6b7b" stroke-width="1"/>
+<text x="718.0434782608696" y="546" font-size="16" fill="#233647" text-anchor="middle"><tspan font-weight="700">第4世代</tspan> VLSI 以降</text>
+<text x="20" y="666" font-size="15" fill="#5a6b7b" text-anchor="start">世代の境界はおおよその目安です(製品や資料によって数年の幅があります)。1822年と1938年の間は省略しています。</text>
+</svg>

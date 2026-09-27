@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="ja" lang="ja" viewBox="0 0 560 290" width="560" height="290" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif">
+<title id="title">2元対称通信路</title>
+<desc id="desc">送信記号0と1は、確率1-pでそのまま、確率pで反転して受信される。0から1への反転と1から0への反転は同じ確率pで起きる。</desc>
+<rect width="560" height="290" fill="white"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#233647"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d7301f"/></marker><marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5a6b7b"/></marker></defs>
+<text x="110" y="36" font-size="19" fill="#1c3d5f" text-anchor="middle" font-weight="700">送信 X</text>
+<text x="450" y="36" font-size="19" fill="#1c3d5f" text-anchor="middle" font-weight="700">受信 Y</text>
+<rect x="86" y="66" width="48" height="48" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="110" y="99" font-size="26" fill="#233647" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" font-weight="700">0</text>
+<rect x="86" y="206" width="48" height="48" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="110" y="239" font-size="26" fill="#233647" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" font-weight="700">1</text>
+<rect x="426" y="66" width="48" height="48" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="450" y="99" font-size="26" fill="#233647" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" font-weight="700">0</text>
+<rect x="426" y="206" width="48" height="48" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="450" y="239" font-size="26" fill="#233647" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" font-weight="700">1</text>
+<line x1="140" y1="90" x2="420" y2="90" stroke="#233647" stroke-width="2.6" marker-end="url(#ah)"/>
+<line x1="140" y1="230" x2="420" y2="230" stroke="#233647" stroke-width="2.6" marker-end="url(#ah)"/>
+<text x="280.0" y="76" font-size="19" fill="#233647" text-anchor="middle">1 − p(そのまま)</text>
+<text x="280.0" y="262" font-size="19" fill="#233647" text-anchor="middle">1 − p(そのまま)</text>
+<line x1="140" y1="100" x2="420" y2="220" stroke="#d7301f" stroke-width="2.4" marker-end="url(#ahr)"/>
+<line x1="140" y1="220" x2="420" y2="100" stroke="#d7301f" stroke-width="2.4" marker-end="url(#ahr)"/>
+<text x="222" y="121" font-size="20" fill="#d7301f" text-anchor="middle" font-style="italic">p</text>
+<text x="222" y="213" font-size="20" fill="#d7301f" text-anchor="middle" font-style="italic">p</text>
+<text x="342.0" y="167.0" font-size="17" fill="#d7301f" text-anchor="start">反転</text>
+</svg>

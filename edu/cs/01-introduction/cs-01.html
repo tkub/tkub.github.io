@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.26">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <meta name="author" content="久保山哲二">
 <title>コンピューター科学への導入</title>
 <style>
@@ -562,6 +562,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 <script>
   window.MathJax = {
     loader: { load: ['output/chtml'] },
@@ -580,32 +581,30 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <ul class="sectlevel1">
 <li><a href="#_学ぶ内容">1. 学ぶ内容</a>
 <ul class="sectlevel2">
-<li><a href="#_今後の授業で扱うトピック">1.1. 今後の授業で扱うトピック</a>
+<li><a href="#_本書で扱うトピック">1.1. 本書で扱うトピック</a>
 <ul class="sectlevel3">
-<li><a href="#_コンピューター発展史とデータ量の単位">1.1.1. コンピューター発展史とデータ量の単位</a></li>
-<li><a href="#_usb_端子の規格と通信の規格">1.1.2. USB: 端子の規格と通信の規格</a></li>
-<li><a href="#_コンピューター内部での数の表現">1.1.3. コンピューター内部での数の表現</a></li>
-<li><a href="#_コンピューター内部での文字の表現">1.1.4. コンピューター内部での文字の表現</a></li>
-<li><a href="#_情報理論">1.1.5. 情報理論</a></li>
-<li><a href="#_論理演算とブール代数">1.1.6. 論理演算とブール代数</a></li>
-<li><a href="#_コンピューターの構成要素">1.1.7. コンピューターの構成要素</a></li>
-<li><a href="#_オペレーティングシステムとプログラムの実行">1.1.8. オペレーティングシステムとプログラムの実行</a></li>
-<li><a href="#_アルゴリズムと計算量">1.1.9. アルゴリズムと計算量</a></li>
-<li><a href="#_計算量理論">1.1.10. 計算量理論</a></li>
+<li><a href="#_コンピューター発展史とデータ量の単位第2章">1.1.1. コンピューター発展史とデータ量の単位(第2章)</a></li>
+<li><a href="#_usb_端子の規格と通信の規格第2章">1.1.2. USB: 端子の規格と通信の規格(第2章)</a></li>
+<li><a href="#_コンピューター内部での数の表現第3章">1.1.3. コンピューター内部での数の表現(第3章)</a></li>
+<li><a href="#_コンピューター内部での文字の表現第4章">1.1.4. コンピューター内部での文字の表現(第4章)</a></li>
+<li><a href="#_フォント第5章">1.1.5. フォント(第5章)</a></li>
+<li><a href="#_論理演算とブール代数第6章">1.1.6. 論理演算とブール代数(第6章)</a></li>
+<li><a href="#_論理回路の設計と記憶の仕組み第7章第8章">1.1.7. 論理回路の設計と記憶の仕組み(第7章・第8章)</a></li>
+<li><a href="#_情報理論第9章">1.1.8. 情報理論(第9章)</a></li>
+<li><a href="#_アルゴリズムと計算量第10章">1.1.9. アルゴリズムと計算量(第10章)</a></li>
+<li><a href="#_計算可能性と計算量理論第1113章">1.1.10. 計算可能性と計算量理論(第11〜13章)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#_確認問題">2. 確認問題</a>
+<li><a href="#_前提知識_n進法の復習">2. 前提知識: n進法の復習</a>
 <ul class="sectlevel2">
-<li><a href="#_まずは復習">2.1. まずは復習</a>
-<ul class="sectlevel3">
-<li><a href="#_2進法と16進法間の数表現の変換">2.1.1. 2進法と16進法間の数表現の変換</a></li>
+<li><a href="#_位取り記数法と基数">2.1. 位取り記数法と基数</a></li>
+<li><a href="#_10進法から2進法への変換">2.2. 10進法から2進法への変換</a></li>
+<li><a href="#_2進法と16進法の変換">2.3. 2進法と16進法の変換</a></li>
 </ul>
 </li>
-<li><a href="#_問題">2.2. 問題</a></li>
-</ul>
-</li>
+<li><a href="#_練習問題">3. 練習問題</a></li>
 </ul>
 </div>
 </div>
@@ -650,13 +649,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-この授業は、道具としてのコンピューターの操作を学ぶことが目的ではありません
+本書は、道具としてのコンピューターの操作を学ぶことが目的ではありません
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>普段使っている Microsoft Office や Windows、macOS 等の操作方法について学ぶ授業ではありません。</p>
+<p>普段使っている Microsoft Office や Windows、macOS 等の操作方法を学ぶための本ではありません。</p>
 </div>
 <div class="paragraph">
 <p>「コンピューター」を「自転車」に置き換えてみると、</p>
@@ -673,7 +672,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
-<p>授業ではなく</p>
+<p>ための本ではなく</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -690,7 +689,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
-<p>を、背後にある物理法則や工学的な原理を通して学ぶ授業であると考えてください。</p>
+<p>を、背後にある物理法則や工学的な原理を通して学ぶ本であると考えてください。</p>
 </div>
 <div class="paragraph">
 <p>「コンピューター科学」は「計算機科学」ともいいます。ここでいう「計算機（computer）」は電卓の「計算器（calculator）」ではなく、コンピューターのことを指します。つまり、ここでの計算（computation）とは狭義の計算（calculation）とは異なります。たとえば、人間の知的活動を計算（computation）としてとらえるのが人工知能の考え方です。</p>
@@ -710,7 +709,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </table>
 </div>
 <div class="paragraph">
-<p>この授業の内容は、短期的にすぐに役に立つ内容ではないかも知れないという点は強調しておきます。</p>
+<p>本書の内容は、短期的にすぐに役に立つ内容ではないかも知れないという点は強調しておきます。</p>
 </div>
 <div class="paragraph">
 <p>ただし、国家試験である情報処理技術者試験の「<strong>基本情報技術者試験</strong>」と「<strong>応用情報技術者試験</strong>」の受験を考えている読者にとっては、出題される一部の範囲の内容を含んでいるので、受験勉強に役立つかもしれません。受験参考書には書かれていない原理などについてより深く学ぶことができます。</p>
@@ -727,12 +726,77 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </blockquote>
 </div>
 <div class="sect2">
-<h3 id="_今後の授業で扱うトピック"><a class="link" href="#_今後の授業で扱うトピック">1.1. 今後の授業で扱うトピック</a></h3>
+<h3 id="_本書で扱うトピック"><a class="link" href="#_本書で扱うトピック">1.1. 本書で扱うトピック</a></h3>
 <div class="paragraph">
-<p>この授業では、広いコンピューター科学のトピックから以下の内容を選び、基本的な考え方を学びます。</p>
+<p>本書では、広いコンピューター科学のトピックから以下の内容を選び、基本的な考え方を学びます。各章は次の問いに答える形で進みます。</p>
+</div>
+<table id="tab-chapters" class="tableblock frame-ends grid-rows stretch">
+<caption class="title">表 1. 本書の章と、各章で考える問い</caption>
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 33.3333%;">
+<col style="width: 55.5556%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">章</th>
+<th class="tableblock halign-left valign-top">内容</th>
+<th class="tableblock halign-left valign-top">考える問い</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">コンピューター発展史とデータの単位</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">コンピューターはどのように小さく速くなってきたか。「ギガ」とは何の量か</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">数の表現</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">負の数や小数を0と1でどう表すか。なぜ計算に誤差が出るのか</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文字の表現</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文字はどんな番号で表され、なぜ文字化けが起こるのか</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">フォント</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">画面や紙の上の文字の形は、どのように作られ選ばれるのか</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6〜8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">論理回路・ブール代数・順序回路</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0と1の単純な演算から、計算や記憶の仕組みがどう作られるのか</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">情報理論</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">情報の量をどうはかり、どこまで圧縮や誤り訂正ができるのか</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">アルゴリズムと計算量</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">同じ問題を、より少ない手間で解く手順とは何か</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">停止性問題</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">コンピューターでは原理的に解けない問題があるのはなぜか</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12〜13</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">P≠NP予想とNP完全性</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">答えの検算が簡単な問題は、解くのも簡単なのか</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>以下、それぞれの内容を簡単に紹介します。</p>
 </div>
 <div class="sect3">
-<h4 id="_コンピューター発展史とデータ量の単位"><a class="link" href="#_コンピューター発展史とデータ量の単位">1.1.1. コンピューター発展史とデータ量の単位</a></h4>
+<h4 id="_コンピューター発展史とデータ量の単位第2章"><a class="link" href="#_コンピューター発展史とデータ量の単位第2章">1.1.1. コンピューター発展史とデータ量の単位(第2章)</a></h4>
 <div class="paragraph">
 <p>電子式コンピューターの歴史は1940年代の真空管を使った初期のコンピューターから始まり、トランジスタ、集積回路、そしてマイクロプロセッサへと発展してきました。この発展の過程で、コンピューターの性能は飛躍的に向上し、サイズは小型化してきました。</p>
 </div>
@@ -748,18 +812,18 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect4">
 <h5 id="_通信速度の理解"><a class="link" href="#_通信速度の理解">通信速度の理解</a></h5>
 <div class="paragraph">
-<p>インターネット接続をするときに「ベストエフォート1Gbps」といった表現をみたことはないでしょうか。この授業では「ベストエフォート」といった表現や「bps」等の通信速度に関する知識も合わせて学びます。</p>
+<p>インターネット接続をするときに「ベストエフォート1Gbps」といった表現をみたことはないでしょうか。本書では「ベストエフォート」といった表現や「bps」等の通信速度に関する知識も合わせて学びます。</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_実践的データ量の感覚"><a class="link" href="#_実践的データ量の感覚">実践的データ量の感覚</a></h5>
 <div class="paragraph">
-<p>さらに、データ量の土地勘をつけることを目標とします。スマートフォンで読んでいるライトノベルや、撮った写真が、どのていどのメモリを消費しているのか、実際に確認をしてみて、データ量に対する土地勘を養います。</p>
+<p>さらに、データ量の土地勘をつけることを目標とします。スマートフォンで読んでいるライトノベルや、撮った写真が、どの程度の記憶容量を占めているのかを計算し、実際のファイルの大きさとも比べて、データ量に対する土地勘を養います。</p>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_usb_端子の規格と通信の規格"><a class="link" href="#_usb_端子の規格と通信の規格">1.1.2. USB: 端子の規格と通信の規格</a></h4>
+<h4 id="_usb_端子の規格と通信の規格第2章"><a class="link" href="#_usb_端子の規格と通信の規格第2章">1.1.2. USB: 端子の規格と通信の規格(第2章)</a></h4>
 <div class="paragraph">
 <p>たくさんのUSBケーブルが溢れていて、どのケーブルを使ったらいいか迷ったことはないでしょうか。近年は USB-C ケーブルが主流になりつつありますが、実は同じ見た目の USB-C ケーブルも、ケーブルによっては通信ができなかったり、十分な通信速度がでなかったりします。</p>
 </div>
@@ -780,13 +844,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </ul>
 </div>
 <div class="paragraph">
-<p>授業では、このような日常的な疑問の背景にある技術規格について理解を深めます。</p>
+<p>本書では、このような日常的な疑問の背景にある技術規格について理解を深めます。</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_コンピューター内部での数の表現"><a class="link" href="#_コンピューター内部での数の表現">1.1.3. コンピューター内部での数の表現</a></h4>
+<h4 id="_コンピューター内部での数の表現第3章"><a class="link" href="#_コンピューター内部での数の表現第3章">1.1.3. コンピューター内部での数の表現(第3章)</a></h4>
 <div class="paragraph">
-<p>2進法や16進法などの基数の考え方をもとに、コンピューター内部でどのように数値が表現されるかを学びます。</p>
+<p>2進法や16進法などの基数の考え方(この章の後半で復習します)をもとに、コンピューター内部でどのように数値が表現されるかを学びます。</p>
 </div>
 <div class="paragraph">
 <p>整数は「2の補数表現」という方法で表されており、これによりコンピューターは負の数を扱うことができます。また、小数は「浮動小数点表現」で扱われますが、これは絶対的な精度ではなく相対的な精度で数を表現するため、計算によっては誤差が生じることがあります。</p>
@@ -796,7 +860,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="sect3">
-<h4 id="_コンピューター内部での文字の表現"><a class="link" href="#_コンピューター内部での文字の表現">1.1.4. コンピューター内部での文字の表現</a></h4>
+<h4 id="_コンピューター内部での文字の表現第4章"><a class="link" href="#_コンピューター内部での文字の表現第4章">1.1.4. コンピューター内部での文字の表現(第4章)</a></h4>
 <div class="paragraph">
 <p>今、みなさんが読んでいるこの文書の文字はコンピューター内部では、数値で表現されています。Webページやメールを読むとき文字が意味のない文字や記号の羅列になってしまういわゆる「文字化け」という現象に悩まされたことはないでしょうか。これは、コンピューター内部で文字を扱う方法が一通りではないことに起因しています。</p>
 </div>
@@ -805,7 +869,26 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="sect3">
-<h4 id="_情報理論"><a class="link" href="#_情報理論">1.1.5. 情報理論</a></h4>
+<h4 id="_フォント第5章"><a class="link" href="#_フォント第5章">1.1.5. フォント(第5章)</a></h4>
+<div class="paragraph">
+<p>画面や印刷物に表示される文字の形(字形)は、コンピューターの中では文字の番号とは別に、フォントのデータとして用意されています。同じ文字でも、明朝体とゴシック体では印象や読みやすさが変わります。書体の仕組みと、文書を作るときの書体の選び方を学びます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_論理演算とブール代数第6章"><a class="link" href="#_論理演算とブール代数第6章">1.1.6. 論理演算とブール代数(第6章)</a></h4>
+<div class="paragraph">
+<p>今日のコンピューターは、スイッチのオンとオフに相当する0と1の信号を処理する部品で構成されています。本書では、どのようにして単純な0と1の演算からコンピューターが成り立っているのかを垣間見ることを目標とします。その基礎となるのが、0と1の2つの値だけを扱うブール代数です。
+ブール代数では論理和(OR)演算を「+」で表すことがあり、この場合1+1=1となります。これは通常の算術演算とは異なる演算体系です。まずは、普段慣れ親しんだ四則演算から離れて、コンピューターの基礎である論理演算の理論となるブール代数について学びます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_論理回路の設計と記憶の仕組み第7章第8章"><a class="link" href="#_論理回路の設計と記憶の仕組み第7章第8章">1.1.7. 論理回路の設計と記憶の仕組み(第7章・第8章)</a></h4>
+<div class="paragraph">
+<p>コンピューターはスイッチのオンとオフの組合せによって定義される論理演算によって、どのように計算をしているのか、簡単な論理回路の構成を通して学びます。また、論理回路を用いてコンピューター内でデータを記憶しておく仕組みを、記憶回路の基本となるフリップフロップ回路を通して学びます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_情報理論第9章"><a class="link" href="#_情報理論第9章">1.1.8. 情報理論(第9章)</a></h4>
 <div class="paragraph">
 <p>情報理論は、1948年にクロード・シャノンによって創始された、情報の数学的な性質を研究する学問です。ビット単位での情報量の定量化、情報の圧縮、ノイズのある通信路での情報伝送などを数学的に扱います。この理論は現代のデジタル技術の基礎となっています。</p>
 </div>
@@ -826,12 +909,12 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>通信システム</strong>: 5G通信やWi-Fi、Bluetoothなどのワイヤレス通信技術は、シャノンの通信理論に基づいた符号化技術を使用しています</p>
 </li>
 <li>
-<p><strong>セキュリティ</strong>: 暗号化技術の多くは情報理論の原理を応用しています</p>
+<p><strong>セキュリティ</strong>: シャノンは暗号の安全性も情報理論の立場から論じました(1949年)。ただし、現在広く使われている暗号の多くは、後で述べる計算量理論に安全性の根拠を置いています</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>これらはすべて私たちの日常生活で使用する技術の核心部分を構成しています。</p>
+<p>どれも、私たちが日常的に使っている技術の中で働いています。</p>
 </div>
 </div>
 <div class="sect4">
@@ -840,52 +923,44 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>シャノンが情報理論で扱ったもう1つの重要な対象がデータ圧縮です。大きなファイルを Windows 等で zip 形式で「圧縮」したことがある人もいるのではないでしょうか。データをできるだけ小さなサイズに「圧縮」することは、通信のコストを下げる上でも重要です。シャノンは、データを圧縮する方法について研究し、その理論的限界を示しました。普段扱っている音声や画像ファイルは、そのほとんどが圧縮されています。</p>
 </div>
 <div class="paragraph">
-<p>たとえば、パソコンやスマートフォンで使えるGoogle日本語入力の辞書は、理論的な限界に近いサイズまで圧縮して保存されています。辞書の場合、検索をしなくてはなりませんので、圧縮したままでは不便と思われるかもしれません。実は、圧縮の仕方によっては、圧縮したままの方が検索が圧倒的に早くなります。授業では、データ圧縮の考え方についても学びます。</p>
+<p>たとえば、パソコンやスマートフォンで使えるGoogle日本語入力の辞書には、情報理論的な下限に近い大きさでデータを表しながら、そのまま検索もできるデータ構造(簡潔データ構造)が使われています。辞書は検索しなくてはならないので、圧縮したままでは不便と思われるかもしれません。実は、圧縮の仕方を工夫すると、元に戻さずに高速に検索できます。圧縮したデータがメモリに収まりやすくなるため、かえって速くなることもあります。本書では、データ圧縮の考え方についても学びます。</p>
 </div>
 <div class="paragraph">
-<p>データ圧縮や誤り訂正符号を支える重要な考え方が<strong>情報量</strong>です。シャノンは、事象の起こりにくさを確率の対数ではかることで情報量を定量化し、確率分布のもつ不確実性を表す測度として<strong>情報エントロピー</strong>を定義しました（もともと熱力学で導入された概念と数学的に同型です）。定義と使い方は、情報理論の章でくわしく扱います。</p>
+<p>データ圧縮や誤り訂正符号を支える重要な考え方が<strong>情報量</strong>です。シャノンは、事象の起こりにくさを確率の対数ではかることで情報量を定量化し、確率分布のもつ不確実性を表す測度として<strong>情報エントロピー</strong>を定義しました（統計力学のエントロピーと同じ形の式で表されます）。定義と使い方は、情報理論の章でくわしく扱います。</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_誤り訂正符号"><a class="link" href="#_誤り訂正符号">誤り訂正符号</a></h5>
 <div class="paragraph">
-<p>1977年に打ち上げられた宇宙探査機ボイジャー1号は、地球から約255億km(光で約23時間半、2026年時点)の距離にあります。<span class="image right"><img src="./img/voyager.png" alt="voyager"></span>すでに太陽系の外とみなされている領域を秒速約17キロメートルの速さで飛行しています。</p>
+<p>1977年に打ち上げられた宇宙探査機ボイジャー1号は、2026年9月の時点で地球から約257億km離れています。電波(光の速さ)でも片道24時間近くかかる距離で、2026年11月には地球から「1光日」(光が1日に進む距離、約259億km)に達します。<span class="image right"><img src="./img/voyager.png" alt="voyager"></span>2012年に太陽風の届く範囲(太陽圏)を出て、現在は恒星間空間を秒速約17キロメートルの速さで飛行しています。</p>
 </div>
 <div class="paragraph">
 <p>ボイジャー1号は、今も定期的に地球と通信を行っています。地球からボイジャーへは16bpsの速度で命令が送信され、ボイジャーからは今も約160bpsの通信速度で観測データを地球に送信しています。ボイジャーからの電波を地球で受信するまでに、ノイズによりデータが破壊されてしまうことがあります。デジタルデータではわずかなデータの破損も致命的になり得ます。</p>
 </div>
 <div class="paragraph">
-<p>ノイズ対策としてボイジャー1号の通信には、畳み込み符号やリードソロモン符号といった誤り訂正符号技術が用いられています。一部のデータが破損しても、受信時に復元できる仕組みです。この技術はCDやインターネット通信、二次元バーコードのQRコードにも用いられています。汚れでQRコードがある程度欠損していても、正しくデータを読み取ることができるように設計されています。</p>
+<p>ノイズ対策としてボイジャー1号の通信には、畳み込み符号やリードソロモン符号といった誤り訂正符号技術が用いられています。一部のデータが破損しても、受信時に復元できる仕組みです。この技術はCD、携帯電話やWi-Fiの無線通信、二次元バーコードのQRコードにも用いられています。汚れでQRコードがある程度欠損していても、正しくデータを読み取ることができるように設計されています。</p>
 </div>
 <div class="paragraph">
-<p>この誤り訂正符号技術のもとになる理論は、先ほど触れたシャノンの情報理論の成果です。シャノンが論文「<strong>通信の数学的理論</strong>」(1948)でこの理論を発表したことからもわかるように、情報理論は「効率的な通信を行うための数学理論」です。この授業では、残念ながらその細部に触れる時間はありませんが、シャノンの誤り訂正符号の考え方が、なぜ革新的であったのかを学びます。</p>
+<p>この誤り訂正符号技術のもとになる理論は、先ほど触れたシャノンの情報理論の成果です。シャノンが論文「<strong>通信の数学的理論</strong>」(1948)でこの理論を発表したことからもわかるように、情報理論は「効率的な通信を行うための数学理論」です。第9章では、細部には立ち入らずに、シャノンの誤り訂正符号の考え方がなぜ革新的であったのかを学びます。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>オペレーティングシステム(OS)は、WindowsやmacOSなどのコンピューターの基本ソフトウェアで、ハードウェア資源の管理や利用者とのやりとりを受け持ちます。また、プログラミング言語で書かれたプログラムは、コンパイラやインタプリタによってコンピューターが実行できる形に変換されます。こうしたソフトウェア側の仕組みは、本書では章として取り上げません。</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_論理演算とブール代数"><a class="link" href="#_論理演算とブール代数">1.1.6. 論理演算とブール代数</a></h4>
-<div class="paragraph">
-<p>今日のコンピューターは、スイッチのオンとオフに相当する0と1の信号を処理する部品で構成されています。この授業では、どのようにして単純な0と1の演算からコンピューターが成り立っているのかを垣間見ることを目標とします。その基礎となるのが、0と1の2つの値だけを扱うブール代数です。
-ブール代数では論理和(OR)演算を「+」で表すことがあり、この場合1+1=1となります。これは通常の算術演算とは異なる演算体系です。まずは、普段慣れ親しんだ四則演算から離れて、コンピューターの基礎である論理演算の理論となるブール代数について学びます。</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_コンピューターの構成要素"><a class="link" href="#_コンピューターの構成要素">1.1.7. コンピューターの構成要素</a></h4>
-<div class="paragraph">
-<p>コンピューターはスイッチのオンとオフの組合せによって定義される論理演算によって、どのように計算をしているのか、簡単な論理回路の構成を通して学びます。また、論理回路を用いてコンピューター内でデータを記憶しておく仕組みを、SRAMと呼ばれるメモリの基本となるフリップフロップ回路を通して学びます。</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_オペレーティングシステムとプログラムの実行"><a class="link" href="#_オペレーティングシステムとプログラムの実行">1.1.8. オペレーティングシステムとプログラムの実行</a></h4>
-<div class="paragraph">
-<p>オペレーティングシステム(OS)は、WindowsやmacOSなどのコンピューターの基本ソフトウェアであり、ハードウェア資源の管理やユーザーとのインターフェースを提供する重要な役割を担っています。この授業では、OSがどのようにハードウェアを抽象化して、プログラムの実行環境を提供しているかの基本的な考え方を学びます。</p>
-</div>
-<div class="paragraph">
-<p>また、プログラミング言語で書かれたプログラムがどのようにしてコンピューターが実行できる形式に変換されるのか、コンパイラやインタプリタの基本的な働きについても触れます。私たちが日常的に使用しているアプリケーションソフトウェアが、コンピューターの中でどのように動作しているのかを理解することで、コンピューターを使う際の理解が深まります。</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_アルゴリズムと計算量"><a class="link" href="#_アルゴリズムと計算量">1.1.9. アルゴリズムと計算量</a></h4>
+<h4 id="_アルゴリズムと計算量第10章"><a class="link" href="#_アルゴリズムと計算量第10章">1.1.9. アルゴリズムと計算量(第10章)</a></h4>
 <div class="paragraph">
 <p>アルゴリズムとは、問題を解くための手順や方法を指します。日常生活でも料理のレシピや組み立て説明書などの形でアルゴリズムを利用しています。コンピューター科学では、問題を解くための効率的なアルゴリズムの設計が重要な研究テーマとなっています。</p>
 </div>
@@ -893,11 +968,14 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>アルゴリズムの効率は、実行に必要な時間（時間計算量）と使用するメモリ量（空間計算量）で評価します。特に問題のサイズが大きくなったときの計算量の増加率が重要であり、これをビッグO記法（O(n)、O(n<sup>2</sup>)など）で表現します。</p>
 </div>
 <div class="paragraph">
-<p>授業では、基本的なアルゴリズムとその計算量について学びます。</p>
+<p>本書では、基本的なアルゴリズムとその計算量について学びます。</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_計算量理論"><a class="link" href="#_計算量理論">1.1.10. 計算量理論</a></h4>
+<h4 id="_計算可能性と計算量理論第1113章"><a class="link" href="#_計算可能性と計算量理論第1113章">1.1.10. 計算可能性と計算量理論(第11〜13章)</a></h4>
+<div class="paragraph">
+<p>第11章では、まず、どれほど時間をかけてもコンピューターでは解けない問題があることを示します。その代表が、プログラムが止まるかどうかを判定する「停止性問題」です。</p>
+</div>
 <div class="paragraph">
 <p>計算量理論はアルゴリズム理論をさらに抽象化し、問題そのものの本質的な難しさを研究する分野です。どんなアルゴリズムを使っても効率的に解けない問題が存在することや、効率的に解けるかどうかがまだ証明されていない問題が存在することを学びます。</p>
 </div>
@@ -914,10 +992,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>「全国に \(k\) 箇所ある営業所を重複せずに一巡する最短経路を求めよ」</p>
 </div>
 <div class="paragraph">
-<p>といった問題が与えられたとき、その問題の「難しさ」について考える「計算量理論」という分野があります。計算の「難しさ」を語るには、まず、どのようなコンピューターで計算するのかを決めなくてはなりません。これを<strong>計算モデル</strong>といいます。この授業では詳細な形式化は避けますが、具体的には決定性チューリングマシンに相当する計算モデルを想定します。これは一般的なコンピューターでの計算を抽象化したモデルです。</p>
+<p>といった問題が与えられたとき、その問題の「難しさ」について考える「計算量理論」という分野があります。計算の「難しさ」を語るには、まず、どのようなコンピューターで計算するのかを決めなくてはなりません。これを<strong>計算モデル</strong>といいます。本書では詳細な形式化は避けますが、具体的には決定性チューリングマシンに相当する計算モデルを想定します。これは一般的なコンピューターでの計算を抽象化したモデルです。</p>
 </div>
 <div class="paragraph">
-<p>計算量理論でいう計算の「難しさ」は、問題の入力サイズが大きくなるに従って計算時間や途中の計算で必要となる記憶領域がどの程度必要になるかを基準にして定義されます。先ほどの巡回経路の問題では、巡らなくてはならない営業所の数 \(k\) を入力サイズとしたとき、営業所の数 \(k\) が大きくなると、厳密な解を求めるための計算量は爆発的に大きくなり、スーパーコンピューターを使っても、とても手に負えない問題になることが経験的にわかっています。</p>
+<p>計算量理論でいう計算の「難しさ」は、問題の入力サイズが大きくなるに従って計算時間や途中の計算で必要となる記憶領域がどの程度必要になるかを基準にして定義されます。先ほどの巡回経路の問題では、巡らなくてはならない営業所の数 \(k\) を入力サイズとしたとき、営業所の数 \(k\) が大きくなると、巡回の順番の候補は \((k-1)!/2\) 通り(出発点を固定し、逆回りを同じとみなした場合)と爆発的に増えます(練習問題7)。候補をうまく絞り込む工夫により、数万か所規模の例が厳密に解かれたこともありますが、どんな入力に対しても、\(k\) が大きくなっても現実的な時間で厳密な最短経路を求められる方法は知られていません。</p>
 </div>
 <div class="paragraph">
 <p>2つの有名な問題を見比べてみましょう。数独とルービックキューブです。
@@ -969,7 +1047,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>この問題は「<strong>P≠NP予想</strong>」として知られており、1971年にスティーブン・クックにより定式化されて以来、だれも証明に成功していません。米国のクレイ数学研究所はこの問題を懸賞問題の１つとして、100万ドルの懸賞金をかけています。</p>
 </div>
 <div class="paragraph">
-<p>授業では、ここでの怪しい説明よりはほんの少しマシな説明を通して、計算量理論の初等的な話題をいくつか取り扱い、コンピューター科学で扱う「計算」の概念について理解を深めます。</p>
+<p>本書では、ここでの怪しい説明よりはほんの少しマシな説明を通して、計算量理論の初等的な話題をいくつか取り扱い、コンピューター科学で扱う「計算」の概念について理解を深めます。</p>
 </div>
 <div class="sect4">
 <h5 id="_計算量理論の応用現代暗号"><a class="link" href="#_計算量理論の応用現代暗号">計算量理論の応用：現代暗号</a></h5>
@@ -980,7 +1058,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>現在実用的に用いられている暗号のほとんどは、理論上は時間をかければ解読できるけれども、それは何万年、何億年もかかるかもしれず現実的な時間では解読できないことに依拠して暗号の安全性を実現しています。計算の難しさに基づく暗号は、解けないのではなく、解くのにとてつもなく時間がかかることで安全性を担保しているのです。</p>
 </div>
 <div class="paragraph">
-<p>難しい問題における問題のサイズと計算量について、とてもよくわかる動画があります。YouTubeで8分ほどの動画です。視聴しておいてください。</p>
+<p>難しい問題における問題のサイズと計算量について、とてもよくわかる動画があります。YouTubeで8分ほどの動画です。ぜひ視聴してください。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -995,24 +1073,24 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="sect1">
-<h2 id="_確認問題"><a class="link" href="#_確認問題">2. 確認問題</a></h2>
+<h2 id="_前提知識_n進法の復習"><a class="link" href="#_前提知識_n進法の復習">2. 前提知識: n進法の復習</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>ここから先を読み進める上で必須の知識です。忘れている人は、ここで復習しておいてください。基本的な数の変換は、コンピューター内部のデータ表現を理解する上で欠かせない基礎となります。</p>
+<p>ここから先を読み進める上で必須の知識です。忘れている人は、ここで復習しておいてください。基本的な数の変換は、コンピューター内部のデータ表現を理解する上で欠かせない基礎となります。章末の練習問題で、変換の手順を確かめられます。</p>
 </div>
 <div class="sect2">
-<h3 id="_まずは復習"><a class="link" href="#_まずは復習">2.1. まずは復習</a></h3>
+<h3 id="_位取り記数法と基数"><a class="link" href="#_位取り記数法と基数">2.1. 位取り記数法と基数</a></h3>
 <div class="paragraph">
 <p>高校の「数学A」や「情報I」で習う数の2進法から10進法、10進法から2進法への変換の復習です。</p>
 </div>
 <div class="paragraph">
-<p>現在のデジタルコンピューターはスイッチのオン・オフ、電圧の高・低といった2つの異なった状態に基づいて設計されています。そのため、コンピューター内部のデータはすべて、0と1のみを用いた数の表記法である<strong>2進法</strong>で表されます。2進法の1桁分のデータ量を<strong>1ビット</strong>、8ビット分を<strong>1バイト</strong>とよびます。これらデータ量の単位については次回「コンピューター発展史とデータの単位」でくわしく扱いますので、ここではその前提となる<em>n</em>進法の復習をしておきます。</p>
+<p>現在のデジタルコンピューターはスイッチのオン・オフ、電圧の高・低といった2つの異なった状態に基づいて設計されています。そのため、コンピューター内部のデータはすべて、0と1のみを用いた数の表記法である<strong>2進法</strong>で表されます。2進法の1桁分のデータ量を<strong>1ビット</strong>、8ビット分を<strong>1バイト</strong>とよびます。これらデータ量の単位については第2章「コンピューター発展史とデータの単位」でくわしく扱いますので、ここではその前提となる<em>n</em>進法の復習をしておきます。</p>
 </div>
 <div class="paragraph">
 <p>我々が普段つかっている10個の記号0から9を用いた数の表現を<strong>10進法</strong>といいます。用いる記号の数により、以下のような様々な<em>n</em>進法の数表現が考えられます。<em>n</em>進法の<em>n</em>を<strong>基数</strong>(radix or base)といいます。</p>
 </div>
 <table class="tableblock frame-ends grid-rows center" style="width: 80%;">
-<caption class="title">表 1. 基数の異なる数の対応表</caption>
+<caption class="title">表 2. 基数の異なる数の対応表</caption>
 <colgroup>
 <col>
 <col>
@@ -1174,7 +1252,16 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>16進法では、一桁の数を表すのに16種類の記号が必要となります。普段つかっている0から9の十種類の記号では、数がたりなくなるため0,&#8230;&#8203;,9,A,B,C,D,E,Fの16種類の記号を用いて数を表現します。</p>
 </div>
 <div class="paragraph">
-<p>2進法の1010と10進法の1010は、表現は同じでも異なる数を表しています。そのため、基数を数表現の右下に括弧で表して、<em>n</em>進法による数表現を区別します。ただし、<em>n</em>=10のときは基数の表記を省略します。</p>
+<p>2進法の1010と10進法の1010は、表現は同じでも異なる数を表しています(<a href="#fig-place-value">図 1</a>)。そのため、基数を数表現の右下に括弧で表して、<em>n</em>進法による数表現を区別します。ただし、<em>n</em>=10のときは基数の表記を省略します。</p>
+</div>
+<div id="fig-place-value" class="imageblock">
+<div class="content">
+<img src="./img/radix-place-value.svg" alt="10進法の1010は各桁の重み1000,100,10,1で千十、2進法の1010は重み8,4,2,1で10">
+</div>
+<div class="title">図 1. 同じ並びでも、基数が違えば桁の重みが違う</div>
+</div>
+<div class="paragraph">
+<p>各桁の数字に、その桁の重み(基数のべき乗)を掛けて足し合わせたものが、表している数です。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1204,7 +1291,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="ulist">
 <ul>
 <li>
-<p>小数でも同様。0.011<sub>(2)</sub> = 0.375</p>
+<p>小数でも同様。小数点より右の桁の重みは \(r^{-1}, r^{-2}, \ldots\) となる。0.011<sub>(2)</sub> = 0.375</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1226,10 +1313,42 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 \end{align*}\]
 </div>
 </div>
-<div class="sect3">
-<h4 id="_2進法と16進法間の数表現の変換"><a class="link" href="#_2進法と16進法間の数表現の変換">2.1.1. 2進法と16進法間の数表現の変換</a></h4>
 <div class="paragraph">
-<p>2<sup>4</sup>=16 であることから、2進法の4桁(4ビット)は、16進法の1桁にちょうど対応していますので、2進法の整数を16進法に変換するのは簡単です。2進法の数を下位桁から4桁ごとに区切って、4桁単位で16進法の表現に置き換えるだけです。</p>
+<p>2進法から10進法への変換は、この式のとおりに重みを足し合わせるだけです。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_10進法から2進法への変換"><a class="link" href="#_10進法から2進法への変換">2.2. 10進法から2進法への変換</a></h3>
+<div class="paragraph">
+<p>逆向きの変換は、整数部と小数部で手順が異なります(<a href="#fig-radix-conversion">図 2</a>)。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>整数部</strong>: 2で割り、余りを書きとめることを商が0になるまで繰り返します。余りを<strong>下から</strong>(最後に出たものから)順に並べると2進法の表現になります。</p>
+</li>
+<li>
+<p><strong>小数部</strong>: 2倍し、整数部分(0か1)を取り出して残りの小数部分をまた2倍することを繰り返します。取り出した数字を<strong>上から</strong>(最初に出たものから)順に並べます。</p>
+</li>
+</ul>
+</div>
+<div id="fig-radix-conversion" class="imageblock">
+<div class="content">
+<img src="./img/radix-conversion.svg" alt="13を2で割り続けると余りは1,0,1,1で下から読んで1101。0.625を2倍し続けると整数部分は1,0,1で上から読んで0.101">
+</div>
+<div class="title">図 2. 10進法から2進法への変換の手順(13.625の例)</div>
+</div>
+<div class="paragraph">
+<p>なぜこれでよいのかは、10進法で同じことをしてみるとわかります。10進法の数 12345 を 10 で割り続ければ、余りとして 5, 4, 3, 2, 1 が順に出てくるので、逆順に並べれば 12345 に戻ります。2で割ったときの余りは2進法の一番下の桁(\(2^0\) の位)で、商はその桁を取り除いた残りです。これを繰り返すと、下の桁から順に1桁ずつ取り出せます。小数部を2倍する操作は、小数点を1桁右へずらして \(2^{-1}\) の位を整数部分へ押し出す操作にあたります。</p>
+</div>
+<div class="paragraph">
+<p>小数部の変換は、いつも終わるとは限りません。たとえば 0.1 は2進法では 0.000110011001&#8230;&#8203;<sub>(2)</sub> と、0011 がどこまでも繰り返す循環小数になります(練習問題6)。これは第3章で学ぶ浮動小数点数の誤差の原因の一つです。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2進法と16進法の変換"><a class="link" href="#_2進法と16進法の変換">2.3. 2進法と16進法の変換</a></h3>
+<div class="paragraph">
+<p>2<sup>4</sup>=16 であることから、2進法の4桁(4ビット)は、16進法の1桁にちょうど対応していますので、2進法の整数を16進法に変換するのは簡単です。2進法の数を下位桁から4桁ごとに区切って、4桁単位で16進法の表現に置き換えるだけです(<a href="#fig-bin-hex">図 3</a>)。小数部分は小数点から右へ4桁ずつ区切り、足りない桁は右に0を補います。16進法から2進法へは、逆に各桁を4桁の2進法に置き換えます。</p>
 </div>
 <div class="stemblock">
 <div class="title">2進法から16進法への変換</div>
@@ -1239,31 +1358,354 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 \end{align*}\]
 </div>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_問題"><a class="link" href="#_問題">2.2. 問題</a></h3>
-<div class="sidebarblock">
+<div id="fig-bin-hex" class="imageblock">
 <div class="content">
-<div class="title">確認問題</div>
+<img src="./img/bin-hex-grouping.svg" alt="2進法11010は上位に0を補って0001 1010と区切り1A。小数0.101は右に0を補って0.1010とし0.A">
+</div>
+<div class="title">図 3. 2進法と16進法の変換: 小数点を基準に4桁ずつ区切る</div>
+</div>
+<div class="paragraph">
+<p>同じ考え方で、2<sup>3</sup>=8 なので2進法の3桁は8進法の1桁に対応します。</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>00→01→11→10 のように隣接する数字の並びが1ビットしか異ならないように2進法の数字の順番を並べ替えた数の符号化を<strong>グレイコード</strong>と呼びます。回転角を読み取る装置(ロータリーエンコーダー)などで、読み取りの途中で大きく値が飛ぶ誤りを防ぐために使われます。</p>
+</li>
+<li>
+<p>3進法のバリエーションとして平衡3進法が知られています。平衡3進法は-1, 0, 1の3つの数字を使って基数3の数を表現する方法で、符号(正負)を別に持たなくても負の数を表せる利点があります。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>変換の手順をもう少していねいに確認したい人は、補足資料 <a href="../03-number/binary-notation.html" target="_blank" rel="noopener">2進法の表記と変換</a> を参照してください。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_練習問題"><a class="link" href="#_練習問題">3. 練習問題</a></h2>
+<div class="sectionbody">
+<div class="exampleblock">
+<div class="title">問題1: 基数変換の基本</div>
+<div class="content">
 <div class="paragraph">
 <p>(1)  10100010<sub>(2)</sub> を10進法に変換せよ<br>
 (2)  10100010<sub>(2)</sub> を16進法に変換せよ<br>
-(3)  201<sub>(10)</sub> を2進法に変換せよ<br>
-(4)  201<sub>(10)</sub> を16進法に変換せよ<br>
+(3)  201 を2進法に変換せよ<br>
+(4)  201 を16進法に変換せよ<br>
 (5)  20A<sub>(16)</sub> を2進法に変換せよ<br>
 (6)  20A<sub>(16)</sub> を10進法に変換せよ<br>
 (7)  0.1111<sub>(2)</sub> を10進法に変換せよ</p>
 </div>
 </div>
 </div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
 <div class="paragraph">
-<p>解答は次回「コンピューター発展史とデータの単位」で示します。変換の手順をもう少していねいに確認したい人は、補足資料 <a href="../03-number/binary-notation.html" target="_blank" rel="noopener">2進法の表記と変換</a> を参照してください。</p>
+<p>(1) <strong>162</strong><br>
+10100010<sub>(2)</sub> = 1×2<sup>7</sup> + 0×2<sup>6</sup> + 1×2<sup>5</sup> + 0×2<sup>4</sup> + 0×2<sup>3</sup> + 0×2<sup>2</sup> + 1×2<sup>1</sup> + 0×2<sup>0</sup> = 128 + 32 + 2 = 162</p>
 </div>
+<div class="paragraph">
+<p>(2) <strong>A2<sub>(16)</sub></strong><br>
+下位から4桁ずつ区切って 1010 0010<sub>(2)</sub>。1010<sub>(2)</sub>=10=A<sub>(16)</sub>、0010<sub>(2)</sub>=2 なので A2<sub>(16)</sub>。</p>
+</div>
+<div class="paragraph">
+<p>(3) <strong>11001001<sub>(2)</sub></strong><br>
+201 を商が 0 になるまで順に 2 で割り、余りを下から順に並べます(<a href="#tab-div2">表 3</a>)。検算: 128+64+8+1 = 201。</p>
+</div>
+<table id="tab-div2" class="tableblock frame-all grid-all fit-content">
+<caption class="title">表 3. (3)の計算</caption>
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">余り</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">201 ÷ 2 = 100</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">100 ÷ 2 = 50</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">50 ÷ 2 = 25</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">25 ÷ 2 = 12</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">12 ÷ 2 =  6</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">6 ÷ 2 =  3</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">3 ÷ 2 =  1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1 ÷ 2 =  0</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>(4) <strong>C9<sub>(16)</sub></strong><br>
+(3)の結果を4桁ずつ区切ると 1100 1001<sub>(2)</sub> = C9<sub>(16)</sub>。16で割る方法でも、201 = 16×12 + 9 から C9<sub>(16)</sub> と求められます。</p>
+</div>
+<div class="paragraph">
+<p>(5) <strong>1000001010<sub>(2)</sub></strong><br>
+各桁を4桁の2進法に置き換えて 0010 0000 1010<sub>(2)</sub>。先頭の0を省くと 10 0000 1010<sub>(2)</sub> です。途中の0000を省かないように注意してください。</p>
+</div>
+<div class="paragraph">
+<p>(6) <strong>522</strong><br>
+2×16<sup>2</sup> + 0×16<sup>1</sup> + 10×16<sup>0</sup> = 512 + 0 + 10 = 522。A を 10 と読み替えることを忘れないようにしましょう。</p>
+</div>
+<div class="paragraph">
+<p>(7) <strong>0.9375</strong><br>
+0.1111<sub>(2)</sub> = 2<sup>-1</sup>+2<sup>-2</sup>+2<sup>-3</sup>+2<sup>-4</sup> = 0.5+0.25+0.125+0.0625 = 0.9375。0.1111<sub>(2)</sub> に 0.0001<sub>(2)</sub> を足すと 1 になることから、1 − 2<sup>-4</sup> と求めることもできます。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題2: 2進法・10進法・16進法の相互変換</div>
+<div class="content">
+<div class="paragraph">
+<p>(1) 1101<sub>(2)</sub> を10進法と16進法に変換せよ<br>
+(2) 101011<sub>(2)</sub> と 1110010<sub>(2)</sub> を16進法に変換せよ<br>
+(3) 25 を2進法と16進法に変換せよ<br>
+(4) 3C<sub>(16)</sub> を2進法と10進法に変換せよ</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) 1101<sub>(2)</sub> = 1×2<sup>3</sup> + 1×2<sup>2</sup> + 0×2<sup>1</sup> + 1×2<sup>0</sup> = <strong>13</strong>、16進法では <strong>D<sub>(16)</sub></strong>。4桁の2進法はそのまま16進法の1桁になります。</p>
+</div>
+<div class="paragraph">
+<p>(2) 101011<sub>(2)</sub> = 0010 1011<sub>(2)</sub> = <strong>2B<sub>(16)</sub></strong>、1110010<sub>(2)</sub> = 0111 0010<sub>(2)</sub> = <strong>72<sub>(16)</sub></strong>。区切りは必ず<strong>右(下位)から</strong>4桁ずつです。左から区切って 1110 010 とすると誤りになります。</p>
+</div>
+<div class="paragraph">
+<p>(3) 25 ÷ 2 = 12 余り 1、12 ÷ 2 = 6 余り 0、6 ÷ 2 = 3 余り 0、3 ÷ 2 = 1 余り 1、1 ÷ 2 = 0 余り 1。余りを下から並べて <strong>11001<sub>(2)</sub></strong>。4桁ずつ区切ると 0001 1001<sub>(2)</sub> なので <strong>19<sub>(16)</sub></strong>。</p>
+</div>
+<div class="paragraph">
+<p>(4) 3<sub>(16)</sub> = 0011<sub>(2)</sub>、C<sub>(16)</sub> = 1100<sub>(2)</sub> なので 0011 1100<sub>(2)</sub> = <strong>111100<sub>(2)</sub></strong>。10進法では 3×16 + 12 = <strong>60</strong>。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題3: 小数を含む変換</div>
+<div class="content">
+<div class="paragraph">
+<p>(1) 0.A<sub>(16)</sub> を10進法に変換せよ<br>
+(2) 13.625 を2進法と16進法に変換せよ<br>
+(3) 2F.A<sub>(16)</sub> を2進法に変換せよ<br>
+(4) 1110.101<sub>(2)</sub> を16進法に変換せよ</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) 0.A<sub>(16)</sub> = 10 × 16<sup>-1</sup> = 10/16 = <strong>0.625</strong></p>
+</div>
+<div class="paragraph">
+<p>(2) 整数部 13 = 1101<sub>(2)</sub>。小数部は 0.625×2 = 1.25 → 1、0.25×2 = 0.5 → 0、0.5×2 = 1.0 → 1 で .101<sub>(2)</sub>(<a href="#fig-radix-conversion">図 2</a>)。よって <strong>1101.101<sub>(2)</sub></strong>。16進法では、小数部を右に0を補って 0.1010<sub>(2)</sub> = 0.A<sub>(16)</sub> とし、<strong>D.A<sub>(16)</sub></strong> です。(1)の結果 0.A<sub>(16)</sub> = 0.625 とも一致します。</p>
+</div>
+<div class="paragraph">
+<p>(3) 2<sub>(16)</sub> = 0010<sub>(2)</sub>、F<sub>(16)</sub> = 1111<sub>(2)</sub>、A<sub>(16)</sub> = 1010<sub>(2)</sub> なので 0010 1111.1010<sub>(2)</sub>。前後の余分な0を省いて <strong>101111.101<sub>(2)</sub></strong>。</p>
+</div>
+<div class="paragraph">
+<p>(4) 小数点を基準に、整数部は右から、小数部は左から4桁ずつ区切ります。1110.1010<sub>(2)</sub> となり、<strong>E.A<sub>(16)</sub></strong>。小数部を 0101 と左に0を補うと値が変わってしまうので注意してください。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題4: 桁数と表せる数の個数</div>
+<div class="content">
+<div class="paragraph">
+<p>(1) 8桁の2進法(8ビット)では、何通りの数を表せるか。0から始めて表せる最大の数を10進法と16進法で答えよ。<br>
+(2) 0から1000までの整数をすべて区別して表すには、2進法で最低何桁必要か。<br>
+(3) 16進法で4桁の数は、2進法では何桁に相当するか。16進法4桁で表せる最大の数を10進法で答えよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) 各桁が0か1の2通りなので 2<sup>8</sup> = <strong>256通り</strong>。0から数えるので最大は 256 − 1 = <strong>255 = FF<sub>(16)</sub></strong> です。「256」と答えてしまう誤りが多いので注意しましょう。</p>
+</div>
+<div class="paragraph">
+<p>(2) 0から1000までは1001個の数です。2<sup>9</sup> = 512 &lt; 1001 ≤ 2<sup>10</sup> = 1024 なので、<strong>10桁</strong>(10ビット)必要です。</p>
+</div>
+<div class="paragraph">
+<p>(3) 16進法の1桁は2進法の4桁にあたるので <strong>16桁</strong>。最大は FFFF<sub>(16)</sub> = 16<sup>4</sup> − 1 = <strong>65535</strong> です。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題5: 8進法への変換</div>
+<div class="content">
+<div class="paragraph">
+<p>2進法の数 110101101<sub>(2)</sub> を8進法に変換せよ。また、3桁ずつ区切る方法でよい理由を説明せよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>右から3桁ずつ区切って 110 101 101<sub>(2)</sub>。各3桁は 110<sub>(2)</sub>=6、101<sub>(2)</sub>=5 なので <strong>655<sub>(8)</sub></strong> です。検算すると 6×64 + 5×8 + 5 = 429 で、110101101<sub>(2)</sub> = 256+128+32+8+4+1 = 429 と一致します。</p>
+</div>
+<div class="paragraph">
+<p>理由: 2<sup>3</sup> = 8 なので、2進法の桁の重みを3桁ごとにまとめると 1, 8, 8<sup>2</sup>, &#8230;&#8203; となり、8進法の各桁の重みと一致します。3桁の2進法で表せるのは 0〜7 のちょうど8通りで、8進法の1桁の数字と1対1に対応します。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題6: 0.1を2進法で表す</div>
+<div class="content">
+<div class="paragraph">
+<p>10進法の 0.1 を2進法で表すとどうなるか。小数第12位まで求め、どのような規則で数字が並ぶか答えよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>2倍して整数部分を取り出す操作を続けます。</p>
+</div>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">計算</th>
+<th class="tableblock halign-center valign-top">取り出す数字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0.1 × 2 = 0.2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0.2 × 2 = 0.4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0.4 × 2 = 0.8</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0.8 × 2 = 1.6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0.6 × 2 = 1.2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0.2 × 2 = 0.4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0(2行目と同じ計算に戻った)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0.4 × 2 = 0.8</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0.8 × 2 = 1.6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">0.6 × 2 = 1.2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">…</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">…</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>整数部分を上から並べると <strong>0.000110011001&#8230;&#8203;<sub>(2)</sub></strong> で、2桁目以降は「0011」が繰り返されます。小数部分が 0.2 に戻った時点から同じ計算が繰り返されるためで、いつまでも0にならない循環小数です。</p>
+</div>
+<div class="paragraph">
+<p>コンピューターは有限の桁しか記憶できないので、0.1を2進法で正確に記憶することはできず、途中で丸めた近い値を使います。第3章の浮動小数点数で、この誤差がどのような結果を生むかを学びます。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題7: 巡回経路の候補の数</div>
+<div class="content">
+<div class="paragraph">
+<p>営業所が \(k\) 箇所あり、どこか1か所から出発してすべての営業所を1回ずつ訪れて出発点に戻る経路を考える。出発点を固定し、同じ経路を逆回りにしたものは同じ経路とみなすと、候補は \((k-1)!/2\) 通りある。</p>
+</div>
+<div class="paragraph">
+<p>(1) \(k=10\) と \(k=20\) のそれぞれについて、候補の数を求めよ。<br>
+(2) 1秒間に10億(10<sup>9</sup>)通りの経路の長さを調べられるコンピューターで、すべての候補を調べるのにかかる時間を、\(k=10\), 20, 25 について見積もれ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) \(k=10\): 9!/2 = 362880/2 = <strong>181,440通り</strong>。\(k=20\): 19!/2 ≈ <strong>6.08×10<sup>16</sup>通り</strong>(約6京)。</p>
+</div>
+<div class="paragraph">
+<p>(2) 候補の数を10<sup>9</sup>で割ります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(k=10\): 181440 ÷ 10<sup>9</sup> ≈ 0.00018秒。一瞬です。</p>
+</li>
+<li>
+<p>\(k=20\): 6.08×10<sup>16</sup> ÷ 10<sup>9</sup> ≈ 6.08×10<sup>7</sup>秒 ≈ <strong>約1.9年</strong>。</p>
+</li>
+<li>
+<p>\(k=25\): 24!/2 ≈ 3.10×10<sup>23</sup> 通りなので、3.10×10<sup>14</sup>秒 ≈ <strong>約980万年</strong>。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>営業所が10か所から20か所へ2倍になっただけで、かかる時間は 19!/9! ≈ 3.4×10<sup>11</sup> 倍(約3400億倍)になります。コンピューターが1000倍速くなっても、\(k=25\) では約1万年かかります。このように、すべての候補を調べる方法は入力が少し大きくなるだけで使えなくなります。第12章では、こうした問題の難しさを計算量理論の言葉で扱います。</p>
+</div>
+</div>
+</details>
 <hr>
 <div class="paragraph">
 <p>以上です</p>
-</div>
 </div>
 </div>
 </div>
@@ -1272,6 +1714,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div id="footer-text">
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",

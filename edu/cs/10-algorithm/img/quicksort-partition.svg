@@ -1,26 +1,49 @@
-<svg xml:lang="ja" lang="ja" xmlns="http://www.w3.org/2000/svg" width="660" height="290" viewBox="0 0 660 290" font-family="Helvetica, Arial, sans-serif">
-<rect x="0" y="0" width="660" height="290" fill="#ffffff"/>
-<rect x="150" y="28" width="46" height="46" rx="6" fill="#ffffff" stroke="#9e9e9e" stroke-width="1.5"/><text x="173.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">9</text>
-<rect x="200" y="28" width="46" height="46" rx="6" fill="#ffffff" stroke="#9e9e9e" stroke-width="1.5"/><text x="223.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">1</text>
-<rect x="250" y="28" width="46" height="46" rx="6" fill="#ffffff" stroke="#9e9e9e" stroke-width="1.5"/><text x="273.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">4</text>
-<rect x="300" y="28" width="46" height="46" rx="6" fill="#ffffff" stroke="#9e9e9e" stroke-width="1.5"/><text x="323.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">3</text>
-<rect x="350" y="28" width="46" height="46" rx="6" fill="#ffffff" stroke="#9e9e9e" stroke-width="1.5"/><text x="373.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">7</text>
-<rect x="400" y="28" width="46" height="46" rx="6" fill="#fff9c4" stroke="#f9a825" stroke-width="1.5"/><text x="423.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">6</text>
-<rect x="450" y="28" width="46" height="46" rx="6" fill="#ffffff" stroke="#9e9e9e" stroke-width="1.5"/><text x="473.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">2</text>
-<rect x="500" y="28" width="46" height="46" rx="6" fill="#ffffff" stroke="#9e9e9e" stroke-width="1.5"/><text x="523.0" y="57.0" font-size="20" text-anchor="middle" fill="#222">3</text>
-<text x="423.0" y="20" font-size="13" text-anchor="middle" fill="#f9a825" font-weight="bold">基準値 6</text>
-<rect x="60" y="180" width="46" height="46" rx="6" fill="#c8e6c9" stroke="#66bb6a" stroke-width="1.5"/><text x="83.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">1</text>
-<rect x="110" y="180" width="46" height="46" rx="6" fill="#c8e6c9" stroke="#66bb6a" stroke-width="1.5"/><text x="133.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">4</text>
-<rect x="160" y="180" width="46" height="46" rx="6" fill="#c8e6c9" stroke="#66bb6a" stroke-width="1.5"/><text x="183.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">3</text>
-<rect x="210" y="180" width="46" height="46" rx="6" fill="#c8e6c9" stroke="#66bb6a" stroke-width="1.5"/><text x="233.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">2</text>
-<rect x="260" y="180" width="46" height="46" rx="6" fill="#c8e6c9" stroke="#66bb6a" stroke-width="1.5"/><text x="283.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">3</text>
-<rect x="324" y="180" width="46" height="46" rx="6" fill="#fff9c4" stroke="#f9a825" stroke-width="1.5"/><text x="347.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">6</text>
-<rect x="388" y="180" width="46" height="46" rx="6" fill="#ffcdd2" stroke="#e57373" stroke-width="1.5"/><text x="411.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">7</text>
-<rect x="438" y="180" width="46" height="46" rx="6" fill="#ffcdd2" stroke="#e57373" stroke-width="1.5"/><text x="461.0" y="209.0" font-size="20" text-anchor="middle" fill="#222">9</text>
-<text x="183.0" y="156" font-size="14" text-anchor="middle" fill="#388e3c" font-weight="bold">6より小さいグループ</text>
-<text x="436.0" y="156" font-size="14" text-anchor="middle" fill="#d32f2f" font-weight="bold">6より大きい</text>
-<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#555"/></marker></defs>
-<path d="M 415.0 80 C 363.0 120, 170 125, 170 177" fill="none" stroke="#555" stroke-width="1.8" marker-end="url(#ah)"/>
-<path d="M 431.0 80 C 483.0 120, 432 125, 432 177" fill="none" stroke="#555" stroke-width="1.8" marker-end="url(#ah)"/>
-<text x="330" y="262" font-size="14" text-anchor="middle" fill="#555">左右のグループを、それぞれ同じやり方で整列（再帰）</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 350" width="720" height="350" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif">
+<title id="title">基準値6による3分割</title><desc id="desc">9,1,4,3,7,6,2,3 を基準値6と比べ、6より小さい 1,4,3,2,3、6と等しい 6、6より大きい 9,7 に分ける。各グループの中では元の順序を保つ。比較は基準値と残り7個の7回。</desc>
+<rect width="100%" height="100%" fill="white"/>
+<text x="360.0" y="30.0" font-size="17" fill="#233647" text-anchor="middle">基準値 6 と、残りの7個をそれぞれ比べる（比較7回）</text>
+<rect x="160.0" y="50.0" width="50.0" height="44.0" rx="0" fill="white" stroke="#c4cfd6" stroke-width="1.2"/>
+<text x="185.0" y="79.9" font-size="22" fill="#233647" text-anchor="middle">9</text>
+<rect x="210.0" y="50.0" width="50.0" height="44.0" rx="0" fill="white" stroke="#c4cfd6" stroke-width="1.2"/>
+<text x="235.0" y="79.9" font-size="22" fill="#233647" text-anchor="middle">1</text>
+<rect x="260.0" y="50.0" width="50.0" height="44.0" rx="0" fill="white" stroke="#c4cfd6" stroke-width="1.2"/>
+<text x="285.0" y="79.9" font-size="22" fill="#233647" text-anchor="middle">4</text>
+<rect x="310.0" y="50.0" width="50.0" height="44.0" rx="0" fill="white" stroke="#c4cfd6" stroke-width="1.2"/>
+<text x="335.0" y="79.9" font-size="22" fill="#233647" text-anchor="middle">3</text>
+<rect x="360.0" y="50.0" width="50.0" height="44.0" rx="0" fill="white" stroke="#c4cfd6" stroke-width="1.2"/>
+<text x="385.0" y="79.9" font-size="22" fill="#233647" text-anchor="middle">7</text>
+<rect x="410.0" y="50.0" width="50.0" height="44.0" rx="0" fill="#fff9c4" stroke="#b8960f" stroke-width="2"/>
+<text x="435.0" y="79.9" font-size="22" fill="#233647" text-anchor="middle" font-weight="700">6</text>
+<rect x="460.0" y="50.0" width="50.0" height="44.0" rx="0" fill="white" stroke="#c4cfd6" stroke-width="1.2"/>
+<text x="485.0" y="79.9" font-size="22" fill="#233647" text-anchor="middle">2</text>
+<rect x="510.0" y="50.0" width="50.0" height="44.0" rx="0" fill="white" stroke="#c4cfd6" stroke-width="1.2"/>
+<text x="535.0" y="79.9" font-size="22" fill="#233647" text-anchor="middle">3</text>
+<line x1="235.0" y1="96.0" x2="105.0" y2="217.0" stroke="#4f8a52" stroke-width="1.6"/>
+<line x1="285.0" y1="96.0" x2="155.0" y2="217.0" stroke="#4f8a52" stroke-width="1.6"/>
+<line x1="335.0" y1="96.0" x2="205.0" y2="217.0" stroke="#4f8a52" stroke-width="1.6"/>
+<line x1="485.0" y1="96.0" x2="255.0" y2="217.0" stroke="#4f8a52" stroke-width="1.6"/>
+<line x1="535.0" y1="96.0" x2="305.0" y2="217.0" stroke="#4f8a52" stroke-width="1.6"/>
+<line x1="435.0" y1="96.0" x2="435.0" y2="217.0" stroke="#b8960f" stroke-width="1.6"/>
+<line x1="185.0" y1="96.0" x2="565.0" y2="217.0" stroke="#d7301f" stroke-width="1.6"/>
+<line x1="385.0" y1="96.0" x2="615.0" y2="217.0" stroke="#d7301f" stroke-width="1.6"/>
+<rect x="80.0" y="220.0" width="50.0" height="44.0" rx="0" fill="#c8e6c9" stroke="#4f8a52" stroke-width="1.6"/>
+<text x="105.0" y="249.9" font-size="22" fill="#233647" text-anchor="middle">1</text>
+<rect x="130.0" y="220.0" width="50.0" height="44.0" rx="0" fill="#c8e6c9" stroke="#4f8a52" stroke-width="1.6"/>
+<text x="155.0" y="249.9" font-size="22" fill="#233647" text-anchor="middle">4</text>
+<rect x="180.0" y="220.0" width="50.0" height="44.0" rx="0" fill="#c8e6c9" stroke="#4f8a52" stroke-width="1.6"/>
+<text x="205.0" y="249.9" font-size="22" fill="#233647" text-anchor="middle">3</text>
+<rect x="230.0" y="220.0" width="50.0" height="44.0" rx="0" fill="#c8e6c9" stroke="#4f8a52" stroke-width="1.6"/>
+<text x="255.0" y="249.9" font-size="22" fill="#233647" text-anchor="middle">2</text>
+<rect x="280.0" y="220.0" width="50.0" height="44.0" rx="0" fill="#c8e6c9" stroke="#4f8a52" stroke-width="1.6"/>
+<text x="305.0" y="249.9" font-size="22" fill="#233647" text-anchor="middle">3</text>
+<text x="205.0" y="292.0" font-size="16" fill="#4f8a52" text-anchor="middle" font-weight="700">6 より小さい</text>
+<rect x="410.0" y="220.0" width="50.0" height="44.0" rx="0" fill="#fff9c4" stroke="#b8960f" stroke-width="1.6"/>
+<text x="435.0" y="249.9" font-size="22" fill="#233647" text-anchor="middle">6</text>
+<text x="435.0" y="292.0" font-size="16" fill="#233647" text-anchor="middle" font-weight="700">6 と等しい</text>
+<rect x="540.0" y="220.0" width="50.0" height="44.0" rx="0" fill="#ffcdd2" stroke="#d7301f" stroke-width="1.6"/>
+<text x="565.0" y="249.9" font-size="22" fill="#233647" text-anchor="middle">9</text>
+<rect x="590.0" y="220.0" width="50.0" height="44.0" rx="0" fill="#ffcdd2" stroke="#d7301f" stroke-width="1.6"/>
+<text x="615.0" y="249.9" font-size="22" fill="#233647" text-anchor="middle">7</text>
+<text x="590.0" y="292.0" font-size="16" fill="#d7301f" text-anchor="middle" font-weight="700">6 より大きい</text>
+<text x="360.0" y="334.0" font-size="16" fill="#5a6b7b" text-anchor="middle">左右のグループを、それぞれ同じやり方で整列する（再帰）</text>
 </svg>

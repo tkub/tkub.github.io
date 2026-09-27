@@ -5,7 +5,7 @@
 <rect x="480" y="90" width="130" height="225" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
 <text x="492" y="115" font-size="17" fill="#235e85" text-anchor="start">第2節</text>
 <rect x="230" y="360" width="270" height="110" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
-<text x="242" y="385" font-size="17" fill="#235e85" text-anchor="start">第3節</text>
+<text x="365" y="462" font-size="17" fill="#235e85" text-anchor="middle">第3節</text>
 <line x1="125" y1="150" x2="550" y2="270" stroke="#a5b2bb" stroke-width="1.5"/>
 <line x1="125" y1="150" x2="280" y2="410" stroke="#a5b2bb" stroke-width="1.5"/>
 <line x1="125" y1="150" x2="445" y2="420" stroke="#a5b2bb" stroke-width="1.5"/>

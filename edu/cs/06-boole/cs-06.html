@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.26">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <meta name="author" content="久保山哲二">
 <title>論理回路とブール代数</title>
 <style>
@@ -562,124 +562,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-pre.rouge table td { padding: 5px; }
-pre.rouge table pre { margin: 0; }
-pre.rouge, pre.rouge .w {
-  color: #24292f;
-  background-color: #f6f8fa;
-}
-pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
-  color: #cf222e;
-}
-pre.rouge .gr {
-  color: #f6f8fa;
-}
-pre.rouge .gd {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-pre.rouge .nb {
-  color: #953800;
-}
-pre.rouge .nc {
-  color: #953800;
-}
-pre.rouge .no {
-  color: #953800;
-}
-pre.rouge .nn {
-  color: #953800;
-}
-pre.rouge .sr {
-  color: #116329;
-}
-pre.rouge .na {
-  color: #116329;
-}
-pre.rouge .nt {
-  color: #116329;
-}
-pre.rouge .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-pre.rouge .ges {
-  font-weight: bold;
-  font-style: italic;
-}
-pre.rouge .kc {
-  color: #0550ae;
-}
-pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
-  color: #0550ae;
-}
-pre.rouge .sb {
-  color: #0550ae;
-}
-pre.rouge .bp {
-  color: #0550ae;
-}
-pre.rouge .ne {
-  color: #0550ae;
-}
-pre.rouge .nl {
-  color: #0550ae;
-}
-pre.rouge .py {
-  color: #0550ae;
-}
-pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
-  color: #0550ae;
-}
-pre.rouge .o, pre.rouge .ow {
-  color: #0550ae;
-}
-pre.rouge .gh {
-  color: #0550ae;
-  font-weight: bold;
-}
-pre.rouge .gu {
-  color: #0550ae;
-  font-weight: bold;
-}
-pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
-  color: #0a3069;
-}
-pre.rouge .nd {
-  color: #8250df;
-}
-pre.rouge .nf, pre.rouge .fm {
-  color: #8250df;
-}
-pre.rouge .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
-  color: #6e7781;
-}
-pre.rouge .gl {
-  color: #6e7781;
-}
-pre.rouge .gt {
-  color: #6e7781;
-}
-pre.rouge .ni {
-  color: #24292f;
-}
-pre.rouge .si {
-  color: #24292f;
-}
-pre.rouge .ge {
-  color: #24292f;
-  font-style: italic;
-}
-pre.rouge .gs {
-  color: #24292f;
-  font-weight: bold;
-}
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
@@ -707,28 +590,28 @@ pre.rouge .gs {
 <li><a href="#_ブール代数の基本性質">1.3. ブール代数の基本性質</a>
 <ul class="sectlevel3">
 <li><a href="#_吸収律の証明">吸収律の証明</a></li>
+<li><a href="#_分配律をスイッチで確かめる">分配律をスイッチで確かめる</a></li>
 </ul>
 </li>
 <li><a href="#_論理式の簡単化">1.4. 論理式の簡単化</a>
 <ul class="sectlevel3">
 <li><a href="#_簡単化のコツ">簡単化のコツ</a></li>
-<li><a href="#_練習問題">【練習問題】</a></li>
+<li><a href="#_練習問題式の簡単化">【練習問題】式の簡単化</a></li>
 </ul>
 </li>
 <li><a href="#_プログラムによる論理演算">1.5. プログラムによる論理演算</a></li>
 <li><a href="#sec-standard-forms">1.6. 論理式の標準形</a>
 <ul class="sectlevel3">
 <li><a href="#_積和標準形">積和標準形</a></li>
-<li><a href="#_練習問題真理値表から積和標準形へ">【練習問題】真理値表から積和標準形へ</a></li>
 <li><a href="#_和積標準形">和積標準形</a></li>
+<li><a href="#_練習問題真理値表から標準形へ">【練習問題】真理値表から標準形へ</a></li>
 </ul>
 </li>
 <li><a href="#_最小項と最大項">1.7. 最小項と最大項</a></li>
 <li><a href="#_ブール代数と推論_とばしてかまいません">1.8. ブール代数と推論 <span class="small">(とばしてかまいません)</span></a></li>
 </ul>
 </li>
-<li><a href="#_今週の問題">2. 今週の問題</a></li>
-<li><a href="#_今週の問題の解答">3. 今週の問題の解答</a></li>
+<li><a href="#_練習問題">2. 練習問題</a></li>
 </ul>
 </div>
 </div>
@@ -747,25 +630,30 @@ pre.rouge .gs {
 <h2 id="_ブール代数"><a class="link" href="#_ブール代数">1. ブール代数</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>今回から、コンピューターのハードウェアの話です。</p>
+<p>この章から、コンピューターのハードウェアの話に入ります。</p>
 </div>
 <div class="paragraph">
-<p>コンピューターの複雑な動作は、0と1のビット列の演算の積み重ねで成り立っています。次回は2進法による2つの数の足し算を実現する加算回路の構成方法について学びます。今回は、その基礎となるブール代数について学びます。</p>
+<p>コンピューターの複雑な動作は、0と1のビット列の演算の積み重ねで成り立っています。次の章では、論理回路を簡単にする方法と、2進法による2つの数の足し算を行う加算回路の作り方を学びます。この章では、その基礎となるブール代数と、ブール代数の式を電子回路で表す論理回路を学びます。</p>
 </div>
 <div class="paragraph">
 <p>シャノンは、情報理論の発表よりも約10年さかのぼった1937年に、MITの修士論文「リレーとスイッチング回路の記号解析」で、リレー回路の設計にある種の代数の体系が使えることを明らかにしました。これは彼が21歳のときの仕事で、後に「20世紀で最も重要な修士論文の一つ」と評されることもあります。当時は電話の自動交換機の設計が主な応用でした。しかし、電磁石を用いた機械的なスイッチの仕組みであるリレーから、半導体を用いたスイッチになり、コンピューターの設計に用いられるようになっても彼の理論は依然として有効であり、現在のコンピューターの論理回路設計の基礎となっています。</p>
 </div>
 <div class="paragraph">
-<p>シャノンが用いた代数の体系はブール代数です。ブール代数は、19世紀の数学者ブールによって提案された体系を発展させたものです。ブールは、30代後半に発表した著書<strong>「論理と確率の数学的な理論の基礎となる思考法則の研究」</strong>(1854年)の中で、アリストテレスの論理学を拡張し、代数の体系として論理学を位置づけました。それは人間の知的思考は純粋な記号操作によって表現できるという現在の人工知能（特に第二次人工知能ブーム）に通じる考えに基づいていました。ブール代数は論理学の中でも古典命題論理と密接な関係にあり、古典命題論理のモデル（意味論）として用いられています。</p>
+<p>シャノンが用いた代数の体系はブール代数です。ブール代数は、19世紀の数学者ブールによって提案された体系を発展させたものです。ブールは、30代後半に発表した著書<strong>「論理と確率の数学的な理論の基礎となる思考法則の研究」</strong>(1854年)の中で、アリストテレスの論理学を拡張し、代数の体系として論理学を位置づけました。人間の推論を記号の操作として表すという考え方は、記号と規則で推論を行う人工知能の研究（1950年代以降の初期の人工知能や、1980年代に広まったエキスパートシステムなど）にも通じるものです。ブール代数は論理学の中でも古典命題論理と密接な関係にあり、古典命題論理のモデル（意味論）として用いられています。</p>
 </div>
 <div class="sect2">
 <h3 id="_歴史的背景と人物エピソード"><a class="link" href="#_歴史的背景と人物エピソード">1.1. 歴史的背景と人物エピソード</a></h3>
-<div class="paragraph">
-<p><span class="image right"><img src="./img/George_Boole.jpg" alt="George Boole"></span>
-ジョージ・ブールは、チャールズ・バベッジと同じくヴィクトリア朝時代の英国の人です。正規の教育を受けたのは16歳までで、それ以降は独学で当時の最先端の数学の素養を身につけ、数々の数学論文を発表します。経済的な問題もあり大学への進学は断念し、学位を持っていませんでしたが、その業績はすでに広く知られており、30代半ばでアイルランドで新設された大学の教授になります。</p>
+<div class="imageblock right">
+<div class="content">
+<img src="./img/George_Boole.jpg" alt="ジョージ・ブールの肖像">
+</div>
+<div class="title">図 1. ジョージ・ブール</div>
 </div>
 <div class="paragraph">
-<p>現在の人工知能を牽引する深層学習（ディープラーニング）の生みの親の一人で、深層学習界のゴッドファーザーと呼ばれているジェフリー・ヒントンは、ブールの玄孫（やしゃご: 孫の孫、つまり、ひ孫の子）です。また、ブールと交流のあった数学者ド・モルガンは、世界初のプログラマとして知られているエイダの家庭教師でした。</p>
+<p>ジョージ・ブール(1815〜1864)は、チャールズ・バベッジと同じくヴィクトリア朝時代の英国の人です。家業が傾いたため、16歳で学校の助教師として働き始め、それ以降は独学で当時の最先端の数学を身につけ、数々の数学論文を発表します。大学で学ぶことはなく学位も持っていませんでしたが、その業績はすでに広く知られており、1849年、33歳のときにアイルランドで新設された大学(クイーンズ・カレッジ・コーク)の数学の教授になります。</p>
+</div>
+<div class="paragraph">
+<p>現在の人工知能を牽引する深層学習（ディープラーニング）の生みの親の一人で、深層学習界のゴッドファーザーと呼ばれ、2024年にノーベル物理学賞を受賞したジェフリー・ヒントンは、ブールの玄孫（やしゃご: 孫の孫、つまり、ひ孫の子）です。また、ブールと交流のあった数学者ド・モルガンは、「世界初のプログラマ」とよばれることのあるエイダ・ラブレスに、主に手紙で数学を教えていました。</p>
 </div>
 </div>
 <div class="sect2">
@@ -774,7 +662,7 @@ pre.rouge .gs {
 <p>コンピューター内部では0と1を値とする演算だけを用いて、複雑な計算が行われています。以下では、まず3つの基本となる論理演算子と、それに対応するデジタル回路の基本要素である<strong>論理ゲート</strong>を導入します。</p>
 </div>
 <div class="paragraph">
-<p>この授業では、値として0と1だけを扱う<strong>2要素ブール代数</strong>を学びます。一般のブール代数には、集合の和・積・補集合を扱うものなどもあります。また、二項演算子として論理積（\(\cdot\)）と論理和（\(+\)）、単項演算子として否定(\(\bar{}\))を以下のように定義します。</p>
+<p>ここでは、値として0と1だけを扱う<strong>2要素ブール代数</strong>を学びます。一般のブール代数には、集合の和・積・補集合を扱うものなどもあります。2つの値に対する演算(二項演算子)として論理積（\(\cdot\)）と論理和（\(+\)）を、1つの値に対する演算(単項演算子)として否定(値や変数の上に棒を引いて \(\bar x\) のように書く)を、以下のように定義します。</p>
 </div>
 <div class="sect3">
 <h4 id="_論理積"><a class="link" href="#_論理積">論理積</a></h4>
@@ -793,7 +681,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="paragraph">
-<p>論理積は普段我々が使っている算術演算の積と一致しています。</p>
+<p>0と1だけについてみれば、論理積は普段の掛け算と同じ結果になります。</p>
 </div>
 </div>
 <div class="sect3">
@@ -819,7 +707,7 @@ pre.rouge .gs {
 <div class="sect3">
 <h4 id="_否定"><a class="link" href="#_否定">否定</a></h4>
 <div class="paragraph">
-<p>単項演算子（\(\bar{}\)）を用いて否定を次のように定義します。</p>
+<p>値の上に引いた棒で否定を表し、次のように定義します。</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -844,20 +732,24 @@ pre.rouge .gs {
 <h4 id="_andゲート"><a class="link" href="#_andゲート">ANDゲート</a></h4>
 <div class="imageblock right">
 <div class="content">
-<img src="./img/sw-and.svg" alt="sw and">
+<img src="./img/sw-and.svg" alt="直列につないだ2つのスイッチと電球">
 </div>
+<div class="title">図 2. 直列のスイッチ</div>
 </div>
 <div class="paragraph">
 <p>2つの直列に接続したスイッチ \(x\) と \(y\) を考えます。右の図では、\(x\) と \(y\) の両方のスイッチがONになったときだけ電球に光が点きます。スイッチがOFFのとき0、ONのとき 1、電球のONとOFFも同様に値0と1にそれぞれ対応させます。すると電球のONとOFFは、\(x\) と \(y\) の論理積で計算できます。これを \(x\cdot y\) と書きます（曖昧さがなければ「\(\cdot\)」は省略して、\(xy\) とも書きます）。また、記号として \(x\land y\) を用いることもあります。</p>
 </div>
+<div style="clear:both"></div>
 <div class="imageblock right">
 <div class="content">
-<img src="./img/gate-and.svg" alt="gate and">
+<img src="./img/gate-and.svg" alt="ANDゲート">
 </div>
+<div class="title">図 3. ANDゲートの記号</div>
 </div>
 <div class="paragraph">
-<p>デジタル回路ではこのスイッチの役割をはたす回路をANDゲートとよび、右図の記号で表します。</p>
+<p>デジタル回路ではこのスイッチの役割をはたす回路をANDゲートとよび、右図の記号で表します。左側の2本の線が入力、右側の1本が出力です。</p>
 </div>
+<div style="clear:both"></div>
 <table class="tableblock frame-ends grid-all fit-content center">
 <caption class="title">表 1. 論理積</caption>
 <colgroup>
@@ -900,22 +792,24 @@ pre.rouge .gs {
 <h4 id="_orゲート"><a class="link" href="#_orゲート">ORゲート</a></h4>
 <div class="imageblock right">
 <div class="content">
-<img src="./img/sw-or.svg" alt="sw or">
+<img src="./img/sw-or.svg" alt="並列につないだ2つのスイッチと電球">
 </div>
+<div class="title">図 4. 並列のスイッチ</div>
 </div>
 <div class="paragraph">
 <p>こんどは2つの並列に接続したスイッチ \(x\) と \(y\) を考えます。右の図では、\(x\) と \(y\) のいずれか1つでもスイッチがONになれば電球に光が点きます。すると電球のON/OFFは \(x\) と \(y\) の論理和で計算できます。これを \(x+y\) と書きます（記号として \(x\lor y\) を用いることもあります）。 スイッチ \(x\) と \(y\) は、両方をONにしても電球はONになりますから、\(1+1=1\) となるわけです。</p>
 </div>
-<br>
+<div style="clear:both"></div>
 <div class="imageblock right">
 <div class="content">
-<img src="./img/gate-or.svg" alt="gate or">
+<img src="./img/gate-or.svg" alt="ORゲート">
 </div>
+<div class="title">図 5. ORゲートの記号</div>
 </div>
 <div class="paragraph">
 <p>デジタル回路ではこのスイッチの役割をはたす回路をORゲートとよび、右図の記号で表します。</p>
 </div>
-<br>
+<div style="clear:both"></div>
 <table class="tableblock frame-ends grid-all fit-content center">
 <caption class="title">表 2. 論理和</caption>
 <colgroup>
@@ -956,14 +850,26 @@ pre.rouge .gs {
 </div>
 <div class="sect3">
 <h4 id="_notゲート"><a class="link" href="#_notゲート">NOTゲート</a></h4>
-<div class="paragraph">
-<p><span class="image right"><img src="./img/sw-not.svg" alt="sw not"></span>
-否定は、論理積や論理和と異なり、1つの値に対する演算（単項演算）です。右図のようなスイッチを考えます。このスイッチは、押すとスイッチがOFFになり、離すとONになります。押すを1、離すを0とすると、電球はスイッチを押すと消え、スイッチを離すと点きます。このように逆の振る舞いをするスイッチを「否定」演算として定義します。値や変数の上に棒を引いて \(\bar x\) のように表現します（記号として \(\neg x\) または \(x'\) を用いることもあります）。</p>
+<div class="imageblock right">
+<div class="content">
+<img src="./img/sw-not.svg" alt="押すと切れるスイッチと電球">
+</div>
+<div class="title">図 6. 押すと切れるスイッチ</div>
 </div>
 <div class="paragraph">
-<p>デジタル回路では、このスイッチの役割をはたす回路をNOTゲートとよび、右図の記号で表します。
-<span class="image right"><img src="./img/gate-not.svg" alt="gate not"></span></p>
+<p>否定は、論理積や論理和と異なり、1つの値に対する演算（単項演算）です。右図のようなスイッチを考えます。このスイッチは、ふだんは接点がつながっていて(ON)、押すと接点が離れてOFFになります。押すを1、離すを0とすると、電球はスイッチを押すと消え、スイッチを離すと点きます。このように逆の振る舞いをするスイッチを「否定」演算として定義します。値や変数の上に棒を引いて \(\bar x\) のように表現します（記号として \(\neg x\) または \(x'\) を用いることもあります）。</p>
 </div>
+<div style="clear:both"></div>
+<div class="imageblock right">
+<div class="content">
+<img src="./img/gate-not.svg" alt="NOTゲート">
+</div>
+<div class="title">図 7. NOTゲートの記号</div>
+</div>
+<div class="paragraph">
+<p>デジタル回路では、このスイッチの役割をはたす回路をNOTゲートとよび、右図の記号で表します。出力側の小さな丸が「否定」を表します。</p>
+</div>
+<div style="clear:both"></div>
 <table class="tableblock frame-ends grid-all fit-content center">
 <caption class="title">表 3. 否定</caption>
 <colgroup>
@@ -998,7 +904,7 @@ pre.rouge .gs {
 <p>【身近なブール代数：検索】</p>
 </div>
 <div class="paragraph">
-<p>論理積・論理和・否定は、抽象的な 0 と 1 の演算にみえますが、実は毎日のように使っています。検索エンジンで「コンピューター AND 歴史」と打てば両方を含むページが、「猫 OR 犬」なら少なくとも一方を含むページが、「マック -ハンバーガー」(マイナスは否定)なら「ハンバーガー」という語を含まない「マック」のページが絞り込まれます。図書館の蔵書検索やデータベースの条件指定(SQL の <code>WHERE</code> 句など)も同じ仕組みです。各ページが条件に合うかどうかを 1(合致)か 0(非合致)で判定し、AND・OR・NOT で組み合わせているのです。こうした検索は、考案者の名にちなんで<strong>ブール検索</strong>ともよばれます。</p>
+<p>論理積・論理和・否定は、抽象的な 0 と 1 の演算にみえますが、実は毎日のように使っています。検索エンジンで「コンピューター 歴史」と空白で区切って打てば両方を含むページが(多くの検索エンジンでは空白が AND の意味になります)、「猫 OR 犬」なら少なくとも一方を含むページが、「マック -ハンバーガー」(マイナスは否定)なら「ハンバーガー」という語を含まない「マック」のページが絞り込まれます。図書館の蔵書検索やデータベースの条件指定(SQL の <code>WHERE</code> 句など)も同じ仕組みです。各ページが条件に合うかどうかを 1(合致)か 0(非合致)で判定し、AND・OR・NOT で組み合わせているのです。こうした検索は、ブールの名にちなんで<strong>ブール検索</strong>ともよばれます。</p>
 </div>
 </td>
 </tr>
@@ -1010,7 +916,7 @@ pre.rouge .gs {
 <h3 id="_ブール代数の基本性質"><a class="link" href="#_ブール代数の基本性質">1.3. ブール代数の基本性質</a></h3>
 <div class="paragraph">
 <p>ブール代数で定義された3つの演算、論理積、論理和、否定と、定数0,1、および括弧を用いて<strong>論理式</strong>を構成できます。論理式では、演算の優先順位を、我々が普段慣れ親しんでいる<strong>算術演算</strong>と同様に定めます。つまり、<strong>括弧で順序が明示されていないときは、否定を最も強く（最初に）計算し、次に論理積、最後に論理和を計算する</strong>ことにします。
-つまり、\(x+y\cdot z\) は、 \((x+y)\cdot z\)  ではなく、\(x+(y\cdot z)\) の順に計算することとします。</p>
+たとえば、\(x+y\cdot z\) は、 \((x+y)\cdot z\)  ではなく、\(x+(y\cdot z)\) の順に計算することとします。</p>
 </div>
 <table class="tableblock frame-ends grid-none fit-content">
 <caption class="title">表 4. 基本法則</caption>
@@ -1104,7 +1010,7 @@ pre.rouge .gs {
 </dd>
 <dt class="hdlist1"><strong>分配律</strong></dt>
 <dd>
-<p>右側の性質は、普段慣れ親しんでいる算術演算とは異なることに注意してください。</p>
+<p>左側は普段の計算と同じ形ですが、右側の性質は普段の算術演算では成り立たないことに注意してください。たとえば普段の計算では \(1+2\times 3=7\) ですが、\((1+2)\times(1+3)=12\) です。ブール代数では右側も成り立ちます(後の「分配律をスイッチで確かめる」を参照)。</p>
 </dd>
 <dt class="hdlist1"><strong>復元律</strong></dt>
 <dd>
@@ -1118,9 +1024,14 @@ pre.rouge .gs {
 </div>
 <div class="sect3">
 <h4 id="_吸収律の証明"><a class="link" href="#_吸収律の証明">吸収律の証明</a></h4>
+<div class="imageblock right">
+<div class="content">
+<img src="./img/sw-absorption.svg" alt="x+x・yのスイッチ回路">
+</div>
+<div class="title">図 8. 吸収律の左辺 \(x+x\cdot y\) のスイッチ</div>
+</div>
 <div class="paragraph">
-<p><span class="image right"><img src="./img/sw-absorption.svg" alt="sw absorption"></span>
-ここで、いくつかの方法で吸収律</p>
+<p>ここで、いくつかの方法で吸収律</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1131,9 +1042,10 @@ pre.rouge .gs {
 <p>が成り立つことを確認してみましょう。左辺の式 \(x+ x\cdot y\) はスイッチとして解釈すると右図のようになります。このスイッチの挙動は \(x\) によって決まることは明らかでしょう。</p>
 </div>
 <div class="paragraph">
-<p>厳密に吸収律を証明するには、次の2通りの方法があります。1つ目の方法は以下のように変数への値の割当てをすべて列挙する方法です。この表の1列目(左端の列)と4列目(右端の列)の値が等しいことから、吸収律が証明できます。このように、論理式に含まれる変数への値(0と1)の割当てをすべて列挙して、対応する論理式の値を並べた表を<strong>真理値表</strong>といいます。</p>
+<p>厳密に吸収律を証明するには、次の2通りの方法があります。1つ目の方法は以下のように変数への値の割当てをすべて列挙する方法です。次の表の1列目(左端の列)と4列目(右端の列)の値が、どの行でも等しいことから、吸収律が証明できます。このように、論理式に含まれる変数への値(0と1)の割当てをすべて列挙して、対応する論理式の値を並べた表を<strong>真理値表</strong>といいます。</p>
 </div>
 <table class="tableblock frame-ends grid-all fit-content center">
+<caption class="title">表 5. 吸収律の真理値表</caption>
 <colgroup>
 <col>
 <col>
@@ -1176,13 +1088,74 @@ pre.rouge .gs {
 </tbody>
 </table>
 <div class="paragraph">
-<p>上の表の基本法則は真理値表ですべて証明できます。</p>
+<p>基本法則の表の法則は、どれも真理値表で証明できます。たとえばド・モルガンの法則 \(\overline{x+y} = \bar x\cdot \bar y\) は、次の表の4列目と7列目が等しいことから確かめられます。</p>
+</div>
+<table class="tableblock frame-ends grid-all fit-content center">
+<caption class="title">表 6. ド・モルガンの法則の真理値表</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">\(x\)</th>
+<th class="tableblock halign-center valign-top">\(y\)</th>
+<th class="tableblock halign-center valign-top">\(x+y\)</th>
+<th class="tableblock halign-center valign-top">\(\overline{x+y}\)</th>
+<th class="tableblock halign-center valign-top">\(\bar x\)</th>
+<th class="tableblock halign-center valign-top">\(\bar y\)</th>
+<th class="tableblock halign-center valign-top">\(\bar x\cdot\bar y\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>変数の数が増えるに従って、すべての変数への値の割当てを列挙する真理値表に基づく方法はだんだんと手に負えなくなります。なぜなら、変数が \(n\) 個あるとき、真理値表に必要な組合せの数は \(2^n\) になり変数の数に対して計算時間は指数的に増加するからです。変数が20個だと、その数は \(2^{20}=1{,}048{,}576\) で100万を超えます。それでも、まだコンピューターを使えば大したことのない数です。では、変数が40個を超えるとどうでしょう。組合せは1兆を超えます。仮に毎秒10億通りを確認できても、40変数で約18分、60変数で約37年です。実際の時間は論理式の大きさや実装・機器にも依存します。単純な列挙法はすぐに手に負えなくなります。</p>
 </div>
 <div class="paragraph">
-<p>変数の数が増えるに従って、すべての変数への値の割当てを列挙する真理値表に基づく方法はだんだんと手に負えなくなります。なぜなら、変数が \(n\) 個あるとき、真理値表に必要な組合せの数は \(2^n\) になり変数の数に対して計算時間は指数的に増加するからです。変数が20個だと、その数は100万を超えます。それでも、まだコンピューターを使えば大したことのない数です。では、変数が40個を超えるとどうでしょう。組合せは1兆を超えます。仮に毎秒10億通りを確認できても、40変数で約18分、60変数で約37年です。実際の時間は論理式の大きさや実装・機器にも依存します。単純な列挙法はすぐに手に負えなくなります。</p>
-</div>
-<div class="paragraph">
-<p>2つ目の証明方法は、以下のように代数的に式変形して求める方法です（上の表の基本法則で吸収律より上の性質は既知として証明します）。</p>
+<p>2つ目の証明方法は、以下のように代数的に式変形して求める方法です（基本法則の表で吸収律より上にある性質は、すでに成り立つものとして使います）。</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1193,6 +1166,41 @@ x+x\cdot y &amp;= x\cdot 1 + x\cdot y &amp; (単位元)\\
            &amp;= x &amp; (単位元)
 \end{align}\]
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_分配律をスイッチで確かめる"><a class="link" href="#_分配律をスイッチで確かめる">分配律をスイッチで確かめる</a></h4>
+<div class="paragraph">
+<p>基本法則のうち、分配律の右側 \(x+ y\cdot z = (x+y)\cdot(x+z)\) は、普段の計算にはない性質なので、スイッチで確かめておきましょう。左辺 \(x+ y\cdot z\) は、スイッチ \(x\) と、直列につないだ \(y\)・\(z\) とを並列につないだ回路です(下の左図)。右辺 \((x+y)\cdot(x+z)\) は、「\(x\) と \(y\) の並列」と「\(x\) と \(z\) の並列」を直列につないだ回路です(下の右図)。右図の2つの \(x\) は連動していて、同時にON・OFFすると考えてください。</p>
+</div>
+<div class="openblock float-group">
+<div class="content">
+<div class="imageblock left">
+<div class="content">
+<img src="./img/sw-distributivity1.svg" alt="x+y・zのスイッチ回路">
+</div>
+<div class="title">図 9. 分配律の左辺 \(x+ y\cdot z\)</div>
+</div>
+<div class="imageblock left">
+<div class="content">
+<img src="./img/sw-distributivity2.svg" alt="(x+y)・(x+z)のスイッチ回路">
+</div>
+<div class="title">図 10. 分配律の右辺 \((x+y)\cdot(x+z)\)</div>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(x\) がONのとき: 左図は上の経路で電流が流れます。右図も、左右どちらの並列部分も \(x\) の経路で通じるので流れます。</p>
+</li>
+<li>
+<p>\(x\) がOFFのとき: 左図は下の経路、つまり \(y\) と \(z\) が両方ONのときだけ流れます。右図も、左の並列部分には \(y\)、右の並列部分には \(z\) が必要なので、\(y\) と \(z\) が両方ONのときだけ流れます。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>どちらの場合も2つの回路の振る舞いは同じなので、左辺と右辺は等しいことがわかります。</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1208,14 +1216,24 @@ x+x\cdot y &amp;= x\cdot 1 + x\cdot y &amp; (単位元)\\
 </div>
 </div>
 <div class="paragraph">
-<p>ことによって、もう一方の等式が得られます。ブール代数では、我々が慣れ親しんでいる算術演算と異なり、積と和に対称性があるため、この性質が成り立ちます。
-基本法則の表にある左側の等式から、双対原理を用いて右側の等式を導出してみてください。たとえば吸収律の左側 \(x+ x\cdot y = x\) で、0と1、\(+\) と \(\cdot\) を入れ替えると、右側の \(x\cdot(x+y) = x\) がただちに得られます。同じ手順を分配律の左側 \(x\cdot (y+z) = x\cdot y + x\cdot z\) に適用して、右側の等式が出てくることを確かめてみましょう。</p>
+<p>ことによって、もう一方の等式が得られます。このように入れ替えて得られる式を、もとの式の<strong>双対</strong>といいます。ブール代数では、我々が慣れ親しんでいる算術演算と異なり、積と和に対称性があるため、この性質が成り立ちます。基本法則の組が双対になっているので、基本法則を使って証明できた等式があれば、証明の各段階を双対に置き換えることで、その双対の等式も成り立ちます。これを<strong>双対原理</strong>といいます。</p>
 </div>
+<div class="paragraph">
+<p>入れ替えるときは、計算の順序が変わらないように必要に応じて括弧を補います。たとえば吸収律の左側 \(x+ x\cdot y = x\) は \(x+ (x\cdot y) = x\) という意味なので、0と1、\(+\) と \(\cdot\) を入れ替えると、右側の \(x\cdot(x+y) = x\) が得られます。同じ手順を分配律の左側 \(x\cdot (y+z) = x\cdot y + x\cdot z\) に適用して、右側の等式が出てくることを確かめてみましょう。</p>
 </div>
-</div>
-<div class="sidebarblock">
+<details>
+<summary class="title">答え</summary>
 <div class="content">
-<div class="title">ド・モルガンの法則(<span class="small">とばしてかまいません</span>)</div>
+<div class="paragraph">
+<p>\(x\cdot (y+z) = (x\cdot y) + (x\cdot z)\) の論理積と論理和を入れ替えると、\(x+ (y\cdot z) = (x+ y) \cdot (x+ z)\) となり、分配律の右側が得られます。</p>
+</div>
+</div>
+</details>
+</div>
+</div>
+<details>
+<summary class="title">発展: ド・モルガンの法則を他の法則から導く(読み飛ばせます)</summary>
+<div class="content">
 <div class="paragraph">
 <p>ド・モルガンの法則は真理値表によって簡単に証明できますが、以下のように他の基本法則から代数的に導出することもできます。</p>
 </div>
@@ -1312,7 +1330,7 @@ x+x\cdot y &amp;= x\cdot 1 + x\cdot y &amp; (単位元)\\
 <div class="content">
 \[\begin{align*}
   (x+y) + \bar x\bar y &amp;= y + (x+\bar x\bar y) &amp;  \text{(結合・交換律)}\\
-                       &amp;= y + (x+\bar y) &amp;  \text{(冗長律・後述の例2で証明)}\\
+                       &amp;= y + (x+\bar y) &amp;  \text{(冗長律、後の例2で証明)}\\
                        &amp;= x + (y+\bar y) &amp;  \text{(結合・交換律)}\\
                        &amp;= x + 1           &amp;  \text{(相補律)}\\
                        &amp;= 1              &amp;  \text{(零元)}\\
@@ -1351,11 +1369,17 @@ x+x\cdot y &amp;= x\cdot 1 + x\cdot y &amp; (単位元)\\
 </div>
 </div>
 </div>
-</div>
+</details>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_論理式の簡単化"><a class="link" href="#_論理式の簡単化">1.4. 論理式の簡単化</a></h3>
+<div class="paragraph">
+<p>同じ論理関数を表す論理式はいくつもあり、式が簡単なほど、少ない論理ゲートで回路を作れます。ここでは基本法則を使って式を簡単にする練習をし、あわせて論理式と論理回路の対応を見ていきます。</p>
+</div>
+<div class="paragraph">
+<p>論理式を論理回路にするには、式を計算する順にゲートを並べます。変数を左端の入力とし、否定、論理積、論理和の順(括弧があれば内側から)にゲートを置いて、最後のゲートの出力を回路全体の出力にします。この教材ではゲートの入力を2つに限るので、\(a+b+c\) のように3つ以上をまとめる演算は、\((a+b)+c\) のようにゲートを2つ使って表します。逆に、回路図から論理式を読むときは、入力側(左)から順に、各ゲートの出力にその時点の式を書き込んでいきます(例3)。</p>
+</div>
 <div class="hdlist">
 <table>
 <tr>
@@ -1378,13 +1402,16 @@ x\cdot y + x\cdot \bar y &amp;= x\cdot(y+\bar y) &amp; (分配律)\\
 </div>
 </div>
 <div class="paragraph">
-<p>式 \(x\cdot y + x\cdot \bar y\) は、論理ゲートで表現すると下図のようになります。</p>
+<p>式 \(x\cdot y + x\cdot \bar y\) は、論理ゲートで表現すると下図のようになります。青い文字は、各ゲートの出力が表す式です。</p>
 </div>
-<div class="paragraph text-center">
-<p><span class="image"><img src="./img/ex1-lc.svg" alt="ex1 lc"></span></p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/ex1-circuit.svg" alt="x・y+x・ȳの論理回路">
+</div>
+<div class="title">図 11. 例1の論理回路</div>
 </div>
 <div class="paragraph">
-<p>論理回路では線が交差しているだけではつながっていることになりませんので注意してください。黒丸の部分がつながっている箇所です。
+<p>論理回路では線が交差しているだけではつながっていることになりませんので注意してください。黒丸の部分がつながっている箇所です。上の図では、\(x\) から下へ延びる線が \(y\) の横線と交差していますが、黒丸がないのでつながっていません。
 この論理回路は、結局 \(x\) と等しいので、ただ \(x\) を結線すればよいということになります。コンピューター等の論理回路設計では、できるだけ回路を単純化して、できるだけ少ない論理ゲートで回路を組むことがコスト、消費電力、速度の面から重要です。</p>
 </div>
 <div class="paragraph">
@@ -1420,21 +1447,25 @@ x+\bar x\cdot y &amp;= (x+\bar x)\cdot(x+y) &amp; (分配律)\\
 </div>
 </div>
 <div class="paragraph">
-<p>この等式 \(x+\bar x\cdot y = x+y\) を<strong>冗長律</strong>とよびます（後の「簡単化のコツ」や章末の「今週の問題の解答」でも補題として使います）。</p>
+<p>この等式 \(x+\bar x\cdot y = x+y\) を<strong>冗長律</strong>とよびます（後の「簡単化のコツ」や章末の練習問題でも補題として使います）。</p>
 </div>
 <div class="paragraph">
 <p>式 \(x+\bar x\cdot y\) は、論理ゲートで表現すると下図のようになります。</p>
 </div>
-<div class="paragraph text-center">
-<p><span class="image"><img src="./img/ex2-lc.svg" alt="ex2 lc"></span></p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/ex2-circuit.svg" alt="x+x̄・yの論理回路">
+</div>
+<div class="title">図 12. 例2の論理回路</div>
 </div>
 <div class="paragraph">
 <p>この論理回路が簡単化によってORゲート1つになります。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/gate-or.svg" alt="gate or">
+<img src="./img/gate-or.svg" alt="ORゲート">
 </div>
+<div class="title">図 13. 例2を簡単化した回路</div>
 </div>
 <div class="hdlist">
 <table>
@@ -1450,11 +1481,21 @@ x+\bar x\cdot y &amp;= (x+\bar x)\cdot(x+y) &amp; (分配律)\\
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/ex3-lc.svg" alt="ex3 lc">
+<img src="./img/ex3-circuit.svg" alt="例3の論理回路">
 </div>
+<div class="title">図 14. 例3の論理回路</div>
 </div>
 <div class="paragraph">
-<p>まず、\(x\) と \(y\) を左から右にたどって論理ゲートを式に変換して簡単化します。</p>
+<p>まず、\(x\) と \(y\) を左から右にたどって、各ゲートの出力を式で表します。上のANDゲートには \(x\) と \(\bar y\) が入るので出力は \(x\cdot\bar y\)、下のANDゲートの出力は \(x\cdot y\)、ORゲートの出力はその論理和、最後のANDゲートはそれと \(y\) の論理積です。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/ex3-circuit-read.svg" alt="各ゲートの出力に途中の論理式を書き込んだ例3の論理回路">
+</div>
+<div class="title">図 15. 例3の回路の各ゲートの出力を式で表す</div>
+</div>
+<div class="paragraph">
+<p>こうして得られた式を簡単化します。</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1468,10 +1509,13 @@ x+\bar x\cdot y &amp;= (x+\bar x)\cdot(x+y) &amp; (分配律)\\
 </div>
 </div>
 <div class="paragraph">
-<p>よって、簡単化によってANDゲート1つになります。</p>
+<p>よって、簡単化によってANDゲート1つになります。なお、括弧の中の \(x\cdot \bar y + x\cdot y\) は例1の式と同じなので、例1の結果を使えば \((x\cdot \bar y + x\cdot y)\cdot y = x\cdot y\) とすぐに求めることもできます。</p>
 </div>
-<div class="paragraph text-center">
-<p><span class="image"><img src="./img/gate-and.svg" alt="gate and"></span></p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/gate-and.svg" alt="ANDゲート">
+</div>
+<div class="title">図 16. 例3を簡単化した回路</div>
 </div>
 <div class="sect3">
 <h4 id="_簡単化のコツ"><a class="link" href="#_簡単化のコツ">簡単化のコツ</a></h4>
@@ -1552,13 +1596,13 @@ xy + \bar{x}yz &amp;= xy + yz \quad \text{（yでくくってから冗長律）}
 <p><strong>発展形(合意定理)</strong>：\(xy + \bar{x}z + yz = xy + \bar{x}z\)</p>
 </div>
 <div class="paragraph">
-<p>\(yz\) の項(合意項)は前の2項があれば不要になります。この等式の証明は、章末の「今週の問題の解答」の【2】で扱います。</p>
+<p>\(yz\) の項(合意項)は前の2項があれば不要になります。この等式の証明は、章末の練習問題の問題6で扱います。</p>
 </div>
 </div>
 <div class="sect4">
 <h5 id="_実践的な解法手順"><a class="link" href="#_実践的な解法手順">実践的な解法手順</a></h5>
 <div class="paragraph">
-<p><strong>Step 1</strong>：項を整理・グループ化</p>
+<p><strong>手順1</strong>：項を整理・グループ化</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1567,7 +1611,7 @@ xy + \bar{x}yz &amp;= xy + yz \quad \text{（yでくくってから冗長律）}
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Step 2</strong>：相補律で簡単化</p>
+<p><strong>手順2</strong>：相補律で簡単化</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1575,7 +1619,7 @@ xy + \bar{x}yz &amp;= xy + yz \quad \text{（yでくくってから冗長律）}
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Step 3</strong>：吸収律で最終簡単化</p>
+<p><strong>手順3</strong>：吸収律で最終簡単化</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1585,9 +1629,12 @@ xy + \bar{x}yz &amp;= xy + yz \quad \text{（yでくくってから冗長律）}
 </div>
 </div>
 <div class="sect3">
-<h4 id="_練習問題"><a class="link" href="#_練習問題">【練習問題】</a></h4>
+<h4 id="_練習問題式の簡単化"><a class="link" href="#_練習問題式の簡単化">【練習問題】式の簡単化</a></h4>
+<div class="exampleblock">
+<div class="title">練習: 式の簡単化</div>
+<div class="content">
 <div class="paragraph">
-<p>以下を簡単化せよ</p>
+<p>次の論理式を簡単化せよ。</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1601,71 +1648,87 @@ xy + \bar{x}yz &amp;= xy + yz \quad \text{（yでくくってから冗長律）}
 <p>\(x(y + z) + \bar{x}(y + z) + yz\)</p>
 </li>
 <li>
-<p>\(abc + abcd + \bar{a}bcd + \bar{a}bc\)</p>
+<p>\(xyz + xy\bar z + x\bar y\)</p>
 </li>
 <li>
 <p>\(\overline{\bar x + y} + \overline{x\cdot\bar y}\)（ド・モルガンの法則を使う）</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><strong>解答</strong>：</p>
 </div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>\(x + yz\) （冗長律）</p>
+<p>\(x + yz\)。冗長律 \(x+\bar x\cdot Y = x+Y\) の \(Y\) を \(yz\) とみなします。</p>
 </li>
 <li>
-<p>\(ab + \bar{a}c + bc = ab + \bar{a}c\) （合意定理）</p>
-</li>
-<li>
-<p>計算を進めると</p>
+<p>\(ab + \bar{a}c\)。合意定理(戦略4の発展形)そのものです。基本法則だけで示すには、\(bc\) に \(1=a+\bar a\) を掛けて分けます。</p>
 <div class="stemblock">
 <div class="content">
 \[\begin{align}
-   &amp;x(y + z) + \bar{x}(y + z) + yz\\
-   &amp;= (y + z)(x + \bar{x}) + yz\\
-   &amp;= (y + z) \cdot 1 + yz\\
-   &amp;= y + z + yz\\
-   &amp;= y + z \quad \text{（吸収律）}
-   \end{align}\]
+ab + \bar{a}c + bc &amp;= ab + \bar{a}c + (a+\bar a)bc &amp; \text{（相補律・単位元）}\\
+&amp;= (ab + abc) + (\bar{a}c + \bar{a}bc) &amp; \text{（分配律・交換律・結合律）}\\
+&amp;= ab + \bar{a}c &amp; \text{（吸収律）}
+\end{align}\]
 </div>
 </div>
 </li>
 <li>
-<p>計算を進めると</p>
+<p>\(y+z\)。共通因子 \(y+z\) をくくり出します。</p>
 <div class="stemblock">
 <div class="content">
-\[   \begin{align}
-   &amp;abc + abcd + \bar{a}bcd + \bar{a}bc\\
-   &amp;= abc(1 + d) + \bar{a}bc(d + 1)\\
-   &amp;= abc + \bar{a}bc\\
-   &amp;= bc(a + \bar{a})\\
-   &amp;= bc
-   \end{align}\]
-</div>
-</div>
-</li>
-<li>
-<p>まず2つの否定にド・モルガンの法則を適用してから簡単化します。</p>
-<div class="stemblock">
-<div class="content">
-\[   \begin{align}
-   \overline{\bar x + y} + \overline{x\cdot\bar y}
-   &amp;= x\cdot\bar y + (\bar x + y) &amp; \text{（ド・モルガン）}\\
-   &amp;= \bar x + x\cdot\bar y + y\\
-   &amp;= \bar x + \bar y + y &amp; \text{（冗長律）}\\
-   &amp;= \bar x + 1 = 1 &amp; \text{（相補律・零元）}
-   \end{align}\]
+\[\begin{align}
+   x(y + z) + \bar{x}(y + z) + yz
+   &amp;= (y + z)(x + \bar{x}) + yz &amp; \text{（分配律）}\\
+   &amp;= (y + z) \cdot 1 + yz &amp; \text{（相補律）}\\
+   &amp;= y + z + yz &amp; \text{（単位元）}\\
+   &amp;= y + z &amp; \text{（吸収律）}
+\end{align}\]
 </div>
 </div>
 <div class="paragraph">
-<p>つまり、この論理式は入力によらず常に \(1\) となります（恒真）。</p>
+<p>最後の段階は、\(z + yz = z\) に吸収律を使っています。</p>
+</div>
+</li>
+<li>
+<p>\(x\)。先に \(xy\) でくくると、例1と同じ形が2回現れます。</p>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+   xyz + xy\bar z + x\bar y
+   &amp;= xy(z + \bar z) + x\bar y &amp; \text{（分配律）}\\
+   &amp;= xy + x\bar y &amp; \text{（相補律・単位元）}\\
+   &amp;= x(y + \bar y) = x &amp; \text{（分配律・相補律・単位元）}
+\end{align}\]
+</div>
+</div>
+</li>
+<li>
+<p>常に \(1\)。まず2つの否定にド・モルガンの法則を適用してから簡単化します。</p>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+   \overline{\bar x + y} + \overline{x\cdot\bar y}
+   &amp;= \bar{\bar x}\cdot\bar y + (\bar x + \bar{\bar y}) &amp; \text{（ド・モルガン）}\\
+   &amp;= x\cdot\bar y + \bar x + y &amp; \text{（復元律）}\\
+   &amp;= \bar x + x\cdot\bar y + y &amp; \text{（交換律）}\\
+   &amp;= \bar x + \bar y + y &amp; \text{（冗長律）}\\
+   &amp;= \bar x + 1 = 1 &amp; \text{（相補律・零元）}
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>つまり、この論理式は入力によらず常に \(1\) となります（恒真）。冗長律は \(\bar x + \bar{\bar x}\cdot\bar y\) の形で使っています。否定の否定を外すのを忘れて \(\bar x\cdot\bar y + (x+y)\) などとしないよう注意しましょう。</p>
 </div>
 </li>
 </ol>
 </div>
+</div>
+</details>
 </div>
 </div>
 <div class="sect2">
@@ -1675,17 +1738,47 @@ xy + \bar{x}yz &amp;= xy + yz \quad \text{（yでくくってから冗長律）}
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="python"><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">]:</span>
-  <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">False</span><span class="p">,</span> <span class="bp">True</span><span class="p">]:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span> <span class="ow">and</span> <span class="n">y</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">x</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">y</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="sh">'</span><span class="se">\t</span><span class="sh">'</span><span class="p">)</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">for x in [False, True]:
+  for y in [False, True]:
+    print(x, y, (x and y) or (x and not y), sep='\t')</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="julia"><span class="k">for</span> <span class="n">x</span> <span class="n">∈</span> <span class="x">[</span><span class="nb">false</span><span class="x">,</span> <span class="nb">true</span><span class="x">],</span> <span class="n">y</span> <span class="n">∈</span> <span class="x">[</span><span class="nb">false</span><span class="x">,</span> <span class="nb">true</span><span class="x">]</span>
-  <span class="n">println</span><span class="x">(</span><span class="n">x</span><span class="x">,</span> <span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="x">,</span> <span class="n">y</span><span class="x">,</span> <span class="s">"</span><span class="se">\t</span><span class="s">"</span><span class="x">,</span> <span class="x">(</span><span class="n">x</span> <span class="o">&amp;</span> <span class="n">y</span><span class="x">)</span> <span class="o">|</span> <span class="x">(</span><span class="n">x</span> <span class="o">&amp;</span> <span class="o">!</span><span class="n">y</span><span class="x">))</span>
-<span class="k">end</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">for x ∈ [false, true], y ∈ [false, true]
+  println(x, "\t", y, "\t", (x &amp; y) | (x &amp; !y))
+end</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>どちらも、次のように4行の真理値表を出力します(Python の場合。Julia では <code>false</code>・<code>true</code> と小文字で表示されます)。3列目が1列目の \(x\) と一致しており、例1の簡単化の結果 \(x\cdot y + x\cdot \bar y = x\) を確かめられます。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>False	False	False
+False	True	False
+True	False	True
+True	True	True</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>2つの論理式が等しいかどうかも、すべての割当てを試して確かめられます。次の Python プログラムは、後の練習問題6の等式(合意定理)の両辺を、0と1の8通りの割当てで比べます。<code>&amp;</code> は論理積、<code>|</code> は論理和、<code>1 - x</code> は否定の代わりです。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-python hljs" data-lang="python">from itertools import product
+
+ok = True
+for x, y, z in product([0, 1], repeat=3):   # 8通りの割当て
+    lhs = (x &amp; y) | ((1 - x) &amp; z) | (y &amp; z)
+    rhs = (x &amp; y) | ((1 - x) &amp; z)
+    print(x, y, z, lhs, rhs)
+    ok = ok and lhs == rhs
+print("すべて等しい" if ok else "異なる割当てがある")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>このように真理値表を作って確かめる方法は確実ですが、変数が増えると割当ての数 \(2^n\) が急激に増えることは、吸収律の証明のところで見たとおりです。</p>
 </div>
 </div>
 <div class="sect2">
@@ -1718,7 +1811,8 @@ xy + \bar{x}yz &amp;= xy + yz \quad \text{（yでくくってから冗長律）}
 </li>
 </ul>
 </div>
-<table class="tableblock frame-ends grid-none" style="width: 80%;">
+<table class="tableblock frame-ends grid-none" style="width: 60%;">
+<caption class="title">表 7. 1変数論理関数の真理値表</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 20%;">
@@ -1753,11 +1847,11 @@ xy + \bar{x}yz &amp;= xy + yz \quad \text{（yでくくってから冗長律）}
 </tbody>
 </table>
 <div class="paragraph">
-<p>2変数論理関数の真理値表は、行数が \(2^2=4\) なので、出力列の組合せは \(2^4=16\) 通り、すなわち16種類の関数が存在することになります。そのうち、すでに学んだのは今のところ論理積と論理和の2つのみです。
+<p>2変数論理関数の真理値表は、行数が \(2^2=4\) なので、出力列の組合せは \(2^4=16\) 通り、つまり16種類の関数が存在することになります。そのうち、これまでに出てきた2変数の演算は論理積と論理和です。後で扱う実質含意もこの16種類の一つで、\(x\) だけ、\(\bar y\) だけ、定数0などを返す関数も16種類に含まれます。
 一般に \(n\) 変数の論理関数は \(2^{2^n}\) 個存在します。</p>
 </div>
 <div class="paragraph">
-<p>簡単化の例題でも見てきたように1つの論理関数にはいろいろな論理式の表現があります。2つの論理式の論理関数としての等価性を示す問題は、非常に難しい問題であることが知られています。等価性までは示せなくても、まずは、論理式の形式をできるだけ標準化しておくと便利です。そこで、論理式の標準形を定義するための準備をします。</p>
+<p>簡単化の例題でも見てきたように1つの論理関数にはいろいろな論理式の表現があります。2つの論理式が同じ論理関数を表すかどうか(等価性)の判定は、真理値表を使えば必ずできますが、変数が多いときに効率よく判定する方法は知られていません。「等しくない」ことの判定は、後の章で学ぶ充足可能性問題(SAT)と同じ難しさをもつ(NP完全である)ことが知られています。等価性を直接示さなくても、まずは、論理式の形式をできるだけ標準化しておくと便利です。そこで、論理式の標準形を定義するための準備をします。</p>
 </div>
 <div class="paragraph">
 <p>以降では論理積の演算子「\(\cdot\)」をたびたび省略しますので注意してください。</p>
@@ -1997,19 +2091,11 @@ xy + \bar{x}yz &amp;= xy + yz \quad \text{（yでくくってから冗長律）}
 </li>
 </ul>
 </div>
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-例)
-</td>
-<td class="hdlist2">
-<p>吸収律の真理値表を例に用いることにします。</p>
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>以下では、吸収律の左辺 \(f(x,y)=x+x\cdot y\) の真理値表を例に、真理値表から標準形を作る方法を説明します。</p>
 </div>
 <table class="tableblock frame-ends grid-all fit-content center">
+<caption class="title">表 8. 吸収律の左辺 \(f(x,y)=x+x\cdot y\) の真理値表</caption>
 <colgroup>
 <col>
 <col>
@@ -2065,7 +2151,7 @@ xy + \bar{x}yz &amp;= xy + yz \quad \text{（yでくくってから冗長律）}
 <div class="content">
 <img src="./img/tt-to-dnf.svg" alt="真理値表から積和標準形を作る手順">
 </div>
-<div class="title">図 1. 真理値表から積和標準形を作る手順</div>
+<div class="title">図 17. 真理値表から積和標準形を作る手順</div>
 </div>
 <div class="paragraph">
 <p>後は、積和標準形を簡単化することにより、以下の結果が得られます（この場合は真理値表をみれば明らかですが…）。</p>
@@ -2082,9 +2168,83 @@ f(x,y)&amp;=x\bar y + x y\\
 </div>
 </div>
 <div class="sect3">
-<h4 id="_練習問題真理値表から積和標準形へ"><a class="link" href="#_練習問題真理値表から積和標準形へ">【練習問題】真理値表から積和標準形へ</a></h4>
+<h4 id="_和積標準形"><a class="link" href="#_和積標準形">和積標準形</a></h4>
 <div class="paragraph">
-<p>次の真理値表で表される論理関数 \(f(x,y)\) を、まず積和標準形で表し、それを簡単化せよ。</p>
+<p>同様に真理値表から和積標準形を作ってから、論理式を導出することもできます。今度は、\(f\) が0になる行に注目します。</p>
+</div>
+<div class="paragraph">
+<p>同じ吸収律の真理値表で、3列目（一番右側の列）が0になっている行は、1行目と2行目（上側の2行）です。1行目は \((x,y)=(0,0)\)、2行目は \((x,y)=(0,1)\) であり、\(x\)と\(y\)が各々この値をとったとき<strong>だけ</strong>、論理関数 \(f(x,y)\) は 0 となることから、以下のように表すことができます（\(x=0\) を \(x\)、 \(x=1\) を \(\bar x\) として、\(y\) も同様に変換してから項を作ります）。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[f(x,y)=(x + y)(x + \bar y)\]
+</div>
+</div>
+<div class="paragraph">
+<p>この式を言葉で表すと、「\(f(x,y)\) が0となるのは、\(x+y\) が0になるとき(\((x,y)=(0,0)\))か、\(x+\bar y\) が0になるとき(\((x,y)=(0,1)\))のどちらかで、それ以外は1」ということです。論理積は、どれか1つでも0の因子があれば0になるからです。この論理関数の各項は \(x\) と \(y\) を含んでいるので、いずれも<strong>最大項</strong>であり、その和積形なので<strong>和積標準形</strong>になっています。</p>
+</div>
+<div class="paragraph">
+<p>手順を図にまとめると次のようになります。積和標準形の手順と比べると、選ぶ行(0と1)、否定を付ける条件、つなぐ演算(論理和と論理積)がそれぞれ入れ替わっています。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/tt-to-cnf.svg" alt="真理値表から和積標準形を作る手順">
+</div>
+<div class="title">図 18. 真理値表から和積標準形を作る手順</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>直接的ではありませんが、積和標準形からの変形で、和積標準形を導出することもできます。</p>
+</div>
+<div class="paragraph">
+<p>同じ真理値表で、\(f(x,y)=0\) の行から \(x=0\) を \(\bar x\)、\(x=1\) を \(x\) として<strong>最小項</strong>を作り、その論理和全体を否定します（\(\overline{f(x,y)}\) の積和標準形を作ることに相当します）。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[f(x,y)=\overline{\bar x \bar y + \bar xy}\]
+</div>
+</div>
+<div class="paragraph">
+<p>これに、ド・モルガンの法則と復元律を適用すると以下の式が得られます。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[f(x,y)=\overline{\bar x \bar y}\cdot\overline{\bar xy}=(\bar{\bar x} + \bar{\bar y})(\bar{\bar x} + \bar y)=(x + y)(x + \bar y)\]
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>後は、和積標準形を簡単化することにより、以下の結果が得られます(交換律は省略しています)。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+f(x,y)&amp;=(x + y)(x + \bar y)\\
+      &amp;= (x+y)x + (x+y)\bar y &amp; \quad (分配律)\\
+      &amp;= x + (x+y)\bar y &amp; \quad (吸収律)\\
+      &amp;= x + x\bar y + y\bar y &amp; \quad (分配律)\\
+      &amp;= x + x\bar y &amp;  \quad (相補律)\\
+      &amp;=x &amp; \quad (吸収律)
+\end{align}\]
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_練習問題真理値表から標準形へ"><a class="link" href="#_練習問題真理値表から標準形へ">【練習問題】真理値表から標準形へ</a></h4>
+<div class="exampleblock">
+<div class="title">練習: 真理値表から標準形を作る</div>
+<div class="content">
+<div class="paragraph">
+<p>次の真理値表で表される論理関数 \(f(x,y)\) について、(1) 積和標準形で表し、それを簡単化せよ。(2) 和積標準形で表せ。</p>
 </div>
 <table class="tableblock frame-ends grid-all fit-content center">
 <colgroup>
@@ -2122,11 +2282,13 @@ f(x,y)&amp;=x\bar y + x y\\
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><strong>解答</strong>：</p>
 </div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
 <div class="paragraph">
-<p>\(f(x,y)\) が1となるのは \((x,y)=(0,0),(0,1),(1,1)\) の3行です。各行から最小項を作って和をとると、積和標準形</p>
+<p>(1) \(f(x,y)\) が1となるのは \((x,y)=(0,0),(0,1),(1,1)\) の3行です。各行から最小項(値が1の変数はそのまま、0の変数は否定)を作って論理和をとると、積和標準形</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -2139,77 +2301,28 @@ f(x,y)&amp;=x\bar y + x y\\
 <div class="stemblock">
 <div class="content">
 \[\begin{align}
-f(x,y) &amp;= \bar x(\bar y + y) + x\cdot y\\
+f(x,y) &amp;= \bar x(\bar y + y) + x\cdot y &amp; \text{（分配律）}\\
        &amp;= \bar x + x\cdot y &amp; \text{（相補律・単位元）}\\
        &amp;= \bar x + y &amp; \text{（冗長律）}
 \end{align}\]
 </div>
 </div>
 <div class="paragraph">
-<p>となります。この真理値表は \((x,y)=(1,0)\) でのみ0となるので、後で学ぶ実質含意 \(x\rightarrow y\) と一致しており、その等価式 \(\bar x + y\) が得られたことになります。</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_和積標準形"><a class="link" href="#_和積標準形">和積標準形</a></h4>
-<div class="paragraph">
-<p>同様に真理値表から和積標準形にしてから、論理式を導出することも可能です。</p>
+<p>となります。</p>
 </div>
 <div class="paragraph">
-<p>上記の真理値表の3列目（一番右側の列）が0になっている行は、1行目と2行目（上側の2行）です。1行目は \((x,y)=(0,0)\)、2行目は \((x,y)=(0,1)\) であり、\(x\)と\(y\)が各々この値をとったとき<strong>だけ</strong>、論理関数 \(f(x,y)\) は 0 となることから、以下のように表すことができます（\(x=0\) を \(x\)、 \(x=1\) を \(\bar x\) として、\(y\) も同様に変換してから項を作ります）。</p>
+<p>(2) \(f(x,y)\) が0となるのは \((x,y)=(1,0)\) の1行だけです。この行から最大項(値が0の変数はそのまま、1の変数は否定)を作ると \(\bar x + y\) となり、和積標準形は最大項1つだけの</p>
 </div>
 <div class="stemblock">
 <div class="content">
-\[f(x,y)=(x + y)(x + \bar y)\]
+\[f(x,y)=\bar x + y\]
 </div>
 </div>
 <div class="paragraph">
-<p>この論理関数の各項は \(x\) と \(y\) を含んでいるので、いずれも<strong>最大項</strong>であり、その和積形なので<strong>和積標準形</strong>になっています。</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>直接的ではありませんが、積和標準形からの変形で、和積標準形を導出することもできます。</p>
-</div>
-<div class="paragraph">
-<p>同じ真理値表で、\(f(x,y)=0\) の行から \(x=0\) を \(\bar x\)、\(x=1\) を \(x\) として<strong>最小項</strong>を作り、その論理和全体を否定します（\(\overline{f(x,y)}\) の積和標準形を作ることに相当します）。</p>
-</div>
-<div class="stemblock">
-<div class="content">
-\[f(x,y)=\overline{\bar x \bar y + \bar xy}\]
+<p>です。(1)の簡単化の結果と一致しています。0の行が少ない関数では、和積標準形の方が短くなります。なお、この関数は後の「ブール代数と推論」で扱う実質含意 \(x\rightarrow y\) と同じものです。</p>
 </div>
 </div>
-<div class="paragraph">
-<p>これに、ド・モルガンの法則を適用すると以下の式が得られます。</p>
-</div>
-<div class="stemblock">
-<div class="content">
-\[f(x,y)=(x + y)(x + \bar y)\]
-</div>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>後は、和積標準形を簡単化することにより、以下の結果が得られます(交換律は省略しています)。</p>
-</div>
-<div class="stemblock">
-<div class="content">
-\[\begin{align}
-f(x,y)&amp;=(x + y)(x + \bar y)\\
-      &amp;= (x+y)x + (x+y)\bar y &amp; \quad (分配律)\\
-      &amp;= x + (x+y)\bar y &amp; \quad (吸収律)\\
-      &amp;= x + x\bar y + y\bar y &amp; \quad (分配律)\\
-      &amp;= x + x\bar y &amp;  \quad (相補律)\\
-      &amp;=x &amp; \quad (吸収律)
-\end{align}\]
-</div>
-</div>
+</details>
 </div>
 </div>
 <div class="sect2">
@@ -2314,11 +2427,12 @@ f(x,y)&amp;=(x + y)(x + \bar y)\\
 <div class="paragraph">
 <p>さて、「\(x\) ならば \(y\)」 を表す \(x \rightarrow y\) は、「\(x\) が真ならば \(y\) も真」つまり、「\(x=1\) ならば \(y=1\) 」であり、\(x=1\) であるにもかかわらず \(y=0\) となることはありません。よって、下のような真理値表によって表すことができます。このようにして定義される論理演算子を<strong>実質含意</strong>(material implication)といい、数学で「ならば」とあれば、この実質含意の意味です（日常的に使う「ならば」からは若干違和感のある定義かもしれません）。</p>
 </div>
-<table class="tableblock frame-ends grid-all" style="width: 80%;">
+<table class="tableblock frame-ends grid-all fit-content center">
+<caption class="title">表 9. 実質含意の真理値表</caption>
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col>
+<col>
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2376,110 +2490,375 @@ x\cdot (x\rightarrow y) &amp;= x\cdot (\bar x + y) &amp; \quad \text{（実質�
 </div>
 </div>
 <div class="sect1">
-<h2 id="_今週の問題"><a class="link" href="#_今週の問題">2. 今週の問題</a></h2>
+<h2 id="_練習問題"><a class="link" href="#_練習問題">2. 練習問題</a></h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>次の問【1】〜【3】に取り組んでください。</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>基本の確認から順に並べています。各問題の解答と解説は直後に折りたたんであるので、まず自分で解いてから開いてください。</p>
+</div>
+<div class="paragraph">
+<p>ブール代数の証明問題は、与えられた規則をもとに式を変形してゆくパズルだと思ってください。解いているうちに直感が養われてゆくのは、一般の四則演算と同じです。式変形で行き詰まったら、真理値表で答えを確かめてから、どの法則を使えばよいかを考えるのも一つの方法です。</p>
 </div>
 <div class="exampleblock">
+<div class="title">問題1: 真理値表を作る</div>
 <div class="content">
 <div class="paragraph">
-<p>【1】次の論理回路について問いに答えよ</p>
+<p>論理関数 \(f(x,y,z)=(x+\bar y)\cdot z\) について答えよ。</p>
 </div>
-<div class="imageblock">
+<div class="paragraph">
+<p>(1) 3変数の真理値表は何行になるか。<br>
+(2) 途中の列 \(\bar y\)、\(x+\bar y\) も含めて真理値表を完成させよ。<br>
+(3) \(f=1\) となる入力 \((x,y,z)\) をすべて答えよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
 <div class="content">
-<img src="./img/ex4-lc.svg" alt="ex4 lc">
-</div>
+<div class="paragraph">
+<p>(1) 各変数が0か1の2通りなので、\(2^3=8\) 行です。</p>
 </div>
 <div class="paragraph">
-<p>(1) 論理式で表わせ<br>
-(2) (1)の論理式を簡単化して論理回路で示せ</p>
+<p>(2) 次のとおりです。\((x,y,z)\) を 000, 001, …, 111 と2進数の順に並べると、書きもらしを防げます。</p>
 </div>
-</div>
-</div>
+<table class="tableblock frame-ends grid-all fit-content center">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">\(x\)</th>
+<th class="tableblock halign-center valign-top">\(y\)</th>
+<th class="tableblock halign-center valign-top">\(z\)</th>
+<th class="tableblock halign-center valign-top">\(\bar y\)</th>
+<th class="tableblock halign-center valign-top">\(x+\bar y\)</th>
+<th class="tableblock halign-center valign-top">\(f=(x+\bar y)\cdot z\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
-<p>次の問【2】と【3】は真理値表を使えば簡単に解けますが、できるだけ式変形で解くことに挑戦してみてください（できなければ真理値表を用いてもかまいません）。</p>
+<p>(3) \((x,y,z)=(0,0,1),(1,0,1),(1,1,1)\) の3通りです。\(z=0\) の行は、論理積の相手が0なので、\(x+\bar y\) の値によらずすべて0になります。</p>
 </div>
+</div>
+</details>
 <div class="exampleblock">
+<div class="title">問題2: ド・モルガンの法則と双対</div>
 <div class="content">
 <div class="paragraph">
-<p>【2】次の等式を示せ（左辺と右辺が等しいことを示せ）</p>
+<p>(1) \(\overline{x\cdot\bar y + z}\) を、否定が変数1つずつにだけかかる形に変形せよ。<br>
+(2) 「雨が降っていて、かつ、風が強い」の否定を、「かつ」「または」を使って言い換えよ。<br>
+(3) 冗長律 \(x+\bar x\cdot y = x+y\) の双対の等式を書き、それが成り立つことを式変形で確かめよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) \((\bar x + y)\cdot \bar z\)。外側から順にド・モルガンの法則を使います。</p>
 </div>
 <div class="stemblock">
 <div class="content">
-\[x\cdot y + \bar x\cdot z + y\cdot z  = x\cdot y + \bar x\cdot z\]
+\[\begin{align}
+\overline{x\cdot\bar y + z} &amp;= \overline{x\cdot\bar y}\cdot\bar z &amp; \text{（ド・モルガン）}\\
+&amp;= (\bar x + \bar{\bar y})\cdot\bar z &amp; \text{（ド・モルガン）}\\
+&amp;= (\bar x + y)\cdot\bar z &amp; \text{（復元律）}
+\end{align}\]
 </div>
 </div>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
 <div class="paragraph">
-<p>【3】次の等式を示せ（左辺と右辺が等しいことを示せ）</p>
+<p>否定を中に入れるたびに、\(+\) と \(\cdot\) が入れ替わる点に注意します。\(\bar x\cdot y\cdot\bar z\) のように演算を入れ替え忘れたり、\(\bar{\bar y}\) を \(\bar y\) のままにしたりするのがよくある誤りです。また、括弧 \((\bar x + y)\) を外すと意味が変わってしまいます。</p>
+</div>
+<div class="paragraph">
+<p>(2) 「雨が降っていない、または、風が強くない」。両方がそろった状態だけを否定するので、どちらか一方が欠けていればよいのです。「雨が降っていなくて、かつ、風が強くない」は誤りです。</p>
+</div>
+<div class="paragraph">
+<p>(3) 双対は \(x\cdot(\bar x + y) = x\cdot y\) です(左辺は \(x+(\bar x\cdot y)\) なので、入れ替えるときに括弧を補います)。確かめると</p>
 </div>
 <div class="stemblock">
 <div class="content">
-\[\bar x\cdot\bar y\cdot z + y+ x\cdot z = y + z\]
+\[x\cdot(\bar x + y) = x\cdot\bar x + x\cdot y = 0 + x\cdot y = x\cdot y\]
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_今週の問題の解答"><a class="link" href="#_今週の問題の解答">3. 今週の問題の解答</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>まず自分で解いてから読むことをすすめます。</p>
 </div>
 <div class="paragraph">
-<p>ブール代数の証明問題は、与えられた規則をもとに式を変形してゆくパズルだと思ってください。解いているうちに直感が養われてゆくのは、一般の四則演算と同じです。</p>
+<p>となり、成り立ちます(分配律・相補律・単位元)。</p>
 </div>
+</div>
+</details>
 <div class="exampleblock">
+<div class="title">問題3: 回路図から論理式へ</div>
 <div class="content">
 <div class="paragraph">
-<p>【1】次の論理回路について問いに答えよ</p>
+<p>次の論理回路について問いに答えよ。</p>
 </div>
-<div class="imageblock">
+<div class="imageblock text-center">
 <div class="content">
-<img src="./img/ex4-lc.svg" alt="ex4 lc">
+<img src="./img/ex4-circuit.svg" alt="問題3の論理回路">
 </div>
+<div class="title">図 19. 問題3の論理回路</div>
 </div>
 <div class="paragraph">
-<p>(1) 論理式で表わせ<br>
-(2) (1)の論理式を簡単化して論理回路で示せ</p>
+<p>(1) 出力 \(f\) を論理式で表せ。<br>
+(2) (1)の論理式を簡単化して、論理回路で示せ。</p>
 </div>
 </div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) 入力側から順に、各ゲートの出力を式で書き込むと次のようになります。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/ex4-circuit-read.svg" alt="各ゲートの出力を書き込んだ問題3の論理回路">
+</div>
+<div class="title">図 20. 問題3の回路の各ゲートの出力</div>
+</div>
+<div class="paragraph">
+<p>したがって \(f = x + (\bar x\cdot y + x\cdot\bar y)\) です。論理和は結合律が成り立つので、括弧を外して \(f = x + \bar x\cdot y + x\cdot\bar y\) と書いてかまいません。</p>
+</div>
+<div class="paragraph">
+<p>(2) \(f = x+y\) です。</p>
 </div>
 <div class="stemblock">
 <div class="content">
 \[\begin{align}
    x + \bar x\cdot y + x\cdot\bar y &amp;= x  + x\cdot\bar y + \bar x\cdot y &amp;\quad (交換律)\\
-   &amp;= (x\cdot 1  + x\cdot\bar y) + \bar x\cdot y &amp;\quad (結合律・単位元)\\
-   &amp;= x\cdot(1  + \bar y) + \bar x\cdot y &amp;\quad (分配律)\\
-   &amp;= x + \bar x\cdot y &amp;\quad (零元・単位元)\\
+   &amp;= x + \bar x\cdot y &amp;\quad (吸収律)\\
    &amp;= (x + \bar x)\cdot(x + y) &amp;\quad (分配律)\\
    &amp;= 1\cdot(x + y) &amp;\quad (相補律)\\
-   &amp;= x + y &amp;\quad (交換律・単位元)\\
+   &amp;= x + y &amp;\quad (単位元)
 \end{align}\]
 </div>
 </div>
 <div class="paragraph">
-<p>よって、以下の論理回路に簡単化できる。</p>
+<p>2行目は、吸収律 \(x+x\cdot\bar y=x\) を使っています。3行目以降は冗長律(例2)と同じです。よって、ORゲート1つの回路に簡単化できます。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/gate-or.svg" alt="gate or">
+<img src="./img/gate-or.svg" alt="ORゲート">
+</div>
+<div class="title">図 21. 問題3を簡単化した回路</div>
+</div>
+<div class="paragraph">
+<p>なお、途中に現れる \(\bar x\cdot y + x\cdot\bar y\) は、\(x\) と \(y\) が異なるときだけ1になる関数で、次の章で<strong>排他的論理和</strong>として扱います。</p>
 </div>
 </div>
+</details>
 <div class="exampleblock">
+<div class="title">問題4: 論理式から回路図へ</div>
 <div class="content">
 <div class="paragraph">
-<p>【2】次の等式を示せ（左辺と右辺が等しいことを示せ）</p>
+<p>論理式 \(f = x\cdot\bar y + \bar x\cdot z\) を、2入力のANDゲート・ORゲートとNOTゲートを使った論理回路で描け。また、\(x=1\) のときと \(x=0\) のときで、\(f\) はそれぞれどの入力で決まるか答えよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>式を計算する順(否定 → 論理積 → 論理和)にゲートを並べると、次のようになります。NOTゲート2個、ANDゲート2個、ORゲート1個です。\(x\) は2か所で使うので、黒丸で分岐させます。\(x\) から下へ延びる線と \(y\) の線は交差するだけで、つながっていません。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/ans-circuit-xy-xz.svg" alt="x・ȳ+x̄・zの論理回路">
+</div>
+<div class="title">図 22. \(x\cdot\bar y + \bar x\cdot z\) の論理回路</div>
+</div>
+<div class="paragraph">
+<p>\(x=1\) のとき \(\bar x=0\) なので、下のANDゲートの出力は0になり、\(f = 1\cdot\bar y + 0 = \bar y\) です。\(x=0\) のときは上のANDゲートの出力が0になり、\(f = z\) です。つまり、この回路は \(x\) の値によって、\(\bar y\) と \(z\) のどちらを出力するかを切り替えています。</p>
+</div>
+<div class="paragraph">
+<p>ゲートの記号の向き(入力が左、出力が右)と、NOTゲートの出力側の小さな丸を忘れないようにしましょう。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題5: 真理値表から積和標準形へ(多数決)</div>
+<div class="content">
+<div class="paragraph">
+<p>3人の投票 \(x, y, z\)(賛成なら1、反対なら0)を入力とし、2人以上が賛成したときだけ1を出力する論理関数 \(f(x,y,z)\) を考える。</p>
+</div>
+<div class="paragraph">
+<p>(1) 真理値表を作れ。<br>
+(2) 積和標準形で表せ。<br>
+(3) 簡単化せよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) 1の個数が2以上の行で \(f=1\) です。</p>
+</div>
+<table class="tableblock frame-ends grid-all fit-content center">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">\(x\)</th>
+<th class="tableblock halign-center valign-top">\(y\)</th>
+<th class="tableblock halign-center valign-top">\(z\)</th>
+<th class="tableblock halign-center valign-top">\(f\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>(2) \(f=1\) の4行から最小項を作ります。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[f = \bar x y z + x\bar y z + x y\bar z + x y z\]
+</div>
+</div>
+<div class="paragraph">
+<p>(3) \(f = xy + yz + zx\) です。\(xyz\) は他の3つの項のどれとも1文字違いなので、冪等律で \(xyz\) を3つに増やしてから、それぞれと組にします。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+f &amp;= \bar x y z + x\bar y z + x y\bar z + x y z + x y z + x y z &amp; \text{（冪等律）}\\
+  &amp;= (\bar x + x) y z + x (\bar y + y) z + x y (\bar z + z) &amp; \text{（交換律・結合律・分配律）}\\
+  &amp;= yz + xz + xy &amp; \text{（相補律・単位元）}
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>「2人以上が賛成」は「どれか2人が両方賛成」と言い換えられるので、2人ずつの組の論理積を論理和でつないだ形になる、と考えても同じ結果が得られます。この関数は、次の章で学ぶ全加算器の桁上がり(3つの1ビットの和で上の桁へ繰り上がるか)と同じ論理関数です。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題6: 合意定理を示す</div>
+<div class="content">
+<div class="paragraph">
+<p>次の等式が成り立つこと(左辺と右辺が等しいこと)を示せ。真理値表を使えば簡単に示せますが、できるだけ式変形で示してみよう。</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -2488,28 +2867,31 @@ x\cdot (x\rightarrow y) &amp;= x\cdot (\bar x + y) &amp; \quad \text{（実質�
 </div>
 </div>
 </div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>\(y\cdot z\) に \(1 = x+\bar x\) を掛けて2つに分け、吸収律で消します。</p>
+</div>
 <div class="stemblock">
 <div class="content">
 \[\begin{align}
-   x\cdot y + z\cdot\bar x + y\cdot z &amp;= x\cdot y + \bar x\cdot z + y\cdot z &amp;\quad (交換律)\\
-   &amp;= x\cdot y + \bar x\cdot z + 1\cdot (y\cdot z) &amp;\quad (単位元)\\
+   x\cdot y + \bar x\cdot z + y\cdot z &amp;= x\cdot y + \bar x\cdot z + 1\cdot (y\cdot z) &amp;\quad (単位元)\\
    &amp;= x\cdot y + \bar x\cdot z + (x+\bar x)\cdot (y\cdot z) &amp;\quad (相補律)\\
-   &amp;= x\cdot y + \bar x\cdot z + x\cdot y\cdot z+ \bar x\cdot y\cdot z &amp;\quad (分配律)\\
-   &amp;= (x\cdot y + (x\cdot y)\cdot z) + (\bar x\cdot z + (\bar x\cdot z)\cdot y) &amp;\quad ((結合律)・交換律)\\
-   &amp;= x\cdot y + \bar x\cdot z &amp;\quad (吸収律)\\
+   &amp;= x\cdot y + \bar x\cdot z + x\cdot y\cdot z+ \bar x\cdot y\cdot z &amp;\quad (分配律・結合律)\\
+   &amp;= \big(x\cdot y + (x\cdot y)\cdot z\big) + \big(\bar x\cdot z + (\bar x\cdot z)\cdot y\big) &amp;\quad (交換律・結合律)\\
+   &amp;= x\cdot y + \bar x\cdot z &amp;\quad (吸収律)
 \end{align}\]
 </div>
 </div>
 <div class="paragraph">
-<p>この証明は、2行3行目の「単位元」と「相補律」の適用がややテクニカルです。このような証明に拠らなくても、単純に分配律を適用してゆけば証明できます。以下の分配律に慣れてください。</p>
+<p>1行目から2行目の「\(1\) を \(x+\bar x\) に置き換える」変形はややテクニカルですが、消したい項を2つに分けて、それぞれを残す項に吸収させるという、よく使う方法です。</p>
 </div>
-<div class="stemblock">
+<details>
+<summary class="title">別解: 分配律を愚直に使う</summary>
 <div class="content">
-\[x + yz = (x + y)(x + z)\]
-</div>
-</div>
 <div class="paragraph">
-<p>証明は省きますが、分配律(と結合律と交換律)から以下の系も簡単に証明できます。</p>
+<p>ブール代数では、論理和についての分配律 \(x + yz = (x + y)(x + z)\) も成り立つので、積和形を和積形に「展開」できます。たとえば、同じように分配律と結合律・交換律を使うと</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -2517,52 +2899,40 @@ x\cdot (x\rightarrow y) &amp;= x\cdot (\bar x + y) &amp; \quad \text{（実質�
 </div>
 </div>
 <div class="paragraph">
-<p>このような式展開は、四則演算で和と積が逆の場合は我々は自然と行っていることです。
-四則演算と同様に以下の式変形はブール代数でも成り立ちます。</p>
-</div>
-<div class="stemblock">
-<div class="content">
-\[(w+x)(y+z) = wy+wz+xy+xz\]
-</div>
+<p>が得られます。普段の計算で \((w+x)(y+z) = wy+wz+xy+xz\) と展開するのと、和と積の役割を入れ替えたものです。一般に、積項の論理和は「各積項から1文字ずつ選んで論理和をとったもの」をすべて論理積でつないだ形に展開できます。これを両辺に適用します。</p>
 </div>
 <div class="paragraph">
-<p>ブール代数では和と積が対称であることに再度留意をしてください。
-この分配律の一般形をただ愚直に適用してゆくことで、テクニカルな式変形をしなくても【2】は証明できます。</p>
+<p>左辺の3つの積項 \(xy\)、\(\bar xz\)、\(yz\) から1文字ずつ選ぶ8通りを並べると</p>
 </div>
 <div class="stemblock">
 <div class="content">
 \[\begin{align}
-   左辺 =&amp; x\cdot y + y\cdot z + z\cdot\bar x \\
-   =&amp; (x+y+z)(x+y+\bar x)(x+z+z)(x+z+\bar x)\\
-                                       &amp; (y+y+z)(y+y+\bar x)(y+z+z)(y+z+\bar x) &amp;\quad (分配律)\\
-   =&amp; \big(x+(y+z)\big)\big((x+\bar x)+y\big)(x+z)\big((x+\bar x)+z\big)\\
-    &amp; (y+z)(\bar x+y)(y+z)\big((\bar x+y)+z\big) &amp;\quad (交換・結合・冪等律)\\
-   =&amp; (y+z)\big((y+z)+x\big) \\
-    &amp; (\bar x+y)\big((\bar x+y)+z\big)\\
-    &amp; (x+z)(y+z)\\
-    &amp; \big((x+\bar x)+y\big)\big((x+\bar x)+z\big) &amp;\quad (交換律)\\
-   =&amp; (y+z) \\
-    &amp; (\bar x+y)\\
-    &amp; (x+z)(y+z)\\
-    &amp; (1+y)(1+z) &amp;\quad (吸収・相補律)\\
-   =&amp; (y+z)(\bar x+y)(x+z)  &amp; \quad (冪等・交換律・単位元・零元)\\
- 右辺 =&amp; x\cdot y + \bar x\cdot z\\
-   =&amp; (x+\bar x)(x+z)(y+\bar x)(y+z) &amp;\quad (分配律)\\
-   =&amp; (y+z)(\bar x+y)(x+z)  &amp; \quad (交換律・相補律・単位元)\\
+\text{左辺} &amp;= (x+\bar x+y)(x+\bar x+z)(x+z+y)(x+z+z)\\
+&amp;\quad\ \cdot(y+\bar x+y)(y+\bar x+z)(y+z+y)(y+z+z)\\
+&amp;= (x+y+z)(x+z)(\bar x+y)(\bar x+y+z)(y+z) &amp; \text{（相補律・零元・冪等律など）}\\
+&amp;= (x+z)(\bar x+y)(y+z) &amp; \text{（吸収律）}
 \end{align}\]
 </div>
 </div>
 <div class="paragraph">
-<p>よって、両辺は等しい。</p>
+<p>となります。最後の段階では、吸収律の右側 \(a\cdot(a+b)=a\) を \(a=y+z\) として使い、\((y+z)(x+y+z)\) と \((y+z)(\bar x+y+z)\) をどちらも \(y+z\) にしています。右辺も同様に展開すると</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\text{右辺} = (x+\bar x)(x+z)(y+\bar x)(y+z) = (x+z)(\bar x+y)(y+z)\]
+</div>
 </div>
 <div class="paragraph">
-<p>3変数なら真理値表による証明でもそれほどの手間ではありません。</p>
+<p>となり、両辺は等しくなります。</p>
 </div>
-<table class="tableblock frame-ends grid-cols fit-content">
-<caption class="title">表 5. 真理値表による証明</caption>
+</div>
+</details>
+<div class="paragraph">
+<p>3変数なら真理値表による証明もそれほどの手間ではありません。次の表の7列目と8列目が、すべての行で等しくなっています。</p>
+</div>
+<table class="tableblock frame-ends grid-all fit-content center">
+<caption class="title">表 10. 問題6の真理値表</caption>
 <colgroup>
-<col>
-<col>
 <col>
 <col>
 <col>
@@ -2577,13 +2947,11 @@ x\cdot (x\rightarrow y) &amp;= x\cdot (\bar x + y) &amp; \quad \text{（実質�
 <th class="tableblock halign-center valign-top">\(x\)</th>
 <th class="tableblock halign-center valign-top">\(y\)</th>
 <th class="tableblock halign-center valign-top">\(z\)</th>
-<th class="tableblock halign-center valign-top"></th>
 <th class="tableblock halign-center valign-top">\(xy\)</th>
+<th class="tableblock halign-center valign-top">\(\bar xz\)</th>
 <th class="tableblock halign-center valign-top">\(yz\)</th>
-<th class="tableblock halign-center valign-top">\(z\bar x\)</th>
-<th class="tableblock halign-center valign-top"></th>
-<th class="tableblock halign-center valign-top">\(x\cdot y + y\cdot z + z\cdot\bar x\)</th>
-<th class="tableblock halign-center valign-top">\(x\cdot y + \bar x\cdot z\)</th>
+<th class="tableblock halign-center valign-top">\(xy + \bar xz + yz\)</th>
+<th class="tableblock halign-center valign-top">\(xy + \bar xz\)</th>
 </tr>
 </thead>
 <tbody>
@@ -2591,104 +2959,94 @@ x\cdot (x\rightarrow y) &amp;= x\cdot (\bar x + y) &amp; \quad \text{（実質�
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>表から、\(yz=1\) となる行(4行目と8行目)では、必ず \(xy\) か \(\bar xz\) のどちらかも1になっていることがわかります。これが、\(yz\) の項が不要になる理由です。</p>
+</div>
+</div>
+</details>
 <div class="exampleblock">
+<div class="title">問題7: 等式を示す</div>
 <div class="content">
 <div class="paragraph">
-<p>【3】次の等式を示せ（左辺と右辺が等しいことを示せ）</p>
+<p>次の等式が成り立つこと(左辺と右辺が等しいこと)を示せ。</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -2697,39 +3055,66 @@ x\cdot (x\rightarrow y) &amp;= x\cdot (\bar x + y) &amp; \quad \text{（実質�
 </div>
 </div>
 </div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
 <div class="paragraph">
-<p>以下のように分配律を用いて証明できます。</p>
+<p>例2で導いた<strong>冗長律</strong> \(a+\bar a\cdot b = a+b\) を補題として使うと、短く示せます。</p>
 </div>
 <div class="stemblock">
 <div class="content">
 \[\begin{align}
-    \bar x\cdot \bar y\cdot z + y + z\cdot x &amp;= (\bar x + y)(\bar y + y)(z + y) + z\cdot x &amp;  (分配律)\\
-  &amp;=  (\bar x + y)(z + y) + x\cdot z &amp;  (相補律・単位元)\\
-  &amp;=  \bar x\cdot z +\bar x\cdot y+ y\cdot z + y + x\cdot z &amp;  (分配律・冪等律)\\
-  &amp;=  (\bar x + x)\cdot z +(\bar x + z + 1)\cdot y  &amp;  (分配律)\\
-  &amp;=  y + z &amp;  (相補律・零元・単位元)\\
-\end{align}\]
-</div>
-</div>
-<div class="paragraph">
-<p>その他、以下のような証明も可能です。例2で導いた<strong>冗長律</strong> \(x+\bar x\cdot y = x+y\) を補題として用います。</p>
-</div>
-<div class="stemblock">
-<div class="content">
-\[\begin{align}
-    \bar x\cdot \bar y\cdot z + y + z\cdot x &amp;=  \big(y+\bar y\cdot (\bar x\cdot z)\big) + x\cdot z &amp;  (交換・結合律)\\
+    \bar x\cdot \bar y\cdot z + y + x\cdot z &amp;=  \big(y+\bar y\cdot (\bar x\cdot z)\big) + x\cdot z &amp;  (交換律・結合律)\\
   &amp;=  (y+ \bar x\cdot z) + x\cdot z &amp;  (冗長律)\\
   &amp;=  y+ (\bar x\cdot z + x\cdot z) &amp;  (結合律)\\
-  &amp;=  y+ \big((\bar x + x)\cdot z\big) &amp;  (分配律)\\
+  &amp;=  y+ (\bar x + x)\cdot z &amp;  (分配律)\\
   &amp;=  y+ 1\cdot z &amp;  (相補律)\\
-  &amp;=  y + z &amp;  (単位元)\\
+  &amp;=  y + z &amp;  (単位元)
 \end{align}\]
 </div>
 </div>
-<hr>
 <div class="paragraph">
-<p>以上です</p>
+<p>2行目では、冗長律の \(a\) を \(y\)、\(b\) を \(\bar x\cdot z\) としています。</p>
 </div>
+<div class="paragraph">
+<p>別解として、論理和についての分配律 \(y + abc = (y+a)(y+b)(y+c)\) を使うこともできます。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+    \bar x\cdot \bar y\cdot z + y + x\cdot z &amp;= (\bar x + y)(\bar y + y)(z + y) + x\cdot z &amp;  (分配律)\\
+  &amp;=  (\bar x + y)(z + y) + x\cdot z &amp;  (相補律・単位元)\\
+  &amp;=  \bar x\cdot z +\bar x\cdot y+ y\cdot z + y + x\cdot z &amp;  (分配律・冪等律)\\
+  &amp;=  (\bar x + x)\cdot z +(\bar x + z + 1)\cdot y  &amp;  (交換律・分配律)\\
+  &amp;=  y + z &amp;  (相補律・零元・単位元)
+\end{align}\]
+</div>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題8: 論理関数の数と、AND・OR・NOTで作れる理由</div>
+<div class="content">
+<div class="paragraph">
+<p>(1) 3変数の論理関数 \(f: \{0,1\}^3 \rightarrow \{0,1\}\) は全部で何種類あるか。<br>
+(2) どんな論理関数でも、NOTゲートと2入力のANDゲート・ORゲートを組み合わせた論理回路で作れる。その理由を、積和標準形を使って説明せよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) \(2^{2^3}=2^8=256\) 種類です。真理値表は \(2^3=8\) 行あり、各行の出力を0か1に決めるごとに別の関数になるので、\(2\times 2\times\cdots\times 2=2^8\) 通りです。「\(2^3=8\) 種類」は行数を答えてしまった誤りです。</p>
+</div>
+<div class="paragraph">
+<p>(2) 論理関数が与えられれば、真理値表を作れます。\(f=1\) の行があれば、その行ごとに最小項(各変数か、その否定の論理積)を作り、それらを論理和でつなぐと、\(f\) と同じ関数を表す積和標準形が得られます(「論理式の標準形」の節の手順)。最小項に必要な否定はNOTゲートで、\(n\) 個のリテラルの論理積は2入力ANDゲートを \(n-1\) 個つなげば作れます。最小項どうしの論理和も、2入力ORゲートをつないで作れます。\(f=1\) の行が1つもない関数(常に0)は、\(x\cdot\bar x\) のように作れます。したがって、どんな論理関数も、この3種類のゲートで回路にできます。</p>
+</div>
+<div class="paragraph">
+<p>ただし、この方法で作る回路は大きくなりがちです。同じ関数をより少ないゲートで作るための簡単化の方法を、次の章で学びます。</p>
+</div>
+</div>
+</details>
 </div>
 </div>
 </div>
@@ -2738,6 +3123,13 @@ x\cdot (x\rightarrow y) &amp;= x\cdot (\bar x + y) &amp; \quad \text{（実質�
 Version 1.2<br>
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",

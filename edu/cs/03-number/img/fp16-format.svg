@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="ja" viewBox="0 0 720 360" width="720" height="360" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">IEEE 754 半精度の格納形式と0.59375のビット列</title><desc id="desc">16ビットを符号部1ビット、指数部5ビット、仮数部10ビットに分ける。0.59375は0 01110 0011000000。指数部01110は14で、15を引いて指数−1。仮数部は先頭の1を補って1.0011。値は1.0011(2)×2^−1=0.59375。</desc>
+<rect width="720" height="360" fill="white"/>
+<rect x="40" y="74" width="40" height="46" rx="0" fill="#fdeeec" stroke="#d7301f" stroke-width="1.5"/>
+<text x="60" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<text x="60" y="44" font-size="15" fill="#d7301f" text-anchor="middle" font-weight="bold">符号部</text>
+<text x="60" y="64" font-size="14" fill="#d7301f" text-anchor="middle">1ビット</text>
+<path d="M 42 126 q 0 7 7 7 L 54.0 133 q 6 0 6 7 q 0 -7 6 -7 L 71 133 q 7 0 7 -7" fill="none" stroke="#d7301f" stroke-width="1.8"/>
+<rect x="80" y="74" width="40" height="46" rx="0" fill="#e6eef7" stroke="#2166ac" stroke-width="1.5"/>
+<text x="100" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<rect x="120" y="74" width="40" height="46" rx="0" fill="#e6eef7" stroke="#2166ac" stroke-width="1.5"/>
+<text x="140" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<rect x="160" y="74" width="40" height="46" rx="0" fill="#e6eef7" stroke="#2166ac" stroke-width="1.5"/>
+<text x="180" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<rect x="200" y="74" width="40" height="46" rx="0" fill="#e6eef7" stroke="#2166ac" stroke-width="1.5"/>
+<text x="220" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<rect x="240" y="74" width="40" height="46" rx="0" fill="#e6eef7" stroke="#2166ac" stroke-width="1.5"/>
+<text x="260" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<text x="180" y="60" font-size="16" fill="#2166ac" text-anchor="middle" font-weight="bold">指数部（5ビット）</text>
+<path d="M 82 126 q 0 7 7 7 L 174.0 133 q 6 0 6 7 q 0 -7 6 -7 L 271 133 q 7 0 7 -7" fill="none" stroke="#2166ac" stroke-width="1.8"/>
+<rect x="280" y="74" width="40" height="46" rx="0" fill="#f2f5f7" stroke="#5a6b7b" stroke-width="1.5"/>
+<text x="300" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<rect x="320" y="74" width="40" height="46" rx="0" fill="#f2f5f7" stroke="#5a6b7b" stroke-width="1.5"/>
+<text x="340" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<rect x="360" y="74" width="40" height="46" rx="0" fill="#f2f5f7" stroke="#5a6b7b" stroke-width="1.5"/>
+<text x="380" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<rect x="400" y="74" width="40" height="46" rx="0" fill="#f2f5f7" stroke="#5a6b7b" stroke-width="1.5"/>
+<text x="420" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<rect x="440" y="74" width="40" height="46" rx="0" fill="#f2f5f7" stroke="#5a6b7b" stroke-width="1.5"/>
+<text x="460" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<rect x="480" y="74" width="40" height="46" rx="0" fill="#f2f5f7" stroke="#5a6b7b" stroke-width="1.5"/>
+<text x="500" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<rect x="520" y="74" width="40" height="46" rx="0" fill="#f2f5f7" stroke="#5a6b7b" stroke-width="1.5"/>
+<text x="540" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<rect x="560" y="74" width="40" height="46" rx="0" fill="#f2f5f7" stroke="#5a6b7b" stroke-width="1.5"/>
+<text x="580" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<rect x="600" y="74" width="40" height="46" rx="0" fill="#f2f5f7" stroke="#5a6b7b" stroke-width="1.5"/>
+<text x="620" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<rect x="640" y="74" width="40" height="46" rx="0" fill="#f2f5f7" stroke="#5a6b7b" stroke-width="1.5"/>
+<text x="660" y="105" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<text x="480" y="60" font-size="16" fill="#5a6b7b" text-anchor="middle" font-weight="bold">仮数部（10ビット）</text>
+<path d="M 282 126 q 0 7 7 7 L 474.0 133 q 6 0 6 7 q 0 -7 6 -7 L 671 133 q 7 0 7 -7" fill="none" stroke="#5a6b7b" stroke-width="1.8"/>
+<rect x="40" y="151" width="70" height="24" rx="12" fill="#d7301f" stroke="none" stroke-width="1.5"/>
+<text x="75" y="169" font-size="14" fill="white" text-anchor="middle" font-weight="bold">符号部</text>
+<text x="124" y="169" font-size="16" fill="#222" text-anchor="start">0 → 正の数（1なら負の数）</text>
+<rect x="40" y="191" width="70" height="24" rx="12" fill="#2166ac" stroke="none" stroke-width="1.5"/>
+<text x="75" y="209" font-size="14" fill="white" text-anchor="middle" font-weight="bold">指数部</text>
+<text x="124" y="209" font-size="16" fill="#222" text-anchor="start">01110<tspan font-size="10.9" baseline-shift="-25%">(2)</tspan> = 14 → 指数は 14 − 15 = −1</text>
+<rect x="40" y="231" width="70" height="24" rx="12" fill="#5a6b7b" stroke="none" stroke-width="1.5"/>
+<text x="75" y="249" font-size="14" fill="white" text-anchor="middle" font-weight="bold">仮数部</text>
+<text x="124" y="249" font-size="16" fill="#222" text-anchor="start">0011000000 → 先頭の1を補って 1.0011<tspan font-size="10.9" baseline-shift="-25%">(2)</tspan></text>
+<rect x="40" y="282" width="640" height="56" rx="10" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="360" y="318" font-size="20" fill="#1c3d5f" text-anchor="middle" font-weight="bold">値 = +1.0011<tspan font-size="13.6" baseline-shift="-25%">(2)</tspan> × 2<tspan font-size="13.6" baseline-shift="45%">−1</tspan> = 0.10011<tspan font-size="13.6" baseline-shift="-25%">(2)</tspan> = 0.59375</text>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 340" width="520" height="340" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">ケーニヒスベルクの橋のグラフ</title><desc id="desc">陸地A(北岸)、B(南岸)、C(中州)、D(東の陸地)を頂点、7本の橋を辺とする。AとCの間に2本、BとCの間に2本、AとD、BとD、CとDの間に1本ずつ。</desc><rect width="100%" height="100%" fill="white"/>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d7301f"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#233647"/></marker></defs>
+<path d="M200,50 Q136.7,94.5 120,170" fill="none" stroke="#5a6b7b" stroke-width="2.6"/>
+<path d="M200,50 Q183.3,125.5 120,170" fill="none" stroke="#5a6b7b" stroke-width="2.6"/>
+<path d="M200,290 Q183.3,214.5 120,170" fill="none" stroke="#5a6b7b" stroke-width="2.6"/>
+<path d="M200,290 Q136.7,245.5 120,170" fill="none" stroke="#5a6b7b" stroke-width="2.6"/>
+<path d="M200,50 Q290.0,110.0 380,170" fill="none" stroke="#5a6b7b" stroke-width="2.6"/>
+<path d="M200,290 Q290.0,230.0 380,170" fill="none" stroke="#5a6b7b" stroke-width="2.6"/>
+<path d="M120,170 Q250.0,170.0 380,170" fill="none" stroke="#5a6b7b" stroke-width="2.6"/>
+<circle cx="200" cy="50" r="9" fill="#1c3d5f"/>
+<text x="200.0" y="32.0" font-size="20" fill="#1c3d5f" text-anchor="middle" font-weight="700">A<tspan font-size="17" fill="#5a6b7b"> 北岸</tspan></text>
+<circle cx="200" cy="290" r="9" fill="#1c3d5f"/>
+<text x="200.0" y="326.0" font-size="20" fill="#1c3d5f" text-anchor="middle" font-weight="700">B<tspan font-size="17" fill="#5a6b7b"> 南岸</tspan></text>
+<circle cx="120" cy="170" r="9" fill="#1c3d5f"/>
+<text x="90.0" y="177.0" font-size="20" fill="#1c3d5f" text-anchor="end" font-weight="700">C<tspan font-size="17" fill="#5a6b7b"> 中州(島)</tspan></text>
+<circle cx="380" cy="170" r="9" fill="#1c3d5f"/>
+<text x="412.0" y="177.0" font-size="20" fill="#1c3d5f" text-anchor="start" font-weight="700">D<tspan font-size="17" fill="#5a6b7b"> 東の陸地</tspan></text>
+</svg>

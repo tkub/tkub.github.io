@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="ja" lang="ja" viewBox="0 0 640 270" width="640" height="270" role="img" aria-labelledby="t d" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif">
+<title id="t">例1の論理回路 x·y+x·ȳ</title>
+<desc id="d">入力xとyのAND、入力xとyの否定のAND、その2つをORでまとめた回路。xの縦の配線はyの横の配線と交差するが接続していない。</desc>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="33.0" y="67" font-size="20" text-anchor="middle" fill="#333" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif" font-style="italic">x</text>
+<text x="32.7" y="97" font-size="20" text-anchor="middle" fill="#333" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif" font-style="italic">y</text>
+<path d="M300,45 h25 a30,30 0 0 1 0,60 h-25 Z" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="322" y="80" text-anchor="middle" font-size="14" fill="#333" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif">AND</text>
+<path d="M300,185 h25 a30,30 0 0 1 0,60 h-25 Z" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="322" y="220" text-anchor="middle" font-size="14" fill="#333" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif">AND</text>
+<path d="M190,215 L222,230 L190,245 Z" fill="#fff" stroke="#333" stroke-width="2"/>
+<circle cx="227" cy="230" r="5" fill="#fff" stroke="#333" stroke-width="2"/>
+<path d="M420,115 q18,30 0,60 q45,-6 70,-30 q-25,-24 -70,-30 Z" fill="#fff" stroke="#333" stroke-width="2"/>
+<text x="450" y="150" text-anchor="middle" font-size="14" fill="#333" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif">OR</text>
+<path d="M45,60 L300,60" fill="none" stroke="#333" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="110" cy="60" r="4" fill="#333"/>
+<path d="M110,60 L110,200 L300,200" fill="none" stroke="#333" stroke-width="2" stroke-linejoin="round"/>
+<path d="M45,90 L300,90" fill="none" stroke="#333" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="150" cy="90" r="4" fill="#333"/>
+<path d="M150,90 L150,230 L190,230" fill="none" stroke="#333" stroke-width="2" stroke-linejoin="round"/>
+<path d="M232,230 L300,230" fill="none" stroke="#333" stroke-width="2" stroke-linejoin="round"/>
+<path d="M355,75 L390,75 L390,130 L426.75,130" fill="none" stroke="#333" stroke-width="2" stroke-linejoin="round"/>
+<path d="M355,215 L390,215 L390,160 L426.75,160" fill="none" stroke="#333" stroke-width="2" stroke-linejoin="round"/>
+<path d="M490,145 L530,145" fill="none" stroke="#333" stroke-width="2" stroke-linejoin="round"/>
+<text x="250.0" y="222" font-size="18" text-anchor="middle" fill="#2166ac" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif" font-style="italic">y</text>
+<line x1="247.2" y1="208.0" x2="253.9" y2="208.0" stroke="#2166ac" stroke-width="1.5"/>
+<text x="366.5" y="66" font-size="18" text-anchor="middle" fill="#2166ac" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif" font-style="italic">x</text>
+<text x="374.6" y="66" font-size="18" text-anchor="middle" fill="#2166ac" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif">·</text>
+<text x="382.4" y="66" font-size="18" text-anchor="middle" fill="#2166ac" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif" font-style="italic">y</text>
+<text x="366.5" y="244" font-size="18" text-anchor="middle" fill="#2166ac" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif" font-style="italic">x</text>
+<text x="374.6" y="244" font-size="18" text-anchor="middle" fill="#2166ac" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif">·</text>
+<text x="382.4" y="244" font-size="18" text-anchor="middle" fill="#2166ac" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif" font-style="italic">y</text>
+<line x1="379.6" y1="230.0" x2="386.3" y2="230.0" stroke="#2166ac" stroke-width="1.5"/>
+<text x="543.0" y="152" font-size="20" text-anchor="middle" fill="#333" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif" font-style="italic">x</text>
+<text x="552.0" y="152" font-size="20" text-anchor="middle" fill="#333" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif">·</text>
+<text x="560.7" y="152" font-size="20" text-anchor="middle" fill="#333" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif" font-style="italic">y</text>
+<text x="572.9" y="152" font-size="20" text-anchor="middle" fill="#333" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif">+</text>
+<text x="585.4" y="152" font-size="20" text-anchor="middle" fill="#333" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif" font-style="italic">x</text>
+<text x="594.4" y="152" font-size="20" text-anchor="middle" fill="#333" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif">·</text>
+<text x="603.1" y="152" font-size="20" text-anchor="middle" fill="#333" font-family="'Times New Roman','Noto Serif','DejaVu Serif',serif" font-style="italic">y</text>
+<line x1="600.0" y1="136.4" x2="607.4" y2="136.4" stroke="#333" stroke-width="1.5"/>
+</svg>

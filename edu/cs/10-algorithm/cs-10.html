@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.26">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <meta name="author" content="久保山哲二">
 <title>アルゴリズムと計算量</title>
 <style>
@@ -562,124 +562,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-pre.rouge table td { padding: 5px; }
-pre.rouge table pre { margin: 0; }
-pre.rouge, pre.rouge .w {
-  color: #24292f;
-  background-color: #f6f8fa;
-}
-pre.rouge .k, pre.rouge .kd, pre.rouge .kn, pre.rouge .kp, pre.rouge .kr, pre.rouge .kt, pre.rouge .kv {
-  color: #cf222e;
-}
-pre.rouge .gr {
-  color: #f6f8fa;
-}
-pre.rouge .gd {
-  color: #82071e;
-  background-color: #ffebe9;
-}
-pre.rouge .nb {
-  color: #953800;
-}
-pre.rouge .nc {
-  color: #953800;
-}
-pre.rouge .no {
-  color: #953800;
-}
-pre.rouge .nn {
-  color: #953800;
-}
-pre.rouge .sr {
-  color: #116329;
-}
-pre.rouge .na {
-  color: #116329;
-}
-pre.rouge .nt {
-  color: #116329;
-}
-pre.rouge .gi {
-  color: #116329;
-  background-color: #dafbe1;
-}
-pre.rouge .ges {
-  font-weight: bold;
-  font-style: italic;
-}
-pre.rouge .kc {
-  color: #0550ae;
-}
-pre.rouge .l, pre.rouge .ld, pre.rouge .m, pre.rouge .mb, pre.rouge .mf, pre.rouge .mh, pre.rouge .mi, pre.rouge .il, pre.rouge .mo, pre.rouge .mx {
-  color: #0550ae;
-}
-pre.rouge .sb {
-  color: #0550ae;
-}
-pre.rouge .bp {
-  color: #0550ae;
-}
-pre.rouge .ne {
-  color: #0550ae;
-}
-pre.rouge .nl {
-  color: #0550ae;
-}
-pre.rouge .py {
-  color: #0550ae;
-}
-pre.rouge .nv, pre.rouge .vc, pre.rouge .vg, pre.rouge .vi, pre.rouge .vm {
-  color: #0550ae;
-}
-pre.rouge .o, pre.rouge .ow {
-  color: #0550ae;
-}
-pre.rouge .gh {
-  color: #0550ae;
-  font-weight: bold;
-}
-pre.rouge .gu {
-  color: #0550ae;
-  font-weight: bold;
-}
-pre.rouge .s, pre.rouge .sa, pre.rouge .sc, pre.rouge .dl, pre.rouge .sd, pre.rouge .s2, pre.rouge .se, pre.rouge .sh, pre.rouge .sx, pre.rouge .s1, pre.rouge .ss {
-  color: #0a3069;
-}
-pre.rouge .nd {
-  color: #8250df;
-}
-pre.rouge .nf, pre.rouge .fm {
-  color: #8250df;
-}
-pre.rouge .err {
-  color: #f6f8fa;
-  background-color: #82071e;
-}
-pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cm, pre.rouge .cp, pre.rouge .cpf, pre.rouge .c1, pre.rouge .cs {
-  color: #6e7781;
-}
-pre.rouge .gl {
-  color: #6e7781;
-}
-pre.rouge .gt {
-  color: #6e7781;
-}
-pre.rouge .ni {
-  color: #24292f;
-}
-pre.rouge .si {
-  color: #24292f;
-}
-pre.rouge .ge {
-  color: #24292f;
-  font-style: italic;
-}
-pre.rouge .gs {
-  color: #24292f;
-  font-weight: bold;
-}
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
@@ -691,7 +574,7 @@ pre.rouge .gs {
 <div id="toc" class="toc2">
 <div id="toctitle">目次</div>
 <ul class="sectlevel1">
-<li><a href="#_今回の目標">1. 今回の目標</a></li>
+<li><a href="#_この章の目標">1. この章の目標</a></li>
 <li><a href="#_アルゴリズム">2. アルゴリズム</a>
 <ul class="sectlevel2">
 <li><a href="#_整列ソーティング問題">2.1. 整列（ソーティング）問題</a>
@@ -703,6 +586,7 @@ pre.rouge .gs {
 <ul class="sectlevel3">
 <li><a href="#_挿入ソート">挿入ソート</a></li>
 <li><a href="#_選択ソート">選択ソート</a></li>
+<li><a href="#_バブルソート">バブルソート</a></li>
 <li><a href="#_計数ソート">計数ソート</a></li>
 </ul>
 </li>
@@ -725,11 +609,14 @@ pre.rouge .gs {
 <li><a href="#_分割のしくみ">分割のしくみ</a></li>
 <li><a href="#_比較回数">比較回数</a></li>
 <li><a href="#_クイックソートの性能">クイックソートの性能</a></li>
-<li><a href="#_ほかの整列アルゴリズムとの比較">ほかの整列アルゴリズムとの比較</a></li>
-<li><a href="#_実世界での使用例">実世界での使用例</a></li>
 </ul>
 </li>
 <li><a href="#_マージソート">4.2. マージソート</a></li>
+<li><a href="#_整列アルゴリズムの比較">4.3. 整列アルゴリズムの比較</a>
+<ul class="sectlevel3">
+<li><a href="#_実世界での使用例">実世界での使用例</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_発展問題そのものの限界">5. 発展：問題そのものの限界</a>
@@ -744,7 +631,6 @@ pre.rouge .gs {
 </ul>
 </li>
 <li><a href="#_練習問題">6. 練習問題</a></li>
-<li><a href="#_練習問題の解答">7. 練習問題の解答</a></li>
 </ul>
 </div>
 </div>
@@ -767,7 +653,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_今回の目標"><a class="link" href="#_今回の目標">1. 今回の目標</a></h2>
+<h2 id="_この章の目標"><a class="link" href="#_この章の目標">1. この章の目標</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>以下の考え方を学びます。</p>
@@ -816,7 +702,7 @@ pre.rouge .gs {
 <p>アルゴリズムとは、与えられた問題を解くための有限の手順のことです。問題には一般に、入力に対応する出力があります。この両者を結びつける手順をアルゴリズムといいます。</p>
 </div>
 <div class="paragraph">
-<p>高校で習う整数の最大公約数を求める手順は、よく引き合いに出されるアルゴリズムの1つで、ユークリッドにより紀元前300年頃に示されたため、「ユークリッドの互除法」として知られています。</p>
+<p>高校で習う、2つの整数の最大公約数を求める手順は、よく引き合いに出されるアルゴリズムの1つです。紀元前300年頃のユークリッドの『原論』に記されていることから、「ユークリッドの互除法」として知られています。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -826,7 +712,7 @@ pre.rouge .gs {
 </td>
 <td class="content">
 <div class="paragraph">
-<p>コンピューター関連の用語には、カタカナ語が多すぎることから、かつて様々な専門用語をカタカナを用いない日本語に翻訳する試みがありました。コンピューター分野のノーベル賞にあたるチューリング賞受賞者であるドナルド・クヌースによるコンピューター科学のバイブル「The Art of Computer Programming」の最初の和訳に、その試みの一部をみることができます。</p>
+<p>コンピューター関連の用語には、カタカナ語が多すぎることから、かつて様々な専門用語をカタカナを用いない日本語に翻訳する試みがありました。コンピューター分野のノーベル賞にあたるチューリング賞受賞者であるドナルド・クヌースによるコンピューター科学のバイブル「The Art of Computer Programming」の最初の和訳（サイエンス社、1978年〜）に、その試みの一部をみることができます。</p>
 </div>
 <table class="tableblock frame-ends grid-none fit-content">
 <colgroup>
@@ -849,8 +735,8 @@ pre.rouge .gs {
 <td class="tableblock halign-left valign-top"><p class="tableblock">算譜</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">データ</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">料</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">プログラミング</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">作譜</p></td>
 </tr>
 </tbody>
 </table>
@@ -865,7 +751,7 @@ pre.rouge .gs {
 <p>コンピューターに問題を解かせるときに、いつ計算が終わるのか、だいたいの見積もりができないと困ることになります。そこで、まずどのように問題の難しさを見積もるのか、簡単な問題を例に見てゆきます。</p>
 </div>
 <div class="paragraph">
-<p>今回は、<strong>整列（ソーティング）問題</strong>を題材にして、アルゴリズムの計算量について解説します。計算量には、時間計算量と空間計算量があります。時間計算量はアルゴリズムの速さを示す量です。空間計算量はアルゴリズムで必要となる記憶領域の大きさを示す量です。難しい問題を解くときには、計算の途中結果を記憶しておく必要があり、たくさん計算用紙を消費してしまう可能性があり、その観点から計算量を考える指標です。ここでは、時間計算量のみを扱うことにします。</p>
+<p>この章では、<strong>整列（ソーティング）問題</strong>を題材にして、アルゴリズムの計算量について解説します。計算量には、時間計算量と空間計算量があります。時間計算量はアルゴリズムの速さを示す量です。空間計算量はアルゴリズムで必要となる記憶領域の大きさを示す量です。難しい問題を解くときには、計算の途中結果を記憶しておくために、たくさんの計算用紙（メモリ）を消費してしまうことがあります。空間計算量は、その観点から計算量を考える指標です。この章では、主に時間計算量を扱います。</p>
 </div>
 <div class="sect2">
 <h3 id="_整列ソーティング問題"><a class="link" href="#_整列ソーティング問題">2.1. 整列（ソーティング）問題</a></h3>
@@ -873,7 +759,7 @@ pre.rouge .gs {
 <p>与えられたデータを小さい順（昇順）、または大きい順（降順）に並べ替える作業は、様々な場面で必要になります。トランプを数の昇順に並べ替えたり、年賀状を人名の「あいうえお順」（辞書順）に並べ替えたり、日常でもたびたび整列問題を解いているはずです。このように、比較可能な複数の対象を順番に並べる作業を、整列（ソーティング）と呼びます。</p>
 </div>
 <div class="paragraph">
-<p>与えられたデータの要素が、数字や文字列のように、大小関係を比較できる対象であるとしたら、あらかじめデータを整列しておくと、高速に発見することもできるようになります。</p>
+<p>データの要素が、数や文字列のように大小関係を比較できる対象であれば、あらかじめデータを整列しておくことで、目的の値を高速に探し出せるようにもなります（辞書や名簿で、目的の語や名前をすぐに見つけられるのと同じです）。</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -978,30 +864,34 @@ pre.rouge .gs {
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/sort-insertion.svg" alt="sort insertion">
+<img src="./img/sort-insertion-steps.svg" alt="挿入ソートで9、1、4、3、7、6、2、3を整列する各段階の並びと比較回数">
 </div>
+<div class="title">図 1. 挿入ソートの途中経過（各行は1つの値を挿入した後の並び）</div>
 </div>
 <div class="paragraph">
-<p>値を赤線より左側の水色の領域の適切な位置に挿入する際には以下のように値を比較します。</p>
+<p>図の赤い縦線より左の薄い青の部分が整列済みの部分、右が未整列の部分です。各行では、1つ上の行で赤線のすぐ右にあった値を、整列済みの部分の適切な位置に挿入します（挿入した値を濃い青で、挿入位置を探すときに比較した値を太い枠で示しています）。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>図の1行目では先頭の9を整列済みの領域、赤線の右側2番目以降を未整列の領域とします。1行目で赤線のすぐ右にある値1を2行目で整列済みの適切な位置に挿入します。挿入する際には、整列済みの領域の末尾から先頭に遡りながら、挿入位置を探します。</p>
+<p>はじめは、先頭の9だけを整列済みの部分とします。</p>
 </li>
 <li>
-<p>2行目では、まず9と<strong>1</strong>を比較して、<strong>1</strong>の方が小さいため、9を1つ右にずらし、最後に空いた先頭の位置に<strong>1</strong>を挿入します。(<strong>比較1回</strong>)</p>
+<p>「1を挿入」の行では、まず9と<strong>1</strong>を比較して、<strong>1</strong>の方が小さいため、9を1つ右にずらし、空いた先頭の位置に<strong>1</strong>を挿入します。(<strong>比較1回</strong>)</p>
 </li>
 <li>
-<p>3行目では、<strong>4</strong>と9を比較して、<strong>4</strong>の方が小さいため、9を1つ右にずらします。次に、<strong>4</strong>と1を比較すると4の方が大きいため、最後に空いた位置に<strong>4</strong>を挿入して、挿入作業はこれでおしまいです。(<strong>比較2回</strong>)</p>
+<p>「4を挿入」の行では、<strong>4</strong>と9を比較して、<strong>4</strong>の方が小さいため、9を1つ右にずらします。次に、<strong>4</strong>と1を比較すると4の方が大きいため、空いた位置に<strong>4</strong>を挿入して、挿入作業はこれでおしまいです。(<strong>比較2回</strong>)</p>
 </li>
 <li>
-<p>4行目では、<strong>3</strong>と9を比較して、<strong>3</strong>の方が小さいため、9を1つ右にずらします。次に、<strong>3</strong>と4を比較すると3の方が小さいため、4も1つ右にずらします。<strong>3</strong>と先頭の1を比較すると3の方が大きいため、最後に空いた位置に<strong>3</strong>を挿入して、挿入作業はこれでおしまいです。(<strong>比較3回</strong>)</p>
+<p>「3を挿入」の行では、<strong>3</strong>と9を比較して、<strong>3</strong>の方が小さいため、9を1つ右にずらします。次に、<strong>3</strong>と4を比較すると3の方が小さいため、4も1つ右にずらします。<strong>3</strong>と先頭の1を比較すると3の方が大きいため、空いた位置に<strong>3</strong>を挿入して、挿入作業はこれでおしまいです。(<strong>比較3回</strong>)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>比較回数が整列アルゴリズムの時間計算量を決定づけていますので、比較回数を数えることにします。計算量を考える場合は、一般に \(n\) 個の並びの中で、もっとも時間がかかる入力を与えた最悪のケースを考えます。時間計算量を並びの値間の比較回数であるとすると、最悪の場合、赤線の左側の水色の値すべてと比較が必要になりますので、以下のようになります（最後の行は整列が終了しているため比較が発生しないので、1行目から7行目までの水色の数を数えればよいことがわかります）。</p>
+<p>このように、挿入する値を、整列済みの部分の末尾から先頭に向かって順に比べ、自分以下の値が見つかったところで止まります。</p>
+</div>
+<div class="paragraph">
+<p>比較回数が整列アルゴリズムの時間計算量を決定づけていますので、比較回数を数えることにします。計算量を考える場合は、一般に \(n\) 個の並びの中で、もっとも時間がかかる入力を与えた最悪のケースを考えます。\(k\) 回目の挿入では、整列済みの部分に \(k\) 個の値があり、最悪の場合はそのすべてと比較が必要になります。8個の並びでは挿入が7回あるので、最悪の比較回数は</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1009,7 +899,7 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="paragraph">
-<p>となり、28回です。この入力例では実際の並びの値間の比較回数は図より</p>
+<p>となり、28回です。この入力例では実際の比較回数は図より</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1017,56 +907,95 @@ pre.rouge .gs {
 </div>
 </div>
 <div class="paragraph">
-<p>となり、22回で済んでいます。列の一番右側にあった「3」を左側の整数列と比較する際に、すでに列の左側にあるもう1つの「3」と等しいことがわかった時点で、それ以上左側の数字との比較は必要ないことに注意をしてください。つまり、「9,7,6,4,3」の5つの数字との比較をすればよいので一番右側にあった「3」と左側の数字との比較回数は5となります。</p>
+<p>となり、22回で済んでいます。最後の行で右端の「3」を挿入するとき、すでに左側にあるもう1つの「3」と比べて「自分より大きくない」とわかった時点で止まるので、それより左の1や2とは比較しないことに注意してください。つまり、「9,7,6,4,3」の5つの値と比較するので、比較回数は5となります。</p>
 </div>
 <div class="paragraph">
-<p>入力として与える整数列の長さ（入力サイズ） \(n\) に対する最大の比較回数を \(T(n)\) とおくと、以下のようになります。</p>
+<p>入力として与える値の並びの長さ（入力サイズ） \(n\) に対する最大の比較回数を \(T(n)\) とおくと、以下のようになります。</p>
 </div>
 <div class="stemblock">
 <div class="content">
 \[\begin{align}
-T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
+T(n)&amp;=1+2+\cdots+(n-2)+(n-1)\\
     &amp;=\frac12n(n-1)\\
     &amp;=\frac12n^2-\frac12n
 \end{align}\]
 </div>
 </div>
 <div class="paragraph">
-<p>\(T(n)=\frac12n^2-\frac12n\) で入力サイズ \(n\) の増加に対して支配的なのは \(\frac12n^2\) の項です。つまり、\(n\) が増加するとき、項 \(\frac12n\) の影響は項 \(\frac12n^2\) の影響に比べると微々たるものですので、計算量を考える際には、項 \(\frac12n^2\) のみを考慮することにします。また、増加傾向を考える際には、定数倍の \(\frac12\) も捨象して、\(T(n)=\text O(n^2)\) と表記します。</p>
+<p>この式から、入力が大きくなったときに比較回数がどう増えるかを見てみましょう。</p>
+</div>
+<table class="tableblock frame-ends grid-rows fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">入力サイズ \(n\)</th>
+<th class="tableblock halign-right valign-top">最悪の比較回数 \(T(n)\)</th>
+<th class="tableblock halign-right valign-top">\(n=1{,}000\) のときの何倍か</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1,000</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">499,500</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1倍</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">2,000</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1,999,000</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">約4倍</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">4,000</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">7,998,000</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">約16倍</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">10,000</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">49,995,000</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">約100倍</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>\(n\) が2倍になると比較回数はほぼ4倍、4倍になると約16倍、10倍になると約100倍です。これは \(T(n)\) の中で \(\frac12n^2\) の項が支配的だからです。\(n\) が大きいとき、\(\frac12n\) の項の影響は \(\frac12n^2\) に比べると微々たるものです。また、「2倍にすると4倍」という増え方は、係数が \(\frac12\) でも \(100\) でも変わりません。そこで、増え方だけに注目するときは、係数と小さい項を省いて \(T(n)=\text O(n^2)\) と書きます（「オー・エヌ二乗」と読みます）。この書き方の意味は、後の<a href="#_時間計算量">「時間計算量」</a>の節で詳しく説明します。</p>
 </div>
 <div class="paragraph">
 <p>挿入ソートのアルゴリズムのプログラム例が以下のコードです。あくまでも例示ですので、理解する必要はありません。このくらいのコード量で書けるということがわかれば大丈夫です。</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="julia"><span class="n">a</span><span class="o">=</span><span class="x">[</span><span class="mi">9</span><span class="x">,</span><span class="mi">1</span><span class="x">,</span><span class="mi">4</span><span class="x">,</span><span class="mi">3</span><span class="x">,</span><span class="mi">7</span><span class="x">,</span><span class="mi">6</span><span class="x">,</span><span class="mi">2</span><span class="x">,</span><span class="mi">3</span><span class="x">]</span>
-<span class="n">n</span><span class="o">=</span><span class="n">length</span><span class="x">(</span><span class="n">a</span><span class="x">)</span>
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">a=[9,1,4,3,7,6,2,3]
+n=length(a)
 
-<span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="o">:</span><span class="n">n</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">a</span><span class="x">[</span><span class="n">i</span><span class="x">]</span>
-    <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="k">while</span> <span class="n">j</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="x">[</span><span class="n">j</span><span class="x">]</span> <span class="o">&gt;</span> <span class="n">t</span>
-        <span class="n">a</span><span class="x">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="x">]</span> <span class="o">=</span> <span class="n">a</span><span class="x">[</span><span class="n">j</span><span class="x">]</span>
-        <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
-    <span class="k">end</span>
-    <span class="n">a</span><span class="x">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="x">]</span> <span class="o">=</span> <span class="n">t</span>
-<span class="k">end</span></code></pre>
+for i=2:n
+    t = a[i]
+    j = i - 1
+    while j&gt;=1 &amp;&amp; a[j] &gt; t
+        a[j+1] = a[j]
+        j -= 1
+    end
+    a[j+1] = t
+end</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>このコードはプログラミング言語 Julia で記述してみました（なぜ Julia を用いたかというと、単に私が好きな言語だからです…）。</p>
 </div>
 <div class="paragraph">
-<p>実際にこのプログラムを使って挿入ソートが、\(n\)個の値を整列(ソート)するのに必要な比較回数(≒計算時間)を計測してグラフにしてみました。</p>
+<p>実際にこの手順で、挿入ソートが \(n\) 個の値を整列（ソート）するのに必要な比較回数（≒計算時間）を数えて、グラフにしてみました（本文のプログラムと同じ手順を実行して数えています）。</p>
 </div>
-<div class="imageblock">
+<div class="imageblock text-center">
 <div class="content">
-<img src="./img/plot-insort.svg" alt="plot insort">
+<img src="./img/plot-insort.svg" alt="挿入ソートの比較回数。降順の入力、ランダムな入力、昇順の入力の3通り">
 </div>
-<div class="title">図 1. 挿入ソートの問題サイズと計算量(比較回数)</div>
+<div class="title">図 2. 挿入ソートの入力サイズと比較回数</div>
 </div>
 <div class="paragraph">
-<p>このグラフで、一番上のなめらかな青色の曲線は、</p>
+<p>このグラフで、いちばん上の青い曲線は、</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1074,10 +1003,10 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </div>
 </div>
 <div class="paragraph">
-<p>のように完全に降順に並んだ値の列を入力として与えた場合で、挿入ソートでは、このような入力の場合、最悪の計算量になります。このグラフは上記で計算した理論値 \(T(n)=\frac12n^2-\frac12n\) と一致します。</p>
+<p>のように完全に降順に並んだ値の列を入力として与えた場合です。挿入ソートでは、このような入力が最悪の場合になります。この曲線は上で計算した \(T(n)=\frac12n^2-\frac12n\) と一致します。</p>
 </div>
 <div class="paragraph">
-<p>一番下のほぼ水平にみえる青色の直線は、もともと整列済みの</p>
+<p>いちばん下の、ほぼ水平にみえる緑の線は、もともと整列済みの</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1085,13 +1014,13 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </div>
 </div>
 <div class="paragraph">
-<p>のような値の列を入力として与えた場合です。挿入ソートでは、このような入力が最良の計算量となり、\(T(n)=n-1\) となります。つまり、もっとも速く計算できる場合は入力として与えた値の数 \(n\) に比例する時間がかかります。一番下の線がほぼ水平にみえるのは、縦軸の目盛りが最大 \(5\times 10^5\) まであるためで、縦軸と横軸を同じ尺度で描けば傾き1の直線になることに注意をしてください。</p>
+<p>のような値の列を入力として与えた場合です。挿入ソートでは、このような入力が最良の場合となり、比較回数は \(n-1\) 回です。つまり、もっとも速く計算できる場合は、入力の値の数 \(n\) に比例する時間で済みます。この線がほぼ水平にみえるのは縦軸が最大50万回まであるためで、\(n=1{,}000\) でも999回しかありません。</p>
 </div>
 <div class="paragraph">
-<p>真ん中の雲のように広がっている点は、ランダムに順序を並べ替えた値の列を入力として与えた場合の比較回数を表しています。最悪の計算量よりは定数倍速いものの、やはり2次曲線である放物線を描いていることがわかります。この部分が挿入ソートの平均的な計算量であると考えることができます。</p>
+<p>真ん中のオレンジの点は、ランダムに並べ替えた値の列を入力として与えた場合の比較回数です。最悪の場合のおよそ半分の回数ですが、やはり放物線（2次関数のグラフ）の形に増えてゆくことがわかります。これが挿入ソートの平均的な計算量の様子です。</p>
 </div>
 <div class="paragraph">
-<p>この整列(ソート)アルゴリズムは、<strong>値の性質としては大小比較しか用いていない</strong>ことに注意してください。これ以外の情報を用いると計算量が変わってきます。</p>
+<p>この整列（ソート）アルゴリズムは、<strong>値の性質としては大小比較しか用いていない</strong>ことに注意してください。これ以外の情報を用いると計算量が変わってきます（後の<a href="#_計数ソート">「計数ソート」</a>で扱います）。</p>
 </div>
 </div>
 <div class="sect3">
@@ -1102,10 +1031,10 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <div class="ulist">
 <ul>
 <li>
-<p>1番目に、全体の中から最小値を選び、先頭に置く</p>
+<p>1番目に、全体の中から最小値を選び、先頭の値と入れ替える</p>
 </li>
 <li>
-<p>2番目に、残りの中から最小値を選び、2番目に置く</p>
+<p>2番目に、残りの中から最小値を選び、2番目の値と入れ替える</p>
 </li>
 <li>
 <p>これを末尾まで繰り返す</p>
@@ -1113,23 +1042,67 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </ul>
 </div>
 <div class="paragraph">
-<p>下の図では、各行で残りの中の最小値を赤い丸で示し、それを左の整列済み領域（水色）に確定させています。</p>
+<p>下の図では、各行で残りの中の最小値を赤い丸で示しています。その値は、次の行で整列済みの部分（水色）の右端の位置に移り、もともとそこにあった値と入れ替わります。たとえば1行目で選んだ1は先頭の9と、2行目で選んだ2は2番目の9と入れ替わります。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/sort-selection.svg" alt="sort selection">
+<img src="./img/sort-selection.svg" alt="選択ソートで9、1、4、3、7、6、2、3を整列する各段階の並び">
 </div>
+<div class="title">図 3. 選択ソートの途中経過（赤い丸は、その行で選んだ最小値）</div>
 </div>
 <div class="paragraph">
-<p>選択ソートでは、\(n\) 個から最小値を選ぶのに \(n-1\) 回、次に \(n-2\) 回……と比較するので、比較回数は入力によらず常に</p>
+<p>選択ソートでは、\(n\) 個から最小値を選ぶのに \(n-1\) 回、次に残りの \(n-1\) 個から選ぶのに \(n-2\) 回……と比較するので、比較回数は入力によらず常に</p>
 </div>
 <div class="stemblock">
 <div class="content">
-\[(n-1)+(n-2)+\cdots+1=\frac{n(n-1)}2=\Theta(n^2)\]
+\[(n-1)+(n-2)+\cdots+1=\frac{n(n-1)}2\]
 </div>
 </div>
 <div class="paragraph">
-<p>です。挿入ソートが、ほぼ整列済みの入力では \(\text O(n)\) まで速くなったのに対し、選択ソートは比較回数が入力によらず \(\frac{n(n-1)}2\) 回、つまりどんな入力でも \(\Theta(n^2)\) かかる点が異なります（\(\Theta\) という記号の正確な意味は後の節で説明します。ここでは「\(n^2\) に比例する時間が常にかかる」と読んでください）。</p>
+<p>回です。挿入ソートは整列済みの入力なら \(n-1\) 回で済みましたが、選択ソートはどんな入力でも、最小値を探すために残りをすべて調べるので、常に \(n^2\) に比例する回数の比較をします（後で説明する記号を使うと \(\Theta(n^2)\) です）。一方、値の入れ替えは各段階で1回まで、全体で高々 \(n-1\) 回で済みます。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_バブルソート"><a class="link" href="#_バブルソート">バブルソート</a></h4>
+<div class="paragraph">
+<p><strong>バブルソート</strong>は、隣り合う2つの値を比べて、左の方が大きければ入れ替える、という操作だけで整列します。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>並びの左端から右端に向かって、隣り合う2つを順に比べ、左の方が大きければ入れ替える（これを1回の<strong>パス</strong>とよびます）</p>
+</li>
+<li>
+<p>1回のパスで、残りの中の最大値が右端まで運ばれて確定するので、次のパスでは確定した部分を除いて同じことを繰り返す</p>
+</li>
+<li>
+<p>あるパスで入れ替えが1回も起きなければ、整列は完了している</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>大きな値が、水の中の泡（バブル）が浮かび上がるように右へ移動してゆくことが名前の由来です。まず、1回目のパスの様子を見てみましょう。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/sort-bubble-pass.svg" alt="バブルソートの1回目のパスで、隣り合う2つを比べて入れ替えていく様子">
+</div>
+<div class="title">図 4. バブルソートの1回目のパス（太い枠が比べる2つの値）</div>
+</div>
+<div class="paragraph">
+<p>1回目のパスでは7回の比較で、最大の9が右端まで移動しました。各パスの終わりの状態を並べると次のようになります。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/sort-bubble.svg" alt="バブルソートの各パスの後の並びと、比較と入れ替えの回数">
+</div>
+<div class="title">図 5. バブルソートの各パスの後の並び</div>
+</div>
+<div class="paragraph">
+<p>パス5の後にはすでに整列が終わっていますが、アルゴリズムはそれを知らないので、パス6で入れ替えが起きないことを確かめてから終了します。比較回数は \(7+6+5+4+3+2=27\) 回でした。最悪の場合（降順に並んだ入力）には、パスが \(n-1\) 回必要で、比較回数は挿入ソートや選択ソートと同じ \(\frac{n(n-1)}2\) 回になります。整列済みの入力なら、1回目のパス（\(n-1\) 回の比較）で入れ替えが起きず、すぐに終了します。</p>
+</div>
+<div class="paragraph">
+<p>バブルソートは仕組みが分かりやすい反面、入れ替えの回数が多く、実際のプログラムでは挿入ソートより遅いのが普通です。後のコラムで紹介するクイックソートの考案者ホーアも、最初に思いついたバブルソートを「遅そうだ」として退けています。</p>
 </div>
 </div>
 <div class="sect3">
@@ -1166,8 +1139,9 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/sort-counting.svg" alt="sort counting">
+<img src="./img/sort-counting.svg" alt="9、1、4、3、7、6、2、3の各値を、1から9の箱に数え上げた結果">
 </div>
+<div class="title">図 6. 計数ソート: 値ごとの箱に個数を数える</div>
 </div>
 <div class="paragraph">
 <p>すると、上図のように \((1,1,2,1,0,1,1,0,1)\) の並びが得られます。後は先頭から順番にカウントをみてゆき、カウントの数だけ、対応する値を出力すれば、整列完了です。</p>
@@ -1176,7 +1150,7 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <p>1 2 3 3 4 6 7 9</p>
 </div>
 <div class="paragraph">
-<p>入力を読む手間は n 個分、箱を初期化して順に調べる手間は k 個分、結果を書き出す手間は n 個分です。したがって、全体の時間計算量は</p>
+<p>値の個数を \(n\)、値の範囲の広さ（箱の数）を \(k\) とします。入力を読む手間は \(n\) 個分、箱を初期化して順に調べる手間は \(k\) 個分、結果を書き出す手間は \(n\) 個分です。したがって、全体の時間計算量は</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1184,27 +1158,29 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </div>
 </div>
 <div class="paragraph">
-<p>となります。今回の例では \((n,k)=(8,9)\) ですが、これはすべての操作がちょうど \(8+9=17\) 回で終わるという意味ではありません。範囲の広さ k も時間とメモリを左右する点が大切です。
-値の範囲があらかじめわかっていても、たとえば、64ビットで表現できる整数の範囲となると、コンピューターの記憶装置を使い尽くしてしまいますし、膨大な時間がかかることになります。以下に計数ソートのプログラム例を掲載します（やはり Julia で記述してあります）。</p>
+<p>となります（「\(n+k\) に比例する」と読んでください）。この例では \((n,k)=(8,9)\) ですが、これはすべての操作がちょうど \(8+9=17\) 回で終わるという意味ではありません。範囲の広さ \(k\) も時間とメモリを左右する点が大切です。また、計数ソートは値どうしを一度も比較していないことにも注意してください。</p>
+</div>
+<div class="paragraph">
+<p>値の範囲があらかじめわかっていても、たとえば、64ビットで表現できる整数の範囲となると、コンピューターの記憶装置を使い尽くしてしまいますし、膨大な時間がかかることになります。以下に計数ソートのプログラム例を掲載します（やはり Julia で記述してあります）。</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="julia"><span class="n">a</span><span class="o">=</span><span class="x">[</span><span class="mi">9</span><span class="x">,</span><span class="mi">1</span><span class="x">,</span><span class="mi">4</span><span class="x">,</span><span class="mi">3</span><span class="x">,</span><span class="mi">7</span><span class="x">,</span><span class="mi">6</span><span class="x">,</span><span class="mi">2</span><span class="x">,</span><span class="mi">3</span><span class="x">]</span>
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">a=[9,1,4,3,7,6,2,3]
 
-<span class="n">count</span> <span class="o">=</span> <span class="n">zeros</span><span class="x">(</span><span class="kt">Int</span><span class="x">,</span> <span class="mi">9</span><span class="x">)</span> <span class="c"># 9個箱を用意</span>
+count = zeros(Int, 9) # 9個箱を用意
 
-<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">a</span>  <span class="c"># 並びから値を順に取り出してカウント</span>
-    <span class="n">count</span><span class="x">[</span><span class="n">i</span><span class="x">]</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="k">end</span>
+for i in a  # 並びから値を順に取り出してカウント
+    count[i] += 1
+end
 
-<span class="n">result</span> <span class="o">=</span> <span class="kt">Int</span><span class="x">[]</span>
-<span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">9</span>
-    <span class="k">if</span> <span class="n">count</span><span class="x">[</span><span class="n">i</span><span class="x">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
-        <span class="k">for</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="n">count</span><span class="x">[</span><span class="n">i</span><span class="x">]</span>
-          <span class="n">push!</span><span class="x">(</span><span class="n">result</span><span class="x">,</span> <span class="n">i</span><span class="x">)</span> <span class="c"># カウントの回数値を並べる</span>
-        <span class="k">end</span>
-    <span class="k">end</span>
-<span class="k">end</span></code></pre>
+result = Int[]
+for i=1:9
+    if count[i] &gt; 0
+        for j=1:count[i]
+          push!(result, i) # カウントの回数値を並べる
+        end
+    end
+end</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1239,7 +1215,7 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <p>文字列（直接的な範囲指定が困難）</p>
 </li>
 <li>
-<p>32ビット整数全体（2^32 = 約43億個の箱が必要）</p>
+<p>32ビット整数全体（\(2^{32}\)、つまり約43億個の箱が必要）</p>
 </li>
 </ul>
 </div>
@@ -1260,7 +1236,7 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <p>並べ替えの計算モデルに、アナログ世界の物理モデルを持ち込むことも考えられます。たとえば、並びの値と同じ長さの棒を用意します。\(\langle 9,1,4,3,7,6,2,3\rangle\) の例を再度もちいると、値が9には9cmの棒、値1には1cmの棒という具合です。そして、平らなテーブルの上で、8本の棒の束を束ねて揃えます。束の上部に手のひらをあて、手のひらに最初に触れた最も長い棒を抜き取り、順に並べます。これを棒がなくなるまで繰り返すと整列完了です。抜き取る操作だけを数えれば8回です。ただし、棒の準備・長さの精度・最長の棒を取り出す操作の費用を省いています。通常のコンピューターで8ステップで整列できるという意味ではありません。何を1回と数えるかで見積もりが変わる例です。</p>
 </div>
 <div class="paragraph">
-<p>この授業では計算モデルについては詳細には立ち入らず、通常のパソコン（ノイマン型コンピューター）を用いると考えてください。ただし、メモリは無尽蔵に使えるものとします。このような計算モデルとして<strong>ランダムアクセス機械</strong>（Random Access Machine; RAM）がよく用いられます。ランダムアクセス機械では、メモリ上の値には定数時間(例えば1ステップ)で、アクセスして読み書きができます。</p>
+<p>この章では計算モデルについては詳細には立ち入らず、通常のパソコン（ノイマン型コンピューター）を用いると考えてください。ただし、メモリは無尽蔵に使えるものとします。このような計算モデルとして<strong>ランダムアクセス機械</strong>（Random Access Machine; RAM）がよく用いられます。ランダムアクセス機械では、メモリ上の値には定数時間(例えば1ステップ)で、アクセスして読み書きができます。</p>
 </div>
 </div>
 </div>
@@ -1269,10 +1245,7 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <h2 id="_時間計算量"><a class="link" href="#_時間計算量">3. 時間計算量</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>さて、ここから少々ややこしい話をします。理論的に「比較のみを用いる整列問題」そのもののもつ難しさを考えるときに、どのような指標が役に立つでしょうか。</p>
-</div>
-<div class="paragraph">
-<p>これまでに見てきた時間計算量の評価について、まとめておきます。</p>
+<p>ここからは、アルゴリズムの速さを比べるための「ものさし」を整理します。これまでに見てきた時間計算量の評価について、まとめておきます。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1288,7 +1261,7 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </ul>
 </div>
 <div class="paragraph">
-<p>我々が時間計算量で興味があるのは、入力サイズの増加に対する時間計算量の増加の度合いです。そこで、増加に最も寄与する項だけを残し、それ以外の項や定数の係数は無視して単純化します。たとえば \(T(n)=\frac12n^2-\frac12n\) は \(T(n)=\text O(n^2)\) と表記します。このような表記法を<strong>ビッグオー表記</strong>または<strong>オーダー表記</strong>といいます。なぜこの2つを捨ててよいのかは、後の節で説明します。</p>
+<p>我々が時間計算量で興味があるのは、入力サイズの増加に対する時間計算量の増加の度合いです。そこで、増加に最も寄与する項だけを残し、それ以外の項や定数の係数は無視して単純化します。たとえば \(T(n)=\frac12n^2-\frac12n\) は \(T(n)=\text O(n^2)\) と表記します。このような表記法を<strong>ビッグオー表記</strong>（<strong>O記法</strong>）または<strong>オーダー表記</strong>といいます。係数と小さい項を捨ててよい理由は、次の節で説明します。</p>
 </div>
 <div class="paragraph">
 <p>時間計算量を考える場合には、挿入ソートのグラフで見たように、次の3つのケースが考えられます。</p>
@@ -1315,7 +1288,10 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <div class="sect2">
 <h3 id="_ビッグオー表記の考え方"><a class="link" href="#_ビッグオー表記の考え方">3.1. ビッグオー表記の考え方</a></h3>
 <div class="paragraph">
-<p>計算量の比較で本当に知りたいのは、「入力が大きくなったとき、計算時間がどんな勢いで増えてゆくか」です。この勢い（増え方のクセ）だけを取り出すために、ビッグオー表記では思い切って次の2つの情報を捨ててしまいます。</p>
+<p>計算量の比較で本当に知りたいのは、「入力が大きくなったとき、計算時間がどんな勢いで増えてゆくか」です。手がかりになるのが、「\(n\) を2倍にしたら、何倍になるか」という問いです。</p>
+</div>
+<div class="paragraph">
+<p>挿入ソートの最悪の比較回数 \(\frac12n^2-\frac12n\) は、\(n\) が2倍になるとほぼ4倍になりました。係数を変えた \(100n^2\) でも、\(n\) を2倍にすれば \(100(2n)^2=4\times100n^2\) で、やはり4倍です。一方、挿入ソートの最良の場合の \(n-1\) 回のように \(n\) に比例する回数なら、\(n\) を2倍にしても約2倍にしかなりません。この倍率は係数では変わらず、式の中でいちばん勢いよく増える項で決まります。そこで、この勢い（増え方のクセ）だけを取り出すために、ビッグオー表記では思い切って次の2つの情報を捨ててしまいます。</p>
 </div>
 <div class="dlist">
 <dl>
@@ -1333,10 +1309,12 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <p>この2つを捨てた結果が \(T(n)=\text O(n^2)\) です。「十分大きな入力では、\(n^2\) の定数倍で上から抑えられる」という意味です。上限の評価なので、実際の増え方がもっと遅い関数も含みます。</p>
 </div>
 <div class="paragraph">
-<p>代表的な関数の増え方を、入力サイズを2倍にしたときの値で比較してみましょう。次の表は関数そのものの比較です。O記法だけから、実測時間の倍率が決まるわけではありません。</p>
+<p>代表的な関数の増え方を、入力サイズを2倍、10倍にしたときの値で比較してみましょう。次の表は関数そのものの比較です。O記法だけから、実測時間の倍率が決まるわけではありません。</p>
 </div>
 <table class="tableblock frame-ends grid-rows fit-content">
+<caption class="title">表 1. 入力サイズを2倍・10倍にしたときの関数の値の変化</caption>
 <colgroup>
+<col>
 <col>
 <col>
 </colgroup>
@@ -1344,52 +1322,64 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <tr>
 <th class="tableblock halign-left valign-top">関数 \(f(n)\)</th>
 <th class="tableblock halign-left valign-top">\(f(2n)\) は \(f(n)\) と比べて…</th>
+<th class="tableblock halign-left valign-top">\(f(10n)\) は \(f(n)\) と比べて…</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(1\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">同じ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">同じ</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\log_2 n\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1増える</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">約3.3増える（\(\log_2 10\approx3.32\)）</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(n\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2倍</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10倍</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(n\log_2 n\)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2倍より少し大きい（\(n&gt;1\)）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2倍より少し大きい（\(n=1024\) なら2.2倍）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10倍より少し大きい（\(n=1000\) なら約13倍）</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(n^2\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4倍</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">100倍</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(n^3\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">8倍</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1000倍</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(2^n\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(2^n\) 倍</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(2^{9n}\) 倍（\(n=10\) なら \(2^{90}\) 倍）</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>計算時間が \(c n^2\) に近似できる場面では、入力が2倍になると約4倍の時間がかかると見積もれます。これはあくまでモデルによる見積もりです。次のグラフで関数どうしの増え方を比べてください。</p>
+<p>計算時間が \(c n^2\) に近似できる場面では、入力が2倍になると約4倍、10倍になると約100倍の時間がかかると見積もれます。たとえば、ある整列プログラムが \(n=1\) 万個の整列に0.5秒かかり、計算時間が \(cn^2\) で近似できるなら、\(n=10\) 万個では約 \(0.5\times100=50\) 秒かかると見積もれます。これはあくまでモデルによる見積もりで、実際にはメモリの使われ方などによって多少ずれます。次のグラフで関数どうしの増え方を比べてください。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/growth-rates.svg" alt="growth rates">
+<img src="./img/growth-rates.svg" alt="log₂n、n、n log₂n、n²、2ⁿ のグラフ">
 </div>
-</div>
-<div class="paragraph">
-<p>このように、係数と低次の項を無視して増え方だけでざっくり分類することを、入力サイズが十分大きいときの振る舞いに着目するという意味で<strong>漸近的</strong>に評価するといいます。ビッグオー表記による評価を<strong>漸近計算量</strong>とよびます。</p>
+<div class="title">図 7. 関数の増え方の比較（縦軸は100で打ち切り）</div>
 </div>
 <div class="paragraph">
-<p>O は上から抑える評価です。さらに、下から抑える評価を \(\Omega\)、上下から挟んで同程度の増え方を示す評価を \(\Theta\) と書きます。厳密な定義は後の折りたたみ欄にまとめています。</p>
+<p>\(n=20\) では、\(\log_2 n\) は約4.3、\(n\log_2 n\) は約86ですが、\(n^2=400\)、\(2^n\) は100万を超えます。</p>
+</div>
+<div class="paragraph">
+<p>このように、係数と低次の項を無視して増え方だけでざっくり分類することを、入力サイズが十分大きいときの振る舞いに着目するという意味で<strong>漸近的</strong>に評価するといいます。このように評価した計算量を<strong>漸近計算量</strong>とよびます。</p>
+</div>
+<div class="paragraph">
+<p>O は上から抑える評価です。さらに、下から抑える評価を \(\Omega\)（オメガ）、上下から挟んで同程度の増え方を示す評価を \(\Theta\)（シータ）と書きます。厳密な定義は後の折りたたみ欄にまとめています。</p>
 </div>
 <div class="sect3">
 <h4 id="_最悪計算量とo記法を混同しない"><a class="link" href="#_最悪計算量とo記法を混同しない">「最悪計算量」とO記法を混同しない</a></h4>
@@ -1410,7 +1400,7 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <div class="content">
 <img src="./img/two-axes.svg" alt="最悪計算量とO記法の2つの軸">
 </div>
-<div class="title">図 2. 「最悪計算量」と「O記法」は別の軸の概念</div>
+<div class="title">図 8. 「最悪計算量」と「O記法」は別の軸の概念</div>
 </div>
 <div class="paragraph">
 <p>挿入ソートで確かめてみましょう。最悪計算量 \(\frac{n(n-1)}2\) という<strong>1つの関数</strong>を、\(\text O(n^2)\) とも \(\Omega(n^2)\) とも \(\Theta(n^2)\) とも評価できます。また、<strong>最良</strong>計算量 \(n-1\) を \(\text O(n)\) と、Oを使って評価することもできます。</p>
@@ -1482,20 +1472,21 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </tbody>
 </table>
 <div class="paragraph">
-<p>つまり関数の増加には以下のような階層関係があります。</p>
+<p>つまり、関数の増え方には次のような順序があります（\(\ll\) は「右の方が圧倒的に速く増える」という意味です）。</p>
 </div>
 <div class="stemblock">
 <div class="content">
 \[1\ll \log n \ll n \ll n\log n \ll n^2 \ll n^3 \ll c^n \ll n!\]
 </div>
 </div>
-<div class="imageblock">
+<div class="imageblock text-center">
 <div class="content">
-<img src="./img/function-comparison.svg" alt="function comparison">
+<img src="./img/function-comparison.svg" alt="代表的な関数を2つずつ比べたグラフ">
 </div>
+<div class="title">図 9. 代表的な関数を2つずつ比べたグラフ（各グラフの縦軸の目盛りの違いに注意）</div>
 </div>
 <div class="paragraph">
-<p>ぜひ、Excel等のグラフ描画ツールによって実際に上記の関数のグラフを自分で描いてみて、この階層を実感してみてください。</p>
+<p>グラフの左上にある「1e3」「1e6」「1e18」は、縦軸の目盛りをそれぞれ \(10^3\)、\(10^6\)、\(10^{18}\) 倍して読むという意味です。ぜひ、Excel等のグラフ描画ツールによって実際に上記の関数のグラフを自分で描いてみて、この順序を実感してみてください。</p>
 </div>
 <details>
 <summary class="title">発展：O・Ω・Θの厳密な定義と計算例（初読では省略可）</summary>
@@ -1522,11 +1513,12 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/bounds.svg" alt="上界と下界ではさむ関数">
+<img src="./img/bounds-theta.svg" alt="上界と下界ではさむ関数">
 </div>
+<div class="title">図 10. 上界と下界ではさむ（\(T(n)=\Theta(f(n))\) の様子）</div>
 </div>
 <div class="paragraph">
-<p>上の図は、\(T(n)\) が下側の関数 \(c'\cdot f(n)\) と上側の関数 \(c\cdot f(n)\) のあいだにぴったりはさまれている様子、つまり \(T(n)=\Theta(f(n))\) を表しています。先ほどの「だいたい \(n^2\) の勢い」という言い方を、定数 \(c, c'\) で上下からはさむ形に置き換えたものが、この厳密な定義です。</p>
+<p>上の図は、ある入力サイズ \(n_0\) より先では、\(T(n)\) が下側の関数 \(c'\cdot f(n)\) と上側の関数 \(c\cdot f(n)\) のあいだにずっとはさまれている様子、つまり \(T(n)=\Theta(f(n))\) を表しています。定義の「十分大きな \(n\) については」は、「ある \(n_0\) があって、\(n\geq n_0\) ならいつでも」という意味です。\(n_0\) より小さい入力では、はみ出していても構いません。先ほどの「だいたい \(n^2\) の勢い」という言い方を、定数 \(c, c'\) で上下からはさむ形に置き換えたものが、この厳密な定義です。</p>
 </div>
 <div class="paragraph">
 <p>ビッグオー表記は、\(T(n)=\text O(f(n))\) のように等式の形で書きますが、これは慣習による表記であり、実際には左辺と右辺は等しくありません。つまり、\(\text O(f(n))=T(n)\) のような向きでは書きません。\(\text O(f(n))\) は、十分大きな入力で \(f(n)\) の定数倍以下になる関数の集合ですので、本来は \(T(n)\in\text O(f(n))\) と書くのが適当ですが、コンピューター科学分野では慣習として \(T(n)=\text O(f(n))\) という表記を使っています。</p>
@@ -1619,7 +1611,7 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <div class="sect2">
 <h3 id="_クイックソート"><a class="link" href="#_クイックソート">4.1. クイックソート</a></h3>
 <div class="paragraph">
-<p>整列アルゴリズムでもっともポピュラーかつよく使われているのは、<strong>クイックソート</strong>というアルゴリズムです。最悪時間計算量は \(\text O(n^2)\) ですが、平均時間計算量は \(\text O(n\log n)\) で、しかも後で述べるように基準値（ピボット）をランダムに選べば、最悪時間計算量になることは確率的にほとんどありません。</p>
+<p>整列アルゴリズムでもっともポピュラーかつよく使われているのは、<strong>クイックソート</strong>というアルゴリズムです。最悪時間計算量は \(\text O(n^2)\) ですが、平均時間計算量は \(\text O(n\log n)\) で、しかも後で述べるように基準値（ピボット）をランダムに選べば、\(n\) が大きいときに最悪に近い時間がかかる確率はきわめて小さくなります。</p>
 </div>
 <div class="paragraph">
 <p>クイックソートを、トランプで説明してみます。</p>
@@ -1632,44 +1624,46 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <p>山札の中から1枚のカードを適当に抜き出します。</p>
 </li>
 <li>
-<p>抜き出したカードの値が「♠8」だったとします。8以下の値を左側の山札、8より大きい値を右側の山札に分けます。</p>
+<p>抜き出したカードの値が「♠8」だったとします。残りのカードを、8以下の値の左側の山札と、8より大きい値の右側の山札に分けます。</p>
 </li>
 <li>
-<p>分けた2つの山札それぞれで、さらに(1)に戻り、左右に分けるカードがなくなるまで同じことを繰り返します。</p>
+<p>分けた2つの山札それぞれで、さらに手順1に戻り、山札のカードが1枚以下になるまで同じことを繰り返します。</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>最後に、左右に分かれた山札を左から右につなげてゆくと、整列したカードが得られます。</p>
+<p>最後に、左側の山札、抜き出したカード、右側の山札の順に左から右へつなげてゆくと、整列したカードが得られます。</p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>このように、クイックソートは<strong>分割統治法</strong>にもとづいています。大きな問題を、基準値（ピボット）を使って2つの小さな問題に<strong>分割</strong>し、それぞれを再帰的に<strong>統治</strong>（整列）して、最後に結果を<strong>結合</strong>します。</p>
+<p>このように、クイックソートは<strong>分割統治法</strong>にもとづいています。大きな問題を、基準値（ピボット）を使って2つの小さな問題に<strong>分割</strong>し、それぞれを再帰的に<strong>統治</strong>（整列）して、最後に結果を<strong>結合</strong>します。「再帰的に」とは、分けた小さな問題にも、同じ手順をそのまま使うという意味です。</p>
 </div>
 <div class="sect3">
 <h4 id="_分割のしくみ"><a class="link" href="#_分割のしくみ">分割のしくみ</a></h4>
 <div class="paragraph">
-<p>8個の数値 \(\langle 9,1,4,3,7,6,2,3\rangle\) で具体的に見てみましょう。まず基準値を1つ選びます（ここでは説明のため「6」とします。基準値の選び方は後で述べるように性能に影響します）。基準値と比べて、6より小さいグループと6より大きいグループに振り分けます。基準値と等しい値が現れた場合は、基準値と一緒にその位置で確定させます。つまり「基準値より小さい」「基準値と等しい」「基準値より大きい」の3つに分割します。</p>
+<p>8個の数値 \(\langle 9,1,4,3,7,6,2,3\rangle\) で具体的に見てみましょう。まず基準値を1つ選びます（ここでは説明のため「6」とします。基準値の選び方は後で述べるように性能に影響します）。基準値と比べて、6より小さいグループと6より大きいグループに振り分けます。基準値と等しい値が現れた場合は、基準値と一緒にその位置で確定させます。つまり「基準値より小さい」「基準値と等しい」「基準値より大きい」の3つに分割します。各グループの中では、元の並びの順序を保つことにします。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/quicksort-partition.svg" alt="quicksort partition">
+<img src="./img/quicksort-partition.svg" alt="9、1、4、3、7、6、2、3を基準値6で3つのグループに分ける">
 </div>
+<div class="title">図 11. 基準値6による分割（線は各値の行き先）</div>
 </div>
 <div class="paragraph">
-<p>あとは、左右のグループそれぞれに同じ操作（基準値を選んで分割する）を、グループの要素が1個以下になるまで繰り返すだけです。この分割の繰り返しを木構造で表すと、次のようになります。</p>
+<p>あとは、左右のグループそれぞれに同じ操作（基準値を選んで分割する）を、グループの要素が1個以下になるまで繰り返すだけです。この分割の繰り返しを木の形で表すと、次のようになります。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="./img/quicksort-recursion.svg" alt="クイックソートの分割の再帰木">
 </div>
+<div class="title">図 12. クイックソートの分割の再帰木</div>
 </div>
 <div class="paragraph">
 <p>各段階での配列の状態をまとめると、次の表のようになります。</p>
 </div>
 <table class="tableblock frame-all grid-all fit-content">
-<caption class="title">表 1. クイックソートの実行過程</caption>
+<caption class="title">表 2. クイックソートの実行過程</caption>
 <colgroup>
 <col>
 <col>
@@ -1708,8 +1702,8 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green-bg">2</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="green-bg">3</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="yellow-bg">6</span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red-bg">7</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red-bg">9</span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red-bg">7</span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">基準値6で分割</p></td>
 </tr>
 <tr>
@@ -1720,9 +1714,9 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="yellow-bg">3</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red-bg">4</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">9</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">左側を基準値3で分割</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">左側[1,4,3,2,3]を基準値3で分割</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2b</p></td>
@@ -1734,7 +1728,7 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <td class="tableblock halign-center valign-top"><p class="tableblock">6</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="yellow-bg">7</span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="red-bg">9</span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">右側を基準値7で分割</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">右側[9,7]を基準値7で分割</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">3a</p></td>
@@ -1776,7 +1770,7 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <p>各段階での比較回数を数えると、次のようになります。</p>
 </div>
 <table class="tableblock frame-all grid-all fit-content">
-<caption class="title">表 2. 段階別比較回数</caption>
+<caption class="title">表 3. 段階別比較回数</caption>
 <colgroup>
 <col>
 <col>
@@ -1804,7 +1798,7 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">2b</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[7,9]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[9,7]</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">1回</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">基準値7と9を比較</p></td>
 </tr>
@@ -1829,10 +1823,10 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <div class="sect3">
 <h4 id="_クイックソートの性能"><a class="link" href="#_クイックソートの性能">クイックソートの性能</a></h4>
 <div class="paragraph">
-<p>理想的には、基準値が配列をほぼ半分に分けてくれます。すると分割の深さは \(\log n\) 段ほどで、各段で全体をひととおり比較するので \(\text O(n)\) 回、あわせて \(\text O(n\log n)\) になります。これは均等に分割できる場合の説明です。ランダムな基準値を使う場合の期待計算量も同じ評価になりますが、その証明には分割の確率を考える必要があります。</p>
+<p>理想的には、基準値が配列をほぼ半分に分けてくれます。すると分割の深さは \(\log_2 n\) 段ほどで、各段で全体をひととおり比較するので約 \(n\) 回、あわせて \(\text O(n\log n)\) になります（下図の左）。これは均等に分割できる場合の説明です。ランダムな基準値を使う場合の期待計算量も同じ評価になりますが、その証明には分割の確率を考える必要があります。</p>
 </div>
 <div class="paragraph">
-<p>一方、毎回いちばん小さい（または大きい）値を基準値に選んでしまうと、グループが1個ずつしか減らず、深さが \(n\) 段になってしまいます。たとえば、すでに昇順に整列済みの \(\langle 1,2,\ldots,n\rangle\) に対して、いつも先頭を基準値にすると、この最悪の状況が起こります。このときの比較回数は</p>
+<p>一方、毎回いちばん小さい（または大きい）値を基準値に選んでしまうと、グループが1個ずつしか減らず、深さが \(n\) 段になってしまいます（下図の右）。たとえば、すでに昇順に整列済みの \(\langle 1,2,\ldots,n\rangle\) に対して、いつも先頭を基準値にすると、この最悪の状況が起こります。このときの比較回数は</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1840,19 +1834,45 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </div>
 </div>
 <div class="paragraph">
-<p>となり、挿入ソートと変わらなくなってしまいます。</p>
+<p>となり、挿入ソートの最悪の場合と変わらなくなってしまいます。挿入ソートにとっては最良だった整列済みの入力が、この選び方のクイックソートにとっては最悪の入力になるわけです。</p>
 </div>
-<div class="paragraph">
-<p>この2つの状況を、分割の様子を表す再帰木で対比すると下図のようになります。</p>
-</div>
-<div class="imageblock">
+<div class="imageblock text-center">
 <div class="content">
 <img src="./img/quicksort-tree.svg" alt="クイックソートの平衡分割と偏った分割の再帰木の対比">
 </div>
-<div class="title">図 3. クイックソートの再帰木：平衡分割（左）と偏った分割（右）</div>
+<div class="title">図 13. クイックソートの再帰木：平衡分割（左）と偏った分割（右）</div>
 </div>
 <div class="paragraph">
 <p>値がすべて異なる場合、基準値を一様ランダムに選べば、どの入力に対しても期待時間は \(\text O(n\log n)\) です。3つの値の中央値を使う方法もよく用いられますが、それだけで最悪時間の保証が変わるわけではありません。同じ値が多い入力には、等しい値をまとめる3分割などの工夫が有効です。また、要素数の少ない部分配列では挿入ソートに切り替えると、さらに速くなります。クイックソートが広く使われているのは、平均的にはこの \(\text O(n\log n)\) が達成でき、しかも係数が小さく（実際に速く）、元の配列の中で並べ替える実装ができる（ただし、再帰の管理には追加のメモリを使う）からです。</p>
+</div>
+<div class="paragraph">
+<p>下に Julia によるクイックソートのプログラムを載せておきます。この例は左右の配列を新しく作るので、元の配列内で並べ替える省メモリの実装とは異なります。アルゴリズムが単純なので（細かい効率を気にしなければ）、すぐに書き下せます（簡単のため、基準値と等しい値を左のグループに入れる2分割版にしてあります。この版では、すべての値が等しい入力で比較回数が \(n^2\) に比例してしまいます）。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">function qsort(a)
+    n = length(a)  # 山札の数を数える
+    if n==0
+        []
+     else # 山札があるとき
+        p = rand(1:n)  # 一枚適当に取り出す
+        v = a[p]
+        left = []
+        right = []
+        for i=union(1:p-1,p+1:n) # 抜き取った札を除いて大小関係で左右に分ける
+            if a[i] &lt;= v
+                push!(left, a[i])
+            else
+                push!(right, a[i])
+            end
+        end
+        vcat(qsort(left),  [v],  qsort(right)) # 左右の整列結果を結合
+    end
+end
+
+@show qsort([9, 1, 4, 3, 7, 6, 2, 3]) # 実行
+qsort([9, 1, 4, 3, 7, 6, 2, 3]) = Any[1, 2, 3, 3, 4, 6, 7, 9] # 実行結果</code></pre>
+</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1879,21 +1899,27 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </table>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_ほかの整列アルゴリズムとの比較"><a class="link" href="#_ほかの整列アルゴリズムとの比較">ほかの整列アルゴリズムとの比較</a></h4>
+</div>
+<div class="sect2">
+<h3 id="_マージソート"><a class="link" href="#_マージソート">4.2. マージソート</a></h3>
 <div class="paragraph">
-<p>クイックソートと挿入ソートの計算量（比較回数）を比較してグラフにしました。入力はランダムな数値の並びです。赤色の点がクイックソート、青色の点が挿入ソートです。平均計算量はそれぞれ \(\text O(n\log n)\) と \(\text O(n^2)\) です。入力サイズ \(n\) が大きくなるほど、両者の差が広がってゆくことがわかると思います。</p>
+<p>最悪の場合でも \(\text O(n\log n)\) 回の比較で整列できるアルゴリズムとして、マージソートやヒープソートが知られています。ここではマージソートを紹介します。マージソートも分割統治法にもとづいており、次の2つを組み合わせます。</p>
 </div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./img/plot-qsort-insort.svg" alt="plot qsort insort">
-</div>
-<div class="title">図 4. クイックソート(赤)と挿入ソート(青)の比較</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>並びを半分に分け、それぞれをマージソートで整列する（半分をさらに半分に……と、1個になるまで分ける。1個の並びは整列済み）</p>
+</li>
+<li>
+<p>整列済みの2つの並びを、1つの整列済みの並びに<strong>併合（マージ）</strong>する</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>代表的な整列アルゴリズムの計算量を表にまとめます。</p>
+<p>併合は、2つの並びの先頭どうしを比べて小さい方を取り出す、という操作の繰り返しです。たとえば、整列済みの \(\langle 2,5,8,9\rangle\) と \(\langle 1,3,4,7\rangle\) を併合すると、次のようになります。</p>
 </div>
 <table class="tableblock frame-ends grid-rows fit-content">
+<caption class="title">表 4. 整列済みの2つの並びの併合</caption>
 <colgroup>
 <col>
 <col>
@@ -1901,6 +1927,126 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <col>
 <col>
 <col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">手順</th>
+<th class="tableblock halign-center valign-top">左の残り</th>
+<th class="tableblock halign-center valign-top">右の残り</th>
+<th class="tableblock halign-center valign-top">比べる2つ</th>
+<th class="tableblock halign-center valign-top">取り出す値</th>
+<th class="tableblock halign-left valign-top">併合した結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2 5 8 9</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1 3 4 7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2 と 1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2 5 8 9</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3 4 7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2 と 3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5 8 9</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3 4 7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5 と 3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5 8 9</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4 7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5 と 4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3 4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5 8 9</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5 と 7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3 4 5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">8 9</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">8 と 7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3 4 5 7</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">8 9</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">（空）</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">比較しない</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">8, 9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3 4 5 7 8 9</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>1回の比較で1個ずつ結果が確定し、片方が空になったら残りは比較せずにそのまま後ろにつなげます。そのため、合わせて \(m\) 個の値の併合は、高々 \(m-1\) 回の比較で済みます（この例では8個で6回）。並び \(\langle 9,5,8,2,3,1,7,4\rangle\) を例に、分割から併合までの全体の流れを示すと次の図のようになります（最後の併合が上の表の併合です）。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/mergesort-steps.svg" alt="9、5、8、2、3、1、7、4を分割して併合する過程">
+</div>
+<div class="title">図 14. マージソートの過程（上半分が分割、下半分が併合）</div>
+</div>
+<div class="paragraph">
+<p>併合の各段では、全体で \(n\) 個の値を併合するので比較は \(n\) 回未満です。段数は、半分に分けることを繰り返して1個になるまでの約 \(\log_2 n\) 段です。したがって、どんな入力に対しても比較回数は \(n\log_2 n\) 回程度でおさえられ、最悪時間計算量は \(\text O(n\log n)\) です。図の例では、併合の比較回数は \(4+5+6=15\) 回でした。</p>
+</div>
+<div class="paragraph">
+<p>ちなみに私の手元のノートPCで、ランダムに並んだ1億個の整数をクイックソートで整列させると、計算時間は約6.7秒でした。マージソートでは約9.8秒でした（下の実行結果）。表示されているメモリ量は、<code>sort</code> が整列結果を入れる新しい配列（8バイト × 1億個 = 約763MiB）を含みます。マージソートでは、それに加えて併合の作業用の領域（配列の約半分、約380MiB）を使うため、合計が約1.1GiBになっています。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-julia hljs" data-lang="julia">julia&gt; let n=100000000, x=rand(1:n,n);  @time sort(x, alg=QuickSort); end;
+  6.655825 seconds (2 allocations: 762.939 MiB)
+julia&gt; let n=100000000, x=rand(1:n,n);  @time sort(x, alg=MergeSort); end;
+  9.778350 seconds (4 allocations: 1.118 GiB)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>このように、多くの場面でクイックソートの方が速く、作業用のメモリも少なくて済みます。一方、マージソートには、最悪の場合でも \(\text O(n\log n)\) が保証されていることや、安定ソート（後述）であるという利点があります。また、外部ソート（メモリに入りきらない大量のデータを、ハードディスクなどの外部記憶を使ってソートする）に適しています。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_整列アルゴリズムの比較"><a class="link" href="#_整列アルゴリズムの比較">4.3. 整列アルゴリズムの比較</a></h3>
+<div class="paragraph">
+<p>クイックソートと挿入ソートの計算量（比較回数）を比較してグラフにしました。入力はランダムな数値の並びです。平均計算量はそれぞれ \(\text O(n\log n)\) と \(\text O(n^2)\) です。入力サイズ \(n\) が大きくなるほど、両者の差が広がってゆくことがわかると思います。\(n=1{,}000\) では、挿入ソートの約25万回に対して、クイックソートは約1.1万回です。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/plot-qsort-insort.svg" alt="ランダムな入力に対するクイックソートと挿入ソートの比較回数">
+</div>
+<div class="title">図 15. クイックソート（赤）と挿入ソート（青）の比較回数</div>
+</div>
+<div class="paragraph">
+<p>代表的な整列アルゴリズムの計算量を表にまとめます。</p>
+</div>
+<table class="tableblock frame-ends grid-rows stretch">
+<caption class="title">表 5. 代表的な整列アルゴリズムの計算量（時間計算量は比較回数で評価）</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 13.3333%;">
+<col style="width: 13.3333%;">
+<col style="width: 13.3333%;">
+<col style="width: 26.6666%;">
+<col style="width: 13.3335%;">
 </colgroup>
 <thead>
 <tr>
@@ -1915,6 +2061,22 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">挿入ソート</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text O(n)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text O(n^2)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text O(n^2)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text O(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">安定</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">選択ソート</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text O(n^2)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text O(n^2)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text O(n^2)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\text O(1)\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">不安定</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">バブルソート</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\text O(n)\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\text O(n^2)\)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\(\text O(n^2)\)</p></td>
@@ -1947,6 +2109,13 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </tr>
 </tbody>
 </table>
+<div class="openblock small">
+<div class="content">
+<div class="paragraph">
+<p>バブルソートの最良 \(\text O(n)\) は、入れ替えが起きなかったら終了する版の場合です。空間計算量は、入力の配列以外に使う作業用のメモリの量です。</p>
+</div>
+</div>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1967,6 +2136,8 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>さて、このように優れた整列アルゴリズムが知られているとすると、この章で最初に扱った挿入ソートはお払い箱でしょうか。実用的には問題サイズが小さいときや、もとからほとんどの要素が整列しているとわかっているときには、依然として挿入ソートも用いられます。このような条件下ではクイックソートよりシンプルかつ高速だからです。</p>
 </div>
 <div class="sect3">
 <h4 id="_実世界での使用例"><a class="link" href="#_実世界での使用例">実世界での使用例</a></h4>
@@ -1979,13 +2150,13 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <p><strong>C言語</strong>：<code>qsort()</code> は整列関数の名前。規格がクイックソートの使用を指定しているわけではない</p>
 </li>
 <li>
-<p><strong>Java</strong>：<code>Arrays.sort()</code>（基本型）に Dual-Pivot Quicksort（基準値を2つ使う改良版）</p>
+<p><strong>Java</strong>：<code>Arrays.sort()</code> は、数値などの基本型の配列には Dual-Pivot Quicksort（基準値を2つ使う改良版）、オブジェクトの配列には安定な TimSort を使う</p>
 </li>
 <li>
-<p><strong>C++</strong>：<code>std::sort()</code>（多くの実装が IntroSort。クイックソートに、分割が深くなりすぎたらヒープソートに切り替える保険を組み合わせたもの）</p>
+<p><strong>C&#43;&#43;</strong>：<code>std::sort()</code>（多くの実装が IntroSort。クイックソートに、分割が深くなりすぎたらヒープソートに切り替える保険を組み合わせたもの）</p>
 </li>
 <li>
-<p><strong>Python</strong>：Timsort（マージソートと挿入ソートを組み合わせた安定ソート）</p>
+<p><strong>Python</strong>：<code>sort()</code> と <code>sorted()</code> は Timsort（マージソートと挿入ソートを組み合わせた安定ソート）。Python 3.11 からは、併合の順序の決め方を Powersort という方式に改良している</p>
 </li>
 </ul>
 </div>
@@ -2001,68 +2172,32 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <p>整列のような基本的なアルゴリズムは、人間が何十年もかけて改良してきました。2023年、Google DeepMind は、囲碁や将棋を攻略した AlphaGo・AlphaZero の強化学習の技術を応用し、「より速い整列の手順を見つけるゲーム」としてこの問題に取り組ませた <strong>AlphaDev</strong> を発表しました。</p>
 </div>
 <div class="paragraph">
-<p>AlphaDev が狙ったのは、3〜5個といったごく短い並びを整列する部分です。短い整列は、大きな整列の中で何度も呼び出される土台の部品なので、ここが速くなると全体が速くなります。見つかった手順は人間には思いつきにくい命令の並びでしたが、正しく動くことが確かめられ、C の標準ライブラリ（LLVM libc）の整列ルーチンに実際に取り込まれました。標準ライブラリの整列が更新されたのは10年以上ぶりで、しかもAIが見つけた手順が採用されたのは初めてのことでした。整列は世界中で1日に何兆回も実行されているので、世界全体がほんの少しだけ速くなったことになります。</p>
+<p>AlphaDev が狙ったのは、3〜5個といったごく短い並びを整列する部分です。短い整列は、大きな整列の中で何度も呼び出される基本部品なので、ここが速くなると全体が速くなります。見つかった手順は人間には思いつきにくい命令の並びでしたが、正しく動くことが確かめられ、C&#43;&#43; の標準ライブラリ（LLVM libc&#43;&#43;）の整列ルーチンに実際に取り込まれました。この部分の整列の手順が更新されたのは10年以上ぶりで、強化学習で見つけた手順がこのライブラリに採用されたのも初めてのことでした。Google は、このとき改良された整列やハッシュ計算の手順が、世界中で1日に何兆回も使われていると見積もっています。</p>
+</div>
+<div class="paragraph">
+<p>出典：<a href="https://www.nature.com/articles/s41586-023-06004-9">Mankowitz et al., "Faster sorting algorithms discovered using deep reinforcement learning", Nature 618 (2023)</a>。</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>下に Julia によるクイックソートのプログラムを載せておきます。この例は左右の配列を新しく作るので、元の配列内で並べ替える省メモリの実装とは異なります。アルゴリズムが単純なので（細かい効率を気にしなければ）、すぐに書き下せます（簡単のため、基準値と等しい値を左のグループに入れる2分割版にしてあります）。</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="julia"><span class="k">function</span><span class="nf"> qsort</span><span class="x">(</span><span class="n">a</span><span class="x">)</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">length</span><span class="x">(</span><span class="n">a</span><span class="x">)</span>  <span class="c"># 山札の数を数える</span>
-    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span>
-        <span class="x">[]</span>
-     <span class="k">else</span> <span class="c"># 山札があるとき</span>
-        <span class="n">p</span> <span class="o">=</span> <span class="n">rand</span><span class="x">(</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="x">)</span>  <span class="c"># 一枚適当に取り出す</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="n">a</span><span class="x">[</span><span class="n">p</span><span class="x">]</span>
-        <span class="n">left</span> <span class="o">=</span> <span class="x">[]</span>
-        <span class="n">right</span> <span class="o">=</span> <span class="x">[]</span>
-        <span class="k">for</span> <span class="n">i</span><span class="o">=</span><span class="n">union</span><span class="x">(</span><span class="mi">1</span><span class="o">:</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="x">,</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="x">)</span> <span class="c"># 抜き取った札を除いて大小関係で左右に分ける</span>
-            <span class="k">if</span> <span class="n">a</span><span class="x">[</span><span class="n">i</span><span class="x">]</span> <span class="o">&lt;=</span> <span class="n">v</span>
-                <span class="n">push!</span><span class="x">(</span><span class="n">left</span><span class="x">,</span> <span class="n">a</span><span class="x">[</span><span class="n">i</span><span class="x">])</span>
-            <span class="k">else</span>
-                <span class="n">push!</span><span class="x">(</span><span class="n">right</span><span class="x">,</span> <span class="n">a</span><span class="x">[</span><span class="n">i</span><span class="x">])</span>
-            <span class="k">end</span>
-        <span class="k">end</span>
-        <span class="n">vcat</span><span class="x">(</span><span class="n">qsort</span><span class="x">(</span><span class="n">left</span><span class="x">),</span>  <span class="x">[</span><span class="n">v</span><span class="x">],</span>  <span class="n">qsort</span><span class="x">(</span><span class="n">right</span><span class="x">))</span> <span class="c"># 左右の整列結果を結合</span>
-    <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="nd">@show</span> <span class="n">qsort</span><span class="x">([</span><span class="mi">9</span><span class="x">,</span> <span class="mi">1</span><span class="x">,</span> <span class="mi">4</span><span class="x">,</span> <span class="mi">3</span><span class="x">,</span> <span class="mi">7</span><span class="x">,</span> <span class="mi">6</span><span class="x">,</span> <span class="mi">2</span><span class="x">,</span> <span class="mi">3</span><span class="x">])</span> <span class="c"># 実行</span>
-<span class="n">qsort</span><span class="x">([</span><span class="mi">9</span><span class="x">,</span> <span class="mi">1</span><span class="x">,</span> <span class="mi">4</span><span class="x">,</span> <span class="mi">3</span><span class="x">,</span> <span class="mi">7</span><span class="x">,</span> <span class="mi">6</span><span class="x">,</span> <span class="mi">2</span><span class="x">,</span> <span class="mi">3</span><span class="x">])</span> <span class="o">=</span> <span class="kt">Any</span><span class="x">[</span><span class="mi">1</span><span class="x">,</span> <span class="mi">2</span><span class="x">,</span> <span class="mi">3</span><span class="x">,</span> <span class="mi">3</span><span class="x">,</span> <span class="mi">4</span><span class="x">,</span> <span class="mi">6</span><span class="x">,</span> <span class="mi">7</span><span class="x">,</span> <span class="mi">9</span><span class="x">]</span> <span class="c"># 実行結果</span></code></pre>
 </div>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_発展問題そのものの限界"><a class="link" href="#_発展問題そのものの限界">5. 発展：問題そのものの限界</a></h2>
+<div class="sectionbody">
 <div class="sect2">
-<h3 id="_マージソート"><a class="link" href="#_マージソート">4.2. マージソート</a></h3>
+<h3 id="_問題の最悪時間計算量の上界と下界"><a class="link" href="#_問題の最悪時間計算量の上界と下界">5.1. 問題の最悪時間計算量の上界と下界</a></h3>
 <div class="paragraph">
-<p>最悪時間計算量が \(\Theta(n\log n)\) となる最適時間計算量の整列アルゴリズムは、マージソートやヒープソートが知られています。
-マージソートのアルゴリズムはとても単純で、配列を再帰的に半分に分割してゆき、分割された部分配列をソートし、マージ（結合）します。すでに、整列済みの2つの配列のマージ（併合）の最悪時間計算量が、\(\Theta(n)\) であることを利用しています。</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./img/mergesort.svg" alt="mergesort">
-</div>
-<div class="title">図 5. マージソートのソート過程</div>
+<p>さて、整列問題などのコンピューター上で解くべき問題が与えられると、それが重要な問題である場合、研究者はその問題にこぞってとりかかります。プログラマやアルゴリズム開発者は、よりよい高速なアルゴリズムをどんどん開発して、問題の<strong>上界</strong>（その問題をこの時間で解けることが、実際のアルゴリズムで示されている最悪時間計算量）を改善してゆきます。つまり、最悪時間計算量が既存のアルゴリズムより小さくなるような、新たなアルゴリズムを実際に提示してみせます。たとえば、これまでに知られていた最速のアルゴリズムの時間計算量が \(\text O(n^3)\) だとすると、あらたに、\(\text O(n^2)\) のアルゴリズムが開発できれば改善になります。こうして、研究が進むにしたがって上界をどんどん下にむかっておさえる方向に改善されてゆきます。</p>
 </div>
 <div class="paragraph">
-<p>ちなみに私の手元のノートPCでランダムに並んだ1億個の整数をクイックソートで整列させると、計算時間は約6.7秒、メモリ消費は約763MiBでした。マージソートも十分に速いのですが、メモリ効率や局所参照性などの点でクイックソートの方が優れています。マージソートには、安定ソートであるという利点があります。また、外部ソート（大量のデータを外部メモリを使ってソートする）に適しています。</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="julia"><span class="n">julia</span><span class="o">&gt;</span> <span class="n">let</span> <span class="n">n</span><span class="o">=</span><span class="mi">100000000</span><span class="x">,</span> <span class="n">x</span><span class="o">=</span><span class="n">rand</span><span class="x">(</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="x">,</span><span class="n">n</span><span class="x">);</span>  <span class="nd">@time</span> <span class="n">sort</span><span class="x">(</span><span class="n">x</span><span class="x">,</span> <span class="n">alg</span><span class="o">=</span><span class="n">QuickSort</span><span class="x">);</span> <span class="k">end</span><span class="x">;</span>
-  <span class="mf">6.655825</span> <span class="n">seconds</span> <span class="x">(</span><span class="mi">2</span> <span class="n">allocations</span><span class="o">:</span> <span class="mf">762.939</span> <span class="n">MiB</span><span class="x">)</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">let</span> <span class="n">n</span><span class="o">=</span><span class="mi">100000000</span><span class="x">,</span> <span class="n">x</span><span class="o">=</span><span class="n">rand</span><span class="x">(</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="x">,</span><span class="n">n</span><span class="x">);</span>  <span class="nd">@time</span> <span class="n">sort</span><span class="x">(</span><span class="n">x</span><span class="x">,</span> <span class="n">alg</span><span class="o">=</span><span class="n">MergeSort</span><span class="x">);</span> <span class="k">end</span><span class="x">;</span>
-  <span class="mf">9.778350</span> <span class="n">seconds</span> <span class="x">(</span><span class="mi">4</span> <span class="n">allocations</span><span class="o">:</span> <span class="mf">1.118</span> <span class="n">GiB</span><span class="x">)</span></code></pre>
-</div>
+<p>一方で、アルゴリズム解析の研究者は、ある問題が与えられたときに、その問題は、この先どれほど素晴らしいアルゴリズムが開発されても、最悪時間計算量が、これ以上は改善できないという<strong>下界</strong>を上にむかって押し上げる方向で問題に取り組みます。下界を示す際には、実際のアルゴリズムを示すことはまずありません。なぜなら、ある最悪時間計算量のアルゴリズムができるということは、つまり、最悪時間計算量の上界を示すことになるからです。最悪時間計算量の下界の提示は、その下界よりも速い最悪時間計算量のアルゴリズムは存在しないという非存在証明なのです。</p>
 </div>
 <div class="paragraph">
-<p>さて、このように優れた整列アルゴリズムが知られているとすると、授業で最初に触れた挿入ソートはお払い箱でしょうか。実用的には問題サイズが小さいときや、もとからほとんどの要素が整列しているとわかっているときには依然として挿入ソートも用いられます。このような条件下ではクイックソートよりシンプルかつ高速だからです。</p>
+<p>いずれにしても、問題の上界と下界は両方とも最悪時間計算量によって考えていることに注意をしてください。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2075,28 +2210,11 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 <p><strong>用語の整理</strong></p>
 </div>
 <div class="paragraph">
-<p>\(\text O\), \(\Omega\), \(\Theta\) は、1つの関数 \(T(n)\) の増え方を上下からおさえるための表記です。本文で扱った「問題の最悪時間計算量の下界」（どんなアルゴリズムを設計しても、これより速くは解けないという問題そのものの限界）とは意味が異なりますので、区別してください。</p>
+<p>\(\text O\), \(\Omega\), \(\Theta\) は、1つの関数 \(T(n)\) の増え方を上下からおさえるための表記です。この節で扱う「問題の最悪時間計算量の下界」（どんなアルゴリズムを設計しても、これより速くは解けないという問題そのものの限界）とは意味が異なりますので、区別してください。ただし、問題の下界を表すときにも \(\Omega\) の記号を使います。たとえば「整列問題の下界は \(\Omega(n\log n)\)」は、「どんな比較ベースのアルゴリズムでも、最悪計算量は \(n\log n\) の定数倍より下にはならない」という意味です。</p>
 </div>
 </td>
 </tr>
 </table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_発展問題そのものの限界"><a class="link" href="#_発展問題そのものの限界">5. 発展：問題そのものの限界</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_問題の最悪時間計算量の上界と下界"><a class="link" href="#_問題の最悪時間計算量の上界と下界">5.1. 問題の最悪時間計算量の上界と下界</a></h3>
-<div class="paragraph">
-<p>さて、整列問題などのコンピューター上で解くべき問題が与えられると、それが重要な問題である場合、研究者はその問題にこぞってとりかかります。プログラマやアルゴリズム開発者は、よりよい高速なアルゴリズムをどんどん開発して、上界を改善してゆきます。つまり、最悪時間計算量が既存のアルゴリズムより小さくなるような、新たなアルゴリズムを実際に提示してみせます。たとえば、これまでに知られていた最速のアルゴリズムの時間計算量が \(\text O(n^3)\) だとすると、あらたに、\(\text O(n^2)\) のアルゴリズムが開発できれば改善になります。こうして、研究が進むにしたがって上界をどんどん下にむかっておさえる方向に改善されてゆきます。</p>
-</div>
-<div class="paragraph">
-<p>一方で、アルゴリズム解析の研究者は、ある問題が与えられたときに、その問題は、この先どれほど素晴らしいアルゴリズムが開発されても、最悪時間計算量が、これ以上は改善できないという下界を上にむかって押し上げる方向で問題に取り組みます。下界を示す際には、実際のアルゴリズムを示すことはまずありません。なぜなら、ある最悪時間計算量のアルゴリズムができるということは、すなわち、最悪時間計算量の上界を示すことになるからです。最悪時間計算量の下界の提示は、その下界よりも速い最悪時間計算量のアルゴリズムは存在しないという非存在証明なのです。</p>
-</div>
-<div class="paragraph">
-<p>いずれにしても、問題の上界と下界は両方とも最悪時間計算量によって考えていることに注意をしてください。</p>
 </div>
 <div class="sect3">
 <h4 id="_下界証明の準備なぜ証明が必要か"><a class="link" href="#_下界証明の準備なぜ証明が必要か">下界証明の準備：なぜ証明が必要か</a></h4>
@@ -2121,7 +2239,7 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </dl>
 </div>
 <div class="paragraph">
-<p>この方法は、コンピューター科学で「不可能性の証明」を行う標準的な手法です。</p>
+<p>この考え方は、コンピューター科学で「不可能性の証明」を行うときによく使われます。</p>
 </div>
 <div class="paragraph">
 <p>以下では、具体的に整列問題の最悪時間計算量の下界証明をしてみます。</p>
@@ -2182,11 +2300,15 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/tree-cmp.svg" alt="tree cmp">
+<img src="./img/tree-cmp.svg" alt="3個の値を整列する比較の決定木">
 </div>
+<div class="title">図 16. 3個の値を比較だけで整列する決定木（\(n=3\)）</div>
 </div>
 <div class="paragraph">
-<p>整列アルゴリズムを実行するときには、この木のうち、どこか1つの根から葉への経路をたどることになります。経路の長さ(たどった分岐の数)が、その入力に対する比較回数です。したがって、根から最も深い葉までの段数、すなわち木の<strong>高さ</strong> \(h\) が、<strong>最悪の場合</strong>の比較回数に対応します。</p>
+<p>図の丸い角の箱が1回の比較で、その答え（yes/no）によって左右に分かれます。一番下の四角い箱（葉）は、たどり着いたときに確定する並べ方です。6通りの並べ方すべてに対応する葉があります。</p>
+</div>
+<div class="paragraph">
+<p>整列アルゴリズムを実行するときには、この木のうち、どこか1つの根から葉への経路をたどることになります。経路の長さ(たどった分岐の数)が、その入力に対する比較回数です。したがって、根から最も深い葉までの段数、つまり木の<strong>高さ</strong> \(h\) が、<strong>最悪の場合</strong>の比較回数に対応します。</p>
 </div>
 <div class="paragraph">
 <p>木の段数が1段増えると、対応できる入力の種類は高々2倍になります。よって、\(h\) 回の比較では、高々 \(2^h\) 種類の入力列の仕分け（ここでは整列）ができることになります。つまり、高々 \(2^h\) 個の順列を整列できることになります。実際に整列できるようにしたいのは、入力として想定される \(n!\) 個の順列です。つまり、\(n!\) 個の順列を十分に仕分けできるだけの比較回数 \(h\) を与えるには、</p>
@@ -2197,7 +2319,7 @@ T(n)&amp;=(n-1)+(n-2)+\cdots+2+1\\
 </div>
 </div>
 <div class="paragraph">
-<p>である必要があります。</p>
+<p>である必要があります。たとえば \(n=3\) なら \(2^h\geq 6\) から \(h\geq 3\) で、上の図の木の高さ3は、これ以上低くできないことがわかります。</p>
 </div>
 <div class="paragraph">
 <p>ここで、以下の不等式を証明しておきましょう。</p>
@@ -2285,11 +2407,12 @@ n! \geq n^{\frac{n}{2}}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/lower-upper-bounds.svg" alt="lower upper bounds">
+<img src="./img/lower-upper-bounds.svg" alt="下界を押し上げる研究と上界を押し下げる研究">
 </div>
+<div class="title">図 17. 問題の下界と上界のせめぎあい</div>
 </div>
 <div class="paragraph">
-<p>最適時間計算量が知られていない問題はたくさんあります。たとえば、行列の掛け算問題の時間計算量は、既知の下界 \(\Omega(n^2)\) に対して、よく知られたStrassenのアルゴリズムでも上界 \(\text O(n^{\log_2 7})\)（約 \(\text O(n^{2.8074})\)）が得られ、さらに小さい指数のアルゴリズムも研究されています。ここでは通常の算術演算を1回と数えるモデルを考えています。</p>
+<p>最適時間計算量が知られていない問題はたくさんあります。たとえば、行列の掛け算問題の時間計算量は、既知の下界 \(\Omega(n^2)\) に対して、よく知られたStrassenのアルゴリズムでも上界 \(\text O(n^{\log_2 7})\)（約 \(\text O(n^{2.8074})\)）が得られます。その後も指数を小さくする研究が続き、2020年代には指数は約2.37まで下がっていますが、下界の \(n^2\) との差は埋まっていません。ここでは通常の算術演算を1回と数えるモデルを考えています。</p>
 </div>
 <div class="paragraph">
 <p>実は理論上最速のアルゴリズムが、実際にプログラムを書いてみると最速であるというわけではありません。たとえば行列の掛け算では、行列の規模・メモリの使い方・並列化によって、演算回数が \(\text O(n^3)\) のよく最適化された実装のほうが速い場合があります。現実には、実際に扱う問題の入力サイズの規模で効率の良いアルゴリズムを選択したり、実装がシンプルでバグが混入しにくければ、多少遅くてもシンプルなアルゴリズムを選んだ方が良いということはよくあります。</p>
@@ -2306,13 +2429,13 @@ n! \geq n^{\frac{n}{2}}
 <p>現実の計算時間の改善に結びつかないのなら、漸近的計算量の改善の追求は無意味なのでしょうか。そうではありません。</p>
 </div>
 <div class="paragraph">
-<p>行列の掛け算が \(\text O(n^3)\) より速くできることを最初に示したのはシュトラッセン(1969年)でした。その核心は「2×2の行列の積は、8回ではなく7回の掛け算で計算できる」という代数的な構造の発見です。誰もが自明と思っていた計算に、実は無駄が潜んでいた——新しい上界の証明とは、このように<strong>問題に隠れていた構造を見つけ出すこと</strong>に他なりません。以後の上界の改善競争は、速さの競争であると同時に、「行列の積とは何か」の理解を掘り下げる営みでもあるのです。</p>
+<p>行列の掛け算が \(\text O(n^3)\) より速くできることを最初に示したのはシュトラッセン(1969年)でした。鍵になったのは「2×2の行列の積は、8回ではなく7回の掛け算で計算できる」という代数的な工夫です。大きな行列を2×2のブロックに区切ってこの工夫を再帰的に使うと、掛け算の回数が \(n^3\) ではなく \(n^{\log_2 7}\) に比例するようになります。誰もが当たり前と思っていた計算に、実は無駄が潜んでいたのです。新しい上界の証明は、このように<strong>問題に隠れていた構造を見つけ出すこと</strong>でもあります。以後の上界の改善競争は、速さの競争であると同時に、「行列の積とは何か」の理解を深める研究でもあります。</p>
 </div>
 <div class="paragraph">
 <p>その理解がどこまで進んだかを測る目盛りが、上界と下界のギャップです。整列問題のように上下界が \(\Theta(n\log n)\) で一致すれば、問題の難しさの正体はそこで確定します。行列の掛け算では、知られている上界と下界にまだギャップが残っていますが、これは「本当は \(n^2\) に近い速さで掛けられるのか、それとも \(n^2\) では掛けられない本質的な理由があるのか」という問いが未解決だということです。ギャップを詰める研究は、この問いに答えようとする研究だといえます。</p>
 </div>
 <div class="paragraph">
-<p>こうして得られた理論的な知見は、しばしば時間差で、あるいは別の場所で実を結びます。素数判定のAKSアルゴリズム(2002年)は、実用速度では従来の確率的アルゴリズムに及びませんが、「素数判定は決定的な多項式時間で解ける(Pに属する)」ことを確定させ、この問題の位置づけを永久に変えました。漸近的改善のために開発された証明技法やデータ構造が、後に別の問題で実用的なアルゴリズムを生むことも珍しくありません。漸近的計算量の研究は、個々のプログラムの速度改善というより、「計算という現象の地図」を描く基礎研究なのです。</p>
+<p>こうして得られた理論的な知見は、しばしば時間差で、あるいは別の場所で実を結びます。素数判定のAKSアルゴリズム(2002年)は、実用速度では従来の確率的アルゴリズムに及びませんが、「素数判定は、乱数を使わない多項式時間のアルゴリズムで解ける（第12章で扱う「P問題」に属する）」ことを確定させ、この問題の理論上の位置づけをはっきりさせました。漸近的改善のために開発された証明技法やデータ構造が、後に別の問題で実用的なアルゴリズムを生むことも珍しくありません。漸近的計算量の研究は、個々のプログラムの速度改善というより、「計算という現象の地図」を描く基礎研究なのです。</p>
 </div>
 </td>
 </tr>
@@ -2324,123 +2447,396 @@ n! \geq n^{\frac{n}{2}}
 <div class="sect1">
 <h2 id="_練習問題"><a class="link" href="#_練習問題">6. 練習問題</a></h2>
 <div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
-<div class="title">問題</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>挿入ソートで以下の整数の並びを整列するとき、整列に必要な比較回数を求めよ。<br>
-\(\langle5,3,1,2,8,6\rangle\)</p>
-</li>
-<li>
-<p>あるアルゴリズムの時間計算量が入力長 \(n\geq 0\) に対して \(T(n)=6n^3+9n^2+28\) であるとき、以下の選択肢から正しいものを選べ。(正しいものが1つもない可能性も、2つ以上ある可能性もあります。)</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>\(T(n)=\text O(n)\)</p>
-</li>
-<li>
-<p>\(T(n)=\Omega(n\log n)\)</p>
-</li>
-<li>
-<p>\(T(n)=\Theta(n^2)\)</p>
-</li>
-<li>
-<p>\(T(n)=\text O(n^2)\)</p>
-</li>
-<li>
-<p>\(T(n)=\text O(n^3)\)</p>
-</li>
-<li>
-<p>\(T(n)=\Omega(n^3)\)</p>
-</li>
-<li>
-<p>\(T(n)=\text O(n^4)\)</p>
-</li>
-<li>
-<p>\(T(n)=\Omega(n^4)\)</p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_練習問題の解答"><a class="link" href="#_練習問題の解答">7. 練習問題の解答</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>まず自分で解いてから読むことをすすめます。</p>
+<p>基本の確認から始め、手作業での実行と計算の練習、考える問題の順に並べています。まず自分で解いてから、解答を開いて確かめてください。</p>
 </div>
-<div class="sidebarblock">
+<div class="exampleblock">
+<div class="title">問題1: 挿入ソートの比較回数</div>
 <div class="content">
-<div class="title">問題1</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>挿入ソートで以下の整数の並びを整列するとき、整列に必要な比較回数を求めよ。<br>
-\(\langle5,3,1,2,8,6\rangle\)</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
 <div class="paragraph">
-<p>下記の通り9回です。（入力サイズ6の場合、最大で15回、最小で5回の比較回数が必要です。）</p>
+<p>挿入ソートで以下の整数の並びを整列するとき、整列に必要な比較回数を求めよ。比較回数は、本文の図と同じく、挿入する値と整列済みの部分の値を比べた回数とする。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\langle5,3,1,2,8,6\rangle\]
+</div>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>9回です。各段階の並び（太字が挿入した値）と比較回数は次のとおりです。</p>
 </div>
 <table class="tableblock frame-all grid-all fit-content">
 <colgroup>
 <col>
 <col>
+<col>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">列</th>
+<th class="tableblock halign-left valign-top">挿入する値</th>
+<th class="tableblock halign-left valign-top">挿入後の並び</th>
 <th class="tableblock halign-center valign-top">比較回数</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5 <mark>3</mark> 1 2 8 6</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>3</strong> 5 1 2 8 6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1（5と比べる）</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3 5 <mark>1</mark> 2 8 6</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>1</strong> 3 5 2 8 6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2（5, 3と比べる）</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1 3 5 <mark>2</mark> 8 6</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 <strong>2</strong> 3 5 8 6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3（5, 3, 1と比べる）</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3 5 <mark>8</mark> 6</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3 5 <strong>8</strong> 6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1（5と比べる）</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3 5 8 <mark>6</mark></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3 5 6 8</p></td>
-<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3 5 <strong>6</strong> 8</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2（8, 5と比べる）</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">合計</p></th>
+<td class="tableblock halign-left valign-top"></td>
 <th class="tableblock halign-center valign-top"><p class="tableblock">9</p></th>
 </tr>
 </tbody>
 </table>
-<div class="sidebarblock">
+<div class="paragraph">
+<p>挿入する値より大きい値に出会う間は右へずらし続け、自分以下の値に出会ったらその比較で止まります。止めた値との比較も1回に数えることに注意してください（2を挿入するときは、最後に1と比べて止まるので3回）。一方、先頭まで達した場合（1を挿入するとき）は、止める値がないので、その分の比較はありません。</p>
+</div>
+<div class="paragraph">
+<p>参考として、6個の並びでは、最悪の場合（降順）は \(1+2+3+4+5=15\) 回、最良の場合（昇順）は5回です。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題2: 選択ソートとバブルソートを手で実行する</div>
 <div class="content">
-<div class="title">問題2</div>
+<div class="paragraph">
+<p>問題1と同じ並び \(\langle5,3,1,2,8,6\rangle\) について、次の問いに答えよ。</p>
+</div>
 <div class="olist arabic">
-<ol class="arabic" start="2">
+<ol class="arabic">
 <li>
-<p>あるアルゴリズムの時間計算量が入力長 \(n\geq 0\) に対して \(T(n)=6n^3+9n^2+28\) であるとき、以下の選択肢から正しいものを選べ。(正しいものが1つもない可能性も、2つ以上ある可能性もあります。)</p>
+<p>選択ソートで整列するとき、各段階（最小値を選んで入れ替えた後）の並びを書き、比較回数の合計を求めよ。</p>
+</li>
+<li>
+<p>バブルソート（入れ替えが1回も起きないパスがあったら終了する版）で整列するとき、各パスの後の並びと、各パスの比較回数・入れ替えの回数を書き、比較回数の合計を求めよ。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>選択ソート: 比較回数は15回です。</p>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">段階</th>
+<th class="tableblock halign-left valign-top">選んだ最小値</th>
+<th class="tableblock halign-left valign-top">入れ替えた後の並び</th>
+<th class="tableblock halign-center valign-top">比較回数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1（5と入れ替え）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 3 5 2 8 6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2（3と入れ替え）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 5 3 8 6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3（5と入れ替え）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3 5 8 6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5（そのまま）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3 5 8 6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6（8と入れ替え）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3 5 6 8</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">合計</p></th>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">15</p></th>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>最小値を探すには残りをすべて調べる必要があるので、比較回数は入力によらず \(5+4+3+2+1=15\) 回です。段階3の後にはすでに整列が終わっていますが、選択ソートはそれを判定しないので、最後まで比較を続けます。</p>
+</div>
+</li>
+<li>
+<p>バブルソート: 比較回数は12回です。</p>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">パス</th>
+<th class="tableblock halign-left valign-top">パスの後の並び</th>
+<th class="tableblock halign-center valign-top">比較回数</th>
+<th class="tableblock halign-center valign-top">入れ替えの回数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3 1 2 5 6 8</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3 5 6 8</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 2 3 5 6 8</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-center valign-top"><p class="tableblock">合計</p></th>
+<td class="tableblock halign-left valign-top"></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">12</p></th>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>パス1では、5が3, 1, 2と順に入れ替わって右へ進み、8と比べて止まります（入れ替えない）。最後に8と6が入れ替わり、最大の8が右端で確定します。パス2の後に整列は終わっていますが、それはパス3で入れ替えが起きないことを確かめて初めてわかります。</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>同じ入力でも、挿入ソート9回、バブルソート12回、選択ソート15回と、比較回数はアルゴリズムによって違います。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題3: クイックソートを手で実行する</div>
+<div class="content">
+<div class="paragraph">
+<p>各グループの先頭の値を基準値に選び、本文と同じく「基準値より小さい」「基準値と等しい」「基準値より大きい」の3つに分けるクイックソートを考える（各グループの中では元の順序を保つ）。比較は、基準値と他の値を1回比べるごとに1回と数える。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>並び \(\langle4,2,7,1,5,3\rangle\) を整列するときの分割の様子（再帰木）を書き、比較回数の合計を求めよ。</p>
+</li>
+<li>
+<p>すでに整列済みの並び \(\langle1,2,3,4,5,6\rangle\) を整列するときの比較回数の合計を求め、1.と比べて多くなる理由を説明せよ。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>比較回数は8回です。</p>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">対象のグループ</th>
+<th class="tableblock halign-center valign-top">基準値</th>
+<th class="tableblock halign-left valign-top">分割の結果（小さい / 等しい / 大きい）</th>
+<th class="tableblock halign-center valign-top">比較回数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[4,2,7,1,5,3]</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[2,1,3] / {4} / [7,5]</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[2,1,3]</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[1] / {2} / [3]</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[7,5]</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[5] / {7} / [ ]</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">合計</p></th>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">8</p></th>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>要素が1個以下のグループ（[1], [3], [5], [ ]）は、それ以上分割しないので比較はありません。確定した値を左からつなげると 1 2 3 4 5 7 になります。</p>
+</div>
+</li>
+<li>
+<p>比較回数は \(5+4+3+2+1=15\) 回です。先頭の値が毎回そのグループの最小値なので、「小さい」グループは空になり、「大きい」グループには残りがすべて入ります。1回の分割で1個しか確定しないため、分割が5段必要になり、各段の比較回数が1ずつしか減りません。本文の図の右側（偏った分割）の状況で、比較回数は \(\frac{n(n-1)}2\) になります。1.では基準値4がグループをほぼ半分ずつ（3個と2個）に分けたので、比較回数が少なく済みました。この問題を避けるには、基準値をランダムに選ぶなどの工夫をします。</p>
+</li>
+</ol>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題4: 計数ソート</div>
+<div class="content">
+<div class="paragraph">
+<p>値の範囲が1から5までであることがわかっている並び \(\langle3,1,4,1,5,2,5\rangle\) を、計数ソートで整列する。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>値1〜5の箱のカウントを、並びをすべて読み終えた時点で答えよ。</p>
+</li>
+<li>
+<p>整列の結果を書け。また、この整列の途中で値どうしの比較を何回行ったか答えよ。</p>
+</li>
+<li>
+<p>64ビットの整数（約 \(1.8\times10^{19}\) 通りの値をとりうる）を、値の範囲について何もわからないまま計数ソートで整列するのが現実的でない理由を説明せよ。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>値1から5の順に \((2,1,1,1,2)\) です（1と5が2個ずつ、2, 3, 4が1個ずつ）。</p>
+</li>
+<li>
+<p>1 1 2 3 4 5 5 です。値どうしの比較は0回です。計数ソートは、値を箱の番号として使って数えるだけで、2つの値の大小を比べることはありません。そのため、比較だけを使う整列の下界 \(\Omega(n\log n)\) の対象外です。</p>
+</li>
+<li>
+<p>箱を値の範囲の数（\(2^{64}\approx1.8\times10^{19}\) 個）だけ用意する必要があるからです。箱1個に1バイトしか使わないとしても約 \(1.8\times10^{19}\) バイト（約1800万テラバイト）が必要で、どんなコンピューターのメモリにも入りません。また、箱を初期化して順に調べるだけで \(k\) に比例する膨大な時間がかかります。計数ソートの時間 \(\Theta(n+k)\) は、値の範囲 \(k\) が狭いときにだけ速いのです。</p>
+</li>
+</ol>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題5: 計算時間の見積もり</div>
+<div class="content">
+<div class="paragraph">
+<p>次の問いに答えよ。ただし、計算時間は与えられた式の定数倍でよく近似できるものとする。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>計算時間が \(n\)、\(n^2\)、\(n^3\)、\(2^n\) にそれぞれ比例するアルゴリズムがある。入力サイズ \(n\) を2倍にすると、計算時間はそれぞれ約何倍になるか。</p>
+</li>
+<li>
+<p>計算時間が \(n^2\) に比例する整列プログラムが、\(n=1\) 万個の整列に0.5秒かかった。\(n=10\) 万個、\(n=100\) 万個ではそれぞれ約何秒かかるか。</p>
+</li>
+<li>
+<p>計算時間が \(n^3\) に比例するプログラムが、\(n=100\) で1秒かかった。\(n=1000\) では約何秒か。</p>
+</li>
+<li>
+<p>計算時間が \(n\log_2 n\) に比例する整列プログラムが、\(n=10\) 万個の整列に0.2秒かかった。\(n=100\) 万個では約何秒か。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>\(n\) は2倍、\(n^2\) は4倍、\(n^3\) は8倍です。\(2^n\) は \(2^{2n}=2^n\times2^n\) なので \(2^n\) 倍になり、元の \(n\) によって倍率そのものが変わります（\(n=30\) なら約10億倍）。</p>
+</li>
+<li>
+<p>\(n\) が10倍になると時間は \(10^2=100\) 倍なので、10万個では約 \(0.5\times100=50\) 秒です。100万個はさらに10倍なので、約 \(50\times100=5000\) 秒（約1時間23分）です。</p>
+</li>
+<li>
+<p>\(n\) が10倍なので、時間は \(10^3=1000\) 倍の約1000秒（約17分）です。</p>
+</li>
+<li>
+<p>時間の比は</p>
+<div class="stemblock">
+<div class="content">
+\[\frac{10^6\log_2 10^6}{10^5\log_2 10^5}=10\times\frac{6\log_2 10}{5\log_2 10}=10\times1.2=12\]
+</div>
+</div>
+<div class="paragraph">
+<p>なので、約 \(0.2\times12=2.4\) 秒です。\(n\log n\) の場合、\(n\) が10倍になっても時間は10倍より少し多いだけで済みます。対数の底は比の計算では打ち消し合うので、\(\log_{10}\) で計算しても同じ結果になります。2.と比べると、\(n^2\) と \(n\log n\) の差が、\(n\) が大きいほど開くことがわかります。</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題6: O記法の判定</div>
+<div class="content">
+<div class="paragraph">
+<p>あるアルゴリズムの時間計算量が入力サイズ \(n\geq 1\) に対して \(T(n)=6n^3+9n^2+28\) であるとき、以下の選択肢から正しいものをすべて選べ（正しいものが1つもない可能性も、2つ以上ある可能性もある）。</p>
+</div>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -2469,13 +2865,24 @@ n! \geq n^{\frac{n}{2}}
 </li>
 </ol>
 </div>
-</li>
-</ol>
 </div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>正しいのは b, e, f, g です。</p>
+</div>
+<div class="paragraph">
+<p>\(T(n)\) では最も次数の高い項 \(6n^3\) が増え方を支配しているので、\(T(n)=\Theta(n^3)\) です。実際、\(n\geq1\) では</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[6n^3\leq 6n^3+9n^2+28\leq 6n^3+9n^3+28n^3=43n^3\]
 </div>
 </div>
 <div class="paragraph">
-<p>\(n\) の値に対する関数の増加速度が以下の順番であることを踏まえれば、細かい計算は不要です。</p>
+<p>なので、\(c'=6\)、\(c=43\) として上下からはさめます。関数の増え方の順序</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -2483,21 +2890,116 @@ n! \geq n^{\frac{n}{2}}
 </div>
 </div>
 <div class="paragraph">
-<p>\(T(n)=6n^3+9n^2+28\) で最も次数の多い項が、関数の増加速度を支配していますので、ただちに \(T(n)=\Theta(n^3)\) が得られます。</p>
+<p>を踏まえると、次のように判定できます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>O（上からおさえる）は、\(n^3\) と同じか、それより速く増える関数なら成り立ちます。よって e（\(n^3\)）と g（\(n^4\)）は正しく、a（\(n\)）と d（\(n^2\)）は誤りです。</p>
+</li>
+<li>
+<p>Ω（下からおさえる）は、\(n^3\) と同じか、それより遅く増える関数なら成り立ちます。よって b（\(n\log n\)）と f（\(n^3\)）は正しく、h（\(n^4\)）は誤りです。</p>
+</li>
+<li>
+<p>Θ（上下からはさむ）は、増え方が同じ関数でなければ成り立ちません。c（\(n^2\)）は誤りです。</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>ここから、\(n^3\) と同じか、それ以上の増加速度の式については上界となります。つまり、\(T(n)=\text O(n^3)\) であり \(T(n)=\text O(n^4)\) でもあります。</p>
+<p>g のように「定義上は正しいが、ぎりぎりの評価ではない」ものも正解に含まれる点に注意してください。</p>
 </div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題7: 「どの入力で測るか」と「どうおさえるか」</div>
+<div class="content">
 <div class="paragraph">
-<p>また、\(n^3\) と同じか、それ以下の増加速度の式については下界となります。つまり、\(T(n)=\Omega(n^3)\) であり \(T(n)=\Omega(n\log n)\) でもあります。</p>
+<p>次の文のそれぞれについて、正しいか誤りかを答え、理由を説明せよ。</p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>挿入ソートの最良計算量は \(\text O(n)\) である。</p>
+</li>
+<li>
+<p>O記法は、最悪の場合の計算量を表すための記法である。</p>
+</li>
+<li>
+<p>選択ソートの最良計算量は \(\Theta(n^2)\) である。</p>
+</li>
+<li>
+<p>クイックソート（基準値を毎回先頭の値にする版）の最悪計算量は \(\text O(n\log n)\) である。</p>
+</li>
+<li>
+<p>マージソートの最悪計算量は \(\text O(n^2)\) である。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>正しい。挿入ソートの最良計算量は \(n-1\) 回で、\(n\) の定数倍で上からおさえられます。O記法は最悪計算量以外の関数にも使えます。</p>
+</li>
+<li>
+<p>誤り。O記法は、ある関数を上からおさえるための記法で、最悪・最良・平均のどの計算量にも使えます。「どの入力で測るか」（最悪・最良・平均）と「得られた関数をどうおさえるか」（O・Ω・Θ）は別の軸です。</p>
+</li>
+<li>
+<p>正しい。選択ソートは入力によらず常に \(\frac{n(n-1)}2\) 回比較するので、最良の場合でも \(n^2\) の定数倍で上下からはさめます。</p>
+</li>
+<li>
+<p>誤り。整列済みの入力で比較回数が \(\frac{n(n-1)}2\) 回になり、これは \(n\log n\) の定数倍では上からおさえられません（\(n\log n\) より速く増えます）。最悪計算量は \(\Theta(n^2)\) です。</p>
+</li>
+<li>
+<p>正しい。マージソートの最悪計算量は \(n\log n\) 程度で、\(n^2\) の定数倍で上からおさえられます。ただし、ぎりぎりの評価（\(\text O(n\log n)\)）ではないので、通常はこうは書きません。</p>
+</li>
+</ol>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題8: 整列の下界を使う</div>
+<div class="content">
 <div class="paragraph">
-<p>よって、選択肢の中で該当するのは (b), (e), (f), (g) となります。</p>
+<p>値がすべて異なる5個の並びを、値どうしの比較だけを使って整列するアルゴリズムを考える。</p>
 </div>
-<hr>
-<div class="paragraph">
-<p>以上です</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>どんなアルゴリズムでも、最悪の場合に少なくとも何回の比較が必要か。本文の決定木の考え方を使って求めよ。</p>
+</li>
+<li>
+<p>挿入ソートの最悪の比較回数は何回か。1.の答えと比べよ。</p>
+</li>
+<li>
+<p>計数ソートは、値の範囲が狭ければ \(n\log n\) より少ない手間で整列できる。これは本文で証明した下界と矛盾しないか。</p>
+</li>
+</ol>
 </div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>7回です。5個の並べ方は \(5!=120\) 通りあり、\(h\) 回の比較で区別できるのは高々 \(2^h\) 通りなので、\(2^h\geq120\) が必要です。\(2^6=64&lt;120\leq128=2^7\) より、\(h\geq7\) です（\(\log_2 120\approx6.91\) を切り上げた値）。</p>
+</li>
+<li>
+<p>\(1+2+3+4=10\) 回です。下界の7回より多く、改善の余地があります。実際、5個の値を最悪でも7回の比較で整列する手順が知られているので、5個の場合はこの下界がぎりぎりの値です。参考までに、半分に分けるマージソートの最悪は8回です。</p>
+</li>
+<li>
+<p>矛盾しません。本文の下界は「値どうしの比較だけを使う」アルゴリズムについての定理です。計数ソートは値を箱の番号として使い、比較をまったく行わないので、この定理の前提に当てはまりません。前提を満たさないアルゴリズムには、定理の結論は適用されません。</p>
+</li>
+</ol>
+</div>
+</div>
+</details>
 </div>
 </div>
 </div>
@@ -2506,6 +3008,13 @@ n! \geq n^{\frac{n}{2}}
 Version 1.1<br>
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",

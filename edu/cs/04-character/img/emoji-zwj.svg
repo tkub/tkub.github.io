@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="ja" lang="ja" viewBox="0 0 800 520" width="800" height="520" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic','Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif">
+<title id="title">絵文字の組み合わせ（肌の色とゼロ幅接合子）</title>
+<desc id="desc">料理人の絵文字（肌の色つき）は、女性U+1F469、肌の色U+1F3FD、ゼロ幅接合子U+200D、料理U+1F373の4つのコードポイントの並びで、UTF-8では15バイト、UTF-16では14バイトになる。下段は5種類の肌の色の修飾子と、接合子で作る職業の絵文字の例。</desc>
+<rect width="800" height="520" fill="#ffffff"/>
+<text x="24" y="34" font-size="19" fill="#233647" font-weight="700">見た目は1つの絵文字でも、中身はコードポイントの並び</text>
+<!-- 部品 -->
+<g text-anchor="middle">
+  <rect x="24" y="56" width="124" height="150" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+  <text x="86" y="112" font-size="40">👩</text>
+  <text x="86" y="142" font-size="15" fill="#233647">女性</text>
+  <text x="86" y="166" font-size="14" fill="#2166ac" font-family="Menlo,Consolas,monospace">U+1F469</text>
+  <text x="86" y="192" font-size="14" fill="#5a6b7b">4バイト</text>
+  <text x="163" y="138" font-size="24" fill="#5a6b7b">＋</text>
+  <rect x="178" y="56" width="124" height="150" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+  <rect x="222" y="80" width="36" height="36" rx="4" fill="#a0673f"/>
+  <text x="240" y="142" font-size="15" fill="#233647">肌の色</text>
+  <text x="240" y="166" font-size="14" fill="#2166ac" font-family="Menlo,Consolas,monospace">U+1F3FD</text>
+  <text x="240" y="192" font-size="14" fill="#5a6b7b">4バイト</text>
+  <text x="317" y="138" font-size="24" fill="#5a6b7b">＋</text>
+  <rect x="332" y="56" width="124" height="150" rx="10" fill="#f2f5f7" stroke="#c4cfd6" stroke-dasharray="5,4"/>
+  <text x="394" y="108" font-size="18" fill="#5a6b7b">（見えない）</text>
+  <text x="394" y="142" font-size="15" fill="#233647">ゼロ幅接合子</text>
+  <text x="394" y="166" font-size="14" fill="#2166ac" font-family="Menlo,Consolas,monospace">U+200D</text>
+  <text x="394" y="192" font-size="14" fill="#5a6b7b">3バイト</text>
+  <text x="471" y="138" font-size="24" fill="#5a6b7b">＋</text>
+  <rect x="486" y="56" width="124" height="150" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+  <text x="548" y="112" font-size="40">🍳</text>
+  <text x="548" y="142" font-size="15" fill="#233647">料理</text>
+  <text x="548" y="166" font-size="14" fill="#2166ac" font-family="Menlo,Consolas,monospace">U+1F373</text>
+  <text x="548" y="192" font-size="14" fill="#5a6b7b">4バイト</text>
+  <text x="628" y="138" font-size="24" fill="#5a6b7b">＝</text>
+  <rect x="646" y="56" width="130" height="150" rx="10" fill="#ffffff" stroke="#d7301f" stroke-width="2"/>
+  <text x="711" y="118" font-size="52">👩🏽‍🍳</text>
+  <text x="711" y="150" font-size="15" fill="#233647">料理人</text>
+  <text x="711" y="176" font-size="14" fill="#d7301f">書記素クラスタ1個</text>
+</g>
+<text x="24" y="238" font-size="15.5" fill="#233647">コードポイント4個。UTF-8では 4＋4＋3＋4＝15バイト、UTF-16では 4＋4＋2＋4＝14バイト。</text>
+<text x="24" y="262" font-size="14.5" fill="#5a6b7b">絵文字の組み合わせに対応していない環境では、部品がばらばらに表示されることがある。</text>
+<line x1="24" y1="286" x2="776" y2="286" stroke="#dde5ec" stroke-width="2"/>
+<!-- 肌の色 -->
+<text x="24" y="318" font-size="16" fill="#1c3d5f" font-weight="700">肌の色の修飾子（直前の絵文字に付ける）</text>
+<g text-anchor="middle">
+  <text x="84" y="370" font-size="34">👩</text>
+  <text x="84" y="396" font-size="14" fill="#5a6b7b">なし</text>
+  <text x="206" y="370" font-size="34">👩🏻</text>
+  <text x="206" y="396" font-size="14" fill="#2166ac" font-family="Menlo,Consolas,monospace">+1F3FB</text>
+  <text x="328" y="370" font-size="34">👩🏼</text>
+  <text x="328" y="396" font-size="14" fill="#2166ac" font-family="Menlo,Consolas,monospace">+1F3FC</text>
+  <text x="450" y="370" font-size="34">👩🏽</text>
+  <text x="450" y="396" font-size="14" fill="#2166ac" font-family="Menlo,Consolas,monospace">+1F3FD</text>
+  <text x="572" y="370" font-size="34">👩🏾</text>
+  <text x="572" y="396" font-size="14" fill="#2166ac" font-family="Menlo,Consolas,monospace">+1F3FE</text>
+  <text x="694" y="370" font-size="34">👩🏿</text>
+  <text x="694" y="396" font-size="14" fill="#2166ac" font-family="Menlo,Consolas,monospace">+1F3FF</text>
+</g>
+<!-- ZWJ の例 -->
+<text x="24" y="436" font-size="16" fill="#1c3d5f" font-weight="700">ゼロ幅接合子でつなぐ例（👩＋U+200D＋もの）</text>
+<g text-anchor="middle" font-size="15" fill="#233647">
+  <text x="100" y="488"><tspan font-size="30">👩‍🌾</tspan> 農家（🌾）</text>
+  <text x="290" y="488"><tspan font-size="30">👩‍🚀</tspan> 宇宙飛行士（🚀）</text>
+  <text x="490" y="488"><tspan font-size="30">👩‍💻</tspan> 技術者（💻）</text>
+  <text x="680" y="488"><tspan font-size="30">👩‍🚒</tspan> 消防士（🚒）</text>
+</g>
+</svg>

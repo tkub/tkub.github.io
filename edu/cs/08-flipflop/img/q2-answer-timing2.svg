@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 566 168" width="566" height="168" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif" role="img">
+<title>問題4の解答のタイミングチャート</title><desc>時刻0から7のE、D、Qの波形。Qは時刻0と1で0、時刻2で1になり、時刻5で0、時刻6で1になって時刻7も1を保つ。</desc>
+<rect width="566" height="168" fill="#ffffff"/>
+<line x1="70" y1="26" x2="70" y2="154" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="70" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">0</text>
+<line x1="130" y1="26" x2="130" y2="154" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="130" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">1</text>
+<line x1="190" y1="26" x2="190" y2="154" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="190" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">2</text>
+<line x1="250" y1="26" x2="250" y2="154" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="250" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">3</text>
+<line x1="310" y1="26" x2="310" y2="154" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="310" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">4</text>
+<line x1="370" y1="26" x2="370" y2="154" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="370" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">5</text>
+<line x1="430" y1="26" x2="430" y2="154" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="430" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">6</text>
+<line x1="490" y1="26" x2="490" y2="154" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="490" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">7</text>
+<line x1="550" y1="26" x2="550" y2="154" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="550" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">8</text>
+<text x="56" y="53" fill="#233647" font-size="17" text-anchor="end">E</text>
+<path d="M70,58 L130.0,58 L130.0,34 L250.0,34 L250.0,58 L370.0,58 L370.0,34 L490.0,34 L490.0,58 L550.0,58" fill="none" stroke="#000" stroke-width="2" stroke-linejoin="miter"/>
+<text x="56" y="101" fill="#233647" font-size="17" text-anchor="end">D</text>
+<path d="M70,82 L130.0,82 L130.0,106 L190.0,106 L190.0,82 L310.0,82 L310.0,106 L430.0,106 L430.0,82 L490.0,82 L490.0,106 L550.0,106" fill="none" stroke="#000" stroke-width="2" stroke-linejoin="miter"/>
+<rect x="70" y="125" width="480" height="34" fill="#fff6cc" opacity="0.7"/>
+<text x="56" y="149" fill="#233647" font-size="17" text-anchor="end">Q</text>
+<path d="M70,154 L190.0,154 L190.0,130 L370.0,130 L370.0,154 L430.0,154 L430.0,130 L550.0,130" fill="none" stroke="#2166ac" stroke-width="2" stroke-linejoin="miter"/>
+</svg>

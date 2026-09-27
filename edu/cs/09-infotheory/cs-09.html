@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.26">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <meta name="author" content="久保山哲二">
 <title>情報理論の初歩</title>
 <style>
@@ -562,6 +562,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
@@ -587,7 +588,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <li><a href="#_自己情報量">3.1. 自己情報量</a></li>
 <li><a href="#_エントロピー_平均情報量">3.2. エントロピー — 平均情報量</a></li>
 <li><a href="#_情報源符号化定理">3.3. 情報源符号化定理</a></li>
-<li><a href="#_圧縮の果てはランダム列">3.4. 圧縮の果てはランダム列</a></li>
+<li><a href="#_圧縮しきったデータの姿">3.4. 圧縮しきったデータの姿</a></li>
 <li><a href="#_言語の冗長度">3.5. 言語の冗長度</a></li>
 </ul>
 </li>
@@ -598,16 +599,15 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <li><a href="#_シャノン以前の見方">4.3. シャノン以前の見方</a></li>
 <li><a href="#_通信路符号化定理">4.4. 通信路符号化定理</a></li>
 <li><a href="#_2元対称通信路の容量">4.5. 2元対称通信路の容量</a></li>
+<li><a href="#_誤りを見つけ場所を突き止める_パリティとハミング符号">4.6. 誤りを見つけ、場所を突き止める — パリティとハミング符号</a>
+<ul class="sectlevel3">
+<li><a href="#_パリティ検査_誤りを見つける">パリティ検査 — 誤りを見つける</a></li>
+<li><a href="#_ハミング符号_誤りの場所を突き止める">ハミング符号 — 誤りの場所を突き止める</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_練習問題">5. 練習問題</a></li>
-<li><a href="#_練習問題の解答">6. 練習問題の解答</a>
-<ul class="sectlevel2">
-<li><a href="#_問題1の解答">6.1. 問題1の解答</a></li>
-<li><a href="#_問題2の解答">6.2. 問題2の解答</a></li>
-<li><a href="#_問題3の解答">6.3. 問題3の解答</a></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>
@@ -640,7 +640,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </ul>
 </div>
 <div class="paragraph">
-<p>という2つの根本的な問いに、理論的な限界を与えて一挙に答えてしまいました。データ圧縮から通信、記録媒体まで、現在のデジタル技術はすべてこの理論の上に成り立っています。</p>
+<p>という2つの根本的な問いに、理論的な限界を与えて一挙に答えてしまいました。データ圧縮、通信、記録媒体など、現在のデジタル技術の多くがこの理論を出発点にしています。</p>
 </div>
 <div class="paragraph">
 <p>本章では、この2つの定理を目標に情報理論を概観します。定理の証明や厳密な理論展開には立ち入りません。本格的に学びたい人は情報理論の専門書（たとえば Cover &amp; Thomas, <em>Elements of Information Theory</em>）にあたってください。</p>
@@ -686,10 +686,14 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>符号 \(C_a\) で記号列 \(\TT{ACACGU}\) を変換すると、次の図のようになります。</p>
+</div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/coding.svg" alt="coding">
+<img src="./img/coding.svg" alt="情報源記号列ACACGUを符号Cで符号記号列000100011110に変換する">
 </div>
+<div class="title">図 1. 符号 \(C_a\) による符号化</div>
 </div>
 <div class="paragraph">
 <p>このように各記号に同じ長さの符号語を割り当てた符号を<strong>固定長符号</strong>といいます。文字コードの章で学んだASCIIも7ビットの固定長符号です。記号 \(x\) の符号語を \(C(x)\)、その長さ（<strong>符号語長</strong>）を \(|C(x)|\) と表します。記号列の符号化は、各記号の符号語を順につなげるだけです。記号列 \(x_1 x_2\cdots x_k\) を符号化して得られる符号記号列を \(C^+(x_1 x_2\cdots x_k)=C(x_1)C(x_2)\cdots C(x_k)\) と書きます。</p>
@@ -836,9 +840,9 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/code-tree-c12.svg" alt="C1とC2の符号木の比較" width="700">
+<img src="./img/code-tree-c12.svg" alt="C1の符号木ではすべての記号が葉にあり、C2の符号木では記号aがdへの途中のノードにある">
 </div>
-<div class="title">図 1. 符号 \(C_1\) と \(C_2\) の符号木</div>
+<div class="title">図 2. 符号 \(C_1\) と \(C_2\) の符号木</div>
 </div>
 <div class="paragraph">
 <p>\(C_2\) では記号 \(\TT a\) が葉ではなく途中のノードにあるため、\(\TT 0\) を読んだ時点で「\(\TT a\) で確定」か「\(\TT d\) の途中」かが区別できません。瞬時符号なら、葉に到達するたびに記号を1つ確定して根に戻る、という機械的な操作で復号できます。</p>
@@ -897,13 +901,16 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </tbody>
 </table>
 <div class="paragraph">
-<p>まず最小の \(\TT d\)(2)と \(\TT a\)(3)をまとめて頻度5のノードを作ります。次に残りの中で最小の \(\TT b\)(4)と今作ったノード(5)をまとめて頻度9のノードを、最後に \(\TT c\)(6)と(9)をまとめて根を作ります。分岐の上側の辺に \(\TT 0\)、下側に \(\TT 1\) を割り振ると、次の符号木が得られます。</p>
+<p>まず最小の \(\TT d\)(2)と \(\TT a\)(3)をまとめて頻度5のノードを作ります。次に残りの中で最小の \(\TT b\)(4)と今作ったノード(5)をまとめて頻度9のノードを、最後に \(\TT c\)(6)と(9)をまとめて根を作ります。分岐の上側の辺に \(\TT 0\)、下側に \(\TT 1\) を割り振ると、根から各葉までの辺の数字を並べたものが符号語になります。この手順を図にすると次のとおりです。</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/huffman-tree.svg" alt="ハフマン符号木" width="560">
+<img src="./img/huffman-steps.svg" alt="頻度の最も小さい2つをまとめる操作を3回繰り返して符号木を作る">
 </div>
-<div class="title">図 2. ハフマン符号の符号木（青のノードは併合で作られたノード、赤字は符号語）</div>
+<div class="title">図 3. ハフマン符号の符号木を作る手順（赤枠は次にまとめる2つ、青の丸は併合で作ったノードで数字は頻度の和、④の赤字は符号語）</div>
+</div>
+<div class="paragraph">
+<p>葉の側から根に向かって木を組み立てていくので、頻度の小さい記号ほど根から遠く、つまり長い符号語になります。</p>
 </div>
 <table class="tableblock frame-all grid-all fit-content">
 <caption class="title">表 5. 符号木から得られるハフマン符号 \(C_h\)</caption>
@@ -934,7 +941,18 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </tbody>
 </table>
 <div class="paragraph">
-<p>作り方から、すべての記号は葉に配置されるので、ハフマン符号はつねに瞬時符号です。元の記号列を符号化すると符号記号列長は29となり、平均符号語長は29/15≈1.93ビットです（2ビットの固定長符号より短くなりました）。\(\TT 0\) と \(\TT 1\) の割り振り方には任意性があるため、ハフマン符号は一意には決まりませんが、各記号の符号語長はどの割り振りでも同じです。</p>
+<p>作り方から、すべての記号は葉に配置されるので、ハフマン符号はつねに瞬時符号です。元の記号列を符号化したときの長さは、各記号の（出現回数）×（符号語長）の合計で</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[3\times 3 + 4\times 2 + 6\times 1 + 2\times 3 = 29\]
+</div>
+</div>
+<div class="paragraph">
+<p>となり、平均符号語長は29/15≈1.93ビットです（2ビットの固定長符号より短くなりました）。</p>
+</div>
+<div class="paragraph">
+<p>ハフマン符号は一通りには決まりません。\(\TT 0\) と \(\TT 1\) の割り振り方を変えても各記号の符号語長は変わりません。また、頻度の同じノードが複数あるときはどれを選んでもよく、選び方によって符号語長の組が変わることもありますが、平均符号語長はどれも同じ最小値になります。</p>
 </div>
 <div class="paragraph">
 <p>そして、ハフマン符号については次のことが証明されています（証明は専門書に譲ります）。</p>
@@ -954,7 +972,7 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </td>
 <td class="content">
 <div class="paragraph">
-<p>1951年、MITの大学院生だったハフマンは、担当教授ファノの授業で「最も効率のよい2進符号を求めよ」というレポート課題に取り組みました。実はこれは、シャノンとファノ自身が取り組んで解決できていなかった未解決問題でしたが、ファノはそのことを告げていませんでした。ハフマンは数ヶ月の試行錯誤の末にこのアルゴリズムを発見し、最適性の証明にも成功します。後に彼は「未解決問題だと知っていたら取り組まなかっただろう」と述べています。ハフマン符号は現在もZIP、JPEG、PNG、MP3など多くの圧縮形式の構成要素として使われています。</p>
+<p>1951年、MITの大学院生だったハフマンは、ファノ教授の情報理論の授業で、期末試験を受けるかわりにレポートを書く道を選びました。課題は「最も効率のよい2進符号を求めよ」。実はこれは、ファノ自身やシャノンが取り組んで最適な方法を見つけられずにいた問題でしたが、ファノはそのことを告げていませんでした。ハフマンは何か月も試行錯誤しても最適性を証明できる方法が見つからず、あきらめて試験勉強を始めようとしたところで、頻度の小さい側から木を組み立てるこのアルゴリズムを思いつき、最適性の証明にも成功します。後に彼は、教授やシャノンが苦労した問題だと知っていたら挑戦しなかったかもしれない、と振り返っています（参照：<a href="https://www.huffmancoding.com/my-uncle/scientific-american">Scientific American 1991年9月号の紹介記事</a>）。ハフマン符号は現在もZIP、JPEG、PNG、MP3など多くの圧縮形式の構成要素として使われています。</p>
 </div>
 </td>
 </tr>
@@ -972,7 +990,10 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 <div class="sect2">
 <h3 id="_自己情報量"><a class="link" href="#_自己情報量">3.1. 自己情報量</a></h3>
 <div class="paragraph">
-<p>確率 \(P(x)\) で生起する事象 \(x\) が起きたことを知ったとき、得られる<strong>情報量</strong>（自己情報量）を</p>
+<p>友人が1から8までの数を1つ思い浮かべ、あなたが「はい/いいえ」で答えられる質問で当てるとします。「5以上？」「3以上？」のように候補を半分ずつに絞れば、ちょうど3回の質問で答えが決まります。8通りから1つを知ることは、2択の答え3回分、つまり3ビット分の情報を得ることだと考えられます。候補が等確率で8通りなら、1つの候補の確率は1/8であり、\(3=\log_2 8=-\log_2\frac18\) です。</p>
+</div>
+<div class="paragraph">
+<p>この考え方を、確率が等しくない場合にも広げたのがシャノンの定義です。確率 \(P(x)\) で生起する事象 \(x\) が起きたことを知ったとき、得られる<strong>情報量</strong>（<strong>自己情報量</strong>）を</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -980,19 +1001,23 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </div>
 </div>
 <div class="paragraph">
-<p>と定義します。単位はシャノンにちなんでSh（シャノン）またはビットです。この定義は次の直観を数式にしたものです。</p>
+<p>と定義します。単位はシャノンにちなんでSh（シャノン）またはビットです。公平なコインの表が出たと知る情報量は \(-\log_2\frac12=1\) Shです。この定義は次の2つの直観を数式にしたものです。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>起こりにくいことほど情報が多い</strong>: ある日の天気を「雨」「雨ではない」の2通りで扱い、確率を3%と97%とするモデルを考えます。その日「雨だった」と知る情報量は \(-\log_2 0.03\approx5.06\) Sh、「雨ではなかった」と知る情報量は \(-\log_2 0.97\approx0.04\) Shです。予報そのものの価値や正確さを測っているわけではありません。</p>
+<p><strong>起こりにくいことほど情報が多い</strong>: ある日の天気を「雨」「雨ではない」の2通りで扱い、確率を3%と97%とするモデルを考えます。その日「雨だった」と知る情報量は \(-\log_2 0.03\approx5.06\) Sh、「雨ではなかった」と知る情報量は \(-\log_2 0.97\approx0.04\) Shです。確率1で必ず起きることを知っても、情報量は \(-\log_2 1=0\) です。ここで測っているのは、このモデルのもとでの「知らせの意外さ」であって、予報そのものの価値や正確さではありません。</p>
+</li>
+<li>
+<p><strong>独立な事象の情報量は足し算になる</strong>: 独立な事象 \(x, y\) が両方起きる確率は \(P(x)P(y)\) なので、\(-\log_2 P(x)P(y) = -\log_2 P(x) - \log_2 P(y)\) です。たとえばコインを2回投げて「表・表」と知る情報量は、1回分の1 Shを2回足した2 Shです。対数を使うのはこの性質のためです。</p>
 </li>
 </ul>
 </div>
-<div class="imageblock text-center">
+<div class="imageblock">
 <div class="content">
-<img src="./img/info-plot.svg" alt="生起確率と情報量の関係" width="400">
+<img src="./img/info-plot.svg" alt="生起確率P(x)が0に近づくと自己情報量は大きくなり、P(x)=1で0になる" width="640">
 </div>
+<div class="title">図 4. 生起確率と自己情報量（確率が小さいほど情報量は大きく、確率1では0になる）</div>
 </div>
 </div>
 <div class="sect2">
@@ -1006,7 +1031,15 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </div>
 </div>
 <div class="paragraph">
-<p>を情報源の<strong>エントロピー</strong>（平均情報量）とよびます。確率0の項は \(0\log_2 0=0\) とする約束で扱います。</p>
+<p>を情報源の<strong>エントロピー</strong>（平均情報量）とよびます。確率0の項は \(0\log_2 0=0\) とする約束で扱います。エントロピーは「次に何が出るかの予測しにくさ」の平均的な大きさです。たとえば公平なコインのエントロピーは \(\frac12\cdot 1+\frac12\cdot 1=1\) Shですが、表が確率0.9で出る偏ったコインでは</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[H = -0.9\log_2 0.9 - 0.1\log_2 0.1 \approx 0.9\times 0.152 + 0.1\times 3.32 \approx 0.47 \;[\text{Sh}]\]
+</div>
+</div>
+<div class="paragraph">
+<p>と小さくなります。ほとんど表が出るとわかっているので、結果を知っても平均的にはあまり驚かないからです。\(n\) 種類の記号をもつ情報源のエントロピーは、すべての記号が等確率のとき最大値 \(\log_2 n\) をとります。</p>
 </div>
 <div class="hdlist">
 <table>
@@ -1032,7 +1065,7 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 <div class="sect2">
 <h3 id="_情報源符号化定理"><a class="link" href="#_情報源符号化定理">3.3. 情報源符号化定理</a></h3>
 <div class="paragraph">
-<p>シャノンは、エントロピーがまさに圧縮の限界であることを証明しました。</p>
+<p>シャノンは、エントロピーが圧縮の限界であることを証明しました。</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1052,6 +1085,17 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 <div class="paragraph">
 <p>つまり、<strong>平均符号語長はエントロピー未満にはできず</strong>、かつエントロピーに1を加えた値未満までは近づけられます。この下限 \(H(X)\) を情報源符号化における<strong>シャノン限界</strong>とよびます。前節の例のように、すべての生起確率が \(2^{-k}\)（\(k\) は正の整数）の形のときはハフマン符号がちょうど限界を達成し、一般のときも記号をいくつかまとめて符号化（ブロック符号化）すれば、1記号あたりの平均符号語長をいくらでも \(H(X)\) に近づけられます。</p>
 </div>
+<div class="paragraph">
+<p>ハフマン符号の節の例でも確かめてみます。記号列 \(\TT{cbaccbcdacadbbc}\) の各記号の出現割合 \(\frac{3}{15},\frac{4}{15},\frac{6}{15},\frac{2}{15}\) を生起確率とみなすと、エントロピーは</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[H(X)=-\frac{3}{15}\log_2\frac{3}{15}-\frac{4}{15}\log_2\frac{4}{15}-\frac{6}{15}\log_2\frac{6}{15}-\frac{2}{15}\log_2\frac{2}{15}\approx 1.89 \;[\text{Sh}]\]
+</div>
+</div>
+<div class="paragraph">
+<p>です。ハフマン符号の平均符号語長1.93ビットは、たしかに \(1.89\leq L&lt;2.89\) の範囲に入っています。確率が \(2^{-k}\) の形ではないため、ぴったり1.89にはなりません。</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1060,7 +1104,7 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </td>
 <td class="content">
 <div class="paragraph">
-<p>瞬時符号の符号語長がとりうる値には<strong>クラフトの不等式</strong>とよばれる制約があり、この定理はそこから導かれます。名前だけ覚えておけば、専門書を読むときの道しるべになります。</p>
+<p>一意復号可能な符号の符号語長がとりうる値には<strong>クラフト・マクミランの不等式</strong>とよばれる制約があり、この定理はそこから導かれます。名前だけ覚えておけば、専門書を読むときの道しるべになります。</p>
 </div>
 </td>
 </tr>
@@ -1068,7 +1112,7 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </div>
 </div>
 <div class="sect2">
-<h3 id="_圧縮の果てはランダム列"><a class="link" href="#_圧縮の果てはランダム列">3.4. 圧縮の果てはランダム列</a></h3>
+<h3 id="_圧縮しきったデータの姿"><a class="link" href="#_圧縮しきったデータの姿">3.4. 圧縮しきったデータの姿</a></h3>
 <div class="paragraph">
 <p>シャノン限界まで圧縮されたビット列はどのような姿をしているでしょうか。符号記号が \(\TT 0\) と \(\TT 1\) の2種類で、\(\TT 0\) の生起確率を \(p\) とすると、符号記号1つが運べる情報量は、確率 \(p\), \(1-p\) の2値情報源のエントロピーを \(p\) の関数とみた<strong>エントロピー関数</strong></p>
 </div>
@@ -1078,13 +1122,13 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </div>
 </div>
 <div class="paragraph">
-<p>で与えられます。グラフを見ると、\(H(p)\) が最大値1をとるのは \(p=0.5\) のとき、つまり \(\TT 0\) と \(\TT 1\) が等確率で現れるときだけです。</p>
+<p>で与えられます。グラフを見ると、\(H(p)\) が最大値1をとるのは \(p=0.5\) のとき、つまり \(\TT 0\) と \(\TT 1\) が等確率で現れるときだけです。\(p=0.1\) なら \(H(0.1)\approx 0.469\) で、符号記号1つが運ぶ情報量は半分以下になります（この値は後の通信路容量でも使います）。</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/entropy-plot.svg" alt="エントロピー関数のグラフ" width="500">
+<img src="./img/entropy-plot.svg" alt="H(p)はp=0.5で最大値1をとり、p=0.1とp=0.9で約0.469" width="640">
 </div>
-<div class="title">図 3. エントロピー関数</div>
+<div class="title">図 5. エントロピー関数</div>
 </div>
 <div class="paragraph">
 <p>圧縮に使える規則性が残っていれば、まだ圧縮できる余地があります。ただし、0と1が半々に現れるだけでは「ランダム」とはいえません。<code>01010101…</code> も半々ですが、次のビットを簡単に予測できます。記号同士の依存関係も調べる必要があります。</p>
@@ -1096,7 +1140,7 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 <div class="sect2">
 <h3 id="_言語の冗長度"><a class="link" href="#_言語の冗長度">3.5. 言語の冗長度</a></h3>
 <div class="paragraph">
-<p>英語のアルファベット26文字と空白の27記号がすべて等確率で現れるとすれば、1文字のエントロピーは \(\log_2 27\approx 4.75\) Shです。しかし実際の英文では文字の頻度に偏りがあり（\(\TT e\) や空白が多い）、さらに \(\TT t\) の後には \(\TT h\) が来やすいといった強い文脈依存があります。シャノンは、十分に長い英文を読んだ後の次の1文字のもつ情報量は1.3Sh程度と見積もりました。最大値4.75Shに対する差の割合</p>
+<p>英語のアルファベット26文字と空白の27記号がすべて等確率で現れるとすれば、1文字のエントロピーは \(\log_2 27\approx 4.75\) Shです。しかし実際の英文では文字の頻度に偏りがあり（\(\TT e\) や空白が多い）、さらに \(\TT t\) の後には \(\TT h\) が来やすいといった強い文脈依存があります。シャノンは1951年、英文の続きの文字を人に1文字ずつ当てさせる実験を行い、100文字ほどの文脈があれば次の1文字のもつ情報量はおよそ1 Sh（推定の上限で1.3 Sh、下限で0.6 Sh程度）まで下がると見積もりました（<a href="https://www.princeton.edu/~wbialek/rome/refs/shannon_51.pdf">Shannon, Prediction and Entropy of Printed English</a>）。最大値4.75 Shに対する差の割合を<strong>冗長度</strong>といい、上限の1.3 Shを使っても</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1104,7 +1148,7 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </div>
 </div>
 <div class="paragraph">
-<p>を<strong>冗長度</strong>といいます。つまり英文の7割ほどは冗長だとみなせます（この種の推定値は、対象記号や推定方法によって文献ごとに幅があります）。日本語をはじめ、人間の言語はどれも高い冗長性をもつことが知られています。冗長だからこそ、多少聞き取れなくても会話が成立し、流し読みでも大意がつかめるのです。この「冗長性はノイズへの耐性を生む」という観察が、次の話題への橋渡しになります。</p>
+<p>です。シャノン自身は冗長度をおよそ75%としています。つまり英文の7割以上は、前後から予測できる冗長な部分だとみなせます（この種の推定値は、対象記号や推定方法によって文献ごとに幅があります）。日本語など他の言語でも、大きな冗長性が報告されています。冗長だからこそ、多少聞き取れなくても会話が成立し、流し読みでも大意がつかめるのです。この「冗長性はノイズへの耐性を生む」という観察が、次の話題への橋渡しになります。</p>
 </div>
 </div>
 </div>
@@ -1120,35 +1164,51 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 <div class="paragraph">
 <p>通信路や記憶装置には、電波干渉、ディスクの傷、宇宙放射線などによる<strong>ノイズ</strong>が避けられません。デジタルデータでは、たった1ビットの反転がプログラムのクラッシュや暗号データの復号不能を引き起こすことがあります。</p>
 </div>
+<div class="paragraph">
+<p>シャノンは通信を次の図のようにモデル化しました。送信者のメッセージは<strong>符号化</strong>されて通信路に送り出され、通信路ではノイズによって一部の記号が化けます。受信側は受け取った記号列を<strong>復号</strong>して、元のメッセージを取り出します。前節までの圧縮は「符号化で冗長性を除く」操作でした。ここから扱う誤り訂正は、「符号化で冗長性を足し、復号でその冗長性を使って誤りを直す」操作です。</p>
+</div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/shannon-model.svg" alt="シャノンの通信モデル" width="600">
+<img src="./img/comm-model.svg" alt="送信者、符号化、ノイズの入る通信路、復号、受信者の順に情報が流れる">
 </div>
+<div class="title">図 6. シャノンの通信モデル</div>
 </div>
 <div class="paragraph">
-<p>話を単純にするため、次のモデルを考えます。送信する記号は \(\TT 0\) と \(\TT 1\) のみで、通信路を通ると、各記号は確率 \(p\) で独立に反転して（\(\TT 0\) なら \(\TT 1\) に、\(\TT 1\) なら \(\TT 0\) に化けて）受信されます。\(p\) を<strong>ビット誤り率</strong>とよび、このような通信路を<strong>2元対称通信路</strong>とよびます。</p>
+<p>話を単純にするため、次のモデルを考えます。送信する記号は \(\TT 0\) と \(\TT 1\) のみで、通信路を通ると、各記号は確率 \(p\) で独立に反転して（\(\TT 0\) なら \(\TT 1\) に、\(\TT 1\) なら \(\TT 0\) に化けて）受信されます。\(p\) を<strong>ビット誤り率</strong>とよび、このような通信路を<strong>2元対称通信路</strong>とよびます。「対称」とは、\(\TT 0\) が \(\TT 1\) に化ける確率と \(\TT 1\) が \(\TT 0\) に化ける確率が同じ \(p\) だという意味です。</p>
 </div>
-<div class="imageblock text-center">
+<div class="imageblock">
 <div class="content">
-<img src="./img/binary-channel0.svg" alt="2元対称通信路">
+<img src="./img/bsc.svg" alt="送信記号0と1は確率1-pでそのまま、確率pで反転して受信される" width="460">
 </div>
+<div class="title">図 7. 2元対称通信路（各記号は確率 \(1-p\) でそのまま、確率 \(p\) で反転して届く）</div>
 </div>
 <div class="paragraph">
-<p>たとえば \(p=0.1\)（1割のノイズ）の通信路に画像を通すと、左の画像は右のようになります。</p>
+<p>たとえば \(p=0.1\)（1割のノイズ）の通信路に白黒画像の各画素を1ビットとして通すと、左の画像は右のようになります。</p>
 </div>
-<div class="imageblock left">
+<table class="tableblock frame-none grid-none" style="width: 60%;">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
 <div class="content">
 <img src="./img/fish0.png" alt="元の画像" width="200">
 </div>
-</div>
-<div class="imageblock">
+<div class="title">図 8. 送信した画像</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock">
 <div class="content">
-<img src="./img/fish1.png" alt="誤り率0.1のノイズが入った画像" width="200">
+<img src="./img/fish1.png" alt="約1割の画素の白黒が反転した画像" width="200">
 </div>
-</div>
-<br clear="both">
+<div class="title">図 9. 誤り率0.1の通信路を通した画像</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
-<p>必要とされる信頼性は、この例よりはるかに高いのが普通です。たとえば毎日1GBを1年間読み出すと約3.0×10<sup>12</sup>ビットになりますから、年間を通してどこか1ビットでも誤る確率を数%に抑えたければ、1記号あたりの誤り率を10<sup>-14</sup>程度にまで下げる必要があります。1割も誤る通信路で、どうすればそんな信頼性を実現できるのでしょうか。</p>
+<p>必要とされる信頼性は、この例よりはるかに高いのが普通です。たとえば毎日1GBを1年間読み出すと約2.9×10<sup>12</sup>ビットになりますから、年間を通してどこか1ビットでも誤る確率を数%に抑えたければ、1記号あたりの誤り率を10<sup>-14</sup>程度にまで下げる必要があります。1割も誤る通信路で、どうすればそんな信頼性を実現できるのでしょうか。</p>
 </div>
 </div>
 <div class="sect2">
@@ -1157,26 +1217,36 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 <p>すぐ思いつくのは、同じ記号を繰り返し送ることです。\(\TT 0\) を \(\TT{000}\)、\(\TT 1\) を \(\TT{111}\) と3倍にして送り、受信側は3個ずつ区切って多数決をとります。記号列 \(\TT{01001}\) なら次のようになります（赤が水増しした分）。</p>
 </div>
 <div class="paragraph text-center">
-<p>\(\TT 0\color{red}{\TT{00}}\ \TT 1\color{red}{\TT{11}}\ \TT 0\color{red}{\TT{00}}\ \TT 0\color{red}{\TT{00}}\ \TT 1\color{red}{\TT{11}}\)</p>
+<p>\(\TT 0{\color{red}{\TT{00}}}\ \TT 1{\color{red}{\TT{11}}}\ \TT 0{\color{red}{\TT{00}}}\ \TT 0{\color{red}{\TT{00}}}\ \TT 1{\color{red}{\TT{11}}}\)</p>
 </div>
 <div class="paragraph">
-<p>これを<strong>繰り返し符号</strong>といいます。3個のうち2個以上が反転しない限り正しく復号できるので、復号後の誤り率は</p>
+<p>これを<strong>繰り返し符号</strong>といいます。受信側で多数決をとる様子を次の図に示します。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/rep3-majority.svg" alt="3ビットのうち1ビットの反転は訂正でき、2ビットの反転は誤って復号される">
+</div>
+<div class="title">図 10. 3回繰り返し符号の多数決による復号（赤は通信路で反転したビット）</div>
+</div>
+<div class="paragraph">
+<p>3個のうち1個までの反転なら正しく復号でき、2個以上反転すると誤ります。2個だけ反転する確率は、どの2個かの選び方が3通りあるので \(3p^2(1-p)\)、3個とも反転する確率は \(p^3\) です。したがって復号後の誤り率は</p>
 </div>
 <div class="stemblock">
 <div class="content">
-\[e_3(p)=3p^2-2p^3\]
+\[e_3(p)=3p^2(1-p)+p^3=3p^2-2p^3\]
 </div>
 </div>
 <div class="paragraph">
-<p>となり、\(e_3(0.1)=0.028\) です。誤り率10%が約3%に下がりました（下図）。</p>
+<p>となり、\(e_3(0.1)=0.03-0.002=0.028\) です。誤り率10%が約3%に下がりました（下図）。</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="./img/fish2.png" alt="3回繰り返し符号で復元した画像" width="200">
 </div>
+<div class="title">図 11. 3回繰り返し符号で送り、多数決で復号した画像（誤り率約0.028）</div>
 </div>
 <div class="paragraph">
-<p>反転が独立で \(0\leq p&lt;0.5\) なら、繰り返し回数 \(N\)（多数決のため奇数とします）を増やせば、誤り率はいくらでも下げられます。しかし、ただではすみません。1ビットの情報を送るのに \(N\) 個の記号を使うので、記号1つあたりが運ぶ情報量、すなわち<strong>伝送速度</strong>は</p>
+<p>反転が独立で \(0\leq p&lt;0.5\) なら、繰り返し回数 \(N\)（多数決のため奇数とします）を増やせば、誤り率はいくらでも下げられます。しかし、ただではすみません。1ビットの情報を送るのに \(N\) 個の記号を使うので、記号1つあたりが運ぶ情報量、つまり<strong>伝送速度</strong>は</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1188,9 +1258,9 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/rep-rate.svg" alt="繰り返し符号の誤り率と伝送速度">
+<img src="./img/rep-rate.svg" alt="Nを増やすと誤り率は下がるが伝送速度1/Nも0に近づく。誤り率10のマイナス14乗にはN=57が必要" width="640">
 </div>
-<div class="title">図 4. 繰り返し符号における誤り率と伝送速度の関係（両対数）</div>
+<div class="title">図 12. 繰り返し符号における誤り率と伝送速度の関係（両対数）</div>
 </div>
 <div class="paragraph">
 <p>このグラフが示すとおり、繰り返し符号では誤り率を0に近づけようとすると、伝送速度も0に近づいてしまいます。</p>
@@ -1199,7 +1269,7 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 <div class="sect2">
 <h3 id="_シャノン以前の見方"><a class="link" href="#_シャノン以前の見方">4.3. シャノン以前の見方</a></h3>
 <div class="paragraph">
-<p>シャノンが登場するまで、通信技術者の常識はまさにこの繰り返し符号の延長線上にありました。すなわち、</p>
+<p>シャノンが登場するまで、通信技術者の常識はこの繰り返し符号の延長線上にありました。つまり、</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1242,10 +1312,10 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 <div class="content">
 <img src="./img/rate-limit.svg" alt="伝送速度と誤り率のシャノン限界">
 </div>
-<div class="title">図 5. 誤り率を0に近づけるときの速度の限界（2元対称通信路、p=0.1）</div>
+<div class="title">図 13. 誤り率を0に近づけるときの速度の限界（2元対称通信路、p=0.1）</div>
 </div>
 <div class="paragraph">
-<p>ただし、シャノンの証明は「そのような符号が存在する」ことを示す<strong>存在証明</strong>であって、実用的な符号の作り方を与えるものではありませんでした。圧縮のほうはハフマンのアルゴリズムがすぐに見つかったのと対照的に、容量に迫る実用的な誤り訂正符号は長年見つからず、ターボ符号やLDPC符号などが実用化されて限界にほぼ到達するまでに、定理の発表から約50年かかりました。現在では、携帯電話（5G）、Wi-Fi、QRコード、深宇宙探査機との通信まで、あらゆる場面で誤り訂正符号が働いています。傷のついたCDが再生でき、かすれたQRコードが読み取れるのは、この理論の恩恵です。</p>
+<p>ただし、シャノンの証明は「そのような符号が存在する」ことを示す<strong>存在証明</strong>であって、実用的な符号の作り方を与えるものではありませんでした。圧縮のほうはハフマンのアルゴリズムがすぐに見つかったのと対照的に、容量に迫る実用的な誤り訂正符号は長年見つかりませんでした。1993年に発表されたターボ符号や、1960年代初めに考案されながら長く顧みられず1990年代に再発見されたLDPC符号によって限界にほぼ迫れるようになるまで、定理の発表から半世紀近くかかりました。現在では、携帯電話（5G）、Wi-Fi、QRコード、深宇宙探査機との通信まで、あらゆる場面で誤り訂正符号が働いています。傷のついたCDが再生でき、かすれたQRコードが読み取れるのは、この理論の恩恵です。</p>
 </div>
 </div>
 <div class="sect2">
@@ -1274,6 +1344,69 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>\(p=0.1\) の通信路で3回繰り返し符号を使うと、速度は \(R=1/3\approx 0.33\) で容量0.53より小さいのに、誤り率は0.028までしか下がりませんでした。定理は、同じ速度1/3のままでも、もっと長いブロックでうまく作った符号を使えば誤り率をいくらでも小さくできる、と言っています。繰り返し符号は、容量を使い切れていない符号なのです。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_誤りを見つけ場所を突き止める_パリティとハミング符号"><a class="link" href="#_誤りを見つけ場所を突き止める_パリティとハミング符号">4.6. 誤りを見つけ、場所を突き止める — パリティとハミング符号</a></h3>
+<div class="paragraph">
+<p>では、繰り返し符号より効率のよい符号は、どのように誤りを直すのでしょうか。容量に迫る符号の仕組みは本書の範囲を超えるので、ここでは最も基本的な2つの考え方を紹介します。</p>
+</div>
+<div class="sect3">
+<h4 id="_パリティ検査_誤りを見つける"><a class="link" href="#_パリティ検査_誤りを見つける">パリティ検査 — 誤りを見つける</a></h4>
+<div class="paragraph">
+<p>データのビット列に、全体の \(\TT 1\) の個数が偶数になるように1ビットを付け加えます。この追加ビットを<strong>パリティビット</strong>といいます。たとえば7ビットのデータ \(\TT{1011001}\) は \(\TT 1\) が4個（偶数）なので、パリティビットは \(\TT 0\) で、\(\TT{10110010}\) を送ります。</p>
+</div>
+<div class="paragraph">
+<p>受信側で \(\TT 1\) の個数を数えて奇数なら、どこかで誤りが起きたとわかります（<strong>誤り検出</strong>）。速度は7/8と高く、水増しはわずか1ビットです。ただし、</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>どのビットが反転したのかはわからないので、直せません（再送してもらう必要があります）。</p>
+</li>
+<li>
+<p>2ビットが同時に反転すると個数は偶数に戻り、誤りを見逃します。</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ハミング符号_誤りの場所を突き止める"><a class="link" href="#_ハミング符号_誤りの場所を突き止める">ハミング符号 — 誤りの場所を突き止める</a></h4>
+<div class="paragraph">
+<p>ベル研究所のリレー式計算機は、自分で誤りを検出する仕組みをもっていましたが、夜間や週末に無人で運転していると、誤りを検出するたびにその計算は打ち切られ、機械は次の仕事に移ってしまいました。これに悩まされたハミングは「誤りを検出できるなら、その位置を突き止めて直せるはずだ」と考え、1950年に<strong>ハミング符号</strong>を発表します（<a href="https://archive.org/details/bstj29-2-147">Hamming, Error Detecting and Error Correcting Codes（1950）</a>）。</p>
+</div>
+<div class="paragraph">
+<p>アイデアは、パリティ検査を範囲を変えて何重にもかけることです。代表的な(7,4)ハミング符号（7ビットのうち4ビットがデータ）では、4ビットのデータ \(d_1d_2d_3d_4\) に3ビットのパリティ \(p_1p_2p_3\) を付けて7ビットを送ります。次の図のように3つの円を重ねて7つの区画を作り、データとパリティを1ビットずつ置きます。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/hamming-venn.svg" alt="3つの円それぞれで1の個数を偶数にする。受信時に円Bと円Cだけが奇数なら、その2つだけに共通するd3が誤り">
+</div>
+<div class="title">図 14. ハミング符号の符号化（①）と、1ビットの誤りの訂正（②）</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">符号化</dt>
+<dd>
+<p>各円の中の \(\TT 1\) の個数が偶数になるように \(p_1, p_2, p_3\) を決めます。データ \(\TT{1011}\)（\(d_1=1,d_2=0,d_3=1,d_4=1\)）なら、円A（\(d_1,d_2,d_4\)）の1は2個なので \(p_1=0\)、円B（\(d_1,d_3,d_4\)）は3個なので \(p_2=1\)、円C（\(d_2,d_3,d_4\)）は2個なので \(p_3=0\) です。送る7ビットは \(d_1d_2d_3d_4p_1p_2p_3=\TT{1011010}\) です。</p>
+</dd>
+<dt class="hdlist1">復号</dt>
+<dd>
+<p>受信した7ビットを図に戻し、各円の \(\TT 1\) の個数を数えます。奇数になった円の組み合わせを見ると、反転したビットの場所がわかります。図の②では円Bと円Cだけが奇数なので、「B と C の内側にあり、A の外側にある」区画、つまり \(d_3\) が反転したとわかり、これを元に戻します。</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>7つの区画は、それぞれ「どの円に含まれるか」の組み合わせがすべて異なります（Aだけ、Bだけ、Cだけ、AとB、AとC、BとC、3つとも）。そのため、7ビットのうちどれか1ビットが反転したとき、奇数になる円の組み合わせから場所が一通りに決まります。どの円も偶数なら誤りなしと判断します。</p>
+</div>
+<div class="paragraph">
+<p>3回繰り返し符号も、ハミング符号も、ブロック（それぞれ3ビット、7ビット）の中の1ビットの誤りを訂正できます。しかし速度は、繰り返し符号の1/3に対して、ハミング符号は \(4/7\approx 0.57\) と大きく上回ります。冗長なビットを「同じものの繰り返し」ではなく「異なる範囲のパリティ」として加えることで、少ない水増しで誤りの位置まで特定できるのです。</p>
+</div>
+<div class="paragraph">
+<p>ただし、ハミング符号でもブロック内で2ビット以上が反転すると正しく直せません。\(p=0.1\) のようにノイズの多い通信路では、7ビットのブロックが正しく復号される確率は \((0.9)^7+7\times0.1\times(0.9)^6\approx 0.85\) にとどまります。ハミング符号は誤りがまれな場面に向いており、1ビットの訂正に加えて2ビットの誤りの検出もできるよう1ビット追加した形が、コンピューターのECCメモリなどで使われています。ノイズの多い無線通信などでは、より長いブロックの強力な符号が使われます。</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1291,12 +1424,82 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="_練習問題"><a class="link" href="#_練習問題">5. 練習問題</a></h2>
 <div class="sectionbody">
-<div class="sidebarblock">
+<div class="paragraph">
+<p>基本の確認から始め、計算の練習、考える問題の順に並べています。解答は、自分で解いてから開いてください。対数の値は \(\log_2 3\approx 1.585\), \(\log_2 5\approx 2.322\), \(\log_2 13\approx 3.700\) などを使ってかまいません（関数電卓や表計算ソフトで求めてもよい）。</p>
+</div>
+<div class="exampleblock">
+<div class="title">問題1: 自己情報量</div>
 <div class="content">
-<div class="title">問題1（符号の判定と復号）</div>
+<div class="paragraph">
+<p>次の知らせを受け取ったときの自己情報量を求めよ。</p>
+</div>
+<div class="paragraph">
+<p>(1) 公平なサイコロを1回振って「1の目が出た」と知る。<br>
+(2) 同じサイコロで「偶数の目が出た」と知る。<br>
+(3) ジョーカーを除く52枚のトランプをよく切って1枚引き、「ハートのエースだ」と知る。<br>
+(4) (3)の1枚について「ハートだ」と「エースだ」を別々に知ったときの自己情報量をそれぞれ求め、その和を(3)と比べよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) \(P=\frac16\) なので \(I=-\log_2\frac16=\log_2 6=1+\log_2 3\approx 2.58\) Sh。</p>
+</div>
+<div class="paragraph">
+<p>(2) 偶数の目は2, 4, 6の3通りなので \(P=\frac12\)、\(I=1\) Sh。「偶数か奇数か」という2択の答え1回分です。(1)より情報量が少ないのは、(2)の知らせを受けても目が3通り残っていて、答えがまだ絞り切れていないからです。</p>
+</div>
+<div class="paragraph">
+<p>(3) \(P=\frac1{52}\) なので \(I=\log_2 52=2+\log_2 13\approx 5.70\) Sh。</p>
+</div>
+<div class="paragraph">
+<p>(4) 「ハート」は \(P=\frac14\) で2 Sh、「エース」は \(P=\frac4{52}=\frac1{13}\) で \(\log_2 13\approx 3.70\) Sh。和は約5.70 Shで(3)と一致します。スートと数字は独立なので \(P(\text{ハートのエース})=\frac14\times\frac1{13}\) となり、対数をとると情報量は足し算になります。独立でない事象どうしでは、このように単純に足すことはできません。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題2: エントロピーの計算</div>
+<div class="content">
+<div class="paragraph">
+<p>次の情報源のエントロピーを求めよ。</p>
+</div>
+<div class="paragraph">
+<p>(1) 表と裏が確率 \(\frac12\) ずつ出るコイン<br>
+(2) 表が確率0.9、裏が確率0.1で出るコイン<br>
+(3) 4つの記号が確率 \(\frac12, \frac14, \frac18, \frac18\) で出る情報源<br>
+(4) 4つの記号が等確率 \(\frac14\) ずつで出る情報源<br>
+(5) (3)と(4)ではどちらのエントロピーが大きいか。その理由を「予測しやすさ」の観点から説明せよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) \(H=\frac12\cdot 1+\frac12\cdot 1=1\) Sh。</p>
+</div>
+<div class="paragraph">
+<p>(2) \(H=-0.9\log_2 0.9-0.1\log_2 0.1\approx 0.9\times 0.152+0.1\times 3.322\approx 0.47\) Sh。エントロピー関数で \(H(0.1)\approx 0.469\) です。</p>
+</div>
+<div class="paragraph">
+<p>(3) 各記号の自己情報量は1, 2, 3, 3 Shなので、\(H=\frac12\cdot 1+\frac14\cdot 2+\frac18\cdot 3+\frac18\cdot 3=1.75\) Sh。</p>
+</div>
+<div class="paragraph">
+<p>(4) \(H=4\times\frac14\cdot 2=2\) Sh（\(=\log_2 4\)）。</p>
+</div>
+<div class="paragraph">
+<p>(5) (4)のほうが大きいです。(3)では半分の確率で同じ記号が出るので「たぶんこれだろう」と予測が当たりやすく、結果を知ったときの驚きが平均的に小さくなります。(4)はどの記号も同じくらい出るので予測の手がかりがなく、4記号の情報源として最大の \(\log_2 4=2\) Shになります。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題3: 符号の判定と復号</div>
+<div class="content">
 <div class="paragraph">
 <p>次の2つの符号について答えよ。</p>
 </div>
@@ -1335,100 +1538,21 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </tbody>
 </table>
 <div class="paragraph">
-<p>(1) \(C_3\) と \(C_4\) はそれぞれ瞬時符号か。語頭条件を用いて理由とともに答えよ。<br></p>
-</div>
-<div class="paragraph">
-<p>(2) \(C_3\) は一意復号可能か。符号語の形に着目して考察せよ。<br></p>
-</div>
-<div class="paragraph">
-<p>(3) 本文の瞬時符号 \(C_1\)（\(\TT a\mapsto\TT 0\), \(\TT b\mapsto\TT{100}\), \(\TT c\mapsto\TT{11}\), \(\TT d\mapsto\TT{101}\)）を用いて、記号列 \(\TT{dacbad}\) を符号化せよ。<br></p>
-</div>
-<div class="paragraph">
-<p>(4) 符号 \(C_1\) による符号記号列 \(\TT{1000101110100}\) を復号せよ。</p>
+<p>(1) \(C_3\) と \(C_4\) はそれぞれ瞬時符号か。語頭条件を用いて理由とともに答えよ。<br>
+(2) \(C_3\) は一意復号可能か。符号語の形に着目して考察せよ。<br>
+(3) 本文の瞬時符号 \(C_1\)（\(\TT a\mapsto\TT 0\), \(\TT b\mapsto\TT{100}\), \(\TT c\mapsto\TT{11}\), \(\TT d\mapsto\TT{101}\)）を用いて、記号列 \(\TT{dacbad}\) を符号化せよ。<br>
+(4) 符号 \(C_1\) による符号記号列 \(\TT{1000101110100}\) を復号せよ。</p>
 </div>
 </div>
 </div>
-<div class="sidebarblock">
+<details>
+<summary class="title">解答</summary>
 <div class="content">
-<div class="title">問題2（ハフマン符号の構成）</div>
 <div class="paragraph">
-<p>(1) \(\TT{a},\TT{b},\TT{c},\TT{d},\TT{e},\TT{f}\) の固定長符号の中でもっとも符号語長が短い符号を1つ与え、符号の表を示せ。ただし、符号記号は \(\TT 0\) と \(\TT 1\) のみを用いるものとする。<br></p>
-</div>
-<div class="paragraph">
-<p>(2) (1)の符号で \(\TT{dfcbdcbbcabdacbabaeaccbeabf}\) を符号化した場合の符号記号列長を求めよ。<br></p>
+<p>(1) どちらも瞬時符号ではありません。\(C_3\) では \(C_3(\TT a)=\TT 0\) が \(C_3(\TT d)=\TT{01}\) の語頭になっています（さらに \(\TT{01}\) は \(\TT{011}\) の、\(\TT{011}\) は \(\TT{0111}\) の語頭です）。\(C_4\) では \(C_4(\TT a)=\TT 0\) が \(C_4(\TT c)=\TT{010}\) の語頭になっています（さらに \(C_4(\TT d)=\TT{11}\) は \(C_4(\TT b)=\TT{1110}\) の語頭でもあります）。語頭条件は、1組でも破れていれば満たされません。</p>
 </div>
 <div class="paragraph">
-<p>(3) ハフマン符号を構成するアルゴリズムを用いて記号列 \(\TT{dfcbdcbbcabdacbabaeaccbeabf}\) から符号を作成し、符号木と符号の表を示せ。<br></p>
-</div>
-<div class="paragraph">
-<p>(4) 作成した符号によって、この記号列を符号化したときの符号記号列長と、情報源記号1つあたりの平均符号語長を求めよ。</p>
-</div>
-</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">問題3（圧縮とビット列）</div>
-<div class="paragraph">
-<p>コンピューターに保存されたファイルは \(\TT 0\) と \(\TT 1\) の並びです。そこで \(\TT 0\) を白、\(\TT 1\) を黒のドットとして順に並べ、ビット列を画像として見てみます。「吾輩は猫である」の電子テキスト(Shift_JIS)から、次の2つの画像を作りました。</p>
-</div>
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-(i)
-</td>
-<td class="hdlist2">
-<p>元のテキストファイルから連続する約3万2千ビットを取り出した画像</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-(ii)
-</td>
-<td class="hdlist2">
-<p>テキストを圧縮ツール(bzip2)で圧縮したファイルから連続する約3万2千ビットを取り出した画像</p>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>この2つの画像を、順序を伏せて以下に示します。</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./img/wagahai0.png" alt="wagahai0">
-</div>
-<div class="title">図 6. 画像(a)</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./img/wagahai1.png" alt="wagahai1">
-</div>
-<div class="title">図 7. 画像(b)</div>
-</div>
-<div class="paragraph">
-<p>(1) 画像(a)と画像(b)は、それぞれ(i)と(ii)のどちらから作られたものか推測せよ。<br></p>
-</div>
-<div class="paragraph">
-<p>(2) (1)でそのように考えた理由を述べよ。</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_練習問題の解答"><a class="link" href="#_練習問題の解答">6. 練習問題の解答</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>まず自分で解いてから読むことをすすめます。</p>
-</div>
-<div class="sect2">
-<h3 id="_問題1の解答"><a class="link" href="#_問題1の解答">6.1. 問題1の解答</a></h3>
-<div class="paragraph">
-<p>(1) どちらも瞬時符号ではありません。\(C_3\) では \(C_3(\TT a)=\TT 0\) が \(C_3(\TT d)=\TT{01}\) の語頭になっています（さらに \(\TT{01}\) は \(\TT{011}\) の、\(\TT{011}\) は \(\TT{0111}\) の語頭です）。\(C_4\) では \(C_4(\TT a)=\TT 0\) が \(C_4(\TT c)=\TT{010}\) の語頭になっています（さらに \(C_4(\TT d)=\TT{11}\) は \(C_4(\TT b)=\TT{1110}\) の語頭でもあります）。</p>
-</div>
-<div class="paragraph">
-<p>(2) 一意復号可能です。\(C_3\) の符号語はいずれも「\(\TT 0\) の後に \(\TT 1\) が0個以上続く」形をしており、\(\TT 0\) が現れたら必ず新しい符号語の始まりです。したがって、符号記号列を \(\TT 0\) の直前で区切れば復号は一通りに定まります。ただし、\(\TT 0\) を読んだ時点では次の記号を見るまで \(\TT a\) か \(\TT d\) （あるいは \(\TT c, \TT b\)）かが確定しないため、瞬時符号ではありません。一意復号可能であることと瞬時であることは別の性質です。</p>
+<p>(2) 一意復号可能です。\(C_3\) の符号語はいずれも「\(\TT 0\) の後に \(\TT 1\) が0個以上続く」形をしており、\(\TT 0\) が現れたら必ず新しい符号語の始まりです。したがって、符号記号列を \(\TT 0\) の直前で区切れば復号は一通りに定まります。たとえば \(\TT{0110010}\) は \(\TT{011|0|01|0}\) と区切れて \(\TT{cada}\) です。ただし、\(\TT 0\) を読んだ時点では次の記号を見るまで \(\TT a\) か \(\TT d\)（あるいは \(\TT c, \TT b\)）かが確定しないため、瞬時符号ではありません。一意復号可能であることと瞬時であることは別の性質で、瞬時符号はつねに一意復号可能ですが、その逆は成り立ちません。</p>
 </div>
 <div class="paragraph">
 <p>(3) \(C_1(\TT d)C_1(\TT a)C_1(\TT c)C_1(\TT b)C_1(\TT a)C_1(\TT d)\) をつなげて、</p>
@@ -1443,10 +1567,24 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 <p>\(\uB{100}b\uB{0}a\uB{101}d\uB{11}c\uB{0}a\uB{100}b\) より \(\TT{badcab}\)</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_問題2の解答"><a class="link" href="#_問題2の解答">6.2. 問題2の解答</a></h3>
+</details>
+<div class="exampleblock">
+<div class="title">問題4: ハフマン符号の構成</div>
+<div class="content">
 <div class="paragraph">
-<p>(1) 6種類の記号を2進法で表現するには、\(2^2&lt;6\le 2^3\) より3ビット必要です。素直に2進法の数の順に符号語を割り当てると、以下の符号が得られます。</p>
+<p>(1) \(\TT{a},\TT{b},\TT{c},\TT{d},\TT{e},\TT{f}\) の6記号の固定長符号の中で、もっとも符号語長が短い符号を1つ与え、符号の表を示せ。ただし、符号記号は \(\TT 0\) と \(\TT 1\) のみを用いるものとする。<br>
+(2) (1)の符号で \(\TT{dfcbdcbbcabdacbabaeaccbeabf}\) を符号化した場合の符号記号列長を求めよ。<br>
+(3) ハフマン符号を構成するアルゴリズムを用いて、記号列 \(\TT{dfcbdcbbcabdacbabaeaccbeabf}\) 中の出現頻度から符号を作成し、符号木と符号の表を示せ。<br>
+(4) 作成した符号によって、この記号列を符号化したときの符号記号列長と、情報源記号1つあたりの平均符号語長を求めよ。<br>
+(5) 各記号の出現割合を生起確率とみなしてエントロピーを求め、(4)の平均符号語長と比べよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) 6種類の記号を区別するには、\(2^2=4&lt;6\le 8=2^3\) より3ビット必要です。素直に2進法の数の順に符号語を割り当てると、以下の符号が得られます（6個の異なる3ビット列を割り当てていれば正解です）。</p>
 </div>
 <table class="tableblock frame-all grid-all fit-content">
 <colgroup>
@@ -1521,13 +1659,35 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </tbody>
 </table>
 <div class="paragraph">
-<p>頻度の小さい順に \(\TT e\)(2)と \(\TT f\)(2)、その結果(4)と \(\TT d\)(3)、\(\TT a\)(6)と \(\TT c\)(6)、\(\TT b\)(8)と(7)、最後に(15)と(12)をまとめると、たとえば次の符号木が得られます。</p>
+<p>頻度の最も小さい2つをまとめる操作を繰り返します。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>\(\TT e\)(2)と \(\TT f\)(2)をまとめて4</p>
+</li>
+<li>
+<p>残りは a6, b8, c6, d3, (4)。最小の \(\TT d\)(3)と(4)をまとめて7</p>
+</li>
+<li>
+<p>残りは a6, b8, c6, (7)。最小の \(\TT a\)(6)と \(\TT c\)(6)をまとめて12</p>
+</li>
+<li>
+<p>残りは b8, (7), (12)。最小の(7)と \(\TT b\)(8)をまとめて15</p>
+</li>
+<li>
+<p>最後に(15)と(12)をまとめて根(27)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>上側の辺に \(\TT 0\)、下側の辺に \(\TT 1\) を割り当てると、たとえば次の符号木が得られます。</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/huffman-ans.svg" alt="問題2のハフマン符号木" width="600">
+<img src="./img/huffman-ans.svg" alt="頻度の小さいeとfから順にまとめてできる、根の頻度27のハフマン符号木">
 </div>
-<div class="title">図 8. ハフマン符号木（青のノードは併合で作られたノード、赤字は符号語）</div>
+<div class="title">図 15. 問題4のハフマン符号木</div>
 </div>
 <table class="tableblock frame-all grid-all fit-content">
 <colgroup>
@@ -1563,44 +1723,230 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 </tbody>
 </table>
 <div class="paragraph">
-<p>\(\TT 0\) と \(\TT 1\) の割り当てには任意性がありますので、この表と異なっていても、瞬時符号でかつ各記号の符号語長が同じであれば正解です。</p>
+<p>\(\TT 0\) と \(\TT 1\) の割り当てには任意性がありますので、この表と異なっていても、瞬時符号でかつ各記号の符号語長が同じ（a, b, c が2、d が3、e, f が4）であれば正解です。この問題ではどの段階でも「最小の2つ」の選び方で符号語長は変わりません。よくある誤りは、2.で(4)と \(\TT a\) や \(\TT c\) をまとめてしまうことです。常にその時点で最小の2つを選びます。</p>
 </div>
 <div class="paragraph">
-<p>(4) 符号記号列長は</p>
+<p>(4) 符号記号列長は（出現回数）×（符号語長）の合計で、</p>
 </div>
 <div class="stemblock">
 <div class="content">
-\[\begin{align*}
-6\cdot 2 + 8\cdot 2 + 6\cdot 2 + 3\cdot 3 + 2\cdot 4 + 2\cdot 4 = 65
-\end{align*}\]
+\[6\cdot 2 + 8\cdot 2 + 6\cdot 2 + 3\cdot 3 + 2\cdot 4 + 2\cdot 4 = 65\]
 </div>
 </div>
 <div class="paragraph">
 <p>となり、固定長符号の81に対して65に削減できました。平均符号語長は65/27≈2.41ビットで、固定長符号の3ビットより短くなっています。</p>
 </div>
+<div class="paragraph">
+<p>(5) 出現割合は \(\frac{6}{27},\frac{8}{27},\frac{6}{27},\frac{3}{27},\frac{2}{27},\frac{2}{27}\) なので、</p>
 </div>
-<div class="sect2">
-<h3 id="_問題3の解答"><a class="link" href="#_問題3の解答">6.3. 問題3の解答</a></h3>
+<div class="stemblock">
+<div class="content">
+\[\begin{align*}
+H&amp;=-2\times\frac{6}{27}\log_2\frac{6}{27}-\frac{8}{27}\log_2\frac{8}{27}-\frac{3}{27}\log_2\frac{3}{27}-2\times\frac{2}{27}\log_2\frac{2}{27}\\
+&amp;\approx 0.964+0.520+0.352+0.556\approx 2.39 \;[\text{Sh}]
+\end{align*}\]
+</div>
+</div>
+<div class="paragraph">
+<p>です。平均符号語長2.41ビットはエントロピーをわずかに上回っており、情報源符号化定理の \(H\leq L&lt;H+1\) を満たしています。記号1つずつに符号語を割り当てる限り、2.41ビットより短くはできません。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題5: ハフマン符号とエントロピー</div>
+<div class="content">
+<div class="paragraph">
+<p>4つの記号 \(\TT a, \TT b, \TT c, \TT d\) をそれぞれ確率0.4, 0.3, 0.2, 0.1で独立に出す情報源がある。</p>
+</div>
+<div class="paragraph">
+<p>(1) ハフマン符号を構成し、符号木と各記号の符号語を示せ。<br>
+(2) 平均符号語長を求め、2ビットの固定長符号と比べよ。<br>
+(3) この情報源のエントロピーを求め、(2)と比べよ。<br>
+(4) 平均符号語長をエントロピーにさらに近づけるにはどうすればよいか。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) 確率の小さい2つを順にまとめます。\(\TT d\)(0.1)と \(\TT c\)(0.2)で0.3、次に \(\TT b\)(0.3)と(0.3)で0.6、最後に \(\TT a\)(0.4)と(0.6)で根になります。2回目は0.3が2つ並びますが、残りの0.4より小さいのはこの2つなので迷いません。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/huffman-ex5.svg" alt="確率0.4と0.3と0.2と0.1の情報源のハフマン符号木">
+</div>
+<div class="title">図 16. 問題5のハフマン符号木</div>
+</div>
+<div class="paragraph">
+<p>符号語はたとえば \(\TT a=\TT 0\), \(\TT b=\TT{10}\), \(\TT c=\TT{110}\), \(\TT d=\TT{111}\) です（0と1を入れ替えたものも正解）。</p>
+</div>
+<div class="paragraph">
+<p>(2) \(L=0.4\times 1+0.3\times 2+0.2\times 3+0.1\times 3=1.9\) ビットで、固定長の2ビットより5%短くなります。確率を使う問題では、出現回数のかわりに確率で重み付けした平均をとります。</p>
+</div>
+<div class="paragraph">
+<p>(3) エントロピーは</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align*}
+H&amp;=-0.4\log_2 0.4-0.3\log_2 0.3-0.2\log_2 0.2-0.1\log_2 0.1\\
+&amp;\approx 0.529+0.521+0.464+0.332\approx 1.85 \;[\text{Sh}]
+\end{align*}\]
+</div>
+</div>
+<div class="paragraph">
+<p>です。\(1.85\leq 1.9&lt;2.85\) で、情報源符号化定理のとおりです。確率が \(2^{-k}\) の形ではないので、ハフマン符号でもエントロピーとちょうど等しくはなりません。</p>
+</div>
+<div class="paragraph">
+<p>(4) 記号を2個、3個とまとめたものを1つの記号とみなしてハフマン符号を作る（ブロック符号化）と、1記号あたりの平均符号語長をエントロピーの1.85にいくらでも近づけられます。記号1つずつに符号語を割り当てる方法のままでは1.9より短くできません。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題6: パリティ検査とハミング符号</div>
+<div class="content">
+<div class="paragraph">
+<p>(1) 7ビットのデータ \(\TT{1101101}\) に、全体の \(\TT 1\) の個数が偶数になるようにパリティビットを付けた8ビットを求めよ。<br>
+(2) パリティ検査では、1ビットの誤りは検出できるが訂正はできず、2ビットの誤りは検出もできない。それぞれ理由を説明せよ。<br>
+(3) 本文のハミング符号（円A: \(d_1,d_2,d_4,p_1\)、円B: \(d_1,d_3,d_4,p_2\)、円C: \(d_2,d_3,d_4,p_3\)）で、4ビットのデータ \(\TT{0110}\)（\(d_1d_2d_3d_4\)）を符号化し、7ビット \(d_1d_2d_3d_4p_1p_2p_3\) を求めよ。<br>
+(4) 同じハミング符号で7ビット \(\TT{1101011}\) を受信した。誤りは高々1ビットとして訂正し、元の4ビットのデータを求めよ。<br>
+(5) 同じく \(\TT{0110100}\) を受信した。誤りは高々1ビットとして、元の4ビットのデータを求めよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) \(\TT{1101101}\) の \(\TT 1\) は5個（奇数）なので、パリティビットは \(\TT 1\) で、\(\TT{11011011}\) です。</p>
+</div>
+<div class="paragraph">
+<p>(2) 1ビット反転すると \(\TT 1\) の個数が1つ増えるか減るので、偶数が奇数になり、誤りがあることはわかります。しかし、8ビットのどれが反転しても同じく「奇数」になるだけなので、場所を特定できず訂正できません。2ビット反転すると、個数の偶奇が2回変わって元の偶数に戻るため、誤りのない場合と区別できません。</p>
+</div>
+<div class="paragraph">
+<p>(3) \(d_1=0, d_2=1, d_3=1, d_4=0\) です。円A（\(d_1,d_2,d_4\)）の1は1個なので \(p_1=1\)、円B（\(d_1,d_3,d_4\)）は1個なので \(p_2=1\)、円C（\(d_2,d_3,d_4\)）は2個なので \(p_3=0\)。送る7ビットは \(\TT{0110110}\) です。</p>
+</div>
+<div class="paragraph">
+<p>(4) \(d_1=1,d_2=1,d_3=0,d_4=1,p_1=0,p_2=1,p_3=1\) として各円の1を数えると、円A（\(1,1,1,0\)）は3個、円B（\(1,0,1,1\)）は3個、円C（\(1,0,1,1\)）は3個で、3つとも奇数です。3つの円すべてに含まれるのは中央の \(d_4\) なので、\(d_4\) を0に戻して \(\TT{1100011}\)。元のデータは \(\TT{1100}\) です（念のため、\(\TT{1100}\) を符号化すると \(p_1p_2p_3=\TT{011}\) となり一致します）。</p>
+</div>
+<div class="paragraph">
+<p>(5) \(d_1=0,d_2=1,d_3=1,d_4=0,p_1=1,p_2=0,p_3=0\) として各円の1を数えると、円A（\(0,1,0,1\)）は2個で偶数、円B（\(0,1,0,0\)）は1個で奇数、円C（\(1,1,0,0\)）は2個で偶数です。円Bだけが奇数なので、円Bだけに含まれる \(p_2\) が反転していました。データ部分は無事で、元のデータは \(\TT{0110}\) です（(3)の符号語 \(\TT{0110110}\) の \(p_2\) が反転したものです）。パリティビット自体が化けることもある、という点に注意しましょう。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題7: 繰り返し符号と通信路容量</div>
+<div class="content">
+<div class="paragraph">
+<p>ビット誤り率 \(p=0.1\) の2元対称通信路を考える。</p>
+</div>
+<div class="paragraph">
+<p>(1) 5回繰り返し符号（各ビットを5回送り、多数決で復号する）の伝送速度と、復号後の誤り率を求めよ。<br>
+(2) この通信路の通信路容量を求めよ。\(H(0.1)\approx 0.469\) を使ってよい。<br>
+(3) 次の各主張は正しいか。理由とともに答えよ。<br>
+(a) 伝送速度0.5のまま、復号後の誤り率を \(10^{-14}\) 以下にできる符号が存在する。<br>
+(b) 伝送速度0.6のまま、復号後の誤り率をいくらでも0に近づけられる符号が存在する。<br>
+(c) 伝送速度0.6では、どのように符号化しても情報はまったく伝わらない。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) 速度は \(R=\frac15=0.2\)。5個のうち3個以上が反転すると誤るので、</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align*}
+e_5(0.1)&amp;=\binom53 p^3(1-p)^2+\binom54 p^4(1-p)+p^5\\
+&amp;=10\times 0.001\times 0.81+5\times 0.0001\times 0.9+0.00001\\
+&amp;=0.0081+0.00045+0.00001=0.00856
+\end{align*}\]
+</div>
+</div>
+<div class="paragraph">
+<p>誤り率は約0.86%で、3回繰り返し符号の2.8%より下がりましたが、速度は1/3から1/5に落ちています。(\(\binom53=10\) は5個から3個を選ぶ組み合わせの数です。)</p>
+</div>
+<div class="paragraph">
+<p>(2) \(C=1-H(0.1)\approx 1-0.469=0.531\) ビット/記号。</p>
+</div>
+<div class="paragraph">
+<p>(3)
+(a) 正しい。\(0.5&lt;C\approx 0.531\) なので、通信路符号化定理により、ブロック長を十分長くすれば誤り率をいくらでも小さくできる符号が存在します。ただし、定理は存在を保証するだけで、ブロック長は非常に長くなることがあります。<br>
+(b) 誤り。\(0.6&gt;C\) なので、速度0.6を保ったまま誤り率を0に近づけることはできません。<br>
+(c) 誤り。容量を超える速度でも、ある程度の誤りを許せば情報は伝わります。たとえば符号化せずに送れば速度1、誤り率0.1です。容量は「誤り率を0に近づけられる速度の上限」であって、「通信できる速度の上限」ではありません。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題8: 圧縮とビット列</div>
+<div class="content">
+<div class="paragraph">
+<p>コンピューターに保存されたファイルは \(\TT 0\) と \(\TT 1\) の並びです。そこで \(\TT 0\) を白、\(\TT 1\) を黒のドットとして順に並べ、ビット列を画像として見てみます。「吾輩は猫である」の電子テキスト(Shift_JIS)から、次の2つの画像を作りました。</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+(i)
+</td>
+<td class="hdlist2">
+<p>元のテキストファイルから連続する約3万2千ビットを取り出した画像</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+(ii)
+</td>
+<td class="hdlist2">
+<p>テキストを圧縮ツール(bzip2)で圧縮したファイルから連続する約3万2千ビットを取り出した画像</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>この2つの画像を、順序を伏せて以下に示します。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/wagahai0.png" alt="白黒の点が一様に散らばった画像">
+</div>
+<div class="title">図 17. 画像(a)</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/wagahai1.png" alt="斜めの縞模様が見える白黒の点の画像">
+</div>
+<div class="title">図 18. 画像(b)</div>
+</div>
+<div class="paragraph">
+<p>(1) 画像(a)と画像(b)は、それぞれ(i)と(ii)のどちらから作られたものか推測せよ。<br>
+(2) (1)でそのように考えた理由を述べよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
 <div class="paragraph">
 <p>画像(a)が圧縮ファイル(ii)、画像(b)が元のテキストファイル(i)です。</p>
 </div>
 <div class="paragraph">
-<p>画像(b)には斜めの縞、つまり規則的な繰り返しパターンが見えます。Shift_JISでは日本語の文字の多くが2バイト(16ビット)で表されるため、16ビットごとの周期性が現れるのです。規則性があるということは、前を読めば先がある程度予測できるということであり、まだ冗長性が残っている、すなわち圧縮の余地があることを意味します。</p>
+<p>画像(b)には斜めの縞、つまり規則的な繰り返しパターンが見えます。Shift_JISでは日本語の文字の多くが2バイト(16ビット)で表されるため、16ビットごとの周期性が現れるのです。画像の1行のビット数が16の倍数からずれていると、周期の位置が行ごとに少しずつずれるので、縞は斜めに見えます。規則性があるということは、前を読めば先がある程度予測できるということであり、まだ冗長性が残っている、つまり圧縮の余地があることを意味します。</p>
 </div>
 <div class="paragraph">
-<p>一方、画像(a)は0と1がほぼ半々の砂嵐のように見えます。圧縮によって目立つ規則性が減った姿と整合します。ただし、外見や0と1の割合だけで圧縮の有無を確定することはできません。ここでは、提示した2枚の画像と作成方法を比較した説明です。</p>
+<p>一方、画像(a)は0と1がほぼ半々の砂嵐のように見えます。圧縮によって目立つ規則性が減った姿だと考えられます。ただし、外見や0と1の割合だけで圧縮の有無を確定することはできません。ここでは、提示した2枚の画像と作成方法を比較した説明です。</p>
 </div>
 <div class="paragraph">
 <p>なお、「黒い部分が多いほうが圧縮ファイル」という見方は誤りです。もしそうなら真っ黒な画像が最も圧縮されたデータになってしまいますが、長さが既知で、必ず1を出すとわかっている情報源なら、1記号あたりの情報量は0です（白黒を反転しても情報量は変わりません）。</p>
 </div>
 <div class="paragraph">
-<p>ちなみに、この圧縮は第2回で触れた<strong>可逆圧縮</strong>、つまり元のデータを完全に復元できる圧縮です（749KBが252KBになりました）。JPEGやMP3のような<strong>非可逆圧縮</strong>とは区別してください。</p>
-</div>
-<hr>
-<div class="paragraph">
-<p>以上です</p>
+<p>ちなみに、bzip2による圧縮は<strong>可逆圧縮</strong>、つまり元のデータを完全に復元できる圧縮です（749KBが252KBになりました）。第2章で触れたJPEGや、MP3のような<strong>非可逆圧縮</strong>とは区別してください。</p>
 </div>
 </div>
+</details>
 </div>
 </div>
 </div>
@@ -1609,6 +1955,13 @@ C_a^+(\TT{ACACGU})&amp;=C_a(\TT A) C_a(\TT C) C_a(\TT A) C_a(\TT C) C_a(\TT G) C
 Version 1.0<br>
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",

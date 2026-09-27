@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.26">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <meta name="author" content="久保山哲二">
 <title>コンピューター発展史とデータの単位</title>
 <style>
@@ -562,6 +562,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 <script>
   window.MathJax = {
     loader: { load: ['output/chtml'] },
@@ -595,15 +596,14 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <li><a href="#_データ量の単位">2. データ量の単位</a>
 <ul class="sectlevel2">
 <li><a href="#_ビットとバイト">2.1. ビットとバイト</a></li>
-<li><a href="#_前回の確認問題の解答">2.2. 前回の確認問題の解答</a></li>
-<li><a href="#_大きな量を表す接頭辞">2.3. 大きな量を表す接頭辞</a></li>
-<li><a href="#_二種類の接頭辞による混乱">2.4. 二種類の接頭辞による混乱</a>
+<li><a href="#_大きな量を表す接頭辞">2.2. 大きな量を表す接頭辞</a></li>
+<li><a href="#_二種類の接頭辞による混乱">2.3. 二種類の接頭辞による混乱</a>
 <ul class="sectlevel3">
 <li><a href="#_メモリ空間のはなし">メモリ空間のはなし</a></li>
 <li><a href="#_仮想メモリとページング">仮想メモリとページング</a></li>
 </ul>
 </li>
-<li><a href="#_データ量">2.5. データ量</a>
+<li><a href="#_データ量">2.4. データ量</a>
 <ul class="sectlevel3">
 <li><a href="#_テキストデータ">テキストデータ</a></li>
 <li><a href="#_コンパクトディスクcdの容量">コンパクトディスク（CD）の容量</a></li>
@@ -611,7 +611,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <li><a href="#_動画のデータ量">動画のデータ量</a></li>
 </ul>
 </li>
-<li><a href="#_データの転送速度">2.6. データの転送速度</a>
+<li><a href="#_データの転送速度">2.5. データの転送速度</a>
 <ul class="sectlevel3">
 <li><a href="#_最新の音楽配信とストリーミング">最新の音楽配信とストリーミング</a></li>
 <li><a href="#_記憶装置のデータ転送速度">記憶装置のデータ転送速度</a></li>
@@ -634,8 +634,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <li><a href="#_eu共通充電器指令">3.9. EU共通充電器指令</a></li>
 </ul>
 </li>
-<li><a href="#_課題">4. 課題</a></li>
-<li><a href="#_問題の解答">5. 問題の解答</a></li>
+<li><a href="#_練習問題">4. 練習問題</a></li>
 </ul>
 </div>
 </div>
@@ -646,9 +645,12 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p>ここでは、歴史上のコンピューターや関連する事柄を取り上げて紹介します。コンピューターの発展は社会的背景や技術革新と密接に関わっており、その歴史を知ることで現在のコンピューターをより深く理解できます。</p>
 </div>
-<div class="imageblock">
+<div class="paragraph">
+<p><a href="#fig-timeline">図 1</a>は、この節で紹介する出来事と、ハードウェアの世代の区分をまとめた年表です。</p>
+</div>
+<div id="fig-timeline" class="imageblock">
 <div class="content">
-<img src="./img/timeline-history.svg" alt="階差機関から現代までのコンピューター発展史を示す年表">
+<img src="./img/history-timeline.svg" alt="1822年の階差機関の構想から、Z3、Colossus、ENIAC、トランジスタ、EDVAC、FUJIC、IC、IBM System/360、Intel 4004、PC-8001、現代のマルチコアやGPUまでの年表と、第1世代から第4世代までの区分">
 </div>
 <div class="title">図 1. コンピューター発展史年表</div>
 </div>
@@ -656,7 +658,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <h3 id="_チャールズバベッジの解析機関"><a class="link" href="#_チャールズバベッジの解析機関">1.1. チャールズ・バベッジの解析機関</a></h3>
 <div class="imageblock right">
 <div class="content">
-<img src="./img/Babbage.jpeg" alt="Babbage" width="200">
+<img src="./img/Babbage.jpeg" alt="チャールズ・バベッジの肖像" width="200">
 </div>
 <div class="title">図 2. チャールズ・バベッジ</div>
 </div>
@@ -698,12 +700,12 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock right">
 <div class="content">
-<img src="./img/ada.jpg" alt="ada">
+<img src="./img/ada.jpg" alt="エイダ・ラブレスの肖像">
 </div>
 <div class="title">図 3. エイダ・ラブレス</div>
 </div>
 <div class="paragraph">
-<p>詩人バイロンの娘エイダ・ラブレスは、バベッジに師事して解析機関上で動くプログラムを書いた史上初のプログラマとして知られています。実際のところは、バベッジが書いたプログラムのミスを修正したのだともいわれています(だとしても、世界最初のデバッガーの称号は与えられることになります)。彼女自身が記したプログラムも書簡としてのこされています。また、エイダは解析機関の自動作曲への応用にも言及するなど、人工知能研究にもつながる現代的な意味で計算の可能性を捉えていたといえます。エイダの名を冠したプログラミング言語Adaが1983年米国防総省によって規格化され、ボーイング社やエアバス社の航空システムを始めとする民間のシステムで現在も使われ続けています。</p>
+<p>詩人バイロンの娘エイダ・ラブレスは、バベッジと交流して解析機関を深く理解し、史上初のプログラマとして知られています。1843年、彼女は解析機関を紹介するメナブレアの論文を英訳し、それより長い注釈を付けて発表しました。その注釈(ノートG)には、解析機関でベルヌーイ数を計算する手順が表の形で書かれています。バベッジ自身も以前から計算手順を書いていたため、「最初のプログラム」を誰の功績とするかには議論があります。バベッジは回想録の中で、彼女がその手順の中にあった自分の大きな誤りを見つけたと書いています。また、エイダは解析機関が数だけでなく音のような記号も扱えるとして、作曲への応用にも言及しました。計算を数値計算に限らない記号の操作として捉えていた点で、現代的な視点をもっていたといえます。エイダの名を冠したプログラミング言語Adaが1983年米国防総省によって規格化され、ボーイング社やエアバス社の航空システムを始めとする民間のシステムで現在も使われ続けています。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -729,7 +731,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <dl>
 <dt class="hdlist1">Zuse Z3</dt>
 <dd>
-<p>ドイツの土木工学者で設計技師のコンラート・ツーゼは1936年から数値計算のためにZ1〜Z4までの一連のコンピューターを作りました。Z3は1941年に戦闘機の翼の安定性に関する数値計算のために作られたリレー式のコンピューターです。リレーとは電磁石によりスイッチをオン・オフするスイッチです。Z3で使われたリレーの数は約2,600個、基本動作周波数は5.3Hzで、2進法により22ビット長の浮動小数点を扱うことができました。穿孔フィルムに書かれたプログラムを読み取りプログラミング可能でした。当時はまだ現代のような汎用コンピューターの概念は確立していませんでしたが、Z3は後にチューリング完全性を持つことが証明されています。</p>
+<p>ドイツの土木工学者で設計技師のコンラート・ツーゼは1936年から数値計算のためにZ1〜Z4までの一連のコンピューターを作りました。Z3は1941年に完成したリレー式のコンピューターで、航空機の翼の振動(フラッター)の計算などに使われました。リレーとは電磁石によりスイッチをオン・オフするスイッチです。Z3で使われたリレーの数は約2,600個、基本動作周波数は5.3Hzで、2進法により22ビット長の浮動小数点を扱うことができました。穿孔フィルムに書かれたプログラムを読み取りプログラミング可能でした。当時はまだ現代のような汎用コンピューターの概念は確立していませんでしたが、Z3は後にチューリング完全性を持つことが証明されています。</p>
 </dd>
 </dl>
 </div>
@@ -751,13 +753,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <dl>
 <dt class="hdlist1">Colossus</dt>
 <dd>
-<p>英国がドイツ軍の暗号解読のために1943年に開発した世界初のプログラム可能な電子式デジタルコンピューターです。約1600本の真空管を使用し、紙テープから毎秒5000文字(1文字5ビットで25,000ビット相当)を読み取って処理する能力を持っていました。1944年に稼働した Mark II では、5つの処理を並列に行うことで実効的な処理性能が約5倍(毎秒25,000文字相当)に向上しています。特定の暗号解読タスクに特化した専用機でした。第二次世界大戦の機密情報であったため、その存在は戦後30年近く秘密とされました。</p>
+<p>英国がドイツ軍の暗号解読のために開発し、1943年末に完成して1944年初めから使われた、世界初のプログラム可能な電子式デジタルコンピューターです。約1600本の真空管を使用し、紙テープから毎秒5000文字(1文字5ビットで25,000ビット相当)を読み取って処理する能力を持っていました。1944年に稼働した Mark II では、5つの処理を並列に行うことで実効的な処理性能が約5倍(毎秒25,000文字相当)に向上しています。特定の暗号解読タスクに特化した専用機でした。第二次世界大戦の機密情報であったため、その存在は戦後30年近く秘密とされました。</p>
 </dd>
 </dl>
 </div>
 <div class="imageblock right">
 <div class="content">
-<img src="./img/eniac.jpg" alt="eniac">
+<img src="./img/eniac.jpg" alt="ENIACの配線パネルを操作してプログラミングする様子">
 </div>
 <div class="title">図 4. <span class="small">ENIACのプログラミング作業(US Army作成)</span></div>
 </div>
@@ -777,7 +779,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </td>
 <td class="content">
 <div class="paragraph">
-<p>水爆開発のための物理シミュレーションの過程でコンピューター上で計算によって発生させた疑似乱数を用いたアルゴリズム「<strong>モンテカルロ法</strong>」がスタニスワフ・ウラムらにより開発され、フォン・ノイマンとその同僚のニコラス・メトロポリスらによってENIACに実装されました。モンテカルロ法は現在、物理計算だけでなく、人工知能分野でも欠かせない計算技術として広く使われています。特に深層学習での確率的最適化やベイズ推論で重要な役割を果たしています。</p>
+<p>核兵器開発のための中性子の振る舞いの計算の過程で、コンピューター上で発生させた疑似乱数を用いるアルゴリズム「<strong>モンテカルロ法</strong>」がスタニスワフ・ウラムとフォン・ノイマンらにより考案され、1948年にはニコラス・メトロポリスらによってENIACで実行されました。乱数を使ったシミュレーションや統計的な推定の方法として、モンテカルロ法は現在も物理計算やベイズ統計、人工知能などの分野で広く使われています。</p>
 </div>
 <div class="paragraph">
 <p>モンテカルロ法の名は、カジノで有名なモナコ公国の地区名からとられたもので、メトロポリスによる命名といわれています。</p>
@@ -805,7 +807,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>EDVACの開発に遅れて加わったフォン・ノイマンは EDVAC の論理設計を<strong>計算データと同様にプログラムもデータとして同じ記憶装置に格納する「プログラム内蔵方式」</strong>として明確に整理し、内部報告書として提出しました。これが、ノイマンの単著文書として外部にも公開され今日のコンピューターアーキテクチャの基礎となり、プログラム内蔵方式によるコンピューター設計は「<strong>ノイマン型アーキテクチャ</strong>」と呼ばれることになります。</p>
 </div>
 <div class="paragraph">
-<p>EDVAC設計の報告書が当時既に著名であったノイマンの単著として公開されてしまったことや、ペンシルバニア大学との特許権の問題により、モークリーとエッカートは開発から離脱してしまいます。中心的な開発者が離脱したことからEDVACの開発は遅れ、完成したのは設計を提案した1944年から7年後のことでした。</p>
+<p>EDVAC設計の報告書が当時既に著名であったノイマンの単著として公開されてしまったことや、ペンシルバニア大学との特許権の問題により、モークリーとエッカートは開発から離脱してしまいます。中心的な開発者が離脱したことからEDVACの開発は遅れ、本格的に稼働したのは設計を提案した1944年から7年後の1951年でした。その間に、英国のマンチェスター大学の試作機(1948年)やケンブリッジ大学のEDSAC(1949年)が、プログラム内蔵方式のコンピューターとして先に動き始めています。</p>
 </div>
 </td>
 </tr>
@@ -847,11 +849,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </li>
 <li>
-<p>FUJICの逸話をもとにした漫画を読むことができます。</p>
+<p>FUJICが作られた時代に、レンズ設計の計算を手作業で担った「計算手」を描いた読み切り漫画を読むことができます。</p>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://shonenjumpplus.com/episode/4856001361331145833">ななさ悠『続く道 花の跡』, 少年ジャンプ＋, 2023.6.16</a></p>
+<p><a href="https://shonenjumpplus.com/episode/4856001361331145833">ななせ悠『続く道 花の跡』, 少年ジャンプ＋, 2023.6.16</a></p>
 </li>
 </ul>
 </div>
@@ -885,7 +887,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <dd>
 <p>大規模集積回路(LSI)を用いたコンピューターです。LSIは1つの集積回路の中に1000素子以上を集積した集積回路です。1970年代には、コンピューターの小型化によって、パーソナルコンピューターが誕生しました。（当時はマイクロコンピューターを短縮してマイコンと呼びました。）1971年に世界初となる1チップのICマイクロプロセッサ Intel 4004 が開発されます。Intel 4004はビジコン社がプログラム制御による電卓の小型化と省電力化を目的として、インテル社と共同開発したものです。開発陣には、インテルの技術者テッド・ホフ、スタンレー・メイザー、フェデリコ・ファジンらとともに、顧客会社であるビジコン社の嶋正利が加わっており、実際には論理設計のほとんどは嶋が手掛けたとも言われています。<br>
 <br>
-Intel 4004には2300個のトランジスタが1チップのICに組み込まれており、4ビットの数の加算が1秒に10万回行えました。ENIACと4004では扱う桁数や命令が違うため、加算の回数だけで性能を同一視することはできません。それでも、部屋を占めた計算装置から小さな半導体チップへという変化は、集積化の効果をよく示しています。<br>
+Intel 4004には2300個のトランジスタが1チップのICに組み込まれており、4ビット単位で処理し、1秒間に最大で約9万回の命令を実行できました。ENIACと4004では扱う桁数や命令が違うため、加算の回数だけで性能を同一視することはできません。それでも、部屋を占めた計算装置から小さな半導体チップへという変化は、集積化の効果をよく示しています。<br>
 <br>
 ICによるコンピューター開発の発展により、日本では1979年にNECからパーソナルコンピューターPC-8001が発売され、一般家庭でもコンピューターを所有する時代になっていきます。</p>
 </dd>
@@ -965,7 +967,7 @@ ICによるコンピューター開発の発展により、日本では1979年�
 </dd>
 <dt class="hdlist1">GPU（Graphics Processing Unit）</dt>
 <dd>
-<p>元々はグラフィックス処理のために開発されたプロセッサですが、その並列処理性能が注目され、現在では人工知能の深層学習計算など、様々な高性能計算に利用されています。NVIDIAは2024年3月に発表したBlackwell世代のB200を2024年末より量産し、2026年時点では深層学習計算の中核を担っています。B200は2つのダイを組み合わせた構成で2080億個(208 billion)のトランジスタを集積し、NVIDIAの公開仕様では最大180GBのHBM3eメモリを備えます（当初発表時の192GBという値と区別します）。2025年後半からは同じBlackwellアーキテクチャを拡張したBlackwell Ultra (B300) のシステムが出荷開始され、2026年初頭にはB300単体GPUの提供も始まりました。B300はHBM3eを288GBに拡張し、AI推論向けに性能を強化しています。</p>
+<p>元々はグラフィックス処理のために開発されたプロセッサですが、その並列処理性能が注目され、現在では人工知能の深層学習計算など、様々な高性能計算に利用されています。NVIDIAが2024年3月に発表したBlackwell世代のB200は、2つのダイ(半導体チップの本体)を1つのパッケージに組み合わせた構成で2080億個のトランジスタを集積し、NVIDIAの公開仕様では最大180GBのHBM3eメモリを備えます（当初発表時の192GBという値と区別します）。2025年後半からはメモリを288GBに増やしたBlackwell Ultra (B300) を使うシステムの出荷が始まりました。さらにNVIDIAは2026年1月、次の世代のRubinが量産に入ったと発表しました。RubinのGPUは2つのダイで3360億個のトランジスタを集積し、最大288GBのHBM4メモリを備えます。搭載製品の提供は2026年後半からとされています。</p>
 </dd>
 <dt class="hdlist1">専用プロセッサ</dt>
 <dd>
@@ -985,13 +987,13 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <div class="sect2">
 <h3 id="_ムーアの法則とその限界"><a class="link" href="#_ムーアの法則とその限界">1.5. ムーアの法則とその限界</a></h3>
 <div class="paragraph">
-<p>インテルの創業者の1人ゴードン・ムーアは1965年に発表した記事で、これまでのデータから<strong>集積回路の集積密度は1975年まで一年ごとに倍になる</strong>と予想しました。後に「ムーアの法則」と呼ばれるこの予測は、約2年で倍になるペースに修正されながらも、2010年代まで驚くべき精度で実現されてきました。実際のデータに基づいてプロットした結果が以下のグラフです（横軸は西暦、縦軸はチップあたりのトランジスタ数、縦軸は対数であることに注意）。</p>
+<p>後にインテルの創業者の1人となるゴードン・ムーアは1965年に発表した記事で、それまでのデータから<strong>1つの集積回路に詰め込む部品(素子)の数は、少なくとも1975年ごろまでは1年ごとに倍になる</strong>と予想しました。後に「ムーアの法則」と呼ばれるこの予測は、1975年に約2年で倍になるペースに修正され、その後も2010年代までおおむねそのペースで実現されてきました。代表的な製品のトランジスタ数をプロットした結果が<a href="#fig-moore">図 5</a>です（横軸は西暦、縦軸はチップあたりのトランジスタ数。縦軸は1目盛ごとに10倍になる対数目盛であることに注意）。点線は「2年で2倍」のペースを表します。対数目盛では、一定の割合で増えていくもの(指数的に増えるもの)が直線に見えます。1971年のIntel 4004の2300個から出発して2年ごとに倍にしていくと50年後に何個になるかは、練習問題1で計算してみましょう。</p>
 </div>
-<div class="imageblock">
+<div id="fig-moore" class="imageblock">
 <div class="content">
-<img src="./img/1280px-Moores_Law_Transistor_Count_1970-2020.png" alt="Moores_Law_Transistor_Count_1971-2020" width="By Max Roser" height="Hannah Ritchie - https://ourworldindata.org/uploads/2020/11/Transistor-Count-over-time.png">
+<img src="./img/moore-law.svg" alt="1971年のIntel 4004の2300個から、2024年のNVIDIA B200の2080億個、2026年のNVIDIA Rubinの3360億個まで、代表的な製品のトランジスタ数が対数目盛でほぼ直線的に増えている図。2年で2倍の点線とおおむね重なる">
 </div>
-<div class="title">図 5. ムーアの法則 - 集積回路チップ上のトランジスタ数の変遷</div>
+<div class="title">図 5. ムーアの法則: 集積回路チップ上のトランジスタ数の変遷</div>
 </div>
 <div class="paragraph">
 <p>指数的な増加は、我々の一般的な感覚を超えた値の爆発的な増加を意味しています。米粒とチェス盤の逸話では、チェス盤（64マス）の1マス目に1粒、2マス目に2粒、3マス目に4粒と、次のマスに倍の米粒をおいてゆくと、64マス目は、何粒になるかという問題が扱われています。64マス目に置かれる米粒は 2<sup>63</sup> ≈ 9.2×10<sup>18</sup>粒、チェス盤全体の合計では 2<sup>64</sup>−1 ≈ 1.8×10<sup>19</sup>粒となります。この合計は、世界の米の年間生産量の概算2.5×10<sup>16</sup>粒の約700年分に匹敵する量になります。</p>
@@ -1032,10 +1034,10 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <div class="sect3">
 <h4 id="_ムーアの法則の限界とmore_than_moore"><a class="link" href="#_ムーアの法則の限界とmore_than_moore">ムーアの法則の限界と「More than Moore」</a></h4>
 <div class="paragraph">
-<p>近年、従来の技術でトランジスタの微細化を続けることが難しくなり、ムーアの法則が限界に近づいていると言われています。2025年までの商用プロセスは3nm（ナノメートル）が先端でしたが、TSMCは2025年第4四半期より2nmプロセス（N2）の量産を開始し、Samsungも2025年末に2nmプロセスによる Exynos 2600 を発表しました。TSMCの2nmプロセスでは、従来のFinFET構造に代わり、ゲートが導電部分を四方から囲むGAA（Gate-All-Around）構造のトランジスタが採用されています（Samsungは3nm世代(2022年)からGAA構造を採用しています）。また、Intelは2026年1月、同社の先端プロセスである Intel 18Aを採用したCore Ultra Series 3 を発表しました。 なお、2nmや18Aは製造プロセスの世代を表す名称です。トランジスタの各部がその数値の寸法になっているわけではなく、異なるメーカーの性能をこの名称だけで比較することもできません。</p>
+<p>近年、従来の技術でトランジスタの微細化を続けることが難しくなり、ムーアの法則が限界に近づいていると言われています。2025年までの商用プロセスは3nm（ナノメートル、1nmは10億分の1メートル: 10<sup>-9</sup>メートル）が先端でしたが、TSMCは2025年第4四半期より2nmプロセス（N2）の量産を開始し、Samsungも2025年末に2nmプロセスによる Exynos 2600 を発表しました。TSMCの2nmプロセスでは、従来のFinFET構造に代わり、ゲートが導電部分を四方から囲むGAA（Gate-All-Around）構造のトランジスタが採用されています（Samsungは3nm世代(2022年)からGAA構造を採用しています）。また、Intelは2026年1月、同社の先端プロセスである Intel 18Aを採用したCore Ultra Series 3 を発表しました。 なお、2nmや18Aは製造プロセスの世代を表す名称です。トランジスタの各部がその数値の寸法になっているわけではなく、異なるメーカーの性能をこの名称だけで比較することもできません。</p>
 </div>
 <div class="paragraph">
-<p>一方、iPhone 17 Pro/Pro Max（2025年9月発売）に搭載されている <strong>演算装置（プロセッサ）</strong> である Apple A19 Pro は、TSMCの3nmプロセス（N3P）を採用しています（1nmは10億分の1メートル: 10<sup>-9</sup>メートル）。製品への採用時期は、プロセスの量産開始時期とは別に考える必要があります。</p>
+<p>スマートフォンでは、2026年9月に発表されたiPhone 18 Pro/Pro Maxの <strong>演算装置（プロセッサ）</strong> A20 Pro が、iPhone向けとして初めて2nm世代の製造技術で作られたチップです(Appleのチップとしては、2026年8月に発表されたMac向けのM6が最初です)。前年のiPhone 17 Proに搭載されたA19 Proは3nm世代（TSMCのN3P）でした。製品への採用時期は、プロセスの量産開始時期とは別に考える必要があります。</p>
 </div>
 <div class="paragraph">
 <p>新型コロナウイルスの直径が約60〜140nm（平均約100nm）、光学顕微鏡で見える限界の大きさが200nm、半導体素子を構成するシリコン原子の直径が約0.2nmですので、その小ささがわかると思います。回路がこのレベルまで微細化すると、量子力学におけるトンネル効果で電子が漏れ出すことなどからリーク電流による電力消費が無視できない量になります。</p>
@@ -1052,7 +1054,7 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <p><strong>新材料の採用</strong>：シリコン以外の材料(GaN、SiCなど)の使用</p>
 </li>
 <li>
-<p><strong>新しいトランジスタ構造</strong>：FinFET（2020年代前半の主流）、GAAFET（Gate-All-Around FET、2nm世代で本格採用）、そして<strong>裏面電源供給</strong>（Backside Power Delivery: 配線層を表裏に分離する技術）など</p>
+<p><strong>新しいトランジスタ構造</strong>：FinFET（2010年代から2020年代前半の主流）、GAAFET（Gate-All-Around FET、2nm世代で本格採用）、そして<strong>裏面電源供給</strong>（Backside Power Delivery: 配線層を表裏に分離する技術）など</p>
 </li>
 <li>
 <p><strong>専用チップ(ASIC)の開発</strong>：特定の用途に最適化された専用チップの開発</p>
@@ -1092,15 +1094,15 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <div class="sect2">
 <h3 id="_ビットとバイト"><a class="link" href="#_ビットとバイト">2.1. ビットとバイト</a></h3>
 <div class="paragraph">
-<p>前回確認したように、現在のデジタルコンピューターはスイッチのオン・オフ、電圧の高・低といった2つの異なった状態に基づいて設計されています。そのため、データの容量や通信量を表す単位として、0と1のみを用いた数の表記法である<strong>2進法</strong>に基づいた単位、<strong>ビット</strong>と<strong>バイト</strong>を用います。</p>
+<p>第1章で確認したように、現在のデジタルコンピューターはスイッチのオン・オフ、電圧の高・低といった2つの異なった状態に基づいて設計されています。そのため、データの容量や通信量を表す単位として、0と1のみを用いた数の表記法である<strong>2進法</strong>に基づいた単位、<strong>ビット</strong>と<strong>バイト</strong>を用います。</p>
 </div>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">ビット(bit: <span class="underline"><strong>bi</strong></span>nary digi<span class="underline"><strong>t</strong></span>)</dt>
 <dd>
-<p>データの最小単位。2進法による数表現の1桁分(0または1)のデータ量を表します。単位記号として小文字の<strong>b</strong>を用います（8ビット=8b）。（今後の授業で触れる<strong>情報量</strong>の単位としてもビットを用いますが、定義は異なります。）</p>
+<p>データの最小単位。2進法による数表現の1桁分(0または1)のデータ量を表します。単位記号として小文字の<strong>b</strong>を用います（8ビット=8b）。（第9章で扱う<strong>情報量</strong>の単位としてもビットを用いますが、定義は異なります。）</p>
 </dd>
-<dt class="hdlist1"><mark>バイト(byte)</mark></dt>
+<dt class="hdlist1">バイト(byte)</dt>
 <dd>
 <p>2進法の数表現で8桁、つまり8ビット分のデータ量を1バイトといいます。単位記号として大文字の<strong>B</strong>を用います（8b=1B）。</p>
 </dd>
@@ -1123,113 +1125,22 @@ ICによるコンピューター開発の発展により、日本では1979年�
 </table>
 </div>
 <div class="paragraph">
-<p>数字の0から255までの256種類の数を表現するために、2進法では 2<sup>8</sup>=256 であるから8桁、つまり8ビット必要です。<em>n</em>進法や基数、16進法で 0〜9 と A〜F の16種類の記号を使うこと、基数を右下の括弧で示す 1010<sub>(2)</sub> のような表記については、前回の確認問題で復習したとおりです。忘れている人は、第1回の資料か補足資料 <a href="../03-number/binary-notation.html" target="_blank" rel="noopener">2進法の表記と変換</a> に戻ってください。</p>
+<p>数字の0から255までの256種類の数を表現するために、2進法では 2<sup>8</sup>=256 であるから8桁、つまり8ビット必要です。一般に、\(n\) ビットでは \(2^n\) 通りの状態を区別できます。<em>n</em>進法や基数、16進法で 0〜9 と A〜F の16種類の記号を使うこと、基数を右下の括弧で示す 1010<sub>(2)</sub> のような表記については、第1章で復習しました。忘れている人は、第1章か補足資料 <a href="../03-number/binary-notation.html" target="_blank" rel="noopener">2進法の表記と変換</a> に戻ってください。</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_前回の確認問題の解答"><a class="link" href="#_前回の確認問題の解答">2.2. 前回の確認問題の解答</a></h3>
-<div class="sidebarblock">
+<h3 id="_大きな量を表す接頭辞"><a class="link" href="#_大きな量を表す接頭辞">2.2. 大きな量を表す接頭辞</a></h3>
+<div class="paragraph">
+<p>一般に、メモリの容量やデータ通信量は膨大な値になるため、桁が大きくなってしまいます。そのため「キログラム」の「キロ」のように、単位グラムの前に大きな量を表す語（<strong>接頭辞</strong>（prefix））を用います。国際単位系（SI）では1キロは1000を表します。一方で、半導体メモリ等、もともと内部で2進法に親和性の高い設計を行っている対象では、1キロは 2<sup>10</sup>=1024を表すのが一般的です。各々、同じ記号では混乱するために、国際電気標準会議(IEC)は1998年に、2進法に基づく接頭辞に従来と異なる記号(Ki, Mi, Gi など)を割り当てることを決めました(規格としての発行は1999年)。単位どうしの関係を<a href="#fig-data-units">図 6</a>にまとめます。</p>
+</div>
+<div id="fig-data-units" class="imageblock">
 <div class="content">
-<div class="title">確認問題（第1回）</div>
-<div class="paragraph">
-<p>(1)  10100010<sub>(2)</sub> を10進法に変換せよ<br>
-(2)  10100010<sub>(2)</sub> を16進法に変換せよ<br>
-(3)  201<sub>(10)</sub> を2進法に変換せよ<br>
-(4)  201<sub>(10)</sub> を16進法に変換せよ<br>
-(5)  20A<sub>(16)</sub> を2進法に変換せよ<br>
-(6)  20A<sub>(16)</sub> を10進法に変換せよ<br>
-(7)  0.1111<sub>(2)</sub> を10進法に変換せよ</p>
+<img src="./img/data-units.svg" alt="1バイトは8ビット。10進接頭辞ではkB, MB, GB, TBと1000倍ずつ、2進接頭辞ではKiB, MiB, GiB, TiBと1024倍ずつ大きくなる。目安として英字1文字は1B、小説1冊の文字は数百kB、写真1枚は数MB、動画1時間は数GB、HDD1台は数TB">
 </div>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>解答</strong><br>
-(1) 10100010<sub>(2)</sub> = 1×2<sup>7</sup> + 0×2<sup>6</sup> + 1×2<sup>5</sup> + 0×2<sup>4</sup> + 0×2<sup>3</sup> + 0×2<sup>2</sup> + 1×2<sup>1</sup> + 0×2<sup>0</sup> = <strong>162</strong><br>
-(2) 10100010<sub>(2)</sub> = 1010 0010<sub>(2)</sub> = <strong>A2<sub>(16)</sub></strong> <br>
-    (∵ 1010<sub>(2)</sub>=10=A<sub>(16)</sub> かつ 0010<sub>(2)</sub>=2=2<sub>(16)</sub>)<br>
-(3) 201 を商が 0 になるまで順に 2 で割り、得られた余りを下から順に並べる（下の表参照） <strong>11001001<sub>(2)</sub></strong><br>
-(4) 11001001<sub>(2)</sub>=1100 1001<sub>(2)</sub> = <strong>C9<sub>(16)</sub></strong><br>
-(5) 20A<sub>(16)</sub> = 0010 0000 1010<sub>(2)</sub> = <strong>10 0000 1010<sub>(2)</sub></strong><br>
-(6) 2×16<sup>2</sup> + 0×16<sup>1</sup> + 10×16<sup>0</sup> = <strong>522</strong><br>
-(7) 0.1111<sub>(2)</sub> = 1 - 2<sup>-4</sup> = <strong>0.9375</strong> (∵ 0.1111<sub>(2)</sub>+0.0001<sub>(2)</sub>=1)</p>
-</div>
-<table id="tab-div2" class="tableblock frame-all grid-all fit-content">
-<caption class="title">表 1. (3)の計算</caption>
-<colgroup>
-<col>
-<col>
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-right valign-top"></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">余り</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">201 ÷ 2 = 100</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">100 ÷ 2 = 50</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">50 ÷ 2 = 25</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">25 ÷ 2 = 12</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">12 ÷ 2 =  6</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">6 ÷ 2 =  3</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">0</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">3 ÷ 2 =  1</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">1 ÷ 2 =  0</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">1</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><a href="#tab-div2">表 1</a>の計算で、10進法から2進法への変換ができる理由も理解しておいてください。たとえば、10進法の数 12345 を 10 で割り続ければ、余りとして、5, 4, 3, 2, 1 がでてきますので、逆順にならべれば 12345 となります。10進法で考えれば当たり前のことですが、10進法から2進法への変換でも同じことをしているに過ぎません。</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>00→01→11→10 のように隣接する数字の並びが1ビットしか異ならないように2進法の数字の順番を並べ替えた数の符号化を<strong>グレイコード</strong>と呼びます。グレイコードはエンコーダーやエラー訂正符号などで重要な役割を果たします。</p>
-</li>
-<li>
-<p>3進法のバリエーションとして平衡3進法が知られています。平衡3進法は-1, 0, 1の3つの数字を使って基数3の数を表現する方法で、桁上がりの処理が単純になる利点があります。</p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_大きな量を表す接頭辞"><a class="link" href="#_大きな量を表す接頭辞">2.3. 大きな量を表す接頭辞</a></h3>
-<div class="paragraph">
-<p>一般に、メモリの容量やデータ通信量は膨大な値になるため、桁が大きくなってしまいます。そのため「キログラム」の「キロ」のように、単位グラムの前に大きな量を表す語（<strong>接頭辞</strong>（prefix））を用います。国際単位系（SI）では1キロは1000を表します。一方で、半導体メモリ等、もともと内部で2進法に親和性の高い設計を行っている対象では、1キロは 2<sup>10</sup>=1024を表すのが一般的です。各々、同じ記号では混乱するために、国際電気標準会議によって、1998年に2進法に基づく接頭辞については、従来と異なる記号を割り当てました。</p>
+<div class="title">図 6. データ量の単位の関係と大きさの目安</div>
 </div>
 <table class="tableblock frame-ends grid-row stretch">
-<caption class="title">表 2. 接頭辞の種類</caption>
+<caption class="title">表 1. 接頭辞の種類</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1396,7 +1307,7 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <p><strong>接頭辞に使われている言葉の由来</strong>(諸説あり)</p>
 </div>
 <table class="tableblock frame-all grid-all fit-content">
-<caption class="title">表 3. 接頭辞の由来</caption>
+<caption class="title">表 2. 接頭辞の由来</caption>
 <colgroup>
 <col>
 <col>
@@ -1448,7 +1359,7 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <p><strong>メガ</strong>から<strong>テラ</strong>までは巨大さを形容する表現が語源に用いられていましたが、<strong>ペタ</strong>以降はやる気を失ったように1000の指数を表すだけになり、いずれもギリシャ語やラテン語の単語に由来しています。さすがに、「大きい」、「超巨大」、「モンスター」と、だんだん表現がインフレをおこしてしまい諦めたのでしょう………。</p>
 </div>
 <div class="paragraph">
-<p>最近になって、超大規模なデータや計算が必要となり、新たに「ロナ」と「クエタ」が追加されました。現在の大規模言語モデル（LLM）は数百テラバイト〜数ペタバイトのデータでトレーニングされているといわれています。</p>
+<p>最近になって、超大規模なデータや計算が必要となり、新たに「ロナ」と「クエタ」が追加されました。データの量でいえば、たとえば大規模言語モデル（LLM）の学習に使われる文章は、数十テラバイト規模に達しています(<a href="#tab-text-size">表 4</a>)。</p>
 </div>
 <div class="paragraph">
 <p>ちなみに、googleの語源となった googol は、10<sup>100</sup> を表しています（標準化された単位系ではありません）。</p>
@@ -1459,7 +1370,7 @@ ICによるコンピューター開発の発展により、日本では1979年�
 </div>
 </div>
 <div class="sect2">
-<h3 id="_二種類の接頭辞による混乱"><a class="link" href="#_二種類の接頭辞による混乱">2.4. 二種類の接頭辞による混乱</a></h3>
+<h3 id="_二種類の接頭辞による混乱"><a class="link" href="#_二種類の接頭辞による混乱">2.3. 二種類の接頭辞による混乱</a></h3>
 <div class="paragraph">
 <p>コンピューターシステムにおいて、メモリ容量を表す際にはKBなどの接頭辞が2進接頭辞(1KiB = 1024バイト)の意味で使われるのが一般的です。メモリについては表記も1KiBや1kBではなく1KBが使われています。これには以下のような技術的・歴史的背景があります。</p>
 </div>
@@ -1477,97 +1388,50 @@ ICによるコンピューター開発の発展により、日本では1979年�
 </ul>
 </div>
 <div class="paragraph">
-<p>一方、ストレージデバイス(HDDやSSD)の容量表示では、メーカーは一般的に10進接頭辞（1kB = 1000バイト）を使用します。これにより、同じ物理容量でも数値が大きく見えるというマーケティング上の利点があります。</p>
+<p>一方、ストレージデバイス(HDDやSSD)の容量表示では、メーカーは一般的に10進接頭辞（1kB = 1000バイト）を使用します。SIの接頭辞の本来の意味どおりの表示ですが、2進接頭辞による表示と比べると数値が大きく見えることにもなります。</p>
 </div>
 <div class="paragraph">
-<p>10進接頭辞と2進接頭辞を区別するために異なる記号が割り当てられたにも関わらず、ほとんど普及していません。</p>
+<p>10進接頭辞と2進接頭辞を区別するために異なる記号が割り当てられたにも関わらず、一般向けの製品やソフトウェアの表示ではあまり普及していません(Linuxのツールなどでは KiB、MiB の表示も使われます)。</p>
 </div>
-<div class="sidebarblock">
+<div class="paragraph">
+<p>同じ記号の2進接頭辞と10進接頭辞の比は、キロで 1024/1000 = 1.024 倍、メガで 1.024<sup>2</sup> ≈ 1.049 倍、ギガで 1.024<sup>3</sup> ≈ 1.074 倍と、接頭辞が1段上がるごとに 1.024 倍ずつ広がります。差の割合はキロの2.4%からテラでは約10%になります(<a href="#fig-prefix-gap">図 7</a>)。差の絶対量は1段ごとに約1000倍になるので、1TiBと1TBの差は約100GBにもなります(練習問題3)。</p>
+</div>
+<div id="fig-prefix-gap" class="imageblock">
 <div class="content">
-<div class="title">問題1</div>
-<div class="paragraph">
-<p>2進接頭辞と10進接頭辞によるファイルサイズの差を計算して(2)〜(5)に数値を記入してください。各接頭辞の単位で小数点以下の値がある場合には、四捨五入して整数のみとすること。<br>
-(例: 23.6KB は 24KB と回答すること。)</p>
+<img src="./img/prefix-gap.svg" alt="2進接頭辞の値が同じ記号の10進接頭辞の値より何%大きいかを示す棒グラフ。キロ2.4%、メガ4.9%、ギガ7.4%、テラ10.0%、ペタ12.6%">
 </div>
-<table class="tableblock frame-ends grid-rows fit-content center">
-<colgroup>
-<col>
-<col>
-<col>
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">(1)</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">1KiB − 1kB =</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(　　24B　)<br></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">(2)</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">1MiB − 1MB =</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(　　　kB　)<br></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">(3)</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">1GiB − 1GB =</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(　　　MB　)<br></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">(4)</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">1TiB − 1TB =</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(　　　GB　)<br></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-right valign-top"><p class="tableblock">(5)</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">1PiB − 1PB =</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(　　　TB　)</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="paragraph">
-<p>桁が大きくなるに従って、2進接頭辞と10進接頭辞の値の差は<strong>指数的に</strong>大きくなってゆきます（下図）。</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./img/prefix-gap.svg" alt="2進接頭辞の値が同じ記号の10進接頭辞の値より何%大きいかを示す棒グラフ">
-</div>
-<div class="title">図 6. 2進接頭辞と10進接頭辞の乖離</div>
+<div class="title">図 7. 2進接頭辞と10進接頭辞のずれ</div>
 </div>
 <div class="paragraph">
 <p>また、半導体メモリの仕様を策定している半導体の業界団体JEDECのメモリ標準では、K(大文字), M, G, T といった記号を2進接頭辞として用いることを許容しています。</p>
 </div>
 <div class="paragraph">
-<p>ようやく冒頭で示した問題に取り組む準備ができました。</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">問題2</div>
-<div class="paragraph">
-<p>Microsoft Windowsの入ったパソコンのフォルダ内にサイズが480GBのファイルがあったので、500GBのハードディスク装置を買ってきてコピーしたところ、容量不足でコピーできなかった。</p>
-</div>
-<div class="paragraph">
-<p>調べてみると、Windowsのファイルサイズ表示について次のことがわかった。</p>
+<p>ここまでの知識で、次のような身近な困りごとを説明できます。</p>
 </div>
 <div class="exampleblock">
+<div class="title">例 1. 480GBのファイルが500GBのハードディスクに入らない</div>
 <div class="content">
+<div class="paragraph">
+<p>Microsoft Windowsのパソコンで、エクスプローラーにサイズが480GBと表示されたファイルがありました。500GBのハードディスク装置を買ってきてコピーしようとしたところ、容量不足でコピーできませんでした。</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Windows でファイルを閲覧するツール「エクスプローラー」ではファイルの大きさを2進接頭辞で表す。しかし、表記は慣習に従い（JEDECメモリ標準での許容表記）K, M, G, T を用いる（Kは大文字）。(本来は、Ki, Mi, Gi, Ti としなくては混乱する。)</p>
+<p>Windowsのエクスプローラーは、ファイルの大きさを<strong>2進接頭辞</strong>で計算しています。ただし表記は慣習に従って(JEDECメモリ標準で許容されている表記) K, M, G, T を使います。本来は Ki, Mi, Gi, Ti と書かないと混乱します。</p>
 </li>
 <li>
-<p>一方で、市販されているハードディスク装置(HDD)やSSDの容量表示は、10進接頭辞で表示されている。</p>
+<p>一方、市販されているハードディスク装置(HDD)やSSDの容量は、<strong>10進接頭辞</strong>で表示されています。</p>
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p>つまり、480GBと表示されたファイルは、曖昧さのない書き方では480GiBです。10進接頭辞に直すと</p>
 </div>
+<div class="paragraph text-center">
+<p>480GiB = 480 × 2<sup>30</sup> B = 515,396,075,520 B ≈ 515.4GB</p>
 </div>
 <div class="paragraph">
-<p>つまり、Windowsでサイズが 480GB と表示されているファイルサイズは、曖昧さのないように2進接頭辞を用いると 480GiB であることがわかった。</p>
-</div>
-<div class="paragraph">
-<p>このことから、購入したハードディスク装置が容量不足になった理由を、実際にどの程度容量が足らなかったのかを計算して説明せよ。</p>
+<p>となり、500GBのHDDには約15GB入りきりません。逆に、500GBのHDDをWindowsで見ると 500×10<sup>9</sup> ÷ 2<sup>30</sup> ≈ 465.7 なので、約465GBと表示されます。実際には、ファイルを管理するための情報(ファイルシステム)も領域を使うので、使える量はさらに少し減ります。</p>
 </div>
 </div>
 </div>
@@ -1580,7 +1444,7 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <div class="content">
 <img src="./img/windows-hdd-size2.png" alt="Windows11のハードディスク容量表示">
 </div>
-<div class="title">図 7. Windows11のハードディスク容量表示</div>
+<div class="title">図 8. Windows11のハードディスク容量表示</div>
 </div>
 <div class="paragraph">
 <p>実際に計算してみると以下のように確認できます。</p>
@@ -1588,13 +1452,18 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <div class="ulist">
 <ul>
 <li>
-<p>61.98 ×10<sup>9</sup> B / 2<sup>30</sup>  ≈ 57.72GiB (Windowsの表示は57.7GB)</p>
+<p>使用領域: 61,978,918,912 B ÷ 2<sup>30</sup> ≈ 57.72GiB (Windowsの表示は57.7GB)</p>
 </li>
 <li>
-<p>448.7 ×10<sup>9</sup> B / 2<sup>30</sup>  ≈ 417.88GiB<br>
-(Windowsの表示は417.8GBなので、四捨五入ではなく切り捨てで表示していることがわかります)</p>
+<p>空き領域: 448,726,872,064 B ÷ 2<sup>30</sup> ≈ 417.91GiB (Windowsの表示は417GB)</p>
+</li>
+<li>
+<p>容量: 510,705,790,976 B ÷ 2<sup>30</sup> ≈ 475.63GiB (Windowsの表示は475GB)</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>容量が476GBではなく475GBと表示されていることから、Windowsは有効数字3桁程度で、四捨五入ではなく切り捨てて表示していることがわかります。</p>
 </div>
 <div class="paragraph">
 <p>もう1つWindows11でファイルサイズを表示しました（<strong>下図</strong>）。<strong>バイト</strong>で書かれた値が<strong>MB</strong>表示された値とほぼ一致していることを確認してみてください。</p>
@@ -1603,7 +1472,7 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <div class="content">
 <img src="./img/windows-file-size2.png" alt="Windows11のファイルサイズ表示">
 </div>
-<div class="title">図 8. Windows11のファイルサイズ表示</div>
+<div class="title">図 9. Windows11のファイルサイズ表示</div>
 </div>
 <div class="paragraph">
 <p>これについても、たしかに次のように確認できます。</p>
@@ -1611,24 +1480,24 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <div class="ulist">
 <ul>
 <li>
-<p>113.4 ×10<sup>6</sup> B / 2<sup>20</sup>  ≈ 108.1MiB (Windowsの表示は108MB)</p>
+<p>113,447,871 B ÷ 2<sup>20</sup> ≈ 108.19MiB (Windowsの表示は108MB)</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>さらにややこしいことに、Windows と macOS (10.6以降) ではファイル容量表示の流儀が異なるのです。macOSでは、<a href="#fig-win-size">図 8</a>と同じファイルを Finder という標準ツールで表示すると、<a href="#fig-mac-size">図 9</a>のように表示されます。<a href="#fig-win-size">図 8</a>のバイト数と見比べると、10進接頭辞になっていることがわかります（ただし、K は大文字になる）。</p>
+<p>さらにややこしいことに、Windows と macOS (10.6以降) ではファイル容量表示の流儀が異なるのです。macOSでは、<a href="#fig-win-size">図 9</a>と同じファイルを Finder という標準ツールで表示すると、<a href="#fig-mac-size">図 10</a>のように表示されます。<a href="#fig-win-size">図 9</a>のバイト数と見比べると、10進接頭辞になっていることがわかります（ただし、K は大文字になる）。</p>
 </div>
 <div id="fig-mac-size" class="imageblock">
 <div class="content">
 <img src="./img/mac-file-size.png" alt="macOSのファイルサイズ表示">
 </div>
-<div class="title">図 9. macOSのファイルサイズ表示（Windowsの例と同じファイル）</div>
+<div class="title">図 10. macOSのファイルサイズ表示（Windowsの例と同じファイル）</div>
 </div>
 <div class="paragraph">
-<p>以下の<a href="#tab-size-notation">表 4</a>に、ツールや記憶媒体ごとの領域・サイズの表示方法をまとめました。2進と10進の接頭辞が混在していることがわかります。</p>
+<p>以下の<a href="#tab-size-notation">表 3</a>に、ツールや記憶媒体ごとの領域・サイズの表示方法をまとめました。2進と10進の接頭辞が混在していることがわかります。</p>
 </div>
 <table id="tab-size-notation" class="tableblock frame-ends grid-rows fit-content center">
-<caption class="title">表 4. ツールや記憶媒体ごとの領域・サイズ表示方法</caption>
+<caption class="title">表 3. ツールや記憶媒体ごとの領域・サイズ表示方法</caption>
 <colgroup>
 <col>
 <col>
@@ -1689,7 +1558,7 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <p>この一度に扱えるデータ単位は、コンピューターが扱えるメモリ空間にも影響を与えます。今のコンピューターは、メモリ上のデータの位置を1バイト単位で指定するのが一般的です。このような仕組みをバイトアドレッシングといいます。</p>
 </div>
 <div class="paragraph">
-<p>かつての32ビットをデータ単位とするコンピューターでは 2<sup>32</sup>=2<sup>30+2</sup>=2<sup>2</sup>×2<sup>30</sup>=4GiB から、4GiBのメモリ空間が一度に扱える上限でした。今の Windows 11 は少なくとも4GiBのメモリが必要で、8GiB以上が推奨されていますので、32ビットでは対応できません。64ビットで扱えるメモリ空間は、2<sup>64</sup> ですので、16EiB(エクスビバイト)という広大な空間になり、現在のところ64ビットで十分です。また、64ビットの整数はほとんどのアプリケーションにとっても十分な大きさです。</p>
+<p>かつての32ビットをデータ単位とするコンピューターでは、アドレスが32ビットなので 2<sup>32</sup>=2<sup>2</sup>×2<sup>30</sup> バイト = 4GiB が、1つのプログラムから一度に扱えるメモリ空間の上限でした。現在のパソコンには16GiBや32GiBのメモリを積んだものも多く、32ビットのアドレスでは足りません。Windows 11 は64ビット版だけが提供されていて、少なくとも4GBのメモリを必要とします。64ビットで扱えるメモリ空間は、2<sup>64</sup> バイトですので、16EiB(エクスビバイト)という広大な空間になり、現在のところ64ビットで十分です。また、64ビットの整数はほとんどのアプリケーションにとっても十分な大きさです。</p>
 </div>
 </div>
 <div class="sect3">
@@ -1706,14 +1575,23 @@ ICによるコンピューター開発の発展により、日本では1979年�
 </div>
 </div>
 <div class="sect2">
-<h3 id="_データ量"><a class="link" href="#_データ量">2.5. データ量</a></h3>
+<h3 id="_データ量"><a class="link" href="#_データ量">2.4. データ量</a></h3>
+<div class="paragraph">
+<p>ここからは、テキスト・音声・画像・動画のデータ量を具体的に計算してみます。圧縮していないデータの量は、どれも「1つあたりの量 × 個数」のかけ算で見積もれます(<a href="#fig-data-volume">図 11</a>)。実際のファイルの多くは圧縮されているので、非圧縮の量を圧縮比で割った大きさになります。</p>
+</div>
+<div id="fig-data-volume" class="imageblock">
+<div class="content">
+<img src="./img/data-volume.svg" alt="テキストは文字数×1文字のバイト数、画像は横の画素数×縦の画素数×3バイト、音声は標本化周波数×量子化ビット数×チャンネル数×秒数÷8、動画は1フレームのバイト数×フレームレート×秒数。圧縮後の大きさは非圧縮の大きさを圧縮比で割る">
+</div>
+<div class="title">図 11. 非圧縮のデータ量を見積もる式</div>
+</div>
 <div class="sect3">
 <h4 id="_テキストデータ"><a class="link" href="#_テキストデータ">テキストデータ</a></h4>
 <div class="paragraph">
-<p>コンピューター内では、文字に割り当てられた数値を並べることによって、テキストデータを表現します。コンピューターに用いる文字の集まりに、数値を割り当てる規則を<strong>文字コード</strong>といいます。文字コードは、歴史や地域性を抱えて発展してきたため、多種多様であり、非常に複雑（汚い）です。1文字あたり必要になる領域は文字コードによって異なります。この授業では、現在、プログラミングやWebページでもっとも標準的に用いられる文字コードである UTF-8 を用いることにします。UTF-8では、英数字1文字に1バイト、平仮名や漢字のほとんどに1文字あたり3バイトの数値を割り当てています。改行や空白も文字としてカウントします。</p>
+<p>コンピューター内では、文字に割り当てられた数値を並べることによって、テキストデータを表現します。コンピューターに用いる文字の集まりに、数値を割り当てる規則を<strong>文字コード</strong>といいます。文字コードは、歴史や地域性を抱えて発展してきたため、多種多様であり、非常に複雑（汚い）です。1文字あたり必要になる領域は文字コードによって異なります。本書では、現在、プログラミングやWebページでもっとも標準的に用いられる文字コードである UTF-8 を用いることにします。UTF-8では、英数字1文字に1バイト、平仮名や漢字のほとんどに1文字あたり3バイトの数値を割り当てています。改行や空白も文字としてカウントします。</p>
 </div>
-<table class="tableblock frame-ends grid-rows fit-content center">
-<caption class="title">表 5. テキストとデータ量</caption>
+<table id="tab-text-size" class="tableblock frame-ends grid-rows fit-content center">
+<caption class="title">表 4. テキストとデータ量</caption>
 <colgroup>
 <col>
 <col>
@@ -1738,19 +1616,19 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <td class="tableblock halign-left valign-top"><p class="tableblock">日本語 約620万文字, 約17.8MB</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">GPT-5のトレーニングデータ</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">非公表(数十兆〜100兆トークン・数百TB規模と推定されている)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">大規模言語モデル Llama 3 (Meta, 2024年) の事前学習データ</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15兆トークン以上(公表値。1トークンを英語で約4文字とすると、約60TB)</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>現在主流のUTF-8のような文字コードは、文字の種類によってコード長が変化するため、文字数から単純にデータ量が計算できません。ただし、英語テキストの場合は、UTF-8でもほとんど1文字1バイトの対応がありますので計算が簡単です。</p>
+<p>現在主流のUTF-8のような文字コードは、文字の種類によってコード長が変化するため、文字数から単純にデータ量が計算できません。たとえば「人間失格」を全部3バイトの文字として計算すると 77,500 × 3B ≈ 233kB ですが、実際のファイルは229kBです。文字数は概数であり、改行のように1バイトで表される文字も含まれるので、計算とは少し違います。英語テキストの場合は、UTF-8でもほとんど1文字1バイトの対応がありますので計算が簡単です。大規模言語モデルの学習データの量は、文字数ではなく<strong>トークン</strong>(単語や単語の一部に当たる、モデルが処理する単位)の数で表すのが普通です。</p>
 </div>
 <div class="exampleblock">
-<div class="title">例 1. 新型コロナウイルスのゲノムデータ量</div>
+<div class="title">例 2. 新型コロナウイルスのゲノムデータ量</div>
 <div class="content">
 <div class="paragraph">
-<p>新型コロナウイルス（SARS-CoV-2）はRNAウイルスであり、その設計図となるゲノムはA,C,U,Gの4種類の文字が29903個並んだ文字列とみなせます。文字は4種類なので、2<sup>2</sup>=4より1文字あたり2進法で2桁の数字、すなわち2ビットで表現できます。(例: A=00, C=01, U=10, G=11)
+<p>新型コロナウイルス（SARS-CoV-2）はRNAウイルスであり、その設計図となるゲノムはA,C,U,Gの4種類の文字が29903個並んだ文字列とみなせます。文字は4種類なので、2<sup>2</sup>=4より1文字あたり2進法で2桁の数字、つまり2ビットで表現できます。(例: A=00, C=01, U=10, G=11)
 <span class="image right"><img src="./img/virus_corona.png" alt="virus corona"></span></p>
 </div>
 <div class="paragraph">
@@ -1763,7 +1641,7 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <p>となります。</p>
 </div>
 <div class="paragraph">
-<p>比較として、ヒトのゲノムは約30億塩基対からなり、データ量に換算すると約750MB（圧縮なし）になります。つまり、ヒトのゲノムデータはコロナウイルスの約10万倍の大きさです。</p>
+<p>比較として、ヒトのゲノム(両親から受け継ぐ2組のうち1組分)は約30億塩基対からなり、1塩基を2ビットとして換算すると約750MB（圧縮なし）になります。つまり、ヒトのゲノムデータはコロナウイルスの約10万倍の大きさです。</p>
 </div>
 </div>
 </div>
@@ -1791,11 +1669,14 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <div class="paragraph">
 <p>次は、サンプリングしたときの音の大きさをデジタル化しなくてはなりません。CDでは音の大きさを16ビット、つまり2<sup>16</sup>=65536 段階で表現します。これを<strong>量子化</strong>といいます。16ビット量子化によって、もとの音の実際の大きさは失われますが、一般には十分な解像度であると考えられています。そして、音楽はステレオで録音されますので、2つの波形をデジタル化します。</p>
 </div>
-<div class="imageblock">
+<div id="fig-sampling" class="imageblock">
 <div class="content">
 <img src="./img/sampling-quantization.svg" alt="アナログ波形を標本化し、量子化して階段状のデジタル信号を得る過程">
 </div>
-<div class="title">図 10. アナログ波形の標本化と量子化</div>
+<div class="title">図 12. アナログ波形の標本化と量子化</div>
+</div>
+<div class="paragraph">
+<p><a href="#fig-sampling">図 12</a>は、標本化と量子化の流れを、量子化の段階を8段階(3ビット)に単純化して示したものです。CDでは、これを1秒間に44100回、65536段階(16ビット)で行います。</p>
 </div>
 <div class="paragraph">
 <p>ここまでの内容を整理すると以下のようになります。</p>
@@ -1859,7 +1740,7 @@ ICによるコンピューター開発の発展により、日本では1979年�
 <div class="sect3">
 <h4 id="_画像ファイルのデータ量"><a class="link" href="#_画像ファイルのデータ量">画像ファイルのデータ量</a></h4>
 <div class="paragraph">
-<p>スマートフォンで写真をとるとJPEGという圧縮方式で画像が圧縮・保存されます。JPEGによる圧縮は非可逆圧縮(lossy compression)であり、人間の目の特性を利用して元の画像情報のうち捨てても知覚しにくい情報を捨てて圧縮しています。撮影した画像によっても圧縮の度合いが異なります。</p>
+<p>スマートフォンで写真をとると、JPEG(またはHEIF)という圧縮方式で画像が圧縮・保存されます。JPEGによる圧縮は非可逆圧縮(lossy compression)であり、人間の目の特性を利用して元の画像情報のうち捨てても知覚しにくい情報を捨てて圧縮しています。撮影した画像によっても圧縮の度合いが異なります。</p>
 </div>
 <div class="paragraph">
 <p>ここでは、画像は圧縮しないとどのくらいのデータ量になるのかを計算してみます。今、スマートフォンを開いて目についた写真を開いて情報を見てみると、サイズは</p>
@@ -1869,7 +1750,7 @@ ICによるコンピューター開発の発展により、日本では1979年�
 </div>
 <div class="paragraph">
 <p>でした。各々の画素は色を光の三原色、赤・緑・青（RGB）の混色で表現します。
-JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます。つまり、1画素あたり8×3b=24b=3B のデータ量となります。よって、写真全体では</p>
+一般的なJPEGでは各色は8ビット（2<sup>8</sup>=256階調）で表されます。つまり、1画素あたり8×3b=24b=3B のデータ量となります。よって、写真全体では</p>
 </div>
 <div class="paragraph text-center">
 <p>4608 × 3456 × 3B ≈ 47.8MB</p>
@@ -1894,10 +1775,12 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <div class="paragraph">
 <p>より、<strong>約54分の1に圧縮されている</strong>ことになります。</p>
 </div>
-<table class="tableblock frame-ends grid-rows fit-content center">
-<caption class="title">表 6. スマートフォンカメラ性能と画像サイズ</caption>
+<div class="paragraph">
+<p>スマートフォンのカメラの画素数は増え続けています。画素数から非圧縮のサイズを計算すると<a href="#tab-camera">表 5</a>のようになります(1画素3バイトとして計算)。</p>
+</div>
+<table id="tab-camera" class="tableblock frame-ends grid-rows fit-content center">
+<caption class="title">表 5. 画素数と非圧縮のデータ量</caption>
 <colgroup>
-<col>
 <col>
 <col>
 <col>
@@ -1905,37 +1788,36 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">デバイス</th>
-<th class="tableblock halign-left valign-top">解像度</th>
-<th class="tableblock halign-left valign-top">非圧縮サイズ</th>
-<th class="tableblock halign-left valign-top">一般的なJPEGサイズ</th>
-<th class="tableblock halign-left valign-top">RAWファイルサイズ</th>
+<th class="tableblock halign-left valign-top">画素数</th>
+<th class="tableblock halign-left valign-top">画像の大きさ(例)</th>
+<th class="tableblock halign-left valign-top">非圧縮のデータ量</th>
+<th class="tableblock halign-left valign-top">例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">iPhone 17 Pro</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">48MP (8064×6048)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">約1200万画素(12MP)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4032×3024</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">約36.6MB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">多くのスマートフォンの標準の写真</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">約4800万画素(48MP)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8064×6048</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">約146MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10-15MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">75-80MB（ProRAW）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iPhone 17 Proのメインカメラの最大画素数</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Samsung Galaxy S26 Ultra</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">200MP (16320×12240)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">約600MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20-30MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">100-120MB</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Google Pixel 10 Pro</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">50MP (8160×6120)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">約150MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12-20MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">70-80MB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">約2億画素(200MP)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16320×12240</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">約599MB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Galaxy S26 Ultraのメインカメラの最大画素数</p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>実際には、多くのスマートフォンは標準の設定では、隣り合う画素をまとめて画素数を減らした写真を、JPEGやHEIFという形式で圧縮して保存します。最大画素数の写真や、圧縮前に近いRAW形式で保存するには、設定を変える必要があります。</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1944,7 +1826,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 </td>
 <td class="content">
 <div class="paragraph">
-<p>JPEGでは各色は、8ビット(256階調)で保存されます。しかし、最近のデジタルカメラのRAWデータでは各色を12～16bit(4096～65536階調)で記録しています。JPEGに変換する時点ですでに情報が削られています。最新のiPhone 17 ProやPixel 10などは、複数の画像を合成し、AI処理を施した高品質な写真を生成できます。これらの写真処理には大量の計算リソースが必要です。</p>
+<p>一般的なJPEGでは各色は8ビット(256階調)で保存されます。一方、デジタルカメラのRAWデータでは、撮像素子の各画素が受けた光の強さを12〜14ビット(4096〜16384階調)程度で記録しています。JPEGに変換する時点で、階調の情報の一部はすでに削られています。最近のスマートフォンは、複数の画像を合成し、AI処理を施した写真を生成します。これらの処理には多くの計算が必要です。</p>
 </div>
 </td>
 </tr>
@@ -1963,7 +1845,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <p>1920 × 1080 × 3B × 30fps = 約187MB/秒</p>
 </div>
 <div class="paragraph">
-<p>10分間の無圧縮動画では約112GBという巨大なデータ量になります。そのため、実際の動画は高度な圧縮技術によって大幅に圧縮されています。</p>
+<p>10分間(600秒)の無圧縮動画では 187MB/秒 × 600秒 ≈ 112GB という巨大なデータ量になります(音声は除く)。そのため、実際の動画は高度な圧縮技術によって大幅に圧縮されています。</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -1979,14 +1861,20 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <p>1秒間に1バイト(2進法で0または1を8つ)転送する速度を、<strong>1B/s</strong> と表記します。</p>
 </li>
 <li>
-<p><strong>データの転送速度には10進接頭辞のみを用います</strong>。</p>
+<p><strong>データの転送速度には、通常は10進接頭辞を用います</strong>(1Mbps = 10<sup>6</sup> b/s)。</p>
+</li>
+<li>
+<p>ビットとバイトの換算に注意しましょう。たとえば 8Mbps = 8×10<sup>6</sup> b/s ÷ 8 = 1MB/s です。</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<table class="tableblock frame-ends grid-rows fit-content center">
-<caption class="title">表 7. 一般的な動画形式とデータレート</caption>
+<div class="paragraph">
+<p>圧縮した動画のデータ量は、1秒あたりのビット数(<strong>ビットレート</strong>)で表します。<a href="#tab-video-rate">表 6</a>は、YouTubeが投稿用に推奨している動画のビットレートと、映像編集用の形式の例です。10分間のデータ量は、ビットレート × 600秒 ÷ 8 で計算しています。</p>
+</div>
+<table id="tab-video-rate" class="tableblock frame-ends grid-rows fit-content center">
+<caption class="title">表 6. 動画のビットレートとデータ量の例</caption>
 <colgroup>
 <col>
 <col>
@@ -1996,77 +1884,77 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">解像度</th>
-<th class="tableblock halign-left valign-top">形式</th>
-<th class="tableblock halign-left valign-top">データレート</th>
-<th class="tableblock halign-left valign-top">10分間のサイズ</th>
+<th class="tableblock halign-left valign-top">用途・形式</th>
+<th class="tableblock halign-left valign-top">ビットレート</th>
+<th class="tableblock halign-left valign-top">10分間のデータ量</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">480p (SD)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">H.264/MP4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">約2Mbps</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">約150MB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">480p</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">YouTube投稿の推奨値(30fps以下)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.5Mbps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">約190MB</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1080p (Full HD)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">H.264/MP4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">約8Mbps</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">約600MB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1080p (フルHD)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">同上</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8Mbps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">600MB</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4K (UHD)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">H.265/HEVC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">約15-20Mbps</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">約1-1.5GB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2160p (4K)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">同上</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35〜45Mbps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">約2.6〜3.4GB</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8K</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">H.265/HEVC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">約80-100Mbps</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">約6-7.5GB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4320p (8K)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">同上</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80〜160Mbps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6〜12GB</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4K RAW (映画撮影用)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ProRes/REDCODE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">約100-500Mbps</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">約7.5-40GB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2160p (4K)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Apple ProRes 422 HQ(編集用、30fps)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">約884Mbps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">約66GB</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>最新の動画圧縮コーデックであるH.265/HEVCは、同じ画質でH.264の約半分のデータ量で済むよう設計されています。さらに新しいAV1コーデックはH.265よりも30%程度効率的とされています。</p>
+<p>フルHDで8Mbpsの動画は、非圧縮の約1.5Gbps(187MB/秒 × 8)の約190分の1です。新しい動画圧縮方式であるH.265/HEVCは、同じ画質でH.264の約半分のデータ量で済むことを目標に設計されました。さらに新しいAV1は、H.265よりも効率がよいとされています。</p>
 </div>
 <div class="paragraph">
-<p>データ圧縮については、今後の授業で触れます。</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">問題3</div>
-<div class="paragraph">
-<p>自分で傾向の異なる写真を2枚撮影してください(変化に富んだ被写体と、単調な被写体など)。
-それぞれの写真の圧縮比を計算してください。また、写真の特徴と圧縮比の関係について考察してください。</p>
-</div>
-</div>
+<p>データ圧縮の原理については、第9章で触れます。</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_データの転送速度"><a class="link" href="#_データの転送速度">2.6. データの転送速度</a></h3>
+<h3 id="_データの転送速度"><a class="link" href="#_データの転送速度">2.5. データの転送速度</a></h3>
 <div class="paragraph">
 <p>さて、ここではCDプレイヤーで音楽を聴くにはどのくらいの速度でデータを読み込まなくてはいけないか考えてみます。この値はすでに先程計算した 1411200 b/秒 です。通信速度には (b/秒) の表記の代わりに bps (bit per second) の表記を用います。つまり、CDプレイヤーでは約1.4Mbps のデータ読み取り速度が要求されます。</p>
 </div>
 <div class="paragraph">
-<p>一概に速度といっても、装置そのものが本来もっているデータを読み書きする速度と、装置をつなぐコネクタやケーブルのもつデータ転送速度などでは性質が異なります。実際のデータ転送速度は、これらの複合的な要因によって決まります。いくら読み書きが速い記憶装置をもっていても、そのデータを送信する通信方式やケーブルの転送速度の上限が低ければ、それらの要因がボトルネックになって装置そのものの性能は発揮できません。</p>
+<p>一概に速度といっても、装置そのものが本来もっているデータを読み書きする速度と、装置をつなぐコネクタやケーブルのもつデータ転送速度などでは性質が異なります。実際のデータ転送速度は、これらの複合的な要因によって決まります。いくら読み書きが速い記憶装置をもっていても、そのデータを送信する通信方式やケーブルの転送速度の上限が低ければ、それらの要因が<strong>ボトルネック</strong>(瓶の首のように細く、流れを制限する部分)になって装置そのものの性能は発揮できません(<a href="#fig-bottleneck">図 13</a>)。</p>
+</div>
+<div id="fig-bottleneck" class="imageblock">
+<div class="content">
+<img src="./img/transfer-bottleneck.svg" alt="SSDから約550MB/sで読み出し、USB 5Gbpsで接続し、HDDに約200MB/sで書き込むと、全体はHDDの約200MB/sに制限される。1TBのコピーに約1.4時間">
+</div>
+<div class="title">図 13. 転送速度はいちばん遅い区間で決まる</div>
 </div>
 <div class="paragraph">
-<p>たとえば、インターネット上でファイルのデータを送信する場合には、誤り訂正のための冗長データや、送信先などの付加情報が加わりますので、少なくとも20%〜30%程度の速度低下は見込んでおいたほうがよいでしょう。</p>
+<p>図の例では、USB 5Gbps の接続も SSD の読み出しも HDD への書き込みより速いので、全体の速さはHDDで決まります。なお、5Gbps を8で割ると625MB/sですが、USB 5Gbps(USB 3.2 Gen1)では信号の符号化に2割を使うので、運べるデータは最大で約500MB/sです。このように、規格の速度の表示は、実際に運べるデータの速さの上限であって、そのまま出るわけではありません。</p>
+</div>
+<div class="paragraph">
+<p>たとえば、インターネット上でファイルのデータを送信する場合には、送信先などの付加情報(ヘッダー)や、誤りを見つけて送り直すためのやりとりが加わります。さらに回線はほかの利用者と共有されているので、実際に運べるデータの速さは、回線の速度の表示よりかなり遅くなるのが普通です。</p>
 </div>
 <div class="paragraph">
 <p>以下の表に状況に応じたデータ転送速度の目安を示します。</p>
 </div>
 <table class="tableblock frame-ends grid-rows fit-content center">
-<caption class="title">表 8. 利用状況に応じたデータの転送速度</caption>
+<caption class="title">表 7. 利用状況に応じたデータの転送速度の目安(各サービスの公表値、2026年9月確認)</caption>
 <colgroup>
 <col>
 <col>
@@ -2079,62 +1967,49 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 </thead>
 <tbody>
 <tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">8kbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">携帯電話の通話音声</p></td>
-</tr>
-<tr>
 <th class="tableblock halign-right valign-top"><p class="tableblock">64kbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">固定電話の通話音声(G.711)</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">200kbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LINEの音声通話推奨値</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">固定電話の通話音声(ITU-T G.711)</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-right valign-top"><p class="tableblock">600kbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Zoomで授業参加する際の推奨値(上り)</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">1Mbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LINEのビデオ通話推奨値</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoomの1対1のビデオ通話(標準画質、上り・下りとも)</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-right valign-top"><p class="tableblock">1.2Mbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Zoomで授業参加する際の推奨値(下り)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zoomの1対1のビデオ通話(720p、上り・下りとも)</p></td>
 </tr>
 <tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">1-2Mbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Microsoft Teamsのビデオ通話推奨値</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">4-6Mbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">YouTube 1080p の動画</p></td>
+<th class="tableblock halign-right valign-top"><p class="tableblock">5Mbps</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">YouTube・Netflixでフル HD(1080p)の動画を見る</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-right valign-top"><p class="tableblock">15Mbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">地デジ放送ハイビジョン</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Netflixで4K動画を見る</p></td>
 </tr>
 <tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">15-25Mbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Netflix 4K HDR動画</p></td>
+<th class="tableblock halign-right valign-top"><p class="tableblock">20Mbps</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">YouTubeで4K動画を見る</p></td>
 </tr>
 <tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">35-50Mbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">クラウドゲーミング（Xbox Cloud Gaming, GeForce NOW等）</p></td>
+<th class="tableblock halign-right valign-top"><p class="tableblock">25Mbps</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">クラウドゲーミング GeForce NOW(フルHD、60fps)</p></td>
 </tr>
 <tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">35-100Mbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8K動画ストリーミング</p></td>
+<th class="tableblock halign-right valign-top"><p class="tableblock">45Mbps</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">クラウドゲーミング GeForce NOW(4K、120fps)</p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>これらは、映像や音声を途切れずに受け取るために必要な速度の目安です。実際に流れるデータは、映像の内容や圧縮の設定によって変わります。</p>
+</div>
 <div class="sect3">
 <h4 id="_最新の音楽配信とストリーミング"><a class="link" href="#_最新の音楽配信とストリーミング">最新の音楽配信とストリーミング</a></h4>
 <div class="paragraph">
 <p>現代では音楽CDよりも、ストリーミングサービスや音楽ダウンロードの方が主流になっています。これらのサービスでは、データ圧縮技術を用いて、CDの非圧縮形式よりも小さなデータ量で音楽を配信しています。</p>
 </div>
 <table class="tableblock frame-ends grid-rows fit-content center">
-<caption class="title">表 9. 一般的な音楽配信形式と品質</caption>
+<caption class="title">表 8. 一般的な音楽配信形式と品質</caption>
 <colgroup>
 <col>
 <col>
@@ -2151,12 +2026,12 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MP3（低品質）</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">128kbps</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">一般的なストリーミング品質、約11倍圧縮</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">かつての標準的な配信品質、CDの約11分の1</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MP3（高品質）</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">320kbps</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">高品質ダウンロード、約4.4倍圧縮</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">高品質ダウンロード、CDの約4.4分の1</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">AAC</p></td>
@@ -2165,8 +2040,8 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">FLAC</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">可変（約1000kbps）</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ロスレス圧縮、CDと同等の音質、約1.4倍圧縮</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">可変（CD音質で約700〜1000kbps）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">可逆圧縮(元のデータを完全に復元できる)、CDの約1.4〜2分の1</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MQA</p></td>
@@ -2181,7 +2056,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 </tbody>
 </table>
 <div class="paragraph">
-<p>例えば、3分間の楽曲をCDと同じ品質で記録すると、約30MBのデータ量が必要になりますが、MP3(128kbps)では約3MBまで圧縮できます。</p>
+<p>例えば、3分間の楽曲をCDと同じ品質で記録すると、1411.2kbps × 180秒 ÷ 8 ≈ 31.8MB のデータ量が必要になりますが、MP3(128kbps)では 128kbps × 180秒 ÷ 8 ≈ 2.9MB まで圧縮できます。</p>
 </div>
 </div>
 <div class="sect3">
@@ -2198,8 +2073,8 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <div class="paragraph">
 <p>メモリの転送速度を<strong>メモリバンド幅</strong>といい、一般に単位はバイトを用いて B/s により表現します。他のビットによる速度単位(bps)と単位を揃えて比較してみてください。これらの値は環境等によっても大きく変わるため参考値です。</p>
 </div>
-<table class="tableblock frame-ends grid-rows stretch center">
-<caption class="title">表 10. 記憶装置自体のデータ転送速度</caption>
+<table id="tab-storage-speed" class="tableblock frame-ends grid-rows stretch center">
+<caption class="title">表 9. 記憶装置自体のデータ転送速度</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 75%;">
@@ -2228,15 +2103,15 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <td class="tableblock halign-left valign-top"><p class="tableblock">補助記憶装置: M.2 SSD (PCIe4.0接続NVMe)</p></td>
 </tr>
 <tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">12-14GB/s</p></th>
+<th class="tableblock halign-right valign-top"><p class="tableblock">12-15GB/s</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">補助記憶装置: M.2 SSD (PCIe5.0接続NVMe)</p></td>
 </tr>
 <tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">25-28GB/s</p></th>
+<th class="tableblock halign-right valign-top"><p class="tableblock">25.6GB/s</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">主記憶装置: SDRAM DIMM DDR4-3200</p></td>
 </tr>
 <tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">38-45GB/s</p></th>
+<th class="tableblock halign-right valign-top"><p class="tableblock">38.4GB/s</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">主記憶装置: SDRAM DIMM DDR5-4800</p></td>
 </tr>
 <tr>
@@ -2246,7 +2121,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 </tbody>
 </table>
 <div class="paragraph">
-<p>表の主記憶装置の値は1チャネルあたりの理論帯域で、メモリを2枚並列に使うデュアルチャネル構成では約2倍（DDR5-7200では約115GB/s）になります。上の表のSATA3.0やPCIe5.0などは、パソコンに記憶装置を接続するためのインターフェースの規格(機器同士を接続して信号を伝える際の接続方法や送信方法のきまり)であり、読み書きが高速なSSDでは、この部分の規格によってSSDの転送速度の上限が決まってしまいます。</p>
+<p>表の主記憶装置の値は1チャネル(64ビット幅)あたりの理論帯域(たとえばDDR4-3200では 3200×10<sup>6</sup>回/秒 × 8バイト = 25.6GB/s)で、メモリを2枚並列に使うデュアルチャネル構成では約2倍（DDR5-7200では約115GB/s）になります。上の表のSATA3.0やPCIe5.0などは、パソコンに記憶装置を接続するためのインターフェースの規格(機器同士を接続して信号を伝える際の接続方法や送信方法のきまり)であり、読み書きが高速なSSDでは、この部分の規格によってSSDの転送速度の上限が決まってしまいます。</p>
 </div>
 <div class="paragraph">
 <p>また、SDRAMはコンピューターの主記憶に用いられるメモリであるRAMの方式のひとつです。</p>
@@ -2265,10 +2140,10 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <div class="sect3">
 <h4 id="_無線通信のデータ転送速度"><a class="link" href="#_無線通信のデータ転送速度">無線通信のデータ転送速度</a></h4>
 <div class="paragraph">
-<p>次は無線LAN通信およびスマートフォンの規格として示されている転送速度です。実際には環境や転送内容により大きく異なります。</p>
+<p>次は無線LAN通信およびスマートフォンの規格として示されている転送速度です。いずれも理想的な条件での最大値で、実際には環境や転送内容により大きく異なり、多くの場合ずっと遅くなります。</p>
 </div>
 <table class="tableblock frame-ends grid-rows fit-content center">
-<caption class="title">表 11. 無線・有線回線のデータ転送速度</caption>
+<caption class="title">表 10. 無線・有線回線のデータ転送速度</caption>
 <colgroup>
 <col>
 <col>
@@ -2318,22 +2193,22 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.4GHz / 5GHz / 6GHz</p></td>
 </tr>
 <tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">最大46Gbps (実効5-30Gbps)</p></th>
+<th class="tableblock halign-right valign-top"><p class="tableblock">46Gbps</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Wi-Fi7 (IEEE 802.11be)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.4GHz / 5GHz / 6GHz</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-right valign-top"><p class="tableblock">1Gbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4Gスマホ(下り) 高速移動時には最大100Mbps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4Gスマホ(下り、規格上の目標値。高速移動時は100Mbps)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3.6GHz以下</p></td>
 </tr>
 <tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">10Gbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">5Gスマホ(下り) 国内の理論値は最大約4.9Gbps</p></td>
+<th class="tableblock halign-right valign-top"><p class="tableblock">20Gbps</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5Gスマホ(下り、規格上の目標値。国内サービスの最大は数Gbps)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3.7GHz / 4.5GHz / 28GHz</p></td>
 </tr>
 <tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">1-3Gbps</p></th>
+<th class="tableblock halign-right valign-top"><p class="tableblock">1-10Gbps</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">光ファイバー通信（一般家庭向け）</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N/A（有線）</p></td>
 </tr>
@@ -2360,7 +2235,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <div class="content">
 <img src="./img/hdd_ssd_capacity.svg" alt="PC向けHDD2機種とSSD4シリーズの容量および公称読み出し速度。市場平均ではない">
 </div>
-<div class="title">図 11. PC向け製品の容量と公称読み出し速度</div>
+<div class="title">図 14. PC向け製品の容量と公称読み出し速度</div>
 </div>
 <div class="paragraph">
 <p>上の図は、仕様を確認できるPC向け製品の例です。HDDは指定した2機種、SSDは各時点で用意されていた容量の選択肢を示しています。<strong>平均容量や、販売台数の多い容量を示す図ではありません。</strong> それを知るには市場調査のデータが必要です。SSDはSamsungの選定したシリーズであり、全メーカーの製品を網羅していません。</p>
@@ -2368,11 +2243,11 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <div class="paragraph">
 <p>HDDの例では、2007年の1TB・105MB/sから2018年の14TB・250MB/sへ、容量は14倍、公称読み出し速度は約2.4倍になっています。同じ倍率では伸びていません。</p>
 </div>
-<div class="imageblock">
+<div id="fig-capacity-speed" class="imageblock">
 <div class="content">
 <img src="./img/capacity_vs_speed_1.svg" alt="容量14倍、読み出し速度約2.4倍、容量を公称速度で割った値は約5.9倍">
 </div>
-<div class="title">図 12. 同じHDD2機種について、容量と速度の増加率を比較する</div>
+<div class="title">図 15. 同じHDD2機種について、容量と速度の増加率を比較する</div>
 </div>
 <div class="paragraph">
 <p>一方、SATA接続のSSDとPCIe接続のNVMe SSDでは、利用できる帯域が大きく違います。図の870 EVOと990 PROでは、どちらにも4TBの選択肢がありますが、公称読み出し速度は560MB/sと7,450MB/sです。容量だけから速さは決まりません。また、これらはメーカーの条件下での公称値であり、同一条件で測定した結果ではありません。</p>
@@ -2461,7 +2336,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <div class="content">
 <img src="./img/capacity_vs_speed_2.svg" alt="10TBを100MB/sで約27.8時間、550MB/sで約5.1時間、1000MB/sで約2.8時間。速度一定の仮定">
 </div>
-<div class="title">図 13. 実効速度を仮定した、10TBの転送時間の例</div>
+<div class="title">図 16. 実効速度を仮定した、10TBの転送時間の例</div>
 </div>
 <div class="paragraph">
 <p>たとえば10TBを550MB/sで転送し続けられれば約5.1時間です。同じ速度で100TBなら約50.5時間になります。ただし、読み出し元・書き込み先・接続回線のいずれかが遅ければ、全体も遅くなります。HDDの記録位置による速度差、SSDの書き込みキャッシュ、細かなファイルの処理なども影響するため、公称読み出し速度で容量を割っただけでは実際のバックアップ時間はわかりません。</p>
@@ -2478,73 +2353,75 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <p>次の表はUSBなどのコンピューターと周辺機器をつなぐための規格です。<strong>USB</strong>(Universal Serial Bus)は、コンピューターと周辺機器の間の通信をするためのケーブル、コネクタ、通信方法(プロトコル)に関する規格です。USBフラッシュメモリがあまりに普及したために、USBフラッシュメモリ(USB flash drive)のことを単に「USB」と呼ぶことがありますが、少なくとも「USBメモリ」と呼びましょう。Mac などで広くつかわれている USB Type-C はコネクタの規格です。USBと一口にいっても、通信の規格とコネクタ形状の2つの対象を指すことがあり混乱しやすいので注意してください。</p>
 </div>
 <table class="tableblock frame-ends grid-rows fit-content center">
-<caption class="title">表 12. 周辺機器との接続規格の転送速度</caption>
+<caption class="title">表 11. 周辺機器との接続規格の転送速度</caption>
 <colgroup>
+<col>
 <col>
 <col>
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-right valign-top">データ転送速度</th>
-<th class="tableblock halign-left valign-top">規格</th>
+<th class="tableblock halign-right valign-top">転送速度(規格上の最大)</th>
+<th class="tableblock halign-left valign-top">規格名</th>
+<th class="tableblock halign-left valign-top">製品での表示名(USB-IF推奨)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th class="tableblock halign-right valign-top"><p class="tableblock">480Mbps</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">USB 2.0 (High Speed)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">USB 2.0 / Hi-Speed USB</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-right valign-top"><p class="tableblock">5Gbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">USB 3.2 Gen1 (=USB 3.0) SuperSpeed (SS)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">USB 3.2 Gen1 (旧称 USB 3.0)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">USB 5Gbps</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-right valign-top"><p class="tableblock">10Gbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">USB 3.2 Gen2 (=USB 3.1) SuperSpeedPlus (SS+)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">USB 3.2 Gen2 (旧称 USB 3.1 Gen2)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">USB 10Gbps</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-right valign-top"><p class="tableblock">20Gbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">USB 3.2 Gen2×2 (=USB 3.2) SuperSpeedPlus (SS+)</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">10Gbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">USB4 Gen2×1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">USB 3.2 Gen2×2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">USB 20Gbps</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-right valign-top"><p class="tableblock">20Gbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">USB4 Gen2×2</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">20Gbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">USB4 Gen3×1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">USB4 (Gen2×2)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">USB 20Gbps</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-right valign-top"><p class="tableblock">40Gbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">USB4 Gen3×2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">USB4 (Gen3×2)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">USB 40Gbps</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-right valign-top"><p class="tableblock">80Gbps</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">USB4 Version 2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">USB 80Gbps</p></td>
 </tr>
 <tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">22Gbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Thunderbolt 3 (映像用帯域とあわせて40Gbps)</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">32Gbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Thunderbolt 4 (映像用帯域とあわせて40Gbps)</p></td>
+<th class="tableblock halign-right valign-top"><p class="tableblock">40Gbps</p></th>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Thunderbolt 3 / Thunderbolt 4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Intelの規格)</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-right valign-top"><p class="tableblock">80Gbps</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Thunderbolt 5 (映像用帯域とあわせて120Gbps)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Thunderbolt 5(映像出力が多いときは片方向120Gbps)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Intelの規格)</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
+<p>規格名は改訂のたびに変わってきたため、USBの規格を管理する団体USB-IFは、製品のパッケージなどには「USB 10Gbps」のような速度を示す名前を使うよう勧めています。</p>
+</div>
+<div class="paragraph">
 <p>USBは見た目が同じでも規格の異なるケーブルがありますし、コネクタも度々変わるのでとても混乱します。また、同じ形状のコネクタを持つケーブルでも特性が異なりますので、購入するときは対応しているUSBの規格を確認する必要があります。</p>
 </div>
 <table class="tableblock frame-ends grid-rows fit-content center">
-<caption class="title">表 13. USBのコネクタ形状と規格</caption>
+<caption class="title">表 12. USBのコネクタ形状と規格</caption>
 <colgroup>
 <col>
 <col>
@@ -2600,10 +2477,10 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <p>USB 3.2 Gen1/Gen2/Gen2×2</p>
 </li>
 <li>
-<p>USB4 Gen2×1/Gen2×2/Gen3×1/Gen3×2/Version 2.0</p>
+<p>USB4 (20Gbps / 40Gbps)、USB4 Version 2.0 (80Gbps)</p>
 </li>
 <li>
-<p>Thunderbolt 3/4/5: ケーブルの端子には認証ロゴ <span class="image"><img src="./img/thunderbolt-logo.png" alt="thunderbolt logo" width="10"></span> と3, 4, 5などの対応する数字が書いてあるものを推奨(高性能なThunderbolt 4ケーブルは1mのケーブルで約3千円以上と高価)</p>
+<p>Thunderbolt 3/4/5: ケーブルの端子には認証ロゴ <span class="image"><img src="./img/thunderbolt-logo.png" alt="thunderbolt logo" width="10"></span> と3, 4, 5などの対応する数字が書いてあるものを推奨(一般のUSBケーブルより高価)</p>
 </li>
 </ul>
 </div></div></td>
@@ -2611,7 +2488,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 </tbody>
 </table>
 <div class="paragraph">
-<p>USBにはコネクタ形状と通信の規格の他に、電源規格もあります。対応する機器および充電器間のネゴシエーションによって、給電される電力が決まります。ケーブルだけでなく充電器や電源アダプターがもつ給電能力と、接続機器の消費電力を計算してから使うようにしてください。夜にスマートフォンに接続した場合などに、急速充電による発熱を抑えてバッテリー寿命を上げるために、あえて急速充電をしないモードになる仕組みもあります。</p>
+<p>USBにはコネクタ形状と通信の規格の他に、電源規格もあります。対応する機器および充電器間のネゴシエーション(交渉)によって、給電される電力が決まります。ケーブルだけでなく充電器や電源アダプターがもつ給電能力と、接続機器の消費電力を計算してから使うようにしてください。夜にスマートフォンに接続した場合などに、急速充電による発熱を抑えてバッテリー寿命を上げるために、あえて急速充電をしないモードになる仕組みもあります。</p>
 </div>
 </div>
 </div>
@@ -2664,30 +2541,36 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>機器の接続</strong>: デバイスが接続されると、最初は標準の5V/0.5Aで給電が始まります</p>
+<p><strong>機器の接続</strong>: デバイスが接続されると、まず安全な5Vで給電が始まります</p>
 </li>
 <li>
-<p><strong>能力の交換</strong>: 電源アダプターは対応可能な電圧・電流のプロファイルを機器に通知します</p>
+<p><strong>能力の通知</strong>: 電源アダプターは、供給できる電圧・電流の組み合わせの一覧を機器に通知します</p>
 </li>
 <li>
-<p><strong>要求</strong>: 接続機器は必要な電圧・電流を要求します</p>
+<p><strong>要求</strong>: 接続機器は、一覧の中から必要な電圧・電流を要求します</p>
 </li>
 <li>
-<p><strong>合意</strong>: 双方が合意した電圧・電流で給電が行われます</p>
+<p><strong>受諾と切り替え</strong>: 電源アダプターは要求を受け入れ、電圧を切り替えてから準備完了を知らせます</p>
 </li>
 <li>
-<p><strong>継続監視</strong>: 接続中は継続的に状態を監視し、必要に応じて再調整します</p>
+<p><strong>給電</strong>: 合意した電圧・電流で給電が行われます。状況が変われば、交渉をやり直します</p>
 </li>
 </ol>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/usb-pd-negotiation.svg" alt="充電器はまず5Vで給電し、ケーブルのE-Markerに対応電流を問い合わせ、5V・9V・15V・20Vなどの組み合わせの一覧を送る。ノートPCが20V・3.25Aを要求し、充電器が受諾して電圧を切り替え、準備完了を知らせてから20Vで給電する">
+</div>
+<div class="title">図 17. USB PDの電力ネゴシエーションの流れ(ノートPCが65Wを受け取る例)</div>
+</div>
 <div class="paragraph">
-<p>このネゴシエーションは専用のPDコントローラーチップによって制御され、通常は数ミリ秒で完了します。例えば、ノートPCは起動時に高電力(65W〜100W)を要求し、バッテリー充電後は自動的に低電力モードに切り替わることがあります。</p>
+<p>このネゴシエーションは充電器と機器の中の専用のPDコントローラーチップが行い、通常は1秒もかからずに終わります。例えば、ノートPCは充電が必要なときには高電力(65W〜100W)を要求し、バッテリーが満充電に近づくと、より少ない電力に切り替えることがあります。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_ケーブルの判定方法"><a class="link" href="#_ケーブルの判定方法">3.3. ケーブルの判定方法</a></h3>
 <div class="paragraph">
-<p>USB PDでは、高電力を安全に供給するためにケーブルの性能も重要な要素となります。特に3Aを超える電流（最大5A）や、EPRによる20Vを超える電圧を扱うケーブルには、「E-Marker」(電子マーカー)と呼ばれる小型チップが内蔵されています。</p>
+<p>USB PDでは、高電力を安全に供給するためにケーブルの性能も重要な要素となります。特に3Aを超える電流（最大5A）や、EPR(Extended Power Range: 20Vを超える28V・36V・48Vを使う拡張)の電圧を扱うケーブルには、「E-Marker」(電子マーカー)と呼ばれる小型チップが内蔵されています。</p>
 </div>
 <div class="paragraph">
 <p><strong>E-Markerの役割</strong>:</p>
@@ -2708,7 +2591,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <p>データ転送速度の対応（USB 2.0、USB 3.2 Gen1/Gen2など）</p>
 </li>
 <li>
-<p>ケーブルの長さと品質に関する情報</p>
+<p>対応する最大電圧や、信号の遅れ(ケーブルの長さの目安)などの情報</p>
 </li>
 </ul>
 </div>
@@ -2749,7 +2632,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 </table>
 </div>
 <table class="tableblock frame-ends grid-rows fit-content center">
-<caption class="title">表 14. USBの電源規格</caption>
+<caption class="title">表 13. USBの電源規格</caption>
 <colgroup>
 <col>
 <col>
@@ -2779,15 +2662,14 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <td class="tableblock halign-left valign-top"><p class="tableblock">7.5W(1.5A,5V)</p></td>
 </tr>
 <tr>
-<th class="tableblock halign-left valign-top"><p class="tableblock">USB CC (Type-C Current) 1.2</p></th>
+<th class="tableblock halign-left valign-top"><p class="tableblock">USB Type-C の電流の取り決め(Type-C Current)</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Type-C</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>15W(3A,5V)</strong></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">USB PD(Power Delivery) 3.0</p></th>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Type-C</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">USB4のケーブルは最大60W(3A, 5-20V) or 最大100W(5A, 5-20V)<br>
-  (Thunderbolt 4のケーブルは最大100W(5A, 5-20V)対応)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">最大100W(5A, 20V)。3Aまでのケーブルでは最大60W(3A, 20V)</p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">USB PD(Power Delivery) 3.1</p></th>
@@ -2832,7 +2714,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <p>USB PD対応機器を安全に使用するためには、以下の点に注意してください。</p>
 </div>
 <table class="tableblock frame-ends grid-rows fit-content center">
-<caption class="title">表 15. USB PD電源アダプターでの注意点</caption>
+<caption class="title">表 14. USB PD電源アダプターでの注意点</caption>
 <colgroup>
 <col>
 <col>
@@ -2852,7 +2734,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">マルチポートアダプター</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">合計電力はアダプターの定格を超えません。詳しい挙動は<a href="#sec-multiport">Section 3.8</a>を参照してください。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">合計電力はアダプターの定格を超えません。詳しい挙動は「<a href="#sec-multiport">マルチポート充電器の電力分配の詳しい挙動</a>」を参照してください。</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">互換性の問題</p></td>
@@ -2863,8 +2745,8 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <td class="tableblock halign-left valign-top"><p class="tableblock">非認証品や破損したケーブル・アダプターを使用すると、過熱や電気的障害を引き起こす可能性があります。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">急速充電の制限</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">同時に複数のデバイスを急速充電することはできません。電力は各ポートに分配されます。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">同時充電での出力低下</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">複数の機器をつなぐと、定格の電力を分け合うため、各ポートの最大出力は下がります。</p></td>
 </tr>
 </tbody>
 </table>
@@ -2911,7 +2793,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <p><strong>誤解 1: 100円ショップのケーブルは充電専用とは限らない</strong></p>
 </div>
 <div class="paragraph">
-<p>ダイソーやセリアなどで販売されている 110円〜330円のUSBケーブルのほとんどは、商品名に「充電・転送ケーブル」「充電通信ケーブル」と書かれているとおり、USB 2.0規格の最大480Mbps でデータ通信にも対応しています。330円のUSB 3.0対応 Type-C to Type-Cケーブル(最大5Gbps)も販売されており、これは普通にデータ転送できるケーブルです。</p>
+<p>ダイソーやセリアなどで販売されている 110円〜330円のUSBケーブルの多くは、商品名に「充電・転送ケーブル」「充電通信ケーブル」と書かれているとおり、USB 2.0規格の最大480Mbps でデータ通信にも対応しています。330円のUSB 3.0対応 Type-C to Type-Cケーブル(最大5Gbps)も販売されており、これは普通にデータ転送できるケーブルです。</p>
 </div>
 <div class="paragraph">
 <p>本来の「充電専用ケーブル」は、データ線(D+/D-)が物理的に配線されておらず、電源線のみが繋がっている製品です。これは別商品として存在しますが、100円ショップで常に見つかるとは限らず、パッケージに「充電専用」「データ通信不可」と明記されているかを確認する必要があります。<strong>見分けずに「安物なら通信しないだろう」と思い込むと、データ保護の意図は達成できません</strong>。</p>
@@ -2931,7 +2813,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <p><strong>Stuxnet</strong>(2010年発覚): インターネットから物理的に切り離された(エアギャップ)イランのウラン濃縮施設に、USBメモリ経由で侵入し、約1,000台の遠心分離機を破壊した。</p>
 </li>
 <li>
-<p><strong>Agent.btz</strong>(2008年): 中東の米軍基地でUSBメモリを挿したことを起点に米中央軍のネットワークへ拡散し、機密系を含む約30万台に感染したとされる。米国防総省はこの事件を受けて一時期USBメモリの使用を全面禁止した。</p>
+<p><strong>Agent.btz</strong>(2008年): 中東の米軍基地でノートPCにUSBメモリを挿したことを起点に、米中央軍の機密系を含むネットワークへ拡散した。米国防総省はこの事件を受けて一時期USBメモリの使用を禁止した。</p>
 </li>
 <li>
 <p><strong>FIN7によるBadUSB郵送</strong>(2021〜2022年): 攻撃者がAmazonや米保健福祉省を装った小包で細工済みUSBデバイスを企業に郵送。挿すとUSBキーボードとして振る舞い、キー入力を自動で送り込んでランサムウェア(BlackMatter、REvil)を導入した。FBIが2022年に注意喚起している。</p>
@@ -2964,7 +2846,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <p><strong>「報告がない」は「起きていない」の証明ではありません。</strong> 標的を絞って行われた攻撃は被害者本人が気づかないことが多く、気づいたとしても公表されるとは限りません。公開情報の欠如は、リスクの不在ではなく「確認されていない」という状態を示すにすぎません。</p>
 </div>
 <div class="paragraph">
-<p><strong>許可ダイアログは絶対の防壁でもありません。</strong> 2025年、オーストリアのグラーツ工科大学の研究チームは USENIX Security で <strong>ChoiceJacking</strong> という手法を発表しました。悪意ある充電器がUSBキーボードとしても振る舞い、許可ダイアログが表示された瞬間に自分で「許可」を押してしまう、というものです。所要時間は約133ミリ秒で、利用者は画面に触れていません。評価したAndroid端末10機種のうち9機種と、iPhoneでも成立しました。Appleはこれを受けてiOS 18.4で、USBデータ通信を許可する際にPINや生体認証によるロック解除を要求するよう変更しています(Androidも15以降で同様の強化とロックダウンモードを提供)。逆にいえば、<strong>OSを更新していない端末ではダイアログによる防御は当てにできません</strong>。</p>
+<p><strong>許可ダイアログは絶対の防壁でもありません。</strong> 2025年、オーストリアのグラーツ工科大学の研究チームは USENIX Security で <strong>ChoiceJacking</strong> という手法を発表しました。悪意ある充電器がキーボードなどの入力装置としても振る舞い、許可ダイアログが表示された瞬間に自分で「許可」を押してしまう、というものです。利用者は画面に触れていません。研究チームは8社の端末を評価し、AndroidでもiPhoneでも、すべての端末でファイルへのアクセスを許してしまうことを示しました。報告を受けて多くのメーカーが対策を進め、たとえばAppleはiOS 18.4で、USBのデータ通信を許可する際にパスコードの入力を求めるよう変更しました。逆にいえば、<strong>OSを更新していない端末ではダイアログによる防御は当てにできません</strong>。</p>
 </div>
 <div class="paragraph">
 <p><strong>本質的な対策は「ケーブルを安物にすること」ではありません。</strong> OSを最新に保つこと、見知らぬ充電ポートで「信頼する」「許可する」を安易に押さないこと、そして可能なら公共USBポートではなくコンセントと自前のACアダプター、あるいはモバイルバッテリーを使うことです。</p>
@@ -2978,7 +2860,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <div class="ulist">
 <ul>
 <li>
-<p>USBケーブルに本来使われるべきではない<strong>銅メッキ鉄線</strong>(導電率が銅の約15%しかない)が使われており、ACアダプターに挿したまま放置していたケーブルが異常発熱し、床面を焼損した火災事例(東大阪市消防局, 2019年頃)。</p>
+<p>インターネット通販で購入した輸入品のUSBケーブルに、本来使われるべきではない<strong>銅メッキ鉄線</strong>(導電率が銅の約15%しかない)が使われており、ACアダプターに挿したまま機器を接続していなかったケーブルが発熱し、床面を焼損した火災事例(東大阪市消防局, 2022年公表)。</p>
 </li>
 <li>
 <p>コネクター内部のピンが変形してショートし、電源に挿したまま放置していたケーブルと周辺が焼損した事例(NITE)。</p>
@@ -2995,7 +2877,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <p><strong>危険 2: 仕様を偽るUSB PDケーブルの存在</strong></p>
 </div>
 <div class="paragraph">
-<p>近年のUSB PDケーブル(E-Marker内蔵)では、パッケージ表記と実際の仕様が一致しない製品も指摘されています。たとえば2024年の調査報告では、ダイソーで販売されていた 330円のUSB 3.0ケーブルに、パッケージには「最大100W(20V/5A)」と記載されていながらE-Markerが「最大50V/5A=250W相当」を報告する個体があることが判明しました。対応する高電力アダプター(USB PD EPR対応機器)と組み合わせると、ケーブルの設計想定を超える電力が流れる可能性があり、発熱・発火のリスクがあります。</p>
+<p>近年のUSB PDケーブル(E-Marker内蔵)では、パッケージ表記と実際の仕様が一致しない製品も指摘されています。たとえば2024年には、ダイソーで販売されていた330円のUSB 3.0ケーブルについて、パッケージには「最大100W」と記載されていながら、E-Markerが「50V・5A」(240WのEPRに対応するケーブルの値)を報告する個体があるという検証結果が個人のブログで報告されました。対応する高電力アダプター(USB PD EPR対応機器)と組み合わせると、ケーブルの設計想定を超える電力が流れる可能性があり、発熱・発火のリスクがあります。</p>
 </div>
 <div class="paragraph">
 <p><strong>日本の法規制: PSEマーク</strong></p>
@@ -3078,7 +2960,7 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <p>2024年12月28日より、EU域内で販売される小型・中型電子機器（スマートフォン、タブレット、デジタルカメラ、ヘッドホン、ポータブルスピーカーなど）は充電ポートとしてUSB Type-Cの採用が義務付けられました。</p>
 </li>
 <li>
-<p>2026年4月28日からはノートパソコンもこの要件の対象となります。</p>
+<p>2026年4月28日からは、ノートパソコンもこの要件の対象になりました。</p>
 </li>
 <li>
 <p>この規制をうけて、Apple社も長年使用してきた独自の「Lightning」コネクタを廃止し、iPhone 15シリーズ（2023年）以降でUSB Type-Cを採用しています。</p>
@@ -3088,77 +2970,73 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <div class="paragraph">
 <p>国際的な標準化の動きは、消費者にとっては利便性向上と無駄なケーブルの削減につながりますが、技術革新の制限につながる可能性もあるという議論もあります。</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">問題4</div>
-<div class="paragraph">
-<p>東京の自宅のSSD(SATA3.0)に入った5TBのファイルを札幌の知人に送りたいとき、次のどちらの方法をとるのがよいでしょう。各々、かかる時間を見積もって比較してください。</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_練習問題"><a class="link" href="#_練習問題">4. 練習問題</a></h2>
+<div class="sectionbody">
 <div class="exampleblock">
+<div class="title">問題1: ムーアの法則の計算</div>
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>データ転送速度が平均100Mbpsの回線を使って、自宅のパソコンからインターネット経由で札幌の知人にダウンロードしてもらう。</p>
-</li>
-<li>
-<p>自宅にあるHDD(SATA3.0)に、いったんデータをコピーして郵送で送る。</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>トランジスタの数が2年で2倍になるペースが50年間続いたとする。</p>
+</div>
+<div class="paragraph">
+<p>(1) 50年間で何倍になるか。2<sup>10</sup> ≈ 1000 を使って概算せよ。<br>
+(2) 1971年のIntel 4004のトランジスタ数2300個から出発すると、50年後にはおよそ何個になるか。<a href="#fig-moore">図 5</a>の2020年代のチップと比べよ。</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sidebarblock">
+<details>
+<summary class="title">解答</summary>
 <div class="content">
-<div class="title">問題5</div>
 <div class="paragraph">
-<p>(1)  1101<sub>(2)</sub> を10進法に変換せよ<br>
-(2)  1101<sub>(2)</sub> を16進法に変換せよ<br>
-(3)  101011<sub>(2)</sub> を16進法に変換せよ<br>
-(4)  1110010<sub>(2)</sub> を16進法に変換せよ<br>
-(5)  25<sub>(10)</sub> を2進法に変換せよ<br>
-(6)  25<sub>(10)</sub> を16進法に変換せよ<br>
-(7)  3C<sub>(16)</sub> を2進法に変換せよ<br>
-(8)  3C<sub>(16)</sub> を10進法に変換せよ<br>
-(9)  0.A<sub>(16)</sub> を10進法に変換せよ<br>
-(10) 13.625<sub>(10)</sub> を2進法に変換せよ<br>
-(11) 13.625<sub>(10)</sub> を16進法に変換せよ<br>
-(12) 2F.A<sub>(16)</sub> を2進法に変換せよ<br>
-(13) 1110.101<sub>(2)</sub> を16進法に変換せよ<br></p>
+<p>(1) 50年は2年の25回分なので 2<sup>25</sup> 倍です。2<sup>25</sup> = 2<sup>5</sup> × 2<sup>20</sup> = 32 × (2<sup>10</sup>)<sup>2</sup> ≈ 32 × 1000<sup>2</sup> = 3.2×10<sup>7</sup> より、<strong>約3200万倍</strong>(正確には 2<sup>25</sup> = 33,554,432 倍)。「50年で25倍」や「50倍」とするのは、倍々の増え方(指数的な増加)を足し算と取り違えた誤りです。</p>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_課題"><a class="link" href="#_課題">4. 課題</a></h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>本文中の問題1〜5に取り組んでください。問題1〜5の解答例は章末にあります。</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_問題の解答"><a class="link" href="#_問題の解答">5. 問題の解答</a></h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>まず自分で解いてから読むことをすすめます。</p>
+<p>(2) 2300 × 3.36×10<sup>7</sup> ≈ 7.7×10<sup>10</sup> より、<strong>約770億個</strong>。<a href="#fig-moore">図 5</a>の2020年代のチップは、Apple M1 Ultra(2022年)が1140億個、NVIDIA B200(2024年)が2080億個で、同じ桁(数百億〜千億個台)に達しています。50年にわたって「2年で2倍」がおおむね続いたことがわかります。</p>
 </div>
-<div class="sidebarblock">
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題2: 単位の換算</div>
 <div class="content">
-<div class="title">問題1</div>
 <div class="paragraph">
-<p>2進接頭辞と10進接頭辞によるファイルサイズの差を計算して(2)〜(5)に数値を記入してください。各接頭辞の単位で小数点以下の値がある場合には、四捨五入して整数のみとすること。<br>
-(例: 23.6KB は 24KB と回答すること。)</p>
+<p>次の値を求めよ。接頭辞は10進接頭辞とする(ただし(2)を除く)。</p>
 </div>
-<table class="tableblock frame-ends grid-rows fit-content center">
+<div class="paragraph">
+<p>(1) 3.5MB は何kBか。また何ビットか。<br>
+(2) 1GiB は何バイトか。それは約何GBか(小数第3位まで)。<br>
+(3) 100Mbpsの回線で1秒間に送れるデータは最大何MBか。<br>
+(4) 1TB は何GBか。何MBか。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) 3.5MB = 3.5 × 1000kB = <strong>3500kB</strong>。ビットでは 3.5×10<sup>6</sup> B × 8 b/B = <strong>2.8×10<sup>7</sup> b</strong>(2800万ビット、28Mb)。</p>
+</div>
+<div class="paragraph">
+<p>(2) 1GiB = 2<sup>30</sup> B = <strong>1,073,741,824 B</strong> ≈ <strong>1.074GB</strong>。</p>
+</div>
+<div class="paragraph">
+<p>(3) 100Mbps = 100×10<sup>6</sup> b/s です。1バイトは8ビットなので 100×10<sup>6</sup> ÷ 8 = 12.5×10<sup>6</sup> B/s、つまり <strong>12.5MB</strong>。bps(ビット)とB/s(バイト)を取り違えて「100MB」とする誤りに注意しましょう。</p>
+</div>
+<div class="paragraph">
+<p>(4) <strong>1000GB = 1,000,000MB</strong>(10<sup>6</sup> MB)。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題3: 2進接頭辞と10進接頭辞の差</div>
+<div class="content">
+<div class="paragraph">
+<p>(1) 次の表の(2)〜(5)の差を計算せよ。各接頭辞の単位で小数点以下の値がある場合には、四捨五入して整数で答えること(例: 23.6KB は 24KB と答える)。</p>
+</div>
+<table class="tableblock frame-ends grid-rows fit-content">
 <colgroup>
 <col>
 <col>
@@ -3168,175 +3046,204 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock">(1)</p></td>
 <td class="tableblock halign-right valign-top"><p class="tableblock">1KiB − 1kB =</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(　　24B　)<br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(　　24B　)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock">(2)</p></td>
 <td class="tableblock halign-right valign-top"><p class="tableblock">1MiB − 1MB =</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(　　49kB　)<br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(　　　kB　)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock">(3)</p></td>
 <td class="tableblock halign-right valign-top"><p class="tableblock">1GiB − 1GB =</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(　　74MB　)<br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(　　　MB　)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock">(4)</p></td>
 <td class="tableblock halign-right valign-top"><p class="tableblock">1TiB − 1TB =</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(　100GB　)<br></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(　　　GB　)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-right valign-top"><p class="tableblock">(5)</p></td>
 <td class="tableblock halign-right valign-top"><p class="tableblock">1PiB − 1PB =</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">(　126TB　)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(　　　TB　)</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
 <div class="paragraph">
-<p>この問題は、容量が大きくなるほど2進接頭辞による量と10進接頭辞による量の差が広がってゆくことを確認するのが目的です。1KiB と 1kB では、2.4%（24B）の差であったものが、<strong>1TiBと1TBでは約10%（約100GB）もの差が生じています</strong>。</p>
+<p>(2) 容量1TBのSSDを買って、Windowsのエクスプローラーで容量を表示すると、およそ何GBと表示されるか。<br>
+(3) Windowsのエクスプローラーで「250GB」と表示されたフォルダーがある。これを容量256GBのUSBメモリにコピーできるか。理由とともに答えよ。</p>
 </div>
-<div class="sidebarblock">
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
 <div class="content">
-<div class="title">問題2</div>
 <div class="paragraph">
-<p>Microsoft Windowsの入ったパソコンのフォルダ内にサイズが480GBのファイルがあったので、500GBのハードディスク装置を買ってきてコピーしたところ、容量不足でコピーできなかった。</p>
+<p>(1) 2<sup>10k</sup> − 10<sup>3k</sup> を計算し、1段下の接頭辞の単位に直します。</p>
+</div>
+<table class="tableblock frame-ends grid-rows fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">(1)</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1KiB − 1kB =</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>24B</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1024 − 1000 = 24</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">(2)</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1MiB − 1MB =</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>49kB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1,048,576 − 1,000,000 = 48,576B ≈ 48.6kB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">(3)</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1GiB − 1GB =</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>74MB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1,073,741,824 − 10<sup>9</sup> = 73,741,824B ≈ 73.7MB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">(4)</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1TiB − 1TB =</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>100GB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">99,511,627,776B ≈ 99.5GB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">(5)</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">1PiB − 1PB =</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><strong>126TB</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">125,899,906,842,624B ≈ 125.9TB</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>1KiBと1kBでは2.4%(24B)の差であったものが、<strong>1TiBと1TBでは約10%(約100GB)もの差</strong>になります。</p>
 </div>
 <div class="paragraph">
-<p>調べてみると、Windowsのファイルサイズ表示について次のことがわかった。</p>
+<p>(2) 10<sup>12</sup> B ÷ 2<sup>30</sup> ≈ 931.3 なので、<strong>約931GB</strong>と表示されます。故障や不良品ではなく、単位の違いによるものです。</p>
 </div>
+<div class="paragraph">
+<p>(3) <strong>コピーできません</strong>。エクスプローラーの250GBは250GiBのことなので、10進接頭辞では 250 × 2<sup>30</sup> B ≈ 268.4GB です。256GBのUSBメモリより約12GB大きいので入りません。同じことを、USBメモリの容量をWindowsの表示に直して 256×10<sup>9</sup> ÷ 2<sup>30</sup> ≈ 238GB と比べて確かめることもできます。</p>
+</div>
+</div>
+</details>
 <div class="exampleblock">
+<div class="title">問題4: 画像のデータ量</div>
 <div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Windows でファイルを閲覧するツール「エクスプローラー」ではファイルの大きさを2進接頭辞で表す。しかし、表記は慣習に従い（JEDECメモリ標準での許容表記）K, M, G, T を用いる（Kは大文字）。(本来は、Ki, Mi, Gi, Ti としなくては混乱する。)</p>
-</li>
-<li>
-<p>一方で、市販されているハードディスク装置(HDD)やSSDの容量表示は、10進接頭辞で表示されている。</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
 <div class="paragraph">
-<p>つまり、Windowsでサイズが 480GB と表示されているファイルサイズは、曖昧さのないように2進接頭辞を用いると 480GiB であることがわかった。</p>
-</div>
-<div class="paragraph">
-<p>このことから、購入したハードディスク装置が容量不足になった理由を、実際にどの程度容量が足らなかったのかを計算して説明せよ。</p>
-</div>
+<p>(1) 1920×1080画素で、各画素を赤・緑・青それぞれ8ビットで表す画像1枚の非圧縮のデータ量を求めよ。<br>
+(2) 4032×3024画素の写真がJPEGで保存されていて、ファイルの大きさは2.4MBだった。圧縮比を求めよ。<br>
+(3) (2)の写真を、128GBの記憶領域に何枚保存できるか。記憶領域はすべて写真に使えるものとする。</p>
 </div>
 </div>
-<div class="paragraph">
-<p>Windowsで480GBと表示されているファイルのサイズは、480GiBであることから、</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>480GiB = 480 × 2<sup>30</sup> ≈ 515.4GB</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>つまり、500GBのHDDでは、約15GB容量が足らないことがわかる。</p>
-</div>
-<div class="sidebarblock">
+<details>
+<summary class="title">解答</summary>
 <div class="content">
-<div class="title">問題3</div>
 <div class="paragraph">
-<p>自分で傾向の異なる写真を2枚撮影してください(変化に富んだ被写体と、単調な被写体など)。
-それぞれの写真の圧縮比を計算してください。また、写真の特徴と圧縮比の関係について考察してください。</p>
-</div>
-</div>
+<p>(1) 1画素は 8×3 = 24ビット = 3バイトなので、1920 × 1080 × 3B = 6,220,800B ≈ <strong>6.2MB</strong>。</p>
 </div>
 <div class="paragraph">
-<p>圧縮比の概算には大きな影響はありませんが、写真のサイズ表示が2進接頭辞か10進接頭辞かも確認して、計算するようにしてください。JPEGの圧縮比は画像や設定によって大きく異なります。</p>
+<p>(2) 非圧縮では 4032 × 3024 × 3B = 36,578,304B ≈ 36.6MB。圧縮比 = 36.6MB ÷ 2.4MB ≈ <strong>15</strong>(約15分の1に圧縮)。単位を揃えて(どちらもMB)割ることが大切です。</p>
 </div>
 <div class="paragraph">
-<p>JPEG形式では原理的に色や輝度を256階調(8ビット)で記憶します。最近のカメラは4096から65536階調でまず写真をデータ化しています。その後に、JPEGの制約によって256まで階調を減らしています。</p>
+<p>(3) 128GB ÷ 2.4MB = 128×10<sup>9</sup> ÷ 2.4×10<sup>6</sup> ≈ 53,333 なので、<strong>約5万3千枚</strong>。非圧縮(36.6MB)なら約3500枚しか入らないので、圧縮の効果の大きさがわかります。</p>
 </div>
-<div class="paragraph">
-<p>圧縮比はJPEGの場合、おおよそ数倍から数十倍の範囲になります。</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">問題4</div>
-<div class="paragraph">
-<p>東京の自宅のSSD(SATA3.0)に入った5TBのファイルを札幌の知人に送りたいとき、次のどちらの方法をとるのがよいでしょう。各々、かかる時間を見積もって比較してください。</p>
-</div>
+</details>
 <div class="exampleblock">
+<div class="title">問題5: 音声のデータ量</div>
 <div class="content">
+<div class="paragraph">
+<p>(1) CDと同じ形式(44.1kHz、16ビット、ステレオ)で、4分間の曲を記録したときのデータ量を求めよ。<br>
+(2) 同じ曲をAAC 256kbpsで記録したときのデータ量を求めよ。(1)の何分の1か。<br>
+(3) 256kbpsの音楽を1GB分保存すると、何時間分になるか。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) 1秒あたり 44100 × 16 × 2 = 1,411,200 b。4分は240秒なので 1,411,200 × 240 ÷ 8 = 42,336,000B ≈ <strong>42.3MB</strong>。</p>
+</div>
+<div class="paragraph">
+<p>(2) 256,000 b/s × 240 s ÷ 8 = 7,680,000B = <strong>7.68MB</strong>。1411.2 ÷ 256 ≈ 5.5 なので、<strong>約5.5分の1</strong>です。</p>
+</div>
+<div class="paragraph">
+<p>(3) 1GB = 8×10<sup>9</sup> b を 256×10<sup>3</sup> b/s で割ると 31,250秒。3600で割って <strong>約8.7時間</strong>。最後に8で割る・掛けるのを忘れやすいので、単位(b と B)を書きながら計算しましょう。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題6: 動画と「ギガが減る」</div>
+<div class="content">
+<div class="paragraph">
+<p>(1) 4K(3840×2160画素)、60fpsの動画を圧縮せずに記録すると、1秒あたり何バイトになるか(音声は考えない)。<br>
+(2) 5Mbpsで配信されるフルHDの動画を1時間見ると、何GBのデータを受信するか。<br>
+(3) 1か月に使えるデータ量が20GBのスマートフォンの契約で、(2)の動画だけを見るとすると、1か月に何時間見られるか。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) 3840 × 2160 × 3B × 60 = 1,492,992,000B ≈ <strong>1.5GB/秒</strong>。10秒で15GBになり、圧縮なしでは現実的に扱えないことがわかります。</p>
+</div>
+<div class="paragraph">
+<p>(2) 5×10<sup>6</sup> b/s × 3600 s ÷ 8 = 2.25×10<sup>9</sup> B = <strong>2.25GB</strong>。</p>
+</div>
+<div class="paragraph">
+<p>(3) 20GB ÷ 2.25GB ≈ <strong>約8.9時間</strong>。スマートフォンで動画を見ると「ギガが減る」のは、この計算のように1時間で数GBを受信するためです。実際の配信では、回線の状況に応じて画質(ビットレート)が自動的に変わるので、データ量も変わります。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題7: 大量のデータを送るには</div>
+<div class="content">
+<div class="paragraph">
+<p>東京の自宅のSSD(SATA3.0)に入った5TBのファイルを札幌の知人に送りたい。次のどちらの方法をとるのがよいか。<a href="#tab-storage-speed">表 9</a>の値を使い、それぞれにかかる時間を見積もって比較せよ。</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
 <p>データ転送速度が平均100Mbpsの回線を使って、自宅のパソコンからインターネット経由で札幌の知人にダウンロードしてもらう。</p>
 </li>
 <li>
-<p>自宅にあるHDD(SATA3.0)に、いったんデータをコピーして郵送で送る。</p>
+<p>自宅にあるHDD(SATA3.0)に、いったんデータをコピーして郵送で送る。郵送には2日かかるものとする。</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
-</div>
-</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
 <div class="paragraph">
-<p>バイトとビットの単位を揃えてください。間違わないように計算過程には必ず単位を付けてください。</p>
+<p>バイトとビットの単位を揃えることが大切です。間違わないように計算過程には必ず単位を付けましょう。</p>
 </div>
-<div class="paragraph">
-<p>まずは必要なデータを本章の表から再掲します。</p>
-</div>
-<table class="tableblock frame-ends grid-rows fit-content center">
-<colgroup>
-<col>
-<col>
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-right valign-top">データ転送速度</th>
-<th class="tableblock halign-left valign-top">媒体</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">200MB/s</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">補助記憶装置: HDD (連続領域のアクセス SATA3.0)</p></td>
-</tr>
-<tr>
-<th class="tableblock halign-right valign-top"><p class="tableblock">約500–560MB/s</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">補助記憶装置: SSD (SATA3.0、シーケンシャル読み出しの製品例)</p></td>
-</tr>
-</tbody>
-</table>
 <div class="ulist">
 <ul>
 <li>
-<p>平均100Mbpsのネットワーク回線の場合 5TB / 100Mbps ≈ 4.6日</p>
+<p><strong>回線で送る場合</strong>: 5TB = 5×10<sup>12</sup> B = 4×10<sup>13</sup> b。これを 100Mbps = 10<sup>8</sup> b/s で割ると 4×10<sup>5</sup> 秒 ≈ <strong>約4.6日</strong>。</p>
 </li>
 <li>
-<p>HDD(SATA3.0)にデータをコピーする場合<br></p>
-<div class="ulist">
-<ul>
-<li>
-<p>自宅でHDDにコピーする時間は、5TB / 200MB/s  ≈  6.9時間</p>
-</li>
-<li>
-<p>郵送に2日かかるとしても高々3日で送れる</p>
-</li>
-</ul>
-</div>
+<p><strong>HDDにコピーして郵送する場合</strong>: SSDの読み出し(約500〜560MB/s)よりHDDの書き込み(約200MB/s)が遅いので、HDDがボトルネックになります。5×10<sup>12</sup> B ÷ (200×10<sup>6</sup> B/s) = 25,000秒 ≈ <strong>約6.9時間</strong>。郵送の2日を加えても<strong>約2.3日</strong>で届きます。受け取った側でHDDから自分のパソコンにコピーする場合は、さらに約7時間かかります。</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>つまり、HDDにコピーして郵送する方が若干速いということになります。実際、常時100Mbpsの速度でインターネット経由でデータを4日以上送り続けるという状況は、安定性の問題や回線専有の問題等からも現実的ではないように思います。</p>
+<p>したがって、HDDにコピーして郵送する方が速いといえます。数TBのデータを数日中に届けたい場合は、記憶装置を物理的に運ぶ方法が今でも現実的な選択肢です。記憶装置の容量は増え、値段も下がってきましたが、読み書きの速さは容量ほどには向上していないので(<a href="#fig-capacity-speed">図 15</a>)、実質的な転送時間を見積もることが大切です。</p>
 </div>
 <div class="paragraph">
-<p>5TBのデータを数日中に誰かに送る場合は、HDDなどにコピーして送るのが現在でも現実的です。外部記憶装置はどんどん安価になっていて、6TBのSATA3.0接続のHDDであれば1万円程度で入手できます。しかし、容量の増加と値下がりに比べて、読み書きの速度はそれに見合うほどは早くなっていませんので、きちんと実質的な転送時間を見積もることが重要です。</p>
-</div>
-<div class="paragraph">
-<p>また、この見積もりはあくまでも最良の場合を想定していることに注意をしてください。現実には、この見積もりの2倍以上の時間がかかることも多々あります。本章の前半で述べたとおり、インターネットでの通信では宛先や誤り訂正のためのデータが付加されます。また、インターネット回線は大勢の利用者で回線を共有していますので、他の利用者の影響を大きく受けます。よく、インターネット接続の広告にある「100Mbps(<strong>ベストエフォート</strong>)」や「100Mbps(<strong>最大速度</strong>)」といった表記は、信号が一切劣化しない回線を一人で専有するという稀な状況での理論上の最高値を示しているだけということも多く、実際にこの通りの性能がでることはほぼありません。</p>
+<p>この見積もりは最良の場合を想定しています。インターネットでは宛先などの付加情報や再送が加わり、回線を他の利用者と共有しているので、実際にはこの見積もりの2倍以上の時間がかかることもよくあります。インターネット接続の広告にある「1Gbps(<strong>ベストエフォート</strong>)」は、最大でその速さが出ることを目指すが保証はしない、という意味です。何日も続けて安定した速度で送り続けることも、実際には難しいでしょう。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3353,50 +3260,34 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 </tr>
 </table>
 </div>
+</div>
+</details>
 <div class="exampleblock">
-<div class="title">例 2. 問題5</div>
+<div class="title">問題8: 写真の特徴と圧縮比</div>
 <div class="content">
 <div class="paragraph">
-<p><strong>解答</strong><br>
-(1) 1101<sub>(2)</sub> = 1×2<sup>3</sup> + 1×2<sup>2</sup> + 0×2<sup>1</sup> + 1×2<sup>0</sup> = <strong>13</strong><br>
-(2) 1101<sub>(2)</sub>=13<sub>(10)</sub> = <strong>D<sub>(16)</sub></strong><br>
-(3) 101011<sub>(2)</sub> = 0010 1011<sub>(2)</sub> = <strong>2B<sub>(16)</sub></strong><br>
-(4) 1110010<sub>(2)</sub> = 0111 0010<sub>(2)</sub> = <strong>72<sub>(16)</sub></strong><br>
-(5) 25 を商が 0 になるまで順に 2 で割り、得られた余りを下から順に並べる（下の表参照） → <strong>11001<sub>(2)</sub></strong><br>
-(6) 25<sub>(10)</sub>=11001<sub>(2)</sub> = 0001 1001<sub>(2)</sub> = <strong>19<sub>(16)</sub></strong><br>
-(7) 3C<sub>(16)</sub> = 0011 1100<sub>(2)</sub> = <strong>00111100<sub>(2)</sub></strong><br>
-(8) 3×16 + 12 = <strong>60</strong><br>
-(9) 0.A<sub>(16)</sub> = 10 × 16<sup>-1</sup> = <strong>0.625</strong><br>
-(10) 13.625<sub>(10)</sub> を2進法に変換する<br>
-・整数部：を商が 0 になるまで順に 2 で割り、得られた余りを下から順に並べる → 1101<sub>(2)</sub><br>
-・小数部：<br>
-　0.625 × 2 = 1.25 → 1（整数部分）<br>
-　0.25 × 2 = 0.5 → 0<br>
-　0.5 × 2 = 1.0 → 1<br>
-→ 小数部 = .101<sub>(2)</sub><br>
-<strong>結果</strong>：<strong>1101.101<sub>(2)</sub></strong><br></p>
+<p>同じスマートフォンで、同じ4032×3024画素の写真を2枚撮った。雲のない青空だけを写した写真Aのファイルは0.9MB、紅葉した木々の枝や葉を細かく写した写真Bのファイルは4.5MBだった(どちらもJPEG)。</p>
 </div>
 <div class="paragraph">
-<p>(11) 13.625<sub>(10)</sub> を16進法に変換する<br>
-・整数部：13 → D<sub>(16)</sub><br>
-・小数部：(10)より13.625の小数部分の2進表記は0.101<sub>(2)</sub>であり、4桁ごとに区切るために0を補うと 0.1010<sub>(2)</sub> = A<sub>(16)</sub> となる<br>
-<strong>結果</strong>：<strong>D.A<sub>(16)</sub></strong><br></p>
+<p>(1) 写真A、Bの圧縮比をそれぞれ求めよ。<br>
+(2) 同じ画素数なのに圧縮比が大きく異なる理由を、写真の特徴と結びつけて説明せよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) 非圧縮のデータ量は 4032 × 3024 × 3B ≈ 36.6MB(問題4)。写真Aは 36.6 ÷ 0.9 ≈ <strong>約41</strong>、写真Bは 36.6 ÷ 4.5 ≈ <strong>約8.1</strong> です。</p>
 </div>
 <div class="paragraph">
-<p>(12) 2F.A<sub>(16)</sub> を2進法に変換する<br>
-・2<sub>(16)</sub> = 0010<sub>(2)</sub>、F<sub>(16)</sub> = 1111<sub>(2)</sub>、A<sub>(16)</sub> = 1010<sub>(2)</sub><br>
-→ 2F.A<sub>(16)</sub> = 00101111.1010<sub>(2)</sub> → 101111.101<sub>(2)</sub>（前後の 0 は省略可）<br>
-<strong>結果</strong>：<strong>101111.101<sub>(2)</sub></strong><br></p>
+<p>(2) 青空のように、となりあう画素の色がほとんど同じで、なめらかに変化する画像は、「この範囲はほぼ同じ色」という少ない情報で表せるので、よく圧縮できます。一方、細かい枝や葉のように、狭い範囲で色や明るさが激しく変わる画像は、その細かい変化を記録するために多くのデータが必要で、圧縮比は小さくなります。JPEGは、人間の目が気づきにくい細かい変化の情報を捨てて圧縮する方式(非可逆圧縮)なので、画像に細かい変化が多いほど、残さなければならない情報も多くなります。画質の設定(圧縮の強さ)によっても圧縮比は変わります。</p>
 </div>
 <div class="paragraph">
-<p>(13) 1110.101<sub>(2)</sub> を16進法に変換する<br>
-・2進数を4桁ごとに区切る: 1110.101 → 1110.1010（小数部に0を補う）<br>
-→ 整数部：1110<sub>(2)</sub> = E<sub>(16)</sub><br>
-→ 小数部：1010<sub>(2)</sub> = A<sub>(16)</sub><br>
-<strong>結果</strong>：<strong>E.A<sub>(16)</sub></strong></p>
+<p>自分で撮った写真でも試してみましょう。ファイルの大きさの表示が2進接頭辞か10進接頭辞か(<a href="#tab-size-notation">表 3</a>)も確認してください。最近のiPhoneなどは標準でJPEGではなくHEIFという形式で保存しますが、同じように圧縮比を計算できます。</p>
 </div>
 </div>
-</div>
+</details>
 <hr>
 <div class="paragraph">
 <p>以上です</p>
@@ -3409,6 +3300,13 @@ JPEGでは各色は8ビット（2<sup>8</sup>=256階調）で保存されます�
 Version 1.2<br>
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",

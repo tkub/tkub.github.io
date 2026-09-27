@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.26">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <meta name="author" content="久保山哲二">
 <title>コンピューターでは解けない問題</title>
 <style>
@@ -562,6 +562,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
@@ -577,6 +578,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <ul class="sectlevel2">
 <li><a href="#_停止性問題">1.1. 停止性問題</a>
 <ul class="sectlevel3">
+<li><a href="#_チューリングマシン計算のいちばん単純なモデル">チューリングマシン：計算のいちばん単純なモデル</a></li>
 <li><a href="#_プログラムを入力とすることについて">プログラムを入力とすることについて</a></li>
 <li><a href="#_任意のプログラムと入力の組み合わせについて">任意のプログラムと入力の組み合わせについて</a></li>
 </ul>
@@ -584,9 +586,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <li><a href="#_停止性の具体例">1.2. 停止性の具体例</a></li>
 <li><a href="#_定理_停止性問題は計算不可能">1.3. 【定理】 停止性問題は計算不可能</a>
 <ul class="sectlevel3">
-<li><a href="#_証明の戦略">証明の戦略</a></li>
-<li><a href="#_証明">証明</a></li>
-<li><a href="#_矛盾の導出">矛盾の導出</a></li>
+<li><a href="#_証明の戦略背理法">証明の戦略：背理法</a></li>
+<li><a href="#_証明段階12仮定と構成">証明（段階1・2：仮定と構成）</a></li>
+<li><a href="#_矛盾の導出段階34自己適用と矛盾">矛盾の導出（段階3・4：自己適用と矛盾）</a></li>
 <li><a href="#_結論">結論</a></li>
 <li><a href="#_注意">注意</a></li>
 </ul>
@@ -612,7 +614,6 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </li>
 <li><a href="#_まとめ">3. まとめ</a></li>
 <li><a href="#_練習問題">4. 練習問題</a></li>
-<li><a href="#_練習問題の解答">5. 練習問題の解答</a></li>
 </ul>
 </div>
 </div>
@@ -626,7 +627,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>前章では、計算時間を考えました。そこでの大前提は、与えられた問題がコンピューターで計算できるということでした。計算できるのだけど、どのくらい時間がかかるのかを問題にしていた訳です。しかし、与えられた問題は、そもそもコンピューターで計算できるのでしょうか？</p>
 </div>
 <div class="paragraph">
-<p>この根本的な問題に取り組んだのが、イギリスの数学者<strong>アラン・チューリング</strong>です。チューリングは1936年の論文で、後に<strong>「停止性問題」</strong>と呼ばれることになる問題を扱い、それを判定するアルゴリズムが存在しないことを証明しました。</p>
+<p>この根本的な問題に取り組んだのが、イギリスの数学者<strong>アラン・チューリング</strong>です。チューリングは1936年の論文で、今日<strong>「停止性問題」</strong>と呼ばれる問題と本質的に同じ問題を扱い、それを判定するアルゴリズムが存在しないことを証明しました（呼び名の由来は、この節の後半のコラムを参照してください）。</p>
 </div>
 <div class="paragraph">
 <p>ここで、アルゴリズムまたは、それを実装した<strong>プログラムが存在する</strong>といったときには、以下の仮定を置くことにします。</p>
@@ -642,7 +643,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </ul>
 </div>
 <div class="paragraph">
-<p>（本来は厳密な計算モデルを定義するのですが、詳細な定義をすることなく前章で紹介したRAMモデルを仮定します。）</p>
+<p>（本来は厳密な計算モデルを定義するのですが、詳細な定義をすることなく前章で紹介したRAMモデルを仮定します。RAMモデルで計算できることは、この後で紹介するチューリングマシンでも計算でき、その逆も成り立ちます。かかる時間は違っても「計算できるかどうか」の結論は変わらないので、この章ではどちらのモデルで考えても同じです。）</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -685,10 +686,14 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 \end{cases}\]
 </div>
 </div>
+<div class="paragraph">
+<p>この関数を計算するプログラム（以下、停止判定プログラム Halt とよびます）を図にすると、次のようになります。問題は、このようなプログラムが本当に作れるかどうかです。</p>
+</div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/halt.svg" alt="halt">
+<img src="./img/halt-decider.svg" alt="停止判定プログラムHaltの入出力">
 </div>
+<div class="title">図 1. 停止判定プログラム Halt の入出力</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -701,11 +706,48 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>【「停止性問題」という名前の由来】</strong></p>
 </div>
 <div class="paragraph">
-<p>チューリングの1936年の論文には、実は「停止（halt）」という言葉は一度も出てきません。彼が論じたのは、機械が特定の記号をいつか印字するか、無限に計算を続けるか、といった形の問題でした。これを「プログラムは停止するか」という今日の形に整理し、halting problem（停止性問題）と名づけたのは、20年ほどあとのアメリカの数学者マーティン・デイヴィスです（1952年ごろからイリノイ大学の講義で使いはじめ、1958年の著書 <strong>Computability and Unsolvability</strong> で広く知られるようになりました）。証明のアイデアそのものはチューリングにさかのぼりますが、私たちが教わる呼び名と自己言及的な証明の形は、後の世代が整えたものなのです。</p>
+<p>チューリングの1936年の論文には、「停止性問題（halting problem）」という言い方は出てきません。彼が論じたのは、機械が数字を限りなく印字し続けられるか、特定の記号をいつか印字するか、といった形の問題でした。「機械はいつか止まるか」という今日の形に近い述べ方は、クリーネの1952年の教科書に見られます。halting problem（停止性問題）という名前は、アメリカの数学者マーティン・デイヴィスが1952年ごろの講義で使いはじめ、1958年の著書 <strong>Computability and Unsolvability</strong> で広く知られるようになったとされています。証明の中心にある、機械を自分自身の記述に適用するアイデアはチューリングの論文にすでにありますが、私たちが教わる問題の形と呼び名は、後の世代が整えたものなのです。</p>
+</div>
+<div class="paragraph">
+<p>出典：<a href="https://doi.org/10.1016/j.jlamp.2021.100687">S. Lucas, The origins of the halting problem（2021年）</a></p>
 </div>
 </td>
 </tr>
 </table>
+</div>
+<div class="sect3">
+<h4 id="_チューリングマシン計算のいちばん単純なモデル"><a class="link" href="#_チューリングマシン計算のいちばん単純なモデル">チューリングマシン：計算のいちばん単純なモデル</a></h4>
+<div class="paragraph">
+<p>チューリングは、紙と鉛筆で計算する人の作業を、次の部品だけでできた仮想の機械に置き換えて考えました。これを<strong>チューリングマシン</strong>といいます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>テープ</strong>：マス目に区切られ、左右にいくらでも続く記録用の帯です。各マスに記号が1つ書かれています（ここでは0か1）。</p>
+</li>
+<li>
+<p><strong>ヘッド</strong>：テープの1マスを指し、そのマスの記号を読んだり書き換えたりします。</p>
+</li>
+<li>
+<p><strong>状態</strong>：機械がいま「どの段階の作業中か」を表す、有限個の印です（A、B、…と「停止」）。</p>
+</li>
+<li>
+<p><strong>規則表</strong>：「状態Aで記号0を読んだら、1を書き、右に1マス動き、状態Bに移る」のような規則の一覧です。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>機械は1ステップごとに、いまの状態とヘッドの下の記号から規則表の行を1つ選び、その行のとおりに動きます。「停止」の状態に移ったところで計算が終わります。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/turing-machine.svg" alt="チューリングマシンのしくみ">
+</div>
+<div class="title">図 2. チューリングマシンの部品と1ステップの動き</div>
+</div>
+<div class="paragraph">
+<p>部品はこれだけですが、チューリングマシンは、今日のコンピューターで計算できることを（時間はかかっても）すべて計算できると考えられています。「機械的な手順で計算できるものは、チューリングマシンで計算できるものと一致する」という考え方を<strong>チャーチ＝チューリングのテーゼ</strong>といいます。証明された定理ではなく、「計算できる」という直感的な概念の定義として広く受け入れられている主張です。後で紹介するビジービーバー（対角線論法の節の最後のコラム）も、チューリングマシンを使って定義されます。</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_プログラムを入力とすることについて"><a class="link" href="#_プログラムを入力とすることについて">プログラムを入力とすることについて</a></h4>
@@ -785,7 +827,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>停止の統一的な定義</strong></p>
 </div>
 <div class="paragraph">
-<p>以上を踏まえ、この講義では「停止する」を次のように定義します。</p>
+<p>以上を踏まえ、この章では「停止する」を次のように定義します。</p>
 </div>
 <div class="quoteblock">
 <blockquote>
@@ -888,21 +930,46 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>ここでは、どのようなプログラム \(P\) とその入力 \(x\) の組に対しても停止性関数 \(\Hp(P,x)\) を計算してくれるようなアルゴリズムが存在しないことを証明します。</p>
 </div>
 <div class="sect3">
-<h4 id="_証明の戦略"><a class="link" href="#_証明の戦略">証明の戦略</a></h4>
+<h4 id="_証明の戦略背理法"><a class="link" href="#_証明の戦略背理法">証明の戦略：背理法</a></h4>
 <div class="paragraph">
-<p>この証明では、<strong>対角線論法</strong>と呼ばれる手法を使います。停止性問題を解くアルゴリズムが存在すると仮定して、それを使って矛盾を引き起こすような巧妙なプログラムを構築し、矛盾が生じることを示します。</p>
+<p>この証明では<strong>背理法</strong>を使います。背理法とは、示したいことの反対をいったん仮定し、そこから矛盾を導くことで、「その仮定は誤りだった」と結論する論法です。</p>
+</div>
+<div class="paragraph">
+<p>身近な例にアリバイがあります。「Aさんが犯人だ」と仮定すると、Aさんは犯行時刻に現場にいたはずです。ところが、その時刻にAさんが遠く離れた町で大勢に目撃されていたなら、矛盾が生じます。よって「Aさんは犯人ではない」と結論できます。</p>
+</div>
+<div class="paragraph">
+<p>停止性問題の証明は、次の4段階で進みます。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>仮定</strong>：どんなプログラム \(P\) と入力 \(x\) に対しても正しく答える停止判定プログラム Halt が存在する、と仮定する。</p>
+</li>
+<li>
+<p><strong>構成</strong>：Halt を部品として、Halt の答えと逆のことをする「天邪鬼（あまのじゃく）」プログラム \(\Dh\) を作る。</p>
+</li>
+<li>
+<p><strong>自己適用</strong>：\(\Dh\) に、\(\Dh\) 自身を入力として与える。</p>
+</li>
+<li>
+<p><strong>矛盾</strong>：Halt の答えが「停止する」でも「停止しない」でも矛盾が起きる。よって1の仮定が誤りで、Halt は存在しない。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>この論法は、後の節で説明する<strong>対角線論法</strong>と同じしくみです。</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_証明"><a class="link" href="#_証明">証明</a></h4>
+<h4 id="_証明段階12仮定と構成"><a class="link" href="#_証明段階12仮定と構成">証明（段階1・2：仮定と構成）</a></h4>
 <div class="paragraph">
 <p>まず、関数 \(\Hp(P,x)\) を計算するアルゴリズムが存在すると仮定します。すると、\(\Hp(P,x)\) を用いた次のような、プログラム \(P\) を入力とするプログラム \(\Dh\) が作れます。</p>
 </div>
-<div class="imageblock">
+<div class="imageblock text-center">
 <div class="content">
 <img src="./img/dhalt-card.svg" alt="天邪鬼プログラムの構成">
 </div>
-<div class="title">図 1. 停止判定プログラムHaltを部品にした天邪鬼プログラム \(\Dh\) の構成</div>
+<div class="title">図 3. 停止判定プログラムHaltを部品にした天邪鬼プログラム \(\Dh\) の構成</div>
 </div>
 <div class="paragraph">
 <p>このプログラム \(\Dh\) は、次のような動作をします。</p>
@@ -936,16 +1003,16 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
-<p>\(\Dh\) は、とても変なプログラムです。しかし、重要なのは、仮に関数 \(\Hp(P,x)\) を計算するアルゴリズムが存在すれば、プログラム  \(\Dh\) を作るのはとても簡単だということです。</p>
+<p>\(\Dh\) は、とても変なプログラムです。しかし、重要なのは、仮に関数 \(\Hp(P,x)\) を計算するアルゴリズムが存在すれば、プログラム  \(\Dh\) を作るのはとても簡単だということです。Halt を呼び出して、その答えで分岐するだけなので、数行で書けます。つまり、\(\Dh\) が存在することは、段階1の仮定から直接出てきます。</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_矛盾の導出"><a class="link" href="#_矛盾の導出">矛盾の導出</a></h4>
+<h4 id="_矛盾の導出段階34自己適用と矛盾"><a class="link" href="#_矛盾の導出段階34自己適用と矛盾">矛盾の導出（段階3・4：自己適用と矛盾）</a></h4>
 <div class="paragraph">
-<p>ここで、<strong>プログラム \(\Dh\) の入力に \(\Dh\) 自身を与えます。</strong></p>
+<p>ここで、<strong>プログラム \(\Dh\) の入力に \(\Dh\) 自身を与えます。</strong> \(\Dh\) もプログラムなので、その文字列を入力データとして渡すことができます（プログラムを入力とすることについては前の節を参照）。このとき \(\Dh\) の中では、手順1で \(\Hp(\Dh, \Dh)\)、つまり「\(\Dh\) に \(\Dh\) を入力したら停止するか」が計算されます。</p>
 </div>
 <div class="paragraph">
-<p>すると、この計算でプログラム \(\Dh\) の入力として \(\Dh\) を与えた結果は、「停止する」か「停止しない」かのいずれかであることは間違いありません。すなわち、「\(\Hp(\Dh, \Dh)=\text{停止しない}\)」か、または、「\(\Hp(\Dh, \Dh)=\text{停止する}\)」のいずれかです。</p>
+<p>すると、この計算でプログラム \(\Dh\) の入力として \(\Dh\) を与えた結果は、「停止する」か「停止しない」かのいずれかであることは間違いありません。つまり、「\(\Hp(\Dh, \Dh)=\text{停止しない}\)」か、または、「\(\Hp(\Dh, \Dh)=\text{停止する}\)」のいずれかです。</p>
 </div>
 <div class="paragraph">
 <p>それぞれの場合を詳しく検討してみましょう。</p>
@@ -984,11 +1051,20 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 </details>
+<div class="paragraph">
+<p>2つの場合をまとめると、次の図のようになります。どちらの行でも、Halt の答え（①）と実際の結果（③）が食い違います。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/dhalt-self.svg" alt="PHにPH自身を入力したときの2つの場合">
+</div>
+<div class="title">図 4. \(\Dh\) に \(\Dh\) 自身を入力したときの2つの場合</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_結論"><a class="link" href="#_結論">結論</a></h4>
 <div class="paragraph">
-<p>いずれの場合でも矛盾が生じるということは、そもそも関数 \(\Hp\) を計算するアルゴリズム（プログラム）の存在を仮定したことが誤りだったということになります。</p>
+<p>いずれの場合でも矛盾が生じるということは、そもそも関数 \(\Hp\) を計算するアルゴリズム（プログラム）の存在を仮定したことが誤りだったということになります。段階2〜4は、段階1の仮定さえ認めればどれも正しく実行できる手順だったので、誤りの原因は段階1の仮定以外にありません。</p>
 </div>
 <div class="paragraph">
 <p>よって、<strong>関数 \(\Hp\) を計算するようなアルゴリズムは存在しない</strong>ことが示せました。</p>
@@ -997,7 +1073,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect3">
 <h4 id="_注意"><a class="link" href="#_注意">注意</a></h4>
 <div class="paragraph">
-<p>この定理が示しているのは、あくまでも<strong>いかなる</strong>プログラムとその入力の組に対しても停止性を判定をしてくれるようなプログラムは存在しないということです。入力として与えるプログラムと入力の組に何らかの制約を課せば停止性を証明することは可能です。実際に停止性が示せるプログラムは存在し、入力として与えられたプログラムの信頼性や安全性を示すツールとして用いられています。</p>
+<p>この定理が示しているのは、あくまでも<strong>いかなる</strong>プログラムとその入力の組に対しても停止性を判定をしてくれるようなプログラムは存在しないということです。入力として与えるプログラムと入力の組に何らかの制約を課せば停止性を証明することは可能です。実際に停止性が示せるプログラムは存在し、入力として与えられたプログラムの信頼性や安全性を示すツールとして用いられています。また、「停止する」「停止しない」に加えて「わからない」とも答えてよいことにすれば、多くのプログラムについて正しく判定する道具を作ることができます。定理が否定しているのは、「わからない」を使わずに、すべての場合に正しく答える判定器だけです。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1010,7 +1086,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>【完全なバグ検出器やウイルス対策ソフトは作れない】</strong></p>
 </div>
 <div class="paragraph">
-<p>停止性問題が計算できないことは、「プログラムを調べる別のプログラム」全般に影を落とします。実は、プログラムの入出力としての振る舞いに関する意味のある性質は、そのほとんどが判定不可能であることが知られています（<strong>ライスの定理</strong>）。たとえば「このプログラムはどんな入力に対しても必ず停止するか」「このプログラムは決められた仕様どおりの関数を計算するか」を完全に当てる判定器は作れません。「2つのプログラムは同じ動作をするか」も、別の議論により判定不可能であることが知られています。</p>
+<p>停止性問題が計算できないことは、「プログラムを調べる別のプログラム」全般に影を落とします。実は、プログラムの入出力としての振る舞いに関する性質のうち、自明でないもの（あるプログラムは満たし、別のあるプログラムは満たさない性質）は、すべて判定不可能であることが知られています（1953年に示された<strong>ライスの定理</strong>）。たとえば「このプログラムはどんな入力に対しても必ず停止するか」「このプログラムは決められた仕様どおりの関数を計算するか」を完全に当てる判定器は作れません。「2つのプログラムは同じ動作をするか」も、別の議論により判定不可能であることが知られています。</p>
 </div>
 <div class="paragraph">
 <p>コンピューターウイルスの検出も同じです。1987年にフレッド・コーエンは、「与えられたプログラムがウイルスかどうかを完全に判定するプログラムは存在しない」ことを証明しました。証明の筋立ては停止性問題とそっくりで、もし完全な検出器 \(D\) があったとして、「\(D\) が『ウイルスでない』と判定したときだけ感染活動をするプログラム」を作ると矛盾が生じます。実際のウイルス対策ソフトが既知のパターン照合や経験則に頼らざるをえないのは、原理的に完璧な検出が不可能だからなのです。</p>
@@ -1052,7 +1128,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>すべてのプログラムには番号をつけることができます（プログラムは有限長の文字列なので、辞書式順序などで番号付けが可能です）。これを \(P_1, P_2, P_3, \ldots\) とします。同様に、すべての入力データにも番号をつけて \(x_1, x_2, x_3, \ldots\) とします。</p>
 </div>
 <div class="paragraph">
-<p>ここで、プログラム自身もデータとして扱えるので、入力 \(x_i\) としてプログラム \(P_i\) を使うことにすれば、すべてのプログラムと入力の組み合わせに対する停止性を次のような表で表すことができます。</p>
+<p>ここで、プログラム自身もデータとして扱えるので、入力としてもプログラム \(P_1, P_2, P_3, \ldots\) を使うことにすれば、プログラムにプログラムを入力したときの停止性を、すべての組み合わせについて次のような表で表すことができます。</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1117,7 +1193,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </tbody>
 </table>
 <div class="paragraph">
-<p>この表で、行はプログラム、列は入力を表しています。たとえば、\(P_2\) の行と \(P_3\) の列が交わるセルには \(\Hp(P_2, P_3)\) の値（プログラム \(P_2\) に入力 \(P_3\) を与えたときに停止するかどうか）が入ります。</p>
+<p>この表で、行はプログラム、列は入力を表しています。「停」は停止する、「不停」は停止しないの略です（表の値は説明のための例です）。たとえば、\(P_2\) の行と \(P_3\) の列が交わるセルには \(\Hp(P_2, P_3)\) の値（プログラム \(P_2\) に入力 \(P_3\) を与えたときに停止するかどうか）が入ります。</p>
 </div>
 </div>
 <div class="sect3">
@@ -1267,11 +1343,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p>ここまでの流れを1枚の図にまとめると、以下のようになります。</p>
 </div>
-<div class="imageblock">
+<div class="imageblock text-center">
 <div class="content">
 <img src="./img/diagonal-argument.svg" alt="対角線論法の図解">
 </div>
-<div class="title">図 2. 対角線論法のしくみ：対角線を反転した行はどの行とも一致できない</div>
+<div class="title">図 5. 対角線論法のしくみ：対角線を反転した行はどの行とも一致できない</div>
 </div>
 </div>
 <div class="sect3">
@@ -1280,7 +1356,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>この証明が「対角線論法」と呼ばれるのは、表の対角線に注目し、その対角線上の値をすべて反転させた新しい行を構成することで矛盾を導くからです。</p>
 </div>
 <div class="paragraph">
-<p>この手法は、カントールが実数の集合が自然数の集合より「大きい」ことを証明する際に初めて用いたもので、停止性問題の証明はその応用と見ることができます。</p>
+<p>この手法は、数学者カントールが1891年の論文で、無限にも大きさの違いがあること（たとえば、実数全体は自然数全体より多く、すべての実数に自然数の番号を付けることはできないこと）を示すのに用いたもので、停止性問題の証明はその応用と見ることができます。</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1305,23 +1381,26 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">実数の無限小数表現</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">プログラムと入力の組の停止性</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">番号を付けた無限小数の一覧（1行に1つの実数）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">番号を付けたプログラムの一覧（1行に1つのプログラム）</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">対角線上の各桁</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\(\Hp(P_i, P_i)\) の値</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">対角線上の各桁（k番目の数の小数第k位）</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">対角線上の値 \(\Hp(P_k, P_k)\)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">各桁を変更した新しい小数</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">対角線の反転動作をする \(\Dh\)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">各桁を別の数字に変えた新しい小数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">対角線の値を反転した動作をする \(\Dh\)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">どの自然数にも対応しない</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">どのプログラム番号にも対応しない</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">新しい小数は一覧のどの行とも違う → 実数に番号を付け尽くすことはできない</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\(\Dh\) はプログラムなので一覧のどこかにあるはずなのに、どの行とも違う → 矛盾 → Halt は存在しない</p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>結論の形が違う点に注意してください。カントールの証明では「一覧に載っていないものがある」ことが結論です。停止性問題の証明では、\(\Dh\) が一覧に載っていないことはありえないので、\(\Dh\) を作る材料になった Halt の存在が否定されます。</p>
+</div>
 </td>
 </tr>
 </table>
@@ -1337,16 +1416,16 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>【止まるプログラムはどこまで粘れるか — ビジービーバー】</strong></p>
 </div>
 <div class="paragraph">
-<p>停止性問題が解けないことから、ふしぎな性質をもつ「計算できない関数」を作ることができます。その代表が<strong>ビジービーバー関数</strong> \(\mathrm{BB}(n)\) です。これは、\(n\) 個の状態と2種類のテープ記号をもつチューリングマシンのうち、空のテープから動かしていつかは必ず停止するものに限ったとき、停止するまでに動く最大ステップ数を表します。つまり「必ず止まるプログラムの中で、止まるまでにいちばん長く粘るものの記録」です。</p>
+<p>停止性問題が解けないことから、ふしぎな性質をもつ「計算できない関数」を作ることができます。その代表が<strong>ビジービーバー関数</strong> \(\mathrm{BB}(n)\) です。これは、\(n\) 個の状態と2種類のテープ記号（0と1）をもつチューリングマシンのうち、すべて0のテープから動かしていつかは必ず停止するものに限ったとき、停止するまでに動く最大ステップ数を表します。つまり「必ず止まるプログラムの中で、止まるまでにいちばん長く粘るものの記録」です。前に示したチューリングマシンの図の規則表は、2状態で6ステップ動いて止まる、この記録を持つマシンの1つです（練習問題で確かめます）。</p>
 </div>
 <div class="paragraph">
-<p>小さな場合の値は \(\mathrm{BB}(1)=1\)、\(\mathrm{BB}(2)=6\)、\(\mathrm{BB}(3)=21\)、\(\mathrm{BB}(4)=107\) です。ところが \(\mathrm{BB}(5)\) の値が \(47{,}176{,}870\) であることの証明は、2024年にようやく完成しました。候補を発見するだけでなく、「それより長く動いて止まるマシンはない」とすべての候補について確かめる必要があるからです。世界中の参加者が協力したBusy Beaver Challengeでは、証明支援ソフトCoqによる機械的な検証も行われました。状態がわずか5個でも、止まるかどうかを調べ尽くすのは大仕事なのです。</p>
+<p>小さな場合の値は \(\mathrm{BB}(1)=1\)、\(\mathrm{BB}(2)=6\)、\(\mathrm{BB}(3)=21\)、\(\mathrm{BB}(4)=107\) です。\(\mathrm{BB}(5)\) については、47,176,870ステップ動いて止まる5状態のマシンが1989年に見つかっていました。ところが、それが最長であること、つまり \(\mathrm{BB}(5)=47{,}176{,}870\) の証明は、2024年にようやく完成しました。候補を発見するだけでなく、「それより長く動いて止まるマシンはない」とすべての候補について確かめる必要があるからです。世界中の参加者が協力したBusy Beaver Challengeでは、約1億8千万個の5状態マシンを調べ、その証明を証明支援ソフトCoq（現在の名称はRocq）で機械的に検証しました。状態がわずか5個でも、止まるかどうかを調べ尽くすのは大仕事なのです。</p>
 </div>
 <div class="paragraph">
-<p>出典：<a href="https://arxiv.org/abs/2509.12337">Determination of the fifth Busy Beaver value（成果の論文）</a>。ここでは停止状態を n 個に数えず、テープは初めすべて0、ヘッドは各ステップで左右いずれかへ1マス動く標準的な定義を使っています。</p>
+<p>出典：<a href="https://discuss.bbchallenge.org/t/july-2nd-2024-we-have-proved-bb-5-47-176-870/237">Busy Beaver Challenge による発表（2024年7月2日）</a>、<a href="https://arxiv.org/abs/2509.12337">Determination of the fifth Busy Beaver value（成果の論文）</a>。ここでは停止状態を n 個に数えず、テープは初めすべて0、ヘッドは各ステップで左右いずれかへ1マス動く標準的な定義を使っています。</p>
 </div>
 <div class="paragraph">
-<p>なぜ \(\mathrm{BB}(n)\) は計算できないのでしょうか。もし計算できたとすると、\(n\) 状態の任意のプログラムを \(\mathrm{BB}(n)\) ステップだけ動かしてみて、まだ止まっていなければ「このプログラムは永久に止まらない」と判定できてしまいます。これは停止性問題を解くことにほかなりません。つまり、停止性問題が解けない以上、\(\mathrm{BB}(n)\) も計算できないのです。小さな表に収まりそうな素朴な関数が、原理的に求められないというのは不思議な話です。</p>
+<p>なぜ \(\mathrm{BB}(n)\) は計算できないのでしょうか。もし計算できたとすると、\(n\) 状態の任意のマシンを、すべて0のテープから \(\mathrm{BB}(n)\) ステップだけ動かしてみて、まだ止まっていなければ「このマシンは永久に止まらない」と判定できてしまいます。任意のプログラムと入力の組は、「最初にテープへ入力を書き込んでから元の計算を始める」チューリングマシンに機械的に書き直せるので、これは停止性問題を解くことにほかなりません。つまり、停止性問題が解けない以上、\(\mathrm{BB}(n)\) も計算できないのです。小さな表に収まりそうな素朴な関数が、原理的に求められないというのは不思議な話です。</p>
 </div>
 </td>
 </tr>
@@ -1359,20 +1438,8 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect1">
 <h2 id="_ポストの対応問題"><a class="link" href="#_ポストの対応問題">2. ポストの対応問題</a></h2>
 <div class="sectionbody">
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-ポストの対応問題では、タイルを<strong>1枚以上</strong>並べます。0枚を許すと上下とも空文字列で常に一致し、問題になりません。
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
-<p>「停止性問題」は問題設定として不自然だという印象を持たれるかもしれません。この節ではより自然な形の計算不可能な問題である「<strong>ポストの対応問題</strong>」を紹介します。ポストの対応問題はどこにでもありそうなパズル問題です。ポストとは1946年にこの問題を提示した Emil Post の名前にちなんでいます。</p>
+<p>「停止性問題」は問題設定として不自然だという印象を持たれるかもしれません。この節ではより自然な形の計算不可能な問題である「<strong>ポストの対応問題</strong>」を紹介します。ポストの対応問題はどこにでもありそうなパズル問題です。アメリカの数学者エミール・ポスト（Emil Post）が1946年に発表したことから、この名前があります。</p>
 </div>
 <div class="sect2">
 <h3 id="_ポストの対応問題の定義と例"><a class="link" href="#_ポストの対応問題の定義と例">2.1. ポストの対応問題の定義と例</a></h3>
@@ -1383,12 +1450,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="content">
 <div class="title">ポストの対応問題の例1</div>
 <div class="paragraph">
-<p>以下の3種類のドミノを横にならべて、上の○と●の並びと下の○と●の並びがおなじになるような組合せをつくることができるか？（同じドミノを繰り返し用いてもよい）</p>
+<p>以下の3種類のドミノを1枚以上横にならべて、上の○と●の並びと下の○と●の並びがおなじになるような組合せをつくることができるか？（同じドミノを繰り返し用いてもよい）</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/pcp1.svg" alt="pcp1">
+<img src="./img/pcp1.svg" alt="例1のドミノ">
 </div>
+<div class="title">図 6. 例1の3種類のドミノ</div>
 </div>
 </div>
 </div>
@@ -1418,12 +1486,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>解答</strong></p>
 </div>
 <div class="paragraph">
-<p>このパズル問題は、3種類のドミノを以下のように配置すれば、上下とも「●●○○●●●○○」になっています。</p>
+<p>このパズル問題は、3種類のドミノを「右、中央、右、左」の順に配置すれば、上下とも「●●○○●●●○○」になっています。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/pcp2.svg" alt="pcp2">
+<img src="./img/pcp2.svg" alt="例1の解">
 </div>
+<div class="title">図 7. 例1の解：右・中央・右・左の順に並べる</div>
 </div>
 <div class="paragraph">
 <p><strong>検証</strong></p>
@@ -1448,12 +1517,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="content">
 <div class="title">ポストの対応問題の例2</div>
 <div class="paragraph">
-<p>以下の2種類のドミノを横にならべて、上の○と●の並びと下の○と●の並びがおなじになるような組合せをつくることができるか？（同じドミノを繰り返し用いてもよい）</p>
+<p>以下の2種類のドミノを1枚以上横にならべて、上の○と●の並びと下の○と●の並びがおなじになるような組合せをつくることができるか？（同じドミノを繰り返し用いてもよい）</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/pcp3.svg" alt="pcp3">
+<img src="./img/pcp3.svg" alt="例2のドミノ">
 </div>
+<div class="title">図 8. 例2の2種類のドミノ</div>
 </div>
 </div>
 </div>
@@ -1499,28 +1569,109 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect2">
 <h3 id="_ポストの対応問題の一般的な定義"><a class="link" href="#_ポストの対応問題の一般的な定義">2.2. ポストの対応問題の一般的な定義</a></h3>
 <div class="paragraph">
-<p>この2つの例は、比較的簡単に答えが出せました。どのような（有限枚の）ドミノが与えられたとしても、そのドミノで上下の並びが同じにできるかどうかを判定する問題を<strong>ポストの対応問題</strong>といいます。</p>
+<p>この2つの例は、比較的簡単に答えが出せました。どのような（有限種類の）ドミノが与えられたとしても、そのドミノで上下の並びが同じにできるかどうかを判定する問題を<strong>ポストの対応問題</strong>といいます。</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">ポストの対応問題</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">入力</dt>
+<dd>
+<p>有限種類のドミノ。各ドミノの上と下には、記号（ここでは○と●）の並びが書かれている</p>
+</dd>
+<dt class="hdlist1">問題</dt>
+<dd>
+<p>ドミノを1枚以上、横一列に並べて（同じ種類を何度使ってもよい）、上の並びと下の並びを同じにできるか</p>
+</dd>
+<dt class="hdlist1">出力</dt>
+<dd>
+<p>Yes または No</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+ポストの対応問題では、ドミノを<strong>1枚以上</strong>並べます。0枚を許すと上下とも空文字列で常に一致し、問題になりません。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>解が見つかったときに、それが本当に解であることは、上下の並びを1文字ずつ比べれば簡単に確かめられます。難しいのは、同じドミノを何枚でも使えるので、調べる並べ方に上限がないことです。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>【ドミノの種類が少なければ解ける】</strong></p>
+</div>
+<div class="paragraph">
+<p>ドミノが2種類までの場合には、答えを必ず出すアルゴリズムがあることが1982年に示されています（例2はこの範囲の問題でした）。一方、5種類のドミノを使う問題に限っても判定するアルゴリズムは存在しないことが、2015年に示されました。3種類と4種類の場合は、まだわかっていません。</p>
+</div>
+<div class="paragraph">
+<p>出典：<a href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.STACS.2015.649">T. Neary, Undecidability in Binary Tag Systems and the Post Correspondence Problem for Five Pairs of Words（2015年）</a>。2種類の場合の結果（Ehrenfeucht, Karhumäki, Rozenberg, 1982年）もこの論文で紹介されています。</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_停止性問題との関連"><a class="link" href="#_停止性問題との関連">2.3. 停止性問題との関連</a></h3>
 <div class="paragraph">
-<p>「ポストの対応問題」が解ければ「停止性問題」も解けるような巧妙な符号化が知られています。したがって「ポストの対応問題」も計算不可能である、つまり停止性問題からの還元により決定不能であることが示されています。</p>
+<p>「ポストの対応問題」が解ければ「停止性問題」も解けるような巧妙な符号化が知られています。プログラム \(P\) と入力 \(x\) から、機械的な手順でドミノの組を作り、「\(P\) が \(x\) で停止する」ときに限って、そのドミノで上下の並びをそろえられるようにできるのです。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/halt-to-pcp.svg" alt="停止性問題をポストの対応問題に還元する">
+</div>
+<div class="title">図 9. 停止性問題からポストの対応問題への還元</div>
 </div>
 <div class="paragraph">
-<p>これは「停止性問題」を「ポストの対応問題」のためのアルゴリズムを用いて解けるように帰着させたということになります。このように、ある問題を別の問題に帰着させることを<strong>還元</strong>といいます（この例では「停止性問題」を「ポストの対応問題」に還元した）。還元については次の授業でもう少し詳しく説明します。</p>
+<p>もしポストの対応問題を判定するプログラムがあれば、この変換と組み合わせて停止性問題が解けてしまいます。停止性問題は解けないので、「ポストの対応問題」も計算不可能です。つまり、停止性問題からの還元により決定不能であることが示されます。</p>
+</div>
+<div class="paragraph">
+<p>これは「停止性問題」を「ポストの対応問題」のためのアルゴリズムを用いて解けるように帰着させたということになります。このように、ある問題を別の問題に帰着させることを<strong>還元</strong>といいます（この例では「停止性問題」を「ポストの対応問題」に還元した）。還元の向きに注意してください。解けないとわかっている問題（停止性問題）を、調べたい問題（ポストの対応問題）に還元することで、調べたい問題も解けないことがわかります。還元については次章でもう少し詳しく説明します。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_半決定性について"><a class="link" href="#_半決定性について">2.4. 半決定性について</a></h3>
 <div class="paragraph">
-<p>「ポストの対応問題」も、答えがあるときに Yes、ないときに No を出力する問題とみると、決定問題と考えることができます。「停止性問題」も「ポストの対応問題」も、答えが Yes であるときには原理的にいつかは Yes と出力して停止します。しかし、答えが No であるときには、一部の簡単な入力については No と出力して止まりますが、いつまでも止まらないケースが無数にあります。このとき、まだ止まっていないだけなのか、永久に止まらないのかを、外から見分けることはできません。</p>
+<p>「ポストの対応問題」も、答えがあるときに Yes、ないときに No を出力する問題とみると、決定問題と考えることができます。「停止性問題」にも「ポストの対応問題」にも、<strong>答えが Yes なら、いつか必ず Yes と答えて止まる手続き</strong>があります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>停止性問題：\(P\) を入力 \(x\) で実際に動かしてみて、止まったら「停止する」と答える。</p>
+</li>
+<li>
+<p>ポストの対応問題：ドミノを1枚並べる並べ方をすべて試し、次に2枚、3枚、…と枚数を増やしながら試して、上下がそろう並べ方が見つかったら Yes と答える。枚数ごとの並べ方は有限通りなので、解があればいつか必ず見つかる。</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>このように、答えが Yes である場合にはいつかは止まり正しい結果を出力するものの、No のときには答えが No であるのか必ずしもわからないという性質を<strong>「半決定的」</strong>であるといいます。</p>
+<p>しかし、答えが No のときには、これらの手続きは永久に止まりません。明らかに止まらないとわかる簡単な場合を見分ける工夫は加えられますが、それでもすべての No の入力で止まるようにはできません。止まらない手続きを外から見ていても、まだ止まっていないだけなのか、永久に止まらないのかを見分けることはできません。</p>
 </div>
 <div class="paragraph">
-<p>この「いつか」というのは1秒後かもしれませんし、100億年後かもしれないのが厄介なところです。ある問題が原理的に計算できるとわかることは、数学的には興味深いことですが、いつ止まるかがわからないままでは、実際に使うための道具としては、まだ問題の性質が十分にわかっていないことになります。</p>
+<p>このように、「答えが Yes である場合にはいつかは止まって正しく答え、No のときには止まらなくてもよい」という手続きが存在する性質を<strong>「半決定的」</strong>（半決定可能）であるといいます。停止性問題とポストの対応問題は、半決定的ではあるけれども、No のときも必ず止まって答える手続き（アルゴリズム）は存在しない問題です。</p>
+</div>
+<div class="paragraph">
+<p>もし No の側にも「No ならいつか必ず No と答えて止まる手続き」があれば、Yes 用と No 用の2つの手続きを1ステップずつ交互に進めることで、いつかはどちらかが止まり、答えが必ず決まります。これは問題が解けることを意味します。停止性問題は解けないので、「停止しない」ことを必ずいつか言い当てる手続きは存在しないのです。</p>
+</div>
+<div class="paragraph">
+<p>この「いつか」というのは1秒後かもしれませんし、100億年後かもしれないのが厄介なところです。答えが Yes の場合でも、止まるまでにかかる時間の上限を前もって知る方法はありません（もし知ることができれば、ビジービーバーの節で見たように、その時間だけ待てば停止性問題が解けてしまいます）。半決定的な手続きは、待っても答えが出ないうちは何も結論できないので、実際に使う道具としては限界があります。</p>
 </div>
 </div>
 </div>
@@ -1529,7 +1680,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <h2 id="_まとめ"><a class="link" href="#_まとめ">3. まとめ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>今回の授業では、以下の重要な概念を学びました。</p>
+<p>この章では、以下の重要な概念を学びました。</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1537,7 +1688,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>停止性問題</strong>：任意のプログラムが停止するかどうかを判定する問題</p>
 </li>
 <li>
-<p><strong>計算不可能性</strong>：停止性問題を解くアルゴリズムは存在しないことの証明</p>
+<p><strong>チューリングマシン</strong>：テープ・ヘッド・状態・規則表だけからなる、計算のいちばん単純なモデル</p>
+</li>
+<li>
+<p><strong>計算不可能性</strong>：停止性問題を解くアルゴリズムは存在しないことの証明（背理法と天邪鬼プログラム）</p>
 </li>
 <li>
 <p><strong>対角線論法</strong>：表の対角線上の値を反転させることで矛盾を導く証明手法</p>
@@ -1549,23 +1703,26 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>還元</strong>：ある問題を別の問題に帰着させる手法</p>
 </li>
 <li>
-<p><strong>半決定性</strong>：Yes の場合は判定できるが、No の場合は判定が困難な性質</p>
+<p><strong>半決定性</strong>：Yes の場合は必ず止まって判定できるが、No の場合は止まらないこともある性質</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>次回の授業では、視点を「計算できるかどうか」から「どれくらい難しいか」へ移し、問題の難しさをコンピューター科学がどう扱うのかを考えます。</p>
+<p>次章では、視点を「計算できるかどうか」から「どれくらい難しいか」へ移し、問題の難しさをコンピューター科学がどう扱うのかを考えます。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_練習問題"><a class="link" href="#_練習問題">4. 練習問題</a></h2>
 <div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
-<div class="title">問題</div>
 <div class="paragraph">
-<p>【問1】 本文中のプログラム \(P_2\) について、次の入力に対する停止性関数 \(\Hp(P_2, n)\) の値をそれぞれ答えよ。停止する場合は、出力される値も答えよ。</p>
+<p>基本の確認から始め、手を動かして解く問題、証明のしくみを考える問題の順に並べています。解答は、自分で考えてから開いてください。</p>
+</div>
+<div class="exampleblock">
+<div class="title">問題1: プログラム \(P_2\) の停止性</div>
+<div class="content">
+<div class="paragraph">
+<p>本文中のプログラム \(P_2\) について、次の入力に対する停止性関数 \(\Hp(P_2, n)\) の値をそれぞれ答えよ。停止する場合は、出力される値も答えよ。</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1580,8 +1737,34 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </li>
 </ol>
 </div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>\(\Hp(P_2, 3)=\text{停止する}\)。\(x\) の値は \(0 \rightarrow 3 \rightarrow 6 \rightarrow 9 \rightarrow 12\) と変化し、\(10\) 以上になった時点で \(12\) を出力して停止します。</p>
+</li>
+<li>
+<p>\(\Hp(P_2, 0)=\text{停止しない}\)。\(x\) の値は \(0\) のまま変わらず、\(x&lt;10\) が成り立ち続けるため、永久に繰り返しが続きます。</p>
+</li>
+<li>
+<p>\(\Hp(P_2, 15)=\text{停止する}\)。1回目の加算で \(x=15\geq 10\) となるので、\(15\) を出力して停止します。</p>
+</li>
+</ol>
+</div>
 <div class="paragraph">
-<p>【問2】 停止性問題が計算不可能である（本文の定理）ことからいえることとして、正しいものをすべて選べ。</p>
+<p>2行目の加算は、3行目の比較より先に必ず1回実行されます。そのため (3) では、比較の前に \(x\) が \(15\) になっている点に注意してください。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題2: 定理からいえること</div>
+<div class="content">
+<div class="paragraph">
+<p>停止性問題が計算不可能である（本文の定理）ことからいえることとして、正しいものをすべて選べ。</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1599,37 +1782,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </li>
 </ol>
 </div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
 <div class="paragraph">
-<p>【問3】 停止性問題は「半決定的」である。すなわち、\(\Hp(P,x)=\text{停止する}\) の場合に限れば、いつかは必ず「停止する」と正しく出力して停止する方法が存在する。その方法を簡潔に説明せよ。</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_練習問題の解答"><a class="link" href="#_練習問題の解答">5. 練習問題の解答</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>まず自分で解いてから読むことをすすめます。</p>
-</div>
-<div class="paragraph">
-<p><strong>【問1】</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>\(\Hp(P_2, 3)=\text{停止する}\)。\(x\) の値は \(0 \rightarrow 3 \rightarrow 6 \rightarrow 9 \rightarrow 12\) と変化し、\(10\) 以上になった時点で \(12\) を出力して停止します。</p>
-</li>
-<li>
-<p>\(\Hp(P_2, 0)=\text{停止しない}\)。\(x\) の値は \(0\) のまま変わらず、\(x&lt;10\) が成り立ち続けるため、永久に繰り返しが続きます。</p>
-</li>
-<li>
-<p>\(\Hp(P_2, 15)=\text{停止する}\)。1回目の加算で \(x=15\geq 10\) となるので、\(15\) を出力して停止します。</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>【問2】</strong> 正しいのは (2) と (3) です。</p>
+<p>正しいのは (2) と (3) です。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1647,13 +1806,339 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><strong>【問3】</strong> プログラム \(P\) に入力 \(x\) を与えて、実際に実行（シミュレート）します。\(P\) が停止したら「停止する」と出力して停止します。\(P\) が停止する場合は、有限時間でこの手続きも「停止する」と正しく出力します。一方、\(P\) が停止しない場合は、この手続きも永久に答えを出せませんが、半決定性の要件としてはそれで構いません。</p>
 </div>
-<hr>
+</details>
+<div class="exampleblock">
+<div class="title">問題3: チューリングマシンを動かす</div>
+<div class="content">
 <div class="paragraph">
-<p>以上です</p>
+<p>本文の「チューリングマシンの部品と1ステップの動き」の図にある規則表（2状態の例）のチューリングマシンを、すべて0のテープで、状態 A から動かす。停止するまでに何ステップかかるか。また、停止したときテープに1はいくつ書かれているか。</p>
 </div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p><strong>6ステップ</strong>で停止し、テープには<strong>4個</strong>の1が残ります。</p>
+</div>
+<div class="paragraph">
+<p>最初のヘッドの位置を0番のマスとし、そこから右を正、左を負の番号で表します。各ステップの後のテープの様子を、ヘッドの位置を [ ] で囲んで示します（表示していないマスはすべて0）。</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 16.6666%;">
+<col style="width: 22.2222%;">
+<col style="width: 11.1111%;">
+<col style="width: 27.7779%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">ステップ</th>
+<th class="tableblock halign-center valign-top">状態</th>
+<th class="tableblock halign-center valign-top">読んだ記号</th>
+<th class="tableblock halign-center valign-top">書く記号・動く向き</th>
+<th class="tableblock halign-center valign-top">次の状態</th>
+<th class="tableblock halign-center valign-top">テープ（−2〜+1番のマス）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">A</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1・右</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">B</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0 0 1 [0]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">B</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1・左</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">A</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0 0 [1] 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">A</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1・左</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">B</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0 [0] 1 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">B</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1・左</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">A</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">[0] 1 1 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">A</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1・右</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">B</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1 [1] 1 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">B</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1・右</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">停止</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1 1 [1] 1</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>本文の図のテープは、ステップ2の後の様子（状態 A、ヘッドの下が1、その右隣も1）にあたります。</p>
+</div>
+<div class="paragraph">
+<p>\(\mathrm{BB}(2)=6\) なので、これは2状態のマシンのなかで最も長く動いて止まるものの1つです。状態が2個だけでも、同じマスを何度も行き来しながら動くことがわかります。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題4: ポストの対応問題を解く</div>
+<div class="content">
+<div class="paragraph">
+<p>次の3種類のドミノ A、B、C を使うポストの対応問題を考える。上下の並びをそろえる並べ方を1つ見つけよ（同じドミノを何度使ってもよい）。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/pcp-ex1.svg" alt="Aは上が●・下が●●、Bは上が○○●・下が○、Cは上が●●・下が●○">
+</div>
+<div class="title">図 10. 問題4のドミノ</div>
+</div>
+<div class="paragraph">
+<p>A は上「●」下「●●」、B は上「○○●」下「○」、C は上「●●」下「●○」です。</p>
+</div>
+<div class="paragraph">
+<p>ヒント：左端に置けるのは、上下の並びの一方が、もう一方の先頭部分になっているドミノだけです。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p><strong>A、C、B、A</strong> の順に並べると、上下とも「●●●○○●●」になります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>上の並び：● + ●● + ○○● + ● = ●●●○○●●</p>
+</li>
+<li>
+<p>下の並び：●● + ●○ + ○ + ●● = ●●●○○●●</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>考え方：左端に置けるのは A（上「●」は下「●●」の先頭部分）と B（下「○」は上「○○●」の先頭部分）です。C は2文字目で●と○に分かれるので置けません。</p>
+</div>
+<div class="paragraph">
+<p>A から始めると、下が「●」だけ先に進みます。次のドミノは、上がこの「●」で始まる必要があるので A か C です。C を置くと上「●●●」、下「●●●○」となり、下が「○」だけ先に進みます。次は上が○で始まる B を置くと、上「●●●○○●」、下「●●●○○」となり、今度は上が「●」だけ先に進みます。最後に、下が●で始まり、上下の差を埋める A を置くと、上下がそろいます。</p>
+</div>
+<div class="paragraph">
+<p>なお、計算機で全探索すると、8枚以下の並べ方で解になるのはこの1通りだけです（解を2回繰り返した8枚の並びは除きます）。B から始める並べ方は、調べた範囲では上が先に進んだ状態が解消せず、解になりませんでした。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題5: 解がないことを示す</div>
+<div class="content">
+<div class="paragraph">
+<p>次の3種類のドミノ A、B、C を使うポストの対応問題の答えは No である（上下をそろえる並べ方はない）。その理由を説明せよ。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/pcp-ex2.svg" alt="Aは上が○●・下が○、Bは上が●・下が●○○、Cは上が○・下が○○">
+</div>
+<div class="title">図 11. 問題5のドミノ</div>
+</div>
+<div class="paragraph">
+<p>A は上「○●」下「○」、B は上「●」下「●○○」、C は上「○」下「○○」です。</p>
+</div>
+<div class="paragraph">
+<p>ヒント：本文の例2と違い、A も B も C も左端に置けます。そこで、●の個数と、並びの長さに注目してみましょう。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>A、B、C をそれぞれ \(a, b, c\) 枚使ったとします。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>●の個数</strong>：上の●は A と B に1個ずつあるので \(a+b\) 個、下の●は B に1個あるだけなので \(b\) 個です。上下がそろうには個数が等しい必要があるので \(a=0\)、つまり A は使えません。</p>
+</li>
+<li>
+<p><strong>並びの長さ</strong>：A を使わないとき、上の長さは \(b+c\)、下の長さは \(3b+2c\) です。等しくなるのは \(b=c=0\) のときだけです。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>結局、ドミノを1枚も使わない場合しか残りません。ポストの対応問題ではドミノを1枚以上並べる決まりなので、答えは No です。</p>
+</div>
+<div class="paragraph">
+<p>このように、並び方を調べなくても、個数や長さのような「並べ方によらない量」で解がないと示せることがあります。ただし、どんなドミノの組にも使える、このような判定方法は存在しません（それが本文の結論です）。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題6: 対角線論法を適用する</div>
+<div class="content">
+<div class="paragraph">
+<p>4つのプログラム \(P_1,\ldots,P_4\) について、\(\Hp(P_i,P_j)\) の値が次の表のようになっていたとする（停＝停止する、不停＝停止しない）。</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 60%;">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">\(\Hp(P_i, P_j)\)</th>
+<th class="tableblock halign-center valign-top">\(P_1\)</th>
+<th class="tableblock halign-center valign-top">\(P_2\)</th>
+<th class="tableblock halign-center valign-top">\(P_3\)</th>
+<th class="tableblock halign-center valign-top">\(P_4\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(P_1\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">不停</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">停</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">停</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">不停</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(P_2\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">停</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">停</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">不停</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">不停</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(P_3\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">停</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">不停</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">不停</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">停</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(P_4\)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">不停</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">停</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">停</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">停</p></td>
+</tr>
+</tbody>
+</table>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>天邪鬼プログラム \(\Dh\) に入力 \(P_1,\ldots,P_4\) を与えたときの停止性を、それぞれ答えよ。</p>
+</li>
+<li>
+<p>\(\Dh\) の行は、\(P_1,\ldots,P_4\) のどの行とも一致しないことを、それぞれ食い違う列を指摘して確かめよ。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>対角線は \(\Hp(P_1,P_1)=\)不停、\(\Hp(P_2,P_2)=\)停、\(\Hp(P_3,P_3)=\)不停、\(\Hp(P_4,P_4)=\)停です。\(\Dh\) はこれを反転するので、入力 \(P_1,P_2,P_3,P_4\) に対して順に<strong>停、不停、停、不停</strong>となります。</p>
+</li>
+<li>
+<p>\(P_1\) の行とは1列目（\(P_1\) は不停、\(\Dh\) は停）、\(P_2\) の行とは2列目（停と不停）、\(P_3\) の行とは3列目（不停と停）、\(P_4\) の行とは4列目（停と不停）で食い違います。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>ほかの列でたまたま食い違うこともあります（たとえば \(P_1\) の行とは2列目も食い違います）。しかし、どんな表であっても<strong>k行目とはk列目で必ず食い違う</strong>ことが保証されている点が大切です。表の値を知らなくても、この保証だけで \(\Dh\) がどの行とも一致しないと言えます。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題7: 天邪鬼でないプログラムでは矛盾が起きない</div>
+<div class="content">
+<div class="paragraph">
+<p>本文の天邪鬼プログラム \(\Dh\) の代わりに、Halt の答えに<strong>素直に従う</strong>次のプログラム \(Q\) を考える。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(\Hp(P,P)=\text{停止する}\) なら、ただちに停止する</p>
+</li>
+<li>
+<p>\(\Hp(P,P)=\text{停止しない}\) なら、無限ループに入る</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>\(Q\) に \(Q\) 自身を入力として与えたとき、本文と同じように場合分けをしても矛盾は生じないことを確かめよ。また、このことから、本文の証明で \(\Dh\) の何が重要だったかを説明せよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>\(\Hp(Q,Q)=\text{停止する}\) と仮定すると、\(Q\) はただちに停止します。実際に停止するので、Halt の答えは正しく、矛盾しません。</p>
+</li>
+<li>
+<p>\(\Hp(Q,Q)=\text{停止しない}\) と仮定すると、\(Q\) は無限ループに入ります。実際に停止しないので、この場合も Halt の答えは正しく、矛盾しません。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>どちらの場合も矛盾しないので、\(Q\) からは何も結論できません。本文の証明で重要だったのは、\(\Dh\) が Halt の答えと<strong>逆の</strong>動作をすることです。そのため、\(\Dh\) 自身について Halt がどちらを答えても、実際の動作がその答えを裏切ることになりました。「自分自身を入力する」だけでは矛盾は生じず、「答えを反転する」ことと組み合わせてはじめて矛盾が生じます。対角線論法で、対角線の値を<strong>反転</strong>した行を作ったのと同じです。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題8: 半決定性</div>
+<div class="content">
+<div class="paragraph">
+<p>停止性問題は「半決定的」である。つまり、\(\Hp(P,x)=\text{停止する}\) の場合に限れば、いつかは必ず「停止する」と正しく出力して停止する方法が存在する。その方法を簡潔に説明せよ。また、ポストの対応問題について、答えが Yes の場合にいつか必ず Yes と出力して停止する方法を説明せよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>停止性問題：プログラム \(P\) に入力 \(x\) を与えて、実際に実行（シミュレート）します。\(P\) が停止したら「停止する」と出力して停止します。\(P\) が停止する場合は、有限時間でこの手続きも「停止する」と正しく出力します。一方、\(P\) が停止しない場合は、この手続きも永久に答えを出せませんが、半決定性の要件としてはそれで構いません。</p>
+</div>
+<div class="paragraph">
+<p>ポストの対応問題：並べるドミノの枚数を1枚、2枚、3枚、…と増やしながら、その枚数のすべての並べ方を順に調べ、上下がそろうものが見つかったら Yes と出力して停止します。ドミノの種類が \(m\) 種類なら、\(k\) 枚の並べ方は \(m^k\) 通りで有限なので、各枚数の調査は必ず終わります。解が \(k\) 枚でできるなら、\(k\) 枚目の調査までに必ず見つかります。</p>
+</div>
+<div class="paragraph">
+<p>誤答しやすい点：「枚数の少ない順に調べる」代わりに「1種類のドミノだけを1枚、2枚、3枚、…と並べる並べ方を先に調べ尽くす」ようにすると、その調査が終わらず、ほかの並べ方にたどり着けません。有限通りずつ区切って調べることが大切です。</p>
+</div>
+</div>
+</details>
 </div>
 </div>
 </div>
@@ -1662,6 +2147,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 Version 1.1<br>
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.26">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <meta name="author" content="久保山哲二">
 <title>論理回路とブール代数(2) 論理回路の簡単化と回路設計</title>
 <style>
@@ -562,6 +562,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
@@ -578,11 +579,19 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <li><a href="#_2変数のカルノー図">1.1. 2変数のカルノー図</a></li>
 <li><a href="#_3変数のカルノー図">1.2. 3変数のカルノー図</a>
 <ul class="sectlevel3">
-<li><a href="#_前章の問題2">前章の問題【2】</a></li>
+<li><a href="#_例_不要な項を見つける">例: 不要な項を見つける</a></li>
 <li><a href="#_カルノー図の端と端はつながっている">カルノー図の端と端はつながっている</a></li>
 <li><a href="#_3変数のもう1つの例">3変数のもう1つの例</a></li>
 </ul>
 </li>
+<li><a href="#_4変数のカルノー図">1.3. 4変数のカルノー図</a>
+<ul class="sectlevel3">
+<li><a href="#_例_4変数の簡単化">例: 4変数の簡単化</a></li>
+</ul>
+</li>
+<li><a href="#_囲み方のよくある誤り">1.4. 囲み方のよくある誤り</a></li>
+<li><a href="#_ドントケア">1.5. ドントケア</a></li>
+<li><a href="#_簡単化の基準と自動化">1.6. 簡単化の基準と自動化</a></li>
 </ul>
 </li>
 <li><a href="#_論理ゲートの関数的完全性">2. 論理ゲートの関数的完全性</a>
@@ -605,8 +614,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <li><a href="#_論理回路の遅延時間">3.4. 論理回路の遅延時間</a></li>
 </ul>
 </li>
-<li><a href="#_今週の問題">4. 今週の問題</a></li>
-<li><a href="#_今週の問題の解答">5. 今週の問題の解答</a></li>
+<li><a href="#_練習問題">4. 練習問題</a></li>
 </ul>
 </div>
 </div>
@@ -630,7 +638,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect2">
 <h3 id="_2変数のカルノー図"><a class="link" href="#_2変数のカルノー図">1.1. 2変数のカルノー図</a></h3>
 <div class="paragraph">
-<p>前章の問題<strong>【1】</strong></p>
+<p>次の論理式</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -638,7 +646,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
-<p>を例に説明します。どの式でも真理値を求めればカルノー図を作れます。積和形なら、各積項が1になるマスを順に記入する方法が便利です。この例はすでに積和形になっています。
+<p>を例に説明します。式変形で簡単化しようとすると、分配律や相補律をどの順に使うか工夫が要る式ですが、カルノー図を使えば図を描くだけで簡単化できます。どの式でも真理値を求めればカルノー図を作れます。積和形なら、各積項が1になるマスを順に記入する方法が便利です。この例はすでに積和形になっています。
 次に、2変数のカルノー図は \(x\) と \(y\) の値の組合せで \(2\times 2\) のマス目を書き、2変数の値</p>
 </div>
 <div class="paragraph text-center">
@@ -665,8 +673,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/karnaugh1.svg" alt="karnaugh1">
+<img src="./img/karnaugh1.svg" alt="行x、列yの2×2のマス目に1を書き込み、右図で横長の枠xと縦長の枠yの2つで囲み直した図">
 </div>
+<div class="title">図 1. 2変数のカルノー図(左: 各項に対応するマスに1を書く、右: 囲み直す)</div>
 </div>
 <div class="paragraph">
 <p>ここまで作図ができたら、4マスのうち3マスに1が書かれた状態になっています（<strong>左図</strong>）。説明のために左図には3つの項に対応する囲み枠を3つ書いていますが、実際にはこの時点で囲みは書きません。</p>
@@ -702,13 +711,33 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="paragraph">
 <p>が得られました。</p>
 </div>
+<div class="paragraph">
+<p>枠を積項に戻す手順は、変数が増えても同じです。</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>枠の中で値が変わらない変数だけを残します。その値が1なら変数そのもの(例: \(x\))、0なら否定(例: \(\bar x\))を書き、それらの論理積をとります。</p>
+</li>
+<li>
+<p>枠の中で0と1の両方の値をとる変数は、その項には現れません。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>枠が大きいほど「値が変わる変数」が増えるので、項のリテラル(変数またはその否定)は少なくなります。枠の数が少ないほど、項の数も少なくなります。「できるだけ大きく、できるだけ少なく囲む」という決まりは、この2つを同時にねらったものです。</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_3変数のカルノー図"><a class="link" href="#_3変数のカルノー図">1.2. 3変数のカルノー図</a></h3>
 <div class="sect3">
-<h4 id="_前章の問題2"><a class="link" href="#_前章の問題2">前章の問題【2】</a></h4>
+<h4 id="_例_不要な項を見つける"><a class="link" href="#_例_不要な項を見つける">例: 不要な項を見つける</a></h4>
 <div class="paragraph">
-<p>3変数の場合の例として前章の問題<strong>【2】</strong>を用いてカルノー図を描いてみましょう。</p>
+<p>3変数の場合の例として、次の論理式のカルノー図を描いてみましょう。</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -716,7 +745,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
-<p>を例に説明します。この例もすでに積和形です。
+<p>この式は、3つ目の項 \(y\cdot z\) を取り除いても同じ論理関数を表します。式変形でこれを示すには工夫が要りますが、カルノー図なら一目でわかります。この例もすでに積和形です。
 3変数のカルノー図は \((x,y)\) の値の組と \(z\) の値の組合せで \(4\times 2\) のマス目を書き、3変数の値</p>
 </div>
 <div class="stemblock">
@@ -765,8 +794,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/karnaugh2.svg" alt="karnaugh2">
+<img src="./img/karnaugh2.svg" alt="行xy、列zの4×2のマス目。左図は3つの項に対応する枠、右図は緑と青の2つの枠だけで1を覆った図">
 </div>
+<div class="title">図 2. 3変数のカルノー図(左: 3つの項の書き込み、右: 囲み直し)</div>
 </div>
 <div class="paragraph">
 <p>すると、すべての1を囲むには、<strong>右図</strong>のように緑と青の2つの枠だけで十分です。
@@ -784,7 +814,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect3">
 <h4 id="_カルノー図の端と端はつながっている"><a class="link" href="#_カルノー図の端と端はつながっている">カルノー図の端と端はつながっている</a></h4>
 <div class="paragraph">
-<p>ところで、上記の問題と似た以下の積和形論理式を簡単化する問題を考えてみましょう。</p>
+<p>ところで、上の例と似た以下の積和形論理式を簡単化する問題を考えてみましょう。</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -793,8 +823,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock right">
 <div class="content">
-<img src="./img/karnaugh3.svg" alt="karnaugh3">
+<img src="./img/karnaugh3.svg" alt="行xy、列zのカルノー図。緑の枠が上端の行00と下端の行10をつないで囲んでいる" width="280">
 </div>
+<div class="title">図 3. 上下の端をまたぐ枠</div>
 </div>
 <div class="paragraph">
 <p>この積和形論理式からカルノー図を作成すると、右図のようになります。注意を要するのは、カルノー図の上下はつながっているということです（ゲームのパックマンのように端と端がつながっています）。一番上の行の \(xy=00\) と一番下の行の \(xy=10\) は1ビット(1桁)だけ異なります。このような部分はつながっているのです。</p>
@@ -814,18 +845,6 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>が、得られます。</p>
 </div>
 <br clear="both">
-<div class="paragraph">
-<p>4変数の場合は、行に \(xy\)、列に \(zw\) をそれぞれグレイコード順に割り当てた \(4\times 4\) のマス目になります。4変数のカルノー図でも同様に、上下の端どうし、左右の端どうしがつながっています。下図のように、4隅の4マスも巻き付きによって1つのグループとして囲むことができます。</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./img/karnaugh-torus.svg" alt="カルノー図の上下左右の端がつながっていることを矢印で示した図">
-</div>
-<div class="title">図 1. カルノー図の端と端のつながり(4変数の例)</div>
-</div>
-<div class="paragraph">
-<p>この4隅のグループは \(\bar y\cdot\bar w\) を表します。</p>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_3変数のもう1つの例"><a class="link" href="#_3変数のもう1つの例">3変数のもう1つの例</a></h4>
@@ -842,8 +861,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/karnaugh4.svg" alt="karnaugh4">
+<img src="./img/karnaugh4.svg" alt="行xy、列zのカルノー図。左図は3つの項の枠、右図は4マスを囲む青の枠yと緑の枠xの2つで1を覆った図">
 </div>
+<div class="title">図 4. 4マスの枠で囲む例</div>
 </div>
 <div class="paragraph">
 <p>右図より、ただちに</p>
@@ -854,11 +874,204 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 <div class="paragraph">
-<p>が得られます。</p>
+<p>が得られます。4マスの枠では2つの変数の値が変わるので、3変数のうち1つの変数だけが残ります。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4変数のカルノー図"><a class="link" href="#_4変数のカルノー図">1.3. 4変数のカルノー図</a></h3>
+<div class="paragraph">
+<p>4変数の場合は、行に \(xy\)、列に \(zw\) をそれぞれグレイコード順に割り当てた \(4\times 4\) のマス目になります。4変数のカルノー図でも同様に、上下の端どうし、左右の端どうしがつながっています。下図のように、4隅の4マスも巻き付きによって1つのグループとして囲むことができます。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-torus.svg" alt="カルノー図の上下左右の端がつながっていることを矢印で示した図">
+</div>
+<div class="title">図 5. カルノー図の端と端のつながり(4変数の例)</div>
 </div>
 <div class="paragraph">
-<p>論理関数の簡単化問題、すなわち、論理関数を表す積和形論理式の中で、もっとも積項数が少なく、かつリテラル数が最小であるような論理式を求める問題は、回路設計上非常に重要です。ここでは積項数を優先し、同じ積項数ならリテラル数を減らす、という基準を使います。実際の回路では遅延や一時的な出力の乱れも考えるため、式の最小化がそのまま最良の回路になるとは限りません。この簡単化問題はコンピューターで自動化できるのでしょうか。実は、変数が増加するに従ってコンピューターでも手に負えないほど計算量が増加してゆく問題であることが知られています。実用的には本当に最小の論理関数を求める必要はなく、最小に近い論理回路が構成できればよいため、近似的に関数を最小化する様々なアルゴリズムが開発されています。</p>
+<p>この4隅のグループでは、\(x\) と \(z\) が0と1の両方の値をとり、\(y=0\)、\(w=0\) は変わりません。よって、このグループは \(\bar y\cdot\bar w\) を表します。</p>
 </div>
+<div class="paragraph">
+<p>4変数のカルノー図では、枠の大きさと項に残る変数の数が次のように対応します。</p>
+</div>
+<table class="tableblock frame-ends grid-rows fit-content">
+<caption class="title">表 1. 4変数のカルノー図での枠の大きさと項</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">枠のマス数</th>
+<th class="tableblock halign-center valign-top">値が変わる変数の数</th>
+<th class="tableblock halign-left valign-top">項に残る変数の数(例)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4(\(x\cdot\bar y\cdot z\cdot w\))</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3(\(\bar x\cdot y\cdot w\))</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2(\(\bar y\cdot\bar w\))</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1(\(x\))</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0(定数1)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_例_4変数の簡単化"><a class="link" href="#_例_4変数の簡単化">例: 4変数の簡単化</a></h4>
+<div class="paragraph">
+<p>ある論理関数 \(f(x,y,z,w)\) が1になる入力 \(xyzw\) が、次の9通りだったとします(ほかの7通りでは0)。</p>
+</div>
+<div class="paragraph text-center">
+<p>0000, 0010, 0100, 0101, 0110, 1000, 1010, 1100, 1101</p>
+</div>
+<div class="paragraph">
+<p>これを積和標準形で書くと9個の最小項の和になりますが、カルノー図に書き込んで囲むと、下図のように3つの枠で覆えます。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-4var.svg" alt="左は9つの1を書き込んだ4変数のカルノー図、右は4隅(赤)、左右の端をまたぐ4マス(青)、中央左の2×2(緑)の3つの枠で囲んだ図">
+</div>
+<div class="title">図 6. 4変数のカルノー図の例</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>赤の枠(4隅): \(y=0\)、\(w=0\) で共通なので \(\bar y\cdot\bar w\)</p>
+</li>
+<li>
+<p>青の枠(上2行の左端と右端の列): \(x=0\)、\(w=0\) で共通なので \(\bar x\cdot\bar w\)。左右の端がつながっていることを使っています。</p>
+</li>
+<li>
+<p>緑の枠(中央の2行、左2列): \(y=1\)、\(z=0\) で共通なので \(y\cdot\bar z\)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>よって、</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[f = \bar y\cdot\bar w + \bar x\cdot\bar w + y\cdot\bar z\]
+</div>
+</div>
+<div class="paragraph">
+<p>が得られます。1つのマス(たとえば0000)が複数の枠に入っていても構いません。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_囲み方のよくある誤り"><a class="link" href="#_囲み方のよくある誤り">1.4. 囲み方のよくある誤り</a></h3>
+<div class="paragraph">
+<p>カルノー図の囲み方では、次のような誤りがよく見られます。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-mistakes.svg" alt="(a)縦に3つの1を1つの枠で囲む、(b)斜めの2つの1を囲む、(c)行を00,01,10,11の順に並べて01と10を隣として囲む、(d)上端と下端の1を別々に囲む、の4つの小さなカルノー図">
+</div>
+<div class="title">図 7. 囲み方のよくある誤り</div>
+</div>
+<table class="tableblock frame-ends grid-rows stretch">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 42.8571%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">図</th>
+<th class="tableblock halign-left valign-top">何がいけないか</th>
+<th class="tableblock halign-left valign-top">正しい囲み方</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(a)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">枠のマス数が3で、\(2^n\) 個ではない。3マスの枠に対応する積項は存在しない</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">上2マスと下2マスの2つの枠(重なってよい)で \(y\cdot z + x\cdot z\) とする</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(b)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">斜めのマスは2つの変数の値が違うので、隣り合っていない</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">別々の枠で囲み \(\bar x\cdot y + x\cdot\bar y\) とする(これ以上簡単にならない)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(c)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">行の並べ方が 00, 01, 10, 11 になっている。01と10は2桁とも値が違うので、図の上で隣でも1つの項にまとめられない</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00, 01, 11, 10 の順に並べ直す。この例では2つの1は隣り合わない</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(d)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">誤りではないが、上端と下端がつながっていることを使っていないので、最も簡単な式にならない</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">上下の端をまたぐ1つの枠で \(\bar y\cdot z\) とする</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>(a)〜(c)の誤りをすると、元の関数と異なる式になってしまいます。求めた式が正しいかどうかは、枠に0のマスが含まれていないか、すべての1がどれかの枠に入っているかを確かめれば点検できます。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ドントケア"><a class="link" href="#_ドントケア">1.5. ドントケア</a></h3>
+<div class="paragraph">
+<p>入力の組合せの中には、決して起こらないもの、または起こっても出力が何でもよいものがあることがあります。そのような入力に対する出力を<strong>ドントケア</strong>(don&#8217;t care: 気にしない)とよび、カルノー図では \(\ast\) などの記号で書きます。ドントケアのマスは、枠を大きくするのに役立つときだけ1とみなして囲み、役立たないときは0とみなして囲みません。</p>
+</div>
+<div class="paragraph">
+<p>例として、4ビットの入力 \(xyzw\)(\(x\) が最上位の桁)で0〜9の数字を表す回路を考えます。10〜15(1010〜1111)は数字を表さないので入力されないものとし、ドントケアとします。この入力が5以上のときに1を出力する論理関数を簡単化してみましょう。1になるのは5〜9、つまり 0101, 0110, 0111, 1000, 1001 です。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-dontcare.svg" alt="4変数のカルノー図2つ。左は*を0とみなして3つの小さな枠で囲んだ図、右は*を1とみなして、x、yw、yzの大きな枠で囲んだ図">
+</div>
+<div class="title">図 8. ドントケアを使った簡単化</div>
+</div>
+<div class="paragraph">
+<p>\(\ast\) をすべて0とみなすと、左図のように3つの枠しか作れず</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[f = \bar x\cdot y\cdot w + \bar x\cdot y\cdot z + x\cdot\bar y\cdot\bar z\]
+</div>
+</div>
+<div class="paragraph">
+<p>となります。一方、\(\ast\) を都合よく1とみなすと、右図のように大きな枠が作れて</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[f = x + y\cdot w + y\cdot z\]
+</div>
+</div>
+<div class="paragraph">
+<p>と簡単になります。どちらの式も、0〜9の入力に対しては同じ値を出力します。違いは入力されない10〜15に対する出力だけです。ドントケアは次章でも、記憶回路(SRラッチ)の性質を式で表すときに使います。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_簡単化の基準と自動化"><a class="link" href="#_簡単化の基準と自動化">1.6. 簡単化の基準と自動化</a></h3>
+<div class="paragraph">
+<p>論理関数の簡単化問題、つまり、論理関数を表す積和形論理式の中で、もっとも積項数が少なく、かつリテラル数が最小であるような論理式を求める問題は、回路設計上非常に重要です。ここでは積項数を優先し、同じ積項数ならリテラル数を減らす、という基準を使います。実際の回路では遅延や一時的な出力の乱れも考えるため、式の最小化がそのまま最良の回路になるとは限りません。</p>
+</div>
+<div class="paragraph">
+<p>カルノー図は人が目で見て囲むための方法なので、変数が5つ、6つと増えると使いにくくなります。この簡単化問題はコンピューターで自動化できるのでしょうか。変数を増やすと、厳密に最小の式を求める計算量は急激に増えます。この問題は、後の章で扱う「NP困難」とよばれる種類の問題であることが知られており、どんな入力でも効率よく最小の式を求める方法は見つかっていません。実用的には本当に最小の論理関数を求める必要はなく、最小に近い論理回路が構成できればよいため、近似的に関数を最小化する様々なアルゴリズムが開発されています。</p>
 </div>
 </div>
 </div>
@@ -890,22 +1103,24 @@ x+y &amp;= \overline{\overline{x+y}} &amp;\quad (復元律)\\
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/gate-comp1.svg" alt="gate comp1">
+<img src="./img/gate-and-not-or.svg" alt="xとyをそれぞれNOTで反転してANDをとり、さらにNOTで反転してx+yを得る回路">
 </div>
+<div class="title">図 9. ANDゲートとNOTゲートによるORゲートの構成</div>
 </div>
 <div class="paragraph">
-<p>ORゲートとNOTゲートの関数的完全性については、同様に示せますので省略します。</p>
+<p>ORゲートとNOTゲートの組合せでも、同じように復元律とド・モルガンの法則から \(x\cdot y=\overline{\bar x+\bar y}\) とANDゲートが作れるので、関数的完全性が成り立ちます。</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_nandゲートの関数的完全性"><a class="link" href="#_nandゲートの関数的完全性">2.2. NANDゲートの関数的完全性</a></h3>
 <div class="imageblock right">
 <div class="content">
-<img src="./img/gate-nand.svg" alt="gate nand">
+<img src="./img/gate-nand.svg" alt="NANDゲートの記号。ANDゲートの出力側に小さな丸が付いている">
 </div>
+<div class="title">図 10. NANDゲートの記号</div>
 </div>
 <div class="paragraph">
-<p>実際の回路設計ではNANDゲートとよばれる論理ゲートのみを使った回路設計がよくみられます。これは、NANDゲートが技術的には比較的容易に構成可能であること、および、NANDゲートのみで関数的完全性が成り立つことによります。NANDゲートに対応する二項論理演算子を \(\uparrow\) で表し、論理ゲートは<strong>右図</strong>の記号で表すことにします。NANDゲートとは次のような論理式で定義される論理ゲートです。</p>
+<p>実際の回路設計ではNANDゲートとよばれる論理ゲートのみを使った回路設計がよくみられます。これは、現在の集積回路の主流であるCMOS回路では、NANDゲートがANDゲート(NANDゲートの後ろにNOTゲートを付けて作る)より少ないトランジスタで作れること、および、NANDゲートのみで関数的完全性が成り立つことによります。NANDゲートに対応する二項論理演算子を \(\uparrow\) で表し、論理ゲートは<strong>右図</strong>の記号で表すことにします。NANDゲートとは次のような論理式で定義される論理ゲートです。</p>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -916,7 +1131,7 @@ x+y &amp;= \overline{\overline{x+y}} &amp;\quad (復元律)\\
 <p>NANDゲートの真理値表を下記に示します。</p>
 </div>
 <table class="tableblock frame-ends grid-none fit-content">
-<caption class="title">表 1. NANDゲート</caption>
+<caption class="title">表 2. NANDゲート</caption>
 <colgroup>
 <col>
 <col>
@@ -965,8 +1180,9 @@ x+y &amp;= \overline{\overline{x+y}} &amp;\quad (復元律)\\
 </div>
 <div class="imageblock right">
 <div class="content">
-<img src="./img/gate-nand-not.svg" alt="gate nand not">
+<img src="./img/gate-nand-not.svg" alt="NANDゲートの2つの入力にxをつないだ回路">
 </div>
+<div class="title">図 11. NANDゲートによるNOT</div>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -984,8 +1200,9 @@ x+y &amp;= \overline{\overline{x+y}} &amp;\quad (復元律)\\
 </div>
 <div class="imageblock right">
 <div class="content">
-<img src="./img/gate-nand-and.svg" alt="gate nand and">
+<img src="./img/gate-nand-and.svg" alt="NANDゲートの出力を、入力を束ねたNANDゲートに通す回路">
 </div>
+<div class="title">図 12. NANDゲートによるAND</div>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1004,8 +1221,9 @@ x+y &amp;= \overline{\overline{x+y}} &amp;\quad (復元律)\\
 </div>
 <div class="imageblock right">
 <div class="content">
-<img src="./img/gate-nand-or.svg" alt="gate nand or">
+<img src="./img/gate-nand-or.svg" alt="xとyをそれぞれNANDで反転し、その2つをNANDに入れる回路">
 </div>
+<div class="title">図 13. NANDゲートによるOR</div>
 </div>
 <div class="stemblock">
 <div class="content">
@@ -1031,7 +1249,7 @@ x+y &amp;= \overline{\overline{x+y}} &amp;\quad (復元律)\\
 <p>【NANDだけでできている】</p>
 </div>
 <div class="paragraph">
-<p>NANDが1種類あれば何でも作れるという性質は、設計上たいへん都合がよく、実際の集積回路に活かされています。デジタル回路の入門で最初に登場する標準ICのひとつ「7400」は、1パッケージに2入力NANDゲートが4個入っただけの部品です。原理的にはこの7400を多数つなげるだけで、加算器でもCPUでも組めることになります。半導体の製造でもNAND(やNOR)は構造が単純で作りやすく、配線も揃えやすいため、現代のLSI設計でも好まれます。大容量のフラッシュメモリに「NAND型」という種類があるのも、記憶素子をNANDゲートと同じ形につないでいることに由来します。</p>
+<p>NANDが1種類あれば何でも作れるという性質は、設計上たいへん都合がよく、実際の集積回路に活かされています。デジタル回路の入門で最初に登場する標準ICのひとつ「7400」は、1パッケージに2入力NANDゲートが4個入っただけの部品です。原理的にはこの7400を多数つなげるだけで、加算器でもCPUでも組めることになります。現代のLSI設計でも、NAND(やNOR)は少ないトランジスタで作れる基本ゲートとしてよく使われます。大容量のフラッシュメモリに「NAND型」という種類があるのも、記憶素子(トランジスタ)を直列につなぐ形が、NANDゲートの内部でトランジスタを直列につなぐ形と同じであることに由来します。</p>
 </div>
 </td>
 </tr>
@@ -1048,7 +1266,7 @@ x+y &amp;= \overline{\overline{x+y}} &amp;\quad (復元律)\\
 <p><strong>組合せ論理回路</strong>とは、現在の入力の値だけで出力が一意に（一通りに）決まり、過去の入力（内部状態）には依存しない論理回路のことです。単に組合せ回路とも呼びます。これまで扱ってきた論理回路はすべて組合せ回路です。</p>
 </div>
 <div class="paragraph">
-<p>では、組合せ回路ではない論理回路とは、どのような回路でしょう。それは、状態をもつ論理回路のことです。たとえば、自動販売機に10円をいれると、10円が状態として記憶されます。次に10円を入れると20円が状態として記憶されます。このように記憶をもつ仕組みがないと、10円を何度入れても、10円としか認識されない困った事になってしまいます。状態を持つ回路を順序回路とよび、次回の授業で学びます。</p>
+<p>では、組合せ回路ではない論理回路とは、どのような回路でしょう。それは、状態をもつ論理回路のことです。たとえば、自動販売機に10円をいれると、10円が状態として記憶されます。次に10円を入れると20円が状態として記憶されます。このように記憶をもつ仕組みがないと、10円を何度入れても、10円としか認識されない困った事になってしまいます。状態を持つ回路を順序回路とよび、次章で学びます。</p>
 </div>
 <div class="paragraph">
 <p>これまでは1出力の組合せ回路のみを扱ってきましたが、複数出力の論理回路の構成も同様の方法で構成できます。たとえば、3入力、2出力の論理回路を構成したければ、\(f_1(x,y,z)\)、\(f_2(x,y,z)\) と共通の入力 \(x,y,z\) を持つ2つの論理回路を構成してやればよいだけです。実際に回路設計をするときには、無駄のないように \(f_1\) と \(f_2\) でできるだけ回路を共有して効率的に回路を構成します。</p>
@@ -1060,15 +1278,16 @@ x+y &amp;= \overline{\overline{x+y}} &amp;\quad (復元律)\\
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/multiplexer.svg" alt="multiplexer">
+<img src="./img/multiplexer.svg" alt="台形の記号。左からd0とd1、上からs、右へyが出る">
 </div>
+<div class="title">図 14. 2入力データセレクタの記号</div>
 </div>
 <div class="paragraph">
 <p>下の表に2入力データセレクタの動作を真理値表として示しました。
 \(s=0\) のとき \(y=d_0\)、\(s=1\) のとき \(y=d_1\) となるように、あらゆる入力の組合せを記述していることを確認してください。</p>
 </div>
 <table class="tableblock frame-ends grid-none fit-content">
-<caption class="title">表 2. 2入力データセレクタの真理値表</caption>
+<caption class="title">表 3. 2入力データセレクタの真理値表</caption>
 <colgroup>
 <col>
 <col>
@@ -1160,8 +1379,9 @@ y = \bar s\cdot d_0\cdot\bar d_1 + \bar s\cdot d_0\cdot d_1 + s\cdot\bar d_0\cdo
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/karnaugh-multiplexer.svg" alt="karnaugh multiplexer">
+<img src="./img/karnaugh-multiplexer.svg" alt="行d0d1、列sのカルノー図。左は4つの最小項の1、右は縦2マスの枠2つで囲んだ図">
 </div>
+<div class="title">図 15. データセレクタのカルノー図</div>
 </div>
 <div class="paragraph">
 <p>こうして、1を覆った2つの枠に対応する積項を求め、論理和で接続することにより次式を得ます。</p>
@@ -1179,8 +1399,9 @@ y &amp;= \bar s\cdot d_0\cdot\bar d_1 + \bar s\cdot d_0\cdot d_1 + s\cdot\bar d_
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/multiplexer-c.svg" alt="multiplexer c">
+<img src="./img/multiplexer-c.svg" alt="sをNOTで反転してd0とANDをとり、sとd1のANDとともにORでまとめる回路">
 </div>
+<div class="title">図 16. 2入力データセレクタの論理回路</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1203,7 +1424,7 @@ y &amp;= \bar s\cdot d_0\cdot\bar d_1 + \bar s\cdot d_0\cdot d_1 + s\cdot\bar d_
 <p>2進法の数の足し算をする回路を組合せ回路で設計します。まず、1ビットの数 \(x\) と \(y\) の足し算について考えます。すると、計算は次の表のようになります。</p>
 </div>
 <table class="tableblock frame-ends grid-none fit-content">
-<caption class="title">表 3. 半加算器の真理値表</caption>
+<caption class="title">表 4. 半加算器の真理値表</caption>
 <colgroup>
 <col>
 <col>
@@ -1261,7 +1482,7 @@ y &amp;= \bar s\cdot d_0\cdot\bar d_1 + \bar s\cdot d_0\cdot d_1 + s\cdot\bar d_
 <p>以下の真理値表で表される論理回路をXORゲートとよび、記号として \(x\oplus y\) を用います。</p>
 </div>
 <table class="tableblock frame-ends grid-none fit-content">
-<caption class="title">表 4. 排他的論理和の真理値表</caption>
+<caption class="title">表 5. 排他的論理和の真理値表</caption>
 <colgroup>
 <col>
 <col>
@@ -1302,8 +1523,9 @@ y &amp;= \bar s\cdot d_0\cdot\bar d_1 + \bar s\cdot d_0\cdot d_1 + s\cdot\bar d_
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/gate-xor.svg" alt="gate xor">
+<img src="./img/gate-xor.svg" alt="ORゲートの入力側にもう1本の曲線を付けた記号">
 </div>
+<div class="title">図 17. XORゲートの記号</div>
 </div>
 <div class="paragraph">
 <p>前章の「論理式の標準形」の節の方法にしたがって、この真理値表から積和標準形を求めてみます。まず、\(x\oplus y=1\) となる行にのみ着目すると、\((x,y)=(0,1)\) と \((x,y)=(1,0)\) ですので、それぞれの値の割当から最小項を導くと、それぞれ、\(\bar x\cdot y\) と \(x\cdot\bar y\) となります。つまり、\(\bar x\cdot y=1\) であるか、または \(x\cdot\bar y=1\) であるときのみ、\(x\oplus y=1\) となります。よって、排他的論理和をNOT, AND, ORゲートで表現すると、</p>
@@ -1320,7 +1542,7 @@ y &amp;= \bar s\cdot d_0\cdot\bar d_1 + \bar s\cdot d_0\cdot d_1 + s\cdot\bar d_
 <div class="content">
 <img src="./img/xor-circuit.svg" alt="NOTゲート2つとANDゲート2つとORゲート1つでXORを構成する論理回路図">
 </div>
-<div class="title">図 2. NOT・AND・ORゲートによるXORゲートの構成</div>
+<div class="title">図 18. NOT・AND・ORゲートによるXORゲートの構成</div>
 </div>
 </div>
 </div>
@@ -1329,8 +1551,9 @@ y &amp;= \bar s\cdot d_0\cdot\bar d_1 + \bar s\cdot d_0\cdot d_1 + s\cdot\bar d_
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/half-adder.svg" alt="half adder">
+<img src="./img/half-adder.svg" alt="左はxとyをXORゲートとANDゲートの両方に入れて和sと桁上げcを出す回路、右は半加算器の記号">
 </div>
+<div class="title">図 19. 半加算器の構成と記号</div>
 </div>
 </div>
 <div class="sect2">
@@ -1339,7 +1562,7 @@ y &amp;= \bar s\cdot d_0\cdot\bar d_1 + \bar s\cdot d_0\cdot d_1 + s\cdot\bar d_
 <p>前節の半加算器は、このままでは複数桁の2進法の数の足し算には使えません。なぜなら、上位の桁では下位の桁からの桁上りを考慮する必要があるからです。つまり、下位からの桁上げ \(c_{\text{in}}\) と上位への桁上げ \(c_{\text{out}}\) の2つの桁上げを考慮する必要があります。これは3つの1ビットの数 \(x\)、\(y\)、\(c_{\text{in}}\) を足す加算器と考えればよいので、真理値表は次のようになります。</p>
 </div>
 <table class="tableblock frame-ends grid-none fit-content">
-<caption class="title">表 5. 全加算器の真理値表</caption>
+<caption class="title">表 6. 全加算器の真理値表</caption>
 <colgroup>
 <col>
 <col>
@@ -1416,15 +1639,35 @@ y &amp;= \bar s\cdot d_0\cdot\bar d_1 + \bar s\cdot d_0\cdot d_1 + s\cdot\bar d_
 </tbody>
 </table>
 <div class="paragraph">
-<p>詳細な計算は省きますが、2つの半加算器を2段繋げば、3つの1ビットの数の和が求められることは明らかでしょう。ここでは、\((x+y)+c_{\text{in}}\) の順に足し合わせています。上位への桁上げ \(c_{\text{out}}\) は、2つの半加算器のいずれかの桁上げがあれば、上位に送るだけですのでORゲートを用います。このORゲートの2つの入力が2つとも1になることはないことに注意してください。</p>
+<p>3つの数の和は、2つの半加算器を2段つなぎ、\((x+y)+c_{\text{in}}\) の順に足し合わせれば求められます。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>1つ目の半加算器で \(x+y\) を計算します。和を \(s_1\)、桁上げを \(c_1\) とします。</p>
+</li>
+<li>
+<p>2つ目の半加算器で \(s_1+c_{\text{in}}\) を計算します。この和が全体の和 \(s\) です。桁上げを \(c_2\) とします。</p>
+</li>
+<li>
+<p>上位への桁上げ \(c_{\text{out}}\) は、\(c_1\) と \(c_2\) のどちらかが1なら1です。そこで、ORゲートで \(c_{\text{out}}=c_1+c_2\) とします。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>たとえば \(x=y=c_{\text{in}}=1\) なら、\(s_1=0\)、\(c_1=1\)、\(s=0\oplus 1=1\)、\(c_2=0\) となり、\(c_{\text{out}}=1\)、\(s=1\) です。これは \(1+1+1=11_{(2)}\) と一致します。真理値表の8行すべてで同じように確かめられます。</p>
+</div>
+<div class="paragraph">
+<p>なお、\(c_1\) と \(c_2\) が2つとも1になることはありません。\(c_1=1\) となるのは \(x=y=1\) のときだけで、そのとき \(s_1=0\) なので \(c_2=0\) になるからです。</p>
 </div>
 <div class="paragraph">
 <p>よって、全加算器は半加算器とORゲートを用いて左下図のように構成できます。また、全加算器を右下図のように表現することにします。</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/full-adder.svg" alt="full adder">
+<img src="./img/full-adder-structure.svg" alt="左は半加算器2つとORゲートによる全加算器、右は全加算器の記号(左からx,y、上からc_in、右へs、下へc_out)">
 </div>
+<div class="title">図 20. 全加算器の構成と記号</div>
 </div>
 <div class="paragraph">
 <p>これで、複数桁の2つの2進数の数を足し合わせる回路を構成する準備ができました。
@@ -1443,12 +1686,13 @@ y &amp;= y_4y_3y_2y_1\\
 </div>
 <div class="paragraph">
 <p>たとえば、\(x=1011\) のときは \(x_1=1\), \(x_2=1\), \(x_3=0\), \(x_4=1\) となります。
-すると、4ビットの加算器は下記のように構成できます（計算結果は \(s=s_4s_3s_2s_1\)）。最上位の桁上げ \(c_{\text{out}}\) は5桁目（あふれ）を表します。</p>
+すると、4ビットの加算器は下記のように構成できます（計算結果は \(s=s_4s_3s_2s_1\)）。最下位の桁には下位からの桁上げがないので半加算器を使い、各桁の桁上げを1つ上の桁の全加算器の \(c_{\text{in}}\) につなぎます。最上位の桁上げ \(c_{\text{out}}\) は5桁目（あふれ）を表します。</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/adder.svg" alt="adder">
+<img src="./img/adder.svg" alt="半加算器1つと全加算器3つを縦に並べ、各桁の桁上げを下の段の全加算器に渡す4ビット加算器">
 </div>
+<div class="title">図 21. 4ビットの加算器</div>
 </div>
 </div>
 <div class="sect2">
@@ -1469,8 +1713,9 @@ y &amp;= y_4y_3y_2y_1\\
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/gate-and-delay.svg" alt="gate and delay">
+<img src="./img/gate-and-delay.svg" alt="左はANDゲートを3段直列につないだ回路、右は2つのANDゲートの出力をさらにANDでまとめた2段の回路">
 </div>
+<div class="title">図 22. 結合の仕方による段数の違い(左: 3段、右: 2段)</div>
 </div>
 <div class="paragraph">
 <p>左辺はANDゲートが3段、右辺は2段の深さです。値が入力されてから論理回路の値が決まるまでの時間を<strong>論理回路の遅延時間</strong>といいます。左図では、入力 \(w\) と \(x\) は3段のANDゲートを通るため、この部分が左図の回路の遅延時間を決定づけています。つまり、右の論理回路より、左の論理回路の方が遅延時間が長くなってしまうのです。遅延は素子、電圧、負荷などに依存し、個別の論理ICではナノ秒単位の場合もあります。例えば仮に各ゲートの遅延を同じ100ピコ秒とすれば、3段で300ピコ秒、2段で200ピコ秒となります（1ピコ秒は10<sup>-12</sup>秒）。</p>
@@ -1494,7 +1739,7 @@ y &amp;= y_4y_3y_2y_1\\
 </div>
 </div>
 <div class="paragraph">
-<p>マインクラフトではレッドストーン回路で論理回路を設計し、様々な仕掛けを作れます。次回学ぶ記憶の仕組みも組み合わせれば、ゲーム内に計算機を作ることもできます。現実のゲームには領域や速度の制限がありますが、論理演算から計算機を組み立てる発想を試す題材になります。</p>
+<p>マインクラフトではレッドストーン回路で論理回路を設計し、様々な仕掛けを作れます。次章で学ぶ記憶の仕組みも組み合わせれば、ゲーム内に計算機を作ることもできます。現実のゲームには領域や速度の制限がありますが、論理演算から計算機を組み立てる発想を試す題材になります。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1514,197 +1759,109 @@ y &amp;= y_4y_3y_2y_1\\
 </div>
 </div>
 <div class="sect1">
-<h2 id="_今週の問題"><a class="link" href="#_今週の問題">4. 今週の問題</a></h2>
+<h2 id="_練習問題"><a class="link" href="#_練習問題">4. 練習問題</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>次の問【1】〜【2】に取り組んでください。</p>
+<p>基本の確認から順に並べています。カルノー図の問題は、まず図を描いて囲み、得られた式を真理値表で確かめる習慣をつけましょう。</p>
 </div>
 <div class="exampleblock">
+<div class="title">問題1: カルノー図の行の並べ方</div>
 <div class="content">
 <div class="paragraph">
-<p>【1】NORゲートを表す論理演算子を \(\downarrow\) で表し、論理ゲートは下図の記号で表すことにします。</p>
+<p>3変数のカルノー図で、行に \(xy\) の値を割り当てる順序として、次の(a)〜(d)のうち<strong>使えないもの</strong>をすべて選び、理由を説明せよ。</p>
+</div>
+<div class="paragraph">
+<p>(a) 00, 01, 10, 11<br>
+(b) 00, 10, 11, 01<br>
+(c) 01, 11, 10, 00<br>
+(d) 11, 00, 01, 10</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>使えないのは <strong>(a)と(d)</strong> です。</p>
+</div>
+<div class="paragraph">
+<p>カルノー図の行は、隣り合う行の値が1桁だけ異なるように並べる必要があります。上端と下端もつながっているので、最後の行と最初の行も1桁だけ異なる必要があります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>(a) 01 → 10 で2桁とも変わります(最後の11 → 最初の00も2桁)。</p>
+</li>
+<li>
+<p>(b) 00 → 10 → 11 → 01 → (00) と、どこも1桁だけの変化なので使えます。</p>
+</li>
+<li>
+<p>(c) 01 → 11 → 10 → 00 → (01) と、どこも1桁だけの変化なので使えます。</p>
+</li>
+<li>
+<p>(d) 11 → 00 で2桁とも変わります。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>本文の 00, 01, 11, 10 の順だけが正解ではありません。1桁ずつの変化になっていれば、どこから始めても、逆向きでも使えます。(a)は2進法の数の順なので自然に見えますが、カルノー図では最もよくある誤りです。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題2: 2変数の簡単化</div>
+<div class="content">
+<div class="paragraph">
+<p>カルノー図を用いて次の論理式を簡単化せよ。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\bar x\cdot\bar y + \bar x\cdot y + x\cdot y\]
+</div>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="stemblock">
+<div class="content">
+\[\bar x + y\]
+</div>
+</div>
+<div class="paragraph">
+<p>3つの項はどれも最小項なので、それぞれ1マスに1を書きます。上の行(\(x=0\))の2マスを囲むと \(\bar x\)、右の列(\(y=1\))の2マスを囲むと \(y\) になります。右上のマスは2つの枠が重なりますが、重なってよいのでできるだけ大きく囲みます。</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/gate-nor.svg" alt="gate nor">
+<img src="./img/karnaugh-ex-2var.svg" alt="行x、列yのカルノー図。上の行の2マスを囲む枠がxの否定、右の列の2マスを囲む枠がy">
 </div>
-</div>
-<div class="paragraph">
-<p>NORゲートの真理値表を下記に示します。</p>
-</div>
-<table class="tableblock frame-ends grid-none fit-content">
-<caption class="title">表 6. NORゲートの真理値表</caption>
-<colgroup>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-center valign-top">\(x\)</th>
-<th class="tableblock halign-center valign-top">\(y\)</th>
-<th class="tableblock halign-center valign-top">\(x\downarrow y\)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>これは、論理和の結果を反転させた関数ですので、\(x\downarrow y = \overline{x+y}\) と定義できます。</p>
+<div class="title">図 23. 問題2の解答のカルノー図</div>
 </div>
 <div class="paragraph">
-<p>(1) NORゲートのみでNOTゲートが実現できることを示し、その論理回路を描け。<br>
-(2) NORゲートのみでORゲートが実現できることを示し、その論理回路を描け。<br>
-(3) NORゲートのみでANDゲートが実現できることを示し、その論理回路を描け。</p>
+<p>検算: \(\bar x + y\) が0になるのは \((x,y)=(1,0)\) のときだけで、元の式も (1,0) の項がないので0になり、一致します。</p>
 </div>
 </div>
-</div>
+</details>
 <div class="exampleblock">
+<div class="title">問題3: 3変数の簡単化</div>
 <div class="content">
 <div class="paragraph">
-<p>【2】カルノー図を用いて次の論理式を簡単化せよ。</p>
+<p>カルノー図を用いて次の論理式を簡単化せよ。</p>
 </div>
 <div class="stemblock">
 <div class="content">
-\[x\cdot\bar y + y\cdot z + \bar y\cdot z + \bar x\cdot \bar y\cdot \bar z\]
+\[x\cdot\bar y + y\cdot z + \bar y\cdot z + \bar x\cdot \bar y\cdot\bar z\]
 </div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_今週の問題の解答"><a class="link" href="#_今週の問題の解答">5. 今週の問題の解答</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>まず自分で解いてから読むことをすすめます。</p>
-</div>
-<div class="exampleblock">
+<details>
+<summary class="title">解答</summary>
 <div class="content">
-<div class="paragraph">
-<p>【1】NORゲートを表す論理演算子を\(\downarrow\)で表し、論理ゲートは下図の記号で表すことにします。</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./img/gate-nor.svg" alt="gate nor">
-</div>
-</div>
-<div class="paragraph">
-<p>NORゲートの真理値表を下記に示します。</p>
-</div>
-<table class="tableblock frame-ends grid-none fit-content">
-<colgroup>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-center valign-top">\(x\)</th>
-<th class="tableblock halign-center valign-top">\(y\)</th>
-<th class="tableblock halign-center valign-top">\(x\downarrow y\)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
-<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
-<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>これは、論理和の結果を反転させた関数ですので、\(x\downarrow y = \overline{x+y}\) と定義できます。</p>
-</div>
-<div class="paragraph">
-<p>(1) NORゲートのみでNOTゲートが実現できることを示し、その論理回路を描け。<br>
-(2) NORゲートのみでORゲートが実現できることを示し、その論理回路を描け。<br>
-(3) NORゲートのみでANDゲートが実現できることを示し、その論理回路を描け。</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>(1) <span class="image right"><img src="./img/nor-not.svg" alt="nor not"></span></p>
-</div>
 <div class="stemblock">
 <div class="content">
-\[\begin{align}
-\bar x &amp;=  \overline{x + x} &amp; \quad (冪等律)\\
-       &amp;= x\downarrow x &amp; \quad (\text{NORの定義})
-\end{align}\]
-</div>
-</div>
-<div class="paragraph">
-<p>(2) <span class="image right"><img src="./img/nor-or.svg" alt="nor or"></span></p>
-</div>
-<div class="stemblock">
-<div class="content">
-\[\begin{align}
-x+y &amp;=  \overline{\overline{x + y}} &amp; \quad (復元律)\\
-       &amp;= (x \downarrow y)\downarrow(x \downarrow y) &amp; \quad (\text{NORの定義})
-\end{align}\]
-</div>
-</div>
-<div class="paragraph">
-<p>(3) <span class="image right"><img src="./img/nor-and.svg" alt="nor and"></span></p>
-</div>
-<div class="stemblock">
-<div class="content">
-\[\begin{align}
-x\cdot y &amp;=  \overline{\overline{x\cdot y}} &amp; \quad (復元律)\\
-       &amp;=   \overline{\bar x + \bar y} &amp; \quad (ド・モルガン)\\
-      &amp;=   (x\downarrow x)\downarrow (y\downarrow y)&amp; \quad (\text{(1)とNORの定義})\\
-\end{align}\]
-</div>
-</div>
-<div class="paragraph">
-<p>本章では、NANDゲートだけであらゆる論理関数が作れること（関数的完全性）を確認しました。上の(1)〜(3)から、NORゲートも同じく関数的完全であることがわかります。この性質は、次章でメモリ回路（SRラッチ）の組み立てに使います。</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>【2】カルノー図を用いて次の論理式を簡単化せよ。</p>
-</div>
-<div class="stemblock">
-<div class="content">
-\[x\cdot \bar y + y\cdot z + \bar y\cdot z + \bar x\cdot \bar y\cdot\bar z\]
-</div>
-</div>
+\[\bar y + z\]
 </div>
 </div>
 <div class="paragraph">
@@ -1712,19 +1869,12 @@ x\cdot y &amp;=  \overline{\overline{x\cdot y}} &amp; \quad (復元律)\\
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./img/karnaugh-assignment2.svg" alt="karnaugh assignment2">
+<img src="./img/karnaugh-assignment2.svg" alt="行xy、列zのカルノー図。右図では列z=1の4マスを囲む枠zと、上端の行00と下端の行10をつなぐ4マスの枠yの否定で囲んでいる">
 </div>
-</div>
-<div class="paragraph">
-<p>よって、</p>
-</div>
-<div class="stemblock">
-<div class="content">
-\[\bar y + z\]
-</div>
+<div class="title">図 24. 問題3の解答のカルノー図(左: 各項の書き込み、右: 囲み直し)</div>
 </div>
 <div class="paragraph">
-<p>と簡単化できました。 「カルノー図の端と端はつながっている」の節で扱った内容ですが、上下のつながりは見落としやすいところです。以下の点を再度確認しておきます。</p>
+<p>「カルノー図の端と端はつながっている」の節で扱った内容ですが、上下のつながりは見落としやすいところです。以下の点を再度確認しておきます。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1740,7 +1890,7 @@ x\cdot y &amp;=  \overline{\overline{x\cdot y}} &amp; \quad (復元律)\\
 </ul>
 </div>
 <div class="paragraph">
-<p>隣接する \(xy\) の値の割り当てを通常の2進法による数の順番 00 → 01 → 10 → 11 にしてしまう間違いもよくあります。「3変数のカルノー図」の節で述べたとおり、隣接する値は1桁だけ異なるように 00 → 01 → 11 → 10 と並べてください。</p>
+<p>隣接する \(xy\) の値の割り当てを通常の2進法による数の順番 00 → 01 → 10 → 11 にしてしまう間違いもよくあります(問題1)。</p>
 </div>
 <div class="paragraph">
 <p>カルノー図は和積形を求めるのにも使えます。図には示していませんが、値が0の2つのマス \((xy,z)=(01,0),(11,0)\) を囲むと、元の関数 \(f\) が0になる範囲、つまり補関数(否定) \(\bar f\) の積和形</p>
@@ -1761,6 +1911,355 @@ x\cdot y &amp;=  \overline{\overline{x\cdot y}} &amp; \quad (復元律)\\
 <div class="paragraph">
 <p>を得ます。</p>
 </div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題4: 4変数の簡単化</div>
+<div class="content">
+<div class="paragraph">
+<p>カルノー図を用いて次の論理式を簡単化せよ。行に \(xy\)、列に \(zw\) を割り当てるとよい。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\bar x\cdot\bar y\cdot\bar z\cdot\bar w + \bar y\cdot z\cdot\bar w + y\cdot\bar z\cdot\bar w + x\cdot\bar y\cdot\bar z\cdot\bar w + \bar x\cdot y\cdot z\cdot w + x\cdot y\cdot z\cdot w\]
+</div>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="stemblock">
+<div class="content">
+\[\bar z\cdot\bar w + \bar y\cdot\bar w + y\cdot z\cdot w\]
+</div>
+</div>
+<div class="paragraph">
+<p>各項が1になるマス(\(xyzw\))は次のとおりです。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(\bar x\bar y\bar z\bar w\): 0000</p>
+</li>
+<li>
+<p>\(\bar y z\bar w\): 0010, 1010(\(x\) は0でも1でもよい)</p>
+</li>
+<li>
+<p>\(y\bar z\bar w\): 0100, 1100</p>
+</li>
+<li>
+<p>\(x\bar y\bar z\bar w\): 1000</p>
+</li>
+<li>
+<p>\(\bar x y z w\): 0111</p>
+</li>
+<li>
+<p>\(x y z w\): 1111</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-ex-4var.svg" alt="4変数のカルノー図。左端の列の4マスを囲む青の枠、4隅を囲む赤の枠、列11の行01と11を囲む緑の枠">
+</div>
+<div class="title">図 25. 問題4の解答のカルノー図</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>左端の列(\(zw=00\))の4マス: \(\bar z\cdot\bar w\)</p>
+</li>
+<li>
+<p>4隅の4マス(上下・左右の端がつながる): \(\bar y\cdot\bar w\)</p>
+</li>
+<li>
+<p>0111と1111の縦2マス: \(y\cdot z\cdot w\)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>0000と1000は2つの枠に入りますが、重なって構いません。0111と1111はまわりのマスがすべて0なので、2マスの枠より大きくはできません。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題5: ドントケアを使った簡単化</div>
+<div class="content">
+<div class="paragraph">
+<p>4ビットの入力 \(xyzw\)(\(x\) が最上位の桁)で0〜9の数字を表す。10〜15は入力されないものとする。入力された数字が3, 6, 9のいずれかのときに1、それ以外(0, 1, 2, 4, 5, 7, 8)のときに0を出力する論理関数を、ドントケアを利用して簡単化せよ。また、ドントケアを使わない場合の最も簡単な積和形と、リテラルの数を比べよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="stemblock">
+<div class="content">
+\[f = x\cdot w + y\cdot z\cdot\bar w + \bar y\cdot z\cdot w\]
+</div>
+</div>
+<div class="paragraph">
+<p>1になるのは 0011(3)、0110(6)、1001(9)、ドントケアは 1010〜1111 の6マスです。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-ex-dontcare.svg" alt="4変数のカルノー図。1は0011,0110,1001、*は1010から1111。xwの4マス、yzとwの否定の2マス、yの否定とzwの2マスの3つの枠">
+</div>
+<div class="title">図 26. 問題5の解答のカルノー図</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1001(9)を、ドントケアの1011, 1101, 1111と合わせて4マスで囲むと \(x\cdot w\)</p>
+</li>
+<li>
+<p>0110(6)を、ドントケアの1110と合わせて囲むと \(y\cdot z\cdot\bar w\)</p>
+</li>
+<li>
+<p>0011(3)を、ドントケアの1011と上下の端をまたいで囲むと \(\bar y\cdot z\cdot w\)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>ドントケアを使わない(すべて0とみなす)と、3つの1はどれも隣に1がないので、
+\(\bar x\cdot\bar y\cdot z\cdot w + \bar x\cdot y\cdot z\cdot\bar w + x\cdot\bar y\cdot\bar z\cdot w\) となり、リテラルは12個です。ドントケアを使うと8個に減ります。</p>
+</div>
+<div class="paragraph">
+<p>たとえば \(x\cdot w\) は、入力11(1011)でも1を出しますが、10〜15は入力されないので問題になりません。ドントケアとして扱ってよいのは、本当に起こらない(または出力を気にしない)入力だけです。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題6: 囲み方の誤りを見つける</div>
+<div class="content">
+<div class="paragraph">
+<p>ある論理関数 \(f(x,y,z)\) のカルノー図について、ある学生が下図のように囲み、\(f=\bar z + \bar y\cdot z\) と答えた。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-ex-wrong.svg" alt="行xy、列zのカルノー図。1は列0の行00,01,11と、列1の行10。列0の3マスを1つの破線の枠で、列1の行10と行00(値は0)を端のつながりで1つの破線の枠で囲んでいる">
+</div>
+<div class="title">図 27. 学生の囲み方</div>
+</div>
+<div class="paragraph">
+<p>(1) この囲み方の誤りを2つ指摘せよ。<br>
+(2) 学生の式が \(f\) と異なる値を出力する入力 \((x,y,z)\) をすべて挙げよ。<br>
+(3) 正しく簡単化せよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>列0の枠は3マスで、\(2^n\) 個になっていません。\(\bar z\) という項は列0の4マスすべて(行10も含む)を表すので、0のマス \((xy,z)=(10,0)\) まで1にしてしまいます。</p>
+</li>
+<li>
+<p>列1の枠は、上下の端のつながりを使っていますが、行00のマスは0です。枠に0のマスを含めてはいけません。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>(2) \((x,y,z)=(1,0,0)\) と \((0,0,1)\) の2つです。どちらも \(f=0\) ですが、学生の式では1になります(前者は \(\bar z\)、後者は \(\bar y\cdot z\) による)。</p>
+</div>
+<div class="paragraph">
+<p>(3)</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[f = \bar x\cdot\bar z + y\cdot\bar z + x\cdot\bar y\cdot z\]
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-ex-wrong-ans.svg" alt="同じカルノー図を、列0の上2マス(xの否定とzの否定)、列0の中央2マス(yとzの否定)、行10・列1の1マス(xとyの否定とz)の3つの枠で囲んだ図">
+</div>
+<div class="title">図 28. 問題6の正しい囲み方</div>
+</div>
+<div class="paragraph">
+<p>列0の3つの1は、上2マスと中央2マスの2つの枠で覆います(重なってよい)。行10・列1の1は、隣の3マス(左、上、上下の端をまたいだ行00)がすべて0なので、1マスの枠のまま \(x\cdot\bar y\cdot z\) とするしかありません。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題7: NORゲートの関数的完全性</div>
+<div class="content">
+<div class="paragraph">
+<p>NORゲートを表す論理演算子を \(\downarrow\) で表し、論理ゲートは下図の記号で表すことにします。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/gate-nor.svg" alt="NORゲートの記号。ORゲートの出力側に小さな丸が付いている">
+</div>
+<div class="title">図 29. NORゲートの記号</div>
+</div>
+<div class="paragraph">
+<p>NORゲートの真理値表を下記に示します。</p>
+</div>
+<table class="tableblock frame-ends grid-none fit-content">
+<caption class="title">表 7. NORゲートの真理値表</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">\(x\)</th>
+<th class="tableblock halign-center valign-top">\(y\)</th>
+<th class="tableblock halign-center valign-top">\(x\downarrow y\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>これは、論理和の結果を反転させた関数ですので、\(x\downarrow y = \overline{x+y}\) と定義できます。</p>
+</div>
+<div class="paragraph">
+<p>(1) NORゲートのみでNOTゲートが実現できることを示し、その論理回路を描け。<br>
+(2) NORゲートのみでORゲートが実現できることを示し、その論理回路を描け。<br>
+(3) NORゲートのみでANDゲートが実現できることを示し、その論理回路を描け。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) <span class="image right"><img src="./img/nor-not.svg" alt="NORゲートの2つの入力にxをつないだ回路"></span></p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+\bar x &amp;=  \overline{x + x} &amp; \quad (冪等律)\\
+       &amp;= x\downarrow x &amp; \quad (\text{NORの定義})
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>(2) <span class="image right"><img src="./img/nor-or.svg" alt="xとyのNORを、入力を束ねたNORに通す回路"></span></p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+x+y &amp;=  \overline{\overline{x + y}} &amp; \quad (復元律)\\
+       &amp;= (x \downarrow y)\downarrow(x \downarrow y) &amp; \quad (\text{NORの定義})
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>(3) <span class="image right"><img src="./img/nor-and.svg" alt="xとyをそれぞれNORで反転し、その2つをNORに入れる回路"></span></p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+x\cdot y &amp;=  \overline{\overline{x\cdot y}} &amp; \quad (復元律)\\
+       &amp;=   \overline{\bar x + \bar y} &amp; \quad (ド・モルガン)\\
+      &amp;=   (x\downarrow x)\downarrow (y\downarrow y)&amp; \quad (\text{(1)とNORの定義})\\
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>本章では、NANDゲートだけであらゆる論理関数が作れること（関数的完全性）を確認しました。上の(1)〜(3)から、NORゲートも同じく関数的完全であることがわかります。NANDの場合と比べると、ORとANDの作り方が入れ替わっています(NANDでは出力を反転するとAND、入力をそれぞれ反転するとOR。NORでは出力を反転するとOR、入力をそれぞれ反転するとAND)。NORゲートは、次章でメモリ回路（SRラッチ）の組み立てに使います。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題8: 全加算器の桁上げを設計する</div>
+<div class="content">
+<div class="paragraph">
+<p>本文の全加算器の真理値表から、桁上げ \(c_{\text{out}}\) を \(x, y, c_{\text{in}}\) の論理式として表したい。</p>
+</div>
+<div class="paragraph">
+<p>(1) カルノー図を用いて \(c_{\text{out}}\) を簡単な積和形で表せ。<br>
+(2) (1)の式を、2入力のANDゲートとORゲートだけを使った論理回路で描け。<br>
+(3) 本文の全加算器(半加算器2つとORゲート)では \(c_{\text{out}} = x\cdot y + (x\oplus y)\cdot c_{\text{in}}\) となる。これが(1)の式と同じ論理関数であることを確かめよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1)</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[c_{\text{out}} = x\cdot y + y\cdot c_{\text{in}} + x\cdot c_{\text{in}}\]
+</div>
+</div>
+<div class="paragraph">
+<p>\(c_{\text{out}}=1\) となるのは、3つの入力のうち2つ以上が1のとき(011, 101, 110, 111)です。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-ex-carry.svg" alt="行xy、列c_inのカルノー図。行11の2マス(xy)、列1の行01と11(y c_in)、列1の行11と10(x c_in)の3つの枠">
+</div>
+<div class="title">図 30. 問題8の解答のカルノー図</div>
+</div>
+<div class="paragraph">
+<p>3つの2マスの枠が、すべて (11,1) のマスで重なっています。この関数は「3つのうち多数が1なら1」を表すので、<strong>多数決関数</strong>ともよばれます。</p>
+</div>
+<div class="paragraph">
+<p>(2) 3入力のANDやORは使えないので、ANDゲート3つで3つの積項を作り、ORゲート2つを2段にしてまとめます。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/carry-circuit.svg" alt="x、y、c_inの縦の配線から2本ずつをANDゲート3つに取り出し、2段のORゲートでまとめてc_outを出す回路">
+</div>
+<div class="title">図 31. 問題8の解答の論理回路</div>
+</div>
+<div class="paragraph">
+<p>入力の縦の配線から横に取り出す点(T字の分岐)には黒丸を付けます。黒丸のない交差は、つながっていないことを表します。</p>
+</div>
+<div class="paragraph">
+<p>(3) \(x\) と \(y\) の値で場合分けします。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(x=y=0\) のとき: どちらの式もすべての項が0なので0です。</p>
+</li>
+<li>
+<p>\(x=y=1\) のとき: どちらの式も \(x\cdot y=1\) の項があるので1です。</p>
+</li>
+<li>
+<p>\(x\neq y\) のとき: \(x\cdot y=0\)、\(x\oplus y=1\) なので全加算器の式は \(c_{\text{in}}\) です。(1)の式も、\(x\) と \(y\) の一方だけが1なので \(y\cdot c_{\text{in}} + x\cdot c_{\text{in}} = c_{\text{in}}\) です。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>よって、すべての入力で一致します(8通りの真理値表で確かめてもよい)。同じ論理関数でも、回路の作り方は1通りではありません。全加算器の構成では、和を計算するために作った \(x\oplus y\) を桁上げの計算にも使い回しています。</p>
+</div>
+</div>
+</details>
 <hr>
 <div class="paragraph">
 <p>以上です</p>
@@ -1773,6 +2272,13 @@ x\cdot y &amp;=  \overline{\overline{x\cdot y}} &amp; \quad (復元律)\\
 Version 1.0<br>
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",

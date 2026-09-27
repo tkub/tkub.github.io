@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.26">
+<meta name="generator" content="Asciidoctor 2.0.20">
 <meta name="author" content="久保山哲二">
 <title>NP完全性と多項式時間還元</title>
 <style>
@@ -562,6 +562,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
 </head>
 <body class="article toc2 toc-right">
 <div id="header">
@@ -611,7 +612,6 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <li><a href="#_芋づる式にnp完全を証明する還元の連鎖">4. 芋づる式にNP完全を証明する(還元の連鎖)</a></li>
 <li><a href="#_むすび">5. むすび</a></li>
 <li><a href="#_練習問題">6. 練習問題</a></li>
-<li><a href="#_練習問題の解答">7. 練習問題の解答</a></li>
 </ul>
 </div>
 </div>
@@ -623,6 +623,28 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 \[\newcommand{\TT}[1]{\texttt{#1}}
 \newcommand{\uB}[2]{{\underbrace{\TT{#1}}_{\TT{#2}}}}\]
 </div>
+</div>
+<div class="paragraph">
+<p>前章では、次のことを学びました。この章はこれらを前提に進みます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>NP</strong>：答えが Yes の入力には短い証拠があり、それを多項式時間で検証できる決定問題のクラス</p>
+</li>
+<li>
+<p><strong>多項式時間還元</strong>：問題Bの入力を、答え（Yes/No）を変えずに問題Aの入力へ多項式時間で変換すること。\(B\preceq_P A\) と書き、「問題Aは少なくとも問題Bと同じくらい難しい」ことを表す</p>
+</li>
+<li>
+<p><strong>NP困難</strong>：NPのどの問題もそれに多項式時間還元できる問題。<strong>NP完全</strong>：NPに属し、かつNP困難である問題</p>
+</li>
+<li>
+<p><strong>SAT問題</strong>がNP完全であること（クック-レヴィンの定理）</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>この章では、SAT問題を出発点に、還元を使って<strong>クリーク問題</strong>、<strong>独立集合問題</strong>が次々にNP完全であることを示します。道筋は \(\text{SAT}\preceq_P \text{クリーク}\preceq_P \text{独立集合}\) です（後の節の「還元の連鎖」の図も参照）。</p>
 </div>
 </div>
 </div>
@@ -639,8 +661,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/net-narou.svg" alt="net narou" width="600">
+<img src="./img/net-narou.svg" alt="登場人物の共起ネットワーク" width="800">
 </div>
+<div class="title">図 1. ある小説の登場人物の共起ネットワーク（同じ文に登場した人物どうしを線で結んだもの）</div>
 </div>
 <div class="paragraph">
 <p>この図の線は「同じ文に登場した」という観測を表すだけで、知り合い・友人・好意などを直接証明するものではありません。以下の仲良しグループのたとえでは、辺を「互いに知り合い」と読む別のモデルを考えます。</p>
@@ -663,15 +686,16 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </table>
 </div>
 <div class="paragraph">
-<p>さて、このような関係図の中で、特に注目したいのが「<strong>そのグループに属する全員が、互いに直接知り合いである</strong>」ような、非常に結びつきの強いグループです。このような特別なグループ、すなわち<strong>完全部分グラフ</strong>（どの2頂点も互いに辺で結ばれた部分グラフ）をなす頂点集合のことを、グラフ理論の言葉で「<strong>クリーク</strong>」と呼びます。</p>
+<p>さて、このような関係図の中で、特に注目したいのが「<strong>そのグループに属する全員が、互いに直接知り合いである</strong>」ような、非常に結びつきの強いグループです。このような特別なグループ、つまり<strong>完全部分グラフ</strong>（どの2頂点も互いに辺で結ばれた部分グラフ）をなす頂点集合のことを、グラフ理論の言葉で「<strong>クリーク</strong>」と呼びます。</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/clique.svg" alt="clique">
+<img src="./img/clique-sizes.svg" alt="サイズ2から5のクリーク">
 </div>
+<div class="title">図 2. サイズ2〜5のクリーク：どの2頂点も辺で結ばれている</div>
 </div>
 <div class="paragraph">
-<p>上の図は、それぞれ2人、3人、4人、5人のメンバー全員が互いに知り合い（辺で結ばれている）の「クリーク」です。クリークは、いわば「強固な仲良しグループ」と言えます。人間関係の分析だけでなく、SNSのコミュニティ発見や、タンパク質の相互作用ネットワークの解析など、様々な分野でこの「密な構造」を見つけることが重要になります。</p>
+<p>上の図は、それぞれ2人、3人、4人、5人のメンバー全員が互いに知り合い（辺で結ばれている）の「クリーク」です。クリークは「強固な仲良しグループ」と言えます。\(k\) 人のクリークでは、どの2人の組も辺で結ばれているので、辺の数は \(\frac{k(k-1)}{2}\) 本です（図の1本、3本、6本、10本）。人間関係の分析だけでなく、SNSのコミュニティ発見や、タンパク質の相互作用ネットワークの解析など、様々な分野でこの「密な構造」を見つけることが重要になります。</p>
 </div>
 </div>
 <div class="sect2">
@@ -700,46 +724,6 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 </div>
 </div>
-<div class="paragraph">
-<p>これは「Yes/No」で答えるシンプルな<strong>決定問題</strong>です。
-以下のグラフ \(G\) を例に、問題を具体的に見てみましょう。</p>
-</div>
-<div class="imageblock text-center">
-<div class="content">
-<img src="./img/clique-ex1.svg" alt="clique ex1">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>グラフ \(G\) に頂点数 \(k=2\) 個の完全部分グラフ（クリーク）は含まれるか？ → Yes</strong></p>
-</li>
-<li>
-<p>頂点 \(\{v_1,v_2\}\) や \(\{v_4,v_5\}\) など、辺で結ばれた2頂点の組はすべてサイズ2のクリークだからです。</p>
-</li>
-<li>
-<p><strong>グラフ \(G\) に頂点数 \(k=3\) 個の完全部分グラフ（クリーク）は含まれるか？ → Yes</strong></p>
-</li>
-<li>
-<p>頂点 \(\{v_4,v_5,v_6\}\) の組や \(\{v_1,v_2,v_3\}\) の組などが、互いに辺で結ばれているためです。</p>
-</li>
-<li>
-<p><strong>グラフ \(G\) に頂点数 \(k=4\) 個の完全部分グラフ（クリーク）は含まれるか？ → Yes</strong></p>
-</li>
-<li>
-<p>頂点 \(\{v_1,v_2,v_3,v_4\}\) の組が、唯一のサイズ4のクリークとして存在します。</p>
-</li>
-<li>
-<p><strong>グラフ \(G\) に頂点数 \(k=5\) 個の完全部分グラフ（クリーク）は含まれるか？ → No</strong></p>
-</li>
-<li>
-<p>サイズ5のクリークが存在するなら、各頂点から4本以上の辺が出ている必要がありますが、そのような頂点は5つ存在しないためです。</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>一方で、「このグラフで、最大何人の『全員知り合い』グループが作れますか？」という問題は<strong>最大クリーク問題</strong>と呼ばれます。決定問題であるクリーク問題を繰り返し使えば、最大クリーク問題も解けます。具体的には、\(k=1,2,\ldots,n\) と大きくしながら「サイズ \(k\) のクリークはあるか？」を問い、はじめてNoが返る直前の \(k\) が最大サイズです。すべてYesなら最大サイズは \(n\) です（頂点数 \(n\) に対し高々 \(n\) 回の問い合わせで済み、二分探索ならさらに少なくできます）。決定問題が解ければ最大化問題も多項式回の呼び出しで解ける、という関係です。</p>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -747,10 +731,67 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-この章のグラフは、自己ループや多重辺のない無向グラフを考えます。頂点ペアとは異なる2頂点の組です。
+この章のグラフは、自己ループ（同じ頂点どうしを結ぶ辺）や多重辺（同じ2頂点を結ぶ複数の辺）のない無向グラフを考えます。頂点ペアとは異なる2頂点の組です。
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>これは「Yes/No」で答えるシンプルな<strong>決定問題</strong>です。
+以下のグラフ \(G\) を例に、問題を具体的に見てみましょう。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/clique-ex1.svg" alt="頂点v1からv6のグラフG">
+</div>
+<div class="title">図 3. クリーク問題の例に使うグラフ \(G\)</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>グラフ \(G\) に頂点数 \(k=2\) 個の完全部分グラフ（クリーク）は含まれるか？ → Yes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>頂点 \(\{v_1,v_2\}\) や \(\{v_4,v_5\}\) など、辺で結ばれた2頂点の組はすべてサイズ2のクリークだからです。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>グラフ \(G\) に頂点数 \(k=3\) 個の完全部分グラフ（クリーク）は含まれるか？ → Yes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>頂点 \(\{v_4,v_5,v_6\}\) の組や \(\{v_1,v_2,v_3\}\) の組などが、互いに辺で結ばれているためです。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>グラフ \(G\) に頂点数 \(k=4\) 個の完全部分グラフ（クリーク）は含まれるか？ → Yes</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>頂点 \(\{v_1,v_2,v_3,v_4\}\) の組が、唯一のサイズ4のクリークとして存在します。</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>グラフ \(G\) に頂点数 \(k=5\) 個の完全部分グラフ（クリーク）は含まれるか？ → No</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>サイズ5のクリークが存在するなら、各頂点から4本以上の辺が出ている必要がありますが、そのような頂点は5つ存在しないためです。</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>一方で、「このグラフで、最大何人の『全員知り合い』グループが作れますか？」という問題は<strong>最大クリーク問題</strong>と呼ばれます。決定問題であるクリーク問題を繰り返し使えば、最大クリーク問題も解けます。具体的には、\(k=1,2,\ldots,n\) と大きくしながら「サイズ \(k\) のクリークはあるか？」を問い、はじめてNoが返る直前の \(k\) が最大サイズです。すべてYesなら最大サイズは \(n\) です（頂点数 \(n\) に対し高々 \(n\) 回の問い合わせで済み、二分探索ならさらに少なくできます）。決定問題が解ければ最大化問題も多項式回の呼び出しで解ける、という関係です。</p>
 </div>
 </div>
 </div>
@@ -781,7 +822,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect2">
 <h3 id="_sat問題の復習"><a class="link" href="#_sat問題の復習">2.1. SAT問題の復習</a></h3>
 <div class="paragraph">
-<p>SAT問題とは、与えられた論理式を真（1）にするような変数の割り当てが存在するかどうかを判定する問題でした。</p>
+<p>SAT問題とは、与えられた論理式を真（1）にするような変数の割り当てが存在するかどうかを判定する問題でした（前章）。</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -816,7 +857,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>リテラル</strong>: 変数そのもの（例: \(x\)）や、その否定（例: \(\bar y\)）のことです。</p>
 </li>
 <li>
-<p><strong>節 (Clause)</strong>: リテラルをOR（\(+\)）でつないだもの（例: \((x + \bar y)\)）です。</p>
+<p><strong>節 (Clause)</strong>: リテラルをOR（\(+\)）でつないだもの（例: \((x + \bar y)\)）です。前章で和積形の「OR句」や「項」とよんだものと同じです。</p>
 </li>
 <li>
 <p><strong>相補的リテラル</strong>: \(x\) と \(\bar x\) のように、互いに否定の関係にあるリテラルのペアのことです。</p>
@@ -850,8 +891,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="content">
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/sat-clique1.svg" alt="sat clique1">
+<img src="./img/sat-clique1.svg" alt="SATからクリークへ：手順1">
 </div>
+<div class="title">図 4. 手順1：節ごとに、リテラルの出現を頂点として置く</div>
 </div>
 </div>
 </div>
@@ -876,8 +918,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="content">
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/sat-clique2.svg" alt="sat clique2">
+<img src="./img/sat-clique2.svg" alt="SATからクリークへ：手順2">
 </div>
+<div class="title">図 5. 手順2：異なる節の、互いに矛盾しない頂点どうしを結ぶ</div>
 </div>
 </div>
 </div>
@@ -900,8 +943,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="content">
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/sat-clique3.svg" alt="sat clique3">
+<img src="./img/sat-clique3.svg" alt="SATからクリークへ：手順3">
 </div>
+<div class="title">図 6. 手順3：各節から1頂点ずつ選んだサイズ3のクリーク \(\{\bar x, \bar y, z\}\)</div>
 </div>
 </div>
 </div>
@@ -917,7 +961,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p><strong>クリークの頂点は、互いに矛盾しません</strong>。ルール(B)のため、クリーク内には \(x\) と \(\bar x\) のようなペアは存在しません。</p>
 </li>
 <li>
-<p><strong>クリークの頂点を真にします</strong>: このクリークの頂点 \(\{\bar x, \bar y, z\}\) に対応するリテラルをすべて真にしてみましょう。\(\bar x=1\), \(\bar y=1\), \(z=1\)、すなわち \(x=0, y=0, z=1\) と値を割り当てます。上の 2. で矛盾がないことを確かめたので、この割り当ては必ず一貫して決められます。</p>
+<p><strong>クリークの頂点を真にします</strong>: このクリークの頂点 \(\{\bar x, \bar y, z\}\) に対応するリテラルをすべて真にしてみましょう。\(\bar x=1\), \(\bar y=1\), \(z=1\)、つまり \(x=0, y=0, z=1\) と値を割り当てます。上の 2. で矛盾がないことを確かめたので、この割り当ては必ず一貫して決められます。</p>
 </li>
 <li>
 <p><strong>SATが解けている！</strong>: この割り当て (<code>x=0, y=0, z=1</code>) を元の論理式 <code>f</code> に代入すると、\((\bar x+y+z)=1\)、\((x+\bar y)=1\)、\((y+z)=1\) となり、3つの節がすべて真、式全体が <code>1</code> になります。</p>
@@ -962,13 +1006,15 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/sat-clique4.svg" alt="sat clique4">
+<img src="./img/sat-clique4.svg" alt="充足不能な式から作ったグラフ">
 </div>
+<div class="title">図 7. 充足不能な式 \(g\) から作ったグラフには、サイズ4のクリークがない</div>
 </div>
 <div class="paragraph">
-<p>SAT問題とクリーク問題の間には、以下の対応関係にあります。</p>
+<p>SAT問題とクリーク問題の間には、以下の対応関係があります。</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">表 1. SAT問題と、変換後のクリーク問題の対応</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -1019,8 +1065,11 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="sect2">
 <h3 id="_結論クリーク問題もnp完全である"><a class="link" href="#_結論クリーク問題もnp完全である">2.4. 結論：クリーク問題もNP完全である</a></h3>
 <div class="paragraph">
-<p>これまでの議論から、どんなSAT問題でも高速にクリーク問題に還元できることがわかりました。
-つまり、クリーク問題は少なくともSAT問題と同じか、それ以上に難しい（<strong>NP困難</strong>である）と言えます。
+<p>これまでの議論から、どんなSAT問題でも多項式時間でクリーク問題に還元できることがわかりました（\(\text{SAT}\preceq_P \text{クリーク}\)）。
+つまり、クリーク問題は少なくともSAT問題と同じか、それ以上に難しいと言えます。</p>
+</div>
+<div class="paragraph">
+<p>これだけでクリーク問題が<strong>NP困難</strong>だと言えるのは、還元をつなげられるからです。NPのどの問題Xも、SATに多項式時間還元できます（クック-レヴィンの定理）。そこで、Xの入力をまずSATの入力に変換し、それをさらにクリーク問題の入力に変換すれば、Xをクリーク問題に還元できます。多項式時間の変換を2回続けても、全体の時間は多項式でおさえられます（1回目の変換結果の大きさも入力の大きさの多項式でおさえられるためです）。よって、NPのどの問題もクリーク問題に多項式時間還元でき、クリーク問題はNP困難です。
 さらに、クリーク問題自身も<strong>NPに属します</strong>。なぜなら、「この \(k\) 個の頂点がクリークである」
 という解の候補が与えられたとき、すべての頂点ペア間に辺があるかを確認するだけで済み、
 これは \(\text O(k^2)\) 時間で検証できるからです。
@@ -1035,13 +1084,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <td class="content">
 <div class="title">コラム: 理論上は「絶望的に難しい」はずなのに…？</div>
 <div class="paragraph">
-<p>SAT問題はNP完全、すなわちP≠NPが正しければ多項式時間では解けないと考えられている問題です。ところが、現代の「<strong>SATソルバー</strong>」と呼ばれるプログラムは、実社会から出てくる多くの問題を驚くほど速く解いてしまいます。</p>
+<p>SAT問題はNP完全です。つまり、P≠NPが正しければ、どんな入力に対しても多項式時間で答えを出すアルゴリズムは存在しません。ところが、現代の「<strong>SATソルバー</strong>」と呼ばれるプログラムは、実社会から出てくる多くの問題を驚くほど速く解いてしまいます。</p>
 </div>
 <div class="paragraph">
-<p>その中心にあるのが<strong>CDCL</strong>(Conflict-Driven Clause Learning、矛盾駆動節学習)というアルゴリズムです。探索の途中で矛盾にぶつかるたびに「なぜ矛盾したか」を新しい節として学習し、同じ袋小路を二度と通らないようにして枝刈りします。この工夫により、最新のソルバー(MiniSat、CaDiCaL、Kissat など)は、変数が100万個・節が1000万個を超える産業規模の問題でも実用的な時間で解けます。</p>
+<p>その中心にあるのが<strong>CDCL</strong>(Conflict-Driven Clause Learning、矛盾駆動節学習)というアルゴリズムです。探索の途中で矛盾にぶつかるたびに「なぜ矛盾したか」を新しい節として学習し、同じ原因の袋小路に何度も入らないようにして枝刈りします。この工夫により、最新のソルバー(MiniSat、CaDiCaL、Kissat など)は、変数が数百万個に及ぶ産業規模の問題でも、実用的な時間で解けることが少なくありません。</p>
 </div>
 <div class="paragraph">
-<p>用途も広く、たとえば設計したCPUの論理回路が仕様と一致するかを確かめる等価性検証(EDAの重要工程)、ソフトウェアの欠陥探索、行動計画の自動立案などに使われています。SATソルバーの性能は毎年開催される「SAT Competition」で競われ、年々改善が続いています。</p>
+<p>用途も広く、たとえば設計したCPUの論理回路が仕様と一致するかを確かめる等価性検証(EDAの重要工程)、ソフトウェアの欠陥探索、行動計画の自動立案などに使われています。SATソルバーの性能は「SAT Competition」などの競技会で競われ、改善が続いています。</p>
 </div>
 <div class="paragraph">
 <p>これは、現実世界から生まれる問題の多くが、理論上の「最悪のケース」とは違う、解きやすい構造を持っているためです。「理論上の難しさ」と「実用上の速さ」の間にこうしたギャップがあることも、この分野の研究が活発な理由の一つです。</p>
@@ -1087,8 +1136,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/independent-set-example.svg" alt="independent set example">
+<img src="./img/independent-set-example.svg" alt="独立集合の例">
 </div>
+<div class="title">図 8. 独立集合の例：色の付いた3頂点 \(\{v_1, v_4, v_6\}\) のどの2つの間にも辺がない</div>
 </div>
 <div class="paragraph">
 <p>上の図では、色のついた頂点の集合が独立集合です。どの2頂点を取っても、その間に辺がないことを確認してください。</p>
@@ -1162,8 +1212,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/complement-graph.svg" alt="complement graph">
+<img src="./img/complement-graph.svg" alt="補グラフ">
 </div>
+<div class="title">図 9. グラフ \(G\) とその補グラフ \(\bar G\)</div>
 </div>
 <div class="paragraph">
 <p>上の図は、グラフ \(G\) とその補グラフ \(\bar G\) の例です。元のグラフで結ばれていたペアが補グラフでは離れ、元のグラフで離れていたペアが補グラフでは結ばれています。</p>
@@ -1209,8 +1260,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/clique-independent-dual.svg" alt="clique independent dual">
+<img src="./img/clique-independent-dual.svg" alt="クリークと独立集合の対応">
 </div>
+<div class="title">図 10. \(G\) のクリーク \(\{A, B, C\}\) は、補グラフでは独立集合になる</div>
 </div>
 </div>
 <div class="sect2">
@@ -1243,9 +1295,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <ul>
 <li>
 <p>\(G\) にサイズ \(k\) のクリークが存在する<br>
-⇔ そのクリークを構成する \(k\) 頂点は、\(G\) ですべて辺で結ばれている<br>
-⇔ その \(k\) 頂点は、\(\bar G\) ではどの2頂点も辺で結ばれていない<br>
-⇔ \(\bar G\) にサイズ \(k\) の独立集合が存在する</p>
+\(\Leftrightarrow\) そのクリークを構成する \(k\) 頂点は、\(G\) ですべて辺で結ばれている<br>
+\(\Leftrightarrow\) その \(k\) 頂点は、\(\bar G\) ではどの2頂点も辺で結ばれていない<br>
+\(\Leftrightarrow\) \(\bar G\) にサイズ \(k\) の独立集合が存在する</p>
 </li>
 </ul>
 </div>
@@ -1277,7 +1329,7 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <div class="ulist">
 <ul>
 <li>
-<p>したがって、独立集合問題は少なくともクリーク問題と同じかそれ以上に難しい（NP困難）</p>
+<p>したがって、独立集合問題は少なくともクリーク問題と同じかそれ以上に難しい。クリーク問題はNP困難なので、前節と同じく還元をつなげると（NPの問題 → SAT → クリーク → 独立集合）、独立集合問題もNP困難</p>
 </li>
 </ul>
 </div>
@@ -1329,8 +1381,9 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </div>
 <div class="imageblock text-center">
 <div class="content">
-<img src="./img/reduction-chain.svg" alt="reduction chain">
+<img src="./img/reduction-chain.svg" alt="還元の連鎖">
 </div>
+<div class="title">図 11. 還元の連鎖：SAT → クリーク → 独立集合</div>
 </div>
 <div class="paragraph">
 <p>SAT問題を出発点として、多くの重要な問題のNP完全性が芋づる式に証明されてきました。この連鎖は現在も拡大を続けています。</p>
@@ -1344,10 +1397,10 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <td class="content">
 <div class="title">コラム: この連鎖はどこまで伸びたのか</div>
 <div class="paragraph">
-<p>出発点は、前章で扱った<strong>クック-レヴィンの定理</strong>、すなわちクックが1971年に証明した「SATはNP完全である」という結果です。翌1972年、リチャード・カープが論文「Reducibility Among Combinatorial Problems」で、SATを含む21の問題（クリーク、頂点被覆、ハミルトン閉路、部分和など）の間で還元を示し、それらがすべてNP完全であることを一気に証明しました。この「カープの21問題」が、還元の連鎖の最初の枝分かれです。</p>
+<p>出発点は、前章で扱った<strong>クック-レヴィンの定理</strong>、つまりクックが1971年に証明した「SATはNP完全である」という結果です。翌1972年、リチャード・カープが論文「Reducibility Among Combinatorial Problems」で、SATを含む21の問題（クリーク、頂点被覆、ハミルトン閉路、部分和など）の間で還元を示し、それらがすべてNP完全であることを一気に証明しました。この「カープの21問題」が、還元の連鎖の最初の枝分かれです。</p>
 </div>
 <div class="paragraph">
-<p>その後も還元は積み重ねられ、1979年のGareyとJohnsonの著書『Computers and Intractability』には約300問がまとめられました。その後も、多くの分野でNP完全問題が見つかっています。クックとカープは、この業績で計算機科学のノーベル賞ともいわれるチューリング賞を受賞しています。</p>
+<p>その後も還元は積み重ねられ、1979年のGareyとJohnsonの著書『Computers and Intractability』には300を超える問題がまとめられました。その後も、多くの分野でNP完全問題が見つかっています。クック（1982年）とカープ（1985年）は、NP完全性の理論への貢献などにより、計算機科学のノーベル賞ともいわれるチューリング賞を受賞しています。</p>
 </div>
 </td>
 </tr>
@@ -1359,21 +1412,21 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <h2 id="_むすび"><a class="link" href="#_むすび">5. むすび</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>これで、コンピューター科学概論の授業は一区切りです。</p>
+<p>これで、コンピューター科学概論はひと区切りです。</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>データの単位</p>
+<p>データの単位と、コンピューター内部でのデータ表現（数・文字）</p>
 </li>
 <li>
-<p>コンピューター内部でのデータ表現</p>
+<p>論理回路（組合せ回路と順序回路）</p>
 </li>
 <li>
-<p>論理回路</p>
+<p>情報理論（情報量と符号化）</p>
 </li>
 <li>
-<p>計算量とアルゴリズム</p>
+<p>アルゴリズムと計算量、計算できることの限界</p>
 </li>
 </ul>
 </div>
@@ -1381,18 +1434,21 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>大きく4つのテーマについて、駆け足でみてきました。各トピックは、本来それだけで1年間の講義が成り立つほど奥深いものです。その中から特に重要と思われる部分を抜き出し、できるだけ噛み砕いて解説したつもりですが、特に最後の計算量の話は、形式的な話を避けたために少し性急に感じられたかもしれません。</p>
 </div>
 <div class="paragraph">
-<p>この授業は、広大なコンピューター科学の世界を巡るパッケージツアーのようなものです。このツアーだけで専門家になることはできませんが、皆さんが「この分野、もっと知りたいな」と思えるような、興味のきっかけを見つける手助けができたなら幸いです。計算量の理論のような一見抽象的な世界が、人間関係の分析やパズル解決、そして100万ドルの懸賞問題にまで繋がっている面白さを、少しでも感じていただけたなら嬉しく思います。</p>
+<p>この教材は、広大なコンピューター科学の世界を巡るパッケージツアーのようなものです。このツアーだけで専門家になることはできませんが、皆さんが「この分野、もっと知りたいな」と思えるような、興味のきっかけを見つける手助けができたなら幸いです。計算量の理論のような一見抽象的な世界が、人間関係の分析やパズル解決、そして100万ドルの懸賞問題にまで繋がっている面白さを、少しでも感じていただけたなら嬉しく思います。</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_練習問題"><a class="link" href="#_練習問題">6. 練習問題</a></h2>
 <div class="sectionbody">
-<div class="sidebarblock">
-<div class="content">
-<div class="title">問題</div>
 <div class="paragraph">
-<p>【問1】 本文のクリーク問題の例で用いたグラフ \(G\)（頂点 \(v_1,\ldots,v_6\) のグラフ）について、次の問いに答えよ。</p>
+<p>基本の確認から始め、変換を手で行う問題、考える問題の順に並べています。解答は、自分で考えてから開いてください。</p>
+</div>
+<div class="exampleblock">
+<div class="title">問題1: クリークと独立集合を探す</div>
+<div class="content">
+<div class="paragraph">
+<p>本文のクリーク問題の例で用いたグラフ \(G\)（頂点 \(v_1,\ldots,v_6\) のグラフ）について、次の問いに答えよ。</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1400,12 +1456,38 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>サイズ3のクリークを、本文で挙げた \(\{v_1,v_2,v_3\}\)、\(\{v_4,v_5,v_6\}\) 以外に1つ挙げよ</p>
 </li>
 <li>
+<p>頂点集合 \(\{v_2,v_3,v_4,v_5\}\) がクリークかどうかを、調べる頂点ペアをすべて挙げて判定せよ</p>
+</li>
+<li>
 <p>このグラフの最大独立集合のサイズを求め、そのサイズの独立集合を1つ挙げよ</p>
 </li>
 </ol>
 </div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>\(\{v_1,v_2,v_4\}\)、\(\{v_1,v_3,v_4\}\)、\(\{v_2,v_3,v_4\}\) のいずれか1つを挙げれば正解です（サイズ4のクリーク \(\{v_1,v_2,v_3,v_4\}\) の中から3頂点を選んだものも、すべてサイズ3のクリークになることに注意してください）。全部で5個のサイズ3のクリークがあり、本文の2つとこの3つです。</p>
+</li>
+<li>
+<p>4頂点から2つを選ぶペアは \(\frac{4\cdot 3}{2}=6\) 組です。\(v_2v_3\)、\(v_2v_4\)、\(v_3v_4\)、\(v_4v_5\) には辺がありますが、\(v_2v_5\) と \(v_3v_5\) には辺がありません。よってクリークではありません。サイズ \(k\) の候補を確かめるには \(\frac{k(k-1)}{2}\) 組を調べれば足ります。これが、クリーク問題の検証が \(\text O(k^2)\) 時間でできる理由です。</p>
+</li>
+<li>
+<p>最大独立集合のサイズは2です。たとえば \(\{v_1,v_5\}\) や \(\{v_2,v_6\}\) が独立集合です。サイズ3の独立集合が存在しないことは、次のように確かめられます。\(v_1,v_2,v_3,v_4\) の4頂点はどの2つも辺で結ばれている（クリークである）ため、独立集合にはこの中から高々1頂点しか入れられません。同様に \(v_4,v_5,v_6\) もクリークなので、この中からも高々1頂点です。6頂点はすべてこの2つのクリークのどちらかに含まれるので、独立集合の頂点数は高々 \(1+1=2\) です。</p>
+</li>
+</ol>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題2: 還元の向き</div>
+<div class="content">
 <div class="paragraph">
-<p>【問2】 独立集合問題がNP完全であることを示すために、本文では「クリーク問題を独立集合問題に多項式時間還元」した。この証明に関する記述として、正しいものをすべて選べ。</p>
+<p>独立集合問題がNP完全であることを示すために、本文では「クリーク問題を独立集合問題に多項式時間還元」した。この証明に関する記述として、正しいものをすべて選べ。</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1423,44 +1505,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 </li>
 </ol>
 </div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
 <div class="paragraph">
-<p>【問3】 論理式 \(h(x,y)=(x+y)\cdot(\bar x+\bar y)\) に対して、本文の翻訳ルールでグラフを作る。</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>このグラフの頂点数と辺数を答えよ</p>
-</li>
-<li>
-<p>サイズ2のクリークを1つ挙げ、それに対応する \(x,y\) への値の割り当てを示せ</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_練習問題の解答"><a class="link" href="#_練習問題の解答">7. 練習問題の解答</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>まず自分で解いてから読むことをすすめます。</p>
-</div>
-<div class="paragraph">
-<p><strong>【問1】</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>\(\{v_1,v_2,v_4\}\)、\(\{v_1,v_3,v_4\}\)、\(\{v_2,v_3,v_4\}\) のいずれか1つを挙げれば正解です（サイズ4のクリーク \(\{v_1,v_2,v_3,v_4\}\) の中から3頂点を選んだものも、すべてサイズ3のクリークになることに注意してください）。</p>
-</li>
-<li>
-<p>最大独立集合のサイズは2です。たとえば \(\{v_1,v_5\}\) や \(\{v_2,v_6\}\) が独立集合です。サイズ3の独立集合が存在しないことは、次のように確かめられます。\(v_1,v_2,v_3,v_4\) の4頂点はどの2つも辺で結ばれている（クリークである）ため、独立集合にはこの中から高々1頂点しか入れられません。同様に \(v_4,v_5,v_6\) もクリークなので、この中からも高々1頂点です。両者に共通する \(v_4\) を重複して数えないことに注意すると、独立集合の頂点数は高々 \(1+1=2\) です。</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong>【問2】</strong> 正しいのは (1) と (4) です。</p>
+<p>正しいのは (1) と (4) です。</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1471,27 +1522,207 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 <p>(3) は誤りです。NP完全性は「NP困難であること」と「NPに属すること」の両方から成り立ちます。還元が示すのはNP困難性だけで、NPに属することは別に確認が必要です（本文では \(\text O(k^2)\) 時間の検証方法を確認しました）。</p>
 </li>
 <li>
-<p>(4) は正しいです。補グラフを取る操作は逆向きにもそのまま使えます（\(\bar{\bar G}=G\) であることに注意）。クリーク問題と独立集合問題は、互いに相手へ多項式時間還元できる、いわば「同じ難しさ」の問題です。</p>
+<p>(4) は正しいです。補グラフを取る操作は逆向きにもそのまま使えます（\(\bar{\bar G}=G\) であることに注意）。クリーク問題と独立集合問題は、互いに相手へ多項式時間還元できる、難しさが同じ問題です。ただし、(4) は本文の証明には必要ありません。一般には、逆向きの還元ができるとは限りません。</p>
 </li>
 </ul>
 </div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題3: 論理式をグラフに変換する（Yes の例）</div>
+<div class="content">
 <div class="paragraph">
-<p><strong>【問3】</strong></p>
+<p>論理式 \(h(x,y)=(x+y)\cdot(\bar x+\bar y)\) に対して、本文の翻訳ルールでグラフを作る。</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>頂点数は4（\(x,y,\bar x,\bar y\)）です。辺は、異なる節に属し、かつ相補的でないリテラルの組に引かれるので、\(x\)–\(\bar y\) と \(y\)–\(\bar x\) の2本です（\(x\)–\(\bar x\) と \(y\)–\(\bar y\) は相補的なので結ばれません）。</p>
+<p>このグラフの頂点数と辺数を答えよ</p>
 </li>
 <li>
-<p>サイズ2のクリークは \(\{x, \bar y\}\) または \(\{y, \bar x\}\) です。前者からは \(x=1, y=0\)、後者からは \(x=0, y=1\) という割り当てが得られ、いずれも \(h\) の値を1にします。</p>
+<p>サイズ2のクリークをすべて挙げ、それぞれに対応する \(x,y\) への値の割り当てを示せ</p>
 </li>
 </ol>
 </div>
-<hr>
-<div class="paragraph">
-<p>以上です</p>
 </div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>頂点数は4（第1節の \(x, y\) と第2節の \(\bar x,\bar y\)）です。辺は、異なる節に属し、かつ相補的でないリテラルの組に引かれるので、\(x\)–\(\bar y\) と \(y\)–\(\bar x\) の2本です（\(x\)–\(\bar x\) と \(y\)–\(\bar y\) は相補的なので結ばれません。同じ節の \(x\)–\(y\)、\(\bar x\)–\(\bar y\) も結びません）。</p>
+</li>
+<li>
+<p>サイズ2のクリークは \(\{x, \bar y\}\) と \(\{y, \bar x\}\) の2つです。前者からは \(x=1, y=0\)、後者からは \(x=0, y=1\) という割り当てが得られ、いずれも \(h\) の値を1にします。真理値表で確かめると、\(h=1\) となるのはこの2通りだけです（\(h\) は「\(x\) と \(y\) のどちらか一方だけが1」を表します）。</p>
+</li>
+</ol>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題4: 論理式をグラフに変換する（No の例）</div>
+<div class="content">
+<div class="paragraph">
+<p>論理式 \(p(x,y)=(x)\cdot(\bar x+y)\cdot(\bar y)\) について、次の問いに答えよ（第1節と第3節は、リテラル1個だけの節である）。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>本文の翻訳ルールでグラフを作り、頂点と辺をすべて挙げよ</p>
+</li>
+<li>
+<p>このグラフにサイズ3のクリークがないことを示せ</p>
+</li>
+<li>
+<p>\(p\) を1にする割り当てがないことを、直接確かめよ</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>頂点は、第1節の \(x\)、第2節の \(\bar x\) と \(y\)、第3節の \(\bar y\) の4個です。辺は \(x\)–\(y\)、\(x\)–\(\bar y\)、\(\bar x\)–\(\bar y\) の3本です（\(x\)–\(\bar x\) と \(y\)–\(\bar y\) は相補的なので結ばず、同じ節の \(\bar x\)–\(y\) も結びません）。</p>
+</li>
+<li>
+<p>サイズ3のクリークは各節から1頂点ずつ選ぶ必要があり、第1節からは \(x\)、第3節からは \(\bar y\) と決まります。第2節から \(\bar x\) を選ぶと \(x\)–\(\bar x\) の辺がなく、\(y\) を選ぶと \(y\)–\(\bar y\) の辺がありません。よってサイズ3のクリークはありません。</p>
+</li>
+<li>
+<p>第1節から \(x=1\)、第3節から \(y=0\) でなければなりません。すると第2節は \(\bar x+y=0+0=0\) となり、式全体は0です。どの割り当てでも \(p=0\) なので、SATの答えは No で、変換後のクリーク問題の答えも No になっています。</p>
+</li>
+</ol>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題5: 割り当てとクリークは1対1ではない</div>
+<div class="content">
+<div class="paragraph">
+<p>本文の論理式 \(f(x,y,z)=(\bar x+y+z)\cdot(x+\bar y)\cdot(y+z)\) から作ったグラフについて、次の問いに答えよ。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>第1節の \(z\)、第2節の \(\bar y\)、第3節の \(z\) の3頂点がクリークであることを確かめ、対応する割り当てを求めよ。\(x\) の値はどうなるか。</p>
+</li>
+<li>
+<p>割り当て \(x=1, y=1, z=1\) は \(f\) を1にする。この割り当てで真になるリテラルだけを使ったサイズ3のクリークを、すべて挙げよ。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>3頂点は互いに異なる節に属し、どの2つも相補的ではない（\(z\) と \(\bar y\)、\(z\) と \(z\)）ので、3本の辺がすべてあり、クリークです。選んだリテラルを真にすると \(y=0, z=1\) ですが、\(x\) はどのリテラルにも現れないので決まりません。実際、\(x=0\) でも \(x=1\) でも \(f=1\) になります。このように、1つのクリークから複数の割り当てが得られることがあります（決まらない変数は0と1のどちらにしてもよい）。</p>
+</li>
+<li>
+<p>第1節で真になるリテラルは \(y\) と \(z\)（\(\bar x\) は偽）、第2節は \(x\)（\(\bar y\) は偽）、第3節は \(y\) と \(z\) です。各節から1つずつ選ぶので、\(2\times1\times2=4\) 個のクリークがあります：\(\{y, x, y\}\)、\(\{y, x, z\}\)、\(\{z, x, y\}\)、\(\{z, x, z\}\)（順に第1節・第2節・第3節の頂点）。1つの割り当てにも、複数のクリークが対応しうることがわかります。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>このグラフのサイズ3のクリークは全部で6個、\(f\) を1にする割り当ては4通りあります（計算機による全列挙で確認）。個数は一致しませんが、「クリークが1つでもある」ことと「割り当てが1つでもある」ことは同値です。還元で保たれるのは、この Yes/No の答えです。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題6: 補グラフとクリーク・独立集合</div>
+<div class="content">
+<div class="paragraph">
+<p>頂点 A, B, C, D, E からなり、辺が A–B、A–C、A–D、A–E の4本だけのグラフ \(G\) を考える。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/star-graph.svg" alt="中心Aと4頂点を結ぶ星形のグラフ">
+</div>
+<div class="title">図 12. 問題6のグラフ \(G\)</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>\(G\) の最大クリークと最大独立集合のサイズを求めよ</p>
+</li>
+<li>
+<p>補グラフ \(\bar G\) の辺をすべて挙げよ</p>
+</li>
+<li>
+<p>\(\bar G\) の最大クリークと最大独立集合のサイズを求め、(1) と比べよ</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>\(G\) の最大クリークのサイズは2です（たとえば \(\{A, B\}\)）。B〜E の間には辺がないので、三角形はできません。最大独立集合のサイズは4で、\(\{B, C, D, E\}\) です。A はほかのすべての頂点と辺で結ばれているので、A を入れると他の頂点を入れられません。</p>
+</li>
+<li>
+<p>5頂点のペアは10組で、\(G\) の4本以外の6本、つまり B–C、B–D、B–E、C–D、C–E、D–E が \(\bar G\) の辺です。A はどの頂点とも結ばれません。</p>
+</li>
+<li>
+<p>\(\bar G\) の最大クリークは \(\{B, C, D, E\}\) でサイズ4、最大独立集合は \(\{A, B\}\) などでサイズ2です。\(G\) の最大独立集合（サイズ4）が \(\bar G\) の最大クリークに、\(G\) の最大クリーク（サイズ2）が \(\bar G\) の最大独立集合になっています。本文の「クリークと独立集合の双対性」のとおりです。</p>
+</li>
+</ol>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題7: 頂点被覆問題もNP完全</div>
+<div class="content">
+<div class="paragraph">
+<p>グラフの頂点の集合 \(C\) が、「どの辺も、少なくとも一方の端点が \(C\) に含まれる」という条件を満たすとき、\(C\) を<strong>頂点被覆</strong>という（各辺を見張る監視員を、頂点に置くイメージ）。頂点被覆問題は「グラフ \(G\) と自然数 \(k\) が与えられたとき、頂点数 \(k\) 個以下の頂点被覆は存在するか」を問う決定問題である。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>頂点全体を \(V\)（頂点数 \(n\)）とする。頂点の集合 \(S\) が独立集合であることと、残りの頂点の集合 \(V\setminus S\) が頂点被覆であることは同値である。この理由を説明せよ。</p>
+</li>
+<li>
+<p>(1) を使って、独立集合問題を頂点被覆問題に多項式時間還元する方法を示し、頂点被覆問題がNP完全であることを説明せよ。</p>
+</li>
+<li>
+<p>問題6のグラフ \(G\) で、最小の頂点被覆を求め、(1) の関係を確かめよ。</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>\(S\) が独立集合 \(\Leftrightarrow\) 両端点がともに \(S\) に入る辺が1本もない \(\Leftrightarrow\) どの辺も、少なくとも一方の端点が \(S\) の外、つまり \(V\setminus S\) にある \(\Leftrightarrow\) \(V\setminus S\) は頂点被覆。</p>
+</li>
+<li>
+<p>独立集合問題の入力 \((G, k)\) を、頂点被覆問題の入力 \((G, n-k)\) に変換します。グラフはそのままで、数を1つ計算するだけなので多項式時間です。(1) より、「サイズ \(k\) の独立集合がある」\(\Leftrightarrow\)「サイズ \(n-k\) の頂点被覆がある」なので、Yes/No が保たれます（サイズ \(n-k\) 以下の頂点被覆があれば、頂点を付け足してちょうど \(n-k\) 個にしても頂点被覆のままです）。独立集合問題はNP困難なので、頂点被覆問題もNP困難です。さらに、\(k\) 個以下の頂点の候補が与えられれば、すべての辺について端点のどちらかが候補に入っているかを確かめるだけで検証できるので、頂点被覆問題はNPに属します。よってNP完全です。</p>
+</li>
+<li>
+<p>\(\{A\}\) が最小の頂点被覆で、サイズ1です（4本の辺はすべて A を端点にもちます。辺があるので0個では足りません）。残りの \(\{B, C, D, E\}\) は最大独立集合で、サイズは \(5-1=4\) です。(1) の関係と一致します。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>頂点被覆問題は、カープの21問題の1つです。</p>
+</div>
+</div>
+</details>
 </div>
 </div>
 </div>
@@ -1500,6 +1731,13 @@ td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
 Version 1.2<br>
 </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   messageStyle: "none",
