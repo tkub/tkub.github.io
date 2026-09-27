@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Records in Contexts 入門 --- アーカイブズ記述の新しい国際標準を理解する</title>
-<meta name="description" content="アーカイブズ記述の新しい国際標準 Records in Contexts(RiC)の日本語入門テキスト。ISAD(G)・ISAAR(CPF)・ISDF・ISDIAH の4標準を統合する概念モデル RiC-CM と、そのオントロジー RiC-O(RDF/OWL/SPARQL)を、一次資料に基づいて解説します。全144ページ、PDF、CC BY 4.0。">
+<meta name="description" content="アーカイブズ記述の新しい国際標準 Records in Contexts(RiC)の日本語入門テキスト。ISAD(G)・ISAAR(CPF)・ISDF・ISDIAH の4標準を統合する概念モデル RiC-CM と、そのオントロジー RiC-O(RDF/OWL/SPARQL)を、一次資料に基づいて解説します。全165ページ、PDF、CC BY 4.0。">
 <link rel="canonical" href="https://tkub.github.io/edu/ric/">
 <link rel="alternate" hreflang="ja" href="https://tkub.github.io/edu/ric/">
 <link rel="alternate" hreflang="en" href="https://tkub.github.io/edu/ric/en/">
@@ -22,14 +22,14 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:url" content="https://tkub.github.io/edu/ric/">
 <meta property="og:title" content="Records in Contexts 入門 --- アーカイブズ記述の新しい国際標準を理解する">
-<meta property="og:description" content="アーカイブズ記述の新標準 Records in Contexts(RiC-CM 1.0 / RiC-O 1.1)の日本語入門テキスト。ISAD(G) からの移行、RDF・OWL・記述論理・SPARQL の入門、推論の具体例、実践の手順まで。全144ページ、CC BY 4.0。">
+<meta property="og:description" content="アーカイブズ記述の新標準 Records in Contexts(RiC-CM 1.0 / RiC-O 1.1)の日本語入門テキスト。ISAD(G) からの移行、RDF・OWL・記述論理・SPARQL の入門、推論の具体例、実践の手順まで。全165ページ、CC BY 4.0。">
 <meta name="twitter:card" content="summary">
 
 <meta name="citation_title" content="Records in Contexts 入門 --- アーカイブズ記述の新しい国際標準を理解する">
 <meta name="citation_author" content="久保山哲二">
 <meta name="citation_author" content="Kuboyama, Tetsuji">
 <meta name="citation_author_institution" content="学習院大学">
-<meta name="citation_publication_date" content="2026/09/09">
+<meta name="citation_publication_date" content="2026/09/27">
 <meta name="citation_language" content="ja">
 <meta name="citation_abstract_html_url" content="https://tkub.github.io/edu/ric/">
 <meta name="citation_pdf_url" content="https://tkub.github.io/edu/ric/ric-introduction-ja.pdf">
@@ -43,9 +43,9 @@
   "alternateName": "Introduction to Records in Contexts",
   "url": "https://tkub.github.io/edu/ric/",
   "bookFormat": "https://schema.org/EBook",
-  "bookEdition": "第1.4.7版",
-  "datePublished": "2026-09-09",
-  "numberOfPages": 144,
+  "bookEdition": "第1.5.0版",
+  "datePublished": "2026-09-27",
+  "numberOfPages": 165,
   "inLanguage": "ja",
   "isAccessibleForFree": true,
   "license": "https://creativecommons.org/licenses/by/4.0/",
@@ -169,7 +169,7 @@
     <div class="subtitle">アーカイブズ記述の新しい国際標準を理解する</div>
     <div class="meta">
       久保山哲二(学習院大学大学院人文科学研究科アーカイブズ学専攻/計算機センター)<br>
-      第1.4.7版(2026年9月9日)・全144ページ・CC BY 4.0
+      第1.5.0版(2026年9月27日)・全165ページ・CC BY 4.0
     </div>
     <div class="lang">English edition is available <a href="en/">here</a> ・英語版は<a href="en/">こちら</a></div>
   </div>
@@ -179,7 +179,7 @@
   <div class="inner">
 
     <div class="buttons">
-      <a class="btn" href="ric-introduction-ja.pdf">PDF をダウンロード(第1.4.7版)</a>
+      <a class="btn" href="ric-introduction-ja.pdf">PDF をダウンロード(第1.5.0版)</a>
       <a class="btn secondary" href="ric-introduction-ja-examples.zip">サンプルデータ(zip)</a>
       <a class="btn secondary" href="https://github.com/ICA-EGAD/RiC-O" rel="external">一次資料(ICA EGAD)</a>
     </div>
@@ -214,7 +214,7 @@
     <h2>サンプルデータ</h2>
     <p>本書に出てくる作例を、そのまま実行できるファイルにして配布しています
     (<a href="ric-introduction-ja-examples.zip">ric-introduction-ja-examples.zip</a>、約240KB)。
-    Turtle のデータ4本、本書に出てくる SPARQL 14件、SHACL のシェイプと検査対象データ、
+    Turtle のデータ4本、本書に出てくる SPARQL 14件と近道の推論を確かめる1件、SHACL のシェイプと検査対象データ、
     および全体を検査するスクリプトが入っています。データはすべて架空です。</p>
     <p>推論と検査に使う RiC-O 1.1 の RDF と CSV 一覧も同梱してあるので、展開すればそれだけで
     動きます。<code>pip install rdflib pyshacl owlrl</code> のあと <code>python3 check.py</code>
@@ -225,6 +225,10 @@
 
     <h2>改訂履歴</h2>
     <dl class="history">
+      <dt>第1.5版(2026年9月27日)・165ページ</dt>
+      <dd>全章を一次資料と突き合わせて見直し、誤りを正した(OWL 2 RL の推論器で近道の推論を得るための条件、
+      通し例の年代、評価選別の図など)。説明の分かりにくい箇所を書き直し、図と表を38点追加した。
+      サンプルデータに近道の推論を確かめる問い合わせを加えた。</dd>
       <dt>第1.4版(2026年8月9日)・139ページ</dt>
       <dd>記録管理の工程(保存期間の設定、評価選別、保存期間が満了したときの措置)を扱う節を
       第7章に新設し、公文書管理法に当てはめた。日本の共有基盤(ジャパンサーチ、国立公文書館
@@ -245,9 +249,9 @@
     <p>本書はクリエイティブ・コモンズ表示 4.0 国際ライセンス
     (<a href="https://creativecommons.org/licenses/by/4.0/deed.ja" rel="license">CC BY 4.0</a>)で提供します。
     出典を表示すれば、複製・再配布・改変・翻訳・授業や出版での利用を自由に行えます。
-    一次資料である ICA EGAD の RiC 各文書も同じ CC BY 4.0 で公開されています。</p>
+    一次資料のうち、ICA EGAD の RiC-FAD・RiC-CM・RiC-O も同じ CC BY 4.0 で公開されています。</p>
     <pre>久保山哲二『Records in Contexts 入門 --- アーカイブズ記述の新しい国際標準を理解する』
-第1.4.7版、2026年、CC BY 4.0。</pre>
+第1.5.0版、2026年、CC BY 4.0。</pre>
 
     <div class="note">
       本書では、主に調査や作図などに大規模言語モデル Claude Fable 5 と Claude Opus 5(Anthropic)を活用しました。
