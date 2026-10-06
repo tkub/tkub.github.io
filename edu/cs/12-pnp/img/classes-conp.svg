@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 460" width="920" height="460" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">P・NP・co-NPと完全問題の包含関係</title><desc id="desc">NPとco-NPの2つの楕円が重なり、重なりの中にPがある。NP完全問題はNPの中のco-NPと重ならない部分に、co-NP完全問題はco-NPの中のNPと重ならない部分にある。素因数分解の判定版はNPとco-NPの共通部分にあり、Pに入るかは未解決。</desc><rect width="100%" height="100%" fill="white"/>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d7301f"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#233647"/></marker></defs>
+<ellipse cx="330" cy="225" rx="300" ry="180" fill="#2166ac" fill-opacity="0.07" stroke="#2166ac" stroke-width="2.6"/>
+<ellipse cx="590" cy="225" rx="300" ry="180" fill="#5a6b7b" fill-opacity="0.08" stroke="#5a6b7b" stroke-width="2.6"/>
+<ellipse cx="330" cy="225" rx="300" ry="180" fill="none" stroke="#2166ac" stroke-width="2.6"/>
+<ellipse cx="590" cy="225" rx="300" ry="180" fill="none" stroke="#5a6b7b" stroke-width="2.6"/>
+<text x="150.0" y="135.0" font-size="28" fill="#2166ac" text-anchor="middle" font-weight="700">NP</text>
+<text x="770.0" y="135.0" font-size="28" fill="#5a6b7b" text-anchor="middle" font-weight="700">co-NP</text>
+<text x="460.0" y="112.0" font-size="19" fill="#233647" text-anchor="middle" font-weight="700">NP ∩ co-NP</text>
+<circle cx="460" cy="140" r="6" fill="#233647"/><text x="460.0" y="168.0" font-size="18" fill="#233647" text-anchor="middle">素因数分解の判定版</text>
+<text x="460.0" y="191.0" font-size="17" fill="#5a6b7b" text-anchor="middle">(Pに入るかは未解決)</text>
+<ellipse cx="460" cy="272" rx="112" ry="60" fill="#c6dbef" stroke="#2166ac" stroke-width="2.6"/>
+<text x="460.0" y="266.0" font-size="22" fill="#1c3d5f" text-anchor="middle" font-weight="700">P</text>
+<text x="460.0" y="294.0" font-size="17" fill="#233647" text-anchor="middle">オイラー路、素数判定</text>
+<ellipse cx="160" cy="250" rx="118" ry="72" fill="#f6d0c7" stroke="#d7301f" stroke-width="2.6"/>
+<text x="160.0" y="238.0" font-size="20" fill="#a3261a" text-anchor="middle" font-weight="700">NP完全</text>
+<text x="160.0" y="264.0" font-size="17" fill="#233647" text-anchor="middle">SAT、</text>
+<text x="160.0" y="285.0" font-size="17" fill="#233647" text-anchor="middle">ハミルトン閉路</text>
+<ellipse cx="760" cy="250" rx="118" ry="72" fill="#f6d0c7" stroke="#d7301f" stroke-width="2.6"/>
+<text x="760.0" y="238.0" font-size="20" fill="#a3261a" text-anchor="middle" font-weight="700">co-NP完全</text>
+<text x="760.0" y="264.0" font-size="17" fill="#233647" text-anchor="middle">UNSAT、TAUTOLOGY、</text>
+<text x="760.0" y="285.0" font-size="17" fill="#233647" text-anchor="middle">ハミルトン閉路の非存在</text>
+<text x="460.0" y="440.0" font-size="18" fill="#233647" text-anchor="middle" font-weight="700">NP≠co-NP と仮定した場合(このとき P≠NP も成り立つ)</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">10進法から2進法への変換: 整数部は2で割り、小数部は2倍する</title><desc id="desc">13を2で割り続けると余りは1,0,1,1で、下から読んで1101。0.625を2倍し続けると整数部分は1,0,1で、上から読んで0.101。よって13.625は1101.101(2進法)。</desc><rect width="100%" height="100%" fill="white"/>
+<text x="28" y="38" font-size="24" fill="#233647" text-anchor="start" font-weight="700">10進法から2進法へ: 13.625 = 1101.101₍₂₎ の求め方</text>
+<rect x="20" y="62" width="450" height="390" rx="8" fill="white" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="40" y="98" font-size="19" fill="#2166ac" text-anchor="start" font-weight="700">整数部 13: 2で割り、余りを書く</text>
+<text x="330" y="136" font-size="17" fill="#5a6b7b" text-anchor="middle">余り</text>
+<text x="60" y="176" font-size="22" fill="#233647" text-anchor="start">13 ÷ 2 = 6</text>
+<rect x="305" y="144" width="50" height="44" rx="6" fill="#e3edf6" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="330" y="176" font-size="24" fill="#233647" text-anchor="middle" font-weight="700">1</text>
+<text x="60" y="230" font-size="22" fill="#233647" text-anchor="start">6 ÷ 2 = 3</text>
+<rect x="305" y="198" width="50" height="44" rx="6" fill="#e3edf6" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="330" y="230" font-size="24" fill="#233647" text-anchor="middle" font-weight="700">0</text>
+<text x="60" y="284" font-size="22" fill="#233647" text-anchor="start">3 ÷ 2 = 1</text>
+<rect x="305" y="252" width="50" height="44" rx="6" fill="#e3edf6" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="330" y="284" font-size="24" fill="#233647" text-anchor="middle" font-weight="700">1</text>
+<text x="60" y="338" font-size="22" fill="#233647" text-anchor="start">1 ÷ 2 = 0</text>
+<rect x="305" y="306" width="50" height="44" rx="6" fill="#e3edf6" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="330" y="338" font-size="24" fill="#233647" text-anchor="middle" font-weight="700">1</text>
+<line x1="395" y1="330" x2="395" y2="150" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 390.1 159.0 L 395 150 L 399.9 159.0" fill="none" stroke="#2166ac" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="412" y="250" font-size="18" fill="#2166ac" text-anchor="start">下</text>
+<text x="412" y="272" font-size="18" fill="#2166ac" text-anchor="start">か</text>
+<text x="412" y="294" font-size="18" fill="#2166ac" text-anchor="start">ら</text>
+<text x="40" y="385" font-size="17" fill="#233647" text-anchor="start">商が0になったら終わり。余りを</text>
+<text x="40" y="412" font-size="19" fill="#233647" text-anchor="start" font-weight="700">下から読むと  1101₍₂₎ = 8+4+1 = 13</text>
+<text x="40" y="438" font-size="15" fill="#5a6b7b" text-anchor="start">(最初の余りが1の位、最後の余りが最上位)</text>
+<rect x="490" y="62" width="450" height="390" rx="8" fill="white" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="510" y="98" font-size="19" fill="#d7301f" text-anchor="start" font-weight="700">小数部 0.625: 2倍し、整数部分を取り出す</text>
+<text x="820" y="136" font-size="17" fill="#5a6b7b" text-anchor="middle">整数部分</text>
+<text x="520" y="176" font-size="22" fill="#233647" text-anchor="start">0.625 × 2 = 1.25</text>
+<rect x="795" y="144" width="50" height="44" rx="6" fill="#fbe6e2" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="820" y="176" font-size="24" fill="#233647" text-anchor="middle" font-weight="700">1</text>
+<text x="520" y="230" font-size="22" fill="#233647" text-anchor="start">0.25 × 2 = 0.5</text>
+<rect x="795" y="198" width="50" height="44" rx="6" fill="#fbe6e2" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="820" y="230" font-size="24" fill="#233647" text-anchor="middle" font-weight="700">0</text>
+<text x="520" y="284" font-size="22" fill="#233647" text-anchor="start">0.5 × 2 = 1.0</text>
+<rect x="795" y="252" width="50" height="44" rx="6" fill="#fbe6e2" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="820" y="284" font-size="24" fill="#233647" text-anchor="middle" font-weight="700">1</text>
+<line x1="880" y1="150" x2="880" y2="276" stroke="#d7301f" stroke-width="2.2"/>
+<path d="M 885.0 267.0 L 880 276 L 875.0 267.0" fill="none" stroke="#d7301f" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="897" y="196" font-size="18" fill="#d7301f" text-anchor="start">上</text>
+<text x="897" y="218" font-size="18" fill="#d7301f" text-anchor="start">か</text>
+<text x="897" y="240" font-size="18" fill="#d7301f" text-anchor="start">ら</text>
+<text x="510" y="358" font-size="17" fill="#233647" text-anchor="start">小数部分が0になったら終わり(0に</text>
+<text x="510" y="385" font-size="17" fill="#233647" text-anchor="start">ならないこともある)。上から読むと</text>
+<text x="510" y="412" font-size="19" fill="#233647" text-anchor="start" font-weight="700">0.101₍₂₎ = 0.5+0.125 = 0.625</text>
+<text x="510" y="438" font-size="15" fill="#5a6b7b" text-anchor="start">(毎回、次に取り出すのは 2⁻¹ の位)</text>
+</svg>

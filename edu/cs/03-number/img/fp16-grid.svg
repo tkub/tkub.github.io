@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="ja" viewBox="0 0 720 250" width="720" height="250" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">0.1付近で半精度が表せる数</title><desc id="desc">半精度で0.1付近に表せる数は約0.000061間隔で並ぶ。0.1そのものは表せず、差が小さい0.0999755859375に丸められる。</desc>
+<rect width="720" height="250" fill="white"/>
+<line x1="30" y1="120" x2="690" y2="120" stroke="#333" stroke-width="2"/>
+<circle cx="93.3" cy="120" r="5" fill="white" stroke="#2166ac" stroke-width="2"/>
+<text x="93.3333" y="156" font-size="15" fill="#444" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0.09991455078125</text>
+<circle cx="360.0" cy="120" r="7" fill="#2166ac" stroke="#2166ac" stroke-width="2"/>
+<text x="360" y="156" font-size="15" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0.0999755859375</text>
+<circle cx="626.7" cy="120" r="5" fill="white" stroke="#2166ac" stroke-width="2"/>
+<text x="626.667" y="156" font-size="15" fill="#444" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0.10003662109375</text>
+<line x1="466.667" y1="62" x2="466.667" y2="132" stroke="#d7301f" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="470.667" y="54" font-size="16" fill="#d7301f" text-anchor="middle" font-weight="bold">0.1（ちょうどは表せない）</text>
+<line x1="360" y1="94" x2="466.667" y2="94" stroke="#5a6b7b" stroke-width="1.4"/>
+<line x1="466.667" y1="94" x2="626.667" y2="94" stroke="#5a6b7b" stroke-width="1.4"/>
+<line x1="360" y1="88" x2="360" y2="100" stroke="#5a6b7b" stroke-width="1.4"/>
+<line x1="626.667" y1="88" x2="626.667" y2="100" stroke="#5a6b7b" stroke-width="1.4"/>
+<text x="413.333" y="86" font-size="14" fill="#5a6b7b" text-anchor="middle">差 0.0000244</text>
+<text x="546.667" y="86" font-size="14" fill="#5a6b7b" text-anchor="middle">差 0.0000366</text>
+<path d="M 462.7 126 Q 413.3 148 370.0 130" fill="none" stroke="#d7301f" stroke-width="2"/><path d="M 370.0 130 l 9 1 l -4 7 Z" fill="#d7301f" transform="rotate(-20 370.0 130)"/>
+<rect x="40" y="196" width="640" height="40" rx="8" fill="#f2f5f7" stroke="none" stroke-width="1.5"/>
+<text x="360" y="222" font-size="16" fill="#333" text-anchor="middle">隣り合う数の間隔は 2<tspan font-size="10.9" baseline-shift="45%">−14</tspan> ≈ 0.000061。0.1 は、より近い 0.0999755859375 に丸められる</text>
+</svg>

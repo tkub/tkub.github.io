@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="ja" lang="ja" viewBox="0 0 860 360" width="860" height="360" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif">
+<title id="title">符号 C1 と C2 の符号木</title>
+<desc id="desc">C1 は a=0, b=100, c=11, d=101 で、すべての記号が葉にある。C2 は a=0, b=11, c=100, d=01 で、a が d への途中のノードにあり葉ではない。</desc>
+<rect width="860" height="360" fill="white"/>
+<text x="20" y="36" font-size="21" fill="#1c3d5f" font-weight="700">C<tspan baseline-shift='sub' font-size='15'>1</tspan> の符号木(瞬時符号)</text>
+<text x="20" y="64" font-size="17" fill="#5a6b7b">記号はすべて葉にある</text>
+<line x1="40.0" y1="192.5" x2="145.0" y2="110.0" stroke="#233647" stroke-width="2"/>
+<text x="83.9" y="146.9" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="700">0</text>
+<line x1="40.0" y1="192.5" x2="145.0" y2="275.0" stroke="#233647" stroke-width="2"/>
+<text x="83.9" y="251.4" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="700">1</text>
+<line x1="145.0" y1="275.0" x2="250.0" y2="320.0" stroke="#233647" stroke-width="2"/>
+<text x="192.0" y="317.0" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="700">1</text>
+<line x1="145.0" y1="275.0" x2="250.0" y2="230.0" stroke="#233647" stroke-width="2"/>
+<text x="192.0" y="246.3" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="700">0</text>
+<line x1="250.0" y1="230.0" x2="355.0" y2="260.0" stroke="#233647" stroke-width="2"/>
+<text x="298.7" y="265.1" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="700">1</text>
+<line x1="250.0" y1="230.0" x2="355.0" y2="200.0" stroke="#233647" stroke-width="2"/>
+<text x="298.7" y="208.2" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="700">0</text>
+<circle cx="40.0" cy="192.5" r="6" fill="#233647"/>
+<circle cx="355.0" cy="260.0" r="21" fill="white" stroke="#233647" stroke-width="2"/>
+<text x="355.0" y="267.0" font-size="21" fill="#233647" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" font-weight="700">d</text>
+<text x="385.0" y="267.0" font-size="19" fill="#5a6b7b" text-anchor="start" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">101</text>
+<circle cx="145.0" cy="110.0" r="21" fill="white" stroke="#233647" stroke-width="2"/>
+<text x="145.0" y="117.0" font-size="21" fill="#233647" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" font-weight="700">a</text>
+<text x="175.0" y="117.0" font-size="19" fill="#5a6b7b" text-anchor="start" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<circle cx="355.0" cy="200.0" r="21" fill="white" stroke="#233647" stroke-width="2"/>
+<text x="355.0" y="207.0" font-size="21" fill="#233647" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" font-weight="700">b</text>
+<text x="385.0" y="207.0" font-size="19" fill="#5a6b7b" text-anchor="start" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">100</text>
+<circle cx="250.0" cy="320.0" r="21" fill="white" stroke="#233647" stroke-width="2"/>
+<text x="250.0" y="327.0" font-size="21" fill="#233647" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" font-weight="700">c</text>
+<text x="280.0" y="327.0" font-size="19" fill="#5a6b7b" text-anchor="start" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">11</text>
+<circle cx="145.0" cy="275.0" r="6" fill="#233647"/>
+<circle cx="250.0" cy="230.0" r="6" fill="#233647"/>
+<text x="435" y="36" font-size="21" fill="#1c3d5f" font-weight="700">C<tspan baseline-shift='sub' font-size='15'>2</tspan> の符号木</text>
+<text x="435" y="64" font-size="17" fill="#5a6b7b">a が葉でなく、d への途中にある</text>
+<line x1="455.0" y1="207.5" x2="560.0" y2="130.0" stroke="#233647" stroke-width="2"/>
+<text x="499.2" y="164.1" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="700">0</text>
+<line x1="455.0" y1="207.5" x2="560.0" y2="285.0" stroke="#233647" stroke-width="2"/>
+<text x="499.2" y="264.2" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="700">1</text>
+<line x1="560.0" y1="130.0" x2="665.0" y2="170.0" stroke="#233647" stroke-width="2"/>
+<text x="607.5" y="169.7" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="700">1</text>
+<line x1="560.0" y1="285.0" x2="665.0" y2="320.0" stroke="#233647" stroke-width="2"/>
+<text x="608.1" y="322.4" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="700">1</text>
+<line x1="560.0" y1="285.0" x2="665.0" y2="250.0" stroke="#233647" stroke-width="2"/>
+<text x="608.1" y="260.9" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="700">0</text>
+<line x1="665.0" y1="250.0" x2="770.0" y2="250.0" stroke="#233647" stroke-width="2"/>
+<text x="717.5" y="242.7" font-size="19" fill="#2166ac" text-anchor="middle" font-weight="700">0</text>
+<circle cx="455.0" cy="207.5" r="6" fill="#233647"/>
+<circle cx="665.0" cy="170.0" r="21" fill="white" stroke="#233647" stroke-width="2"/>
+<text x="665.0" y="177.0" font-size="21" fill="#233647" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" font-weight="700">d</text>
+<text x="695.0" y="177.0" font-size="19" fill="#5a6b7b" text-anchor="start" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">01</text>
+<circle cx="560.0" cy="130.0" r="21" fill="white" stroke="#d7301f" stroke-width="3.5"/>
+<text x="560.0" y="137.0" font-size="21" fill="#d7301f" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" font-weight="700">a</text>
+<text x="560.0" y="98.0" font-size="19" fill="#5a6b7b" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<circle cx="770.0" cy="250.0" r="21" fill="white" stroke="#233647" stroke-width="2"/>
+<text x="770.0" y="257.0" font-size="21" fill="#233647" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" font-weight="700">c</text>
+<text x="800.0" y="257.0" font-size="19" fill="#5a6b7b" text-anchor="start" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">100</text>
+<circle cx="665.0" cy="320.0" r="21" fill="white" stroke="#233647" stroke-width="2"/>
+<text x="665.0" y="327.0" font-size="21" fill="#233647" text-anchor="middle" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" font-weight="700">b</text>
+<text x="695.0" y="327.0" font-size="19" fill="#5a6b7b" text-anchor="start" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">11</text>
+<circle cx="560.0" cy="285.0" r="6" fill="#233647"/>
+<circle cx="665.0" cy="250.0" r="6" fill="#233647"/>
+</svg>

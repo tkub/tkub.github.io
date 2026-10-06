@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 250" width="360" height="250" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">駅と路線のグラフ</title><desc id="desc">頂点aからfの6個、辺ab ac bc bd be ce cf de df efの10本のグラフ。</desc><rect width="100%" height="100%" fill="white"/>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d7301f"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#233647"/></marker></defs>
+<line x1="45" y1="125" x2="160" y2="45" stroke="#5a6b7b" stroke-width="2.4"/>
+<line x1="45" y1="125" x2="160" y2="205" stroke="#5a6b7b" stroke-width="2.4"/>
+<line x1="160" y1="45" x2="160" y2="205" stroke="#5a6b7b" stroke-width="2.4"/>
+<line x1="160" y1="45" x2="310" y2="45" stroke="#5a6b7b" stroke-width="2.4"/>
+<line x1="160" y1="45" x2="235" y2="125" stroke="#5a6b7b" stroke-width="2.4"/>
+<line x1="160" y1="205" x2="235" y2="125" stroke="#5a6b7b" stroke-width="2.4"/>
+<line x1="160" y1="205" x2="310" y2="205" stroke="#5a6b7b" stroke-width="2.4"/>
+<line x1="310" y1="45" x2="235" y2="125" stroke="#5a6b7b" stroke-width="2.4"/>
+<line x1="310" y1="45" x2="310" y2="205" stroke="#5a6b7b" stroke-width="2.4"/>
+<line x1="235" y1="125" x2="310" y2="205" stroke="#5a6b7b" stroke-width="2.4"/>
+<circle cx="45" cy="125" r="7" fill="#1c3d5f"/>
+<text x="25.0" y="132.0" font-size="22" fill="#1c3d5f" text-anchor="middle" font-style="italic" font-family="'Times New Roman',serif">a</text>
+<circle cx="160" cy="45" r="7" fill="#1c3d5f"/>
+<text x="160.0" y="29.0" font-size="22" fill="#1c3d5f" text-anchor="middle" font-style="italic" font-family="'Times New Roman',serif">b</text>
+<circle cx="160" cy="205" r="7" fill="#1c3d5f"/>
+<text x="160.0" y="237.0" font-size="22" fill="#1c3d5f" text-anchor="middle" font-style="italic" font-family="'Times New Roman',serif">c</text>
+<circle cx="310" cy="45" r="7" fill="#1c3d5f"/>
+<text x="310.0" y="29.0" font-size="22" fill="#1c3d5f" text-anchor="middle" font-style="italic" font-family="'Times New Roman',serif">d</text>
+<circle cx="235" cy="125" r="7" fill="#1c3d5f"/>
+<text x="235.0" y="109.0" font-size="22" fill="#1c3d5f" text-anchor="middle" font-style="italic" font-family="'Times New Roman',serif">e</text>
+<circle cx="310" cy="205" r="7" fill="#1c3d5f"/>
+<text x="310.0" y="237.0" font-size="22" fill="#1c3d5f" text-anchor="middle" font-style="italic" font-family="'Times New Roman',serif">f</text>
+</svg>

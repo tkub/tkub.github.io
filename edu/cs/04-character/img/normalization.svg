@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="ja" lang="ja" viewBox="0 0 800 330" width="800" height="330" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif">
+<title id="title">Unicodeの正規化</title>
+<desc id="desc">合成済みのが U+304C は、NFDでか U+304B と結合濁点 U+3099 に分解され、NFCで元に戻る。NFKCは①を1に、㈱を(株)に、半角カナを全角カナに置き換える一方向の変換。</desc>
+<defs>
+  <marker id="nm-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#2166ac"/></marker>
+  <marker id="nm-red" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#d7301f"/></marker>
+</defs>
+<rect width="800" height="330" fill="#ffffff"/>
+<!-- 左: NFC/NFD -->
+<text x="24" y="34" font-size="17" fill="#1c3d5f" font-weight="700">NFC と NFD：行き来できる</text>
+<rect x="24" y="56" width="130" height="120" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="89" y="112" font-size="40" fill="#233647" text-anchor="middle">が</text>
+<text x="89" y="146" font-size="15" fill="#2166ac" text-anchor="middle" font-family="Menlo,Consolas,monospace">U+304C</text>
+<text x="89" y="166" font-size="14" fill="#5a6b7b" text-anchor="middle">1個</text>
+<rect x="250" y="56" width="140" height="120" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="288" y="112" font-size="40" fill="#233647" text-anchor="middle">か</text>
+<text x="350" y="112" font-size="40" fill="#233647" text-anchor="middle">&#x25CC;&#x3099;</text>
+<text x="320" y="146" font-size="14" fill="#2166ac" text-anchor="middle" font-family="Menlo,Consolas,monospace">U+304B U+3099</text>
+<text x="320" y="166" font-size="14" fill="#5a6b7b" text-anchor="middle">2個</text>
+<path d="M160,96 L242,96" stroke="#2166ac" stroke-width="2.5" marker-end="url(#nm-blue)"/>
+<text x="201" y="86" font-size="15" fill="#2166ac" text-anchor="middle" font-weight="700">NFD</text>
+<path d="M244,138 L162,138" stroke="#2166ac" stroke-width="2.5" marker-end="url(#nm-blue)"/>
+<text x="203" y="160" font-size="15" fill="#2166ac" text-anchor="middle" font-weight="700">NFC</text>
+<text x="24" y="210" font-size="15" fill="#233647">見た目も意味も同じ(正準等価)。</text>
+<text x="24" y="234" font-size="15" fill="#233647">表し方を1つに揃えれば比較・検索できる。</text>
+<!-- 右: NFKC -->
+<line x1="420" y1="24" x2="420" y2="250" stroke="#dde5ec" stroke-width="2"/>
+<text x="444" y="34" font-size="17" fill="#1c3d5f" font-weight="700">NFKC：互換文字を置き換える</text>
+<g font-size="26" fill="#233647" text-anchor="middle">
+  <text x="490" y="84">①</text><text x="690" y="84">1</text>
+  <text x="490" y="128">㈱</text><text x="690" y="128">(株)</text>
+  <text x="490" y="172">ｶﾞ</text><text x="690" y="172">ガ</text>
+  <text x="490" y="216">㌔</text><text x="690" y="216">キロ</text>
+</g>
+<g stroke="#d7301f" stroke-width="2.5">
+  <path d="M530,76 L640,76" marker-end="url(#nm-red)"/>
+  <path d="M530,120 L640,120" marker-end="url(#nm-red)"/>
+  <path d="M530,164 L640,164" marker-end="url(#nm-red)"/>
+  <path d="M530,208 L640,208" marker-end="url(#nm-red)"/>
+</g>
+<text x="444" y="244" font-size="15" fill="#d7301f">一方向の変換。元の「①」には戻せない。</text>
+<text x="24" y="286" font-size="15" fill="#233647">Windowsで入力したファイル名は通常NFC、macOSのアプリが作るファイル名はNFDのことがある。</text>
+<text x="24" y="312" font-size="15" fill="#5a6b7b">検索の前処理にはNFKCが便利だが、保存するデータそのものを書き換えると情報が失われる。</text>
+</svg>

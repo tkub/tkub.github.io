@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 452" width="960" height="452" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">データ量の単位の関係</title><desc id="desc">1バイトは8ビット。10進接頭辞ではB, kB, MB, GB, TBと1000倍ずつ、2進接頭辞ではB, KiB, MiB, GiB, TiBと1024倍ずつ大きくなる。目安として英字1文字は1B、写真1枚は数MB、動画1時間は数GB、HDD1台は数TB。</desc><rect width="100%" height="100%" fill="white"/>
+<text x="28" y="38" font-size="23" fill="#233647" text-anchor="start" font-weight="700">データ量の単位: ビット → バイト → キロ → メガ → ギガ → テラ</text>
+<rect x="28" y="140" width="110" height="64" rx="8" fill="#e3edf6" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="83" y="170" font-size="24" fill="#233647" text-anchor="middle" font-weight="700">1 b</text>
+<text x="83" y="194" font-size="15" fill="#5a6b7b" text-anchor="middle">ビット</text>
+<line x1="144" y1="172" x2="184" y2="172" stroke="#233647" stroke-width="2.2"/>
+<path d="M 175.0 167.1 L 184 172 L 175.0 176.9" fill="none" stroke="#233647" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="164" y="160" font-size="17" fill="#233647" text-anchor="middle" font-weight="700">×8</text>
+<rect x="190" y="140" width="110" height="64" rx="8" fill="#e3edf6" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="245" y="170" font-size="24" fill="#233647" text-anchor="middle" font-weight="700">1 B</text>
+<text x="245" y="194" font-size="15" fill="#5a6b7b" text-anchor="middle">バイト</text>
+<path d="M 300 160 C 320 160 316 116 334 116" fill="none" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 300 184 C 320 184 316 256 334 256" fill="none" stroke="#d7301f" stroke-width="2.2"/>
+<text x="340" y="68" font-size="17" fill="#2166ac" text-anchor="start" font-weight="700">10進接頭辞(SI): 記憶装置の容量、通信速度など</text>
+<text x="340" y="208" font-size="17" fill="#d7301f" text-anchor="start" font-weight="700">2進接頭辞(IEC): メモリの容量など</text>
+<line x1="334" y1="116" x2="378" y2="116" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 369.0 111.0 L 378 116 L 369.0 121.0" fill="none" stroke="#2166ac" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="356" y="104" font-size="14" fill="#2166ac" text-anchor="middle" font-weight="700">×1000</text>
+<rect x="384" y="84" width="94" height="64" rx="8" fill="white" stroke="#2166ac" stroke-width="2"/>
+<text x="431" y="124" font-size="22" fill="#2166ac" text-anchor="middle" font-weight="700">1 kB</text>
+<line x1="334" y1="256" x2="378" y2="256" stroke="#d7301f" stroke-width="2.2"/>
+<path d="M 369.0 251.1 L 378 256 L 369.0 260.9" fill="none" stroke="#d7301f" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="356" y="244" font-size="14" fill="#d7301f" text-anchor="middle" font-weight="700">×1024</text>
+<rect x="384" y="224" width="94" height="64" rx="8" fill="white" stroke="#d7301f" stroke-width="2"/>
+<text x="431" y="264" font-size="22" fill="#d7301f" text-anchor="middle" font-weight="700">1 KiB</text>
+<line x1="484" y1="116" x2="528" y2="116" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 519.0 111.0 L 528 116 L 519.0 121.0" fill="none" stroke="#2166ac" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="506" y="104" font-size="14" fill="#2166ac" text-anchor="middle" font-weight="700">×1000</text>
+<rect x="534" y="84" width="94" height="64" rx="8" fill="white" stroke="#2166ac" stroke-width="2"/>
+<text x="581" y="124" font-size="22" fill="#2166ac" text-anchor="middle" font-weight="700">1 MB</text>
+<line x1="484" y1="256" x2="528" y2="256" stroke="#d7301f" stroke-width="2.2"/>
+<path d="M 519.0 251.1 L 528 256 L 519.0 260.9" fill="none" stroke="#d7301f" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="506" y="244" font-size="14" fill="#d7301f" text-anchor="middle" font-weight="700">×1024</text>
+<rect x="534" y="224" width="94" height="64" rx="8" fill="white" stroke="#d7301f" stroke-width="2"/>
+<text x="581" y="264" font-size="22" fill="#d7301f" text-anchor="middle" font-weight="700">1 MiB</text>
+<line x1="634" y1="116" x2="678" y2="116" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 669.0 111.0 L 678 116 L 669.0 121.0" fill="none" stroke="#2166ac" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="656" y="104" font-size="14" fill="#2166ac" text-anchor="middle" font-weight="700">×1000</text>
+<rect x="684" y="84" width="94" height="64" rx="8" fill="white" stroke="#2166ac" stroke-width="2"/>
+<text x="731" y="124" font-size="22" fill="#2166ac" text-anchor="middle" font-weight="700">1 GB</text>
+<line x1="634" y1="256" x2="678" y2="256" stroke="#d7301f" stroke-width="2.2"/>
+<path d="M 669.0 251.1 L 678 256 L 669.0 260.9" fill="none" stroke="#d7301f" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="656" y="244" font-size="14" fill="#d7301f" text-anchor="middle" font-weight="700">×1024</text>
+<rect x="684" y="224" width="94" height="64" rx="8" fill="white" stroke="#d7301f" stroke-width="2"/>
+<text x="731" y="264" font-size="22" fill="#d7301f" text-anchor="middle" font-weight="700">1 GiB</text>
+<line x1="784" y1="116" x2="828" y2="116" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 819.0 111.0 L 828 116 L 819.0 121.0" fill="none" stroke="#2166ac" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="806" y="104" font-size="14" fill="#2166ac" text-anchor="middle" font-weight="700">×1000</text>
+<rect x="834" y="84" width="94" height="64" rx="8" fill="white" stroke="#2166ac" stroke-width="2"/>
+<text x="881" y="124" font-size="22" fill="#2166ac" text-anchor="middle" font-weight="700">1 TB</text>
+<line x1="784" y1="256" x2="828" y2="256" stroke="#d7301f" stroke-width="2.2"/>
+<path d="M 819.0 251.1 L 828 256 L 819.0 260.9" fill="none" stroke="#d7301f" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="806" y="244" font-size="14" fill="#d7301f" text-anchor="middle" font-weight="700">×1024</text>
+<rect x="834" y="224" width="94" height="64" rx="8" fill="white" stroke="#d7301f" stroke-width="2"/>
+<text x="881" y="264" font-size="22" fill="#d7301f" text-anchor="middle" font-weight="700">1 TiB</text>
+<line x1="28" y1="318" x2="932" y2="318" stroke="#dde5ec" stroke-width="2"/>
+<text x="28" y="356" font-size="18" fill="#233647" text-anchor="start" font-weight="700">大きさの目安</text>
+<rect x="14" y="374" width="172" height="62" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="100" y="400" font-size="16" fill="#233647" text-anchor="middle">英字1文字</text>
+<text x="100" y="425" font-size="18" fill="#233647" text-anchor="middle" font-weight="700">1 B</text>
+<rect x="200" y="374" width="172" height="62" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="286" y="400" font-size="16" fill="#233647" text-anchor="middle">小説1冊の文字</text>
+<text x="286" y="425" font-size="18" fill="#233647" text-anchor="middle" font-weight="700">数百 kB</text>
+<rect x="386" y="374" width="172" height="62" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="472" y="400" font-size="16" fill="#233647" text-anchor="middle">スマホ写真1枚</text>
+<text x="472" y="425" font-size="18" fill="#233647" text-anchor="middle" font-weight="700">数 MB</text>
+<rect x="572" y="374" width="172" height="62" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="658" y="400" font-size="16" fill="#233647" text-anchor="middle">動画1時間</text>
+<text x="658" y="425" font-size="18" fill="#233647" text-anchor="middle" font-weight="700">数 GB</text>
+<rect x="758" y="374" width="172" height="62" rx="8" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="844" y="400" font-size="16" fill="#233647" text-anchor="middle">HDD 1台</text>
+<text x="844" y="425" font-size="18" fill="#233647" text-anchor="middle" font-weight="700">数 TB</text>
+</svg>

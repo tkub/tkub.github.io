@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 535" width="960" height="535" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">解のない式から作ったグラフ</title><desc id="desc">4節のグラフ。8頂点と16辺。右の表で4通りの割り当てそれぞれに偽になる節があることを示す。4クリークは存在しない。</desc><rect width="100%" height="100%" fill="white"/>
+<text x="28" y="36" font-size="24" fill="#233647" text-anchor="start" font-weight="700">④ No の入力は、変換後も No になる</text>
+<rect x="55" y="55" width="230" height="145" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="67" y="80" font-size="17" fill="#235e85" text-anchor="start">第1節</text>
+<rect x="395" y="55" width="230" height="145" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="545" y="80" font-size="17" fill="#235e85" text-anchor="start">第2節</text>
+<rect x="55" y="330" width="230" height="145" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="67" y="355" font-size="17" fill="#235e85" text-anchor="start">第3節</text>
+<rect x="395" y="330" width="230" height="145" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="407" y="355" font-size="17" fill="#235e85" text-anchor="start">第4節</text>
+<line x1="125" y1="130" x2="440" y2="95" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="125" y1="130" x2="560" y2="130" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="125" y1="130" x2="245" y2="415" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="125" y1="130" x2="560" y2="380" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="245" y1="95" x2="440" y2="95" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="245" y1="95" x2="125" y2="380" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="245" y1="95" x2="245" y2="415" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="245" y1="95" x2="440" y2="415" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="440" y1="95" x2="245" y2="415" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="440" y1="95" x2="560" y2="380" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="560" y1="130" x2="125" y2="380" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="560" y1="130" x2="440" y2="415" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="560" y1="130" x2="560" y2="380" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="125" y1="380" x2="440" y2="415" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="125" y1="380" x2="560" y2="380" stroke="#a5b2bb" stroke-width="1.5"/>
+<line x1="245" y1="415" x2="440" y2="415" stroke="#a5b2bb" stroke-width="1.5"/>
+<circle cx="125" cy="130" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="125" y="138" font-size="25" fill="#233647" text-anchor="middle">x</text>
+<circle cx="245" cy="95" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="245" y="103" font-size="25" fill="#233647" text-anchor="middle">y</text>
+<circle cx="440" cy="95" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="440" y="103" font-size="25" fill="#233647" text-anchor="middle">x</text>
+<circle cx="560" cy="130" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="560" y="138" font-size="25" fill="#233647" text-anchor="middle">y</text>
+<line x1="552" y1="115" x2="568" y2="115" stroke="#233647" stroke-width="1.8"/>
+<circle cx="125" cy="380" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="125" y="388" font-size="25" fill="#233647" text-anchor="middle">x</text>
+<line x1="117" y1="365" x2="133" y2="365" stroke="#233647" stroke-width="1.8"/>
+<circle cx="245" cy="415" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="245" y="423" font-size="25" fill="#233647" text-anchor="middle">y</text>
+<circle cx="440" cy="415" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="440" y="423" font-size="25" fill="#233647" text-anchor="middle">x</text>
+<line x1="432" y1="400" x2="448" y2="400" stroke="#233647" stroke-width="1.8"/>
+<circle cx="560" cy="380" r="24" fill="white" stroke="#233647" stroke-width="1.8"/>
+<text x="560" y="388" font-size="25" fill="#233647" text-anchor="middle">y</text>
+<line x1="552" y1="365" x2="568" y2="365" stroke="#233647" stroke-width="1.8"/>
+<text x="680" y="115" font-size="20" fill="#233647" text-anchor="start" font-weight="700">割り当てを全て調べる</text>
+<text x="685" y="165" font-size="18" fill="#233647" text-anchor="start">x   y       偽になる節</text>
+<text x="685" y="207" font-size="22" fill="#233647" text-anchor="start">0   0          第1節</text>
+<text x="685" y="249" font-size="22" fill="#233647" text-anchor="start">0   1          第2節</text>
+<text x="685" y="291" font-size="22" fill="#233647" text-anchor="start">1   0          第3節</text>
+<text x="685" y="333" font-size="22" fill="#233647" text-anchor="start">1   1          第4節</text>
+<text x="675" y="400" font-size="18" fill="#233647" text-anchor="start">必ず満たせない節がある。</text>
+<text x="675" y="433" font-size="18" fill="#233647" text-anchor="start">対応する4クリークもない。</text>
+<text x="28" y="503" font-size="17" fill="#233647" text-anchor="start">線が交差するだけの場所は頂点ではありません。頂点は丸で示した8個です。</text>
+</svg>

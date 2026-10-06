@@ -1,0 +1,16 @@
+{
+  "name": "Records in Contexts: An Introduction --- Understanding the New International Standard for Archival Description",
+  "short_name": "RiC",
+  "lang": "en",
+  "start_url": "/edu/ric/en/",
+  "scope": "/edu/ric/en/",
+  "display": "standalone",
+  "theme_color": "#26466e",
+  "background_color": "#ffffff",
+  "icons": [
+    { "src": "/edu/ric/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/edu/ric/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/edu/ric/icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/edu/ric/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

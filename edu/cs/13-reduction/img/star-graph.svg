@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" width="420" height="300" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">練習問題のグラフ：中心Aと4頂点を結ぶ星形</title><desc id="desc">頂点はAからEの5個。辺はA-B、A-C、A-D、A-Eの4本だけで、BからEの間には辺がない。</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#235e85"/></marker><marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#5a6b7b"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#d7301f"/></marker></defs><rect width="100%" height="100%" fill="white"/>
+<line x1="210" y1="150" x2="90" y2="60" stroke="#233647" stroke-width="2.5"/>
+<line x1="210" y1="150" x2="330" y2="60" stroke="#233647" stroke-width="2.5"/>
+<line x1="210" y1="150" x2="90" y2="240" stroke="#233647" stroke-width="2.5"/>
+<line x1="210" y1="150" x2="330" y2="240" stroke="#233647" stroke-width="2.5"/>
+<circle cx="210" cy="150" r="26" fill="#ffffff" stroke="#233647" stroke-width="2"/>
+<text x="210" y="158" font-size="22" fill="#233647" text-anchor="middle">A</text>
+<circle cx="90" cy="60" r="26" fill="#ffffff" stroke="#233647" stroke-width="2"/>
+<text x="90" y="68" font-size="22" fill="#233647" text-anchor="middle">B</text>
+<circle cx="330" cy="60" r="26" fill="#ffffff" stroke="#233647" stroke-width="2"/>
+<text x="330" y="68" font-size="22" fill="#233647" text-anchor="middle">C</text>
+<circle cx="90" cy="240" r="26" fill="#ffffff" stroke="#233647" stroke-width="2"/>
+<text x="90" y="248" font-size="22" fill="#233647" text-anchor="middle">D</text>
+<circle cx="330" cy="240" r="26" fill="#ffffff" stroke="#233647" stroke-width="2"/>
+<text x="330" y="248" font-size="22" fill="#233647" text-anchor="middle">E</text>
+</svg>

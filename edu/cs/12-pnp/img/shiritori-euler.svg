@@ -1,0 +1,37 @@
+<svg xml:lang="ja" lang="ja" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 245" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#333"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="580" height="245" fill="#ffffff"/>
+
+  <!-- edges -->
+  <g stroke="#333" stroke-width="1.5" fill="none" marker-end="url(#arr)">
+    <line x1="106" y1="106" x2="254" y2="84"/>
+    <line x1="306" y1="84" x2="454" y2="106"/>
+    <path d="M 461 91 Q 280 -15 101 90"/>
+    <line x1="104" y1="120" x2="286" y2="190"/>
+  </g>
+
+  <!-- edge labels -->
+  <g font-size="14" fill="#2166ac" text-anchor="middle">
+    <text x="180" y="80">めかぶ</text>
+    <text x="380" y="80">ぶどう</text>
+    <text x="280" y="22">うめ</text>
+    <text x="172" y="178">めだか</text>
+  </g>
+
+  <!-- nodes -->
+  <circle cx="80" cy="110" r="26" fill="#eef4fa" stroke="#333" stroke-width="1.5"/>
+  <text x="80" y="117" font-size="18" text-anchor="middle" fill="#333">め</text>
+
+  <circle cx="280" cy="80" r="26" fill="#eef4fa" stroke="#333" stroke-width="1.5"/>
+  <text x="280" y="87" font-size="18" text-anchor="middle" fill="#333">ぶ</text>
+
+  <circle cx="480" cy="110" r="26" fill="#eef4fa" stroke="#333" stroke-width="1.5"/>
+  <text x="480" y="117" font-size="18" text-anchor="middle" fill="#333">う</text>
+
+  <circle cx="310" cy="200" r="26" fill="#eef4fa" stroke="#333" stroke-width="1.5"/>
+  <text x="310" y="207" font-size="18" text-anchor="middle" fill="#333">か</text>
+</svg>

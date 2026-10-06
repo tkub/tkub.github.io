@@ -1,0 +1,2314 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<meta name="author" content="久保山哲二">
+<title>論理回路とブール代数(2) 論理回路の簡単化と回路設計</title>
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Uncomment @import statement below to use as custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700";*/
+article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
+audio,canvas,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+script{display:none!important}
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+a{background:transparent}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+abbr[title]{border-bottom:1px dotted}
+b,strong{font-weight:bold}
+/* dfn{font-style:italic} */
+hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,*::before,*::after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto;tab-size:4;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:none}
+p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}
+ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}
+ul.square{list-style-type:square}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}
+abbr{text-transform:none}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}
+blockquote cite::before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed;word-wrap:break-word}
+*:not(pre)>code.nobreak{word-wrap:normal}
+*:not(pre)>code.nowrap{white-space:nowrap}
+pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:rgba(255,255,255,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:normal}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+table.tableblock #preamble>.sectionbody>[class="paragraph"]:first-of-type p{font-size:inherit}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6)}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}
+.exampleblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child{margin-bottom:0}
+.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}
+.sidebarblock>:first-child{margin-top:0}
+.sidebarblock>:last-child{margin-bottom:0}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}
+.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}
+.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}
+.literalblock pre.nowrap,.literalblock pre.nowrap pre,.listingblock pre.nowrap,.listingblock pre.nowrap pre{white-space:pre;word-wrap:normal}
+.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:#999}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}
+table.pyhltable td.code{padding-left:.75em;padding-right:0}
+pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #dddddf}
+pre.pygments .lineno{display:inline-block;margin-right:.25em}
+table.pyhltable .linenodiv{background:none!important;padding-right:0!important}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}
+/* .quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify} */
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);padding:1em;font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin:0 0 1.25em;padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;text-align:left;margin-right:0}
+table.tableblock{max-width:100%;border-collapse:separate}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>thead>tr>.tableblock,table.grid-all>tbody>tr>.tableblock{border-width:0 1px 1px 0}
+table.grid-all>tfoot>tr>.tableblock{border-width:1px 1px 0 0}
+table.grid-cols>*>tr>.tableblock{border-width:0 1px 0 0}
+table.grid-rows>thead>tr>.tableblock,table.grid-rows>tbody>tr>.tableblock{border-width:0 0 1px}
+table.grid-rows>tfoot>tr>.tableblock{border-width:1px 0 0}
+table.grid-all>*>tr>.tableblock:last-child,table.grid-cols>*>tr>.tableblock:last-child{border-right-width:0}
+table.grid-all>tbody>tr:last-child>.tableblock,table.grid-all>thead:last-child>tr>.tableblock,table.grid-rows>tbody>tr:last-child>.tableblock,table.grid-rows>thead:last-child>tr>.tableblock{border-bottom-width:0}
+table.frame-all{border-width:1px}
+table.frame-sides{border-width:0 1px}
+table.frame-topbot,table.frame-ends{border-width:1px 0}
+table.stripes-all tr,table.stripes-odd tr:nth-of-type(odd){background:#f8f8f7}
+table.stripes-none tr,table.stripes-odd tr:nth-of-type(even){background:none}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+td>div.verse{white-space:pre}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+ul.checklist{margin-left:.625em}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
+ul.inline{display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}
+.gist .file-data>table td.line-data{width:99%}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background-color:#00fafa}
+.black{color:#000}
+.black-background{background-color:#000}
+.blue{color:#0000bf}
+.blue-background{background-color:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background-color:#fa00fa}
+.gray{color:#606060}
+.gray-background{background-color:#7d7d7d}
+.green{color:#006000}
+.green-background{background-color:#007d00}
+.lime{color:#00bf00}
+.lime-background{background-color:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background-color:#7d0000}
+.navy{color:#000060}
+.navy-background{background-color:#00007d}
+.olive{color:#606000}
+.olive-background{background-color:#7d7d00}
+.purple{color:#600060}
+.purple-background{background-color:#7d007d}
+.red{color:#bf0000}
+.red-background{background-color:#fa0000}
+.silver{color:#909090}
+.silver-background{background-color:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background-color:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background-color:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background-color:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media print,amzn-kf8{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+
+/* ============================================================
+   コンピューター科学概論 デザイン調整層 (2026)
+   図版と同じ配色(#2166ac / #d7301f)で全体を統一する。
+   ============================================================ */
+:root{
+  --cs-ink:#2b3440;
+  --cs-head:#1c3d5f;
+  --cs-accent:#2166ac;
+  --cs-red:#d7301f;
+  --cs-muted:#5a6b7b;
+  --cs-line:#dde5ec;
+  --cs-bg-soft:#f6f8fa;
+  --cs-sans:'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;
+  --cs-mono:'SF Mono','Menlo','Consolas',monospace;
+}
+
+/* ---- 基本 ---- */
+body{font-family:var(--cs-sans);color:var(--cs-ink);background:#fff;
+  -webkit-font-smoothing:antialiased}
+#content{max-width:50em}
+#content p,#content .paragraph>p{line-height:1.95;letter-spacing:.01em}
+.paragraph{margin-bottom:1.15em}
+a{color:var(--cs-accent)}
+a:hover{color:#17497a}
+img{max-width:100%;height:auto}
+
+/* ---- ヘッダ ---- */
+#header h1{font-family:var(--cs-sans);font-weight:700;color:var(--cs-head);
+  font-size:1.9em;letter-spacing:.02em;
+  border-bottom:3px solid var(--cs-accent);padding-bottom:.35em}
+#header .details{color:var(--cs-muted);border-bottom:0;font-size:.85em}
+
+/* ---- 見出し階層 ---- */
+h1,h2,h3,h4,h5,#toctitle{font-family:var(--cs-sans);font-weight:700;color:var(--cs-head)}
+#content h2{font-size:1.5em;margin-top:2.2em;padding-bottom:.3em;
+  border-bottom:2px solid var(--cs-accent);color:var(--cs-head)}
+#content h3{font-size:1.24em;margin-top:1.9em;padding-bottom:.22em;
+  border-bottom:1px solid var(--cs-line)}
+#content h4{font-size:1.08em;margin-top:1.6em}
+#content h2>a.anchor,#content h3>a.anchor{color:#b9c6d2}
+
+/* ---- 右side目次 ---- */
+#toc.toc2{background:#f8fafc;border-color:#e4eaf0;font-family:var(--cs-sans)}
+#toc.toc2 #toctitle{color:var(--cs-head);font-size:1em}
+#toc.toc2 ul{font-family:var(--cs-sans)}
+#toc a{color:#4a5b6c;text-decoration:none}
+#toc a:hover{color:var(--cs-accent);text-decoration:underline}
+#toc ul.sectlevel1>li{margin-top:.45em}
+#toc ul.sectlevel2{font-size:.92em;margin-top:.2em}
+
+/* ---- 補足ブロック(NOTE/TIP/WARNING/IMPORTANT/CAUTION) ---- */
+.admonitionblock>table{border:1px solid var(--cs-line);border-radius:10px;
+  border-collapse:separate;overflow:hidden;background:#fff}
+.admonitionblock>table td.icon{padding:.9em .2em .9em .9em;min-width:2.6em}
+.admonitionblock>table td.icon [class^="fa icon-"]{font-size:1.6em;cursor:default;text-shadow:none}
+.admonitionblock>table td.content{padding:.9em 1.1em;border-left:0;
+  color:var(--cs-ink);font-size:.95em;line-height:1.85}
+.admonitionblock>table td.content>.title{color:var(--cs-head);font-weight:700}
+.admonitionblock.note>table{background:#f2f7fc;border-color:#c7d9ea}
+.admonitionblock.note td.icon .icon-note::before{color:var(--cs-accent)}
+.admonitionblock.tip>table{background:#f1f8f2;border-color:#c4dcc6}
+.admonitionblock.tip td.icon .icon-tip::before{color:#2e7d32;text-shadow:none}
+.admonitionblock.important>table{background:#fdf1ef;border-color:#eac3bd}
+.admonitionblock.important td.icon .icon-important::before{color:var(--cs-red)}
+.admonitionblock.warning>table{background:#fdf6ea;border-color:#e8d5b0}
+.admonitionblock.warning td.icon .icon-warning::before{color:#b26a00}
+.admonitionblock.caution>table{background:#fdf6ea;border-color:#e8d5b0}
+.admonitionblock.caution td.icon .icon-caution::before{color:#b26a00}
+
+/* ---- 例・引用・サイドバー ---- */
+.exampleblock>.content{background:#fdfdfe;border:1px solid var(--cs-line);
+  border-radius:10px;box-shadow:none;padding:1em 1.25em}
+.sidebarblock{background:var(--cs-bg-soft);border:1px solid var(--cs-line);border-radius:10px}
+.quoteblock blockquote,.quoteblock blockquote p{color:var(--cs-muted)}
+.quoteblock{border-left:3px solid var(--cs-line)}
+*:not(pre)>code{background:#f2f4f6;border-radius:4px;padding:.08em .35em;
+  font-family:var(--cs-mono);font-size:.88em;color:#3a4653;word-spacing:normal}
+
+/* ---- コードブロック ---- */
+.listingblock pre,.literalblock pre,
+.listingblock pre[class^="highlight"]{background:var(--cs-bg-soft);
+  border:1px solid #e6ebf0;border-radius:8px;
+  font-family:var(--cs-mono);font-size:.9em;line-height:1.6;padding:1em 1.2em}
+
+/* ---- 表 ---- */
+table.tableblock{border-color:var(--cs-line);font-size:.95em}
+table.tableblock th{background:#eef3f8;color:var(--cs-head);font-weight:700;
+  font-family:var(--cs-sans)}
+table.tableblock th,table.tableblock td{padding:.5em .8em}
+table.frame-topbot{border-top:2px solid var(--cs-head);border-bottom:2px solid var(--cs-head)}
+table.grid-rows td{border-color:#e6ebf0}
+
+/* ---- ブロックのキャプション ---- */
+.imageblock>.title,.tableblock+.title,table.tableblock caption,
+.exampleblock>.title,.listingblock>.title,.videoblock>.title,
+.imageblock .title,.stemblock>.title,caption.title{
+  color:var(--cs-muted);font-weight:600;font-size:.9em;
+  font-style:normal;line-height:1.6;font-family:var(--cs-sans)}
+.imageblock{margin:1.4em 0}
+.imageblock.text-center{margin-left:auto;margin-right:auto}
+
+/* ---- 折りたたみ(解答など) ---- */
+details{margin:1em 0}
+details>summary{background:#eef3f8;border:1px solid var(--cs-line);
+  border-radius:8px;padding:.5em .9em;font-weight:700;color:var(--cs-head);
+  cursor:pointer;user-select:none}
+details>summary:hover{background:#e2ecf5}
+details[open]>summary{border-radius:8px 8px 0 0}
+
+/* ---- 数式 ---- */
+.stemblock>.content{overflow-x:auto;padding:.2em 0}
+
+/* ---- 定義リスト([horizontal]など) ---- */
+td.hdlist1{color:var(--cs-head);font-weight:700;font-family:var(--cs-sans)}
+.dlist dt{color:var(--cs-head);font-weight:700;font-style:normal}
+
+/* ---- 箇条書きの行間 ---- */
+.ulist li,.olist li{margin-bottom:.35em;line-height:1.85}
+
+/* ---- フッタ ---- */
+#footer{background:none;border-top:1px solid var(--cs-line);margin-top:3em}
+#footer-text,#footer div{color:var(--cs-muted);font-size:.85em}
+
+/* ---- 印刷 ---- */
+@media print{
+  #toc.toc2{display:none}
+  body.toc2{margin-right:0!important;margin-left:0!important}
+  #content h2{border-bottom-color:#888}
+}
+
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+</head>
+<body class="article toc2 toc-right">
+<div id="header">
+<h1>論理回路とブール代数(2) 論理回路の簡単化と回路設計</h1>
+<div class="details">
+<span id="author" class="author">久保山哲二</span><br>
+<span id="revnumber">version 1.0</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">目次</div>
+<ul class="sectlevel1">
+<li><a href="#_カルノー図法">1. カルノー図法</a>
+<ul class="sectlevel2">
+<li><a href="#_2変数のカルノー図">1.1. 2変数のカルノー図</a></li>
+<li><a href="#_3変数のカルノー図">1.2. 3変数のカルノー図</a>
+<ul class="sectlevel3">
+<li><a href="#_例_不要な項を見つける">例: 不要な項を見つける</a></li>
+<li><a href="#_カルノー図の端と端はつながっている">カルノー図の端と端はつながっている</a></li>
+<li><a href="#_3変数のもう1つの例">3変数のもう1つの例</a></li>
+</ul>
+</li>
+<li><a href="#_4変数のカルノー図">1.3. 4変数のカルノー図</a>
+<ul class="sectlevel3">
+<li><a href="#_例_4変数の簡単化">例: 4変数の簡単化</a></li>
+</ul>
+</li>
+<li><a href="#_囲み方のよくある誤り">1.4. 囲み方のよくある誤り</a></li>
+<li><a href="#_ドントケア">1.5. ドントケア</a></li>
+<li><a href="#_簡単化の基準と自動化">1.6. 簡単化の基準と自動化</a></li>
+</ul>
+</li>
+<li><a href="#_論理ゲートの関数的完全性">2. 論理ゲートの関数的完全性</a>
+<ul class="sectlevel2">
+<li><a href="#_andゲートとnotゲートの関数的完全性">2.1. ANDゲートとNOTゲートの関数的完全性</a></li>
+<li><a href="#_nandゲートの関数的完全性">2.2. NANDゲートの関数的完全性</a>
+<ul class="sectlevel3">
+<li><a href="#_notゲート">NOTゲート</a></li>
+<li><a href="#_andゲート">ANDゲート</a></li>
+<li><a href="#_orゲート">ORゲート</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_組合せ回路の設計">3. 組合せ回路の設計</a>
+<ul class="sectlevel2">
+<li><a href="#_2入力データセレクタ">3.1. 2入力データセレクタ</a></li>
+<li><a href="#_半加算器">3.2. 半加算器</a></li>
+<li><a href="#_全加算器">3.3. 全加算器</a></li>
+<li><a href="#_論理回路の遅延時間">3.4. 論理回路の遅延時間</a></li>
+</ul>
+</li>
+<li><a href="#_練習問題">4. 練習問題</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="stemblock">
+<div class="content">
+\[\newcommand{\TT}[1]{\texttt{#1}}
+\newcommand{\uB}[2]{{\underbrace{\TT{#1}}_{\TT{#2}}}}\]
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_カルノー図法"><a class="link" href="#_カルノー図法">1. カルノー図法</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>カルノー図法は、1953年にベル研のモーリス・カルノーによって考案された、作図によって論理式を簡単化する手法です。前年(1952年)にヴェイチが考案したヴェイチ図を改良したもので、変数の少ない積和形の論理式の簡単化によく用いられます。原理的には6変数程度まで使えるとされますが、変数が増えるとマス目が指数的に増えて扱いにくくなるため、一般には4変数までの論理式の簡単化に用います。</p>
+</div>
+<div class="sect2">
+<h3 id="_2変数のカルノー図"><a class="link" href="#_2変数のカルノー図">1.1. 2変数のカルノー図</a></h3>
+<div class="paragraph">
+<p>次の論理式</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[x + \bar x\cdot y + x\cdot\bar y\]
+</div>
+</div>
+<div class="paragraph">
+<p>を例に説明します。式変形で簡単化しようとすると、分配律や相補律をどの順に使うか工夫が要る式ですが、カルノー図を使えば図を描くだけで簡単化できます。どの式でも真理値を求めればカルノー図を作れます。積和形なら、各積項が1になるマスを順に記入する方法が便利です。この例はすでに積和形になっています。
+次に、2変数のカルノー図は \(x\) と \(y\) の値の組合せで \(2\times 2\) のマス目を書き、2変数の値</p>
+</div>
+<div class="paragraph text-center">
+<p>\((x,y)=(0,0),(0,1),(1,0),(1,1)\)</p>
+</div>
+<div class="paragraph">
+<p>に対応させます(下図参照)。</p>
+</div>
+<div class="paragraph">
+<p>論理式 \(x + \bar x\cdot y + x\cdot\bar y\) の左側の項から順に考えることにします。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(x\) の項は、\(x=1\) であれば \(y\) の値によらず1になりますので、\(y\) は 0 でも 1 でもよい、つまり \(x=x\cdot(y+\bar y)\) ですから、左図の茶色で囲まれた部分 \((x,y)=(1,\mathbf0),(1,\mathbf1)\) の2マスに1を書きます。</p>
+</li>
+<li>
+<p>\(\bar x\cdot y=1\) になるのは \((x,y)=(0,1)\) のときのみですから、左図の緑色で囲まれたマスに1を書きます。</p>
+</li>
+<li>
+<p>\(x\cdot\bar y=1\) になるのは \((x,y)=(1,0)\) のときのみですから、左図の青色で囲まれたマスに1を書きます（実際には、すでに1が書かれているので、変化なしです）。</p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/karnaugh1.svg" alt="行x、列yの2×2のマス目に1を書き込み、右図で横長の枠xと縦長の枠yの2つで囲み直した図">
+</div>
+<div class="title">図 1. 2変数のカルノー図(左: 各項に対応するマスに1を書く、右: 囲み直す)</div>
+</div>
+<div class="paragraph">
+<p>ここまで作図ができたら、4マスのうち3マスに1が書かれた状態になっています（<strong>左図</strong>）。説明のために左図には3つの項に対応する囲み枠を3つ書いていますが、実際にはこの時点で囲みは書きません。</p>
+</div>
+<div class="paragraph">
+<p>次の工程が重要です。</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>すべての1を覆うようにできるだけ大きな\(2^n\)個のマスを含んだ矩形の枠を描きます</strong>(<strong>右図</strong>)。つまり、枠に含まれるマスの数は、1,2,4,8,…でなくてはなりません。</p>
+</li>
+<li>
+<p>このとき枠は1の書かれていないマスには立ち入らないようにして、かつ四角（角を丸めて描いてもよい）で1を囲むように描かなくてはなりません。つまり、「』」のように曲がった枠で囲んではいけません。この条件のもとで、<strong>枠の数が最小になるように</strong>囲んでください。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>すると、すべての1を囲むには、<strong>右図</strong>のように少なくとも緑と茶の2つの枠が必要になります。また、\((x,y)=(1,1)\) の部分で緑と茶の枠が重なりますが、これは、ちょうど\(2^n\)個のマスを含む枠で、かつ、できるだけ大きく囲むという決まりがあるためです。</p>
+</div>
+<div class="paragraph">
+<p>後は、囲んだ2つの枠を解釈して積和形の論理式に戻すだけです。茶色の枠は、\(x=1\) で \(y\) は0,1どちらの値もとるので、項 \(x\) を表しています。また、緑の枠も同様に項 \(y\) を表していますので、積和形論理式の形に戻すと、</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[x+y\]
+</div>
+</div>
+<div class="paragraph">
+<p>が得られました。</p>
+</div>
+<div class="paragraph">
+<p>枠を積項に戻す手順は、変数が増えても同じです。</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>枠の中で値が変わらない変数だけを残します。その値が1なら変数そのもの(例: \(x\))、0なら否定(例: \(\bar x\))を書き、それらの論理積をとります。</p>
+</li>
+<li>
+<p>枠の中で0と1の両方の値をとる変数は、その項には現れません。</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>枠が大きいほど「値が変わる変数」が増えるので、項のリテラル(変数またはその否定)は少なくなります。枠の数が少ないほど、項の数も少なくなります。「できるだけ大きく、できるだけ少なく囲む」という決まりは、この2つを同時にねらったものです。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3変数のカルノー図"><a class="link" href="#_3変数のカルノー図">1.2. 3変数のカルノー図</a></h3>
+<div class="sect3">
+<h4 id="_例_不要な項を見つける"><a class="link" href="#_例_不要な項を見つける">例: 不要な項を見つける</a></h4>
+<div class="paragraph">
+<p>3変数の場合の例として、次の論理式のカルノー図を描いてみましょう。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[x\cdot y + \bar x\cdot z + y\cdot z\]
+</div>
+</div>
+<div class="paragraph">
+<p>この式は、3つ目の項 \(y\cdot z\) を取り除いても同じ論理関数を表します。式変形でこれを示すには工夫が要りますが、カルノー図なら一目でわかります。この例もすでに積和形です。
+3変数のカルノー図は \((x,y)\) の値の組と \(z\) の値の組合せで \(4\times 2\) のマス目を書き、3変数の値</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+(xy,z) =&amp; (00,0),(01,0),(11,0),(10,0)\\
+&amp; (00,1),(01,1),(11,1),(10,1)
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>に対応させます(下図参照)。このカルノー図で重要なのは、\(xy\) の値の並べ方です。<strong>順序が 00, 01, 11, 10 になっていることに注意</strong>してください。隣接するセルの2進法の表現が1ビットだけ異なるように並べることが重要です。もし、01の次に10がくると、1桁目と2桁目両者ともに値が異なってしまいます（1桁目は1→0、2桁目は0→1）。このような並べ方にならないようにします。隣接する2進法の表現が1ビット(1桁)だけ異なるようになっていれば、<strong>順序は 11, 01, 00, 10 でも問題ありません</strong>。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>【グレイコード】</p>
+</div>
+<div class="paragraph">
+<p>隣り合う符号が必ず1ビットだけ異なるこのような並べ方を<strong>グレイコード</strong>(交番二進符号)とよびます。カルノー図でマス目をこの順に並べるのは、隣接マスが1変数だけ違う(=1つの項にまとめられる)ようにするためです。グレイコードは現実の機器でも使われています。たとえば回転角を読み取るロータリーエンコーダでは、通常の2進法だと複数桁が同時に切り替わる瞬間に誤読(たとえば 0111→1000 で一瞬 1111 と読む)が起こりえますが、1桁ずつしか変化しないグレイコードを使えばこの誤りを避けられます。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>先ほどと同じように、論理式 \(x\cdot y + \bar x\cdot z + y\cdot z\) の左側の項から順に考えます。まず、マス目は縦4行横2列で、行は \(x\) と \(y\) に対応させ、列は \(z\) に対応させます。(他にもたとえば、横長のマス目にして、縦2行、横4列とし、行は \(x\) に、列は \(y\) と \(z\) に対応させても構いません。)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(x\cdot y=1\) となるのは、\(xy=11\) で、かつ \(z\) は 0 でも 1 でもよいので、左図の青色で囲まれた部分 \((xy,z)=(11,\mathbf0),(11,\mathbf1)\) の2マスに1を書きます。</p>
+</li>
+<li>
+<p>\(\bar x\cdot z=1\) となるのは、\(x=0\) かつ \(z=1\) で、\(y\) は 0でも1でもよいので、左図の緑色で囲まれた部分 \((xy,z)=(0\mathbf0,1),(0\mathbf1,1)\) の2マスに1を書きます。</p>
+</li>
+<li>
+<p>\(y\cdot z=1\) となるのは、\(y=1\) かつ \(z=1\) で、\(x\) は 0でも1でもよいので、左図の茶色で囲まれた部分 \((xy,z)=(\mathbf01,1),(\mathbf11,1)\) の2マスに1を書きます。</p>
+</li>
+</ul>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/karnaugh2.svg" alt="行xy、列zの4×2のマス目。左図は3つの項に対応する枠、右図は緑と青の2つの枠だけで1を覆った図">
+</div>
+<div class="title">図 2. 3変数のカルノー図(左: 3つの項の書き込み、右: 囲み直し)</div>
+</div>
+<div class="paragraph">
+<p>すると、すべての1を囲むには、<strong>右図</strong>のように緑と青の2つの枠だけで十分です。
+つまり、\(yz\) の項が不要であることがただちにわかります。よって、</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[x\cdot y+\bar x\cdot z\]
+</div>
+</div>
+<div class="paragraph">
+<p>が得られました。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_カルノー図の端と端はつながっている"><a class="link" href="#_カルノー図の端と端はつながっている">カルノー図の端と端はつながっている</a></h4>
+<div class="paragraph">
+<p>ところで、上の例と似た以下の積和形論理式を簡単化する問題を考えてみましょう。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\bar x\cdot y + \bar y\cdot z + \bar x\cdot z\]
+</div>
+</div>
+<div class="imageblock right">
+<div class="content">
+<img src="./img/karnaugh3.svg" alt="行xy、列zのカルノー図。緑の枠が上端の行00と下端の行10をつないで囲んでいる" width="280">
+</div>
+<div class="title">図 3. 上下の端をまたぐ枠</div>
+</div>
+<div class="paragraph">
+<p>この積和形論理式からカルノー図を作成すると、右図のようになります。注意を要するのは、カルノー図の上下はつながっているということです（ゲームのパックマンのように端と端がつながっています）。一番上の行の \(xy=00\) と一番下の行の \(xy=10\) は1ビット(1桁)だけ異なります。このような部分はつながっているのです。</p>
+</div>
+<div class="paragraph">
+<p>よって、緑色の枠で囲んだ部分は、上端と下端がつながっていることから、1つの枠として囲むことができるのです。このことを忘れずに作図する必要があります。また、左右もつながっているのですが、この場合は2列のみなので、青色の枠のように内側方向に枠を描くだけでよいということになります。</p>
+</div>
+<div class="paragraph">
+<p>この結果より、上の例と同様に緑と青の枠だけで、1をすべて覆えるので</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\bar x\cdot y + \bar y\cdot z\]
+</div>
+</div>
+<div class="paragraph">
+<p>が、得られます。</p>
+</div>
+<br clear="both">
+</div>
+<div class="sect3">
+<h4 id="_3変数のもう1つの例"><a class="link" href="#_3変数のもう1つの例">3変数のもう1つの例</a></h4>
+<div class="paragraph">
+<p>次の論理式でカルノー図を描いてみましょう。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[y + x\cdot \bar y + x\cdot z\]
+</div>
+</div>
+<div class="paragraph">
+<p><strong>左図</strong>に上の積和形論理式をカルノー図に図示しました。<strong>右図</strong>は、できるだけ大きな\(2^n\)個のマス目を囲む枠で、1を覆った図です（この場合は4個のマス目を囲む青色と緑色の枠が2つ作れます）。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh4.svg" alt="行xy、列zのカルノー図。左図は3つの項の枠、右図は4マスを囲む青の枠yと緑の枠xの2つで1を覆った図">
+</div>
+<div class="title">図 4. 4マスの枠で囲む例</div>
+</div>
+<div class="paragraph">
+<p>右図より、ただちに</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[x + y\]
+</div>
+</div>
+<div class="paragraph">
+<p>が得られます。4マスの枠では2つの変数の値が変わるので、3変数のうち1つの変数だけが残ります。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4変数のカルノー図"><a class="link" href="#_4変数のカルノー図">1.3. 4変数のカルノー図</a></h3>
+<div class="paragraph">
+<p>4変数の場合は、行に \(xy\)、列に \(zw\) をそれぞれグレイコード順に割り当てた \(4\times 4\) のマス目になります。4変数のカルノー図でも同様に、上下の端どうし、左右の端どうしがつながっています。下図のように、4隅の4マスも巻き付きによって1つのグループとして囲むことができます。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-torus.svg" alt="カルノー図の上下左右の端がつながっていることを矢印で示した図">
+</div>
+<div class="title">図 5. カルノー図の端と端のつながり(4変数の例)</div>
+</div>
+<div class="paragraph">
+<p>この4隅のグループでは、\(x\) と \(z\) が0と1の両方の値をとり、\(y=0\)、\(w=0\) は変わりません。よって、このグループは \(\bar y\cdot\bar w\) を表します。</p>
+</div>
+<div class="paragraph">
+<p>4変数のカルノー図では、枠の大きさと項に残る変数の数が次のように対応します。</p>
+</div>
+<table class="tableblock frame-ends grid-rows fit-content">
+<caption class="title">表 1. 4変数のカルノー図での枠の大きさと項</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">枠のマス数</th>
+<th class="tableblock halign-center valign-top">値が変わる変数の数</th>
+<th class="tableblock halign-left valign-top">項に残る変数の数(例)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4(\(x\cdot\bar y\cdot z\cdot w\))</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3(\(\bar x\cdot y\cdot w\))</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2(\(\bar y\cdot\bar w\))</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1(\(x\))</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0(定数1)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_例_4変数の簡単化"><a class="link" href="#_例_4変数の簡単化">例: 4変数の簡単化</a></h4>
+<div class="paragraph">
+<p>ある論理関数 \(f(x,y,z,w)\) が1になる入力 \(xyzw\) が、次の9通りだったとします(ほかの7通りでは0)。</p>
+</div>
+<div class="paragraph text-center">
+<p>0000, 0010, 0100, 0101, 0110, 1000, 1010, 1100, 1101</p>
+</div>
+<div class="paragraph">
+<p>これを積和標準形で書くと9個の最小項の和になりますが、カルノー図に書き込んで囲むと、下図のように3つの枠で覆えます。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-4var.svg" alt="左は9つの1を書き込んだ4変数のカルノー図、右は4隅(赤)、左右の端をまたぐ4マス(青)、中央左の2×2(緑)の3つの枠で囲んだ図">
+</div>
+<div class="title">図 6. 4変数のカルノー図の例</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>赤の枠(4隅): \(y=0\)、\(w=0\) で共通なので \(\bar y\cdot\bar w\)</p>
+</li>
+<li>
+<p>青の枠(上2行の左端と右端の列): \(x=0\)、\(w=0\) で共通なので \(\bar x\cdot\bar w\)。左右の端がつながっていることを使っています。</p>
+</li>
+<li>
+<p>緑の枠(中央の2行、左2列): \(y=1\)、\(z=0\) で共通なので \(y\cdot\bar z\)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>よって、</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[f = \bar y\cdot\bar w + \bar x\cdot\bar w + y\cdot\bar z\]
+</div>
+</div>
+<div class="paragraph">
+<p>が得られます。1つのマス(たとえば0000)が複数の枠に入っていても構いません。</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_囲み方のよくある誤り"><a class="link" href="#_囲み方のよくある誤り">1.4. 囲み方のよくある誤り</a></h3>
+<div class="paragraph">
+<p>カルノー図の囲み方では、次のような誤りがよく見られます。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-mistakes.svg" alt="(a)縦に3つの1を1つの枠で囲む、(b)斜めの2つの1を囲む、(c)行を00,01,10,11の順に並べて01と10を隣として囲む、(d)上端と下端の1を別々に囲む、の4つの小さなカルノー図">
+</div>
+<div class="title">図 7. 囲み方のよくある誤り</div>
+</div>
+<table class="tableblock frame-ends grid-rows stretch">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 42.8571%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">図</th>
+<th class="tableblock halign-left valign-top">何がいけないか</th>
+<th class="tableblock halign-left valign-top">正しい囲み方</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(a)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">枠のマス数が3で、\(2^n\) 個ではない。3マスの枠に対応する積項は存在しない</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">上2マスと下2マスの2つの枠(重なってよい)で \(y\cdot z + x\cdot z\) とする</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(b)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">斜めのマスは2つの変数の値が違うので、隣り合っていない</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">別々の枠で囲み \(\bar x\cdot y + x\cdot\bar y\) とする(これ以上簡単にならない)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(c)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">行の並べ方が 00, 01, 10, 11 になっている。01と10は2桁とも値が違うので、図の上で隣でも1つの項にまとめられない</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00, 01, 11, 10 の順に並べ直す。この例では2つの1は隣り合わない</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(d)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">誤りではないが、上端と下端がつながっていることを使っていないので、最も簡単な式にならない</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">上下の端をまたぐ1つの枠で \(\bar y\cdot z\) とする</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>(a)〜(c)の誤りをすると、元の関数と異なる式になってしまいます。求めた式が正しいかどうかは、枠に0のマスが含まれていないか、すべての1がどれかの枠に入っているかを確かめれば点検できます。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ドントケア"><a class="link" href="#_ドントケア">1.5. ドントケア</a></h3>
+<div class="paragraph">
+<p>入力の組合せの中には、決して起こらないもの、または起こっても出力が何でもよいものがあることがあります。そのような入力に対する出力を<strong>ドントケア</strong>(don&#8217;t care: 気にしない)とよび、カルノー図では \(\ast\) などの記号で書きます。ドントケアのマスは、枠を大きくするのに役立つときだけ1とみなして囲み、役立たないときは0とみなして囲みません。</p>
+</div>
+<div class="paragraph">
+<p>例として、4ビットの入力 \(xyzw\)(\(x\) が最上位の桁)で0〜9の数字を表す回路を考えます。10〜15(1010〜1111)は数字を表さないので入力されないものとし、ドントケアとします。この入力が5以上のときに1を出力する論理関数を簡単化してみましょう。1になるのは5〜9、つまり 0101, 0110, 0111, 1000, 1001 です。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-dontcare.svg" alt="4変数のカルノー図2つ。左は*を0とみなして3つの小さな枠で囲んだ図、右は*を1とみなして、x、yw、yzの大きな枠で囲んだ図">
+</div>
+<div class="title">図 8. ドントケアを使った簡単化</div>
+</div>
+<div class="paragraph">
+<p>\(\ast\) をすべて0とみなすと、左図のように3つの枠しか作れず</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[f = \bar x\cdot y\cdot w + \bar x\cdot y\cdot z + x\cdot\bar y\cdot\bar z\]
+</div>
+</div>
+<div class="paragraph">
+<p>となります。一方、\(\ast\) を都合よく1とみなすと、右図のように大きな枠が作れて</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[f = x + y\cdot w + y\cdot z\]
+</div>
+</div>
+<div class="paragraph">
+<p>と簡単になります。どちらの式も、0〜9の入力に対しては同じ値を出力します。違いは入力されない10〜15に対する出力だけです。ドントケアは次章でも、記憶回路(SRラッチ)の性質を式で表すときに使います。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_簡単化の基準と自動化"><a class="link" href="#_簡単化の基準と自動化">1.6. 簡単化の基準と自動化</a></h3>
+<div class="paragraph">
+<p>論理関数の簡単化問題、つまり、論理関数を表す積和形論理式の中で、もっとも積項数が少なく、かつリテラル数が最小であるような論理式を求める問題は、回路設計上非常に重要です。ここでは積項数を優先し、同じ積項数ならリテラル数を減らす、という基準を使います。実際の回路では遅延や一時的な出力の乱れも考えるため、式の最小化がそのまま最良の回路になるとは限りません。</p>
+</div>
+<div class="paragraph">
+<p>カルノー図は人が目で見て囲むための方法なので、変数が5つ、6つと増えると使いにくくなります。この簡単化問題はコンピューターで自動化できるのでしょうか。変数を増やすと、厳密に最小の式を求める計算量は急激に増えます。この問題は、後の章で扱う「NP困難」とよばれる種類の問題であることが知られており、どんな入力でも効率よく最小の式を求める方法は見つかっていません。実用的には本当に最小の論理関数を求める必要はなく、最小に近い論理回路が構成できればよいため、近似的に関数を最小化する様々なアルゴリズムが開発されています。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_論理ゲートの関数的完全性"><a class="link" href="#_論理ゲートの関数的完全性">2. 論理ゲートの関数的完全性</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>前章で \(n\) 変数の論理関数の総数は \(2^{2^n}\)個あることを学びました。しかし、同じ関数を表す論理式や論理回路は無数に考えられますので、簡単化して、できれば最小の論理ゲートで回路を組むことを考えるわけです。論理回路では \(n\)変数というのは、\(n\)入力の論理回路と言い換えてもかまいません。ところで、\(n\)入力の論理回路で、\(2^{2^n}\)個の論理関数はすべて作れるのでしょうか。この問題は、論理ゲートまたはブール演算子の<strong>関数的完全性</strong>の問題として知られています。前章で学んだとおり、どんな真理値表からも積和標準形が作れるので、ANDゲート、ORゲート、NOTゲートの3種類があれば、すべての論理関数を構成できます。</p>
+</div>
+<div class="paragraph">
+<p>実は、関数的完全性のためには、ORゲートまたはANDゲートのいずれかは不要で、{AND, NOT} または {OR, NOT} の組合せだけで、あらゆる論理関数を表現できます。{AND, OR, NOT} の関数的完全性を前提として、このことを示してみましょう。</p>
+</div>
+<div class="sect2">
+<h3 id="_andゲートとnotゲートの関数的完全性"><a class="link" href="#_andゲートとnotゲートの関数的完全性">2.1. ANDゲートとNOTゲートの関数的完全性</a></h3>
+<div class="paragraph">
+<p>ANDゲートとNOTゲートからORゲートが構成できることを示します。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+x+y &amp;= \overline{\overline{x+y}} &amp;\quad (復元律)\\
+    &amp;= \overline{\bar x\cdot \bar y} &amp;\quad (ド・モルガンの法則)\\
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>つまり、以下の論理回路でORゲートが構成できます。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/gate-and-not-or.svg" alt="xとyをそれぞれNOTで反転してANDをとり、さらにNOTで反転してx+yを得る回路">
+</div>
+<div class="title">図 9. ANDゲートとNOTゲートによるORゲートの構成</div>
+</div>
+<div class="paragraph">
+<p>ORゲートとNOTゲートの組合せでも、同じように復元律とド・モルガンの法則から \(x\cdot y=\overline{\bar x+\bar y}\) とANDゲートが作れるので、関数的完全性が成り立ちます。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nandゲートの関数的完全性"><a class="link" href="#_nandゲートの関数的完全性">2.2. NANDゲートの関数的完全性</a></h3>
+<div class="imageblock right">
+<div class="content">
+<img src="./img/gate-nand.svg" alt="NANDゲートの記号。ANDゲートの出力側に小さな丸が付いている">
+</div>
+<div class="title">図 10. NANDゲートの記号</div>
+</div>
+<div class="paragraph">
+<p>実際の回路設計ではNANDゲートとよばれる論理ゲートのみを使った回路設計がよくみられます。これは、現在の集積回路の主流であるCMOS回路では、NANDゲートがANDゲート(NANDゲートの後ろにNOTゲートを付けて作る)より少ないトランジスタで作れること、および、NANDゲートのみで関数的完全性が成り立つことによります。NANDゲートに対応する二項論理演算子を \(\uparrow\) で表し、論理ゲートは<strong>右図</strong>の記号で表すことにします。NANDゲートとは次のような論理式で定義される論理ゲートです。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[x\uparrow y\equiv\overline{x\cdot y}\]
+</div>
+</div>
+<div class="paragraph">
+<p>NANDゲートの真理値表を下記に示します。</p>
+</div>
+<table class="tableblock frame-ends grid-none fit-content">
+<caption class="title">表 2. NANDゲート</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">\(x\)</th>
+<th class="tableblock halign-center valign-top">\(y\)</th>
+<th class="tableblock halign-center valign-top">\(x\uparrow y\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>これは、論理積の結果を反転させた関数です。</p>
+</div>
+<div class="paragraph">
+<p>さて、NANDゲートのみでNOTゲート、ANDゲート、ORゲートがすべて実現できることを示して、NANDゲートのみで、すべての論理関数を構成できることを示しましょう。</p>
+</div>
+<div class="sect3">
+<h4 id="_notゲート"><a class="link" href="#_notゲート">NOTゲート</a></h4>
+<div class="paragraph">
+<p>1入力のNOTゲート（単項演算子のNOT演算子）を、2入力のNAND（二項演算子のNAND演算子）でどのように表すか、戸惑うかもしれませんが、冪等律で入力を複製してやればよいだけです。</p>
+</div>
+<div class="imageblock right">
+<div class="content">
+<img src="./img/gate-nand-not.svg" alt="NANDゲートの2つの入力にxをつないだ回路">
+</div>
+<div class="title">図 11. NANDゲートによるNOT</div>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+  \bar x &amp;= \overline{x\cdot x} &amp;\quad (冪等律)\\
+         &amp;= x\uparrow x
+\end{align}\]
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_andゲート"><a class="link" href="#_andゲート">ANDゲート</a></h4>
+<div class="paragraph">
+<p>ANDゲートの出力にNOTゲートをつけたものがNANDゲートですから、右図のようになります。</p>
+</div>
+<div class="imageblock right">
+<div class="content">
+<img src="./img/gate-nand-and.svg" alt="NANDゲートの出力を、入力を束ねたNANDゲートに通す回路">
+</div>
+<div class="title">図 12. NANDゲートによるAND</div>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+  x\cdot y &amp;= \overline{\overline{x\cdot y}} &amp;\quad (復元律)\\
+           &amp;= \overline{x\uparrow y}\\
+           &amp;= ({x\uparrow y})\uparrow({x\uparrow y})
+\end{align}\]
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_orゲート"><a class="link" href="#_orゲート">ORゲート</a></h4>
+<div class="paragraph">
+<p>ORゲートは、復元律とド・モルガンの法則からNANDゲートのみに変換できます。</p>
+</div>
+<div class="imageblock right">
+<div class="content">
+<img src="./img/gate-nand-or.svg" alt="xとyをそれぞれNANDで反転し、その2つをNANDに入れる回路">
+</div>
+<div class="title">図 13. NANDゲートによるOR</div>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+  x + y &amp;= \overline{\overline{x + y}} &amp;\quad (復元律)\\
+        &amp;= \overline{\bar x\cdot\bar y} &amp; \quad (ド・モルガン)\\
+        &amp;= \bar x\uparrow\bar y\\
+        &amp;= (x\uparrow x)\uparrow(y\uparrow y)
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>以上より、NANDゲートだけあれば、あらゆる論理関数が表現できることを示せました。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>【NANDだけでできている】</p>
+</div>
+<div class="paragraph">
+<p>NANDが1種類あれば何でも作れるという性質は、設計上たいへん都合がよく、実際の集積回路に活かされています。デジタル回路の入門で最初に登場する標準ICのひとつ「7400」は、1パッケージに2入力NANDゲートが4個入っただけの部品です。原理的にはこの7400を多数つなげるだけで、加算器でもCPUでも組めることになります。現代のLSI設計でも、NAND(やNOR)は少ないトランジスタで作れる基本ゲートとしてよく使われます。大容量のフラッシュメモリに「NAND型」という種類があるのも、記憶素子(トランジスタ)を直列につなぐ形が、NANDゲートの内部でトランジスタを直列につなぐ形と同じであることに由来します。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_組合せ回路の設計"><a class="link" href="#_組合せ回路の設計">3. 組合せ回路の設計</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>組合せ論理回路</strong>とは、現在の入力の値だけで出力が一意に（一通りに）決まり、過去の入力（内部状態）には依存しない論理回路のことです。単に組合せ回路とも呼びます。これまで扱ってきた論理回路はすべて組合せ回路です。</p>
+</div>
+<div class="paragraph">
+<p>では、組合せ回路ではない論理回路とは、どのような回路でしょう。それは、状態をもつ論理回路のことです。たとえば、自動販売機に10円をいれると、10円が状態として記憶されます。次に10円を入れると20円が状態として記憶されます。このように記憶をもつ仕組みがないと、10円を何度入れても、10円としか認識されない困った事になってしまいます。状態を持つ回路を順序回路とよび、次章で学びます。</p>
+</div>
+<div class="paragraph">
+<p>これまでは1出力の組合せ回路のみを扱ってきましたが、複数出力の論理回路の構成も同様の方法で構成できます。たとえば、3入力、2出力の論理回路を構成したければ、\(f_1(x,y,z)\)、\(f_2(x,y,z)\) と共通の入力 \(x,y,z\) を持つ2つの論理回路を構成してやればよいだけです。実際に回路設計をするときには、無駄のないように \(f_1\) と \(f_2\) でできるだけ回路を共有して効率的に回路を構成します。</p>
+</div>
+<div class="sect2">
+<h3 id="_2入力データセレクタ"><a class="link" href="#_2入力データセレクタ">3.1. 2入力データセレクタ</a></h3>
+<div class="paragraph">
+<p>まず、2入力データセレクタを論理回路で構成してみましょう。下図がセレクタの図です。この回路は、2つのデータ \(d_0\) と \(d_1\) を入力として受け取ります。そして、セレクタ \(s\) の値に応じて  \(d_0\) と \(d_1\) のどちらを \(y\) に出力するか決定します。つまり、\(s=0\) のとき \(y=d_0\)、\(s=1\) のとき \(y=d_1\) となります。この回路は複数回線の通信データを1回線にまとめるときによく用いられますので、回線多重化回路（マルチプレクサ）ともよばれます。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/multiplexer.svg" alt="台形の記号。左からd0とd1、上からs、右へyが出る">
+</div>
+<div class="title">図 14. 2入力データセレクタの記号</div>
+</div>
+<div class="paragraph">
+<p>下の表に2入力データセレクタの動作を真理値表として示しました。
+\(s=0\) のとき \(y=d_0\)、\(s=1\) のとき \(y=d_1\) となるように、あらゆる入力の組合せを記述していることを確認してください。</p>
+</div>
+<table class="tableblock frame-ends grid-none fit-content">
+<caption class="title">表 3. 2入力データセレクタの真理値表</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">\(s\)</th>
+<th class="tableblock halign-center valign-top">\(d_0\)</th>
+<th class="tableblock halign-center valign-top">\(d_1\)</th>
+<th class="tableblock halign-center valign-top">\(y\)</th>
+<th class="tableblock halign-center valign-top">最小項(\(y=1\))</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(\bar s\cdot d_0 \cdot\bar d_1 \)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(\bar s\cdot d_0 \cdot d_1 \)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(s\cdot\bar d_0 \cdot d_1 \)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<td class="tableblock halign-center valign-top"><p class="tableblock">\(s\cdot d_0 \cdot d_1 \)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>カルノー図をつかってこの回路を設計してみましょう。
+まず、積和標準形によって出力 \(y\) を記述します。\(y=1\) に対応する最小項を求め、その和をとることにより、次のように積和標準形が得られます。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+y = \bar s\cdot d_0\cdot\bar d_1 + \bar s\cdot d_0\cdot d_1 + s\cdot\bar d_0\cdot d_1 + s\cdot d_0\cdot d_1
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>次に、カルノー図を作成します。左下図のように、最小項に対応するマス目に1を書きます。そして、右下図のように、1の書かれたマス目のみを \(2^n\) 個の単位でできるだけ大きく囲む枠を描きます。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/karnaugh-multiplexer.svg" alt="行d0d1、列sのカルノー図。左は4つの最小項の1、右は縦2マスの枠2つで囲んだ図">
+</div>
+<div class="title">図 15. データセレクタのカルノー図</div>
+</div>
+<div class="paragraph">
+<p>こうして、1を覆った2つの枠に対応する積項を求め、論理和で接続することにより次式を得ます。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+y &amp;= \bar s\cdot d_0\cdot\bar d_1 + \bar s\cdot d_0\cdot d_1 + s\cdot\bar d_0\cdot d_1 + s\cdot d_0\cdot d_1\\
+  &amp;= \bar s\cdot d_0 + s\cdot d_1
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>よって、2入力セレクタの論理回路は次のようになります。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/multiplexer-c.svg" alt="sをNOTで反転してd0とANDをとり、sとd1のANDとともにORでまとめる回路">
+</div>
+<div class="title">図 16. 2入力データセレクタの論理回路</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>前章で学んだとおり、すべての変数のリテラルを1つずつ含む積項を<strong>最小項</strong>とよびます。最小項が1となる入力は1通りだけなので、カルノー図では必ずマス目1つ分に対応します。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_半加算器"><a class="link" href="#_半加算器">3.2. 半加算器</a></h3>
+<div class="paragraph">
+<p>2進法の数の足し算をする回路を組合せ回路で設計します。まず、1ビットの数 \(x\) と \(y\) の足し算について考えます。すると、計算は次の表のようになります。</p>
+</div>
+<table class="tableblock frame-ends grid-none fit-content">
+<caption class="title">表 4. 半加算器の真理値表</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">\(x\)</th>
+<th class="tableblock halign-center valign-top">\(y\)</th>
+<th class="tableblock halign-center valign-top">和 \(s\)</th>
+<th class="tableblock halign-center valign-top">桁上げ \(c\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>和 \(s\) については論理和ではないことに注意してください。2進法の加算として \(1+1=10\) となるので、和は \(s=0\)、桁上げは \(c=1\) となります。（和の記号として \(s\) を使うのは和の英語 sum から、桁上げの記号として \(c\) を使うのは桁上げの英語 carry からです。）</p>
+</div>
+<div class="paragraph">
+<p>この論理回路は2入力、2出力ですので、\(f_1(x,y)=s\) と、\(f_2(x,y)=c\) の2つの論理関数から回路を設計することになります。まず、簡単な桁上げの方から見てみましょう。桁上げの \(f_2(x,y)=c\) は真理値表からANDゲートそのものであることがわかります。</p>
+</div>
+<div class="paragraph">
+<p>次に、和の \(f_1(x,y)=s\) は、 入力 \(x\) と \(y\) のどちらか1つが1のときのみ、出力 \(s\) が1となるような回路です。この回路は<strong>XORゲート</strong>として様々な場面で用いられます。XORは exclusive or の省略形で、日本語では<strong>排他的論理和</strong>といいます。</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">XORゲート</div>
+<div class="paragraph">
+<p>以下の真理値表で表される論理回路をXORゲートとよび、記号として \(x\oplus y\) を用います。</p>
+</div>
+<table class="tableblock frame-ends grid-none fit-content">
+<caption class="title">表 5. 排他的論理和の真理値表</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">\(x\)</th>
+<th class="tableblock halign-center valign-top">\(y\)</th>
+<th class="tableblock halign-center valign-top">\(x\oplus y\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>また、XORの論理ゲートには以下の記号が使われます。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/gate-xor.svg" alt="ORゲートの入力側にもう1本の曲線を付けた記号">
+</div>
+<div class="title">図 17. XORゲートの記号</div>
+</div>
+<div class="paragraph">
+<p>前章の「論理式の標準形」の節の方法にしたがって、この真理値表から積和標準形を求めてみます。まず、\(x\oplus y=1\) となる行にのみ着目すると、\((x,y)=(0,1)\) と \((x,y)=(1,0)\) ですので、それぞれの値の割当から最小項を導くと、それぞれ、\(\bar x\cdot y\) と \(x\cdot\bar y\) となります。つまり、\(\bar x\cdot y=1\) であるか、または \(x\cdot\bar y=1\) であるときのみ、\(x\oplus y=1\) となります。よって、排他的論理和をNOT, AND, ORゲートで表現すると、</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[x\oplus y = \bar x\cdot y + x \cdot \bar y\]
+</div>
+</div>
+<div class="paragraph">
+<p>となります。この式を論理回路にすると、NOTゲート2つ、ANDゲート2つ、ORゲート1つを用いた下図のようになります。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/xor-circuit.svg" alt="NOTゲート2つとANDゲート2つとORゲート1つでXORを構成する論理回路図">
+</div>
+<div class="title">図 18. NOT・AND・ORゲートによるXORゲートの構成</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>よって、半加算器はXORゲートを用いると左下図のようになります。また、半加算器を右下図のように表現することにします。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/half-adder.svg" alt="左はxとyをXORゲートとANDゲートの両方に入れて和sと桁上げcを出す回路、右は半加算器の記号">
+</div>
+<div class="title">図 19. 半加算器の構成と記号</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_全加算器"><a class="link" href="#_全加算器">3.3. 全加算器</a></h3>
+<div class="paragraph">
+<p>前節の半加算器は、このままでは複数桁の2進法の数の足し算には使えません。なぜなら、上位の桁では下位の桁からの桁上りを考慮する必要があるからです。つまり、下位からの桁上げ \(c_{\text{in}}\) と上位への桁上げ \(c_{\text{out}}\) の2つの桁上げを考慮する必要があります。これは3つの1ビットの数 \(x\)、\(y\)、\(c_{\text{in}}\) を足す加算器と考えればよいので、真理値表は次のようになります。</p>
+</div>
+<table class="tableblock frame-ends grid-none fit-content">
+<caption class="title">表 6. 全加算器の真理値表</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">\(c_{\text{in}}\)</th>
+<th class="tableblock halign-center valign-top">\(x\)</th>
+<th class="tableblock halign-center valign-top">\(y\)</th>
+<th class="tableblock halign-center valign-top">和 \(s\)</th>
+<th class="tableblock halign-center valign-top">\(c_{\text{out}}\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>3つの数の和は、2つの半加算器を2段つなぎ、\((x+y)+c_{\text{in}}\) の順に足し合わせれば求められます。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>1つ目の半加算器で \(x+y\) を計算します。和を \(s_1\)、桁上げを \(c_1\) とします。</p>
+</li>
+<li>
+<p>2つ目の半加算器で \(s_1+c_{\text{in}}\) を計算します。この和が全体の和 \(s\) です。桁上げを \(c_2\) とします。</p>
+</li>
+<li>
+<p>上位への桁上げ \(c_{\text{out}}\) は、\(c_1\) と \(c_2\) のどちらかが1なら1です。そこで、ORゲートで \(c_{\text{out}}=c_1+c_2\) とします。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>たとえば \(x=y=c_{\text{in}}=1\) なら、\(s_1=0\)、\(c_1=1\)、\(s=0\oplus 1=1\)、\(c_2=0\) となり、\(c_{\text{out}}=1\)、\(s=1\) です。これは \(1+1+1=11_{(2)}\) と一致します。真理値表の8行すべてで同じように確かめられます。</p>
+</div>
+<div class="paragraph">
+<p>なお、\(c_1\) と \(c_2\) が2つとも1になることはありません。\(c_1=1\) となるのは \(x=y=1\) のときだけで、そのとき \(s_1=0\) なので \(c_2=0\) になるからです。</p>
+</div>
+<div class="paragraph">
+<p>よって、全加算器は半加算器とORゲートを用いて左下図のように構成できます。また、全加算器を右下図のように表現することにします。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/full-adder-structure.svg" alt="左は半加算器2つとORゲートによる全加算器、右は全加算器の記号(左からx,y、上からc_in、右へs、下へc_out)">
+</div>
+<div class="title">図 20. 全加算器の構成と記号</div>
+</div>
+<div class="paragraph">
+<p>これで、複数桁の2つの2進数の数を足し合わせる回路を構成する準備ができました。
+あとは、組み合わせるだけです。</p>
+</div>
+<div class="paragraph">
+<p>まず、入力となる2進法の数 \(x\) と \(y\) をそれぞれ4ビットとします。各桁の1ビットの値を、それぞれ \(x_i\) と \(y_i\) で次のように表します。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+x &amp;= x_4x_3x_2x_1\\
+y &amp;= y_4y_3y_2y_1\\
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>たとえば、\(x=1011\) のときは \(x_1=1\), \(x_2=1\), \(x_3=0\), \(x_4=1\) となります。
+すると、4ビットの加算器は下記のように構成できます（計算結果は \(s=s_4s_3s_2s_1\)）。最下位の桁には下位からの桁上げがないので半加算器を使い、各桁の桁上げを1つ上の桁の全加算器の \(c_{\text{in}}\) につなぎます。最上位の桁上げ \(c_{\text{out}}\) は5桁目（あふれ）を表します。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/adder.svg" alt="半加算器1つと全加算器3つを縦に並べ、各桁の桁上げを下の段の全加算器に渡す4ビット加算器">
+</div>
+<div class="title">図 21. 4ビットの加算器</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_論理回路の遅延時間"><a class="link" href="#_論理回路の遅延時間">3.4. 論理回路の遅延時間</a></h3>
+<div class="paragraph">
+<p>ブール代数による式を論理回路として表現するときには、遅延時間を考慮する必要があります。
+論理関数としては、結合律がなりたちますので次式の両辺は等価です。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+((w\cdot x)\cdot y)\cdot z &amp;= (w\cdot x)\cdot (y\cdot z)
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>しかし、論理回路としては左辺は左図、右辺は右図のようになります。</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="./img/gate-and-delay.svg" alt="左はANDゲートを3段直列につないだ回路、右は2つのANDゲートの出力をさらにANDでまとめた2段の回路">
+</div>
+<div class="title">図 22. 結合の仕方による段数の違い(左: 3段、右: 2段)</div>
+</div>
+<div class="paragraph">
+<p>左辺はANDゲートが3段、右辺は2段の深さです。値が入力されてから論理回路の値が決まるまでの時間を<strong>論理回路の遅延時間</strong>といいます。左図では、入力 \(w\) と \(x\) は3段のANDゲートを通るため、この部分が左図の回路の遅延時間を決定づけています。つまり、右の論理回路より、左の論理回路の方が遅延時間が長くなってしまうのです。遅延は素子、電圧、負荷などに依存し、個別の論理ICではナノ秒単位の場合もあります。例えば仮に各ゲートの遅延を同じ100ピコ秒とすれば、3段で300ピコ秒、2段で200ピコ秒となります（1ピコ秒は10<sup>-12</sup>秒）。</p>
+</div>
+<div class="paragraph">
+<p>この遅延時間は、先ほど作った加算器でも問題になります。先の4ビット加算器では、各桁の全加算器が下の桁からの桁上げを受け取ってから計算するため、桁上げが最下位から最上位へ順に伝わるのを待つ必要があります。この方式を<strong>桁上げ伝搬加算器</strong>(リップルキャリー加算器)とよびます。桁数が増えるほど桁上げの伝搬段数が増え、遅延時間が長くなります。そこで、桁上げをあらかじめ別経路でまとめて計算する<strong>桁上げ先見加算器</strong>(キャリールックアヘッド加算器)など、より速い加算回路が考案されています。回路は論理関数として正しいだけでは十分でなく、遅延時間まで考えて設計する必要があるのです。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>【マインクラフトと論理回路設計】</p>
+</div>
+<div class="imageblock right">
+<div class="content">
+<img src="./img/minecraft.png" alt="minecraft" width="150">
+</div>
+</div>
+<div class="paragraph">
+<p>マインクラフトではレッドストーン回路で論理回路を設計し、様々な仕掛けを作れます。次章で学ぶ記憶の仕組みも組み合わせれば、ゲーム内に計算機を作ることもできます。現実のゲームには領域や速度の制限がありますが、論理演算から計算機を組み立てる発想を試す題材になります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://minecraft.wiki/w/Redstone_circuits" target="_blank" rel="noopener">マインクラフト WIKI(英語版) レッドストーン回路の解説</a></p>
+</li>
+<li>
+<p><a href="https://ja.minecraft.wiki/w/レッドストーン回路" target="_blank" rel="noopener">マインクラフト WIKI(日本語版) レッドストーン回路の解説</a></p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_練習問題"><a class="link" href="#_練習問題">4. 練習問題</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>基本の確認から順に並べています。カルノー図の問題は、まず図を描いて囲み、得られた式を真理値表で確かめる習慣をつけましょう。</p>
+</div>
+<div class="exampleblock">
+<div class="title">問題1: カルノー図の行の並べ方</div>
+<div class="content">
+<div class="paragraph">
+<p>3変数のカルノー図で、行に \(xy\) の値を割り当てる順序として、次の(a)〜(d)のうち<strong>使えないもの</strong>をすべて選び、理由を説明せよ。</p>
+</div>
+<div class="paragraph">
+<p>(a) 00, 01, 10, 11<br>
+(b) 00, 10, 11, 01<br>
+(c) 01, 11, 10, 00<br>
+(d) 11, 00, 01, 10</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>使えないのは <strong>(a)と(d)</strong> です。</p>
+</div>
+<div class="paragraph">
+<p>カルノー図の行は、隣り合う行の値が1桁だけ異なるように並べる必要があります。上端と下端もつながっているので、最後の行と最初の行も1桁だけ異なる必要があります。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>(a) 01 → 10 で2桁とも変わります(最後の11 → 最初の00も2桁)。</p>
+</li>
+<li>
+<p>(b) 00 → 10 → 11 → 01 → (00) と、どこも1桁だけの変化なので使えます。</p>
+</li>
+<li>
+<p>(c) 01 → 11 → 10 → 00 → (01) と、どこも1桁だけの変化なので使えます。</p>
+</li>
+<li>
+<p>(d) 11 → 00 で2桁とも変わります。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>本文の 00, 01, 11, 10 の順だけが正解ではありません。1桁ずつの変化になっていれば、どこから始めても、逆向きでも使えます。(a)は2進法の数の順なので自然に見えますが、カルノー図では最もよくある誤りです。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題2: 2変数の簡単化</div>
+<div class="content">
+<div class="paragraph">
+<p>カルノー図を用いて次の論理式を簡単化せよ。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\bar x\cdot\bar y + \bar x\cdot y + x\cdot y\]
+</div>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="stemblock">
+<div class="content">
+\[\bar x + y\]
+</div>
+</div>
+<div class="paragraph">
+<p>3つの項はどれも最小項なので、それぞれ1マスに1を書きます。上の行(\(x=0\))の2マスを囲むと \(\bar x\)、右の列(\(y=1\))の2マスを囲むと \(y\) になります。右上のマスは2つの枠が重なりますが、重なってよいのでできるだけ大きく囲みます。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-ex-2var.svg" alt="行x、列yのカルノー図。上の行の2マスを囲む枠がxの否定、右の列の2マスを囲む枠がy">
+</div>
+<div class="title">図 23. 問題2の解答のカルノー図</div>
+</div>
+<div class="paragraph">
+<p>検算: \(\bar x + y\) が0になるのは \((x,y)=(1,0)\) のときだけで、元の式も (1,0) の項がないので0になり、一致します。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題3: 3変数の簡単化</div>
+<div class="content">
+<div class="paragraph">
+<p>カルノー図を用いて次の論理式を簡単化せよ。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[x\cdot\bar y + y\cdot z + \bar y\cdot z + \bar x\cdot \bar y\cdot\bar z\]
+</div>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="stemblock">
+<div class="content">
+\[\bar y + z\]
+</div>
+</div>
+<div class="paragraph">
+<p>上記の積和形論理式からカルノー図を作成すると、左図が得られます。これを囲みなおすと右図のようになります。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-assignment2.svg" alt="行xy、列zのカルノー図。右図では列z=1の4マスを囲む枠zと、上端の行00と下端の行10をつなぐ4マスの枠yの否定で囲んでいる">
+</div>
+<div class="title">図 24. 問題3の解答のカルノー図(左: 各項の書き込み、右: 囲み直し)</div>
+</div>
+<div class="paragraph">
+<p>「カルノー図の端と端はつながっている」の節で扱った内容ですが、上下のつながりは見落としやすいところです。以下の点を再度確認しておきます。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(2^n\) 個の1を含んだ四角で囲む</p>
+</li>
+<li>
+<p>上下左右はつながっている</p>
+</li>
+<li>
+<p>囲みは互いに重なって良い</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>隣接する \(xy\) の値の割り当てを通常の2進法による数の順番 00 → 01 → 10 → 11 にしてしまう間違いもよくあります(問題1)。</p>
+</div>
+<div class="paragraph">
+<p>カルノー図は和積形を求めるのにも使えます。図には示していませんが、値が0の2つのマス \((xy,z)=(01,0),(11,0)\) を囲むと、元の関数 \(f\) が0になる範囲、つまり補関数(否定) \(\bar f\) の積和形</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\bar f = y\cdot\bar z\]
+</div>
+</div>
+<div class="paragraph">
+<p>が得られます。両辺の否定をとってド・モルガンの法則を適用すると、和積形</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[f = \overline{y\cdot\bar z} = \bar y+z\]
+</div>
+</div>
+<div class="paragraph">
+<p>を得ます。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題4: 4変数の簡単化</div>
+<div class="content">
+<div class="paragraph">
+<p>カルノー図を用いて次の論理式を簡単化せよ。行に \(xy\)、列に \(zw\) を割り当てるとよい。</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\bar x\cdot\bar y\cdot\bar z\cdot\bar w + \bar y\cdot z\cdot\bar w + y\cdot\bar z\cdot\bar w + x\cdot\bar y\cdot\bar z\cdot\bar w + \bar x\cdot y\cdot z\cdot w + x\cdot y\cdot z\cdot w\]
+</div>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="stemblock">
+<div class="content">
+\[\bar z\cdot\bar w + \bar y\cdot\bar w + y\cdot z\cdot w\]
+</div>
+</div>
+<div class="paragraph">
+<p>各項が1になるマス(\(xyzw\))は次のとおりです。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(\bar x\bar y\bar z\bar w\): 0000</p>
+</li>
+<li>
+<p>\(\bar y z\bar w\): 0010, 1010(\(x\) は0でも1でもよい)</p>
+</li>
+<li>
+<p>\(y\bar z\bar w\): 0100, 1100</p>
+</li>
+<li>
+<p>\(x\bar y\bar z\bar w\): 1000</p>
+</li>
+<li>
+<p>\(\bar x y z w\): 0111</p>
+</li>
+<li>
+<p>\(x y z w\): 1111</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-ex-4var.svg" alt="4変数のカルノー図。左端の列の4マスを囲む青の枠、4隅を囲む赤の枠、列11の行01と11を囲む緑の枠">
+</div>
+<div class="title">図 25. 問題4の解答のカルノー図</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>左端の列(\(zw=00\))の4マス: \(\bar z\cdot\bar w\)</p>
+</li>
+<li>
+<p>4隅の4マス(上下・左右の端がつながる): \(\bar y\cdot\bar w\)</p>
+</li>
+<li>
+<p>0111と1111の縦2マス: \(y\cdot z\cdot w\)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>0000と1000は2つの枠に入りますが、重なって構いません。0111と1111はまわりのマスがすべて0なので、2マスの枠より大きくはできません。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題5: ドントケアを使った簡単化</div>
+<div class="content">
+<div class="paragraph">
+<p>4ビットの入力 \(xyzw\)(\(x\) が最上位の桁)で0〜9の数字を表す。10〜15は入力されないものとする。入力された数字が3, 6, 9のいずれかのときに1、それ以外(0, 1, 2, 4, 5, 7, 8)のときに0を出力する論理関数を、ドントケアを利用して簡単化せよ。また、ドントケアを使わない場合の最も簡単な積和形と、リテラルの数を比べよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="stemblock">
+<div class="content">
+\[f = x\cdot w + y\cdot z\cdot\bar w + \bar y\cdot z\cdot w\]
+</div>
+</div>
+<div class="paragraph">
+<p>1になるのは 0011(3)、0110(6)、1001(9)、ドントケアは 1010〜1111 の6マスです。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-ex-dontcare.svg" alt="4変数のカルノー図。1は0011,0110,1001、*は1010から1111。xwの4マス、yzとwの否定の2マス、yの否定とzwの2マスの3つの枠">
+</div>
+<div class="title">図 26. 問題5の解答のカルノー図</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1001(9)を、ドントケアの1011, 1101, 1111と合わせて4マスで囲むと \(x\cdot w\)</p>
+</li>
+<li>
+<p>0110(6)を、ドントケアの1110と合わせて囲むと \(y\cdot z\cdot\bar w\)</p>
+</li>
+<li>
+<p>0011(3)を、ドントケアの1011と上下の端をまたいで囲むと \(\bar y\cdot z\cdot w\)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>ドントケアを使わない(すべて0とみなす)と、3つの1はどれも隣に1がないので、
+\(\bar x\cdot\bar y\cdot z\cdot w + \bar x\cdot y\cdot z\cdot\bar w + x\cdot\bar y\cdot\bar z\cdot w\) となり、リテラルは12個です。ドントケアを使うと8個に減ります。</p>
+</div>
+<div class="paragraph">
+<p>たとえば \(x\cdot w\) は、入力11(1011)でも1を出しますが、10〜15は入力されないので問題になりません。ドントケアとして扱ってよいのは、本当に起こらない(または出力を気にしない)入力だけです。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題6: 囲み方の誤りを見つける</div>
+<div class="content">
+<div class="paragraph">
+<p>ある論理関数 \(f(x,y,z)\) のカルノー図について、ある学生が下図のように囲み、\(f=\bar z + \bar y\cdot z\) と答えた。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-ex-wrong.svg" alt="行xy、列zのカルノー図。1は列0の行00,01,11と、列1の行10。列0の3マスを1つの破線の枠で、列1の行10と行00(値は0)を端のつながりで1つの破線の枠で囲んでいる">
+</div>
+<div class="title">図 27. 学生の囲み方</div>
+</div>
+<div class="paragraph">
+<p>(1) この囲み方の誤りを2つ指摘せよ。<br>
+(2) 学生の式が \(f\) と異なる値を出力する入力 \((x,y,z)\) をすべて挙げよ。<br>
+(3) 正しく簡単化せよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>列0の枠は3マスで、\(2^n\) 個になっていません。\(\bar z\) という項は列0の4マスすべて(行10も含む)を表すので、0のマス \((xy,z)=(10,0)\) まで1にしてしまいます。</p>
+</li>
+<li>
+<p>列1の枠は、上下の端のつながりを使っていますが、行00のマスは0です。枠に0のマスを含めてはいけません。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>(2) \((x,y,z)=(1,0,0)\) と \((0,0,1)\) の2つです。どちらも \(f=0\) ですが、学生の式では1になります(前者は \(\bar z\)、後者は \(\bar y\cdot z\) による)。</p>
+</div>
+<div class="paragraph">
+<p>(3)</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[f = \bar x\cdot\bar z + y\cdot\bar z + x\cdot\bar y\cdot z\]
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-ex-wrong-ans.svg" alt="同じカルノー図を、列0の上2マス(xの否定とzの否定)、列0の中央2マス(yとzの否定)、行10・列1の1マス(xとyの否定とz)の3つの枠で囲んだ図">
+</div>
+<div class="title">図 28. 問題6の正しい囲み方</div>
+</div>
+<div class="paragraph">
+<p>列0の3つの1は、上2マスと中央2マスの2つの枠で覆います(重なってよい)。行10・列1の1は、隣の3マス(左、上、上下の端をまたいだ行00)がすべて0なので、1マスの枠のまま \(x\cdot\bar y\cdot z\) とするしかありません。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題7: NORゲートの関数的完全性</div>
+<div class="content">
+<div class="paragraph">
+<p>NORゲートを表す論理演算子を \(\downarrow\) で表し、論理ゲートは下図の記号で表すことにします。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/gate-nor.svg" alt="NORゲートの記号。ORゲートの出力側に小さな丸が付いている">
+</div>
+<div class="title">図 29. NORゲートの記号</div>
+</div>
+<div class="paragraph">
+<p>NORゲートの真理値表を下記に示します。</p>
+</div>
+<table class="tableblock frame-ends grid-none fit-content">
+<caption class="title">表 7. NORゲートの真理値表</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">\(x\)</th>
+<th class="tableblock halign-center valign-top">\(y\)</th>
+<th class="tableblock halign-center valign-top">\(x\downarrow y\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">1</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1</p></td>
+<th class="tableblock halign-center valign-top"><p class="tableblock">0</p></th>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>これは、論理和の結果を反転させた関数ですので、\(x\downarrow y = \overline{x+y}\) と定義できます。</p>
+</div>
+<div class="paragraph">
+<p>(1) NORゲートのみでNOTゲートが実現できることを示し、その論理回路を描け。<br>
+(2) NORゲートのみでORゲートが実現できることを示し、その論理回路を描け。<br>
+(3) NORゲートのみでANDゲートが実現できることを示し、その論理回路を描け。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1) <span class="image right"><img src="./img/nor-not.svg" alt="NORゲートの2つの入力にxをつないだ回路"></span></p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+\bar x &amp;=  \overline{x + x} &amp; \quad (冪等律)\\
+       &amp;= x\downarrow x &amp; \quad (\text{NORの定義})
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>(2) <span class="image right"><img src="./img/nor-or.svg" alt="xとyのNORを、入力を束ねたNORに通す回路"></span></p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+x+y &amp;=  \overline{\overline{x + y}} &amp; \quad (復元律)\\
+       &amp;= (x \downarrow y)\downarrow(x \downarrow y) &amp; \quad (\text{NORの定義})
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>(3) <span class="image right"><img src="./img/nor-and.svg" alt="xとyをそれぞれNORで反転し、その2つをNORに入れる回路"></span></p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[\begin{align}
+x\cdot y &amp;=  \overline{\overline{x\cdot y}} &amp; \quad (復元律)\\
+       &amp;=   \overline{\bar x + \bar y} &amp; \quad (ド・モルガン)\\
+      &amp;=   (x\downarrow x)\downarrow (y\downarrow y)&amp; \quad (\text{(1)とNORの定義})\\
+\end{align}\]
+</div>
+</div>
+<div class="paragraph">
+<p>本章では、NANDゲートだけであらゆる論理関数が作れること（関数的完全性）を確認しました。上の(1)〜(3)から、NORゲートも同じく関数的完全であることがわかります。NANDの場合と比べると、ORとANDの作り方が入れ替わっています(NANDでは出力を反転するとAND、入力をそれぞれ反転するとOR。NORでは出力を反転するとOR、入力をそれぞれ反転するとAND)。NORゲートは、次章でメモリ回路（SRラッチ）の組み立てに使います。</p>
+</div>
+</div>
+</details>
+<div class="exampleblock">
+<div class="title">問題8: 全加算器の桁上げを設計する</div>
+<div class="content">
+<div class="paragraph">
+<p>本文の全加算器の真理値表から、桁上げ \(c_{\text{out}}\) を \(x, y, c_{\text{in}}\) の論理式として表したい。</p>
+</div>
+<div class="paragraph">
+<p>(1) カルノー図を用いて \(c_{\text{out}}\) を簡単な積和形で表せ。<br>
+(2) (1)の式を、2入力のANDゲートとORゲートだけを使った論理回路で描け。<br>
+(3) 本文の全加算器(半加算器2つとORゲート)では \(c_{\text{out}} = x\cdot y + (x\oplus y)\cdot c_{\text{in}}\) となる。これが(1)の式と同じ論理関数であることを確かめよ。</p>
+</div>
+</div>
+</div>
+<details>
+<summary class="title">解答</summary>
+<div class="content">
+<div class="paragraph">
+<p>(1)</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[c_{\text{out}} = x\cdot y + y\cdot c_{\text{in}} + x\cdot c_{\text{in}}\]
+</div>
+</div>
+<div class="paragraph">
+<p>\(c_{\text{out}}=1\) となるのは、3つの入力のうち2つ以上が1のとき(011, 101, 110, 111)です。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/karnaugh-ex-carry.svg" alt="行xy、列c_inのカルノー図。行11の2マス(xy)、列1の行01と11(y c_in)、列1の行11と10(x c_in)の3つの枠">
+</div>
+<div class="title">図 30. 問題8の解答のカルノー図</div>
+</div>
+<div class="paragraph">
+<p>3つの2マスの枠が、すべて (11,1) のマスで重なっています。この関数は「3つのうち多数が1なら1」を表すので、<strong>多数決関数</strong>ともよばれます。</p>
+</div>
+<div class="paragraph">
+<p>(2) 3入力のANDやORは使えないので、ANDゲート3つで3つの積項を作り、ORゲート2つを2段にしてまとめます。</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./img/carry-circuit.svg" alt="x、y、c_inの縦の配線から2本ずつをANDゲート3つに取り出し、2段のORゲートでまとめてc_outを出す回路">
+</div>
+<div class="title">図 31. 問題8の解答の論理回路</div>
+</div>
+<div class="paragraph">
+<p>入力の縦の配線から横に取り出す点(T字の分岐)には黒丸を付けます。黒丸のない交差は、つながっていないことを表します。</p>
+</div>
+<div class="paragraph">
+<p>(3) \(x\) と \(y\) の値で場合分けします。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>\(x=y=0\) のとき: どちらの式もすべての項が0なので0です。</p>
+</li>
+<li>
+<p>\(x=y=1\) のとき: どちらの式も \(x\cdot y=1\) の項があるので1です。</p>
+</li>
+<li>
+<p>\(x\neq y\) のとき: \(x\cdot y=0\)、\(x\oplus y=1\) なので全加算器の式は \(c_{\text{in}}\) です。(1)の式も、\(x\) と \(y\) の一方だけが1なので \(y\cdot c_{\text{in}} + x\cdot c_{\text{in}} = c_{\text{in}}\) です。</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>よって、すべての入力で一致します(8通りの真理値表で確かめてもよい)。同じ論理関数でも、回路の作り方は1通りではありません。全加算器の構成では、和を計算するために作った \(x\oplus y\) を桁上げの計算にも使い回しています。</p>
+</div>
+</div>
+</details>
+<hr>
+<div class="paragraph">
+<p>以上です</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.0<br>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+})
+MathJax.Hub.Register.StartupHook("AsciiMath Jax Ready", function () {
+  MathJax.InputJax.AsciiMath.postfilterHooks.Add(function (data, node) {
+    if ((node = data.script.parentNode) && (node = node.parentNode) && node.classList.contains("stemblock")) {
+      data.math.root.display = "block"
+    }
+    return data
+  })
+})
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<hr style="margin-top:3em">
+<div style="font-size:0.85em;color:#666;line-height:1.7;padding-bottom:2em">
+<p><a href="../index.html">&#8592; 目次へ戻る</a></p>
+<p>© 久保山哲二 「コンピューター科学概論」講義資料 —
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja" rel="license">CC BY-NC-SA 4.0</a>
+(表示 - 非営利 - 継承)で公開しています。</p>
+</div>
+</body>
+</html>

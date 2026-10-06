@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>コンピューター科学概論</title>
+  <rect width="64" height="64" rx="13" fill="#103e49"/>
+  <rect x="12" y="18" width="18" height="28" rx="9" fill="none" stroke="#ffffff" stroke-width="6"/>
+  <path d="M40 24 47 18V46M40 46H54" fill="none" stroke="#83e0cb" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

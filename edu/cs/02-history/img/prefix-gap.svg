@@ -1,0 +1,43 @@
+<svg xml:lang="ja" lang="ja" viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" font-family="'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP','Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif">
+<rect x="0" y="0" width="640" height="360" fill="#ffffff"/>
+<text x="340.0" y="24" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">2進接頭辞は同じ記号の10進接頭辞より何%大きいか</text>
+<line x1="80" y1="280.0" x2="600" y2="280.0" stroke="#333" stroke-width="0.5" stroke-opacity="0.25"/>
+<text x="72" y="284.0" text-anchor="end" font-size="11" fill="#333">0%</text>
+<line x1="80" y1="245.7" x2="600" y2="245.7" stroke="#333" stroke-width="0.5" stroke-opacity="0.25"/>
+<text x="72" y="249.7" text-anchor="end" font-size="11" fill="#333">2%</text>
+<line x1="80" y1="211.4" x2="600" y2="211.4" stroke="#333" stroke-width="0.5" stroke-opacity="0.25"/>
+<text x="72" y="215.4" text-anchor="end" font-size="11" fill="#333">4%</text>
+<line x1="80" y1="177.1" x2="600" y2="177.1" stroke="#333" stroke-width="0.5" stroke-opacity="0.25"/>
+<text x="72" y="181.1" text-anchor="end" font-size="11" fill="#333">6%</text>
+<line x1="80" y1="142.9" x2="600" y2="142.9" stroke="#333" stroke-width="0.5" stroke-opacity="0.25"/>
+<text x="72" y="146.9" text-anchor="end" font-size="11" fill="#333">8%</text>
+<line x1="80" y1="108.6" x2="600" y2="108.6" stroke="#333" stroke-width="0.5" stroke-opacity="0.25"/>
+<text x="72" y="112.6" text-anchor="end" font-size="11" fill="#333">10%</text>
+<line x1="80" y1="74.3" x2="600" y2="74.3" stroke="#333" stroke-width="0.5" stroke-opacity="0.25"/>
+<text x="72" y="78.3" text-anchor="end" font-size="11" fill="#333">12%</text>
+<line x1="80" y1="40.0" x2="600" y2="40.0" stroke="#333" stroke-width="0.5" stroke-opacity="0.25"/>
+<text x="72" y="44.0" text-anchor="end" font-size="11" fill="#333">14%</text>
+<line x1="80" y1="280" x2="600" y2="280" stroke="#333" stroke-width="1.2"/>
+<line x1="80" y1="34" x2="80" y2="280" stroke="#333" stroke-width="1.2"/>
+<rect x="106.0" y="238.9" width="52" height="41.1" fill="#2166ac" fill-opacity="0.85"/>
+<text x="132.0" y="230.9" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">2.4%</text>
+<text x="132.0" y="298" text-anchor="middle" font-size="12" fill="#333">キロ</text>
+<text x="132.0" y="314" text-anchor="middle" font-size="11" fill="#333">Ki / k</text>
+<rect x="210.0" y="196.7" width="52" height="83.3" fill="#2166ac" fill-opacity="0.85"/>
+<text x="236.0" y="188.7" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">4.9%</text>
+<text x="236.0" y="298" text-anchor="middle" font-size="12" fill="#333">メガ</text>
+<text x="236.0" y="314" text-anchor="middle" font-size="11" fill="#333">Mi / M</text>
+<rect x="314.0" y="153.6" width="52" height="126.4" fill="#2166ac" fill-opacity="0.85"/>
+<text x="340.0" y="145.6" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">7.4%</text>
+<text x="340.0" y="298" text-anchor="middle" font-size="12" fill="#333">ギガ</text>
+<text x="340.0" y="314" text-anchor="middle" font-size="11" fill="#333">Gi / G</text>
+<rect x="418.0" y="109.4" width="52" height="170.6" fill="#2166ac" fill-opacity="0.85"/>
+<text x="444.0" y="101.4" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">10.0%</text>
+<text x="444.0" y="298" text-anchor="middle" font-size="12" fill="#333">テラ</text>
+<text x="444.0" y="314" text-anchor="middle" font-size="11" fill="#333">Ti / T</text>
+<rect x="522.0" y="64.2" width="52" height="215.8" fill="#d7301f" fill-opacity="0.85"/>
+<text x="548.0" y="56.2" text-anchor="middle" font-size="12" font-weight="bold" fill="#333">12.6%</text>
+<text x="548.0" y="298" text-anchor="middle" font-size="12" fill="#333">ペタ</text>
+<text x="548.0" y="314" text-anchor="middle" font-size="11" fill="#333">Pi / P</text>
+<text x="340.0" y="338" text-anchor="middle" font-size="11" fill="#333">例: 1TiBは1TBより約10%大きい</text>
+</svg>

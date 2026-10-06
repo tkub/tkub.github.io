@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 686 332" width="686" height="332" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif" role="img">
+<title>シフトレジスタのタイミングチャート</title><desc>CLK、Din、Q0〜Q3の波形。赤い点線の立ち上がりごとに、Q0は直前のDinの値に、Q1は直前のQ0の値に、Q2は直前のQ1の値に、Q3は直前のQ2の値に変わり、値が1段ずつ右へ移る。</desc>
+<rect width="686" height="332" fill="#ffffff"/>
+<line x1="70" y1="26" x2="70" y2="298" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="70" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">0</text>
+<line x1="130" y1="26" x2="130" y2="298" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="130" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">1</text>
+<line x1="190" y1="26" x2="190" y2="298" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="190" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">2</text>
+<line x1="250" y1="26" x2="250" y2="298" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="250" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">3</text>
+<line x1="310" y1="26" x2="310" y2="298" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="310" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">4</text>
+<line x1="370" y1="26" x2="370" y2="298" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="370" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">5</text>
+<line x1="430" y1="26" x2="430" y2="298" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="430" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">6</text>
+<line x1="490" y1="26" x2="490" y2="298" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="490" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">7</text>
+<line x1="550" y1="26" x2="550" y2="298" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="550" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">8</text>
+<line x1="610" y1="26" x2="610" y2="298" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="610" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">9</text>
+<line x1="670" y1="26" x2="670" y2="298" stroke="#c4cfd6" stroke-width="1" stroke-dasharray="2,3"/>
+<text x="670" y="21" fill="#5a6b7b" font-size="14" text-anchor="middle">10</text>
+<line x1="70.0" y1="30" x2="70.0" y2="298" stroke="#d7301f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.85"/>
+<line x1="130.0" y1="30" x2="130.0" y2="298" stroke="#d7301f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.85"/>
+<line x1="190.0" y1="30" x2="190.0" y2="298" stroke="#d7301f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.85"/>
+<line x1="250.0" y1="30" x2="250.0" y2="298" stroke="#d7301f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.85"/>
+<line x1="310.0" y1="30" x2="310.0" y2="298" stroke="#d7301f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.85"/>
+<line x1="370.0" y1="30" x2="370.0" y2="298" stroke="#d7301f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.85"/>
+<line x1="430.0" y1="30" x2="430.0" y2="298" stroke="#d7301f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.85"/>
+<line x1="490.0" y1="30" x2="490.0" y2="298" stroke="#d7301f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.85"/>
+<line x1="550.0" y1="30" x2="550.0" y2="298" stroke="#d7301f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.85"/>
+<line x1="610.0" y1="30" x2="610.0" y2="298" stroke="#d7301f" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.85"/>
+<text x="56" y="53" fill="#233647" font-size="17" text-anchor="end">CLK</text>
+<path d="M70,34 L100.0,34 L100.0,58 L130.0,58 L130.0,34 L160.0,34 L160.0,58 L190.0,58 L190.0,34 L220.0,34 L220.0,58 L250.0,58 L250.0,34 L280.0,34 L280.0,58 L310.0,58 L310.0,34 L340.0,34 L340.0,58 L370.0,58 L370.0,34 L400.0,34 L400.0,58 L430.0,58 L430.0,34 L460.0,34 L460.0,58 L490.0,58 L490.0,34 L520.0,34 L520.0,58 L550.0,58 L550.0,34 L580.0,34 L580.0,58 L610.0,58 L610.0,34 L640.0,34 L640.0,58 L670.0,58" fill="none" stroke="#000" stroke-width="2" stroke-linejoin="miter"/>
+<text x="56" y="101" fill="#233647" font-size="17" text-anchor="end">Din</text>
+<path d="M70,106 L82.0,106 L82.0,82 L142.0,82 L142.0,106 L232.0,106 L232.0,82 L292.0,82 L292.0,106 L382.0,106 L382.0,82 L502.0,82 L502.0,106 L592.0,106 L592.0,82 L670.0,82" fill="none" stroke="#000" stroke-width="2" stroke-linejoin="miter"/>
+<text x="56" y="149" fill="#233647" font-size="17" text-anchor="end">Q0</text>
+<path d="M70,154 L137.2,154 L137.2,130 L197.2,130 L197.2,154 L257.2,154 L257.2,130 L317.2,130 L317.2,154 L437.2,154 L437.2,130 L557.2,130 L557.2,154 L617.2,154 L617.2,130 L670.0,130" fill="none" stroke="#2166ac" stroke-width="2" stroke-linejoin="miter"/>
+<text x="56" y="197" fill="#233647" font-size="17" text-anchor="end">Q1</text>
+<path d="M70,202 L197.2,202 L197.2,178 L257.2,178 L257.2,202 L317.2,202 L317.2,178 L377.2,178 L377.2,202 L497.2,202 L497.2,178 L617.2,178 L617.2,202 L670.0,202" fill="none" stroke="#2166ac" stroke-width="2" stroke-linejoin="miter"/>
+<text x="56" y="245" fill="#233647" font-size="17" text-anchor="end">Q2</text>
+<path d="M70,250 L257.2,250 L257.2,226 L317.2,226 L317.2,250 L377.2,250 L377.2,226 L437.2,226 L437.2,250 L557.2,250 L557.2,226 L670.0,226" fill="none" stroke="#2166ac" stroke-width="2" stroke-linejoin="miter"/>
+<text x="56" y="293" fill="#233647" font-size="17" text-anchor="end">Q3</text>
+<path d="M70,298 L317.2,298 L317.2,274 L377.2,274 L377.2,298 L437.2,298 L437.2,274 L497.2,274 L497.2,298 L617.2,298 L617.2,274 L670.0,274" fill="none" stroke="#2166ac" stroke-width="2" stroke-linejoin="miter"/>
+<text x="70" y="324" fill="#d7301f" font-size="14">赤い点線: CLK の立ち上がり</text>
+</svg>

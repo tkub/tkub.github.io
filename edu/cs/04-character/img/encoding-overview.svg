@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="ja" lang="ja" viewBox="0 0 800 640" width="800" height="640" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif">
+<title id="title">符号化文字集合と文字符号化方式の関係</title>
+<desc id="desc">左はJISの文字集合（JIS X 0201・0208・0213）と、その符号化方式ISO-2022-JP・Shift_JIS・EUC-JP。右はUnicodeと、その符号化方式UTF-8・UTF-16・UTF-32。JISの文字はUnicodeに収録されている。各方式の1文字あたりのバイト数と特徴を示す。</desc>
+<defs>
+  <marker id="eo-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#5a6b7b"/></marker>
+</defs>
+<rect width="800" height="640" fill="#ffffff"/>
+<!-- 段の見出し -->
+<text x="24" y="30" font-size="16" fill="#5a6b7b">符号化文字集合：文字に番号を付ける</text>
+<text x="24" y="268" font-size="16" fill="#5a6b7b">文字符号化方式：番号をバイト列にする</text>
+<line x1="24" y1="248" x2="776" y2="248" stroke="#dde5ec" stroke-width="2"/>
+<!-- 文字集合 -->
+<rect x="24" y="42" width="340" height="164" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="40" y="72" font-size="18" fill="#1c3d5f" font-weight="700">JISの文字集合（日本）</text>
+<g font-size="14.5" fill="#233647">
+  <text x="40" y="102">JIS X 0201：英数字と半角カナ</text>
+  <text x="40" y="128">JIS X 0208：漢字6,355字を含む6,879字</text>
+  <text x="40" y="154">JIS X 0213：第3・第4水準などを追加</text>
+  <text x="40" y="184" fill="#5a6b7b">位置は区点番号（例：あ＝4区2点）</text>
+</g>
+<rect x="436" y="42" width="340" height="164" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="452" y="72" font-size="18" fill="#1c3d5f" font-weight="700">Unicode（世界共通）</text>
+<g font-size="14.5" fill="#233647">
+  <text x="452" y="102">番号の範囲：U+0000〜U+10FFFF</text>
+  <text x="452" y="128">BMP：U+0000〜U+FFFF（あ＝U+3042）</text>
+  <text x="452" y="154">BMP外：絵文字の多く、拡張漢字など</text>
+  <text x="452" y="184" fill="#5a6b7b">JISの文字も収録済み</text>
+</g>
+<path d="M366,124 L428,124" stroke="#5a6b7b" stroke-width="2" marker-end="url(#eo-arrow)"/>
+<text x="400" y="114" font-size="14" fill="#5a6b7b" text-anchor="middle">収録</text>
+<!-- 下向き矢印 -->
+<path d="M340,208 L340,274" stroke="#5a6b7b" stroke-width="2" marker-end="url(#eo-arrow)"/>
+<path d="M606,208 L606,274" stroke="#5a6b7b" stroke-width="2" marker-end="url(#eo-arrow)"/>
+<!-- JIS側の符号化方式 -->
+<g font-size="14.5" fill="#233647">
+  <rect x="24" y="282" width="340" height="94" rx="10" fill="#ffffff" stroke="#c4cfd6"/>
+  <text x="40" y="308" font-size="17" font-weight="700" fill="#2166ac">ISO-2022-JP <tspan font-size="14" font-weight="400" fill="#5a6b7b">電子メール</tspan></text>
+  <text x="40" y="334">英数字1バイト、漢字・かな2バイト</text>
+  <text x="40" y="358">切替コード（3バイト）で文字集合を切り替え</text>
+  <rect x="24" y="386" width="340" height="94" rx="10" fill="#ffffff" stroke="#c4cfd6"/>
+  <text x="40" y="412" font-size="17" font-weight="700" fill="#2166ac">Shift_JIS <tspan font-size="14" font-weight="400" fill="#5a6b7b">Windows（CP932は独自拡張）</tspan></text>
+  <text x="40" y="438">英数字・半角カナ1バイト、漢字・かな2バイト</text>
+  <text x="40" y="462">2バイト目がASCIIの値と重なることがある</text>
+  <rect x="24" y="490" width="340" height="94" rx="10" fill="#ffffff" stroke="#c4cfd6"/>
+  <text x="40" y="516" font-size="17" font-weight="700" fill="#2166ac">EUC-JP <tspan font-size="14" font-weight="400" fill="#5a6b7b">UNIX系</tspan></text>
+  <text x="40" y="542">英数字1バイト、半角カナ・漢字・かな2バイト</text>
+  <text x="40" y="566">日本語のバイトはすべて0x80以上</text>
+</g>
+<!-- Unicode側の符号化方式 -->
+<g font-size="14.5" fill="#233647">
+  <rect x="436" y="282" width="340" height="94" rx="10" fill="#ffffff" stroke="#c4cfd6"/>
+  <text x="452" y="308" font-size="17" font-weight="700" fill="#d7301f">UTF-8 <tspan font-size="14" font-weight="400" fill="#5a6b7b">Webなど現在の標準</tspan></text>
+  <text x="452" y="334">ASCII 1バイト、かな・漢字 3バイト</text>
+  <text x="452" y="358">BMP外 4バイト。バイト順の問題がない</text>
+  <rect x="436" y="386" width="340" height="94" rx="10" fill="#ffffff" stroke="#c4cfd6"/>
+  <text x="452" y="412" font-size="17" font-weight="700" fill="#d7301f">UTF-16 <tspan font-size="14" font-weight="400" fill="#5a6b7b">Windowsの内部、Java、JavaScript</tspan></text>
+  <text x="452" y="438">BMP内2バイト、BMP外4バイト</text>
+  <text x="452" y="462">BMP外はサロゲートペア。バイト順は2通り</text>
+  <rect x="436" y="490" width="340" height="94" rx="10" fill="#ffffff" stroke="#c4cfd6"/>
+  <text x="452" y="516" font-size="17" font-weight="700" fill="#d7301f">UTF-32 <tspan font-size="14" font-weight="400" fill="#5a6b7b">固定長</tspan></text>
+  <text x="452" y="542">どのコードポイントも4バイト</text>
+  <text x="452" y="566">バイト順にBE／LEの2通り</text>
+</g>
+<text x="24" y="614" font-size="14.5" fill="#233647">異体字セレクタ（U+E0100〜U+E01EF）を付けると、UTF-8でもUTF-16でも1個につき4バイト増える。</text>
+</svg>

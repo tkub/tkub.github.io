@@ -1,0 +1,16 @@
+{
+  "name": "Records in Contexts 入門 --- アーカイブズ記述の新しい国際標準を理解する",
+  "short_name": "RiC 入門",
+  "lang": "ja",
+  "start_url": "/edu/ric/",
+  "scope": "/edu/ric/",
+  "display": "standalone",
+  "theme_color": "#26466e",
+  "background_color": "#ffffff",
+  "icons": [
+    { "src": "/edu/ric/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/edu/ric/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/edu/ric/icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/edu/ric/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

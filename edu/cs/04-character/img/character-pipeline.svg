@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="960" height="400" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">文字・コードポイント・バイト列</title><desc id="desc">あのUnicodeコードポイントはU+3042。UTF-8で符号化すると16進数E3 81 82の3バイト。復号は逆向き。字形の描画にはフォントなどが関わる。</desc><rect width="100%" height="100%" fill="white"/>
+<text x="28" y="36" font-size="24" fill="#233647" text-anchor="start" font-weight="700">「あ」を保存するまで、画面に戻るまで</text>
+<rect x="25" y="88" width="230" height="150" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="140" y="122" font-size="19" fill="#235e85" text-anchor="middle">表したい文字</text>
+<text x="140" y="177" font-size="31" fill="#233647" text-anchor="middle" font-weight="700">あ</text>
+<text x="140" y="216" font-size="16" fill="#233647" text-anchor="middle">ひらがなの「あ」</text>
+<rect x="365" y="88" width="230" height="150" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="480" y="122" font-size="19" fill="#235e85" text-anchor="middle">Unicode の番号</text>
+<text x="480" y="177" font-size="31" fill="#233647" text-anchor="middle" font-weight="700">U+3042</text>
+<text x="480" y="216" font-size="16" fill="#233647" text-anchor="middle">コードポイント</text>
+<rect x="705" y="88" width="230" height="150" rx="10" fill="#f2f5f7" stroke="#c4cfd6"/>
+<text x="820" y="122" font-size="19" fill="#235e85" text-anchor="middle">UTF-8 のバイト列</text>
+<text x="820" y="177" font-size="31" fill="#233647" text-anchor="middle" font-weight="700">E3 81 82</text>
+<text x="820" y="216" font-size="16" fill="#233647" text-anchor="middle">16進数で表示／3バイト</text>
+<line x1="268" y1="160" x2="351" y2="160" stroke="#235e85" stroke-width="2"/>
+<path d="M 342 155 L 351 160 L 342 165" fill="none" stroke="#235e85" stroke-width="2"/>
+<text x="310" y="143" font-size="16" fill="#235e85" text-anchor="middle">対応</text>
+<line x1="608" y1="160" x2="691" y2="160" stroke="#235e85" stroke-width="2"/>
+<path d="M 682 155 L 691 160 L 682 165" fill="none" stroke="#235e85" stroke-width="2"/>
+<text x="650" y="143" font-size="16" fill="#235e85" text-anchor="middle">符号化</text>
+<text x="28" y="284" font-size="20" fill="#233647" text-anchor="start">読み出すときは逆向き：バイト列を UTF-8 として復号し、文字を取り出す。</text>
+<text x="28" y="328" font-size="19" fill="#233647" text-anchor="start">画面の字形はフォントなどで決まる。番号だけで字形の細部は決まらない。</text>
+<text x="28" y="371" font-size="19" fill="#a83928" text-anchor="start">U+3042 と E3 81 82 は同じ数ではない。符号化方式に従って変換する。</text>
+</svg>

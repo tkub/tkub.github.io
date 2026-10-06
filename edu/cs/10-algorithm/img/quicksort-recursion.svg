@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 490" width="800" height="490" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif">
+<title id="title">クイックソートの再帰木</title><desc id="desc">9,1,4,3,7,6,2,3 を基準値6で分け、左の1,4,3,2,3を基準値3、右の9,7を基準値7、さらに1,2を基準値1で分ける。比較回数は7,4,1,1回で合計13回。確定した値を左からつなげると1,2,3,3,4,6,7,9。</desc>
+<rect width="100%" height="100%" fill="white"/>
+<rect x="275.0" y="20.0" width="250.0" height="54.0" rx="8" fill="#f2f5f7" stroke="#1c3d5f" stroke-width="1.5"/>
+<text x="400.0" y="42.0" font-size="17" fill="#233647" text-anchor="middle">[9, 1, 4, 3, 7, 6, 2, 3]</text>
+<text x="400.0" y="64.0" font-size="14" fill="#2166ac" text-anchor="middle">基準値 6・比較 7 回</text>
+<rect x="105.0" y="140.0" width="190.0" height="54.0" rx="8" fill="#f2f5f7" stroke="#1c3d5f" stroke-width="1.5"/>
+<text x="200.0" y="162.0" font-size="17" fill="#233647" text-anchor="middle">[1, 4, 3, 2, 3]</text>
+<text x="200.0" y="184.0" font-size="14" fill="#2166ac" text-anchor="middle">基準値 3・比較 4 回</text>
+<rect x="360.0" y="140.0" width="80.0" height="54.0" rx="8" fill="#fff9c4" stroke="#b8960f" stroke-width="1.5"/>
+<text x="400.0" y="162.0" font-size="17" fill="#233647" text-anchor="middle">{6}</text>
+<text x="400.0" y="184.0" font-size="14" fill="#233647" text-anchor="middle">確定</text>
+<rect x="555.0" y="140.0" width="170.0" height="54.0" rx="8" fill="#f2f5f7" stroke="#1c3d5f" stroke-width="1.5"/>
+<text x="640.0" y="162.0" font-size="17" fill="#233647" text-anchor="middle">[9, 7]</text>
+<text x="640.0" y="184.0" font-size="14" fill="#2166ac" text-anchor="middle">基準値 7・比較 1 回</text>
+<line x1="400.0" y1="74.0" x2="200.0" y2="138.0" stroke="#5a6b7b" stroke-width="1.4"/>
+<path d="M 206.1 132.8 L 200.0 138.0 L 208.0 138.7" fill="none" stroke="#5a6b7b" stroke-width="1.4"/>
+<line x1="400.0" y1="74.0" x2="400.0" y2="138.0" stroke="#5a6b7b" stroke-width="1.4"/>
+<path d="M 396.9 130.6 L 400.0 138.0 L 403.1 130.6" fill="none" stroke="#5a6b7b" stroke-width="1.4"/>
+<line x1="400.0" y1="74.0" x2="640.0" y2="138.0" stroke="#5a6b7b" stroke-width="1.4"/>
+<path d="M 632.1 139.1 L 640.0 138.0 L 633.7 133.1" fill="none" stroke="#5a6b7b" stroke-width="1.4"/>
+<rect x="12.0" y="260.0" width="156.0" height="54.0" rx="8" fill="#f2f5f7" stroke="#1c3d5f" stroke-width="1.5"/>
+<text x="90.0" y="282.0" font-size="17" fill="#233647" text-anchor="middle">[1, 2]</text>
+<text x="90.0" y="304.0" font-size="14" fill="#2166ac" text-anchor="middle">基準値 1・比較 1 回</text>
+<rect x="175.0" y="260.0" width="80.0" height="54.0" rx="8" fill="#fff9c4" stroke="#b8960f" stroke-width="1.5"/>
+<text x="215.0" y="282.0" font-size="17" fill="#233647" text-anchor="middle">{3, 3}</text>
+<text x="215.0" y="304.0" font-size="14" fill="#233647" text-anchor="middle">確定</text>
+<rect x="265.0" y="260.0" width="90.0" height="54.0" rx="8" fill="#dbe9f6" stroke="#2166ac" stroke-width="1.5"/>
+<text x="310.0" y="282.0" font-size="17" fill="#233647" text-anchor="middle">[4]</text>
+<text x="310.0" y="304.0" font-size="14" fill="#233647" text-anchor="middle">1個→確定</text>
+<line x1="200.0" y1="194.0" x2="90.0" y2="258.0" stroke="#5a6b7b" stroke-width="1.4"/>
+<path d="M 94.8 251.6 L 90.0 258.0 L 97.9 257.0" fill="none" stroke="#5a6b7b" stroke-width="1.4"/>
+<line x1="200.0" y1="194.0" x2="215.0" y2="258.0" stroke="#5a6b7b" stroke-width="1.4"/>
+<path d="M 210.3 251.5 L 215.0 258.0 L 216.4 250.1" fill="none" stroke="#5a6b7b" stroke-width="1.4"/>
+<line x1="200.0" y1="194.0" x2="310.0" y2="258.0" stroke="#5a6b7b" stroke-width="1.4"/>
+<path d="M 302.1 257.0 L 310.0 258.0 L 305.2 251.6" fill="none" stroke="#5a6b7b" stroke-width="1.4"/>
+<rect x="513.0" y="260.0" width="64.0" height="54.0" rx="8" fill="white" stroke="#5a6b7b" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="545.0" y="282.0" font-size="17" fill="#5a6b7b" text-anchor="middle">[ ]</text>
+<text x="545.0" y="304.0" font-size="14" fill="#5a6b7b" text-anchor="middle">空</text>
+<rect x="595.0" y="260.0" width="70.0" height="54.0" rx="8" fill="#fff9c4" stroke="#b8960f" stroke-width="1.5"/>
+<text x="630.0" y="282.0" font-size="17" fill="#233647" text-anchor="middle">{7}</text>
+<text x="630.0" y="304.0" font-size="14" fill="#233647" text-anchor="middle">確定</text>
+<rect x="680.0" y="260.0" width="90.0" height="54.0" rx="8" fill="#dbe9f6" stroke="#2166ac" stroke-width="1.5"/>
+<text x="725.0" y="282.0" font-size="17" fill="#233647" text-anchor="middle">[9]</text>
+<text x="725.0" y="304.0" font-size="14" fill="#233647" text-anchor="middle">1個→確定</text>
+<line x1="640.0" y1="194.0" x2="545.0" y2="258.0" stroke="#5a6b7b" stroke-width="1.4"/>
+<path d="M 549.4 251.3 L 545.0 258.0 L 552.9 256.5" fill="none" stroke="#5a6b7b" stroke-width="1.4"/>
+<line x1="640.0" y1="194.0" x2="630.0" y2="258.0" stroke="#5a6b7b" stroke-width="1.4"/>
+<path d="M 628.1 250.2 L 630.0 258.0 L 634.2 251.2" fill="none" stroke="#5a6b7b" stroke-width="1.4"/>
+<line x1="640.0" y1="194.0" x2="725.0" y2="258.0" stroke="#5a6b7b" stroke-width="1.4"/>
+<path d="M 717.2 256.1 L 725.0 258.0 L 721.0 251.1" fill="none" stroke="#5a6b7b" stroke-width="1.4"/>
+<rect x="10.0" y="380.0" width="60.0" height="54.0" rx="8" fill="white" stroke="#5a6b7b" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="40.0" y="402.0" font-size="17" fill="#5a6b7b" text-anchor="middle">[ ]</text>
+<text x="40.0" y="424.0" font-size="14" fill="#5a6b7b" text-anchor="middle">空</text>
+<rect x="80.0" y="380.0" width="64.0" height="54.0" rx="8" fill="#fff9c4" stroke="#b8960f" stroke-width="1.5"/>
+<text x="112.0" y="402.0" font-size="17" fill="#233647" text-anchor="middle">{1}</text>
+<text x="112.0" y="424.0" font-size="14" fill="#233647" text-anchor="middle">確定</text>
+<rect x="155.0" y="380.0" width="90.0" height="54.0" rx="8" fill="#dbe9f6" stroke="#2166ac" stroke-width="1.5"/>
+<text x="200.0" y="402.0" font-size="17" fill="#233647" text-anchor="middle">[2]</text>
+<text x="200.0" y="424.0" font-size="14" fill="#233647" text-anchor="middle">1個→確定</text>
+<line x1="90.0" y1="314.0" x2="40.0" y2="378.0" stroke="#5a6b7b" stroke-width="1.4"/>
+<path d="M 42.1 370.3 L 40.0 378.0 L 47.0 374.1" fill="none" stroke="#5a6b7b" stroke-width="1.4"/>
+<line x1="90.0" y1="314.0" x2="112.0" y2="378.0" stroke="#5a6b7b" stroke-width="1.4"/>
+<path d="M 106.7 372.0 L 112.0 378.0 L 112.6 370.0" fill="none" stroke="#5a6b7b" stroke-width="1.4"/>
+<line x1="90.0" y1="314.0" x2="200.0" y2="378.0" stroke="#5a6b7b" stroke-width="1.4"/>
+<path d="M 192.1 377.0 L 200.0 378.0 L 195.2 371.6" fill="none" stroke="#5a6b7b" stroke-width="1.4"/>
+<text x="560.0" y="400.0" font-size="16" fill="#233647" text-anchor="middle">確定した値を左から順につなげると</text>
+<text x="560.0" y="428.0" font-size="20" fill="#1c3d5f" text-anchor="middle" font-weight="700">1  2  3  3  4  6  7  9</text>
+<text x="560.0" y="460.0" font-size="16" fill="#233647" text-anchor="middle">比較回数の合計  7 + 4 + 1 + 1 = 13 回</text>
+</svg>

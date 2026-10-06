@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" width="960" height="470" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">PHにPH自身を入力したときの2つの場合</title><desc id="desc">Halt(PH,PH)の答えは「停止する」か「停止しない」のどちらか。「停止する」ならPHは無限ループに入り実際には停止しないので、Haltの答えは誤り。「停止しない」ならPHはただちに停止し実際には停止するので、やはりHaltの答えは誤り。どちらでも矛盾するので、どんな入力にも正しく答えるHaltは存在しない。</desc><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#235e85"/></marker><marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#5a6b7b"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#d7301f"/></marker></defs><rect width="100%" height="100%" fill="white"/>
+<text x="28" y="36" font-size="24" fill="#233647" text-anchor="start" font-weight="700">P<tspan font-size="16" dy="6.0">H</tspan><tspan dy="-6.0">に</tspan> P<tspan font-size="16" dy="6.0">H</tspan><tspan dy="-6.0"> 自身を入力すると：どちらの答えでも矛盾</tspan></text>
+<text x="145.0" y="84" font-size="17" fill="#235e85" text-anchor="middle" font-weight="700">① Halt(P<tspan font-size="11" dy="4.2">H</tspan><tspan dy="-4.2">, </tspan>P<tspan font-size="11" dy="4.2">H</tspan><tspan dy="-4.2">) の答え</tspan></text>
+<text x="385.0" y="84" font-size="17" fill="#235e85" text-anchor="middle" font-weight="700">② 天邪鬼の行動</text>
+<text x="615.0" y="84" font-size="17" fill="#235e85" text-anchor="middle" font-weight="700">③ 実際の結果</text>
+<text x="835.0" y="84" font-size="17" fill="#235e85" text-anchor="middle" font-weight="700">④ 判定</text>
+<rect x="40" y="104" width="210" height="96" rx="10" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="145.0" y="146" font-size="19" fill="#233647" text-anchor="middle" font-weight="700">「停止する」</text>
+<text x="145.0" y="176" font-size="17" fill="#233647" text-anchor="middle">と答えたとする</text>
+<line x1="254" y1="152" x2="274" y2="152" stroke="#235e85" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="280" y="104" width="210" height="96" rx="10" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="385.0" y="146" font-size="19" fill="#233647" text-anchor="middle" font-weight="700">わざと</text>
+<text x="385.0" y="176" font-size="17" fill="#233647" text-anchor="middle">無限ループに入る</text>
+<line x1="494" y1="152" x2="514" y2="152" stroke="#235e85" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="520" y="104" width="190" height="96" rx="10" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="615.0" y="146" font-size="19" fill="#233647" text-anchor="middle" font-weight="700">止まらない</text>
+<text x="615.0" y="176" font-size="17" fill="#233647" text-anchor="middle">＝「停止しない」</text>
+<line x1="714" y1="152" x2="734" y2="152" stroke="#235e85" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="740" y="104" width="190" height="96" rx="10" fill="#fdeeec" stroke="#d7301f" stroke-width="2"/>
+<text x="835.0" y="146" font-size="19" fill="#d7301f" text-anchor="middle" font-weight="700">答えと食い違う</text>
+<text x="835.0" y="176" font-size="17" fill="#d7301f" text-anchor="middle" font-weight="700">✕ 矛盾</text>
+<rect x="40" y="236" width="210" height="96" rx="10" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="145.0" y="278" font-size="19" fill="#233647" text-anchor="middle" font-weight="700">「停止しない」</text>
+<text x="145.0" y="308" font-size="17" fill="#233647" text-anchor="middle">と答えたとする</text>
+<line x1="254" y1="284" x2="274" y2="284" stroke="#235e85" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="280" y="236" width="210" height="96" rx="10" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="385.0" y="278" font-size="19" fill="#233647" text-anchor="middle" font-weight="700">ただちに</text>
+<text x="385.0" y="308" font-size="17" fill="#233647" text-anchor="middle">停止する</text>
+<line x1="494" y1="284" x2="514" y2="284" stroke="#235e85" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="520" y="236" width="190" height="96" rx="10" fill="#f2f5f7" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="615.0" y="278" font-size="19" fill="#233647" text-anchor="middle" font-weight="700">止まる</text>
+<text x="615.0" y="308" font-size="17" fill="#233647" text-anchor="middle">＝「停止する」</text>
+<line x1="714" y1="284" x2="734" y2="284" stroke="#235e85" stroke-width="2" marker-end="url(#ah)"/>
+<rect x="740" y="236" width="190" height="96" rx="10" fill="#fdeeec" stroke="#d7301f" stroke-width="2"/>
+<text x="835.0" y="278" font-size="19" fill="#d7301f" text-anchor="middle" font-weight="700">答えと食い違う</text>
+<text x="835.0" y="308" font-size="17" fill="#d7301f" text-anchor="middle" font-weight="700">✕ 矛盾</text>
+<text x="40" y="386" font-size="17" fill="#233647">Halt の計算は P<tspan font-size="11" dy="4.2">H</tspan><tspan dy="-4.2"> の中で行われるので、</tspan>P<tspan font-size="11" dy="4.2">H</tspan><tspan dy="-4.2"> の行動は Halt の答えで決まる（②）。</tspan></text>
+<rect x="40" y="404" width="890" height="50" rx="10" fill="#eaf2fa" stroke="#2166ac" stroke-width="2"/>
+<text x="485" y="436" font-size="18" fill="#2166ac" text-anchor="middle" font-weight="700">どちらの場合も矛盾 → 「どんな P, x にも正しく答える Halt がある」という仮定が誤り</text>
+</svg>

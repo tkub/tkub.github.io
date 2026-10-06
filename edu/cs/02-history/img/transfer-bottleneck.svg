@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 404" width="960" height="404" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">転送速度はいちばん遅い区間で決まる</title><desc id="desc">SSDから読み出す約550MB/s、USB 5Gbps接続で運べるデータ最大約500MB/s、HDDへの書き込み約200MB/sを直列につなぐと、全体の速さは最も遅いHDDの約200MB/s程度に制限される。</desc><rect width="100%" height="100%" fill="white"/>
+<text x="28" y="38" font-size="22" fill="#233647" text-anchor="start" font-weight="700">直列につながった区間の中で、いちばん遅いところが全体を決める</text>
+<text x="170" y="94" font-size="19" fill="#233647" text-anchor="middle" font-weight="700">コピー元 SSD</text>
+<text x="170" y="118" font-size="16" fill="#5a6b7b" text-anchor="middle">読み出し</text>
+<rect x="40" y="141.0" width="260" height="110.0" rx="4" fill="#2166ac" stroke="none" stroke-width="1.5" fill-opacity="0.85"/>
+<text x="170" y="204" font-size="21" fill="white" text-anchor="middle" font-weight="700">約550 MB/s</text>
+<path d="M 302 196 l 26 0" stroke="#233647" stroke-width="3"/>
+<text x="470" y="94" font-size="19" fill="#233647" text-anchor="middle" font-weight="700">USB 5Gbps 接続</text>
+<text x="470" y="118" font-size="16" fill="#5a6b7b" text-anchor="middle">データは最大</text>
+<rect x="340" y="146.0" width="260" height="100.0" rx="4" fill="#5a6b7b" stroke="none" stroke-width="1.5" fill-opacity="0.85"/>
+<text x="470" y="204" font-size="21" fill="white" text-anchor="middle" font-weight="700">約500 MB/s</text>
+<path d="M 602 196 l 26 0" stroke="#233647" stroke-width="3"/>
+<text x="770" y="94" font-size="19" fill="#233647" text-anchor="middle" font-weight="700">コピー先 HDD</text>
+<text x="770" y="118" font-size="16" fill="#5a6b7b" text-anchor="middle">書き込み</text>
+<rect x="640" y="176.0" width="260" height="40.0" rx="4" fill="#d7301f" stroke="none" stroke-width="1.5" fill-opacity="0.85"/>
+<text x="770" y="204" font-size="21" fill="white" text-anchor="middle" font-weight="700">約200 MB/s</text>
+<text x="40" y="284" font-size="16" fill="#5a6b7b" text-anchor="start">太さ = 1秒間に通せるデータ量のイメージ。5 Gbps ÷ 8 = 625 MB/s だが、信号の符号化(8b/10b)に</text>
+<text x="40" y="306" font-size="16" fill="#5a6b7b" text-anchor="start">2割を使うため、運べるデータは最大で約500 MB/s(実際にはさらに少ない)。</text>
+<rect x="28" y="326" width="904" height="60" rx="8" fill="white" stroke="#d7301f" stroke-width="2"/>
+<text x="48" y="364" font-size="19" fill="#d7301f" text-anchor="start" font-weight="700">全体はおよそ 200 MB/s → 1TB のコピーに 1,000,000 MB ÷ 200 MB/s = 5000秒 ≈ 1.4時間</text>
+</svg>

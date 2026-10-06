@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="ja" viewBox="0 0 720 360" width="720" height="360" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">2進法と16進法の変換: 4ビットずつ区切る</title><desc id="desc">2進法の1011110は左に0を補って0101 1110とし、16進法の5E。11010111.011は小数点から左右に4ビットずつ区切り、小数部の右に0を補って1101 0111 . 0110とし、D7.6。</desc>
+<rect width="720" height="360" fill="white"/>
+<text x="24" y="56" font-size="16" fill="#1c3d5f" text-anchor="start" font-weight="bold">例1: 1011110<tspan font-size="10.9" baseline-shift="-25%">(2)</tspan> → 5E<tspan font-size="10.9" baseline-shift="-25%">(16)</tspan>（左端に0を補う）</text>
+<rect x="54" y="70" width="100" height="36" rx="6" fill="#f2f5f7" stroke="#2166ac" stroke-width="1.5"/>
+<text x="71" y="96" font-size="22" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<text x="93" y="96" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<text x="115" y="96" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<text x="137" y="96" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<rect x="170" y="70" width="100" height="36" rx="6" fill="#f2f5f7" stroke="#2166ac" stroke-width="1.5"/>
+<text x="187" y="96" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<text x="209" y="96" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<text x="231" y="96" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<text x="253" y="96" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<line x1="104" y1="112" x2="104" y2="140" stroke="#2166ac" stroke-width="1.8"/>
+<path d="M 99 131 L 104 140 L 109 131 Z" fill="#2166ac"/>
+<text x="104" y="168" font-size="26" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">5</text>
+<text x="104" y="190" font-size="14" fill="#5a6b7b" text-anchor="middle">0101=5</text>
+<line x1="220" y1="112" x2="220" y2="140" stroke="#2166ac" stroke-width="1.8"/>
+<path d="M 215 131 L 220 140 L 225 131 Z" fill="#2166ac"/>
+<text x="220" y="168" font-size="26" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">E</text>
+<text x="220" y="190" font-size="14" fill="#5a6b7b" text-anchor="middle">1110=14</text>
+<text x="312" y="96" font-size="24" fill="#2166ac" text-anchor="start" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">= 5E</text>
+<text x="312" y="124" font-size="14" fill="#5a6b7b" text-anchor="start">（16進法）</text>
+<text x="24" y="216" font-size="16" fill="#1c3d5f" text-anchor="start" font-weight="bold">例2: 11010111.011<tspan font-size="10.9" baseline-shift="-25%">(2)</tspan> → D7.6<tspan font-size="10.9" baseline-shift="-25%">(16)</tspan>（小数点から左右へ区切り、小数部は右端に0を補う）</text>
+<rect x="54" y="230" width="100" height="36" rx="6" fill="#f2f5f7" stroke="#2166ac" stroke-width="1.5"/>
+<text x="71" y="256" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<text x="93" y="256" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<text x="115" y="256" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<text x="137" y="256" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<rect x="170" y="230" width="100" height="36" rx="6" fill="#f2f5f7" stroke="#2166ac" stroke-width="1.5"/>
+<text x="187" y="256" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<text x="209" y="256" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<text x="231" y="256" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<text x="253" y="256" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<text x="278" y="256" font-size="26" fill="#222" text-anchor="middle" font-weight="bold">.</text>
+<rect x="298" y="230" width="100" height="36" rx="6" fill="#f2f5f7" stroke="#2166ac" stroke-width="1.5"/>
+<text x="315" y="256" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<text x="337" y="256" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<text x="359" y="256" font-size="22" fill="#222" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">1</text>
+<text x="381" y="256" font-size="22" fill="#d7301f" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">0</text>
+<line x1="104" y1="272" x2="104" y2="300" stroke="#2166ac" stroke-width="1.8"/>
+<path d="M 99 291 L 104 300 L 109 291 Z" fill="#2166ac"/>
+<text x="104" y="328" font-size="26" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">D</text>
+<text x="104" y="350" font-size="14" fill="#5a6b7b" text-anchor="middle">1101=13</text>
+<line x1="220" y1="272" x2="220" y2="300" stroke="#2166ac" stroke-width="1.8"/>
+<path d="M 215 291 L 220 300 L 225 291 Z" fill="#2166ac"/>
+<text x="220" y="328" font-size="26" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">7</text>
+<text x="220" y="350" font-size="14" fill="#5a6b7b" text-anchor="middle">0111=7</text>
+<line x1="348" y1="272" x2="348" y2="300" stroke="#2166ac" stroke-width="1.8"/>
+<path d="M 343 291 L 348 300 L 353 291 Z" fill="#2166ac"/>
+<text x="348" y="328" font-size="26" fill="#2166ac" text-anchor="middle" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">6</text>
+<text x="348" y="350" font-size="14" fill="#5a6b7b" text-anchor="middle">0110=6</text>
+<text x="440" y="256" font-size="24" fill="#2166ac" text-anchor="start" font-weight="bold" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace">= D7.6</text>
+<text x="440" y="284" font-size="14" fill="#5a6b7b" text-anchor="start">（16進法）</text>
+<text x="696" y="346" font-size="14" fill="#d7301f" text-anchor="end">赤字の0は、4ビットにそろえるために補った0</text>
+</svg>

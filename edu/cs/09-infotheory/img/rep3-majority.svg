@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="ja" lang="ja" viewBox="0 0 860 420" width="860" height="420" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif">
+<title id="title">3回繰り返し符号の符号化と多数決による復号</title>
+<desc id="desc">01001の各ビットを3回ずつ送る。受信した3ビットで多いほうを採用する。1ビットの反転は訂正でき、2ビットの反転は誤って復号される。</desc>
+<rect width="860" height="420" fill="white"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#233647"/></marker><marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d7301f"/></marker><marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5a6b7b"/></marker></defs>
+<text x="70" y="34" font-size="18" fill="#1c3d5f" text-anchor="middle" font-weight="700">元のビット</text>
+<text x="220" y="34" font-size="18" fill="#1c3d5f" text-anchor="middle" font-weight="700">符号化</text>
+<text x="420" y="34" font-size="18" fill="#1c3d5f" text-anchor="middle" font-weight="700">受信(赤は反転)</text>
+<text x="610" y="34" font-size="18" fill="#1c3d5f" text-anchor="middle" font-weight="700">多数決</text>
+<text x="760" y="34" font-size="18" fill="#1c3d5f" text-anchor="middle" font-weight="700">結果</text>
+<line x1="16" y1="48" x2="844" y2="48" stroke="#c4cfd6" stroke-width="1.5"/>
+<rect x="16" y="60" width="828" height="62" fill="#f2f5f7"/>
+<text x="70" y="99" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">0</text>
+<text x="220" y="99" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">000</text>
+<text x="420" y="99" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">0<tspan fill="#d7301f" font-weight="700">1</tspan>0</text>
+<text x="610" y="98" font-size="17" fill="#5a6b7b" text-anchor="middle">1が1個 → 0</text>
+<text x="760" y="98" font-size="18" fill="#2166ac" text-anchor="middle" font-weight="700">訂正できた</text>
+<line x1="92" y1="92" x2="180" y2="92" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<line x1="260" y1="92" x2="376" y2="92" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<line x1="464" y1="92" x2="536" y2="92" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<text x="70" y="161" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">1</text>
+<text x="220" y="161" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">111</text>
+<text x="420" y="161" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">111</text>
+<text x="610" y="160" font-size="17" fill="#5a6b7b" text-anchor="middle">1が3個 → 1</text>
+<text x="760" y="160" font-size="18" fill="#2166ac" text-anchor="middle" font-weight="700">正しい</text>
+<line x1="92" y1="154" x2="180" y2="154" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<line x1="260" y1="154" x2="376" y2="154" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<line x1="464" y1="154" x2="536" y2="154" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<rect x="16" y="184" width="828" height="62" fill="#f2f5f7"/>
+<text x="70" y="223" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">0</text>
+<text x="220" y="223" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">000</text>
+<text x="420" y="223" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">000</text>
+<text x="610" y="222" font-size="17" fill="#5a6b7b" text-anchor="middle">1が0個 → 0</text>
+<text x="760" y="222" font-size="18" fill="#2166ac" text-anchor="middle" font-weight="700">正しい</text>
+<line x1="92" y1="216" x2="180" y2="216" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<line x1="260" y1="216" x2="376" y2="216" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<line x1="464" y1="216" x2="536" y2="216" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<text x="70" y="285" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">0</text>
+<text x="220" y="285" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">000</text>
+<text x="420" y="285" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">0<tspan fill="#d7301f" font-weight="700">1</tspan><tspan fill="#d7301f" font-weight="700">1</tspan></text>
+<text x="610" y="284" font-size="17" fill="#5a6b7b" text-anchor="middle">1が2個 → 1</text>
+<text x="760" y="284" font-size="18" fill="#d7301f" text-anchor="middle" font-weight="700">誤り</text>
+<line x1="92" y1="278" x2="180" y2="278" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<line x1="260" y1="278" x2="376" y2="278" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<line x1="464" y1="278" x2="536" y2="278" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<rect x="16" y="308" width="828" height="62" fill="#f2f5f7"/>
+<text x="70" y="347" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">1</text>
+<text x="220" y="347" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">111</text>
+<text x="420" y="347" font-size="22" font-family="'Menlo','Consolas','DejaVu Sans Mono',monospace" fill="#233647" text-anchor="middle">1<tspan fill="#d7301f" font-weight="700">0</tspan>1</text>
+<text x="610" y="346" font-size="17" fill="#5a6b7b" text-anchor="middle">1が2個 → 1</text>
+<text x="760" y="346" font-size="18" fill="#2166ac" text-anchor="middle" font-weight="700">訂正できた</text>
+<line x1="92" y1="340" x2="180" y2="340" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<line x1="260" y1="340" x2="376" y2="340" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<line x1="464" y1="340" x2="536" y2="340" stroke="#5a6b7b" stroke-width="1.6" marker-end="url(#ahg)"/>
+<text x="24" y="400" font-size="16" fill="#5a6b7b">3個のうち1個の反転なら多数決で直せるが、2個以上反転すると誤った値に決まる(4行目)。</text>
+</svg>

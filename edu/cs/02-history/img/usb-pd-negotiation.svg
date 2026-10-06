@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" role="img" aria-labelledby="title desc" font-family="'Hiragino Sans','Noto Sans CJK JP','Yu Gothic',sans-serif"><title id="title">USB PDの電力ネゴシエーションの流れ</title><desc id="desc">充電器(Source)とノートPC(Sink)とケーブル(E-Marker)の間のやり取り。まず5Vで給電を始め、充電器がケーブルの対応電流を問い合わせ、供給できる電圧・電流の一覧を送り、機器が要求し、充電器が受諾して電圧を切り替え、準備完了を知らせてから新しい電圧で給電する。</desc><rect width="100%" height="100%" fill="white"/>
+<rect x="30" y="20" width="220" height="62" rx="8" fill="#e3edf6" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="140" y="48" font-size="20" fill="#233647" text-anchor="middle" font-weight="700">充電器</text>
+<text x="140" y="72" font-size="15" fill="#5a6b7b" text-anchor="middle">Source(電源側)</text>
+<line x1="140" y1="84" x2="140" y2="580" stroke="#c4cfd6" stroke-width="2" stroke-dasharray="6 5"/>
+<rect x="370" y="20" width="220" height="62" rx="8" fill="#e3edf6" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="480" y="48" font-size="20" fill="#233647" text-anchor="middle" font-weight="700">ケーブル</text>
+<text x="480" y="72" font-size="15" fill="#5a6b7b" text-anchor="middle">E-Marker 内蔵のもの</text>
+<line x1="480" y1="84" x2="480" y2="580" stroke="#c4cfd6" stroke-width="2" stroke-dasharray="6 5"/>
+<rect x="710" y="20" width="220" height="62" rx="8" fill="#e3edf6" stroke="#c4cfd6" stroke-width="1.5"/>
+<text x="820" y="48" font-size="20" fill="#233647" text-anchor="middle" font-weight="700">ノートPC</text>
+<text x="820" y="72" font-size="15" fill="#5a6b7b" text-anchor="middle">Sink(受電側)</text>
+<line x1="820" y1="84" x2="820" y2="580" stroke="#c4cfd6" stroke-width="2" stroke-dasharray="6 5"/>
+<line x1="140" y1="118" x2="808" y2="118" stroke="#233647" stroke-width="7" stroke-opacity="0.35"/>
+<line x1="140" y1="118" x2="820" y2="118" stroke="#233647" stroke-width="2.5"/>
+<path d="M 808.0 111.4 L 820 118 L 808.0 124.6" fill="none" stroke="#233647" stroke-width="2.5" stroke-linejoin="round"/>
+<text x="480.0" y="108" font-size="17" fill="#233647" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="white" stroke-width="5">① 接続: まず 5V で給電を始める</text>
+<line x1="140" y1="178" x2="480" y2="178" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 470.0 172.5 L 480 178 L 470.0 183.5" fill="none" stroke="#2166ac" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="310.0" y="168" font-size="17" fill="#233647" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="5">② Discover Identity: 何Aまで流せる?</text>
+<line x1="480" y1="228" x2="140" y2="228" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 150.0 233.5 L 140 228 L 150.0 222.5" fill="none" stroke="#2166ac" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="310.0" y="218" font-size="17" fill="#233647" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="5">応答: 5A・20Vまで対応</text>
+<line x1="140" y1="290" x2="820" y2="290" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 810.0 284.5 L 820 290 L 810.0 295.5" fill="none" stroke="#2166ac" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="480.0" y="280" font-size="17" fill="#233647" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="5">③ Source_Capabilities: 5V 3A / 9V 3A / 15V 3A / 20V 5A</text>
+<line x1="820" y1="350" x2="140" y2="350" stroke="#d7301f" stroke-width="2.2"/>
+<path d="M 150.0 355.5 L 140 350 L 150.0 344.5" fill="none" stroke="#d7301f" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="480.0" y="340" font-size="17" fill="#d7301f" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="5">④ Request: 20V・3.25A(65W)をください</text>
+<line x1="140" y1="410" x2="820" y2="410" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 810.0 404.5 L 820 410 L 810.0 415.5" fill="none" stroke="#2166ac" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="480.0" y="400" font-size="17" fill="#233647" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="5">⑤ Accept: 了解(電圧を 20V に切り替える)</text>
+<line x1="140" y1="470" x2="820" y2="470" stroke="#2166ac" stroke-width="2.2"/>
+<path d="M 810.0 464.5 L 820 470 L 810.0 475.5" fill="none" stroke="#2166ac" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="480.0" y="460" font-size="17" fill="#233647" text-anchor="middle" paint-order="stroke" stroke="white" stroke-width="5">⑥ PS_RDY: 準備完了</text>
+<line x1="140" y1="530" x2="808" y2="530" stroke="#d7301f" stroke-width="7" stroke-opacity="0.35"/>
+<line x1="140" y1="530" x2="820" y2="530" stroke="#d7301f" stroke-width="2.5"/>
+<path d="M 808.0 523.4 L 820 530 L 808.0 536.6" fill="none" stroke="#d7301f" stroke-width="2.5" stroke-linejoin="round"/>
+<text x="480.0" y="520" font-size="17" fill="#d7301f" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="white" stroke-width="5">⑦ 20V・最大3.25Aで給電</text>
+<text x="30" y="590" font-size="15" fill="#5a6b7b" text-anchor="start">電圧・電流の値は一例。ケーブルが3Aまでの場合、充電器は3Aを超える組み合わせを提示しない。</text>
+</svg>
